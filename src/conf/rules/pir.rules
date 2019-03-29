@@ -1,0 +1,37 @@
+import java.util.Map
+
+val Map<String, Timer> timers = newHashMap
+
+rule "PIR triggered"
+when
+    Member of gPIR received update
+then
+  // logInfo("pir", "PIR change detected {} {}", triggeringItem.name, triggeringItem.state)
+  if (triggeringItem.state == OPEN) {
+    var int timeOutMinutes = 2
+    if (HH_PIR_State_Timeout.state !== NULL) {
+      timeOutMinutes = (HH_PIR_State_Timeout.state as Number).intValue
+    }
+
+    if(timers.get(triggeringItem.name) === null){
+        // find appropriate Item state
+        //logInfo("pir", "Creating motion end timer for item {}", triggeringItem.name)
+        val state_item = gPIRState.members.findFirst[name.equals(triggeringItem.name + "_State")]
+        timers.put(triggeringItem.name, createTimer(now.plusMinutes(timeOutMinutes), [|
+            state_item.sendCommand(OFF)
+            timers.put(triggeringItem.name, null)
+        ]))
+        //logInfo("pir", "State item {}", state_item.name)
+        state_item.postUpdate(ON)
+    }
+    else {
+        timers.get(triggeringItem.name).reschedule(now.plusMinutes(timeOutMinutes))
+    }
+    val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    //logInfo("pir", "Last update item {} (1)", lastupdate_item)
+    if (lastupdate_item !== null) {
+      lastupdate_item.postUpdate(now.toString())
+      //logInfo("pir", "Last update item {} {} (2)", lastupdate_item.name, lastupdate_item.state)
+    }
+  }
+end

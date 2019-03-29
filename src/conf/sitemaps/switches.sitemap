@@ -1,0 +1,88 @@
+sitemap switches label="Włączniki" {
+    Frame label="Kolory" icon="groundfloor" {
+        Selection item=RGB_Color  mappings=[PINK="Różowy",
+                                            RED="Czerwony",
+                                            GREEN="Zielony",
+                                            BLUE="Niebieski",
+                                            WHITE="Biały",
+                                            DARK_ORANGE="Ciemny pomarańczowy",
+                                            AQUAMARINE="Seledynowy",
+                                            BLUE_1="Chabrowy",
+                                            LIGHT_PINK="Jasny różowy",
+                                            LIGHT_ORANGE="Jasny pomarańczowy",
+                                            LIGHT_AQUAMARINE="Jasny seledynowy",
+                                            BLUE_2="Ciemny chabrowy",
+                                            DARK_YELLOW="Ciemny żółty",
+                                            DARK_AQUAMARINE="Ciemny seledynowy",
+                                            DARK_PINK="Ciemny różowy",
+                                            EMERALD="Szmaragdowy",
+                                            CYAN="Turkusowy",
+                                            YELLOW="Żółty"
+                                            ]
+    }
+
+    Frame label="Scenariusze" icon="groundfloor" {
+        Switch item=GF_FamilyRoom_Scenario mappings=[OFF="Wyłącz", ON="Włącz"]
+        Switch item=GF_ColorLights_Scenario mappings=[OFF="Wyłącz", ON="Włącz"]
+        Switch item=GF_Kitchen_Scenario mappings=[OFF="Wyłącz", ON="Włącz"]
+        Switch item=GF_Corridor_Scenario mappings=[OFF="Wyłącz", ON="Włącz"]
+        Switch item=GF_Restroom_Scenario mappings=[OFF="Wyłącz", ON="Włącz"]
+        Switch item=FF_Bedroom_Scenario mappings=[OFF="Wyłącz", ON="Włącz"]
+        Switch item=FF_AliceRoom_Scenario mappings=[OFF="Wyłącz", ON="Włącz"]
+        Switch item=FF_BathRoom_Scenario mappings=[OFF="Wyłącz", ON="Włącz"]
+        //Switch item=GF_Cinema_Scenario
+        //Switch item=GF_RTV_Scenario
+    }
+
+    Frame label="Piętra" icon="groundfloor" {
+        Switch item=HH_Lights_Scenario mappings=[OFF="Wyłącz", ON="Włącz"]
+        Switch item=GF_Lights_Scenario mappings=[OFF="Wyłącz", ON="Włącz"]
+        Switch item=FF_Lights_Scenario mappings=[OFF="Wyłącz", ON="Włącz"]
+    }
+
+    Frame label="Parter" icon="firstfloor" {
+        Switch item=GF_FamilyRoom_Light_Table
+        Switch item=GF_FamilyRoom_Light_Sofa
+        Switch item=GF_Kitchen_Light_Main
+        Switch item=GF_Kitchen_Light_LED
+        Switch item=GF_Corridor_Light_Main
+        Switch item=GF_Corridor_Light_LED
+        Switch item=GF_Corridor_Storage
+
+        Switch item=GF_Restroom_Light_Main
+
+        Switch item=GF_FamilyRoom_LightsRGB
+        Switch item=GF_FamilyRoom_LightsLamp
+
+        Switch item=GF_Corridor_Cross
+    }
+
+    Frame label="Piętro" icon="firstfloor" {
+        Switch item=FF_AliceRoom_Light_1
+        Switch item=FF_AliceRoom_Light_2
+        // Switch item=FF_AliceRoom_Lights
+        Switch item=FF_Bedroom_Light_1
+        Switch item=FF_Bedroom_Light_2
+        Switch item=FF_Bedroom_Lights
+        Switch item=FF_AnnRoom_Light_Main
+        Switch item=FF_BathRoom_Light_Up
+        Switch item=FF_BathRoom_Light_Mirror
+    }
+
+    Frame label="RTV" icon="firstfloor" {
+        Switch item=RTV_TV_TV
+        Switch item=RTV_TV_UPC
+//        Switch item=RTV_TV_DVD
+        Switch item=RTV_TV_XBOX
+        Switch item=RTV_TV_HDMI1
+        Switch item=RTV_TV_HDMI3
+        Switch item=RTV_TV_HDMI4
+        Switch item=RTV_TV_NETFLIX
+        Switch item=RTV_TV_YOUTUBE
+    }
+
+    Frame label="Tryby" icon="groundfloor" {
+        Switch item=GF_Motion_Mode mappings=[TRK="Śledzenie", ALM="Alarm", LGT="Światło"]
+        Switch item=GF_Presence_Mode mappings=[SIMULATE="Symulacja", Absent="Nieobecny", PRESENT="Obecny"]
+    }
+}

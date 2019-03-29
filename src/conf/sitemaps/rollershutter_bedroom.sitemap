@@ -1,0 +1,26 @@
+sitemap rollershutter_bedroom label="Roleta sypialnia" {
+  Frame label="Roleta" icon="groundfloor" {
+      Slider item=FF_Bedroom_Rollershutter_Dimmer label="Położenie [%.1f %%]"
+      Switch item=FF_Bedroom_Rollershutter_AutoUp mappings=[ON="Up"]
+      Switch item=FF_Bedroom_Rollershutter_AutoDown mappings=[ON="Down"]
+  }
+
+  Frame label="Roleta - programowanie" icon="groundfloor" {
+      Switch item=FF_Bedroom_Rollershutter
+      Switch item=FF_Bedroom_Rollershutter_PrgUp mappings=[ON="Set"]
+      Switch item=FF_Bedroom_Rollershutter_PrgDown mappings=[ON="Set"]
+  }
+
+  Frame label="Roleta - stan" icon="groundfloor" {
+      Text item=FF_Bedroom_Rollershutter_CurrPos
+      Text item=FF_Bedroom_Rollershutter_PWMCurrPos
+//      Text item=FF_Bedroom_Rollershutter_MinLimit
+//      Text item=FF_Bedroom_Rollershutter_MaxLimit
+      Text item=FF_Bedroom_Rollershutter_UpLimitProbe
+//      Text item=FF_Bedroom_Rollershutter_DownLimitProbe
+//      Text item=FF_Bedroom_Rollershutter_RealUpLimitProbe
+//      Text item=FF_Bedroom_Rollershutter_RealDownLimitProbe
+      Text item=FF_Bedroom_Rollershutter_Millis
+      Switch item=FF_Bedroom_Rollershutter_Debug mappings=[ON="Debug"]
+  }
+}

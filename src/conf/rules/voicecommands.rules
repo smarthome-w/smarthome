@@ -1,0 +1,59 @@
+rule "RGB Change"
+when
+    Item GF_ColorLights_Color received update
+then
+    //logInfo("rgb1", "RGB change detected {} {}", triggeringItem.name, triggeringItem.state)
+    switch(triggeringItem.state.toString()) {
+      case "350,25,100": {
+        sendCommand(RGB_Color, "PINK")
+      }
+      case "0,100,100": {
+        sendCommand(RGB_Color, "RED")
+      }
+      case "120,100,100": {
+        sendCommand(RGB_Color, "GREEN")
+      }
+      case "240,100,100": {
+        sendCommand(RGB_Color, "BLUE")
+      }
+      case "36,32,100": {
+        sendCommand(RGB_Color, "WHITE")
+      }
+      case "33,100,100": {
+        sendCommand(RGB_Color, "DARK_ORANGE")
+      }
+      case "160,50,100": {
+        sendCommand(RGB_Color, "AQUAMARINE")
+      }
+      //case "350,25,100": {
+      //  sendCommand(RGB_Color, "LIGHT_PINK")
+      //}
+      case "140,60,78": {
+        sendCommand(RGB_Color, "EMERALD")
+      }
+      case "60,100,100": {
+        sendCommand(RGB_Color, "YELLOW")
+      }
+      case "180,100,100": {
+        sendCommand(RGB_Color, "CYAN")
+      }
+    }
+    // PINK 350,25,100
+    // RED  0,100,100
+    // GREEN 120,100,100
+    // BLUE 240,100,100
+    // WHITE 36,32,100
+    // DARK_ORANGE 33,100,100
+    // AQUAMARINE 160,50,100
+    // BLUE_1="Chabrowy",
+    // LIGHT_PINK 350,25,100
+    // LIGHT_ORANGE ="Jasny pomarańczowy",
+    // LIGHT_AQUAMARINE="Jasny seledynowy",
+    // BLUE_2="Ciemny chabrowy",
+    // DARK_YELLOW="Ciemny żółty",
+    // DARK_AQUAMARINE="Ciemny seledynowy",
+    // DARK_PINK="Ciemny różowy",
+    // EMERALD 140,60,78
+    // CYAN=180,100,100
+    // YELLOW 60,100,100
+end

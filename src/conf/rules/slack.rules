@@ -1,0 +1,45 @@
+rule "Slack sensor changed"
+when
+    Member of gSlack changed
+then
+  val slack = triggeringItem
+
+  val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
+  var command = "/openhab/conf/scripts/SLACK/slack.sh ':information_source:' `" + currentTime + "` " + slack.name + " " + slack.state
+  var result = executeCommandLine (command, 10000)
+  if (result == "") {}
+  //logInfo("slack", "command: {} with result:\n>>\n{}\n<<\n", command, result)
+  slack.postUpdate(slack.state)
+end
+
+rule "Alarm sensor changed"
+when
+    Member of gPIR changed or Member of gCircuit changed
+then
+  val slack = triggeringItem
+
+  if (GF_Motion_Mode.state.toString() == "ALM" && slack.state == OPEN) {
+    val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
+
+    var command = "/openhab/conf/scripts/SLACK/slack.sh ':information_source:' `" + currentTime + "` " + slack.name + " " + slack.state
+    var result = executeCommandLine (command, 10000)
+    if (result == "") {}
+    //logInfo("slack", "command: {} with result:\n>>\n{}\n<<\n", command, result)
+    slack.postUpdate(slack.state)
+  }
+end
+
+rule "Error switch changed"
+when
+    Member of gErrors changed
+then
+  val slack = triggeringItem
+
+  val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
+
+  var command = "/openhab/conf/scripts/SLACK/slack.sh ':interrobang:' `" + currentTime + "` " + slack.name + " " + slack.state
+  var result = executeCommandLine (command, 10000)
+  if (result == "") {}
+  //logInfo("slack", "command: {} with result:\n>>\n{}\n<<\n", command, result)
+  slack.postUpdate(slack.state)
+end

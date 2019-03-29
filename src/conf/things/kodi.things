@@ -1,0 +1,1 @@
+Thing kodi:kodi:myKodi "Kodi" @ "Dom" [ipAddress="openhab.master", port=9090, httpPort=8080]

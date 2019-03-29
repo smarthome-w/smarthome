@@ -1,0 +1,13 @@
+rule "Heartbeat Rule"
+when
+    Member of gHeartbeat changed
+then
+    //logInfo("Heartbeat", "Heartbeat change detected {} {}", triggeringItem.name, triggeringItem.state)
+    val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+
+    //logInfo("Heartbeat", "lastupdate_item {}", lastupdate_item)
+    if (lastupdate_item !== null) {
+      lastupdate_item.postUpdate(now.toString())
+      //logInfo("Heartbeat", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+    }
+end

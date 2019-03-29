@@ -1,0 +1,38 @@
+rule "Scene_Rule"
+when
+    Member of gScenes received update
+then
+    logInfo("scene", "scene: " + triggeringItem.name)
+    if (triggeringItem.name == "GH_Day_Scene"){
+        logInfo("scene", "day")
+        GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
+    }
+    if (triggeringItem.name == "GH_Evening_Scene"){
+        logInfo("scene", "evening")
+        GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
+        FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
+        GF_FamilyRoom_Scenario.sendCommand(ON)
+    }
+    if (triggeringItem.name == "GH_Night_Scene"){
+        logInfo("scene", "night")
+        GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
+        FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
+        GF_Lights_Scenario.sendCommand(OFF)
+        RTV_TV_TV.sendCommand(OFF)
+        FF_Bedroom_Lights.sendCommand(ON)
+    }
+
+    if (triggeringItem.name == "GH_Bedroom_Night_Scene"){
+        logInfo("scene", "bedroom night")
+        FF_Bedroom_Lights.sendCommand(OFF)
+    }
+
+    if (triggeringItem.name == "GH_BrightWindow_Scene"){
+        logInfo("scene", "bright window")
+        GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
+    }
+    if (triggeringItem.name == "GH_DarkWindow_Scene"){
+        logInfo("scene", "dark window")
+        GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
+    }
+end

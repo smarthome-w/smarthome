@@ -1,0 +1,10 @@
+FROM openhab/openhab:2.5.0-snapshot-OS_PLATFORM-debian
+
+RUN apt-get update && apt-get dist-upgrade -y && apt-get install python3 python3-pip curl libglib2.0-dev git -y
+RUN pip3 install ruamel.yaml python-eq3bt  py-sony-bravia-remote git+https://github.com/mjg59/python-broadlink.git
+ADD resources/addons/* /openhab/addons/
+
+EXPOSE 22
+EXPOSE 8080
+EXPOSE 9090
+EXPOSE 80

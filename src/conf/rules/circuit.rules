@@ -1,0 +1,13 @@
+rule "CIR Rule"
+when
+    Member of gCIR received update
+then
+    //logInfo("cir", "CIR change detected {} {}", triggeringItem.name, triggeringItem.state)
+    val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+
+    //logInfo("cir", "lastupdate_item {}", lastupdate_item)
+    if (lastupdate_item !== null) {
+        lastupdate_item.postUpdate(now.toString())
+        //logInfo("cir", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+    }
+end

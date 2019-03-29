@@ -1,0 +1,48 @@
+rule "HW_Heartbeat"
+when
+  Time cron "0 */3 * ? * MON-SUN"
+then
+  var String command = "/openhab/conf/scripts/BROADLINK/ir.py HEARTBEAT ON"
+  var long duration = now.millis
+  var result = executeCommandLine (command, 15000)
+  duration = now.millis - duration
+  if (!result.contains("==sent==")) {
+//    logInfo("HW_Heartbeat", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+  } else {
+    sendCommand(HW_RMPro_Heartbeat, now.millis)
+  }
+
+  gSP2.members.forEach [E |
+//    logInfo("HW_Heartbeat", "element: {}, state: {}", E.name, E.state)
+    var String command = "/openhab/conf/scripts/BROADLINK/sp2.py " + E.name + " STATUS"
+    var long duration = now.millis
+    var result = executeCommandLine (command, 15000)
+    duration = now.millis - duration
+
+    if (!result.contains("==sent==")) {
+//      logInfo("HW_Heartbeat", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+    } else {
+//      logInfo("HW_Heartbeat", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+      var power = OFF
+      if (result.contains("+++True+++")) {
+        power = ON
+      }
+      val heartbeat_item = gHeartbeat.members.findFirst[name.equals(E.name + "_Heartbeat")]
+      if (heartbeat_item !== null) {
+        sendCommand(heartbeat_item, now.millis)
+      }
+//      logInfo("HW_Heartbeat", "status: element: {}, power: {}, state: {}", E.name, power, E.state)
+      if (E.state == NULL || power !== E.state) {
+        logInfo("HW_Heartbeat", "status conflict: element: {}, power: {}, state: {}", E.name, power, E.state)
+        E.postUpdate(power)
+        if (E.name == "GF_Corridor_Storage") {
+          if (power == ON) {
+            sendCommand (PIR_virtual_storage, OPEN)
+            Thread::sleep(2000)
+            sendCommand (PIR_virtual_storage, CLOSED)
+          }
+        }
+      }
+    }
+  ]
+end
