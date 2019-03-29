@@ -1,0 +1,58 @@
+////////////////////////////////////////////////////////////////////////////////
+//                       System
+////////////////////////////////////////////////////////////////////////////////
+
+Group    System             "System"    <heating>
+
+Group    gPersistenceSensor    <heating>   (System)
+Group    gPersistenceSwitch <heating>   (System)
+
+Group    gHardwareTemperature    <heating>   (System)
+Group    gSensorTemperature    <heating>   (System)
+Group    gSensorExternalTemperature    <heating>   (System)
+Group    gSensorHumidity   <heating>   (System)
+Group    gSensorPressure   <heating>   (System)
+Group    gSensorAnalog   <heating>   (System)
+
+Group    gCamera   <heating>   (System)
+
+Group    gScenes   <heating>   (System)
+
+Group    gScenarios   <heating>   (System)
+Group    gScenariosList    <heating>   (System)
+
+Group:Switch    gRawRTV    <screen>   (System)
+
+Group    gCIR       <heating>   (System)
+Group    gPIR     <heating>   (System)
+Group    gPIRState     <heating>   (System)
+
+Group    gNightWatch     <heating>   (System)
+Group    gEntryWatch     <heating>   (System)
+
+Group    gRollershutter       <heating>   (System)
+
+Group    gPower       <heating>   (System)
+
+Group    gHDMI       <heating>   (System)
+
+Group    gHeartbeat       <heating>   (System)
+
+Group    gTC2      <heating>   (System)
+Group    gSP2      <heating>   (System)
+Group    gIRB      <heating>   (System)
+Group    gShelly      <heating>   (System)
+
+Group    gIRRGB      <heating>   (System)
+
+Group    gSlack    <heating>   (System)
+
+Group    gLastUpdate   <heating>   (System)
+Group    gLastChange   <heating>   (System)
+Group    gLastUpdateTimeout   <heating>   (System)
+
+Group    gSony      <heating>   (System)
+
+Group    gErrors  <heating> (System)
+
+Group    gParameters  <heating> (System)

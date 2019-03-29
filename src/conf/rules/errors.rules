@@ -1,0 +1,22 @@
+rule "error detection rule"
+when
+  Time cron "0 */5 * ? * MON-SUN"
+then
+  gLastUpdateTimeout.members.forEach [E |
+    var Number diff = 20
+    if (E.state !== NULL) {
+      var DateTimeType previous = E.state as DateTimeType
+      diff = Minutes::minutesBetween(new DateTime(previous.calendar.timeInMillis), now).getMinutes()
+    }
+//    logInfo("Errors detection", "item: {}, diff: {}", E.name, diff)
+    val SwitchItem errorIndicator = gErrors.members.findFirst[name.equals(E.name + "_Error")]
+
+    if (errorIndicator !== null) {
+      if (diff >= 15) {
+        sendCommand (errorIndicator, ON)
+      } else {
+        sendCommand (errorIndicator, OFF)
+      }
+    }
+  ]
+end

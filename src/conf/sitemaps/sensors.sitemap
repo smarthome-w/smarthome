@@ -1,0 +1,42 @@
+sitemap sensors label="Sensory" {
+    Frame label="Miernik mocy" icon="firstfloor" {
+        Text item=GF_PowerMeter_Total
+        Text item=GF_PowerMeter_Current
+//        Text item=GF_PowerMeter_DailyConsumption
+    }
+    Frame label="Sensory w salonie" icon="firstfloor" {
+        Text item=GF_FamilyRoom_Indoor_Temperature_Sensor
+        Text item=GF_FamilyRoom_Outdoor_Temperature_Sensor
+        Text item=GF_FamilyRoom_Indoor_Humidity_Sensor
+        Text item=GF_FamilyRoom_Pressure_Sensor
+        Text item=GF_FamilyRoom_Analog_Sensor
+//        Text item=GF_FamilyRoom_Last_Read_Sensor
+    }
+
+    Frame label="Sensory w sypialni" icon="firstfloor" {
+        Text item=FF_Bedroom_Indoor_Temperature_Sensor
+        Text item=FF_Bedroom_Indoor_Humidity_Sensor
+        Text item=FF_Bedroom_Analog_Sensor
+    }
+
+    Frame label="Sensory w pokoju Alicji" icon="firstfloor" {
+        Text item=FF_AliceRoom_Indoor_Temperature_Sensor
+        Text item=FF_AliceRoom_Indoor_Humidity_Sensor
+        Text item=FF_AliceRoom_Analog_Sensor
+    }
+
+    Frame label="Sensory w pokoju Ani" icon="firstfloor" {
+        Text item=FF_AnnRoom_Indoor_Temperature_Sensor
+        Text item=FF_AnnRoom_Indoor_Humidity_Sensor
+//        Text item=FF_AnnRoom_Analog_Sensor
+        Text item=FF_AnnRoom_Outdoor_Temperature_Sensor
+    }
+
+    Frame label="Astro" icon="firstfloor" {
+        Text item=Astro_Sunrise_Time
+        Text item=Astro_Sunset_Time
+        Text item=Astro_MoonPhase
+        Text item=Astro_Zodiac_Sign
+        Text item=Astro_SunElevation
+    }
+}

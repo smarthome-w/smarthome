@@ -1,0 +1,16 @@
+sitemap sensors_basic label="Status" {
+    Frame label="Pogoda" icon="firstfloor" {
+        Text item=GF_FamilyRoom_Outdoor_Temperature_Sensor
+        Text item=FF_AnnRoom_Outdoor_Temperature_Sensor
+        Text item=GF_FamilyRoom_Analog_Sensor
+    }
+
+    Frame label="Astro" icon="firstfloor" {
+        Text item=Astro_Sunrise_Time
+        Text item=Astro_Sunset_Time
+        Text item=Astro_SunElevation
+    }
+    Frame label="Miernik mocy" icon="firstfloor" {
+        Text item=GF_PowerMeter_Current
+    }
+}

@@ -1,0 +1,71 @@
+rule "IRB sensor changed"
+when
+    Member of gIRB received update
+then
+    val irb = triggeringItem
+    var String command = "/openhab/conf/scripts/BROADLINK/ir.py " + irb.name + " " + irb.state
+    var long duration = now.millis
+    var result = executeCommandLine (command, 15000)
+    duration = now.millis - duration
+    if (!result.contains("==sent==")) {
+        logInfo("logIRB", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+    }
+    val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+
+    if (lastupdate_item !== null) {
+      lastupdate_item.postUpdate(now.toString())
+      //logInfo("pir", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+    }
+end
+
+rule "SP2 sensor changed"
+when
+    Member of gSP2 received update
+then
+    val sp2 = triggeringItem
+    var String command = "/openhab/conf/scripts/BROADLINK/sp2.py " + sp2.name + " " + sp2.state
+    var long duration = now.millis
+    var result = executeCommandLine (command, 15000)
+    duration = now.millis - duration
+    if (!result.contains("==sent==")) {
+        logInfo("logSP2", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+    }
+    val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    if (lastupdate_item !== null) {
+      lastupdate_item.postUpdate(now.toString())
+      //logInfo("pir", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+    }
+end
+
+rule "TC2 sensor changed"
+when
+    Member of gTC2 received update
+then
+    val tc2 = triggeringItem
+    var String command = "/openhab/conf/scripts/BROADLINK/tc2.py " + tc2.name + " " + tc2.state
+    var long duration = now.millis
+    var result = executeCommandLine (command, 15000)
+    duration = now.millis - duration
+    if (!result.contains("==sent==")) {
+        logInfo("logTC2", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+    }
+    val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    if (lastupdate_item !== null) {
+      lastupdate_item.postUpdate(now.toString())
+      //logInfo("pir", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+    }
+end
+
+rule "IRRGB sensor changed"
+when
+    Member of gIRRGB received update
+then
+    val irgb = triggeringItem
+    var String command = "/openhab/conf/scripts/BROADLINK/irrgb.py " + irgb.name + " " + irgb.state
+    var long duration = now.millis
+    var result = executeCommandLine (command, 15000)
+    duration = now.millis - duration
+    if (!result.contains("==sent==")) {
+        logInfo("logIRRGB", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+    }
+end

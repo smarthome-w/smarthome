@@ -1,0 +1,26 @@
+sitemap rollershutter label="Roleta" {
+  Frame label="Roleta" icon="groundfloor" {
+      Slider item=GF_FamilyRoom_Rollershutter_Dimmer label="Położenie [%.1f %%]"
+      Switch item=GF_FamilyRoom_Rollershutter_AutoUp mappings=[ON="Up"]
+      Switch item=GF_FamilyRoom_Rollershutter_AutoDown mappings=[ON="Down"]
+  }
+
+  Frame label="Roleta - programowanie" icon="groundfloor" {
+      Switch item=GF_FamilyRoom_Rollershutter
+      Switch item=GF_FamilyRoom_Rollershutter_PrgUp mappings=[ON="Set"]
+      Switch item=GF_FamilyRoom_Rollershutter_PrgDown mappings=[ON="Set"]
+  }
+
+  Frame label="Roleta - stan" icon="groundfloor" {
+      Text item=GF_FamilyRoom_Rollershutter_CurrPos
+      Text item=GF_FamilyRoom_Rollershutter_PWMCurrPos
+//      Text item=GF_FamilyRoom_Rollershutter_MinLimit
+//      Text item=GF_FamilyRoom_Rollershutter_MaxLimit
+      Text item=GF_FamilyRoom_Rollershutter_UpLimitProbe
+//      Text item=GF_FamilyRoom_Rollershutter_DownLimitProbe
+//      Text item=GF_FamilyRoom_Rollershutter_RealUpLimitProbe
+//      Text item=GF_FamilyRoom_Rollershutter_RealDownLimitProbe
+      Text item=GF_FamilyRoom_Rollershutter_Millis
+      Switch item=GF_FamilyRoom_Rollershutter_Debug mappings=[ON="Debug"]
+  }
+}

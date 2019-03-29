@@ -1,0 +1,18 @@
+[Unit]
+Description=openhab-powermeter
+
+[Service]
+User=root
+Group=root
+Type=simple
+Restart=always
+RestartSec=3
+#ExecStartPre=/bin/systemctl restart bluetooth
+ExecStart=/opt/openhab/conf/scripts/POWERMETER/powermeter.sh
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=openhab-server
+
+[Install]
+WantedBy=multi-user.target

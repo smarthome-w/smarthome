@@ -1,0 +1,23 @@
+[Unit]
+Description=openHAB 2
+Requires=docker.service mariadb.service mosquitto.service
+After=docker.service mariadb.service mosquitto.service
+
+[Service]
+Restart=always
+User=root
+Group=root
+ExecStart=/usr/bin/docker run --name=%n --tty \
+  -v /etc/localtime:/etc/localtime:ro \
+  -v /etc/timezone:/etc/timezone:ro \
+  -v /opt/openhab/conf:/openhab/conf \
+  -v /opt/openhab/userdata:/openhab/userdata \
+  --add-host "openhab.master:HOST_IP" \
+  -p 80:8080 \
+  -p 443:8443 \
+  --privileged \
+  DOCKER_TAG
+ExecStop=/usr/bin/docker stop -t 2 %n ; /usr/bin/docker rm -f %n
+
+[Install]
+WantedBy=multi-user.target
