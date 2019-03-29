@@ -1,0 +1,3 @@
+#! /bin/bash -e
+
+echo "Generate yml file with ip configuration."
