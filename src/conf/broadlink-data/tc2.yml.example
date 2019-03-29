@@ -1,0 +1,54 @@
+---
+
+mapping_dictionary:
+  GF_FamilyRoom_Light_Table:
+    ON: "code"
+    OFF: "code"
+
+  GF_FamilyRoom_Light_Sofa:
+    ON: "code"
+    OFF: "code"
+
+  GF_Kitchen_Light_Main:
+    ON: "code"
+    OFF: "code"
+
+  GF_Kitchen_Light_LED:
+    ON: "code"
+    OFF: "code"
+
+  GF_Corridor_Light_Main:
+    ON: "code"
+    OFF: "code"
+
+  GF_Restroom_Light_Main:
+    ON: "code"
+    OFF: "code"
+
+  FF_AliceRoom_Light_1:
+    ON: "code"
+    OFF: "code"
+
+  FF_AliceRoom_Light_2:
+    ON: "code"
+    OFF: "code"
+
+  FF_Bedroom_Light_1:
+    ON: "code"
+    OFF: "code"
+
+  FF_Bedroom_Light_2:
+    ON: "code"
+    OFF: "code"
+
+  FF_AnnRoom_Light_Main:
+    ON: "code"
+    OFF: "code"
+
+  FF_BathRoom_Light_Up:
+    ON: "code"
+    OFF: "code"
+
+  FF_BathRoom_Light_Mirror:
+    ON: "code"
+    OFF: "code"

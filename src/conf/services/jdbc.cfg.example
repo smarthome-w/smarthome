@@ -1,0 +1,6 @@
+url=jdbc:mariadb://openhab.master:3306/OpenHAB
+user=openhab
+password=somepassword
+tableNamePrefix=Item
+tableUseRealItemNames=false
+tableIdDigitCount=0
