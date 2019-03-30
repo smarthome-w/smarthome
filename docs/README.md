@@ -89,9 +89,9 @@ ESP8266 (nodeMCU) based sensor with optional functions:
   - debug - share all important values to assess driver and mechanism status
 - [Arduino sketch](/src/conf/arduino/servobig.sketch/servobig.sketch.ino)
 
-![Blind preparation](/docs/images/blind_preparation.jpg)
-![Blind completed](/docs/images/blind_completed.jpg)
-![Blind mounted](/docs/images/blind_mounted.jpg)
+![Blind preparation](https://raw.githubusercontent.com/smarthome-w/smarthome/master/docs/images/blind_preparation.jpg)
+![Blind completed](https://raw.githubusercontent.com/smarthome-w/smarthome/master/docs/images/blind_completed.jpg)
+![Blind mounted](https://raw.githubusercontent.com/smarthome-w/smarthome/master/docs/images/blind_mounted.jpg)
 
 #### Mechanical issues discussion
 
