@@ -164,6 +164,8 @@ Number HH_Humidity_Min "Humidity min [%.1f%%]" <humidity> (gSensorHumidity, gPer
 Number HH_Light_Dusk_Level "Light dusk level [%.0f]" <time> (gParameters, gPersistenceSwitch)
 Number HH_Light_Dawn_Level "Light dawn level [%.0f]" <time> (gParameters, gPersistenceSwitch)
 Number HH_PIR_State_Timeout "PIR state timeout [%.0f]" <time> (gParameters, gPersistenceSwitch)
+Number HH_DebugLevel_PIRCIR "PIR/CIR debug level [%s]" <time> (gParameters, gPersistenceSwitch)
+Number HH_DebugLevel_Broadlink "Broadlink HW debug level [%s]" <time> (gParameters, gPersistenceSwitch)
 Switch HH_Reload_Params "Reload parameters"  (gSystem)
 
 Group v_GF_FamilyRoom_Thermostat "Family room thermostat" ["Thermostat"]

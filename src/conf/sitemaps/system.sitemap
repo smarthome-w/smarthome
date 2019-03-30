@@ -1,16 +1,24 @@
 sitemap system label="System" {
-    Frame label="Pi" icon="firstfloor" {
-      Text item=OpenHAB_Restart
-      Text item=Server_Temperature
-//      Text item=Server_CPUIdle
-      Text item=Server_Uptime
-//      Text item=Server_LastRead
-    }
-
     Frame label="Parametry" icon="firstfloor" {
       Setpoint item=HH_Light_Dusk_Level label="Poziom zmierzchu [%.0f]" minValue=0 maxValue=1024 step=10
       Setpoint item=HH_Light_Dawn_Level label="Poziom świtu [%.0f]" minValue=0 maxValue=1024 step=10
       Setpoint item=HH_PIR_State_Timeout label="Timeout PIR [%.0f]" minValue=1 maxValue=10 step=1
+      Selection item=HH_DebugLevel_PIRCIR mappings=[
+                                          1="FATAL",
+                                          2="ERROR",
+                                          3="WARN",
+                                          4="INFO",
+                                          5="DEBUG",
+                                          6="TRACE"
+                                         ]
+      Selection item=HH_DebugLevel_Broadlink mappings=[
+                                          1="FATAL",
+                                          2="ERROR",
+                                          3="WARN",
+                                          4="INFO",
+                                          5="DEBUG",
+                                          6="TRACE"
+                                         ]
 //      Switch item=HH_Reload_Params mappings=[ON="Refresh"]
     }
 
@@ -32,5 +40,12 @@ sitemap system label="System" {
     }
     Frame label="Błędy" icon="firstfloor" {
       Chart item=gErrors period=D label="Błędy"
+    }
+    Frame label="Pi" icon="firstfloor" {
+      Text item=OpenHAB_Restart
+      Text item=Server_Temperature
+//      Text item=Server_CPUIdle
+      Text item=Server_Uptime
+//      Text item=Server_LastRead
     }
 }

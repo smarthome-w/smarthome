@@ -1,6 +1,6 @@
 # Smarthome
 
-This project is was created because of two reasons:
+This GitHub project was created because of two reasons:
 
 - to have backup of my code on Github
 - to share ideas and solutions present in my home.
@@ -30,7 +30,8 @@ One bored and IT experienced guy with simple tools.
 - Smart functions should be an augmentation of standard functions.
 - Maximize security (see also *smart* services)
 - Reduce costs, maximize safety
-- Maximize realiability and accessibility.
+- Maximize realiability and accessibility
+- Maximize fun, use simple tools for real DIY. No 3D printings and other advanced technologies.
 
 ## Smart house features control list
 
