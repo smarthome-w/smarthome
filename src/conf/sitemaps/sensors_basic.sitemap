@@ -3,6 +3,8 @@ sitemap sensors_basic label="Status" {
         Text item=GF_FamilyRoom_Outdoor_Temperature_Sensor
         Text item=FF_AnnRoom_Outdoor_Temperature_Sensor
         Text item=GF_FamilyRoom_Analog_Sensor
+        Text item=FF_Bedroom_Analog_Sensor
+        Text item=FF_AliceRoom_Analog_Sensor
     }
 
     Frame label="Astro" icon="firstfloor" {
