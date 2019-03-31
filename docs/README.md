@@ -11,7 +11,7 @@ Main assumption for hardware is alternative libraries accessibility (any shell, 
 |Broadlink TC2|Light switch|RF controlled (no WiFi range problems), nice outlook|***Lack of current state check***|-|
 |Broadlink SP2|Remote WiFi switch|Brighten manual toggle|Lack of manual network setup|-|
 |Shelly 1|Remote WiFi switch|-|-|-|
-|iNodeMeter|Power meter (optical version)|Linux based scripts for automation|Problems with range. Be ready to buy additional USB bluetooth dongle and do additional wire or additional Ethernet expander.|[iNode Meter](https://inode.pl/   iNode-Energy-Meter-opto,p,27)|
+|iNodeMeter|Power meter (optical version)|Linux based scripts for automation|Problems with range. Be ready to buy additional USB bluetooth dongle and do additional wire or additional Ethernet expander.|[iNode Meter](https://inode.pl/iNode-Energy-Meter-opto,p,27)|
 |ESP8266 (nodeMCU)|Universal WiFi building block|Embedded UART, 5V power supply|-|-|
 |IR LED Controller (44 keys version)|RGB LED strip controller|-|-|[IR RGB Dimmer](https://www.aliexpress.com/wholesale?SearchText=RGB+44+keys+remote+dimmer)|
 |Equiva eQ3 Bluetooth|Smart radiator thermostat|-|-|-|
