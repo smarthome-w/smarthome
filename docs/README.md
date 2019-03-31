@@ -68,6 +68,7 @@ ESP8266 (nodeMCU) based sensor with optional functions:
 - CIR - detect opening/closure the circuit
 - light intensity detector (photoresistor)
 - [Arduino sketch](/src/conf/arduino/multisensor.sketch/multisensor.sketch.ino)
+- Migration to ESP32 to handle Equiva eQ3 control
 
 ### Blind controller
 
