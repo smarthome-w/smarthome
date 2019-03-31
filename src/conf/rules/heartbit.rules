@@ -1,13 +1,29 @@
+// 1:FATAL. 2:"ERROR, 3:WARN,4:INFO,5:DEBUG,6:TRACE
 rule "Heartbeat Rule"
 when
-    Member of gHeartbeat changed
+  Member of gHeartbeat changed
 then
-    //logInfo("Heartbeat", "Heartbeat change detected {} {}", triggeringItem.name, triggeringItem.state)
+  try {
+    var int logLevel = 6
+    if (HH_DebugLevel_Heartbeat !== NULL) {
+      logLevel = (HH_DebugLevel_Heartbeat.state as Number).intValue
+    }
+    if (logLevel >= 6) {
+      logError("Heartbeat", "Heartbeat change detected {} {}", triggeringItem.name, triggeringItem.state)
+    }
     val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
 
-    //logInfo("Heartbeat", "lastupdate_item {}", lastupdate_item)
+    if (logLevel >= 6) {
+      logError("Heartbeat", "lastupdate_item {}", lastupdate_item)
+    }
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(now.toString())
-      //logInfo("Heartbeat", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+      if (logLevel >= 6) {
+        logError("Heartbeat", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+      }
     }
+  } catch (Throwable t) {
+    logError("Error", "Error in rule: " + t.toString)
+  } finally {
+  }
 end

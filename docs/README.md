@@ -103,7 +103,7 @@ To join servo and roller axis I've used a piece of steel wire nailed on the scre
 
 #### Limit detection discussion
 
-Limit detection is MUST BE. Using servo you cannot predict real position after some time. 
+Limit detection is MUST BE. Using servo you cannot predict real position after some time.
 
 First generation of limit switch (I've installed both: upper and bottom) was based on magnetic door switch. It was not reliable and after some time I've had problems with proper state detection. Using stronger magnet was not good - reed was failing due strong magnetic field.
 

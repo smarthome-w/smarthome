@@ -2,21 +2,32 @@ rule "error detection rule"
 when
   Time cron "0 */5 * ? * MON-SUN"
 then
-  gLastUpdateTimeout.members.forEach [E |
-    var Number diff = 20
-    if (E.state !== NULL) {
-      var DateTimeType previous = E.state as DateTimeType
-      diff = Minutes::minutesBetween(new DateTime(previous.calendar.timeInMillis), now).getMinutes()
+  try {
+    var int logLevel = 6
+    if (HH_DebugLevel_General !== NULL) {
+      logLevel = (HH_DebugLevel_General.state as Number).intValue
     }
-//    logInfo("Errors detection", "item: {}, diff: {}", E.name, diff)
-    val SwitchItem errorIndicator = gErrors.members.findFirst[name.equals(E.name + "_Error")]
-
-    if (errorIndicator !== null) {
-      if (diff >= 15) {
-        sendCommand (errorIndicator, ON)
-      } else {
-        sendCommand (errorIndicator, OFF)
+    gLastUpdateTimeout.members.forEach [E |
+      var Number diff = 20
+      if (E.state !== NULL) {
+        var DateTimeType previous = E.state as DateTimeType
+        diff = Minutes::minutesBetween(new DateTime(previous.calendar.timeInMillis), now).getMinutes()
       }
-    }
-  ]
+      if (logLevel >= 6) {
+        logError("Errors detection", "item: {}, diff: {}", E.name, diff)
+      }
+      val SwitchItem errorIndicator = gErrors.members.findFirst[name.equals(E.name + "_Error")]
+
+      if (errorIndicator !== null) {
+        if (diff >= 15) {
+          sendCommand (errorIndicator, ON)
+        } else {
+          sendCommand (errorIndicator, OFF)
+        }
+      }
+    ]
+  } catch (Throwable t) {
+    logError("Error", "Error in rule: " + t.toString)
+  } finally {
+  }
 end

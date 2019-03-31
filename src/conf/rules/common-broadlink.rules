@@ -1,71 +1,131 @@
+// 1:FATAL. 2:"ERROR, 3:WARN,4:INFO,5:DEBUG,6:TRACE
+
 rule "IRB sensor changed"
 when
     Member of gIRB received update
 then
-    val irb = triggeringItem
-    var String command = "/openhab/conf/scripts/BROADLINK/ir.py " + irb.name + " " + irb.state
+  try {
+    var int logLevel = 6
+    if (HH_DebugLevel_Broadlink !== NULL) {
+      logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
+    }
+    if (logLevel >= 6) {
+      logError("irb", "IRB change detected {} {}", triggeringItem.name, triggeringItem.state)
+    }
+    var String command = "/openhab/conf/scripts/BROADLINK/ir.py " + triggeringItem.name + " " + triggeringItem.state
     var long duration = now.millis
     var result = executeCommandLine (command, 15000)
     duration = now.millis - duration
     if (!result.contains("==sent==")) {
-        logInfo("logIRB", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+      if (logLevel >= 2) {
+        logError("irb", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+      }
     }
     val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
 
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(now.toString())
-      //logInfo("pir", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+      if (logLevel >= 6) {
+        logError("irb", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+      }
     }
+  } catch (Throwable t) {
+    logError("Error", "Error in rule: " + t.toString)
+  } finally {
+  }
 end
 
 rule "SP2 sensor changed"
 when
     Member of gSP2 received update
 then
-    val sp2 = triggeringItem
-    var String command = "/openhab/conf/scripts/BROADLINK/sp2.py " + sp2.name + " " + sp2.state
+  try {
+    var int logLevel = 6
+    if (HH_DebugLevel_Broadlink !== NULL) {
+      logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
+    }
+    if (logLevel >= 6) {
+      logError("sp2", "SP2 change detected {} {}", triggeringItem.name, triggeringItem.state)
+    }
+    var String command = "/openhab/conf/scripts/BROADLINK/sp2.py " + triggeringItem.name + " " + triggeringItem.state
     var long duration = now.millis
     var result = executeCommandLine (command, 15000)
     duration = now.millis - duration
     if (!result.contains("==sent==")) {
-        logInfo("logSP2", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+      if (logLevel >= 2) {
+        logInfo("sp2", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+      }
     }
     val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(now.toString())
-      //logInfo("pir", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+      if (logLevel >= 6) {
+        logInfo("sp2", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+      }
     }
+  } catch (Throwable t) {
+    logError("Error", "Error in rule: " + t.toString)
+  } finally {
+  }
 end
 
 rule "TC2 sensor changed"
 when
     Member of gTC2 received update
 then
-    val tc2 = triggeringItem
-    var String command = "/openhab/conf/scripts/BROADLINK/tc2.py " + tc2.name + " " + tc2.state
+  try {
+    var int logLevel = 6
+    if (HH_DebugLevel_Broadlink !== NULL) {
+      logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
+    }
+    if (logLevel >= 6) {
+      logError("tc2", "TC2 change detected {} {}", triggeringItem.name, triggeringItem.state)
+    }
+    var String command = "/openhab/conf/scripts/BROADLINK/tc2.py " + triggeringItem.name + " " + triggeringItem.state
     var long duration = now.millis
     var result = executeCommandLine (command, 15000)
     duration = now.millis - duration
     if (!result.contains("==sent==")) {
-        logInfo("logTC2", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+      if (logLevel >= 2) {
+        logInfo("tc2", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+      }
     }
     val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(now.toString())
-      //logInfo("pir", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+      if (logLevel >= 6) {
+        logInfo("sp2", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+      }
     }
+  } catch (Throwable t) {
+    logError("Error", "Error in rule: " + t.toString)
+  } finally {
+  }
 end
 
 rule "IRRGB sensor changed"
 when
     Member of gIRRGB received update
 then
-    val irgb = triggeringItem
-    var String command = "/openhab/conf/scripts/BROADLINK/irrgb.py " + irgb.name + " " + irgb.state
+  try {
+    var int logLevel = 6
+    if (HH_DebugLevel_Broadlink !== NULL) {
+      logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
+    }
+    if (logLevel >= 6) {
+      logError("irrgb", "IR RGB change detected {} {}", triggeringItem.name, triggeringItem.state)
+    }
+    var String command = "/openhab/conf/scripts/BROADLINK/irrgb.py " + triggeringItem.name + " " + triggeringItem.state
     var long duration = now.millis
     var result = executeCommandLine (command, 15000)
     duration = now.millis - duration
     if (!result.contains("==sent==")) {
-        logInfo("logIRRGB", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+      if (logLevel >= 2) {
+        logInfo("irrgb", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+      }
     }
+  } catch (Throwable t) {
+    logError("Error", "Error in rule: " + t.toString)
+  } finally {
+  }
 end
