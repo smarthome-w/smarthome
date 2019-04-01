@@ -30,7 +30,7 @@ then
       }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in rule: " + t.toString)
+    logError("Error", "Error in rule IRB sensor changed: " + t.toString)
   } finally {
   }
 end
@@ -64,7 +64,7 @@ then
       }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in rule: " + t.toString)
+    logError("Error", "Error in rule: SP2 sensor changed" + t.toString)
   } finally {
   }
 end
@@ -98,7 +98,7 @@ then
       }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in rule: " + t.toString)
+    logError("Error", "Error in rule: TC2 sensor changed" + t.toString)
   } finally {
   }
 end
@@ -125,7 +125,7 @@ then
       }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in rule: " + t.toString)
+    logError("Error", "Error in rule: IRRGB sensor changed" + t.toString)
   } finally {
   }
 end
