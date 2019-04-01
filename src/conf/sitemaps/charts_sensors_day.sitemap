@@ -1,0 +1,11 @@
+sitemap charts_sensors_day label="Sensory - dziś" {
+    Frame label="Sensory dzisiaj" icon="firstfloor" {
+        Chart item=gSensorTemperature period=D label="Temperatura"
+        Chart item=gSensorPressure period=D label="Ciśnienie"
+        Chart item=gSensorHumidity period=D label="Wilgotność"
+    }
+
+    Frame label="Jasność dzisiaj" icon="firstfloor" {
+        Chart item=gSensorAnalog period=D label="Jasność"
+    }
+}

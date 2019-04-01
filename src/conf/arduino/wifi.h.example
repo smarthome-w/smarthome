@@ -1,0 +1,8 @@
+#ifndef wifi_h
+#define wifi_h
+
+const char* WIFI_SSID = "MyWifiNetwork";
+const char* WIFI_PASSWD = "MyWifiPassword";
+const char* MQTT_SERVER = "444.444.444.444";
+
+#endif

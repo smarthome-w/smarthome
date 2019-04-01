@@ -1,0 +1,36 @@
+import java.util.Map
+
+val Map<String, Timer> nigthwatchTimers = newHashMap
+
+rule "A NightWatch Detector triggered"
+when
+    Member of gNightWatch received update
+then
+  val nightwatchTimerName = "nightwatchTimer"
+  if (GF_Presence_Mode.state.toString() == "PRESENT") {
+      if (calendar_SupportingLight.state.toString() == "ON") {
+        if (triggeringItem.state == OPEN) {
+          var int timeOutMinutes = 2
+          if (HH_PIR_State_Timeout.state !== NULL) {
+            timeOutMinutes = (HH_PIR_State_Timeout.state as Number).intValue
+          }
+          if(nigthwatchTimers.get(nightwatchTimerName) === null){
+              nigthwatchTimers.put(nightwatchTimerName, createTimer(now.plusMinutes(timeOutMinutes), [|
+                  nigthwatchTimers.put(nightwatchTimerName, null)
+                  //logInfo("nightwatch", "Timer expired {}", nightwatchTimerName)
+                  // off
+                  GF_Corridor_Light_LED.sendCommand(OFF)
+              ]))
+              //logInfo("nightwatch", "Timer created {}", nightwatchTimerName)
+              //on
+              GF_Corridor_Light_LED.sendCommand(ON)
+          }
+          else {
+              nigthwatchTimers.get(nightwatchTimerName).reschedule(now.plusMinutes(timeOutMinutes))
+              //logInfo("nightwatch", "Timer rescheduled {}", nightwatchTimerName)
+              GF_Corridor_Light_LED.sendCommand(ON)
+          }
+        }
+      }
+  }
+end

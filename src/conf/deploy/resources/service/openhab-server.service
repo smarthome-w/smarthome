@@ -1,0 +1,17 @@
+[Unit]
+Description=openhab-server
+
+[Service]
+User=root
+Group=root
+Type=simple
+Restart=always
+RestartSec=3
+ExecStart=/opt/openhab/conf/scripts/server.sh
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=openhab-server
+
+[Install]
+WantedBy=multi-user.target

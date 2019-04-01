@@ -1,0 +1,18 @@
+rule "PIR_GF_EntryWatch"
+when
+  Item PIR_GF_EntryWatch_State received update or
+  Item PIR_virtual_storage_State received update
+then
+  if (PIR_GF_EntryWatch_State.state.toString() == "ON") {
+    GF_Corridor_Storage.sendCommand(ON)
+  }
+  if (PIR_GF_EntryWatch_State.state.toString() == "OFF") {
+    GF_Corridor_Storage.sendCommand(OFF)
+  }
+  if (PIR_virtual_storage_State.state.toString() == "ON") {
+    GF_Corridor_Storage.sendCommand(ON)
+  }
+  if (PIR_virtual_storage_State.state.toString() == "OFF") {
+    GF_Corridor_Storage.sendCommand(OFF)
+  }
+end

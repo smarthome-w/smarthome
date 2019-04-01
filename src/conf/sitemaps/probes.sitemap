@@ -1,0 +1,51 @@
+sitemap probes label="Czujki" {
+    Frame label="Okna i drzwi" icon="groundfloor" {
+        Switch item=CIR_GF_MainDoor mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
+        Switch item=CIR_GF_MainLock mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
+        Switch item=CIR_GF_FamilyRoom mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
+        Switch item=CIR_GF_Kitchen mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
+        Switch item=CIR_FF_Bedroom mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
+        Switch item=CIR_FF_AliceRoom mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
+        Switch item=CIR_FF_AnnRoom mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
+    }
+
+    Frame label="Czujnik wejścia" icon="groundfloor" {
+        Switch item=PIR_GF_EntryWatch icon="alarm" mappings=[CLOSED="Czujka off", OPEN="Czujka on"]
+        Switch item=PIR_GF_EntryWatch_State icon="colorwheel" mappings=[OFF="Bezruch", ON="Ruch"]
+    }
+
+    Frame label="Salon" icon="groundfloor" {
+        Switch item=PIR_GF_FamilyRoom icon="alarm" mappings=[CLOSED="Czujka off", OPEN="Czujka on"]
+        Switch item=PIR_GF_FamilyRoom_State icon="colorwheel" mappings=[OFF="Bezruch", ON="Ruch"]
+    }
+
+    Frame label="Pokój Ani" icon="groundfloor" {
+        Switch item=PIR_FF_AnnRoom icon="alarm" mappings=[CLOSED="Czujka off", OPEN="Czujka on"]
+        Switch item=PIR_FF_AnnRoom_State icon="colorwheel" mappings=[OFF="Bezruch", ON="Ruch"]
+    }
+
+    Frame label="Pokój Alicji" icon="groundfloor" {
+        Switch item=PIR_FF_AliceRoom icon="alarm" mappings=[CLOSED="Czujka off", OPEN="Czujka on"]
+        Switch item=PIR_FF_AliceRoom_State icon="colorwheel" mappings=[OFF="Bezruch", ON="Ruch"]
+    }
+
+    Frame label="Korytarz góra" icon="groundfloor" {
+        Switch item=PIR_FF_Corridor icon="alarm" mappings=[CLOSED="Czujka off", OPEN="Czujka on"]
+        Switch item=PIR_FF_Corridor_State icon="colorwheel" mappings=[OFF="Bezruch", ON="Ruch"]
+    }
+
+    Frame label="Korytarz" icon="groundfloor" {
+        Switch item=PIR_GF_Corridor icon="alarm" mappings=[CLOSED="Czujka off", OPEN="Czujka on"]
+        Switch item=PIR_GF_Corridor_State icon="colorwheel" mappings=[OFF="Bezruch", ON="Ruch"]
+    }
+
+    Frame label="Kuchnia" icon="groundfloor" {
+        Switch item=PIR_GF_Kitchen icon="alarm" mappings=[CLOSED="Czujka off", OPEN="Czujka on"]
+        Switch item=PIR_GF_Kitchen_State icon="colorwheel" mappings=[OFF="Bezruch", ON="Ruch"]
+    }
+
+    Frame label="Sypialnia" icon="groundfloor" {
+        Switch item=PIR_FF_Bedroom icon="alarm" mappings=[CLOSED="Czujka off", OPEN="Czujka on"]
+        Switch item=PIR_FF_Bedroom_State icon="colorwheel" mappings=[OFF="Bezruch", ON="Ruch"]
+    }
+}

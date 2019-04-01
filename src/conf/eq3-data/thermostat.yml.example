@@ -1,0 +1,13 @@
+---
+
+mapping_dictionary:
+  TH1:
+    MAC: "mac"
+  TH2:
+    MAC: "mac"
+  TH3:
+    MAC: "mac"
+  TH4:
+    MAC: "mac"
+  TH5:
+    MAC: "mac"

@@ -1,0 +1,66 @@
+// 1:FATAL. 2:"ERROR, 3:WARN,4:INFO,5:DEBUG,6:TRACE
+rule "HW_Heartbeat"
+when
+  Time cron "0 */3 * ? * MON-SUN"
+then
+  try {
+    var int logLevel = 6
+    if (HH_DebugLevel_Heartbeat !== NULL) {
+      logLevel = (HH_DebugLevel_Heartbeat.state as Number).intValue
+    }
+    var String command = "/openhab/conf/scripts/BROADLINK/ir.py HEARTBEAT ON"
+    var long duration = now.millis
+    var result = executeCommandLine (command, 15000)
+    duration = now.millis - duration
+    if (!result.contains("==sent==")) {
+      if (logLevel >= 6) {
+        logError("HW_Heartbeat", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+      }
+    } else {
+      sendCommand(HW_RMPro_Heartbeat, now.millis)
+    }
+
+    gSP2.members.forEach [E |
+  //    logInfo("HW_Heartbeat", "element: {}, state: {}", E.name, E.state)
+      var String command = "/openhab/conf/scripts/BROADLINK/sp2.py " + E.name + " STATUS"
+      var long duration = now.millis
+      var result = executeCommandLine (command, 15000)
+      duration = now.millis - duration
+
+      if (!result.contains("==sent==")) {
+        if (logLevel >= 5) {
+          logError("HW_Heartbeat", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+        }
+      } else {
+        if (logLevel >= 6) {
+          logInfo("HW_Heartbeat", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+        }
+        var power = OFF
+        if (result.contains("+++True+++")) {
+          power = ON
+        }
+        val heartbeat_item = gHeartbeat.members.findFirst[name.equals(E.name + "_Heartbeat")]
+        if (heartbeat_item !== null) {
+          sendCommand(heartbeat_item, now.millis)
+        }
+  //      logInfo("HW_Heartbeat", "status: element: {}, power: {}, state: {}", E.name, power, E.state)
+        if (E.state == NULL || power !== E.state) {
+          if (logLevel >= 4) {
+            logError("HW_Heartbeat", "status conflict: element: {}, power: {}, state: {}", E.name, power, E.state)
+          }
+          E.postUpdate(power)
+          if (E.name == "GF_Corridor_Storage") {
+            if (power == ON) {
+              sendCommand (PIR_virtual_storage, OPEN)
+              Thread::sleep(2000)
+              sendCommand (PIR_virtual_storage, CLOSED)
+            }
+          }
+        }
+      }
+    ]
+  } catch (Throwable t) {
+    logError("Error", "Error in rule: " + t.toString)
+  } finally {
+  }
+end

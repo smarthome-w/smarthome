@@ -1,0 +1,17 @@
+[Unit]
+Description=openhab-servo
+
+[Service]
+User=root
+Group=root
+Type=simple
+Restart=always
+RestartSec=3
+ExecStart=/opt/openhab/conf/scripts/SERVO/servo.py
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=openhab-servo
+
+[Install]
+WantedBy=multi-user.target

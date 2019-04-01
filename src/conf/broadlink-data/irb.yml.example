@@ -1,0 +1,45 @@
+---
+mapping_dictionary:
+  RTV_TV_HDMI1:
+    ON: "code"
+    OFF: ""
+
+  RTV_TV_HDMI2:
+    ON: "code"
+    OFF: ""
+
+  RTV_TV_HDMI3:
+    ON: "code"
+    OFF: ""
+
+  RTV_TV_HDMI4:
+    ON: "code"
+    OFF: ""
+
+  RTV_TV_XBOX:
+    ON: "code"
+    OFF: "code"
+
+  RTV_TV_NETFLIX:
+    ON: "code"
+    OFF: ""
+
+  RTV_TV_UPC:
+    ON: "code"
+    OFF: "code"
+
+  RTV_TV_DVD:
+    ON: "code"
+    OFF: "code"
+
+  RTV_TV_TV:
+    ON: "code"
+    OFF: "code"
+
+  RTV_TV_YOUTUBE:
+    ON: ""
+    OFF: ""
+
+  HEARTBEAT:
+    ON: "1234"
+    OFF: "5678"

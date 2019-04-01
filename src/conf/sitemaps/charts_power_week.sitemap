@@ -1,0 +1,7 @@
+sitemap charts_power_week label="Zużycie prądu - tydzień" {
+    Frame label="Prąd tydzień" icon="firstfloor" {
+        Chart item=GF_PowerMeter_Total period=W label="Licznik"
+        Chart item=GF_PowerMeter_Current period=W label="Moc"
+        Chart item=GF_PowerMeter_DailyConsumption period=W label="Zużycie"
+    }
+}
