@@ -1,5 +1,15 @@
-#define SKETCH_VERSION "20190311"
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+#include <DHT.h>
+#include <OneWire.h>
+#include <DallasTemperature.h>
+#include <Ticker.h>
+#include <ArduinoOTA.h>
+#include <WiFiUdp.h>
+
 #include "wifi.h"
+
+#define SKETCH_VERSION "20190311"
 
 //#define TechnicalRoom1
 #define TechnicalRoom2
@@ -16,14 +26,6 @@
 #define SENSOR_SIZE 5
 #endif
 
-#include <ESP8266WiFi.h>
-#include <PubSubClient.h>
-#include <DHT.h>
-#include <OneWire.h>
-#include <DallasTemperature.h>
-#include <Ticker.h>
-#include <ArduinoOTA.h>
-#include <WiFiUdp.h>
 
 const String MQTT_MESSAGE_PREFIX = "myHome";
 const String MQTT_MULTISENSOR_NAME = fName;

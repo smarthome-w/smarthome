@@ -1,11 +1,12 @@
-#define SKETCH_VERSION "20190328"
-#include "wifi.h"
-
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include <Ticker.h>
 #include <ArduinoOTA.h>
 #include <WiFiUdp.h>
+
+#include "wifi.h"
+
+#define SKETCH_VERSION "20190328"
 
 //#define FamilyRoomRollershutter
 #define BedroomRollershutter

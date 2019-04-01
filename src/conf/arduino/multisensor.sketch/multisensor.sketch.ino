@@ -1,4 +1,16 @@
-#define SKETCH_VERSION "20190319"
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+#include <DHT.h>
+#include <OneWire.h>
+#include <DallasTemperature.h>
+#include <Ticker.h>
+#include <ArduinoOTA.h>
+#include <WiFiUdp.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BMP280.h>
+
 #include "wifi.h"
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -22,6 +34,7 @@
 //#define fAnalog
 ////////////////////////////////////////////////////////////////////////////////////////
 
+#define SKETCH_VERSION "20190319"
 
 //#define AnnRoom
 #define AliceRoom
@@ -76,20 +89,6 @@
 #define fAnalog
 #define fBMP280
 #endif
-
-#include <ESP8266WiFi.h>
-#include <PubSubClient.h>
-#include <DHT.h>
-#include <OneWire.h>
-#include <DallasTemperature.h>
-#include <Ticker.h>
-#include <ArduinoOTA.h>
-#include <WiFiUdp.h>
-
-#include <Wire.h>
-#include <SPI.h>
-#include <Adafruit_Sensor.h>
-#include <Adafruit_BMP280.h>
 
 #define BMP_SCK 13
 #define BMP_MISO 12
