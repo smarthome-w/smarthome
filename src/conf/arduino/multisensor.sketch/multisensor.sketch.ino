@@ -12,18 +12,23 @@
 #include <Adafruit_BMP280.h>
 
 #include "wifi.h"
+#include "sensors.h"
 
+////////////////////////////////////////////////////////////////////////////////////////
+// Pins available
 ////////////////////////////////////////////////////////////////////////////////////////
 // D0 - unused
 // D1 - BMP280 (SCL)
 // D2 - BMP280 (SDA)
 // D3 - unused
-// D4 - DS18B20
-// D5 - PIRu
-// D6 - CIR
+// D4 - DS18B20 (OneWire)
+// D5 - PIRu (LOW active)
+// D6 - CIR (LOW active)
 // D7 - DHT22
 // D8 - unused
 // A0 - Photoresistor
+////////////////////////////////////////////////////////////////////////////////////////
+// Features avialable for specific multisensor
 ////////////////////////////////////////////////////////////////////////////////////////
 //#define fBMP280
 //#define fDHT22
@@ -98,36 +103,9 @@
 const String MQTT_MESSAGE_PREFIX = "myHome";
 const String MQTT_MULTISENSOR_NAME = fName;
 
-const int SENSOR_DHT22 = 1;
-const int SENSOR_DS18B20 = 2;
-const int SENSOR_PIR = 3;
-const int SENSOR_CIRCUIT = 4;
-
-const int SENSOR_VALUE_TEMPERATURE = 1;
-const int SENSOR_VALUE_HUMIDITY = 2;
-const int SENSOR_VALUE_HEATINDEX = 3;
-const int SENSOR_VALUE_CIRCUIT = 4;
-const int SENSOR_VALUE_PIR = 5;
-
-
 #define DHTPIN 13 // D7
 #define DHTTYPE DHT22
 #define DHT22_READ_INTERVAL_MILLIS 60000
-
-const int pinD0 = 16;
-const int pinD1 = 5;
-const int pinD2 = 4;
-const int pinD3 = 0;
-const int pinD4 = 2;
-const int pinD5 = 14;
-const int pinD6 = 12;
-const int pinD7 = 13;
-const int pinD8 = 15;
-
-const int NORMALLY_CLOSED = 1;
-const int NORMALLY_OPEN = 2;
-
-const int NO_VALUE = -1;
 
 const int CIRCUITS = CIRCUITS_NO;
 

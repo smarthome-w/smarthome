@@ -5,6 +5,7 @@
 #include <WiFiUdp.h>
 
 #include "wifi.h"
+#include "sensors.h"
 
 #define SKETCH_VERSION "20190328"
 
@@ -61,21 +62,6 @@ int PWM_CURR_POS = 0;
 
 int SERVO_MAXIMUM_RANGE = SERVO_MAXIMUM_RANGE_VALUE;
 int SERVO_UP_MARIGIN = SERVO_UP_MARIGIN_VALUE;
-
-const int pinD0 = 16;
-const int pinD1 = 5;
-const int pinD2 = 4;
-const int pinD3 = 0;
-const int pinD4 = 2;
-const int pinD5 = 14;
-const int pinD6 = 12;
-const int pinD7 = 13;
-const int pinD8 = 15;
-
-const int NORMALLY_CLOSED = 1;
-const int NORMALLY_OPEN = 2;
-
-const int NO_VALUE = -1;
 
 const int SERVOS = 1;
 
