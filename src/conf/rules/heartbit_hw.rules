@@ -60,7 +60,7 @@ then
       }
     ]
   } catch (Throwable t) {
-    logError("Error", "Error in rule: " + t.toString)
+    logError("Error", "Error in rule: HW_Heartbeat" + t.toString)
   } finally {
   }
 end

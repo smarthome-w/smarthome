@@ -1,21 +1,3 @@
-/*
-rule "Rollershutter Real Position Rule"
-when
-    Member of gRollershutter_Position received update
-then
-    logInfo("rollershutter", "Rollershutter change detected {} {}", triggeringItem.name, triggeringItem.state)
-    var position_item = triggeringItem.name.replace("_Position", "")
-    logInfo("rollershutter", "position_item {}", position_item)
-
-    val update_item = gRollershutter_Dimmer.members.findFirst[name.equals(position_item)]
-    if (update_item !== null) {
-      logInfo("rollershutter", "1update_item {} to value {}", update_item, triggeringItem.state)
-      int new_value = (triggeringItem.state as Number).intValue
-      update_item.sendCommand(new_value)
-    }
-end
-*/
-
 rule "Rollershutter Rule"
 when
     Member of gRollershutter changed

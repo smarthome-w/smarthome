@@ -1,3 +1,9 @@
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+#include <Ticker.h>
+#include <Wire.h>
+#include <SPI.h>
+
 #include "wifi.h"
 
 #define VirtualCross
@@ -9,13 +15,6 @@
 #define WIFIIP 80
 #define CIRCUITS_NO 1
 #endif
-
-#include <ESP8266WiFi.h>
-#include <PubSubClient.h>
-#include <Ticker.h>
-
-#include <Wire.h>
-#include <SPI.h>
 
 const String MQTT_MESSAGE_PREFIX = "myHome";
 const String MQTT_MULTISENSOR_NAME = fName;

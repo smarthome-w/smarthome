@@ -53,6 +53,7 @@ Raspberry Pi with some software and hardware components:
 
 - OSMC distribution (KODI ready as a secondary function)
 - OpenHAB on Docker
+  - [Installation process](server-deployment/README.md)
 - Additional ecosystem components: MySQL, MQTT server
 - VPN Server (for connectivity)
 
@@ -83,8 +84,8 @@ ESP8266 (nodeMCU) based sensor with optional functions:
 
 - ESP8266 (nodeMCU) driver entry signals
   - manual up and manual down - the highest priority, limit switch is ignored
-  - virtual up and virtual down (UP, DOWN) - the highest priority, limit switch is ignored 
-  - virtual stop - stops the movement
+  - virtual up and virtual down (UP, DOWN) - the highest priority, limit switch is ignored
+  - virtual stop (STOP) - stops the movement
   - automatic up and automatic down (AUTOUP, AUTODOWN) - set to the minimum or maximum position
   - perentage value - set to specific value
   - debug - share all important values to assess driver and mechanism status
