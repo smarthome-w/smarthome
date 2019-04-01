@@ -90,9 +90,9 @@ ESP8266 (nodeMCU) based sensor with optional functions:
   - debug - share all important values to assess driver and mechanism status
 - [Arduino sketch](/src/conf/arduino/servobig.sketch/servobig.sketch.ino)
 
-![Blind preparation](images/blind_preparation.png)
-![Blind completed](images/blind_completed.png)
-![Blind mounted](images/blind_mounted.png)
+![Blind preparation](images/blind-preparation.png)
+![Blind completed](images/blind-completed.png)
+![Blind mounted](images/blind-mounted.png)
 
 #### Mechanical issues discussion
 
