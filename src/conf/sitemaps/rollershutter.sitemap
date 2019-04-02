@@ -1,6 +1,6 @@
 sitemap rollershutter label="Roleta" {
   Frame label="Roleta" icon="groundfloor" {
-      Slider item=GF_FamilyRoom_Rollershutter_Dimmer label="Położenie [%.1f %%]"
+      Slider item=GF_FamilyRoom_Rollershutter_Dimmer label="Blind [%.1f %%]"
       Switch item=GF_FamilyRoom_Rollershutter_AutoUp mappings=[ON="Up"]
       Switch item=GF_FamilyRoom_Rollershutter_AutoDown mappings=[ON="Down"]
   }

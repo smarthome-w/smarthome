@@ -1,4 +1,3 @@
-// 1:FATAL. 2:"ERROR, 3:WARN,4:INFO,5:DEBUG,6:TRACE
 rule "HW_Heartbeat"
 when
   Time cron "0 */3 * ? * MON-SUN"
@@ -60,7 +59,8 @@ then
       }
     ]
   } catch (Throwable t) {
-    logError("Error", "Error in rule: HW_Heartbeat" + t.toString)
+    logError("Error", "Error in rule: HW_Heartbeat {} {} {} {}", 
+                        triggeringItem.name, triggeringItem.state, triggeringItem, t)
   } finally {
   }
 end

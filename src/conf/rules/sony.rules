@@ -2,6 +2,7 @@ rule "Sony_Rule"
 when
     Member of gSony received update
 then
+  try {
     var String command = "/openhab/conf/scripts/SONY/sony.py " + triggeringItem.name + " " + triggeringItem.state
     var long duration = now.millis
     var result = executeCommandLine (command, 15000)
@@ -9,4 +10,9 @@ then
     if (!result.contains("==sent==")) {
         logInfo("logSony", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
     }
+  } catch (Throwable t) {
+    logError("Error", "Error in rule: PIR Rule {} {} {} {}", 
+                        triggeringItem.name, triggeringItem.state, triggeringItem, t)
+  } finally {
+  }
 end

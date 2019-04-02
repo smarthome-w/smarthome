@@ -1,6 +1,6 @@
 sitemap rollershutter_bedroom label="Roleta sypialnia" {
   Frame label="Roleta" icon="groundfloor" {
-      Slider item=FF_Bedroom_Rollershutter_Dimmer label="Położenie [%.1f %%]"
+      Slider item=FF_Bedroom_Rollershutter_Dimmer label="Blind [%.1f %%]"
       Switch item=FF_Bedroom_Rollershutter_AutoUp mappings=[ON="Up"]
       Switch item=FF_Bedroom_Rollershutter_AutoDown mappings=[ON="Down"]
   }

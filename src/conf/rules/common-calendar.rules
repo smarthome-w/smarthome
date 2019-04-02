@@ -4,25 +4,39 @@ when
 then
   var duskLevel = 350
   var dawnLevel = 750
+  var dayAt = 6
+  var eveningAt = 17
+  var nightAt = 23
+
   if (HH_Light_Dusk_Level.state !== NULL) {
     duskLevel = HH_Light_Dusk_Level.state as Number
   }
   if (HH_Light_Dawn_Level.state !== NULL) {
     dawnLevel = HH_Light_Dawn_Level.state as Number
   }
-  if (now.getHourOfDay > 17 && now.getHourOfDay < 23) {
+  if (HH_Time_Day.state !== NULL) {
+    dayAt = HH_Time_Day.state as Number
+  }
+  if (HH_Time_Evening.state !== NULL) {
+    eveningAt = HH_Time_Evening.state as Number
+  }
+  if (HH_Time_Night.state !== NULL) {
+    nightAt = HH_Time_Night.state as Number
+  }
+
+  if (now.getHourOfDay > eveningAt && now.getHourOfDay < nightAt) {
     calendar_Evening.sendCommand(ON)
   } else {
     calendar_Evening.sendCommand(OFF)
   }
 
-  if (now.getHourOfDay >= 23 && now.getHourOfDay <= 23) {
+  if (now.getHourOfDay >= nightAt && now.getHourOfDay <= dayAt) {
     calendar_Night.sendCommand(ON)
   } else {
     calendar_Night.sendCommand(OFF)
   }
 
-  if (now.getHourOfDay >= 6 && now.getHourOfDay <= 17) {
+  if (now.getHourOfDay >= dayAt && now.getHourOfDay <= eveningAt) {
     calendar_Day.sendCommand(ON)
   } else {
     calendar_Day.sendCommand(OFF)

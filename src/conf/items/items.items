@@ -150,7 +150,7 @@ Switch RTV_VOLUME_MUTE "Mute"  (GF_FamilyRoom, gSony) ["Switchable"]
 //                       Google Home scenes
 ////////////////////////////////////////////////////////////////////////////////
 Switch GH_Night_Scene "Good night" (gScenes) ["Switchable"]
-Switch GH_Bedroom_Night_Scene "Good night bedroom" (gScenes) //["Switchable"]
+Switch GH_Bedroom_Night_Scene "Go to sleep" (gScenes) ["Switchable"]
 Switch GH_Evening_Scene "Good evening" (gScenes) ["Switchable"]
 Switch GH_Day_Scene "Good morning" (gScenes) ["Switchable"]
 Switch GH_DarkWindow_Scene "Dark window" (gScenes) //["Switchable"]
@@ -160,10 +160,14 @@ Switch GH_BrightWindow_Scene "Bright window" (gScenes) //["Switchable"]
 //                       Sensors
 ////////////////////////////////////////////////////////////////////////////////
 
-Number HH_Humidity_Min "Humidity min [%.1f%%]" <humidity> (gSensorHumidity, gPersistenceSensor) {mqtt="<[broker:myHome/HH_Humidity_Min:state:JS(europeanNumber.js):.*]"}
+Number HH_Humidity_Min "Humidity min [%.1f%%]" <humidity> (gSensorHumidity, gPersistenceSensor)
+Number HH_Humidity_Max "Humidity min [%.1f%%]" <humidity> (gSensorHumidity, gPersistenceSensor)
 Number HH_Light_Dusk_Level "Light dusk level [%.0f]" <time> (gParameters, gPersistenceSwitch)
 Number HH_Light_Dawn_Level "Light dawn level [%.0f]" <time> (gParameters, gPersistenceSwitch)
 Number HH_PIR_State_Timeout "PIR state timeout [%.0f]" <time> (gParameters, gPersistenceSwitch)
+Number HH_Time_Day "Day starts at [%.0f]" <time> (gParameters, gPersistenceSwitch)
+Number HH_Time_Evening "Evening starts at [%.0f]" <time> (gParameters, gPersistenceSwitch)
+Number HH_Time_Night "Night starts at [%.0f]" <time> (gParameters, gPersistenceSwitch)
 Number HH_DebugLevel_PIRCIR "PIR/CIR debug level [%s]" <time> (gParameters, gPersistenceSwitch)
 Number HH_DebugLevel_Broadlink "Broadlink HW debug level [%s]" <time> (gParameters, gPersistenceSwitch)
 Number HH_DebugLevel_Heartbeat "Heartbeat debug level [%s]" <time> (gParameters, gPersistenceSwitch)
@@ -196,21 +200,21 @@ Number FF_Bedroom_Indoor_Temperature_Mode "Bedroom Heating/Cooling Mode" <temper
 Number FF_Bedroom_Indoor_Temperature_Setpoint "Bedroom Setpoint" <temperature> (v_FF_Bedroom_Thermostat) ["TargetTemperature"]
 Number FF_Bedroom_Indoor_Temperature_Sensor "Bedroom temperature [%.1f \u00b0C]" <temperature> (v_FF_Bedroom_Thermostat, gSensorTemperature, gPersistenceSensor) ["CurrentTemperature"] {mqtt="<[broker:myHome/FF_Bedroom_Indoor_Temperature_Sensor:state:JS(europeanNumber.js):.*]"}
 Number FF_Bedroom_Indoor_Humidity_Sensor "Bedroom humidity [%.1f%%]" <humidity> (v_FF_Bedroom_Thermostat, gSensorHumidity, gPersistenceSensor) ["CurrentHumidity"] {mqtt="<[broker:myHome/FF_Bedroom_Humidity_Sensor:state:JS(europeanNumber.js):.*]"}
-Number FF_Bedroom_Analog_Sensor "Natężenie światła - Sypialnia [%.0f]" <heating> (gSensorAnalog, gPersistenceSensor) {mqtt="<[broker:myHome/FF_Bedroom_Analog:state:JS(europeanNumber.js):.*]"}
+Number FF_Bedroom_Analog_Sensor "Natężenie światła - sypialnia [%.0f]" <heating> (gSensorAnalog, gPersistenceSensor) {mqtt="<[broker:myHome/FF_Bedroom_Analog:state:JS(europeanNumber.js):.*]"}
 
 Group v_FF_AliceRoom_Thermostat "Alice room thermostat" ["Thermostat"]
 Number FF_AliceRoom_Indoor_Temperature_Mode "Alice room Heating/Cooling Mode" <temperature> (v_FF_AliceRoom_Thermostat) ["homekit:HeatingCoolingMode"]
 Number FF_AliceRoom_Indoor_Temperature_Setpoint "Alice room Setpoint" <temperature> (v_FF_AliceRoom_Thermostat) ["TargetTemperature"]
 Number FF_AliceRoom_Indoor_Temperature_Sensor "Alice room temperature [%.1f \u00b0C]" <temperature> (v_FF_AliceRoom_Thermostat, gSensorTemperature, gPersistenceSensor) ["CurrentTemperature"] {mqtt="<[broker:myHome/FF_AliceRoom_Indoor_Temperature_Sensor:state:JS(europeanNumber.js):.*]"}
 Number FF_AliceRoom_Indoor_Humidity_Sensor "Alice room humidity [%.1f%%]" <humidity> (v_FF_AliceRoom_Thermostat, gSensorHumidity, gPersistenceSensor) ["CurrentHumidity"] {mqtt="<[broker:myHome/FF_AliceRoom_Humidity_Sensor:state:JS(europeanNumber.js):.*]"}
-Number FF_AliceRoom_Analog_Sensor "Natężenie światła -  Alicja [%.0f]" <heating> (gSensorAnalog, gPersistenceSensor) {mqtt="<[broker:myHome/FF_AliceRoom_Analog:state:JS(europeanNumber.js):.*]"}
+Number FF_AliceRoom_Analog_Sensor "Natężenie światła - Alicja [%.0f]" <heating> (gSensorAnalog, gPersistenceSensor) {mqtt="<[broker:myHome/FF_AliceRoom_Analog:state:JS(europeanNumber.js):.*]"}
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Rollershutters
 ////////////////////////////////////////////////////////////////////////////////
 Dimmer   GF_FamilyRoom_Rollershutter_Dimmer  "Window  [%.1f %%]"   <heating>   (GF_FamilyRoom, gRollershutter_Dimmer) ["Lighting"] {mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:state:*:default],<[broker:myHomeX/GF_FamilyRoom_Rollershutter_Position:state:JS(europeanNumber.js):.*]"}
-Rollershutter GF_FamilyRoom_Rollershutter "Salon - Roleta [%s]"  (GF_FamilyRoom, gRollershutter, gPersistenceSwitch) {mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:command:*:default]"}
-DateTime GF_FamilyRoom_Rollershutter_LastUpdate "Salon - Roleta [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
+Rollershutter GF_FamilyRoom_Rollershutter "Salon - blind [%s]"  (GF_FamilyRoom, gRollershutter, gPersistenceSwitch) {mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:command:*:default]"}
+DateTime GF_FamilyRoom_Rollershutter_LastUpdate "Salon - blind [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
 Switch GF_FamilyRoom_Rollershutter_PrgUp "Salon - prg up"  (GF_FamilyRoom, gRollershutter) {mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:command:ON:PRGUP]"}
 Switch GF_FamilyRoom_Rollershutter_PrgDown "Salon - prg down"  (GF_FamilyRoom, gRollershutter) {mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:command:ON:PRGDOWN]"}
 Switch GF_FamilyRoom_Rollershutter_AutoUp "Rollershutter up"  (GF_FamilyRoom, gRollershutter) {mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:command:ON:AUTOUP]"}
@@ -228,8 +232,8 @@ Number GF_FamilyRoom_Rollershutter_RealDownLimitProbe "RealDownLimitProbe [%.0f]
 Number GF_FamilyRoom_Rollershutter_Millis "Millis [%.0f]" <heating> {mqtt="<[broker:myHomeX/GF_FamilyRoom_Rollershutter_Debug_Millis:state:JS(europeanNumber.js):.*]"}
 
 Dimmer   FF_Bedroom_Rollershutter_Dimmer  "Bedroom window  [%.1f %%]"   <heating>   (FF_Bedroom, gRollershutter_Dimmer) ["Lighting"] {mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:state:*:default],<[broker:myHomeX/FF_Bedroom_Rollershutter_Position:state:JS(europeanNumber.js):.*]"}
-Rollershutter FF_Bedroom_Rollershutter "Sypialnia - Roleta [%s]"  (FF_Bedroom, gRollershutter, gPersistenceSwitch) {mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:command:*:default]"}
-DateTime FF_Bedroom_Rollershutter_LastUpdate "Sypialnia - Roleta [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
+Rollershutter FF_Bedroom_Rollershutter "Sypialnia - blind [%s]"  (FF_Bedroom, gRollershutter, gPersistenceSwitch) {mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:command:*:default]"}
+DateTime FF_Bedroom_Rollershutter_LastUpdate "Sypialnia - blind [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
 Switch FF_Bedroom_Rollershutter_PrgUp "Sypialnia - prg up"  (FF_Bedroom, gRollershutter) {mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:command:ON:PRGUP]"}
 Switch FF_Bedroom_Rollershutter_PrgDown "Sypialnia - prg down"  (FF_Bedroom, gRollershutter) {mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:command:ON:PRGDOWN]"}
 Switch FF_Bedroom_Rollershutter_AutoUp "Rollershutter up"  (FF_Bedroom, gRollershutter) {mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:command:ON:AUTOUP]"}
@@ -308,7 +312,7 @@ String GF_Corridor_Storage_Heartbeat "Korytarz półki [%s]"  (GF_FamilyRoom, gH
 DateTime GF_Corridor_Storage_Heartbeat_LastUpdate "Korytarz półki [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gLastUpdateTimeout)
 Switch GF_Corridor_Storage_Heartbeat_LastUpdate_Error "Korytarz półki" <time> (gErrors, gPersistenceSwitch)
 
-String FF_Bedroom_Lights_Heartbeat "Sypiania [%s]"  (GF_FamilyRoom, gHeartbeat)
+String FF_Bedroom_Lights_Heartbeat "Sypialnia [%s]"  (GF_FamilyRoom, gHeartbeat)
 DateTime FF_Bedroom_Lights_Heartbeat_LastUpdate "Sypialnia [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gLastUpdateTimeout)
 Switch FF_Bedroom_Lights_Heartbeat_LastUpdate_Error "Sypialnia" <time> (gErrors, gPersistenceSwitch)
 

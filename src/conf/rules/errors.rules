@@ -27,7 +27,8 @@ then
       }
     ]
   } catch (Throwable t) {
-    logError("Error", "Error in rule ERROR rule: " + t.toString)
+    logError("Error", "Error in rule: ERR Rule {} {} {} {}",, 
+                        triggeringItem.name, triggeringItem.state, triggeringItem, t)
   } finally {
   }
 end

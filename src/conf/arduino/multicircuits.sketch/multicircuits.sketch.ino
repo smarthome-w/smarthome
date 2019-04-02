@@ -129,7 +129,7 @@ void initializeDigitalInput() {
 void initializeOTA() {
   Serial.println("Initialize OTA...");
   ArduinoOTA.setHostname(fName);
- 
+
   ArduinoOTA.onStart([]() {
     String type;
     if (ArduinoOTA.getCommand() == U_FLASH) {
@@ -398,7 +398,7 @@ void sendEntryWatchMQTTMessage(String msg) {
   sendMQTTWithTypeConversion(messageTopic, msg);
 }
 
-void processEntryWatch(){
+void processEntryWatch() {
   int sPIR = circuits[2].previousValue;
   int sCIR = circuits[1].previousValue;
 
@@ -426,15 +426,15 @@ void processEntryWatch(){
     entryWatchState = STATE_OFF;
   }
 
-//  Serial.print("sCIR ");
-//  Serial.print(sCIR);
-//  Serial.print(" sPIR ");
-//  Serial.print(sPIR);
-//  Serial.print(" entryWatchState ");
-//  Serial.print(entryWatchState);
-//  Serial.print(" messageSent ");
-//  Serial.print(messageSent);
-//  Serial.println("");
+  //  Serial.print("sCIR ");
+  //  Serial.print(sCIR);
+  //  Serial.print(" sPIR ");
+  //  Serial.print(sPIR);
+  //  Serial.print(" entryWatchState ");
+  //  Serial.print(entryWatchState);
+  //  Serial.print(" messageSent ");
+  //  Serial.print(messageSent);
+  //  Serial.println("");
 }
 #endif
 
