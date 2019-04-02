@@ -7,7 +7,7 @@
 #include "wifi.h"
 #include "sensors.h"
 
-#define SKETCH_VERSION "20190328"
+#define SKETCH_VERSION "20190402"
 
 //#define FamilyRoomRollershutter
 #define BedroomRollershutter
@@ -23,7 +23,7 @@
 #define SERVO_UP 2500
 #define SERVO_DOWN 500
 #define CURRENT_DIRECTION_UP (-100.0/2187.0)
-#define CURRENT_DIRECTION_DOWN (100.0/2035.0)
+#define CURRENT_DIRECTION_DOWN (100.0/2005.0)
 #endif
 
 #ifdef BedroomRollershutter
@@ -36,7 +36,7 @@
 #define LOOP_DELAY_VALUE 0
 #define SERVO_UP 500
 #define SERVO_DOWN 2500
-#define CURRENT_DIRECTION_UP (-100.0/2770.0)
+#define CURRENT_DIRECTION_UP (-100.0/2800.0)
 #define CURRENT_DIRECTION_DOWN (100.0/1667.0)
 #endif
 

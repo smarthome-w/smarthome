@@ -38,22 +38,4 @@ then
         sendCommand(RGB_Color, "CYAN")
       }
     }
-    // PINK 350,25,100
-    // RED  0,100,100
-    // GREEN 120,100,100
-    // BLUE 240,100,100
-    // WHITE 36,32,100
-    // DARK_ORANGE 33,100,100
-    // AQUAMARINE 160,50,100
-    // BLUE_1="Chabrowy",
-    // LIGHT_PINK 350,25,100
-    // LIGHT_ORANGE ="Jasny pomarańczowy",
-    // LIGHT_AQUAMARINE="Jasny seledynowy",
-    // BLUE_2="Ciemny chabrowy",
-    // DARK_YELLOW="Ciemny żółty",
-    // DARK_AQUAMARINE="Ciemny seledynowy",
-    // DARK_PINK="Ciemny różowy",
-    // EMERALD 140,60,78
-    // CYAN=180,100,100
-    // YELLOW 60,100,100
 end

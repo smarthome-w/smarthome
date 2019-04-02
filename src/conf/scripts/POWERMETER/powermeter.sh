@@ -82,7 +82,7 @@ if [[ $1 == "parse" ]]; then
                        #/usr/bin/curl -s -o /dev/null  "http://emoncms.org/input/post.json?json={meterkwh:$CALCIM}&apikey=XYZ"
 
                        #logowanie do lokalnego sysloga
-                       logger POWER: $CALC W $CALCIM kWh -p local2.info
+                       #logger POWER: $CALC W $CALCIM kWh -p local2.info
                        #print na ekranie
 					   echo MAC: $MAC POWER: $CALC kW TOTAL: $CALCIM kWh | awk '{ print strftime("%Y-%m-%d %H:%M:%S"), $0; fflush(); }'
              if [ "${PREVCALC}" != "${CALC}" ]; then

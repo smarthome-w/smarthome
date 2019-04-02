@@ -3,6 +3,9 @@ sitemap system label="System" {
       Setpoint item=HH_Light_Dusk_Level label="Poziom zmierzchu [%.0f]" minValue=0 maxValue=1024 step=10
       Setpoint item=HH_Light_Dawn_Level label="Poziom świtu [%.0f]" minValue=0 maxValue=1024 step=10
       Setpoint item=HH_PIR_State_Timeout label="Timeout PIR [%.0f]" minValue=1 maxValue=10 step=1
+      Setpoint item=HH_Time_Day minValue=5 maxValue=10 step=1
+      Setpoint item=HH_Time_Evening minValue=15 maxValue=19 step=1
+      Setpoint item=HH_Time_Night minValue=20 maxValue=23 step=1
       Selection item=HH_DebugLevel_PIRCIR mappings=[
                                           1="FATAL",
                                           2="ERROR",
