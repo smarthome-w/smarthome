@@ -1,7 +1,8 @@
-rule "Rollershutter Rule"
+rule "rollershutter"
 when
     Member of gRollershutter changed
 then
+  try {
     //logInfo("rollershutter", "Rollershutter change detected {} {}", triggeringItem.name, triggeringItem.state)
     val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
 
@@ -10,28 +11,42 @@ then
       lastupdate_item.postUpdate(now.toString())
       //logInfo("rollershutter", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
     }
+  } catch (Throwable t) {
+    logError("Error", "Error in rollershutter_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+  } finally {
+  }
 end
 
-rule "Calendar Rollershutter Rule - Down"
+rule "rollershutter_down_rule"
 when
     Item calendar_Dusk changed
 then
+  try {
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
         if (calendar_Dusk.state.toString() == "ON") {
           GH_Evening_Scene.sendCommand(ON)
           logInfo("dailytrigger", "Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)
         }
     }
+  } catch (Throwable t) {
+    logError("Error", "Error in rollershutter_down_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+  } finally {
+  }
 end
 
-rule "Calendar Rollershutter Rule - Up"
+rule "rollershutter_up_rule"
 when
     Item calendar_Dawn changed
 then
-  if (GF_Presence_Mode.state.toString() == "PRESENT") {
-      if (calendar_Dawn.state.toString() == "ON") {
-        GH_Day_Scene.sendCommand(ON)
-        logInfo("dailytrigger", "Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)
-      }
+  try {
+    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+        if (calendar_Dawn.state.toString() == "ON") {
+          GH_Day_Scene.sendCommand(ON)
+          logInfo("dailytrigger", "Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)
+        }
+    }
+  } catch (Throwable t) {
+    logError("Error", "Error in rollershutter_up_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+  } finally {
   }
 end

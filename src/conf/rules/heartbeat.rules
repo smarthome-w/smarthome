@@ -1,29 +1,35 @@
-rule "Heartbeat Rule"
+rule "heartbeat_rule"
 when
   Member of gHeartbeat changed
 then
+  var ddd = ""
   try {
     var int logLevel = 6
-    if (HH_DebugLevel_Heartbeat !== NULL) {
+    ddd += "a"
+    if (HH_DebugLevel_Heartbeat.state !== NULL) {
       logLevel = (HH_DebugLevel_Heartbeat.state as Number).intValue
     }
+    ddd += "b"
     if (logLevel >= 6) {
       logError("Heartbeat", "Heartbeat change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
+    ddd += "c"
     var lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    ddd += "d"
 
     if (logLevel >= 6) {
       logError("Heartbeat", "lastupdate_item {}", lastupdate_item)
     }
-    if (lastupdate_item !== NULL) {
+    ddd += "e"
+    if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(now.toString())
       if (logLevel >= 6) {
         logError("Heartbeat", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
       }
     }
+    ddd += "f"
   } catch (Throwable t) {
-    logError("Error", "Error in rule: Heartbeat Rule {} {} {} {}", 
-                        triggeringItem.name, triggeringItem.state, triggeringItem, t)
+    logError("Error", "Error in heartbeat_rule {} {} {} {}", ddd, triggeringItem.name, triggeringItem.state, t.toString)
   } finally {
   }
 end

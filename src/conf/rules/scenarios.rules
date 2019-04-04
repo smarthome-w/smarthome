@@ -1,7 +1,8 @@
-rule "Scenario changed"
+rule "scenario_rule"
 when
     Member of gScenariosList received update
 then
+  try {
     val GroupItem state_group = gScenarios.members.findFirst[name.equals("g" + triggeringItem.name)]
     val OnOffType set_state = triggeringItem.state
 
@@ -21,4 +22,8 @@ then
         logInfo("scenario", "Unknown {}:{}", E, E.type)
       }
     ]
+  } catch (Throwable t) {
+    logError("Error", "Error in scenario_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+  } finally {
+  }
 end

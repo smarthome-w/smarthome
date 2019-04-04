@@ -1,10 +1,10 @@
-rule "error detection rule"
+rule "err_rule"
 when
   Time cron "0 */5 * ? * MON-SUN"
 then
   try {
     var int logLevel = 6
-    if (HH_DebugLevel_General !== NULL) {
+    if (HH_DebugLevel_General.state !== NULL) {
       logLevel = (HH_DebugLevel_General.state as Number).intValue
     }
     gLastUpdateTimeout.members.forEach [E |
@@ -27,8 +27,7 @@ then
       }
     ]
   } catch (Throwable t) {
-    logError("Error", "Error in rule: ERR Rule {} {} {} {}",, 
-                        triggeringItem.name, triggeringItem.state, triggeringItem, t)
+    logError("Error", "Error in err_rule {}", t.toString)
   } finally {
   }
 end

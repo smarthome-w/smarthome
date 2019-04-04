@@ -458,6 +458,8 @@ void setup() {
   initializeMQTT();
   //  initializeDHT();
   //  initializeDS18B20();
+  sendDebugMQTTMessage("VersionOnStart", SKETCH_VERSION);
+  sendDebugMQTTMessage("MAC", WiFi.macAddress());
 }
 
 void loop() {

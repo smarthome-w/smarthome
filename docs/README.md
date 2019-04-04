@@ -16,7 +16,8 @@ Main assumption for hardware is alternative libraries accessibility (any shell, 
 |IR LED Controller (44 keys version)|RGB LED strip controller|-|-|[IR RGB Dimmer](https://www.aliexpress.com/wholesale?SearchText=RGB+44+keys+remote+dimmer)|
 |Equiva eQ3 Bluetooth|Smart radiator thermostat|-|-|-|
 |Google Home Mini|Voice controller|-|-|-|
-|ESP32|Universal WiFi building block with Bluetooth|Embedded UART, 5V power supply|-|-|
+|ESP32 (in progress)|Universal WiFi building block with Bluetooth|Embedded UART, 5V power supply|-|-|
+|Sonoff Basic (in progress)|Universal WiFi switch building block|-|-|-|
 
 *Disclaimer*: I have router from my ISP without ability to match MAC and IP address. It requires additional attention and hacks. So ability to manually setup network is important to me
 
@@ -69,7 +70,11 @@ ESP8266 (nodeMCU) based sensor with optional functions:
 - CIR - detect opening/closure the circuit
 - light intensity detector (photoresistor)
 - [Arduino sketch](/src/conf/arduino/multisensor.sketch/multisensor.sketch.ino)
-- Migration to ESP32 to handle Equiva eQ3 control
+
+#### Planned
+
+- Migration to ESP32 to handle Equiva eQ3 control with Bluetooth LE transmission
+- Migration from DHT22 (it's a unstable jung) to BME280
 
 ### Blind controller
 
@@ -112,6 +117,10 @@ First generation of limit switch (I've installed both: upper and bottom) was bas
 Roller encoders (the cheapest one was about 1.5$ and accuracy 1/20 of rotation). But you must have direct access to the axix (I have not) or build a kind of gear between servo and encoder.
 
 The best solution for me is one mechanical limit switch on the top and position calculation. Typical scenario is that roller is on top position (with ability to restart position indicators) at least once a day. It is enough to have proper position detection accuracy.
+
+#### Planned
+
+- Limit servo noise
 
 ### PIR/CIR controller
 

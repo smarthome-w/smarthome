@@ -1,8 +1,18 @@
-rule "Scene_Rule"
+rule "scene_rule"
 when
     Member of gScenes received update
 then
+  try {
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
+        var int logLevel = 6
+        if (HH_DebugLevel_General.state !== NULL) {
+            logLevel = HH_DebugLevel_General.state as Number
+        }
+        var bedroomBlindLevel = 30
+        if (HH_Night_Bedroom_Blind_Level.state !== NULL) {
+            bedroomBlindLevel = HH_Night_Bedroom_Blind_Level.state as Number
+        }
+
         logInfo("scene", "scene: " + triggeringItem.name)
         if (triggeringItem.name == "GH_Day_Scene"){
             logInfo("scene", "day")
@@ -26,7 +36,7 @@ then
         if (triggeringItem.name == "GH_Bedroom_Night_Scene"){
             logInfo("scene", "bedroom night")
             FF_Bedroom_Lights.sendCommand(OFF)
-            FF_Bedroom_Rollershutter_Position.sendCommand(30)
+            FF_Bedroom_Rollershutter_Dimmer.sendCommand(bedroomBlindLevel)
         }
 
         if (triggeringItem.name == "GH_BrightWindow_Scene"){
@@ -38,4 +48,8 @@ then
             GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
         }
     }
+  } catch (Throwable t) {
+    logError("Error", "Error in scene_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+  } finally {
+  }
 end

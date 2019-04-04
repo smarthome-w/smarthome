@@ -39,7 +39,7 @@
 //#define fAnalog
 ////////////////////////////////////////////////////////////////////////////////////////
 
-#define SKETCH_VERSION "20190319"
+#define SKETCH_VERSION "20190402"
 
 //#define AnnRoom
 #define AliceRoom
@@ -527,6 +527,7 @@ void setup() {
   initializeBMP280();
 #endif
   sendDebugMQTTMessage("VersionOnStart", SKETCH_VERSION);
+  sendDebugMQTTMessage("MAC", WiFi.macAddress());
 }
 
 void loop() {

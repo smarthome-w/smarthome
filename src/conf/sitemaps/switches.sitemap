@@ -58,10 +58,10 @@ sitemap switches label="Włączniki" {
     }
 
     Frame label="Piętro" icon="firstfloor" {
-        Switch item=FF_AliceRoom_Light_1
+        // Switch item=FF_AliceRoom_Light_1
         Switch item=FF_AliceRoom_Light_2
         // Switch item=FF_AliceRoom_Lights
-        Switch item=FF_Bedroom_Light_1
+        // Switch item=FF_Bedroom_Light_1
         Switch item=FF_Bedroom_Light_2
         Switch item=FF_Bedroom_Lights
         Switch item=FF_AnnRoom_Light_Main
