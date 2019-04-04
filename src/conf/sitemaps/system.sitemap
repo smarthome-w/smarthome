@@ -6,6 +6,8 @@ sitemap system label="System" {
       Setpoint item=HH_Time_Day minValue=5 maxValue=10 step=1
       Setpoint item=HH_Time_Evening minValue=15 maxValue=19 step=1
       Setpoint item=HH_Time_Night minValue=20 maxValue=23 step=1
+      Setpoint item=HH_Night_Bedroom_Blind_Level minValue=0 maxValue=100 step=5
+
       Selection item=HH_DebugLevel_PIRCIR mappings=[
                                           1="FATAL",
                                           2="ERROR",

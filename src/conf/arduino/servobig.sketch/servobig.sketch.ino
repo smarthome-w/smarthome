@@ -7,7 +7,7 @@
 #include "wifi.h"
 #include "sensors.h"
 
-#define SKETCH_VERSION "20190402"
+#define SKETCH_VERSION "20190404"
 
 //#define FamilyRoomRollershutter
 #define BedroomRollershutter
@@ -23,7 +23,7 @@
 #define SERVO_UP 2500
 #define SERVO_DOWN 500
 #define CURRENT_DIRECTION_UP (-100.0/2187.0)
-#define CURRENT_DIRECTION_DOWN (100.0/2005.0)
+#define CURRENT_DIRECTION_DOWN (100.0/1985.0)
 #endif
 
 #ifdef BedroomRollershutter
@@ -481,6 +481,14 @@ void processServo()
     boolean currMoveInProgress = ((oldPosition - SERVO_CURR_POS) != 0);
     if (prevMoveInProgress && !currMoveInProgress) { 
       // servo was stopped during the cycle
+
+      // correct to <0,100> for OpenHAB dimmer
+      if (SERVO_CURR_POS > 100) {
+        SERVO_CURR_POS = 100;
+      }
+      if (SERVO_CURR_POS < 0) {
+        SERVO_CURR_POS = 0;
+      }
       sendPositionMQTTMessage(String(SERVO_CURR_POS)); 
     }
    
@@ -516,6 +524,7 @@ void setup() {
   initializeMQTT();
   initializeServo();
   sendDebugMQTTMessage("VersionOnStart", SKETCH_VERSION);
+  sendDebugMQTTMessage("MAC", WiFi.macAddress());
 }
 
 void loop() {

@@ -100,19 +100,19 @@ DateTime GF_Restroom_Light_Main_LastUpdate "Ubikacja [%1$td.%1$tm %1$tH:%1$tM]" 
 
 String   GF_RTV_Complex_Scenario    "RTV"            <rgb>        (gPersistenceSwitch)
 
-Switch   FF_Bedroom_Light_1  "Bedroom upper lights[]"     <light>        (FF_Bedroom, gTC2, gFF_Bedroom_Scenario, gPersistenceSwitch) ["Switchable"]
+// Switch   FF_Bedroom_Light_1  "Bedroom upper lights[]"     <light>        (FF_Bedroom, gTC2, gFF_Bedroom_Scenario, gPersistenceSwitch) ["Switchable"]
 Switch   FF_Bedroom_Light_2  "Bedroom upper lights[]"     <light>        (FF_Bedroom, gTC2, gFF_Bedroom_Scenario, gPersistenceSwitch) ["Switchable"]
 Switch   FF_Bedroom_Lights  "Relax[]"     <light>        (FF_Bedroom, gSP2, gFF_Bedroom_Scenario, gPersistenceSwitch) ["Switchable"]
 
-DateTime FF_Bedroom_Light_1_LastUpdate "Pokój Ani - 1 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
+// DateTime FF_Bedroom_Light_1_LastUpdate "Pokój Ani - 1 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
 DateTime FF_Bedroom_Light_2_LastUpdate "Pokój Ani - 2 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
 DateTime FF_Bedroom_Lights_LastUpdate "Pokój Ani - światła [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
 
-Switch   FF_AliceRoom_Light_1  "Alice room lights[]"     <light>        (FF_AliceRoom, gTC2, gFF_AliceRoom_Scenario, gPersistenceSwitch) ["Switchable"]
+//Switch   FF_AliceRoom_Light_1  "Alice room lights[]"     <light>        (FF_AliceRoom, gTC2, gFF_AliceRoom_Scenario, gPersistenceSwitch) ["Switchable"]
 Switch   FF_AliceRoom_Light_2  "Alice room lights[]"     <light>        (FF_AliceRoom, gTC2, gFF_AliceRoom_Scenario, gPersistenceSwitch) ["Switchable"]
 //Switch   FF_AliceRoom_Lights  "Pokój Alicji - światła[]"     <light>        (FF_AliceRoom, gSP2, gFF_AliceRoom_Scenario, gPersistenceSwitch)
 
-DateTime FF_AliceRoom_Light_1_LastUpdate "Pokój Alicji - 1 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
+//DateTime FF_AliceRoom_Light_1_LastUpdate "Pokój Alicji - 1 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
 DateTime FF_AliceRoom_Light_2_LastUpdate "Pokój Alicji - 2 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
 //DateTime FF_AliceRoom_Lights_LastUpdate "Pokój Alicji - światła [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
 
@@ -161,10 +161,11 @@ Switch GH_BrightWindow_Scene "Bright window" (gScenes) //["Switchable"]
 ////////////////////////////////////////////////////////////////////////////////
 
 Number HH_Humidity_Min "Humidity min [%.1f%%]" <humidity> (gSensorHumidity, gPersistenceSensor)
-Number HH_Humidity_Max "Humidity min [%.1f%%]" <humidity> (gSensorHumidity, gPersistenceSensor)
+Number HH_Humidity_Max "Humidity max [%.1f%%]" <humidity> (gSensorHumidity, gPersistenceSensor)
 Number HH_Light_Dusk_Level "Light dusk level [%.0f]" <time> (gParameters, gPersistenceSwitch)
 Number HH_Light_Dawn_Level "Light dawn level [%.0f]" <time> (gParameters, gPersistenceSwitch)
 Number HH_PIR_State_Timeout "PIR state timeout [%.0f]" <time> (gParameters, gPersistenceSwitch)
+Number HH_Night_Bedroom_Blind_Level "Night bedroom blind [%.0f]" <time> (gParameters, gPersistenceSwitch)
 Number HH_Time_Day "Day starts at [%.0f]" <time> (gParameters, gPersistenceSwitch)
 Number HH_Time_Evening "Evening starts at [%.0f]" <time> (gParameters, gPersistenceSwitch)
 Number HH_Time_Night "Night starts at [%.0f]" <time> (gParameters, gPersistenceSwitch)

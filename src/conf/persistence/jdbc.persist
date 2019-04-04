@@ -7,10 +7,13 @@ Strategies {
 
 	everyMonth   : "0 0 0 * * ?"
 
+	veryRare   : "0 0 0 0 0 ?"
+
 	default = everyMonth
 }
 
 Items {
     gPersistenceSwitch* : strategy = everyChange, everyHour, restoreOnStartup
 		gPersistenceSensor* : strategy = every5Minutes
+		gPersistenceDummy* : strategy = veryRare
 }

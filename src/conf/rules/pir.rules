@@ -2,7 +2,7 @@ import java.util.Map
 
 val Map<String, Timer> timers = newHashMap
 
-rule "PIR triggered"
+rule "pir_rule"
 when
     Member of gPIR received update
 then
@@ -36,8 +36,7 @@ then
       }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in rule: PIR Rule {} {} {} {}", 
-                        triggeringItem.name, triggeringItem.state, triggeringItem, t)
+    logError("Error", "Error in pir_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
   } finally {
   }
 end

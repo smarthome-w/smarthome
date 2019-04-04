@@ -2,7 +2,7 @@ import java.util.Map
 
 val Map<String, Timer> nightwatchTimers = newHashMap
 
-rule "NightWatch"
+rule "nightwatch_rule"
 when
     Member of gNightWatch received update
 then
@@ -35,8 +35,7 @@ then
         }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in rule: NightWatch Rule {} {} {} {}", 
-                        triggeringItem.name, triggeringItem.state, triggeringItem, t)
+    logError("Error", "Error in nightwatch_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
   } finally {
   }
 end
