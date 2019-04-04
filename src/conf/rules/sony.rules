@@ -1,4 +1,4 @@
-rule "Sony_Rule"
+rule "sony_rule"
 when
     Member of gSony received update
 then
@@ -11,8 +11,7 @@ then
         logInfo("logSony", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
     }
   } catch (Throwable t) {
-    logError("Error", "Error in rule: PIR Rule {} {} {} {}", 
-                        triggeringItem.name, triggeringItem.state, triggeringItem, t)
+    logError("Error", "Error in sony_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
   } finally {
   }
 end

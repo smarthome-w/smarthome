@@ -1,10 +1,10 @@
-rule "CIR Rule"
+rule "cir_rule"
 when
     Member of gCIR received update
 then
   try {
     var int logLevel = 6
-    if (HH_DebugLevel_PIRCIR !== NULL) {
+    if (HH_DebugLevel_PIRCIR.state !== NULL) {
         logLevel = (HH_DebugLevel_PIRCIR.state as Number).intValue
     }
     if (logLevel >= 6) {
@@ -22,8 +22,7 @@ then
         }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in rule: CIR Rule {} {} {} {}", 
-                        triggeringItem.name, triggeringItem.state, triggeringItem, t)
+    logError("Error", "Error in cir_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
   } finally {
   }
 end

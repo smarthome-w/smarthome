@@ -1,77 +1,95 @@
-rule "calendar state rule"
+rule "calendar_rule"
 when
   Time cron "0 */5 * ? * MON-SUN"
 then
-  var duskLevel = 350
-  var dawnLevel = 750
-  var dayAt = 6
-  var eveningAt = 17
-  var nightAt = 23
-
-  if (HH_Light_Dusk_Level.state !== NULL) {
-    duskLevel = HH_Light_Dusk_Level.state as Number
-  }
-  if (HH_Light_Dawn_Level.state !== NULL) {
-    dawnLevel = HH_Light_Dawn_Level.state as Number
-  }
-  if (HH_Time_Day.state !== NULL) {
-    dayAt = HH_Time_Day.state as Number
-  }
-  if (HH_Time_Evening.state !== NULL) {
-    eveningAt = HH_Time_Evening.state as Number
-  }
-  if (HH_Time_Night.state !== NULL) {
-    nightAt = HH_Time_Night.state as Number
-  }
-
-  if (now.getHourOfDay > eveningAt && now.getHourOfDay < nightAt) {
-    calendar_Evening.sendCommand(ON)
-  } else {
-    calendar_Evening.sendCommand(OFF)
-  }
-
-  if (now.getHourOfDay >= nightAt && now.getHourOfDay <= dayAt) {
-    calendar_Night.sendCommand(ON)
-  } else {
-    calendar_Night.sendCommand(OFF)
-  }
-
-  if (now.getHourOfDay >= dayAt && now.getHourOfDay <= eveningAt) {
-    calendar_Day.sendCommand(ON)
-  } else {
-    calendar_Day.sendCommand(OFF)
-  }
-
-  if (now.getDayOfWeek < 6) {
-    calendar_Workday.sendCommand(ON)
-    calendar_Weekend.sendCommand(OFF)
-  } else {
-    calendar_Workday.sendCommand(OFF)
-    calendar_Weekend.sendCommand(ON)
-  }
-
-  val elevation = Astro_SunElevation.state as Number
-  val brightness = GF_FamilyRoom_Analog_Sensor.state as Number
-
-  if (elevation <= 6 && now.getHourOfDay >= 12) {
-    if (brightness > duskLevel) {
-      calendar_Dusk.sendCommand(ON)
-      calendar_Dawn.sendCommand(OFF)
+  try {
+    var int logLevel = 6
+    if (HH_DebugLevel_General.state !== NULL) {
+      logLevel = (HH_DebugLevel_General.state as Number).intValue
     }
-  }
 
-  if (elevation > -6 && now.getHourOfDay <= 12) {
-    if (brightness < dawnLevel) {
-      calendar_Dusk.sendCommand(OFF)
-      calendar_Dawn.sendCommand(ON)
+    var duskLevel = 350
+    var dawnLevel = 750
+    var dayAt = 6
+    var eveningAt = 17
+    var nightAt = 23
+
+    if (HH_Light_Dusk_Level.state !== NULL) {
+      duskLevel = HH_Light_Dusk_Level.state as Number
     }
-  }
+    if (HH_Light_Dawn_Level.state !== NULL) {
+      dawnLevel = HH_Light_Dawn_Level.state as Number
+    }
+    if (HH_Time_Day.state !== NULL) {
+      dayAt = HH_Time_Day.state as Number
+    }
+    if (HH_Time_Evening.state !== NULL) {
+      eveningAt = HH_Time_Evening.state as Number
+    }
+    if (HH_Time_Night.state !== NULL) {
+      nightAt = HH_Time_Night.state as Number
+    }
 
-  if (elevation <= 6 && now.getHourOfDay >= 12) {
-    calendar_SupportingLight.sendCommand(ON)
-  }
+    val elevation = Astro_SunElevation.state as Number
+    val brightness = GF_FamilyRoom_Analog_Sensor.state as Number
 
-  if (elevation > 6 && now.getHourOfDay <= 12) {
-    calendar_SupportingLight.sendCommand(OFF)
+    val hourOfDay = now.getHourOfDay as Number
+    val dayOfWeek = now.getDayOfWeek as Number
+
+    if (logLevel >= 6) {
+      logError ("crontab", "duskLevel:{}, dawnLevel:{}, dayAt:{}, eveningAt:{}, nightAt:{}, elevation: {}, brightness: {}, hourOfDay: {}, dayOfWeek:{}",
+          duskLevel, dawnLevel, dayAt, eveningAt, nightAt, elevation, brightness, hourOfDay, dayOfWeek)
+    }  
+
+    if (hourOfDay > eveningAt && hourOfDay < nightAt) {
+      calendar_Evening.sendCommand(ON)
+    } else {
+      calendar_Evening.sendCommand(OFF)
+    }
+
+    if (hourOfDay >= nightAt && hourOfDay <= dayAt) {
+      calendar_Night.sendCommand(ON)
+    } else {
+      calendar_Night.sendCommand(OFF)
+    }
+
+    if (hourOfDay >= dayAt && hourOfDay <= eveningAt) {
+      calendar_Day.sendCommand(ON)
+    } else {
+      calendar_Day.sendCommand(OFF)
+    }
+
+    if (dayOfWeek < 6) {
+      calendar_Workday.sendCommand(ON)
+      calendar_Weekend.sendCommand(OFF)
+    } else {
+      calendar_Workday.sendCommand(OFF)
+      calendar_Weekend.sendCommand(ON)
+    }
+
+    if (elevation <= 6 && hourOfDay >= 12) {
+      if (brightness > duskLevel) {
+        calendar_Dusk.sendCommand(ON)
+        calendar_Dawn.sendCommand(OFF)
+      }
+    }
+
+    if (elevation > -6 && hourOfDay <= 12) {
+      if (brightness < dawnLevel) {
+        calendar_Dusk.sendCommand(OFF)
+        calendar_Dawn.sendCommand(ON)
+      }
+    }
+
+    if (elevation <= 6 && hourOfDay >= 12) {
+      calendar_SupportingLight.sendCommand(ON)
+    }
+
+    if (elevation > 6 && hourOfDay <= 12) {
+      calendar_SupportingLight.sendCommand(OFF)
+    }
+  } catch (Throwable t) {
+    logError("Error", "Error in calendar_rule {}", t.toString)
+  } finally {
   }
 end

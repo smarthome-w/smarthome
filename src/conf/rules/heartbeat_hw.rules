@@ -1,10 +1,10 @@
-rule "HW_Heartbeat"
+rule "hw_heartbeat_rule"
 when
   Time cron "0 */3 * ? * MON-SUN"
 then
   try {
     var int logLevel = 6
-    if (HH_DebugLevel_Heartbeat !== NULL) {
+    if (HH_DebugLevel_Heartbeat.state !== NULL) {
       logLevel = (HH_DebugLevel_Heartbeat.state as Number).intValue
     }
     var String command = "/openhab/conf/scripts/BROADLINK/ir.py HEARTBEAT ON"
@@ -59,8 +59,7 @@ then
       }
     ]
   } catch (Throwable t) {
-    logError("Error", "Error in rule: HW_Heartbeat {} {} {} {}", 
-                        triggeringItem.name, triggeringItem.state, triggeringItem, t)
+    logError("Error", "Error in hw_heartbeat_rule {}", t.toString)
   } finally {
   }
 end

@@ -1,10 +1,10 @@
-rule "IRB sensor changed"
+rule "irb_rule"
 when
     Member of gIRB received update
 then
   try {
     var int logLevel = 6
-    if (HH_DebugLevel_Broadlink !== NULL) {
+    if (HH_DebugLevel_Broadlink.state !== NULL) {
       logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
     }
     if (logLevel >= 6) {
@@ -28,18 +28,18 @@ then
       }
     }
   } catch (Throwable t) {
-      logError("Error", "Error in rule: IRB {} {} {} {}", triggeringItem.name, triggeringItem.state, triggeringItem, t)
-} finally {
+    logError("Error", "Error in irb_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+  } finally {
   }
 end
 
-rule "SP2 sensor changed"
+rule "sp2_rule"
 when
     Member of gSP2 received update
 then
   try {
     var int logLevel = 6
-    if (HH_DebugLevel_Broadlink !== NULL) {
+    if (HH_DebugLevel_Broadlink.state !== NULL) {
       logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
     }
     if (logLevel >= 6) {
@@ -62,18 +62,18 @@ then
       }
     }
   } catch (Throwable t) {
-     logError("Error", "Error in rule: SP2 Rule {} {} {} {}", triggeringItem.name, triggeringItem.state, triggeringItem, t)
- } finally {
+    logError("Error", "Error in sp2_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+  } finally {
   }
 end
 
-rule "TC2 sensor changed"
+rule "tc2_rule"
 when
     Member of gTC2 received update
 then
   try {
     var int logLevel = 6
-    if (HH_DebugLevel_Broadlink !== NULL) {
+    if (HH_DebugLevel_Broadlink.state !== NULL) {
       logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
     }
     if (logLevel >= 6) {
@@ -96,18 +96,18 @@ then
       }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in rule: TC2 Rule {} {} {} {}", triggeringItem.name, triggeringItem.state, triggeringItem, t)
+    logError("Error", "Error in tc2_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
   } finally {
   }
 end
 
-rule "IRRGB sensor changed"
+rule "irrgb_rule"
 when
     Member of gIRRGB received update
 then
   try {
     var int logLevel = 6
-    if (HH_DebugLevel_Broadlink !== NULL) {
+    if (HH_DebugLevel_Broadlink.state !== NULL) {
       logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
     }
     if (logLevel >= 6) {
@@ -123,8 +123,7 @@ then
       }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in rule: IRRGB Rule {} {} {} {}", 
-                        triggeringItem.name, triggeringItem.state, triggeringItem, t)
+    logError("Error", "Error in irrgb_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
   } finally {
   }
 end
