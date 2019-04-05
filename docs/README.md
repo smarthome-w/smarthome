@@ -37,6 +37,7 @@ Main assumption for hardware is alternative libraries accessibility (any shell, 
 - Does not requires dedicated electrical contact, you can use cables to attach
 - Reasonable in hidden places
 - Alternatives: Any RF switch with RM Pro+ routines
+- Funny alternative: [Sonoff with capacity button](https://www.youtube.com/watch?v=B38e1HAMUXs)
 - DIY block with toggle: parts costs (we have here 230V) like ESP with shield, 230V-5V stepdown supply with good quality without fire risk, chassis which keeps my fingers away from 230V - it is not cheaper than SP2 or any other.
 
 #### Shelly 1
@@ -45,6 +46,13 @@ Main assumption for hardware is alternative libraries accessibility (any shell, 
 - Reasonable alternative for my junction box based light installation if I stay with existing mechanical switches.
 
 ## IT Architecture
+
+![Architecture](/docs/images/arch-diagram.png)
+
+Solution consists of two parts:
+
+- `core` - maximum availability, no access to external services, all processed within local network
+- `external visibility` - ability to control system via external services (voice from Google), availability depends on myOpenHAB and Google services metrics
 
 ## Hardware products delivered by project
 
@@ -55,8 +63,16 @@ Raspberry Pi with some software and hardware components:
 - OSMC distribution (KODI ready as a secondary function)
 - OpenHAB on Docker
   - [Installation process](server-deployment/README.md)
+  - [Most important software features](/docs/software-features/README.md)
 - Additional ecosystem components: MySQL, MQTT server
 - VPN Server (for connectivity)
+
+#### Why OpenHAB
+
+- I hate _configuration file programming_ and _configuration UI programming)_
+- OpenHAB provides ability to store all configuration in text files
+- Rules (mini-programs) are written in Java-oriented script language
+- Direct access to server OS from rule (i.e. to run own scripts)
 
 ### Universal sensor
 
@@ -71,10 +87,17 @@ ESP8266 (nodeMCU) based sensor with optional functions:
 - light intensity detector (photoresistor)
 - [Arduino sketch](/src/conf/arduino/multisensor.sketch/multisensor.sketch.ino)
 
+<<<<<<< HEAD
 #### Planned
 
 - Migration to ESP32 to handle Equiva eQ3 control with Bluetooth LE transmission
 - Migration from DHT22 (it's a unstable jung) to BME280
+=======
+#### Future plans for universal sensor
+
+- Migration to ESP32 to handle Equiva eQ3 control with Bluetooth LE transmission
+- Migration from DHT22 (it's a unstable junk) to BME280
+>>>>>>> fixes-3
 
 ### Blind controller
 
@@ -118,7 +141,11 @@ Roller encoders (the cheapest one was about 1.5$ and accuracy 1/20 of rotation).
 
 The best solution for me is one mechanical limit switch on the top and position calculation. Typical scenario is that roller is on top position (with ability to restart position indicators) at least once a day. It is enough to have proper position detection accuracy.
 
+<<<<<<< HEAD
 #### Planned
+=======
+#### Future plans for blind controller
+>>>>>>> fixes-3
 
 - Limit servo noise
 

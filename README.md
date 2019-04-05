@@ -33,6 +33,10 @@ One bored and IT experienced guy with simple tools.
 - Maximize realiability and accessibility
 - Maximize fun, use simple tools for real DIY. No 3D printings and other advanced technologies.
 
+## Transformation
+
+![Architecture](/docs/images/arch-diagram.png)
+
 ## Smart house features control list
 
 - Control lighting
@@ -49,4 +53,15 @@ One bored and IT experienced guy with simple tools.
 - Nice place to live
 - *Wow effect*
 
+## Result achieved
+
+There are not only dozens of sensors installed at home. There are several _smart_ functions which make life easier:
+
+- Automated blinds controlled manually and via rules (down if Sun is low above the horison and light sensor detects dusk; up if Sun is above the horison and light sensor detects dawn)
+- Supporting lights (led strips) powered on when motion is detected (from dusk to dawn)
+- _Good night_ activities
+- Did I forgot to close windows at home? I know it.
+
 Have fun and  start from [Transformation to smart house](/docs/README.md).
+
+_Disclaimer_: Labels are mixed: Polish and English. It's because Google Home Mini currently does not support Polish.
