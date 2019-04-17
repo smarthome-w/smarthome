@@ -14,7 +14,7 @@ then
       logError("Heartbeat", "Heartbeat change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
     ddd += "c"
-    var lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    var lastupdate_item = gLastUpdateHeartbeat.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     ddd += "d"
 
     if (logLevel >= 6) {

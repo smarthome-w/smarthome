@@ -18,13 +18,13 @@ Contact   CIR_FF_Bedroom    "CIR Sypialnia"      <window>   (FF_Bedroom, gCIR, g
 Contact   CIR_FF_AliceRoom    "CIR Alicja"      <window>   (FF_AliceRoom, gCIR, gPersistenceSwitch) {mqtt="<[broker:myHome/CIR_FF_AliceRoom:state:default]"}
 Contact   CIR_FF_AnnRoom    "CIR Ania"      <window>   (FF_AnnRoom, gCIR, gPersistenceSwitch) {mqtt="<[broker:myHome/CIR_FF_AnnRoom:state:default]"}
 
-DateTime CIR_GF_MainDoor_LastUpdate "CIR Wejście [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime CIR_GF_MainLock_LastUpdate "CIR Zamek główny [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime CIR_GF_FamilyRoom_LastUpdate "CIR Salon [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime CIR_GF_Kitchen_LastUpdate "CIR Kuchnia [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime CIR_FF_Bedroom_LastUpdate "CIR Sypialnia [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime CIR_FF_AliceRoom_LastUpdate "CIR Alicja [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime CIR_FF_AnnRoom_LastUpdate "CIR Ania [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
+DateTime CIR_GF_MainDoor_LastUpdate "CIR Wejście [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateCIR, gPersistenceSwitch)
+DateTime CIR_GF_MainLock_LastUpdate "CIR Zamek główny [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateCIR, gPersistenceSwitch)
+DateTime CIR_GF_FamilyRoom_LastUpdate "CIR Salon [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateCIR, gPersistenceSwitch)
+DateTime CIR_GF_Kitchen_LastUpdate "CIR Kuchnia [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateCIR, gPersistenceSwitch)
+DateTime CIR_FF_Bedroom_LastUpdate "CIR Sypialnia [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateCIR, gPersistenceSwitch)
+DateTime CIR_FF_AliceRoom_LastUpdate "CIR Alicja [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateCIR, gPersistenceSwitch)
+DateTime CIR_FF_AnnRoom_LastUpdate "CIR Ania [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateCIR, gPersistenceSwitch)
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       PIR sensors
@@ -49,16 +49,20 @@ Switch   PIR_FF_Bedroom_State    "PIR Sypialnia"         <rgb>        (gPIRState
 Switch   PIR_GF_EntryWatch_State    "PIR Entry Watch"         <rgb>        (gPIRState, gPersistenceSwitch)
 Switch   PIR_Corridor_Storage_State    "PIR Corridor Storage"         <rgb>        (gPIRState)
 
-DateTime PIR_GF_Corridor_LastUpdate "PIR Korytarz [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime PIR_GF_FamilyRoom_LastUpdate "PIR Salon [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime PIR_GF_Kitchen_LastUpdate "PIR Kuchnia [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime PIR_FF_Corridor_LastUpdate "PIR Korytarz góra [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime PIR_FF_AnnRoom_LastUpdate "PIR Ania [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime PIR_FF_AliceRoom_LastUpdate "PIR Alicja [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime PIR_FF_Bedroom_LastUpdate "PIR Sypialnia [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime PIR_GF_EntryWatch_LastUpdate "PIR Entry Watch [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime PIR_Corridor_Storage_LastUpdate "PIR Corridor Storage [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate)
+DateTime PIR_GF_Corridor_LastUpdate "PIR Korytarz [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdatePIR, gPersistenceSwitch)
+DateTime PIR_GF_FamilyRoom_LastUpdate "PIR Salon [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdatePIR, gPersistenceSwitch)
+DateTime PIR_GF_Kitchen_LastUpdate "PIR Kuchnia [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdatePIR, gPersistenceSwitch)
+DateTime PIR_FF_Corridor_LastUpdate "PIR Korytarz góra [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdatePIR, gPersistenceSwitch)
+DateTime PIR_FF_AnnRoom_LastUpdate "PIR Ania [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdatePIR, gPersistenceSwitch)
+DateTime PIR_FF_AliceRoom_LastUpdate "PIR Alicja [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdatePIR, gPersistenceSwitch)
+DateTime PIR_FF_Bedroom_LastUpdate "PIR Sypialnia [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdatePIR, gPersistenceSwitch)
+DateTime PIR_GF_EntryWatch_LastUpdate "PIR Entry Watch [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdatePIR, gPersistenceSwitch)
+DateTime PIR_Corridor_Storage_LastUpdate "PIR Corridor Storage [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdatePIR)
 
-Number GF_PowerMeter_Total "Total power [%.3f kWh]" <battery-60> (GF_Corridor, gPower, gPersistenceSwitch) {mqtt="<[broker:myHome/PowerMeter_Total:state:JS(europeanNumber.js):.*]"}
+Number GF_PowerMeter_Total "Total power [%.3f kWh]" <battery-60> (GF_Corridor, gPower, gHeartbeat, gPersistenceSwitch) {mqtt="<[broker:myHome/PowerMeter_Total:state:JS(europeanNumber.js):.*]"}
+DateTime GF_PowerMeter_Total_LastUpdate "Powermeter [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch GF_PowerMeter_Total_LastUpdate_Error "Powermeter" <time> (gErrors, gPersistenceSwitch)
+
+
 Number GF_PowerMeter_Current "Current power [%.3f kW]" <battery-60> (GF_Corridor, gPower, gPersistenceSwitch) {mqtt="<[broker:myHome/PowerMeter_Current:state:JS(europeanNumber.js):.*]"}
 Number GF_PowerMeter_DailyConsumption "Daily consumption [%.1f kWh]" <battery-60> (gPower, gPersistenceDummy)

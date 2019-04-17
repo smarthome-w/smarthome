@@ -20,9 +20,9 @@ then
         }
         if (triggeringItem.name == "GH_Evening_Scene"){
             logInfo("scene", "evening")
+            GF_FamilyRoom_Scenario.sendCommand(ON)
             GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
             FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
-            GF_FamilyRoom_Scenario.sendCommand(ON)
         }
         if (triggeringItem.name == "GH_Night_Scene"){
             logInfo("scene", "night")

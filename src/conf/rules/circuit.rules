@@ -14,7 +14,7 @@ then
         logError("cir", "CIR change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
     ddd += "c"
-    val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    var lastupdate_item = gLastUpdateCIR.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     ddd += "d"
 
     if (logLevel >= 6) {
