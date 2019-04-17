@@ -45,6 +45,7 @@ sitemap switches label="Włączniki" {
         Switch item=GF_FamilyRoom_Light_Sofa
         Switch item=GF_Kitchen_Light_Main
         Switch item=GF_Kitchen_Light_LED
+        Switch item=GF_Kitchen_LED
         Switch item=GF_Corridor_Light_Main
         Switch item=GF_Corridor_Light_LED
         Switch item=GF_Corridor_Storage

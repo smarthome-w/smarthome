@@ -1,0 +1,20 @@
+#ifndef wifi_h
+#define wifi_h
+    const char* WIFI_SSID = "MyWifiNetwork";
+    const char* WIFI_PASSWD = "MyWifiPassword";
+    const char* MQTT_SERVER = "444.444.444.444";
+
+    #define IP_O1 192
+    #define IP_O2 168
+    #define IP_O3 0
+
+    #define IP_G1 255
+    #define IP_G2 255
+    #define IP_G3 0
+    #define IP_G4 0
+
+    #define IP_SN1 192
+    #define IP_SN2 168
+    #define IP_SN3 0
+    #define IP_SN4 1
+#endif

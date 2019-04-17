@@ -7,7 +7,7 @@ Strategies {
 
 	everyMonth   : "0 0 0 * * ?"
 
-	veryRare   : "0 0 0 0 0 ?"
+	veryRare   : "59 59 23 31 12 ? 2099"
 
 	default = everyMonth
 }

@@ -496,6 +496,10 @@ void processOTA() {
   ArduinoOTA.handle();
 }
 
+void processMQTTInput() {
+  client.loop();
+};
+
 void setup() {
   Serial.begin(9600);
   while (!Serial) {
@@ -582,4 +586,3 @@ String calculateMessageName(int sensorType, int valueType) {
   }
   return messageName;
 }
-

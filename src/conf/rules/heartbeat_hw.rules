@@ -50,9 +50,9 @@ then
           E.postUpdate(power)
           if (E.name == "GF_Corridor_Storage") {
             if (power == ON) {
-              sendCommand (PIR_virtual_storage, OPEN)
+              sendCommand (PIR_Corridor_Storage, OPEN)
               Thread::sleep(2000)
-              sendCommand (PIR_virtual_storage, CLOSED)
+              sendCommand (PIR_Corridor_Storage, CLOSED)
             }
           }
         }

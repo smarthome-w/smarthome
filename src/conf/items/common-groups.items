@@ -42,6 +42,7 @@ Group    gTC2      <heating>   (System)
 Group    gSP2      <heating>   (System)
 Group    gIRB      <heating>   (System)
 Group    gShelly      <heating>   (System)
+Group    gSonoff      <heating>   (System)
 
 Group    gIRRGB      <heating>   (System)
 

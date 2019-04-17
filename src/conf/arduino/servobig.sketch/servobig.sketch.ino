@@ -111,6 +111,7 @@ int sign(float value) {
     return 0;
   }
 }
+
 void callback(char* topic, byte* payload, unsigned int length) {
   if (!ignoreFistMQTTMessage) {
     Serial.print("Message arrived [");
@@ -536,4 +537,3 @@ void loop() {
   processMQTTInput();
   delay(5);
 }
-

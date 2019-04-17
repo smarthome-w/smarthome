@@ -51,14 +51,14 @@ then
     duration = now.millis - duration
     if (!result.contains("==sent==")) {
       if (logLevel >= 2) {
-        logInfo("sp2", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+        logError("sp2", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
       }
     }
     val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(now.toString())
       if (logLevel >= 6) {
-        logInfo("sp2", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+        logError("sp2", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
       }
     }
   } catch (Throwable t) {
@@ -85,14 +85,14 @@ then
     duration = now.millis - duration
     if (!result.contains("==sent==")) {
       if (logLevel >= 2) {
-        logInfo("tc2", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+        logError("tc2", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
       }
     }
     val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(now.toString())
       if (logLevel >= 6) {
-        logInfo("sp2", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+        logError("sp2", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
       }
     }
   } catch (Throwable t) {
@@ -119,7 +119,7 @@ then
     duration = now.millis - duration
     if (!result.contains("==sent==")) {
       if (logLevel >= 2) {
-        logInfo("irrgb", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+        logError("irrgb", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
       }
     }
   } catch (Throwable t) {
@@ -127,3 +127,55 @@ then
   } finally {
   }
 end
+
+/*
+rule "shelly_rule"
+when
+    Member of gShelly received update
+then
+  try {
+    var int logLevel = 6
+    if (HH_DebugLevel_Broadlink.state !== NULL) {
+      logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
+    }
+    if (logLevel >= 6) {
+      logError("shelly", "TC2 change detected {} {}", triggeringItem.name, triggeringItem.state)
+    }
+    val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    if (lastupdate_item !== null) {
+      lastupdate_item.postUpdate(now.toString())
+      if (logLevel >= 6) {
+        logError("shelly", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+      }
+    }
+  } catch (Throwable t) {
+    logError("Error", "Error in shelly_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+  } finally {
+  }
+end
+  
+rule "sonoff_rule"
+when
+    Member of gSonoff received update
+then
+  try {
+    var int logLevel = 6
+    if (HH_DebugLevel_Broadlink.state !== NULL) {
+      logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
+    }
+    if (logLevel >= 6) {
+      logError("sonoff", "TC2 change detected {} {}", triggeringItem.name, triggeringItem.state)
+    }
+    val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    if (lastupdate_item !== null) {
+      lastupdate_item.postUpdate(now.toString())
+      if (logLevel >= 6) {
+        logError("sonoff", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+      }
+    }
+  } catch (Throwable t) {
+    logError("Error", "Error in sonoff_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+  } finally {
+  }
+end
+*/

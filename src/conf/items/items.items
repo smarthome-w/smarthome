@@ -33,7 +33,7 @@ Group    gFF_Lights_Scenario      "FF_Lights_Scenario"    <heating>   (gScenario
 Switch   GF_FamilyRoom_Scenario    "Upper lights"            <colorwheel>   (gScenariosList, gPersistenceSwitch) ["Lighting"]
 Group    gGF_FamilyRoom_Scenario      "GF_FamilyRoom_Scenario"    <heating>   (gScenarios, gGF_Lights_Scenario)
 
-Switch   GF_ColorLights_Scenario    "Color lights"            <party>   (gScenariosList, gPersistenceSwitch) ["Lighting"]
+Switch   GF_ColorLights_Scenario    "Party"            <party>   (gScenariosList, gPersistenceSwitch) ["Lighting"]
 Color    GF_ColorLights_Color       "LED"            <party>   ["Lighting"]
 
 Group    gGF_ColorLights_Scenario      "GF_ColorLights_Scenario"    <heating>   (gScenarios, gGF_Lights_Scenario)
@@ -82,7 +82,10 @@ DateTime GF_FamilyRoom_LightsRGB_LastUpdate "Salon - lampki RGB [%1$td.%1$tm %1$
 DateTime GF_FamilyRoom_LightsLamp_LastUpdate "Salon - lampki lampa [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
 
 Switch   GF_Kitchen_Light_Main      "Main kitchen lights[]"   <light>        (GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch) ["Switchable"]
-Switch   GF_Kitchen_Light_LED       "Kitchen led[]"    <light>        (GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch) ["Switchable"]
+Switch   GF_Kitchen_Light_LED       "Kitchen light led[]"    <light>        (GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch) ["Switchable"]
+
+Switch   GF_Kitchen_LED   "Kitchen led[]"                  <light>        (GF_Kitchen, gSonoff, gPersistenceSwitch) ["Lighting"] { mqtt=">[broker:myHomeY/GF_Kitchen_LED_Relay_Command:command:*:MAP(sonoff.map)],<[broker:myHomeY/GF_Kitchen_LED_Relay:state:MAP(sonoff.map)]" }
+
 Switch   GF_Corridor_Light_Main     "Main corridor lights[]"  <light>        (GF_Corridor, gTC2, gGF_Corridor_Scenario, gCinemaOff, gPersistenceSwitch) ["Lighting"]
 Switch   GF_Corridor_Light_LED   "Corridor led[]"                  <light>        (GF_Corridor, gSP2, gPersistenceSwitch) ["Lighting"]
 Switch   GF_Corridor_Cross   "Corridor cross[]"                  <light>        (GF_Corridor, gShelly, gPersistenceSwitch) ["Lighting"] { mqtt=">[broker:shellies/shelly1-55424A/relay/0/command:command:*:MAP(shelly.map)],<[broker:shellies/shelly1-55424A/relay/0:state:MAP(shelly.map)]" }
@@ -119,7 +122,7 @@ DateTime FF_AliceRoom_Light_2_LastUpdate "Pokój Alicji - 2 [%1$td.%1$tm %1$tH:%
 Switch   FF_AnnRoom_Light_Main  "Ann room lights[]"     <light>        (FF_AnnRoom, gTC2, gFF_AnnRoom_Scenario, gPersistenceSwitch) ["Lighting"]
 
 Switch   FF_BathRoom_Light_Up  "Bathroom lights[]"     <light>        (FF_Bathroom, gTC2, gFF_BathRoom_Scenario, gPersistenceSwitch) ["Lighting"]
-Switch   FF_BathRoom_Light_Mirror  "Bathroom lights[]"     <light>        (FF_BathRoom, gTC2, gFF_BathRoom_Scenario, gPersistenceSwitch) ["Lighting"]
+Switch   FF_BathRoom_Light_Mirror  "Bathroom led[]"     <light>        (FF_BathRoom, gTC2, gFF_BathRoom_Scenario, gPersistenceSwitch) ["Lighting"]
 
 DateTime FF_BathRoom_Light_Up_LastUpdate "Łazienka - góra [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
 DateTime FF_BathRoom_Light_Mirror_LastUpdate "Łazienka - lustro [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
@@ -173,7 +176,6 @@ Number HH_DebugLevel_PIRCIR "PIR/CIR debug level [%s]" <time> (gParameters, gPer
 Number HH_DebugLevel_Broadlink "Broadlink HW debug level [%s]" <time> (gParameters, gPersistenceSwitch)
 Number HH_DebugLevel_Heartbeat "Heartbeat debug level [%s]" <time> (gParameters, gPersistenceSwitch)
 Number HH_DebugLevel_General "General debug level [%s]" <time> (gParameters, gPersistenceSwitch)
-Switch HH_Reload_Params "Reload parameters"  (gSystem)
 
 Group v_GF_FamilyRoom_Thermostat "Family room thermostat" ["Thermostat"]
 Number GF_FamilyRoom_Indoor_Temperature_Mode "Family room Heating/Cooling Mode" <temperature> (v_GF_FamilyRoom_Thermostat) ["homekit:HeatingCoolingMode"]
