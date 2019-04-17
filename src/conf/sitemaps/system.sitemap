@@ -40,7 +40,6 @@ sitemap system label="System" {
                                           5="DEBUG",
                                           6="TRACE"
                                          ]
-//      Switch item=HH_Reload_Params mappings=[ON="Refresh"]
     }
 
     Frame label="Grupy systemowe" icon="groundfloor" {

@@ -1,0 +1,112 @@
+#define SKETCH_VERSION "20190415"
+#include "lib/devices.h"
+
+#include "lib/wifi.h"
+#include "lib/wifi_connect.h"
+#include "lib/mqtt.h"
+#include "lib/watchdog.h"
+#include "lib/sensors.h"
+#include "lib/sensor_mqtt.h"
+#include "lib/ota.h"
+#include "lib/dht.h"
+#include "lib/heartbeat.h"
+#include "lib/DS18B20.h"
+#include "lib/BMP280.h"
+
+#include "lib/digitalio.h"
+#include "lib/entrywatch.h"
+#include "lib/analog.h"
+#include "lib/relay.h"
+#include "lib/rollershutter.h"
+
+void setup() {
+  Serial.begin(9600);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB port only
+  }
+  Serial.println("");
+  Serial.println("");
+  Serial.print(SKETCH_VERSION);
+  Serial.print("   ");
+  Serial.println(fName);
+
+  #ifdef watchdog_h
+    initializeWatchdog();
+  #endif
+  
+  #ifdef fDitigalInput
+    initializeDigitalInput();
+  #endif
+  #ifdef fRelay
+    initializeDigitalButton();
+  #endif
+  #ifdef wifi_connect_h
+    initializeWiFi();
+  #endif  #ifdef fDitigalInput
+
+  #ifdef ota_h
+    initializeOTA();
+  #endif
+  #ifdef mqtt_h
+    initializeMQTT();
+  #endif
+  #ifdef fDHT22
+    initializeDHT22();
+  #endif
+  #ifdef fAnalog
+    initializeAnalog();
+  #endif
+  #ifdef fDS18B20
+    initializeDS18B20();
+  #endif
+  #ifdef fBMP280
+    initializeBMP280();
+  #endif
+  #ifdef fRelay
+    initializeRelay();
+  #endif
+  #ifdef fRollershutter
+    initializeServo();
+  #endif
+  #ifdef fMQTTOutput
+    sendDebugMQTTMessage("VersionOnStart", SKETCH_VERSION);
+    sendDebugMQTTMessage("MAC", WiFi.macAddress());
+  #endif
+}
+
+void loop() {
+  #ifdef watchdog_h
+    processWatchdog();
+  #endif
+  #ifdef ota_h
+    processOTA();
+  #endif
+    processHeartbeat();
+  #ifdef fDitigalInput
+    processPinInputs();
+  #endif
+  #ifdef fDHT22
+    processDHT22();
+  #endif
+  #ifdef fAnalog
+    processAnalog();
+  #endif
+  #ifdef fDS18B20
+    processDS18B20();
+  #endif
+  #ifdef fBMP280
+    processBMP280();
+  #endif
+    //  dumpPinInputs();
+  #ifdef fRollershutter
+    processServo();
+  #endif
+  #ifdef fMQTTInput
+    processMQTTInput();
+  #endif
+  #ifdef fRelay
+    processRelay();
+    processRelayState();
+  #endif
+  delay(100);
+}

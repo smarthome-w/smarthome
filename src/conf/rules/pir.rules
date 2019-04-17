@@ -6,13 +6,16 @@ rule "pir_rule"
 when
     Member of gPIR received update
 then
+  var ddd = ""
   try {
+    ddd += "a"
     // logInfo("pir", "PIR change detected {} {}", triggeringItem.name, triggeringItem.state)
     if (triggeringItem.state == OPEN) {
       var int timeOutMinutes = 2
       if (HH_PIR_State_Timeout.state !== NULL) {
         timeOutMinutes = (HH_PIR_State_Timeout.state as Number).intValue
       }
+      ddd += "b"
 
       if(timers.get(triggeringItem.name) === null){
           // find appropriate Item state
@@ -24,19 +27,24 @@ then
           ]))
           //logInfo("pir", "State item {}", state_item.name)
           state_item.postUpdate(ON)
+          ddd += "c"
       }
       else {
           timers.get(triggeringItem.name).reschedule(now.plusMinutes(timeOutMinutes))
+          ddd += "d"
       }
+      ddd += "e"
       val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+      ddd += "f"
       //logInfo("pir", "Last update item {} (1)", lastupdate_item)
       if (lastupdate_item !== null) {
         lastupdate_item.postUpdate(now.toString())
         //logInfo("pir", "Last update item {} {} (2)", lastupdate_item.name, lastupdate_item.state)
       }
+      ddd += "g"
     }
   } catch (Throwable t) {
-    logError("Error", "Error in pir_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in pir_rule {} {} {} {}", ddd, triggeringItem.name, triggeringItem.state, t.toString)
   } finally {
   }
 end

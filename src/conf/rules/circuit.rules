@@ -2,27 +2,34 @@ rule "cir_rule"
 when
     Member of gCIR received update
 then
+  var ddd = ""
   try {
     var int logLevel = 6
+    ddd += "a"
     if (HH_DebugLevel_PIRCIR.state !== NULL) {
         logLevel = (HH_DebugLevel_PIRCIR.state as Number).intValue
     }
+    ddd += "b"
     if (logLevel >= 6) {
         logError("cir", "CIR change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
+    ddd += "c"
     val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    ddd += "d"
 
     if (logLevel >= 6) {
         logError("cir", "lastupdate_item {}", lastupdate_item)
     }
+    ddd += "e"
     if (lastupdate_item !== null) {
         lastupdate_item.postUpdate(now.toString())
         if (logLevel >= 6) {
           logError("cir", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
         }
     }
+    ddd += "f"
   } catch (Throwable t) {
-    logError("Error", "Error in cir_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in cir_rule {} {} {} {}", ddd, triggeringItem.name, triggeringItem.state, t.toString)
   } finally {
   }
 end

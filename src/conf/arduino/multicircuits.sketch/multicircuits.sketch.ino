@@ -101,6 +101,11 @@ void reconnectMQTT() {
   }
 }
 
+void sendDebugMQTTMessage(String prefix, String msg) {
+  String messageTopic = MQTT_MESSAGE_PREFIX + "/" + MQTT_MULTISENSOR_NAME + "_Debug_" + prefix;
+  sendMQTTWithTypeConversion(messageTopic, msg);
+}
+
 void initializeDigitalInput() {
   Serial.println("Initialize definition data...");
   iix = 0;
