@@ -49,7 +49,12 @@ Group    gIRRGB      <heating>   (System)
 Group    gSlack    <heating>   (System)
 
 Group    gLastUpdate   <heating>   (System)
-Group    gLastChange   <heating>   (System)
+// due to OH error (IllegalStateException)
+Group    gLastUpdateBroadlink   <heating>   (System, gLastUpdate)
+Group    gLastUpdateHeartbeat   <heating>   (System, gLastUpdate)
+Group    gLastUpdateCIR   <heating>   (System, gLastUpdate)
+Group    gLastUpdatePIR   <heating>   (System, gLastUpdate)
+
 Group    gLastUpdateTimeout   <heating>   (System)
 
 Group    gSony      <heating>   (System)

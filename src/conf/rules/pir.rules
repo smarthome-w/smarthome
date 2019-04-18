@@ -34,7 +34,7 @@ then
           ddd += "d"
       }
       ddd += "e"
-      val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+      var lastupdate_item = gLastUpdatePIR.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
       ddd += "f"
       //logInfo("pir", "Last update item {} (1)", lastupdate_item)
       if (lastupdate_item !== null) {

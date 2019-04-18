@@ -76,10 +76,10 @@ Switch   GF_FamilyRoom_Light_Sofa   "Salon - sofa[]"     <light>        (GF_Fami
 Switch   GF_FamilyRoom_LightsRGB    "Cinema"                   <light>        (GF_FamilyRoom, gSP2, gGF_ColorLights_Scenario, gPersistenceSwitch) ["Lighting"]
 Switch   GF_FamilyRoom_LightsLamp   "Secondary lights"               <light>        (GF_FamilyRoom, gSP2, gGF_ColorLights_Scenario, gPersistenceSwitch)  ["Lighting"]
 
-DateTime GF_FamilyRoom_Light_Table_LastUpdate "Salon - stół [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime GF_FamilyRoom_Light_Sofa_LastUpdate "Salon - sofa [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime GF_FamilyRoom_LightsRGB_LastUpdate "Salon - lampki RGB [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime GF_FamilyRoom_LightsLamp_LastUpdate "Salon - lampki lampa [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
+DateTime GF_FamilyRoom_Light_Table_LastUpdate "Salon - stół [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
+DateTime GF_FamilyRoom_Light_Sofa_LastUpdate "Salon - sofa [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
+DateTime GF_FamilyRoom_LightsRGB_LastUpdate "Salon - lampki RGB [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
+DateTime GF_FamilyRoom_LightsLamp_LastUpdate "Salon - lampki lampa [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
 
 Switch   GF_Kitchen_Light_Main      "Main kitchen lights[]"   <light>        (GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch) ["Switchable"]
 Switch   GF_Kitchen_Light_LED       "Kitchen light led[]"    <light>        (GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch) ["Switchable"]
@@ -91,15 +91,15 @@ Switch   GF_Corridor_Light_LED   "Corridor led[]"                  <light>      
 Switch   GF_Corridor_Cross   "Corridor cross[]"                  <light>        (GF_Corridor, gShelly, gPersistenceSwitch) ["Lighting"] { mqtt=">[broker:shellies/shelly1-55424A/relay/0/command:command:*:MAP(shelly.map)],<[broker:shellies/shelly1-55424A/relay/0:state:MAP(shelly.map)]" }
 Switch   GF_Corridor_Storage   "Corridor storage[]"                  <light>        (GF_Corridor, gSP2, gPersistenceSwitch) ["Lighting"]
 
-DateTime GF_Kitchen_Light_Main_LastUpdate "Kuchnia - góra [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime GF_Kitchen_Light_LED_LastUpdate "Kuchnia - led [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime GF_Corridor_Light_Main_LastUpdate "Korytarz [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime GF_Corridor_Light_LED_LastUpdate "Korytarz - led [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime GF_Corridor_Cross_LastUpdate "Korytarz - schodowy [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime GF_Corridor_Storage_LastUpdate "Korytarz - półki [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
+DateTime GF_Kitchen_Light_Main_LastUpdate "Kuchnia - góra [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
+DateTime GF_Kitchen_Light_LED_LastUpdate "Kuchnia - led [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
+DateTime GF_Corridor_Light_Main_LastUpdate "Korytarz [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
+DateTime GF_Corridor_Light_LED_LastUpdate "Korytarz - led [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
+DateTime GF_Corridor_Cross_LastUpdate "Korytarz - schodowy [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
+DateTime GF_Corridor_Storage_LastUpdate "Korytarz - półki [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
 
 Switch   GF_Restroom_Light_Main     "Restroom lights[]"  <light>        (GF_Restroom, gTC2, gGF_Restroom_Scenario, gCinemaOff, gPersistenceSwitch)
-DateTime GF_Restroom_Light_Main_LastUpdate "Ubikacja [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
+DateTime GF_Restroom_Light_Main_LastUpdate "Ubikacja [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
 
 String   GF_RTV_Complex_Scenario    "RTV"            <rgb>        (gPersistenceSwitch)
 
@@ -107,25 +107,25 @@ String   GF_RTV_Complex_Scenario    "RTV"            <rgb>        (gPersistenceS
 Switch   FF_Bedroom_Light_2  "Bedroom upper lights[]"     <light>        (FF_Bedroom, gTC2, gFF_Bedroom_Scenario, gPersistenceSwitch) ["Switchable"]
 Switch   FF_Bedroom_Lights  "Relax[]"     <light>        (FF_Bedroom, gSP2, gFF_Bedroom_Scenario, gPersistenceSwitch) ["Switchable"]
 
-// DateTime FF_Bedroom_Light_1_LastUpdate "Pokój Ani - 1 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime FF_Bedroom_Light_2_LastUpdate "Pokój Ani - 2 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime FF_Bedroom_Lights_LastUpdate "Pokój Ani - światła [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
+// DateTime FF_Bedroom_Light_1_LastUpdate "Pokój Ani - 1 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
+DateTime FF_Bedroom_Light_2_LastUpdate "Pokój Ani - 2 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
+DateTime FF_Bedroom_Lights_LastUpdate "Pokój Ani - światła [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
 
 //Switch   FF_AliceRoom_Light_1  "Alice room lights[]"     <light>        (FF_AliceRoom, gTC2, gFF_AliceRoom_Scenario, gPersistenceSwitch) ["Switchable"]
 Switch   FF_AliceRoom_Light_2  "Alice room lights[]"     <light>        (FF_AliceRoom, gTC2, gFF_AliceRoom_Scenario, gPersistenceSwitch) ["Switchable"]
 //Switch   FF_AliceRoom_Lights  "Pokój Alicji - światła[]"     <light>        (FF_AliceRoom, gSP2, gFF_AliceRoom_Scenario, gPersistenceSwitch)
 
-//DateTime FF_AliceRoom_Light_1_LastUpdate "Pokój Alicji - 1 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime FF_AliceRoom_Light_2_LastUpdate "Pokój Alicji - 2 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-//DateTime FF_AliceRoom_Lights_LastUpdate "Pokój Alicji - światła [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
+//DateTime FF_AliceRoom_Light_1_LastUpdate "Pokój Alicji - 1 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
+DateTime FF_AliceRoom_Light_2_LastUpdate "Pokój Alicji - 2 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
+//DateTime FF_AliceRoom_Lights_LastUpdate "Pokój Alicji - światła [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
 
 Switch   FF_AnnRoom_Light_Main  "Ann room lights[]"     <light>        (FF_AnnRoom, gTC2, gFF_AnnRoom_Scenario, gPersistenceSwitch) ["Lighting"]
 
 Switch   FF_BathRoom_Light_Up  "Bathroom lights[]"     <light>        (FF_Bathroom, gTC2, gFF_BathRoom_Scenario, gPersistenceSwitch) ["Lighting"]
 Switch   FF_BathRoom_Light_Mirror  "Bathroom led[]"     <light>        (FF_BathRoom, gTC2, gFF_BathRoom_Scenario, gPersistenceSwitch) ["Lighting"]
 
-DateTime FF_BathRoom_Light_Up_LastUpdate "Łazienka - góra [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
-DateTime FF_BathRoom_Light_Mirror_LastUpdate "Łazienka - lustro [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
+DateTime FF_BathRoom_Light_Up_LastUpdate "Łazienka - góra [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
+DateTime FF_BathRoom_Light_Mirror_LastUpdate "Łazienka - lustro [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Raw RTV
@@ -188,7 +188,6 @@ Group v_GF_FamilyRoom_Outdoor_Thermostat "External thermostat" ["Thermostat"]
 Number GF_FamilyRoom_Outdoor_Temperature_Mode "External Heating/Cooling Mode" <temperature> (v_GF_FamilyRoom_Outdoor_Thermostat) ["homekit:HeatingCoolingMode"]
 Number GF_FamilyRoom_Outdoor_Temperature_Setpoint "External Setpoint" <temperature> (v_GF_FamilyRoom_Outdoor_Thermostat) ["TargetTemperature"]
 Number GF_FamilyRoom_Outdoor_Temperature_Sensor "External temperature [%.1f \u00b0C]" <temperature> (v_GF_FamilyRoom_Outdoor_Thermostat, gSensorTemperature, gSensorExternalTemperature, gPersistenceSensor) ["CurrentTemperature"] {mqtt="<[broker:myHome/GF_FamilyRoom_Outdoor_Temperature_Sensor:state:JS(europeanNumber.js):.*]"}
-//String GF_FamilyRoom_Last_Read_Sensor "Ostatni odczyt w salonie1 [%s]" <time> (gLastUpdate) {mqtt="<[broker:myHome/GF_FamilyRoom_Last_Read_Sensor:state:JS(string.js):.*]"}
 Number GF_FamilyRoom_Analog_Sensor "Natężenie światła - salon [%.0f]" <heating> (gSensorAnalog, gPersistenceSensor) {mqtt="<[broker:myHome/GF_FamilyRoom_Analog:state:JS(europeanNumber.js):.*  ]"}
 
 Group v_FF_AnnRoom_Thermostat "Ann room thermostat" ["Thermostat"]
@@ -217,7 +216,7 @@ Number FF_AliceRoom_Analog_Sensor "Natężenie światła - Alicja [%.0f]" <heati
 ////////////////////////////////////////////////////////////////////////////////
 Dimmer   GF_FamilyRoom_Rollershutter_Dimmer  "Window  [%.1f %%]"   <heating>   (GF_FamilyRoom, gRollershutter_Dimmer) ["Lighting"] {mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:state:*:default],<[broker:myHomeX/GF_FamilyRoom_Rollershutter_Position:state:JS(europeanNumber.js):.*]"}
 Rollershutter GF_FamilyRoom_Rollershutter "Salon - blind [%s]"  (GF_FamilyRoom, gRollershutter, gPersistenceSwitch) {mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:command:*:default]"}
-DateTime GF_FamilyRoom_Rollershutter_LastUpdate "Salon - blind [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
+DateTime GF_FamilyRoom_Rollershutter_LastUpdate "Salon - blind [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateRollershutter, gPersistenceSwitch)
 Switch GF_FamilyRoom_Rollershutter_PrgUp "Salon - prg up"  (GF_FamilyRoom, gRollershutter) {mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:command:ON:PRGUP]"}
 Switch GF_FamilyRoom_Rollershutter_PrgDown "Salon - prg down"  (GF_FamilyRoom, gRollershutter) {mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:command:ON:PRGDOWN]"}
 Switch GF_FamilyRoom_Rollershutter_AutoUp "Rollershutter up"  (GF_FamilyRoom, gRollershutter) {mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:command:ON:AUTOUP]"}
@@ -236,7 +235,7 @@ Number GF_FamilyRoom_Rollershutter_Millis "Millis [%.0f]" <heating> {mqtt="<[bro
 
 Dimmer   FF_Bedroom_Rollershutter_Dimmer  "Bedroom window  [%.1f %%]"   <heating>   (FF_Bedroom, gRollershutter_Dimmer) ["Lighting"] {mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:state:*:default],<[broker:myHomeX/FF_Bedroom_Rollershutter_Position:state:JS(europeanNumber.js):.*]"}
 Rollershutter FF_Bedroom_Rollershutter "Sypialnia - blind [%s]"  (FF_Bedroom, gRollershutter, gPersistenceSwitch) {mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:command:*:default]"}
-DateTime FF_Bedroom_Rollershutter_LastUpdate "Sypialnia - blind [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
+DateTime FF_Bedroom_Rollershutter_LastUpdate "Sypialnia - blind [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateRollershutter, gPersistenceSwitch)
 Switch FF_Bedroom_Rollershutter_PrgUp "Sypialnia - prg up"  (FF_Bedroom, gRollershutter) {mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:command:ON:PRGUP]"}
 Switch FF_Bedroom_Rollershutter_PrgDown "Sypialnia - prg down"  (FF_Bedroom, gRollershutter) {mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:command:ON:PRGDOWN]"}
 Switch FF_Bedroom_Rollershutter_AutoUp "Rollershutter up"  (FF_Bedroom, gRollershutter) {mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:command:ON:AUTOUP]"}
@@ -262,61 +261,61 @@ Switch   vSlack_Send  "Send slack" (gSlack)
 //                       Heartbeats
 ////////////////////////////////////////////////////////////////////////////////
 String GF_FamilyRoom_Heartbeat "8266 Salon [%s]"  (GF_FamilyRoom, gHeartbeat) {mqtt="<[broker:myHome/GF_FamilyRoom_Heartbeat:state:JS(string.js):.*]"}
-DateTime GF_FamilyRoom_Heartbeat_LastUpdate "8266 w salonie [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gLastUpdateTimeout)
+DateTime GF_FamilyRoom_Heartbeat_LastUpdate "8266 w salonie [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch GF_FamilyRoom_Heartbeat_LastUpdate_Error "8266 Salon" <time> (gErrors, gPersistenceSwitch)
 
 String GF_FamilyRoomRollershutter_Heartbeat "8266 Salon rolety [%s]"  (GF_FamilyRoom, gHeartbeat) {mqtt="<[broker:myHomeX/GF_FamilyRoom_Rollershutter_Heartbeat:state:JS(string.js):.*]"}
-DateTime GF_FamilyRoomRollershutter_Heartbeat_LastUpdate "8266 rolety w salonie [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gLastUpdateTimeout)
+DateTime GF_FamilyRoomRollershutter_Heartbeat_LastUpdate "8266 rolety w salonie [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch GF_FamilyRoomRollershutter_Heartbeat_LastUpdate_Error "8266 Salon rolety" <time> (gErrors, gPersistenceSwitch)
 
 String FF_Bedroom_Heartbeat "8266 Sypialnia [%s]"  (FF_Bedroom, gHeartbeat) {mqtt="<[broker:myHome/FF_Bedroom_Heartbeat:state:JS(string.js):.*]"}
-DateTime FF_Bedroom_Heartbeat_LastUpdate "8266 w sypialni [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gLastUpdateTimeout)
+DateTime FF_Bedroom_Heartbeat_LastUpdate "8266 w sypialni [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch FF_Bedroom_Heartbeat_LastUpdate_Error "8266 Sypialnia" <time> (gErrors, gPersistenceSwitch)
 
 String FF_BedroomRollershutter_Heartbeat "8266 Sypialnia rolety [%s]"  (FF_Bedroom, gHeartbeat) {mqtt="<[broker:myHomeX/FF_Bedroom_Rollershutter_Heartbeat:state:JS(string.js):.*]"}
-DateTime FF_BedroomRollershutter_Heartbeat_LastUpdate "8266 rolety w sypialni [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gLastUpdateTimeout)
+DateTime FF_BedroomRollershutter_Heartbeat_LastUpdate "8266 rolety w sypialni [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch FF_BedroomRollershutter_Heartbeat_LastUpdate_Error "8266 Sypialnia rolety" <time> (gErrors, gPersistenceSwitch)
 
 String FF_AliceRoom_Heartbeat "8266 Pokój Alicji [%s]"  (FF_AliceRoom, gHeartbeat) {mqtt="<[broker:myHome/FF_AliceRoom_Heartbeat:state:JS(string.js):.*]"}
-DateTime FF_AliceRoom_Heartbeat_LastUpdate "8266 w pokoju Alicji [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gLastUpdateTimeout)
+DateTime FF_AliceRoom_Heartbeat_LastUpdate "8266 w pokoju Alicji [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch FF_AliceRoom_Heartbeat_LastUpdate_Error "8266 Pokój Alicji" <time> (gErrors, gPersistenceSwitch)
 
 String FF_AnnRoom_Heartbeat "8266 Pokój Ani [%s]"  (FF_AnnRoom, gHeartbeat) {mqtt="<[broker:myHome/FF_AnnRoom_Heartbeat:command:JS(string.js):.*]"}
-DateTime FF_AnnRoom_Heartbeat_LastUpdate "8266 w pokoju Ani [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gLastUpdateTimeout)
+DateTime FF_AnnRoom_Heartbeat_LastUpdate "8266 w pokoju Ani [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch FF_AnnRoom_Heartbeat_LastUpdate_Error "8266 Pokój Ani" <time> (gErrors, gPersistenceSwitch)
 
 String FF_TechnicalRoom1_Heartbeat "8266 Techniczny 1 [%s]"  (FF_AnnRoom, gHeartbeat) {mqtt="<[broker:myHome/FF_TechnicalRoom1_Heartbeat:command:JS(string.js):.*]"}
-DateTime FF_TechnicalRoom1_Heartbeat_LastUpdate "8266 Techniczny 1 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gLastUpdateTimeout)
+DateTime FF_TechnicalRoom1_Heartbeat_LastUpdate "8266 Techniczny 1 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch FF_TechnicalRoom1_Heartbeat_LastUpdate_Error "8266 Techniczny 1" <time> (gErrors, gPersistenceSwitch)
 
 String FF_TechnicalRoom2_Heartbeat "8266 Techniczny 2 [%s]"  (FF_AnnRoom, gHeartbeat) {mqtt="<[broker:myHome/FF_TechnicalRoom2_Heartbeat:command:JS(string.js):.*]"}
-DateTime FF_TechnicalRoom2_Heartbeat_LastUpdate "8266 Techniczny 2 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gLastUpdateTimeout)
+DateTime FF_TechnicalRoom2_Heartbeat_LastUpdate "8266 Techniczny 2 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch FF_TechnicalRoom2_Heartbeat_LastUpdate_Error "8266 Techniczny 2" <time> (gErrors, gPersistenceSwitch)
 
 Switch HW_Heartbeat "Heartbeat"
 
 String HW_RMPro_Heartbeat "RM Pro [%s]"  (GF_FamilyRoom, gHeartbeat)
-DateTime HW_RMPro_Heartbeat_LastUpdate "RM Pro [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gLastUpdateTimeout)
+DateTime HW_RMPro_Heartbeat_LastUpdate "RM Pro [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch HW_RMPro_Heartbeat_LastUpdate_Error "RM Pro" <time> (gErrors, gPersistenceSwitch)
 
 String GF_FamilyRoom_LightsRGB_Heartbeat "Salon diody [%s]"  (GF_FamilyRoom, gHeartbeat)
-DateTime GF_FamilyRoom_LightsRGB_Heartbeat_LastUpdate "Salon diody [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gLastUpdateTimeout)
+DateTime GF_FamilyRoom_LightsRGB_Heartbeat_LastUpdate "Salon diody [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gLastUpdateTimeout)
 Switch GF_FamilyRoom_LightsRGB_Heartbeat_LastUpdate_Error "Salon diody" <time> (gErrors, gPersistenceSwitch)
 
 String GF_FamilyRoom_LightsLamp_Heartbeat "Salon lampy [%s]"  (GF_FamilyRoom, gHeartbeat)
-DateTime GF_FamilyRoom_LightsLamp_Heartbeat_LastUpdate "Salon lampy [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gLastUpdateTimeout)
+DateTime GF_FamilyRoom_LightsLamp_Heartbeat_LastUpdate "Salon lampy [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gLastUpdateTimeout)
 Switch GF_FamilyRoom_LightsLamp_Heartbeat_LastUpdate_Error "Salon lampy" <time> (gErrors, gPersistenceSwitch)
 
 String GF_Corridor_Light_LED_Heartbeat "Korytarz led [%s]"  (GF_FamilyRoom, gHeartbeat)
-DateTime GF_Corridor_Light_LED_Heartbeat_LastUpdate "Korytarz led [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gLastUpdateTimeout)
+DateTime GF_Corridor_Light_LED_Heartbeat_LastUpdate "Korytarz led [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gLastUpdateTimeout)
 Switch GF_Corridor_Light_LED_Heartbeat_LastUpdate_Error "Korytarz led" <time> (gErrors, gPersistenceSwitch)
 
 String GF_Corridor_Storage_Heartbeat "Korytarz półki [%s]"  (GF_FamilyRoom, gHeartbeat)
-DateTime GF_Corridor_Storage_Heartbeat_LastUpdate "Korytarz półki [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gLastUpdateTimeout)
+DateTime GF_Corridor_Storage_Heartbeat_LastUpdate "Korytarz półki [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gLastUpdateTimeout)
 Switch GF_Corridor_Storage_Heartbeat_LastUpdate_Error "Korytarz półki" <time> (gErrors, gPersistenceSwitch)
 
 String FF_Bedroom_Lights_Heartbeat "Sypialnia [%s]"  (GF_FamilyRoom, gHeartbeat)
-DateTime FF_Bedroom_Lights_Heartbeat_LastUpdate "Sypialnia [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gLastUpdateTimeout)
+DateTime FF_Bedroom_Lights_Heartbeat_LastUpdate "Sypialnia [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gLastUpdateTimeout)
 Switch FF_Bedroom_Lights_Heartbeat_LastUpdate_Error "Sypialnia" <time> (gErrors, gPersistenceSwitch)
 
 String   RGB_Color         "Kolor diod"   <rgb>        (GF_FamilyRoom, gIRRGB, gPersistenceSwitch)

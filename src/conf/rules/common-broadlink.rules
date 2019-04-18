@@ -19,7 +19,7 @@ then
         logError("irb", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
       }
     }
-    val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    var lastupdate_item = gLastUpdateBroadlink.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
 
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(now.toString())
@@ -54,7 +54,7 @@ then
         logError("sp2", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
       }
     }
-    val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    var lastupdate_item = gLastUpdateBroadlink.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(now.toString())
       if (logLevel >= 6) {
@@ -88,7 +88,7 @@ then
         logError("tc2", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
       }
     }
-    val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    var lastupdate_item = gLastUpdateBroadlink.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(now.toString())
       if (logLevel >= 6) {
@@ -141,7 +141,7 @@ then
     if (logLevel >= 6) {
       logError("shelly", "TC2 change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
-    val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    var lastupdate_item = gLastUpdateBroadlink.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(now.toString())
       if (logLevel >= 6) {
@@ -166,7 +166,7 @@ then
     if (logLevel >= 6) {
       logError("sonoff", "TC2 change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
-    val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    var lastupdate_item = gLastUpdateBroadlink.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(now.toString())
       if (logLevel >= 6) {

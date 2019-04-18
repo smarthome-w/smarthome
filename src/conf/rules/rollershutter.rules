@@ -4,7 +4,7 @@ when
 then
   try {
     //logInfo("rollershutter", "Rollershutter change detected {} {}", triggeringItem.name, triggeringItem.state)
-    val lastupdate_item = gLastUpdate.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    var lastupdate_item = gLastUpdateRollershutter.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
 
     //logInfo("rollershutter", "lastupdate_item {}", lastupdate_item)
     if (lastupdate_item !== null) {
