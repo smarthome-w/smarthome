@@ -100,7 +100,7 @@ ESP8266 (nodeMCU) based sensor with optional functions:
 - mechanical limit switch (one)
 - legacy blinds and mechanical modifications
   - M8 screw with hexagon head mounted on the axis of existing mechanism
-  - servo handles form aluminum C-shapes
+  - servo handles from aluminum (C-shapes)
   - mechanical limit switch mounted to the mechanism on a piece of hard plastic
 
 - ESP8266 (nodeMCU) driver entry signals
@@ -130,7 +130,7 @@ Limit detection is MUST BE. Using servo you cannot predict real position after s
 
 First generation of limit switch (I've installed both: upper and bottom) was based on magnetic door switch. It was not reliable and after some time I've had problems with proper state detection. Using stronger magnet was not good - reed was failing due strong magnetic field.
 
-Roller encoders (the cheapest one was about 1.5$ and accuracy 1/20 of rotation). But you must have direct access to the axix (I have not) or build a kind of gear between servo and encoder.
+Roller encoders (the cheapest one was about 1.5$ and accuracy 1/20 of rotation). But you must have direct access to the axis (I have not) or build a kind of gear between servo and encoder.
 
 The best solution for me is one mechanical limit switch on the top and position calculation. Typical scenario is that roller is on top position (with ability to restart position indicators) at least once a day. It is enough to have proper position detection accuracy.
 
