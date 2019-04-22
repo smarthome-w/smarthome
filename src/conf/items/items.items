@@ -105,11 +105,14 @@ String   GF_RTV_Complex_Scenario    "RTV"            <rgb>        (gPersistenceS
 
 // Switch   FF_Bedroom_Light_1  "Bedroom upper lights[]"     <light>        (FF_Bedroom, gTC2, gFF_Bedroom_Scenario, gPersistenceSwitch) ["Switchable"]
 Switch   FF_Bedroom_Light_2  "Bedroom upper lights[]"     <light>        (FF_Bedroom, gTC2, gFF_Bedroom_Scenario, gPersistenceSwitch) ["Switchable"]
-Switch   FF_Bedroom_Lights  "Relax[]"     <light>        (FF_Bedroom, gSP2, gFF_Bedroom_Scenario, gPersistenceSwitch) ["Switchable"]
+//Switch   FF_Bedroom_Lights  "Relax[]"     <light>        (FF_Bedroom, gSP2, gFF_Bedroom_Scenario, gPersistenceSwitch) ["Switchable"]
+Switch   FF_Bedroom_Lights  "Relax[]"     <light>        (GF_Kitchen, gSonoff, gPersistenceSwitch) ["Lighting"] { mqtt=">[broker:myHomeY/FF_Bedroom_LED_Relay_Command:command:*:MAP(sonoff.map)],<[broker:myHomeY/FF_Bedroom_LED_Relay:state:MAP(sonoff.map)]" }
+Switch   FF_Bedroom_Wardobe  "Wardobe[]"     <light>        (FF_Bedroom, gSP2, gFF_Bedroom_Scenario, gPersistenceSwitch) ["Switchable"]
 
 // DateTime FF_Bedroom_Light_1_LastUpdate "Pokój Ani - 1 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
-DateTime FF_Bedroom_Light_2_LastUpdate "Pokój Ani - 2 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
-DateTime FF_Bedroom_Lights_LastUpdate "Pokój Ani - światła [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
+DateTime FF_Bedroom_Light_2_LastUpdate "Sypialnia - 2 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
+DateTime FF_Bedroom_Lights_LastUpdate "Sypialnia - światła [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
+DateTime FF_Bedroom_Wardobe_LastUpdate "Wardobe [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
 
 //Switch   FF_AliceRoom_Light_1  "Alice room lights[]"     <light>        (FF_AliceRoom, gTC2, gFF_AliceRoom_Scenario, gPersistenceSwitch) ["Switchable"]
 Switch   FF_AliceRoom_Light_2  "Alice room lights[]"     <light>        (FF_AliceRoom, gTC2, gFF_AliceRoom_Scenario, gPersistenceSwitch) ["Switchable"]
@@ -300,22 +303,26 @@ Switch HW_RMPro_Heartbeat_LastUpdate_Error "RM Pro" <time> (gErrors, gPersistenc
 
 String GF_FamilyRoom_LightsRGB_Heartbeat "Salon diody [%s]"  (GF_FamilyRoom, gHeartbeat)
 DateTime GF_FamilyRoom_LightsRGB_Heartbeat_LastUpdate "Salon diody [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch GF_FamilyRoom_LightsRGB_Heartbeat_LastUpdate_Error "Salon diody" <time> (gErrors, gPersistenceSwitch)
+Switch GF_FamilyRoom_LightsRGB_Heartbeat_LastUpdate_Error "SP2 Salon diody" <time> (gErrors, gPersistenceSwitch)
 
 String GF_FamilyRoom_LightsLamp_Heartbeat "Salon lampy [%s]"  (GF_FamilyRoom, gHeartbeat)
 DateTime GF_FamilyRoom_LightsLamp_Heartbeat_LastUpdate "Salon lampy [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch GF_FamilyRoom_LightsLamp_Heartbeat_LastUpdate_Error "Salon lampy" <time> (gErrors, gPersistenceSwitch)
+Switch GF_FamilyRoom_LightsLamp_Heartbeat_LastUpdate_Error "SP2 Salon lampy" <time> (gErrors, gPersistenceSwitch)
 
-String GF_Corridor_Light_LED_Heartbeat "Korytarz led [%s]"  (GF_FamilyRoom, gHeartbeat)
+String GF_Corridor_Light_LED_Heartbeat "Korytarz led [%s]"  (GF_Corridor, gHeartbeat)
 DateTime GF_Corridor_Light_LED_Heartbeat_LastUpdate "Korytarz led [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch GF_Corridor_Light_LED_Heartbeat_LastUpdate_Error "Korytarz led" <time> (gErrors, gPersistenceSwitch)
+Switch GF_Corridor_Light_LED_Heartbeat_LastUpdate_Error "SP2 Korytarz led" <time> (gErrors, gPersistenceSwitch)
 
-String GF_Corridor_Storage_Heartbeat "Korytarz półki [%s]"  (GF_FamilyRoom, gHeartbeat)
+String GF_Corridor_Storage_Heartbeat "Korytarz półki [%s]"  (GF_Corridor, gHeartbeat)
 DateTime GF_Corridor_Storage_Heartbeat_LastUpdate "Korytarz półki [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch GF_Corridor_Storage_Heartbeat_LastUpdate_Error "Korytarz półki" <time> (gErrors, gPersistenceSwitch)
+Switch GF_Corridor_Storage_Heartbeat_LastUpdate_Error "SP2 Korytarz półki" <time> (gErrors, gPersistenceSwitch)
 
-String FF_Bedroom_Lights_Heartbeat "Sypialnia [%s]"  (GF_FamilyRoom, gHeartbeat)
-DateTime FF_Bedroom_Lights_Heartbeat_LastUpdate "Sypialnia [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch FF_Bedroom_Lights_Heartbeat_LastUpdate_Error "Sypialnia" <time> (gErrors, gPersistenceSwitch)
+String FF_Bedroom_Lights_Heartbeat "8266 Sypialnia LED[%s]"  (FF_Bedroom, gHeartbeat)  {mqtt="<[broker:myHomeY/FF_Bedroom_LED_Relay_Heartbeat:command:JS(string.js):.*]"}
+DateTime FF_Bedroom_Lights_Heartbeat_LastUpdate "8266 Sypialnia LED [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch FF_Bedroom_Lights_Heartbeat_LastUpdate_Error "8266 Sypialnia LED" <time> (gErrors, gPersistenceSwitch)
+
+String FF_Bedroom_Wardobe_Heartbeat "Sypialnia szafa[%s]"  (FF_Bedroom, gHeartbeat)
+DateTime FF_Bedroom_Wardobe_Heartbeat_LastUpdate "Sypialnia szafa [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch FF_Bedroom_Wardobe_Heartbeat_LastUpdate_Error "SP2 Sypialnia szafa" <time> (gErrors, gPersistenceSwitch)
 
 String   RGB_Color         "Kolor diod"   <rgb>        (GF_FamilyRoom, gIRRGB, gPersistenceSwitch)
