@@ -16,6 +16,16 @@
       messageName = GLOBAL_MQTT_MESSAGE_PREFIX + "/" + "PIR_" + GLOBAL_MQTT_MULTISENSOR_NAME;
     } else if (sensorType == SENSOR_CIRCUIT) {
       messageName = GLOBAL_MQTT_MESSAGE_PREFIX + "/" + "CIR_" + GLOBAL_MQTT_MULTISENSOR_NAME;
+    } else if (sensorType == SENSOR_BUTTON) {
+      if (valueType == SENSOR_VALUE_BUTTON_GPIO0) {
+        messageName = GLOBAL_MQTT_MESSAGE_PREFIX + "/" + GLOBAL_MQTT_MULTISENSOR_NAME + "_GPIO0";
+      } else if (valueType == SENSOR_VALUE_BUTTON_GPIO2) {
+        messageName = GLOBAL_MQTT_MESSAGE_PREFIX + "/" + GLOBAL_MQTT_MULTISENSOR_NAME + "_GPIO2";
+      } else if (valueType == SENSOR_VALUE_BUTTON_GPIO13) {
+        messageName = GLOBAL_MQTT_MESSAGE_PREFIX + "/" + GLOBAL_MQTT_MULTISENSOR_NAME + "_GPIO13";
+      }
+    } else if (sensorType == SENSOR_RELAY) {
+      messageName = GLOBAL_MQTT_MESSAGE_PREFIX + "/" + "RELAY_" + GLOBAL_MQTT_MULTISENSOR_NAME;
     }
     return messageName;
   }

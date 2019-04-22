@@ -37,6 +37,15 @@
       }
       Serial.println("");
     #endif
+    #ifdef fRelay
+      for (iix = 0; iix < BUTTONS; iix++) {
+        Serial.print(buttons[iix].name);
+        Serial.print(": ");
+        Serial.print(buttons[iix].previousValue);
+        Serial.print(" ");
+      }
+      Serial.println("");
+    #endif
   }
 
   void initializeDigitalInput() {
@@ -74,8 +83,13 @@
     #ifdef fRelay
       Serial.println("Initialize button data...");
       iix = 0;
-      buttons[iix] = {"pinD8", pinD8, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_OPEN}; iix++;
-      Serial.println("Initialize digital input...");
+      #ifdef fRelay
+        buttons[iix] = {"pinD6-relay", pinD6, SENSOR_RELAY, SENSOR_VALUE_RELAY, NO_VALUE, NORMALLY_CLOSED}; iix++;
+        buttons[iix] = {"pinD3", pinD3, SENSOR_BUTTON, SENSOR_VALUE_BUTTON_GPIO0, NO_VALUE, NORMALLY_CLOSED}; iix++;
+        buttons[iix] = {"pinD4", pinD4, SENSOR_BUTTON, SENSOR_VALUE_BUTTON_GPIO2, NO_VALUE, NORMALLY_OPEN}; iix++;
+//        buttons[iix] = {"pinD7", pinD7, SENSOR_BUTTON, SENSOR_VALUE_BUTTON_GPIO13, NO_VALUE, NORMALLY_OPEN}; iix++;
+      #endif
+      Serial.println("Initialize button input...");
       for (iix = 0; iix < BUTTONS; iix = iix  + 1) {
         pinMode(buttons[iix].pin, INPUT_PULLUP);
         Serial.println("Button " + buttons[iix].name + " pin " + buttons[iix].pin + " set to INPUT_PULLUP");
@@ -113,6 +127,36 @@
     #endif
   }
 
+  void sendButtonMQTTMessage(int buttonIndex, int value) {
+    #ifdef fRelay
+      boolean retained = true;
+      String msg;
+
+      if (!client.connected()) {
+        reconnectMQTT();
+      }
+
+      int currentType = buttons[buttonIndex].type;
+      String messageTopic = calculateMessageName(buttons[buttonIndex].sensorType, buttons[buttonIndex].sensorValueType);
+
+      if (currentType == NORMALLY_CLOSED) {
+        if (value == LOW) {
+          msg = "CLOSED";
+        } else {
+          msg = "OPEN";
+        }
+      } else {
+        if (value == LOW) {
+          msg = "OPEN";
+        } else {
+          msg = "CLOSED";
+        }
+      }
+
+      sendMQTTWithTypeConversion(messageTopic, msg);
+    #endif
+  }
+
   void processPinInputs() {
     int value;
 
@@ -131,7 +175,7 @@
         value = digitalRead(buttons[iix].pin);
         if (value != buttons[iix].previousValue) {
           buttons[iix].previousValue = value;
-          //sendCircuitMQTTMessage(iix, value);
+          sendButtonMQTTMessage(iix, value);
         }
       }
     #endif
