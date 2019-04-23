@@ -87,7 +87,7 @@ Switch   GF_Kitchen_Light_LED       "Kitchen light led[]"    <light>        (GF_
 Switch   GF_Kitchen_LED   "Kitchen led[]"                  <light>        (GF_Kitchen, gSonoff, gPersistenceSwitch) ["Lighting"] { mqtt=">[broker:myHomeY/GF_Kitchen_LED_Relay_Command:command:*:MAP(sonoff.map)],<[broker:myHomeY/GF_Kitchen_LED_Relay:state:MAP(sonoff.map)]" }
 
 Switch   GF_Corridor_Light_Main     "Main corridor lights[]"  <light>        (GF_Corridor, gTC2, gGF_Corridor_Scenario, gCinemaOff, gPersistenceSwitch) ["Lighting"]
-Switch   GF_Corridor_Light_LED   "Corridor led[]"                  <light>        (GF_Corridor, gSP2, gPersistenceSwitch) ["Lighting"]
+Switch   GF_Corridor_Light_LED   "Corridor led[]"                  <light>        (GF_Corridor, gSonoff, gPersistenceSwitch) ["Lighting"]  { mqtt=">[broker:myHomeY/GF_Corridor_LED_Relay_Command:command:*:MAP(sonoff.map)],<[broker:myHomeY/GF_Corridor_LED_Relay:state:MAP(sonoff.map)]" }
 Switch   GF_Corridor_Cross   "Corridor cross[]"                  <light>        (GF_Corridor, gShelly, gPersistenceSwitch) ["Lighting"] { mqtt=">[broker:shellies/shelly1-55424A/relay/0/command:command:*:MAP(shelly.map)],<[broker:shellies/shelly1-55424A/relay/0:state:MAP(shelly.map)]" }
 Switch   GF_Corridor_Storage   "Corridor storage[]"                  <light>        (GF_Corridor, gSP2, gPersistenceSwitch) ["Lighting"]
 
@@ -309,9 +309,9 @@ String GF_FamilyRoom_LightsLamp_Heartbeat "Salon lampy [%s]"  (GF_FamilyRoom, gH
 DateTime GF_FamilyRoom_LightsLamp_Heartbeat_LastUpdate "Salon lampy [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch GF_FamilyRoom_LightsLamp_Heartbeat_LastUpdate_Error "SP2 Salon lampy" <time> (gErrors, gPersistenceSwitch)
 
-String GF_Corridor_Light_LED_Heartbeat "Korytarz led [%s]"  (GF_Corridor, gHeartbeat)
+String GF_Corridor_Light_LED_Heartbeat "Korytarz led [%s]"  (GF_Corridor, gHeartbeat)   {mqtt="<[broker:myHomeY/GF_Corridor_LED_Relay_Heartbeat:command:JS(string.js):.*]"}
 DateTime GF_Corridor_Light_LED_Heartbeat_LastUpdate "Korytarz led [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch GF_Corridor_Light_LED_Heartbeat_LastUpdate_Error "SP2 Korytarz led" <time> (gErrors, gPersistenceSwitch)
+Switch GF_Corridor_Light_LED_Heartbeat_LastUpdate_Error "Sonoff Korytarz led" <time> (gErrors, gPersistenceSwitch)
 
 String GF_Corridor_Storage_Heartbeat "Korytarz półki [%s]"  (GF_Corridor, gHeartbeat)
 DateTime GF_Corridor_Storage_Heartbeat_LastUpdate "Korytarz półki [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
@@ -319,7 +319,7 @@ Switch GF_Corridor_Storage_Heartbeat_LastUpdate_Error "SP2 Korytarz półki" <ti
 
 String FF_Bedroom_Lights_Heartbeat "8266 Sypialnia LED[%s]"  (FF_Bedroom, gHeartbeat)  {mqtt="<[broker:myHomeY/FF_Bedroom_LED_Relay_Heartbeat:command:JS(string.js):.*]"}
 DateTime FF_Bedroom_Lights_Heartbeat_LastUpdate "8266 Sypialnia LED [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch FF_Bedroom_Lights_Heartbeat_LastUpdate_Error "8266 Sypialnia LED" <time> (gErrors, gPersistenceSwitch)
+Switch FF_Bedroom_Lights_Heartbeat_LastUpdate_Error "Sonoff Sypialnia LED" <time> (gErrors, gPersistenceSwitch)
 
 String FF_Bedroom_Wardobe_Heartbeat "Sypialnia szafa[%s]"  (FF_Bedroom, gHeartbeat)
 DateTime FF_Bedroom_Wardobe_Heartbeat_LastUpdate "Sypialnia szafa [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateHeartbeat, gLastUpdateTimeout)
