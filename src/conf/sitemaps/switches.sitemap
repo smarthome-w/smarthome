@@ -65,6 +65,7 @@ sitemap switches label="Włączniki" {
         // Switch item=FF_Bedroom_Light_1
         Switch item=FF_Bedroom_Light_2
         Switch item=FF_Bedroom_Lights
+        Switch item=FF_Bedroom_Wardobe
         Switch item=FF_AnnRoom_Light_Main
         Switch item=FF_BathRoom_Light_Up
         Switch item=FF_BathRoom_Light_Mirror

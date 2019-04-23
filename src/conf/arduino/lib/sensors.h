@@ -27,6 +27,10 @@
     const int SENSOR_VALUE_HEATINDEX = 3;
     const int SENSOR_VALUE_CIRCUIT = 4;
     const int SENSOR_VALUE_PIR = 5;
+    const int SENSOR_VALUE_RELAY = 6;
+    const int SENSOR_VALUE_BUTTON_GPIO0 = 80;
+    const int SENSOR_VALUE_BUTTON_GPIO2 = 81;
+    const int SENSOR_VALUE_BUTTON_GPIO13 = 82;
 
     const int pinD0 = 16;
     const int pinD1 = 5;

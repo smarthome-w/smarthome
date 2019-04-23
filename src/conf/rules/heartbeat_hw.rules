@@ -20,7 +20,7 @@ then
     }
 
     gSP2.members.forEach [E |
-  //    logInfo("HW_Heartbeat", "element: {}, state: {}", E.name, E.state)
+      //logError("HW_Heartbeat", "element: {}, state: {}", E.name, E.state)
       var String command = "/openhab/conf/scripts/BROADLINK/sp2.py " + E.name + " STATUS"
       var long duration = now.millis
       var result = executeCommandLine (command, 15000)
@@ -41,6 +41,9 @@ then
         val heartbeat_item = gHeartbeat.members.findFirst[name.equals(E.name + "_Heartbeat")]
         if (heartbeat_item !== null) {
           sendCommand(heartbeat_item, now.millis)
+          if (logLevel >= 5) {
+            logError("HW_Heartbeat", "update hearbeat item: {}", heartbeat_item.name)
+          }
         }
   //      logInfo("HW_Heartbeat", "status: element: {}, power: {}, state: {}", E.name, power, E.state)
         if (E.state == NULL || power !== E.state) {

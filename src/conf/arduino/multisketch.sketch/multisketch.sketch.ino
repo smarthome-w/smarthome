@@ -33,7 +33,6 @@ void setup() {
   #ifdef watchdog_h
     initializeWatchdog();
   #endif
-  
   #ifdef fDitigalInput
     initializeDigitalInput();
   #endif
@@ -42,7 +41,7 @@ void setup() {
   #endif
   #ifdef wifi_connect_h
     initializeWiFi();
-  #endif  #ifdef fDitigalInput
+  #endif
 
   #ifdef ota_h
     initializeOTA();
@@ -82,6 +81,12 @@ void loop() {
     processOTA();
   #endif
     processHeartbeat();
+  // relay MUST be before digital input
+  // raw previous value is required
+  #ifdef fRelay
+    processRelay();
+    processRelayState();
+  #endif
   #ifdef fDitigalInput
     processPinInputs();
   #endif
@@ -103,10 +108,6 @@ void loop() {
   #endif
   #ifdef fMQTTInput
     processMQTTInput();
-  #endif
-  #ifdef fRelay
-    processRelay();
-    processRelayState();
   #endif
   delay(100);
 }

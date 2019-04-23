@@ -28,7 +28,9 @@
 #ifndef devices_h
 #define devices_h
 
-    #define Kitchen
+    //#define Kitchen
+    //#define BedroomLights
+    #define CorridorLights
     //#define AnnRoom
     //#define AliceRoom
     //#define Bedroom
@@ -43,7 +45,7 @@
         #define fName "GF_Kitchen_LED_Relay"
         #define WIFIIP 35
         #define CIRCUITS_NO 0
-        #define BUTTONS_NO 1
+        #define BUTTONS_NO 3
         #define fRelay
         #define fDitigalInput
         #define fMQTTInput
@@ -51,6 +53,34 @@
         const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHomeY";
         const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
         #define GLOBAL_MQTT_SUBSCRIBE_PREFIX "myHomeY/GF_Kitchen_LED_Relay_Command"
+    #endif
+
+    #ifdef BedroomLights
+        #define fName "FF_Bedroom_LED_Relay"
+        #define WIFIIP 36
+        #define CIRCUITS_NO 0
+        #define BUTTONS_NO 3
+        #define fRelay
+        #define fDitigalInput
+        #define fMQTTInput
+        #define fMQTTOutput
+        const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHomeY";
+        const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
+        #define GLOBAL_MQTT_SUBSCRIBE_PREFIX "myHomeY/FF_Bedroom_LED_Relay_Command"
+    #endif
+
+    #ifdef CorridorLights
+        #define fName "GF_Corridor_LED_Relay"
+        #define WIFIIP 37
+        #define CIRCUITS_NO 0
+        #define BUTTONS_NO 3
+        #define fRelay
+        #define fDitigalInput
+        #define fMQTTInput
+        #define fMQTTOutput
+        const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHomeY";
+        const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
+        #define GLOBAL_MQTT_SUBSCRIBE_PREFIX "myHomeY/GF_Corridor_LED_Relay_Command"
     #endif
 
     #ifdef TestRoom
