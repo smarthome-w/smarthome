@@ -1,4 +1,4 @@
-#define SKETCH_VERSION "20190415"
+  #define SKETCH_VERSION "20190415"
 #include "lib/devices.h"
 
 #include "lib/wifi.h"
@@ -12,6 +12,7 @@
 #include "lib/heartbeat.h"
 #include "lib/DS18B20.h"
 #include "lib/BMP280.h"
+#include "lib/BME280.h"
 
 #include "lib/digitalio.h"
 #include "lib/entrywatch.h"
@@ -61,16 +62,21 @@ void setup() {
   #ifdef fBMP280
     initializeBMP280();
   #endif
+  #ifdef fBME280
+    initializeBME280();
+  #endif
   #ifdef fRelay
     initializeRelay();
   #endif
   #ifdef fRollershutter
     initializeServo();
   #endif
+  Serial.println("Sensors initialized");
   #ifdef fMQTTOutput
     sendDebugMQTTMessage("VersionOnStart", SKETCH_VERSION);
     sendDebugMQTTMessage("MAC", WiFi.macAddress());
   #endif
+  Serial.println("Setup finished");
 }
 
 void loop() {
@@ -101,6 +107,9 @@ void loop() {
   #endif
   #ifdef fBMP280
     processBMP280();
+  #endif
+  #ifdef fBME280
+    processBME280();
   #endif
     //  dumpPinInputs();
   #ifdef fRollershutter

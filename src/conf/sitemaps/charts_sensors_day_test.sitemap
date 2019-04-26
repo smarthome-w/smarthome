@@ -1,0 +1,7 @@
+sitemap charts_sensors_day_test label="Sensory - porównanie" {
+    Frame label="Sensory dzisiaj" icon="firstfloor" {
+        Chart item=gTemperatureTest period=D label="Temperatura"
+        Chart item=gHumidityTest period=D label="Wilgotność"
+        Chart item=gPressureTest period=D label="Ciśnienie"
+    }
+}

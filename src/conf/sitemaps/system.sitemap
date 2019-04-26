@@ -68,4 +68,10 @@ sitemap system label="System" {
       Text item=Server_Uptime
 //      Text item=Server_LastRead
     }
+    Frame label="Sceny" icon="firstfloor" {
+      Switch item=GH_Night_Scene mappings=[ON="Set"]
+      Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]
+      Switch item=GH_Evening_Scene mappings=[ON="Set"]
+      Switch item=GH_Day_Scene mappings=[ON="Set"]
+    }
 }

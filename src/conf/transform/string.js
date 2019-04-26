@@ -1,3 +1,3 @@
 (function(i) {
-   return i
-})(input)
+  return i;
+})(input);

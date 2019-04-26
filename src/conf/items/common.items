@@ -2,37 +2,125 @@
 //                       Astro
 ////////////////////////////////////////////////////////////////////////////////
 
-DateTime Astro_Sunrise_Time       "Wschód Słońca [%1$tH:%1$tM]"     <sunrise>              { channel="astro:sun:home:rise#start" }
-DateTime Astro_Sunset_Time        "Zachód Słońca [%1$tH:%1$tM]"      <sunset>              { channel="astro:sun:home:set#start" }
-Number   Astro_SunElevation       "Elewacja Słońca [%.0f °]"                    (gPersistenceSensor) { channel="astro:sun:home:position#elevation" }
-Number   Astro_Azimuth            "Sun Azimuth [%.2f]"                          { channel="astro:sun:home:position#azimuth" }
-Number   Astro_Elevation          "Sun Elevation [%.2f]"                        { channel="astro:sun:home:position#elevation" }
-String   Astro_MoonPhase         "Faza księżyca [MAP(moon_pl.map):%s]" <moon>       { channel="astro:moon:home:phase#name" }
-Number   Astro_Total_Radiation    "Sun Radiation [%.2f W/m\u00B2]"              { channel="astro:sun:home:radiation#total" }
-Number   Astro_Diffuse_Radiation  "Sun Diffuse Radiation [%.2f W/m\u00B2]"      { channel="astro:sun:home:radiation#diffuse" }
+DateTime       Astro_Sunrise_Time
+               "Wschód Słońca [%1$tH:%1$tM]"
+               <sunrise>
+               { channel="astro:sun:home:rise#start" }
 
-String   Astro_Zodiac_Sign            "Znak zodiaku [MAP(zodiac_pl.map):%s]"     <zodiac>         { channel="astro:sun:home:zodiac#sign"}
+DateTime       Astro_Sunset_Time
+               "Zachód Słońca [%1$tH:%1$tM]"
+               <sunset>
+               { channel="astro:sun:home:set#start" }
+
+Number         Astro_SunElevation
+               "Elewacja Słońca [%.0f °]"
+               (gPersistenceSensor)
+               { channel="astro:sun:home:position#elevation" }
+
+Number         Astro_Azimuth
+               "Sun Azimuth [%.2f]"
+               { channel="astro:sun:home:position#azimuth" }
+
+Number         Astro_Elevation
+               "Sun Elevation [%.2f]"
+               { channel="astro:sun:home:position#elevation" }
+
+String         Astro_MoonPhase
+               "Faza księżyca [MAP(moon_pl.map):%s]"
+               <moon>
+               { channel="astro:moon:home:phase#name" }
+
+Number         Astro_Total_Radiation
+               "Sun Radiation [%.2f W/m\u00B2]"
+               { channel="astro:sun:home:radiation#total" }
+
+Number         Astro_Diffuse_Radiation
+               "Sun Diffuse Radiation [%.2f W/m\u00B2]"
+               { channel="astro:sun:home:radiation#diffuse" }
+
+
+String         Astro_Zodiac_Sign
+               "Znak zodiaku [MAP(zodiac_pl.map):%s]"
+               <zodiac>
+               { channel="astro:sun:home:zodiac#sign"}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Server
 ////////////////////////////////////////////////////////////////////////////////
 
-Number Server_Temperature "Server temperature [%.0f \u00b0C]" <temperature> (gHardwareTemperature, gPersistenceSensor) {mqtt="<[broker:myHome/serverTemperature:state:JS(europeanNumber.js):.*]"}
-String Server_CPUIdle "Server idle [%s %%]" {mqtt="<[broker:myHome/serverIdle:state:JS(string.js):.*]"}
-String Server_Uptime "Server uptime [%s]" <time> {mqtt="<[broker:myHome/serverUptime:state:JS(string.js):.*]"}
-String Server_LastRead "Server last read [%s]" <time> {mqtt="<[broker:myHome/lastReadServer:state:JS(string.js):.*]"}
+Number         Server_Temperature
+               "Server temperature [%.0f \u00b0C]"
+               <temperature>
+               (gHardwareTemperature, gPersistenceSensor)
+               {mqtt="<[broker:myHome/serverTemperature:state:JS(europeanNumber.js):.*]"}
 
-DateTime OpenHAB_Restart "Ostatni restart OpenHAB [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdate, gPersistenceSwitch)
+String         Server_CPUIdle
+               "Server idle [%s %%]"
+               {mqtt="<[broker:myHome/serverIdle:state:JS(string.js):.*]"}
+
+String         Server_Uptime
+               "Server uptime [%s]"
+               <time>
+               {mqtt="<[broker:myHome/serverUptime:state:JS(string.js):.*]"}
+
+String         Server_LastRead
+               "Server last read [%s]"
+               <time>
+               {mqtt="<[broker:myHome/lastReadServer:state:JS(string.js):.*]"}
+
+
+DateTime       OpenHAB_Restart
+               "Ostatni restart OpenHAB [%1$td.%1$tm %1$tH:%1$tM]"
+               <time>
+               (gLastUpdate, gPersistenceSwitch)
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Calendar status
 ////////////////////////////////////////////////////////////////////////////////
-Group    gCalendar      "gCalendar"    <time>   (System)
-Switch   calendar_Day        "day"   <time>        (gCalendar)
-Switch   calendar_Evening        "evening"   <time>        (gCalendar)
-Switch   calendar_Night          "night"   <time>        (gCalendar)
-Switch   calendar_SupportingLight   "supporting lights"   <time>        (gCalendar)
-Switch   calendar_Workday        "workday"   <time>      (gCalendar)
-Switch   calendar_Weekend        "weekend"   <time>      (gCalendar)
-Switch   calendar_Dawn           "dawn"   <time>      (gCalendar)
-Switch   calendar_Dusk           "dusk"   <time>      (gCalendar)
+Group          gCalendar
+               "gCalendar"
+               <time>
+               (System)
+
+Switch         calendar_Day
+               "day"
+               <time>
+               (gCalendar)
+
+Switch         calendar_Evening
+               "evening"
+               <time>
+               (gCalendar)
+
+Switch         calendar_Night
+               "night"
+               <time>
+               (gCalendar)
+
+Switch         calendar_SupportingLight
+               "supporting lights"
+               <time>
+               (gCalendar)
+
+Switch         calendar_Workday
+               "workday"
+               <time>
+               (gCalendar)
+
+Switch         calendar_Weekend
+               "weekend"
+               <time>
+               (gCalendar)
+
+Switch         calendar_Dawn
+               "dawn"
+               <time>
+               (gCalendar)
+
+Switch         calendar_Dusk
+               "dusk"
+               <time>
+               (gCalendar)
+

@@ -16,8 +16,8 @@ Main assumption for hardware is alternative libraries accessibility (any shell, 
 |IR LED Controller (44 keys version)|RGB LED strip controller|-|-|[IR RGB Dimmer](https://www.aliexpress.com/wholesale?SearchText=RGB+44+keys+remote+dimmer)|
 |Equiva eQ3 Bluetooth|Smart radiator thermostat|-|-|-|
 |Google Home Mini|Voice controller|-|-|-|
+|Sonoff Basic|Universal WiFi switch building block|-|-|-|
 |ESP32 (in progress)|Universal WiFi building block with Bluetooth|Embedded UART, 5V power supply|-|-|
-|Sonoff Basic (in progress)|Universal WiFi switch building block|-|-|-|
 
 *Disclaimer*: I have router from my ISP without ability to match MAC and IP address. It requires additional attention and hacks. So ability to manually setup network is important to me
 
@@ -79,13 +79,13 @@ Raspberry Pi with some software and hardware components:
 ESP8266 (nodeMCU) based sensor with optional functions:
 
 - external temperature (DS18B20)
-- internal temperature (DHT22)
-- humidity (DHT22)
-- pressure (BMP280)
+- internal temperature (DHT22, BME280)
+- humidity (DHT22, BME280)
+- pressure (BMP280, BME280)
 - PIR - detect opening/closure the circuit in sensor
 - CIR - detect opening/closure the circuit
 - light intensity detector (photoresistor)
-- [Arduino sketch](/src/conf/arduino/multisensor.sketch/multisensor.sketch.ino)
+- [Arduino sketch](/src/conf/arduino/multisketch.sketch/multisketch.sketch.ino)
 
 #### Future plans for universal sensor
 
@@ -110,7 +110,7 @@ ESP8266 (nodeMCU) based sensor with optional functions:
   - automatic up and automatic down (AUTOUP, AUTODOWN) - set to the minimum or maximum position
   - perentage value - set to specific value
   - debug - share all important values to assess driver and mechanism status
-- [Arduino sketch](/src/conf/arduino/servobig.sketch/servobig.sketch.ino)
+- [Arduino sketch](/src/conf/arduino/multisketch.sketch/multisketch.sketch.ino)
 
 ![Blind preparation](images/blind-preparation.png)
 ![Blind completed](images/blind-completed.png)
@@ -142,10 +142,11 @@ The best solution for me is one mechanical limit switch on the top and position 
 
 - ESP8266 (nodeMCU) based circuit open/close state controller
 - additional feature: detect entry as the combination of main door lock circuit and ground floor pir circuit states
-- [Arduino sketch](/src/conf/arduino/multicircuits.sketch/multicircuits.sketch.ino)
+- [Arduino sketch](/src/conf/arduino/multisketch.sketch/multisketch.sketch.ino)
 
 ### Common drivers features
 
 - OTA driver upgrade
 - Watchdog to detect WiFI network disconnection and restart device
 - Heartbeat messages sent every minute
+- Current functions present in each hardware piece is configurable in [devices.h](/src/conf/arduino/lib/devices.h)
