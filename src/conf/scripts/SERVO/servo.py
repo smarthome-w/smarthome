@@ -25,12 +25,15 @@ except:
 
 logger.info("Initialization: set current position to {}".format(CURRENT_POSITION))
 
+
 def on_connect(client, userdata, flags, rc):
     logger.info("MQTT connected with result code: " + str(rc))
     client.subscribe("myHome/GF_FamilyRoom_Camera_Servo")
 
+
 def calculate_pwm(position):
     return PWM_MIN + float(position) * (PWM_MAX - PWM_MIN) / 100
+
 
 def on_message(client, userdata, msg):
     global CURRENT_POSITION
@@ -38,13 +41,15 @@ def on_message(client, userdata, msg):
     desired_position = int(command)
 
     if (CURRENT_POSITION != desired_position):
-        logger.info("Current value: {} does not equal desired position: {}".format(CURRENT_POSITION, desired_position))
+        logger.info("Current value: {} does not equal desired position: {}".format(
+            CURRENT_POSITION, desired_position))
 
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(PWM_PIN, GPIO.OUT)
         p = GPIO.PWM(PWM_PIN, 50)
-        logger.info("Initialize servo at current position to {}".format(CURRENT_POSITION))
-        p.start (calculate_pwm(CURRENT_POSITION))
+        logger.info(
+            "Initialize servo at current position to {}".format(CURRENT_POSITION))
+        p.start(calculate_pwm(CURRENT_POSITION))
 
         change = desired_position - CURRENT_POSITION
 
@@ -58,18 +63,23 @@ def on_message(client, userdata, msg):
             CURRENT_POSITION = CURRENT_POSITION + step
             if (step > 0 and CURRENT_POSITION > desired_position) or (step < 0 and CURRENT_POSITION < desired_position):
                 CURRENT_POSITION = desired_position
-            logger.info("Change current position to {}, {}".format(CURRENT_POSITION, calculate_pwm(CURRENT_POSITION)))
-            p.ChangeDutyCycle(calculate_pwm(CURRENT_POSITION));
+            logger.info("Change current position to {}, {}".format(
+                CURRENT_POSITION, calculate_pwm(CURRENT_POSITION)))
+            p.ChangeDutyCycle(calculate_pwm(CURRENT_POSITION))
             time.sleep(0.1)
-        logger.info("Final change current position to {}, {}".format(CURRENT_POSITION, calculate_pwm(CURRENT_POSITION)))
-        p.ChangeDutyCycle(calculate_pwm(CURRENT_POSITION));
-        p.stop();
+        logger.info("Final change current position to {}, {}".format(
+            CURRENT_POSITION, calculate_pwm(CURRENT_POSITION)))
+        p.ChangeDutyCycle(calculate_pwm(CURRENT_POSITION))
+        p.stop()
         GPIO.cleanup()
-        logger.info("Servo is set to: {}, {}".format(CURRENT_POSITION, calculate_pwm(CURRENT_POSITION)))
+        logger.info("Servo is set to: {}, {}".format(
+            CURRENT_POSITION, calculate_pwm(CURRENT_POSITION)))
         f = open("/tmp/servo", "w")
         f.write(str(CURRENT_POSITION))
     else:
-        logger.info("Current value: {} equals desired position: {}".format(CURRENT_POSITION, desired_position))
+        logger.info("Current value: {} equals desired position: {}".format(
+            CURRENT_POSITION, desired_position))
+
 
 client = mqtt.Client()
 client.on_connect = on_connect

@@ -1,3 +1,3 @@
 (function(i) {
-   return i.replace(",", ".")
-})(input)
+  return i.replace(",", ".");
+})(input);

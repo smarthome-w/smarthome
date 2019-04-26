@@ -1,6 +1,7 @@
 # Software features and programming tricks
 
 ## System groups
+
 A set of system groups provides ability to categorize each item in system. I. e.:
 
 - [Persistence](/src/conf/persistence/jdbc.persist) as a base for user defined groups

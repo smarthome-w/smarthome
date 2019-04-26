@@ -4,16 +4,18 @@ when
 then
   try {
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
+        logInfo("scene", "scene: {}", triggeringItem.name)
         var int logLevel = 6
         if (HH_DebugLevel_General.state !== NULL) {
             logLevel = HH_DebugLevel_General.state as Number
         }
-        var bedroomBlindLevel = 30
+        logInfo("scene", "logLevel: {}", logLevel)
+
+        var int bedroomBlindLevel = 0
         if (HH_Night_Bedroom_Blind_Level.state !== NULL) {
-            bedroomBlindLevel = HH_Night_Bedroom_Blind_Level.state as Number
+            bedroomBlindLevel = logLevel = (HH_Night_Bedroom_Blind_Level.state as Number).intValue
         }
 
-        logInfo("scene", "scene: " + triggeringItem.name)
         if (triggeringItem.name == "GH_Day_Scene"){
             logInfo("scene", "day")
             GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
@@ -35,8 +37,14 @@ then
 
         if (triggeringItem.name == "GH_Bedroom_Night_Scene"){
             logInfo("scene", "bedroom night")
+//            if (logLevel >= 6) {
+              logError("scene_rule", "FF_Bedroom_Lights to OFF")
+//            }
             FF_Bedroom_Lights.sendCommand(OFF)
-            FF_Bedroom_Rollershutter_Dimmer.sendCommand(bedroomBlindLevel)
+//            if (logLevel >= 6) {
+              logError("scene_rule", "FF_Bedroom_Rollershutter_Dimmer to {}", bedroomBlindLevel)
+//            }
+            FF_Bedroom_Rollershutter_Dimmer.sendCommand(bedroomBlindLevel.intValue)
         }
 
         if (triggeringItem.name == "GH_BrightWindow_Scene"){
