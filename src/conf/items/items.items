@@ -659,6 +659,16 @@ Number         HH_DebugLevel_Heartbeat
                <time>
                (gParameters, gPersistenceSwitch)
 
+Number         HH_DebugLevel_Scene
+               "Scene debug level [%.0f]"
+               <time>
+               (gParameters, gPersistenceSwitch)
+
+Number         HH_DebugLevel_Rollershutter
+               "Rollershutter debug level [%.0f]"
+               <time>
+               (gParameters, gPersistenceSwitch)
+
 Number         HH_DebugLevel_General
                "General debug level [%.0f]"
                <time>
@@ -1290,7 +1300,6 @@ Switch         FF_Bedroom_Lights_Heartbeat_LastUpdate_Error
                "Sonoff Sypialnia LED"
                <time>
                (gErrors, gPersistenceSwitch)
-
 
 String         FF_Bedroom_Wardobe_Heartbeat
                "Sypialnia szafa[%s]"

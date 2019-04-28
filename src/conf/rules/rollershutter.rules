@@ -3,6 +3,11 @@ when
     Member of gRollershutter changed
 then
   try {
+    var int logLevel = 6
+    if (HH_DebugLevel_Rollershutter.state !== NULL) {
+      logLevel = HH_DebugLevel_Scene.state as Number
+    }
+
     //logInfo("rollershutter", "Rollershutter change detected {} {}", triggeringItem.name, triggeringItem.state)
     var lastupdate_item = gLastUpdateRollershutter.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
 
@@ -22,6 +27,10 @@ when
     Item calendar_Dusk changed
 then
   try {
+    var int logLevel = 6
+    if (HH_DebugLevel_Rollershutter.state !== NULL) {
+      logLevel = HH_DebugLevel_Scene.state as Number
+    }
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
         if (calendar_Dusk.state.toString() == "ON") {
           GH_Evening_Scene.sendCommand(ON)
@@ -39,6 +48,10 @@ when
     Item calendar_Dawn changed
 then
   try {
+    var int logLevel = 6
+    if (HH_DebugLevel_Rollershutter.state !== NULL) {
+      logLevel = HH_DebugLevel_Scene.state as Number
+    }
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
         if (calendar_Dawn.state.toString() == "ON") {
           GH_Day_Scene.sendCommand(ON)

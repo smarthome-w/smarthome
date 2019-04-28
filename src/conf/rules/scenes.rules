@@ -6,8 +6,8 @@ then
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
         logInfo("scene", "scene: {}", triggeringItem.name)
         var int logLevel = 6
-        if (HH_DebugLevel_General.state !== NULL) {
-            logLevel = HH_DebugLevel_General.state as Number
+        if (HH_DebugLevel_Scene.state !== NULL) {
+            logLevel = HH_DebugLevel_Scene.state as Number
         }
         logInfo("scene", "logLevel: {}", logLevel)
 
