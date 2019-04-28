@@ -106,8 +106,10 @@ void initializeDigitalButton()
   iix++;
   buttons[iix] = {"pinD3", pinD3, SENSOR_BUTTON, SENSOR_VALUE_BUTTON_GPIO0, NO_VALUE, NORMALLY_CLOSED};
   iix++;
-  buttons[iix] = {"pinRx", pinRx, SENSOR_BUTTON, SENSOR_VALUE_BUTTON_GPIO3, NO_VALUE, NORMALLY_OPEN};
+#ifdef fRelayAuto
+  buttons[iix] = {"pinRx", pinRx, SENSOR_BUTTON, SENSOR_VALUE_BUTTON_GPIORX, NO_VALUE, NORMALLY_OPEN};
   iix++;
+#endif
   //        buttons[iix] = {"pinD7", pinD7, SENSOR_BUTTON, SENSOR_VALUE_BUTTON_GPIO13, NO_VALUE, NORMALLY_OPEN}; iix++;
 #endif
   Serial.println("Initialize button input...");

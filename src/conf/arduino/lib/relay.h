@@ -48,13 +48,30 @@ void initializeRelay()
 
 void processRelay()
 {
-  //boolean hardwareON = (digitalRead(buttons[3].pin) == HIGH);
-  //boolean hardwareOFF = (digitalRead(buttons[3].pin) == LOW && buttons[3].previousValue == HIGH);
   boolean hardwareON = false;
   boolean hardwareOFF = false;
+  boolean hardwareON_ON = false;
+#ifdef fRelayAuto
+  hardwareON = (digitalRead(buttons[3].pin) == HIGH);
+  hardwareOFF = (digitalRead(buttons[3].pin) == LOW && buttons[3].previousValue == HIGH);
+  hardwareON_ON = (digitalRead(buttons[3].pin) == HIGH && buttons[3].previousValue == LOW);
+#endif
   boolean toggleON = (digitalRead(buttons[1].pin) == LOW && buttons[1].previousValue == HIGH);
   boolean mqttON = (GLOBAL_MQTT_MSG == "ON");
   boolean mqttOFF = (GLOBAL_MQTT_MSG == "OFF");
+
+  if (toggleON)
+  {
+    sendDebugMQTTMessage("toggleON", String(toggleON));
+  }
+  if (hardwareON_ON)
+  {
+    sendDebugMQTTMessage("hardwareON_ON", String(hardwareON_ON));
+  }
+  if (hardwareOFF)
+  {
+    sendDebugMQTTMessage("hardwareOFF", String(hardwareOFF));
+  }
 
   int currentRelay = digitalRead(RELAY_PIN);
   /*
@@ -71,6 +88,12 @@ void processRelay()
     Serial.print(mqttOFF);
     Serial.println(":");
 */
+
+  if (GLOBAL_MQTT_MSG == "DEBUG")
+  {
+    String stateStr = "pin:" + String(digitalRead(buttons[3].pin));
+    sendDebugMQTTMessage("State", stateStr);
+  }
   if (currentRelay == HIGH && hardwareOFF)
   {
     digitalWrite(RELAY_PIN, LOW);

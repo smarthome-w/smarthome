@@ -1306,9 +1306,12 @@ Switch         FF_Bedroom_Wardobe_Heartbeat_LastUpdate_Error
                <time>
                (gErrors, gPersistenceSwitch)
 
-
 String         RGB_Color
                "Kolor diod"
                <rgb>
                (GF_FamilyRoom, gIRRGB, gPersistenceSwitch)
 
+Switch         DebugButton
+               "Debug Button"
+               (gSystem)
+               {mqtt=">[broker:myHomeY/GF_Kitchen_LED_Relay_Command:command:ON:DEBUG]"}

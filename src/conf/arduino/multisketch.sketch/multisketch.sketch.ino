@@ -1,4 +1,4 @@
-  #define SKETCH_VERSION "20190415"
+#define SKETCH_VERSION "20190428"
 #include "lib/devices.h"
 
 #include "lib/wifi.h"
@@ -21,10 +21,12 @@
 #include "lib/rollershutter.h"
 
 void setup() {
+  #ifndef fDisableSerial
   Serial.begin(9600);
   while (!Serial) {
     ; // wait for serial port to connect. Needed for native USB port only
   }
+  #endif
   Serial.println("");
   Serial.println("");
   Serial.print(SKETCH_VERSION);

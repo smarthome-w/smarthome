@@ -74,4 +74,7 @@ sitemap system label="System" {
       Switch item=GH_Evening_Scene mappings=[ON="Set"]
       Switch item=GH_Day_Scene mappings=[ON="Set"]
     }
+    Frame label="Debug" icon="firstfloor" {
+      Switch item=DebugButton mappings=[ON="Debug"]
+    }
 }
