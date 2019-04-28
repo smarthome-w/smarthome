@@ -4,12 +4,11 @@ when
 then
   try {
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
-        logInfo("scene", "scene: {}", triggeringItem.name)
+        logError("scene", "scene: {}", triggeringItem.name)
         var int logLevel = 6
         if (HH_DebugLevel_Scene.state !== NULL) {
             logLevel = HH_DebugLevel_Scene.state as Number
         }
-        logInfo("scene", "logLevel: {}", logLevel)
 
         var int bedroomBlindLevel = 0
         if (HH_Night_Bedroom_Blind_Level.state !== NULL) {
@@ -17,17 +16,23 @@ then
         }
 
         if (triggeringItem.name == "GH_Day_Scene"){
-            logInfo("scene", "day")
+//            if (logLevel >= 6) {
+              logError("scene_rule", "day")
+//            }
             GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
         }
         if (triggeringItem.name == "GH_Evening_Scene"){
-            logInfo("scene", "evening")
+//            if (logLevel >= 6) {
+              logError("scene_rule", "evening")
+//            }
             GF_FamilyRoom_Scenario.sendCommand(ON)
             GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
             FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
         }
         if (triggeringItem.name == "GH_Night_Scene"){
-            logInfo("scene", "night")
+//            if (logLevel >= 6) {
+              logError("scene_rule", "night")
+//            }
             GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
 //            FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
             GF_Lights_Scenario.sendCommand(OFF)
@@ -36,7 +41,7 @@ then
         }
 
         if (triggeringItem.name == "GH_Bedroom_Night_Scene"){
-            logInfo("scene", "bedroom night")
+            logError("scene", "bedroom night")
 //            if (logLevel >= 6) {
               logError("scene_rule", "FF_Bedroom_Lights to OFF")
 //            }
@@ -48,11 +53,15 @@ then
         }
 
         if (triggeringItem.name == "GH_BrightWindow_Scene"){
-            logInfo("scene", "bright window")
+//            if (logLevel >= 6) {
+            logError("scene", "bright window")
+//            }
             GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
         }
         if (triggeringItem.name == "GH_DarkWindow_Scene"){
-            logInfo("scene", "dark window")
+//            if (logLevel >= 6) {
+            logError("scene", "dark window")
+//            }
             GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
         }
     }
