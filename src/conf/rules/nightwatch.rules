@@ -7,7 +7,10 @@ when
     Member of gNightWatch received update
 then
   try {
-    val nightwatchTimerName = "nightwatchTimer"
+    var nightwatchTimerName = "corridorNightwatchTimer"
+    if (triggeringItem.name == "PIR_GF_Kitchen") {
+      nightwatchTimerName = "kitchenNightwatchTimer"
+    }
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
         if (calendar_SupportingLight.state.toString() == "ON") {
           if (triggeringItem.state == OPEN) {

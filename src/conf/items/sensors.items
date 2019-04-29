@@ -109,7 +109,7 @@ Contact        PIR_GF_FamilyRoom
 Contact        PIR_GF_Kitchen
                "PIR Kuchnia"
                <light>
-               (GF_Kitchen, gPIR, gPersistenceSwitch)
+               (GF_Kitchen, gPIR, gNightWatch, gPersistenceSwitch)
                {mqtt="<[broker:myHome/PIR_GF_Kitchen:state:default]"}
 
 Contact        PIR_FF_Corridor
@@ -146,7 +146,6 @@ Contact        PIR_Corridor_Storage
                "PIR Corridor Storage"
                <light>
                (GF_Corridor, gPIR, gPersistenceSwitch)
-
 
 Switch         PIR_GF_Corridor_State
                "PIR Korytarz"
@@ -192,7 +191,6 @@ Switch         PIR_Corridor_Storage_State
                "PIR Corridor Storage"
                <rgb>
                (gPIRState)
-
 
 DateTime       PIR_GF_Corridor_LastUpdate
                "PIR Korytarz [%1$td.%1$tm %1$tH:%1$tM]"
