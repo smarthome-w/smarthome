@@ -7,7 +7,7 @@ then
         logError("scene", "scene: {}", triggeringItem.name)
         var int logLevel = 6
         if (HH_DebugLevel_Scene.state !== NULL) {
-            logLevel = HH_DebugLevel_Scene.state as Number
+          logLevel = (HH_DebugLevel_Scene.state as Number).intValue
         }
 
         var int bedroomBlindLevel = 0

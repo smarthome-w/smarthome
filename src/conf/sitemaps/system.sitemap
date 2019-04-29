@@ -40,6 +40,14 @@ sitemap system label="System" {
                                           5="DEBUG",
                                           6="TRACE"
                                          ]
+      Selection item=HH_DebugLevel_Nightwatch mappings=[
+                                          1="FATAL",
+                                          2="ERROR",
+                                          3="WARN",
+                                          4="INFO",
+                                          5="DEBUG",
+                                          6="TRACE"
+                                         ]
       Selection item=HH_DebugLevel_Rollershutter mappings=[
                                           1="FATAL",
                                           2="ERROR",

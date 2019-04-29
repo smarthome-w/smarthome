@@ -664,6 +664,11 @@ Number         HH_DebugLevel_Scene
                <time>
                (gParameters, gPersistenceSwitch)
 
+Number         HH_DebugLevel_Nightwatch
+               "Nightwatch debug level [%.0f]"
+               <time>
+               (gParameters, gPersistenceSwitch)
+
 Number         HH_DebugLevel_Rollershutter
                "Rollershutter debug level [%.0f]"
                <time>
