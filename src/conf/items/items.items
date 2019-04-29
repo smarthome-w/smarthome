@@ -659,6 +659,21 @@ Number         HH_DebugLevel_Heartbeat
                <time>
                (gParameters, gPersistenceSwitch)
 
+Number         HH_DebugLevel_Scene
+               "Scene debug level [%.0f]"
+               <time>
+               (gParameters, gPersistenceSwitch)
+
+Number         HH_DebugLevel_Nightwatch
+               "Nightwatch debug level [%.0f]"
+               <time>
+               (gParameters, gPersistenceSwitch)
+
+Number         HH_DebugLevel_Rollershutter
+               "Rollershutter debug level [%.0f]"
+               <time>
+               (gParameters, gPersistenceSwitch)
+
 Number         HH_DebugLevel_General
                "General debug level [%.0f]"
                <time>
@@ -1291,7 +1306,6 @@ Switch         FF_Bedroom_Lights_Heartbeat_LastUpdate_Error
                <time>
                (gErrors, gPersistenceSwitch)
 
-
 String         FF_Bedroom_Wardobe_Heartbeat
                "Sypialnia szafa[%s]"
                (FF_Bedroom, gHeartbeat)
@@ -1306,9 +1320,12 @@ Switch         FF_Bedroom_Wardobe_Heartbeat_LastUpdate_Error
                <time>
                (gErrors, gPersistenceSwitch)
 
-
 String         RGB_Color
                "Kolor diod"
                <rgb>
                (GF_FamilyRoom, gIRRGB, gPersistenceSwitch)
 
+Switch         DebugButton
+               "Debug Button"
+               (gSystem)
+               {mqtt=">[broker:myHomeY/GF_Kitchen_LED_Relay_Command:command:ON:DEBUG]"}

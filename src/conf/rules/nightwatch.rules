@@ -7,7 +7,23 @@ when
     Member of gNightWatch received update
 then
   try {
-    val nightwatchTimerName = "nightwatchTimer"
+    var int logLevel = 6
+    if (HH_DebugLevel_Nightwatch.state !== NULL) {
+        logLevel = (HH_DebugLevel_Nightwatch.state as Number).intValue
+    }
+    if (logLevel >= 6) {
+      logError("nightwatch_rule", "Nightwatch change detected {} {}", triggeringItem.name, triggeringItem.state)
+    }
+
+    var nightwatchTimerName = "corridorNightwatchTimer"
+    if (triggeringItem.name == "PIR_GF_Kitchen") {
+      nightwatchTimerName = "kitchenNightwatchTimer"
+    }
+
+    if (logLevel >= 6) {
+      logError("nightwatch_rule", "nightwatchTimerName: {}", nightwatchTimerName)
+    }
+
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
         if (calendar_SupportingLight.state.toString() == "ON") {
           if (triggeringItem.state == OPEN) {
@@ -18,17 +34,31 @@ then
             if(nightwatchTimers.get(nightwatchTimerName) === null){
                 nightwatchTimers.put(nightwatchTimerName, createTimer(now.plusMinutes(timeOutMinutes), [|
                     nightwatchTimers.put(nightwatchTimerName, null)
-                    //logInfo("nightwatch", "Timer expired {}", nightwatchTimerName)
+                    if (logLevel >= 6) {
+                      logError("nightwatch_rule", "Timer expired {}", nightwatchTimerName)
+                    }
                     // off
-                    GF_Corridor_Light_LED.sendCommand(OFF)
+                    if (nightwatchTimerName == "corridorNightwatchTimer") {
+                      GF_Corridor_Light_LED.sendCommand(OFF)
+                    } else {
+                      GF_Kitchen_LED.sendCommand(OFF);
+                    }
                 ]))
-                //logInfo("nightwatch", "Timer created {}", nightwatchTimerName)
+                if (logLevel >= 6) {
+                  logError("nightwatch_rule", "Timer created {}", nightwatchTimerName)
+                }
                 //on
-                GF_Corridor_Light_LED.sendCommand(ON)
+                if (nightwatchTimerName == "corridorNightwatchTimer") {
+                  GF_Corridor_Light_LED.sendCommand(ON)
+                } else {
+                  GF_Kitchen_LED.sendCommand(ON);
+                }
             }
             else {
                 nightwatchTimers.get(nightwatchTimerName).reschedule(now.plusMinutes(timeOutMinutes))
-                //logInfo("nightwatch", "Timer rescheduled {}", nightwatchTimerName)
+                if (logLevel >= 6) {
+                  logError("nightwatch_rule", "Timer rescheduled {}", nightwatchTimerName)
+                }
                 GF_Corridor_Light_LED.sendCommand(ON)
             }
           }

@@ -32,6 +32,30 @@ sitemap system label="System" {
                                           5="DEBUG",
                                           6="TRACE"
                                          ]
+      Selection item=HH_DebugLevel_Scene mappings=[
+                                          1="FATAL",
+                                          2="ERROR",
+                                          3="WARN",
+                                          4="INFO",
+                                          5="DEBUG",
+                                          6="TRACE"
+                                         ]
+      Selection item=HH_DebugLevel_Nightwatch mappings=[
+                                          1="FATAL",
+                                          2="ERROR",
+                                          3="WARN",
+                                          4="INFO",
+                                          5="DEBUG",
+                                          6="TRACE"
+                                         ]
+      Selection item=HH_DebugLevel_Rollershutter mappings=[
+                                          1="FATAL",
+                                          2="ERROR",
+                                          3="WARN",
+                                          4="INFO",
+                                          5="DEBUG",
+                                          6="TRACE"
+                                         ]
       Selection item=HH_DebugLevel_General mappings=[
                                           1="FATAL",
                                           2="ERROR",
@@ -73,5 +97,8 @@ sitemap system label="System" {
       Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]
       Switch item=GH_Evening_Scene mappings=[ON="Set"]
       Switch item=GH_Day_Scene mappings=[ON="Set"]
+    }
+    Frame label="Debug" icon="firstfloor" {
+      Switch item=DebugButton mappings=[ON="Debug"]
     }
 }

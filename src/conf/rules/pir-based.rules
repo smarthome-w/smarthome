@@ -4,16 +4,35 @@ when
   Item PIR_Corridor_Storage_State received update
 then
   try {
+    var int logLevel = 6
+    if (HH_DebugLevel_PIRCIR.state !== NULL) {
+        logLevel = (HH_DebugLevel_PIRCIR.state as Number).intValue
+    }
+    if (logLevel >= 6) {
+      logError("entrywatch_rule", "Entrywatch change detected {} {}", triggeringItem.name, triggeringItem.state)
+    }
     if (PIR_GF_EntryWatch_State.state.toString() == "ON") {
+      if (logLevel >= 6) {
+        logError("entrywatch_rule", "Entrywatch GF_Corridor_Storage (1)")
+      }
       GF_Corridor_Storage.sendCommand(ON)
     }
     if (PIR_GF_EntryWatch_State.state.toString() == "OFF") {
+      if (logLevel >= 6) {
+        logError("entrywatch_rule", "Entrywatch GF_Corridor_Storage (2)")
+      }
       GF_Corridor_Storage.sendCommand(OFF)
     }
     if (PIR_Corridor_Storage_State.state.toString() == "ON") {
+      if (logLevel >= 6) {
+        logError("entrywatch_rule", "Entrywatch GF_Corridor_Storage (3)")
+      }
       GF_Corridor_Storage.sendCommand(ON)
     }
     if (PIR_Corridor_Storage_State.state.toString() == "OFF") {
+      if (logLevel >= 6) {
+        logError("entrywatch_rule", "Entrywatch GF_Corridor_Storage (4)")
+      }
       GF_Corridor_Storage.sendCommand(OFF)
     }
   } catch (Throwable t) {

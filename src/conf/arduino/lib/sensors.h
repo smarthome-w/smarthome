@@ -34,7 +34,7 @@ const int SENSOR_VALUE_PRESSURE = 7;
 const int SENSOR_VALUE_BUTTON_GPIO0 = 80;
 const int SENSOR_VALUE_BUTTON_GPIO2 = 81;
 const int SENSOR_VALUE_BUTTON_GPIO13 = 82;
-const int SENSOR_VALUE_BUTTON_GPIO3 = 83;
+const int SENSOR_VALUE_BUTTON_GPIORX = 83;
 
 const int pinD0 = 16;
 const int pinD1 = 5;
@@ -45,7 +45,8 @@ const int pinD5 = 14;
 const int pinD6 = 12;
 const int pinD7 = 13;
 const int pinD8 = 15;
-const int pinRx = 3; // rx
+const int pinRx = 3;
+const int pinTx = 1;
 
 const int NORMALLY_CLOSED = 1;
 const int NORMALLY_OPEN = 2;

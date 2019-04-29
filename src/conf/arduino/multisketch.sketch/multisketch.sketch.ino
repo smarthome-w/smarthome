@@ -1,4 +1,4 @@
-  #define SKETCH_VERSION "20190415"
+#define SKETCH_VERSION "20190428"
 #include "lib/devices.h"
 
 #include "lib/wifi.h"

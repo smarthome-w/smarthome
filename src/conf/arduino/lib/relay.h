@@ -48,56 +48,69 @@ void initializeRelay()
 
 void processRelay()
 {
-  //boolean hardwareON = (digitalRead(buttons[3].pin) == HIGH);
-  //boolean hardwareOFF = (digitalRead(buttons[3].pin) == LOW && buttons[3].previousValue == HIGH);
   boolean hardwareON = false;
   boolean hardwareOFF = false;
+  boolean hardwareON_ON = false;
+  //#ifdef fRelayAuto
+  hardwareON = (digitalRead(buttons[2].pin) == LOW);
+  hardwareOFF = (digitalRead(buttons[2].pin) == HIGH && buttons[2].previousValue == LOW);
+  hardwareON_ON = (digitalRead(buttons[2].pin) == LOW && buttons[2].previousValue == HIGH);
+  //#endif
   boolean toggleON = (digitalRead(buttons[1].pin) == LOW && buttons[1].previousValue == HIGH);
   boolean mqttON = (GLOBAL_MQTT_MSG == "ON");
   boolean mqttOFF = (GLOBAL_MQTT_MSG == "OFF");
 
-  int currentRelay = digitalRead(RELAY_PIN);
-  /*
-    Serial.print(currentRelay);
-    Serial.print(":");
-    Serial.print(hardwareON);
-    Serial.print(":");
-    Serial.print(hardwareOFF);
-    Serial.print(":");
-    Serial.print(toggleON);
-    Serial.print(":");
-    Serial.print(mqttON);
-    Serial.print(":");
-    Serial.print(mqttOFF);
-    Serial.println(":");
-*/
-  if (currentRelay == HIGH && hardwareOFF)
+  if (toggleON)
   {
-    digitalWrite(RELAY_PIN, LOW);
+    sendDebugMQTTMessage("toggleON", String(toggleON));
   }
-  else if (currentRelay == LOW && (hardwareON || mqttON))
+  if (hardwareON_ON)
   {
-    digitalWrite(RELAY_PIN, HIGH);
+    sendDebugMQTTMessage("hardwareON_ON", String(hardwareON_ON));
   }
-  else if (currentRelay == LOW && toggleON)
+  if (hardwareOFF)
   {
-    digitalWrite(RELAY_PIN, HIGH);
-  }
-  else if (currentRelay == HIGH && toggleON)
-  {
-    digitalWrite(RELAY_PIN, LOW);
-  }
-  else if (currentRelay == HIGH && hardwareOFF)
-  {
-    digitalWrite(RELAY_PIN, LOW);
-  }
-  else if (currentRelay == HIGH && mqttOFF)
-  {
-    digitalWrite(RELAY_PIN, LOW);
+    sendDebugMQTTMessage("hardwareOFF", String(hardwareOFF));
   }
 
-  if (currentRelay != digitalRead(RELAY_PIN))
+  int currentRelay = digitalRead(RELAY_PIN);
+
+  if (GLOBAL_MQTT_MSG == "DEBUG")
   {
+    String stateStr = "relay:" + String(currentRelay) + "pin:" + String(digitalRead(buttons[2].pin));
+    sendDebugMQTTMessage("State", stateStr);
+  }
+
+  int nextRelay = currentRelay;
+
+  if (currentRelay == HIGH)
+  {
+    if (!hardwareON)
+    {
+      if (toggleON || mqttOFF)
+      {
+        nextRelay = LOW;
+      }
+    }
+    if (hardwareOFF)
+    {
+      nextRelay = LOW;
+    }
+  }
+  else
+  {
+    if (hardwareON)
+    {
+      nextRelay = HIGH;
+    }
+    else if (toggleON || mqttON)
+    {
+      nextRelay = HIGH;
+    }
+  }
+  if (currentRelay != nextRelay)
+  {
+    digitalWrite(RELAY_PIN, nextRelay);
     sendRelayMsg();
   }
   GLOBAL_MQTT_MSG = "";
