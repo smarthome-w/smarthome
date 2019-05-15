@@ -99,6 +99,9 @@ Group          gEntryWatch
                <heating>
                (System)
 
+Group          gMoveWatch
+               <heating>
+               (System)
 
 Group          gRollershutter
                <heating>

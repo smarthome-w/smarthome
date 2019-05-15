@@ -6,7 +6,7 @@
 #include <Wire.h>
 #include <SPI.h>
 
-#define ONE_WIRE_BUS D4 //Pin to which is attached a temperature sensor
+#define ONE_WIRE_BUS 2 // D4 //Pin to which is attached a temperature sensor
 
 OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature DS18B20(&oneWire);

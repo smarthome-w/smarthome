@@ -18,6 +18,7 @@ struct circuit
   int sensorValueType;
   int previousValue;
   int type;
+  int mode;
 };
 
 #ifdef fDitigalInput
@@ -58,40 +59,44 @@ void initializeDigitalInput()
   Serial.println("Initialize definition data...");
   iix = 0;
 #ifdef fCIR
-  circuits[iix] = {"pinD6", pinD6, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED};
+  circuits[iix] = {"pinD6", pinD6, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
 #endif
 #ifdef fPIR
-  circuits[iix] = {"pinD5", pinD5, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED};
+  circuits[iix] = {"pinD5", pinD5, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  iix++;
+#endif
+#ifdef fRelayPIR
+  circuits[iix] = {"pinD4", pinD4, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT};
   iix++;
 #endif
 #ifdef TechnicalRoom1
-  circuits[iix] = {"GF_FamilyRoom", pinD1, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED};
+  circuits[iix] = {"GF_FamilyRoom", pinD1, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
-  circuits[iix] = {"GF_Kitchen", pinD2, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED};
+  circuits[iix] = {"GF_Kitchen", pinD2, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
-  circuits[iix] = {"FF_Corridor", pinD5, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED};
+  circuits[iix] = {"FF_Corridor", pinD5, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
-  circuits[iix] = {"FF_Bedroom", pinD6, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED};
+  circuits[iix] = {"FF_Bedroom", pinD6, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
 #endif
 #ifdef TechnicalRoom2
-  circuits[iix] = {"GF_FamilyRoom", pinD1, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED};
+  circuits[iix] = {"GF_FamilyRoom", pinD1, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
-  circuits[iix] = {"GF_MainDoor", pinD2, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED};
+  circuits[iix] = {"GF_MainDoor", pinD2, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
-  circuits[iix] = {"GF_Corridor", pinD5, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED};
+  circuits[iix] = {"GF_Corridor", pinD5, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
-  circuits[iix] = {"GF_MainLock", pinD6, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED};
+  circuits[iix] = {"GF_MainLock", pinD6, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
-  circuits[iix] = {"GF_Kitchen", pinD7, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED};
+  circuits[iix] = {"GF_Kitchen", pinD7, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
 #endif
   Serial.println("Initialize digital input...");
   for (iix = 0; iix < CIRCUITS; iix = iix + 1)
   {
-    pinMode(circuits[iix].pin, INPUT_PULLUP);
-    Serial.println("Circuit " + circuits[iix].name + " pin " + circuits[iix].pin + " set to INPUT_PULLUP");
+    pinMode(circuits[iix].pin, circuits[iix].mode);
+    Serial.println("Circuit " + circuits[iix].name + " pin " + circuits[iix].pin + " set to " + String(circuits[iix].mode));
   }
 #endif
 }
@@ -101,18 +106,19 @@ void initializeDigitalButton()
 #ifdef fRelay
   Serial.println("Initialize button data...");
   iix = 0;
-  buttons[iix] = {"pinD6-relay", pinD6, SENSOR_RELAY, SENSOR_VALUE_RELAY, NO_VALUE, NORMALLY_CLOSED};
+  buttons[iix] = {"pinD6-relay", pinD6, SENSOR_RELAY, SENSOR_VALUE_RELAY, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
-  buttons[iix] = {"pinD3", pinD3, SENSOR_BUTTON, SENSOR_VALUE_BUTTON_GPIO0, NO_VALUE, NORMALLY_CLOSED};
+  buttons[iix] = {"pinD3", pinD3, SENSOR_BUTTON, SENSOR_VALUE_BUTTON_GPIO0, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
-  buttons[iix] = {"pinD4", pinD4, SENSOR_BUTTON, SENSOR_VALUE_BUTTON_GPIO2, NO_VALUE, NORMALLY_OPEN};
+#ifndef fRelayPIR
+  buttons[iix] = {"pinD4", pinD4, SENSOR_BUTTON, SENSOR_VALUE_BUTTON_GPIO2, NO_VALUE, NORMALLY_OPEN, INPUT_PULLUP};
   iix++;
-
+#endif
   Serial.println("Initialize button input...");
   for (iix = 0; iix < BUTTONS; iix = iix + 1)
   {
-    pinMode(buttons[iix].pin, INPUT_PULLUP);
-    Serial.println("Button " + buttons[iix].name + " pin " + buttons[iix].pin + " set to INPUT_PULLUP");
+    pinMode(buttons[iix].pin, buttons[iix].mode);
+    Serial.println("Button " + buttons[iix].name + " pin " + buttons[iix].pin + " set to " + String(buttons[iix].mode));
   }
 #endif
 }

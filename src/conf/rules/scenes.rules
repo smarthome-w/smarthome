@@ -50,7 +50,7 @@ then
               logError("scene_rule", "FF_Bedroom_Rollershutter_Dimmer to {}", bedroomBlindLevel)
 //            }
             FF_Bedroom_Rollershutter_Dimmer.sendCommand(bedroomBlindLevel.intValue)
-        }
+            GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)        }
 
         if (triggeringItem.name == "GH_BrightWindow_Scene"){
 //            if (logLevel >= 6) {

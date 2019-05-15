@@ -10,8 +10,9 @@ void initializeWiFi()
   Serial.println("Initialize WIFI...");
 
   WiFi.persistent(false);
-  WiFi.begin(WIFI_SSID, WIFI_PASSWD);
   WiFi.mode(WIFI_STA);
+  WiFi.hostname(fName);
+  WiFi.begin(WIFI_SSID, WIFI_PASSWD);
 
   IPAddress ip(IP_O1, IP_O2, IP_O3, WIFIIP);
   IPAddress gateway(IP_G1, IP_G2, IP_G3, IP_G4);

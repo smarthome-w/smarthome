@@ -25,7 +25,7 @@ then
     }
 
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
-        if (calendar_SupportingLight.state.toString() == "ON") {
+        if (calendar_SupportingLight.state.toString() == "ON" || DemoMode.state.toString() == "ON") {
           if (triggeringItem.state == OPEN) {
             var int timeOutMinutes = 2
             if (HH_PIR_State_Timeout.state !== NULL) {
@@ -59,7 +59,11 @@ then
                 if (logLevel >= 6) {
                   logError("nightwatch_rule", "Timer rescheduled {}", nightwatchTimerName)
                 }
-                GF_Corridor_Light_LED.sendCommand(ON)
+                if (nightwatchTimerName == "corridorNightwatchTimer") {
+                  GF_Corridor_Light_LED.sendCommand(ON)
+                } else {
+                  GF_Kitchen_LED.sendCommand(ON);
+                }
             }
           }
         }

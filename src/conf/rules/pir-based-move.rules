@@ -1,0 +1,60 @@
+import java.util.Map
+
+val Map<String, Timer> movewatchTimers = newHashMap
+
+rule "movewatch_rule"
+when
+    Member of gMoveWatch received update
+then
+  try {
+    var int logLevel = 6
+    if (HH_DebugLevel_Movewatch.state !== NULL) {
+        logLevel = (HH_DebugLevel_Movewatch.state as Number).intValue
+    }
+    if (logLevel >= 6) {
+      logError("movewatch_rule", "Nightwatch change detected {} {}", triggeringItem.name, triggeringItem.state)
+    }
+
+    var movewatchTimerName = "wardobeMovewatchTimer"
+
+    if (logLevel >= 6) {
+      logError("movewatch_rule", "movewatchTimerName: {}", movewatchTimerName)
+    }
+
+    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+        if (calendar_SupportingLight.state.toString() == "ON" || DemoMode.state.toString() == "ON") {
+          if (triggeringItem.state == OPEN) {
+            var int timeOutMinutes = 2
+            if (HH_PIR_State_Timeout.state !== NULL) {
+              timeOutMinutes = (HH_PIR_State_Timeout.state as Number).intValue
+            }
+            if(movewatchTimers.get(movewatchTimerName) === null){
+                movewatchTimers.put(movewatchTimerName, createTimer(now.plusMinutes(timeOutMinutes), [|
+                    movewatchTimers.put(movewatchTimerName, null)
+                    if (logLevel >= 6) {
+                      logError("movewatch_rule", "Timer expired {}", movewatchTimerName)
+                    }
+                    // off
+                    FF_Bedroom_Wardobe.sendCommand(OFF);
+                ]))
+                if (logLevel >= 6) {
+                  logError("movewatch_rule", "Timer created {}", movewatchTimerName)
+                }
+                //on
+                FF_Bedroom_Wardobe.sendCommand(ON);
+            }
+            else {
+                movewatchTimers.get(movewatchTimerName).reschedule(now.plusMinutes(timeOutMinutes))
+                if (logLevel >= 6) {
+                  logError("movewatch_rule", "Timer rescheduled {}", movewatchTimerName)
+                }
+                FF_Bedroom_Wardobe.sendCommand(ON);
+            }
+          }
+        }
+    }
+  } catch (Throwable t) {
+    logError("Error", "Error in movewatch_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+  } finally {
+  }
+end
