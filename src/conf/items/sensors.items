@@ -136,6 +136,12 @@ Contact        PIR_FF_Bedroom
                (FF_Bedroom, gPIR, gPersistenceSwitch)
                {mqtt="<[broker:myHome/PIR_FF_Bedroom:state:default]"}
 
+Contact        PIR_FF_BedroomWardobe
+               "PIR Sypialnia szafa"
+               <light>
+               (FF_Bedroom, gPIR, gPersistenceSwitch)
+               {mqtt="<[broker:myHomeY/PIR_FF_BedroomWardobe_LED_Relay:state:default]"}
+
 Contact        PIR_GF_EntryWatch
                "PIR Entry Watch"
                <light>
@@ -182,6 +188,11 @@ Switch         PIR_FF_Bedroom_State
                <rgb>
                (gPIRState, gPersistenceSwitch)
 
+Switch         PIR_FF_BedroomWardobe_State
+               "PIR Sypialnia szafa"
+               <rgb>
+               (gPIRState, gPersistenceSwitch)
+
 Switch         PIR_GF_EntryWatch_State
                "PIR Entry Watch"
                <rgb>
@@ -224,6 +235,11 @@ DateTime       PIR_FF_AliceRoom_LastUpdate
 
 DateTime       PIR_FF_Bedroom_LastUpdate
                "PIR Sypialnia [%1$td.%1$tm %1$tH:%1$tM]"
+               <time>
+               (gLastUpdatePIR, gPersistenceSwitch)
+
+DateTime       PIR_FF_BedroomWardobe_LastUpdate
+               "PIR Sypialnia szafa [%1$td.%1$tm %1$tH:%1$tM]"
                <time>
                (gLastUpdatePIR, gPersistenceSwitch)
 

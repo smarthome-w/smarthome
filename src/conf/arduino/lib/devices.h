@@ -23,6 +23,7 @@
 //#define fAnalog
 //#define fRelay
 //#define fRelayAuto
+//#define fRelayPIR
 //#define fRollershutter
 
 //#define fDisableSerial
@@ -31,8 +32,13 @@
 #ifndef devices_h
 #define devices_h
 
-#define Kitchen
+//#define FamilyRoomLED
+//#define FamilyRoomLight
+#define CorridorStorage
+
+//#define Kitchen
 //#define BedroomLights
+//#define BedroomWardobe
 //#define CorridorLights
 //#define AnnRoom
 //#define AliceRoom
@@ -64,7 +70,7 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define fName "FF_Bedroom_LED_Relay"
 #define WIFIIP 36
 #define CIRCUITS_NO 0
-#define BUTTONS_NO 2
+#define BUTTONS_NO 3
 #define fRelay
 #define fDitigalInput
 #define fMQTTInput
@@ -88,18 +94,75 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define GLOBAL_MQTT_SUBSCRIBE_PREFIX "myHomeY/GF_Corridor_LED_Relay_Command"
 #endif
 
+#ifdef BedroomWardobe
+#define fName "FF_BedroomWardobe_LED_Relay"
+#define WIFIIP 38
+#define CIRCUITS_NO 1
+#define BUTTONS_NO 2
+#define fRelay
+#define fRelayPIR
+#define fDitigalInput
+#define fMQTTInput
+#define fMQTTOutput
+const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHomeY";
+const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
+#define GLOBAL_MQTT_SUBSCRIBE_PREFIX "myHomeY/FF_BedroomWardobe_LED_Relay_Command"
+#endif
+
+#ifdef FamilyRoomLED
+#define fName "GF_FamilyRoom_LED_Relay"
+#define WIFIIP 39
+#define CIRCUITS_NO 0
+#define BUTTONS_NO 3
+#define fRelay
+#define fDitigalInput
+#define fMQTTInput
+#define fMQTTOutput
+const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHomeY";
+const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
+#define GLOBAL_MQTT_SUBSCRIBE_PREFIX "myHomeY/GF_FamilyRoom_LED_Relay_Command"
+#endif
+
+#ifdef FamilyRoomLight
+#define fName "GF_FamilyRoom_Light_Relay"
+#define WIFIIP 40
+#define CIRCUITS_NO 0
+#define BUTTONS_NO 3
+#define fRelay
+#define fDitigalInput
+#define fMQTTInput
+#define fMQTTOutput
+const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHomeY";
+const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
+#define GLOBAL_MQTT_SUBSCRIBE_PREFIX "myHomeY/GF_FamilyRoom_Light_Relay_Command"
+#endif
+
+#ifdef CorridorStorage
+#define fName "GF_Corridor_Storage_Relay"
+#define WIFIIP 41
+#define CIRCUITS_NO 0
+#define BUTTONS_NO 3
+#define fRelay
+#define fDitigalInput
+#define fMQTTInput
+#define fMQTTOutput
+const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHomeY";
+const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
+#define GLOBAL_MQTT_SUBSCRIBE_PREFIX "myHomeY/GF_Corridor_Storage_Relay_Command"
+#endif
+
 #ifdef TestRoom
 #define fName "FF_TestRoom"
 #define WIFIIP 49
+#define CIRCUITS_NO 0
+#define BUTTONS_NO 3
+#define fRelay
 #define fDitigalInput
-//#define fDHT22
-#define fDS18B20
-#define fCIR
-#define fAnalog
+#define fMQTTInput
 #define fMQTTOutput
-#define CIRCUITS_NO 1
-const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHome";
+const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHomeY";
 const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
+#define GLOBAL_MQTT_SUBSCRIBE_PREFIX "myHomeY/FF_Bedroom_LED_Relay_Command"
 #endif
 
 #ifdef Bedroom

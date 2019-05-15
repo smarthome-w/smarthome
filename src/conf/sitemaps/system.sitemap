@@ -1,4 +1,8 @@
 sitemap system label="System" {
+    Frame label="Demo" {
+        Switch item=DemoMode
+    }
+
     Frame label="Parametry" icon="firstfloor" {
       Setpoint item=HH_Light_Dusk_Level label="Poziom zmierzchu [%.0f]" minValue=0 maxValue=1024 step=10
       Setpoint item=HH_Light_Dawn_Level label="Poziom świtu [%.0f]" minValue=0 maxValue=1024 step=10
@@ -6,63 +10,74 @@ sitemap system label="System" {
       Setpoint item=HH_Time_Day minValue=5 maxValue=10 step=1
       Setpoint item=HH_Time_Evening minValue=15 maxValue=19 step=1
       Setpoint item=HH_Time_Night minValue=20 maxValue=23 step=1
+      Setpoint item=HH_Elevation_Dusk minValue=0 maxValue=10 step=1
+      Setpoint item=HH_Elevation_Dawn minValue=-10 maxValue=10 step=1
+      
       Setpoint item=HH_Night_Bedroom_Blind_Level minValue=0 maxValue=100 step=5
 
       Selection item=HH_DebugLevel_PIRCIR mappings=[
-                                          1="FATAL",
-                                          2="ERROR",
-                                          3="WARN",
-                                          4="INFO",
-                                          5="DEBUG",
-                                          6="TRACE"
+                                          1.0="FATAL",
+                                          2.0="ERROR",
+                                          3.0="WARN",
+                                          4.0="INFO",
+                                          5.0="DEBUG",
+                                          6.0="TRACE"
                                          ]
       Selection item=HH_DebugLevel_Broadlink mappings=[
-                                          1="FATAL",
-                                          2="ERROR",
-                                          3="WARN",
-                                          4="INFO",
-                                          5="DEBUG",
-                                          6="TRACE"
+                                          1.0="FATAL",
+                                          2.0="ERROR",
+                                          3.0="WARN",
+                                          4.0="INFO",
+                                          5.0="DEBUG",
+                                          6.0="TRACE"
                                          ]
       Selection item=HH_DebugLevel_Heartbeat mappings=[
-                                          1="FATAL",
-                                          2="ERROR",
-                                          3="WARN",
-                                          4="INFO",
-                                          5="DEBUG",
-                                          6="TRACE"
+                                          1.0="FATAL",
+                                          2.0="ERROR",
+                                          3.0="WARN",
+                                          4.0="INFO",
+                                          5.0="DEBUG",
+                                          6.0="TRACE"
                                          ]
       Selection item=HH_DebugLevel_Scene mappings=[
-                                          1="FATAL",
-                                          2="ERROR",
-                                          3="WARN",
-                                          4="INFO",
-                                          5="DEBUG",
-                                          6="TRACE"
+                                          1.0="FATAL",
+                                          2.0="ERROR",
+                                          3.0="WARN",
+                                          4.0="INFO",
+                                          5.0="DEBUG",
+                                          6.0="TRACE"
                                          ]
       Selection item=HH_DebugLevel_Nightwatch mappings=[
-                                          1="FATAL",
-                                          2="ERROR",
-                                          3="WARN",
-                                          4="INFO",
-                                          5="DEBUG",
-                                          6="TRACE"
+                                          1.0="FATAL",
+                                          2.0="ERROR",
+                                          3.0="WARN",
+                                          4.0="INFO",
+                                          5.0="DEBUG",
+                                          6.0="TRACE"
+                                         ]
+      Selection item=HH_DebugLevel_Movewatch mappings=[
+                                          1.0="FATAL",
+                                          2.0="ERROR",
+                                          3.0="WARN",
+                                          4.0="INFO",
+                                          5.0="DEBUG",
+                                          6.0="TRACE"
                                          ]
       Selection item=HH_DebugLevel_Rollershutter mappings=[
-                                          1="FATAL",
-                                          2="ERROR",
-                                          3="WARN",
-                                          4="INFO",
-                                          5="DEBUG",
-                                          6="TRACE"
+                                          1.0="FATAL",
+                                          2.0="ERROR",
+                                          3.0="WARN",
+                                          4.0="INFO",
+                                          5.0="DEBUG",
+                                          6.0="TRACE"
                                          ]
       Selection item=HH_DebugLevel_General mappings=[
-                                          1="FATAL",
-                                          2="ERROR",
-                                          3="WARN",
-                                          4="INFO",
-                                          5="DEBUG",
-                                          6="TRACE"
+                                          1.0="FATAL",
+                                          2.0="ERROR",
+                                          3.0="WARN",
+                                          4.0="INFO",
+                                          5.0="DEBUG",
+                                          6.0="TRACE"
                                          ]
     }
 
@@ -99,6 +114,29 @@ sitemap system label="System" {
       Switch item=GH_Day_Scene mappings=[ON="Set"]
     }
     Frame label="Debug" icon="firstfloor" {
+      Selection item=DebugTarget mappings=[
+                                          GF_Kitchen_LED_Relay="GF_Kitchen_LED_Relay",
+                                          FF_Bedroom_LED_Relay="FF_Bedroom_LED_Relay",
+                                          GF_Corridor_LED_Relay="GF_Corridor_LED_Relay",
+                                          FF_BedroomWardobe_LED_Relay="FF_BedroomWardobe_LED_Relay",
+                                          GF_FamilyRoom_LED_Relay="GF_FamilyRoom_LED_Relay",
+                                          GF_FamilyRoom_Light_Relay="GF_FamilyRoom_Light_Relay",
+                                          GF_Corridor_LED_Relay="GF_Corridor_LED_Relay",
+                                          GF_Corridor_Storage_Relay="GF_Corridor_Storage_Relay",
+                                          FF_TestRoom="FF_TestRoom",
+                                          FF_Bedroom="FF_Bedroom",
+                                          FF_AliceRoom="FF_AliceRoom",
+                                          FF_AnnRoom="FF_AnnRoom",
+                                          GF_FamilyRoom="GF_FamilyRoom",
+                                          FF_TechnicalRoom1="FF_TechnicalRoom1",
+                                          FF_TechnicalRoom2="FF_TechnicalRoom2",
+                                          GF_FamilyRoom_Rollershutter="GF_FamilyRoom_Rollershutter",
+                                          FF_Bedroom_Rollershutter="FF_Bedroom_Rollershutter"
+                                          ]
+      Selection item=DebugMessage mappings=[
+                                          RESET="RESET",
+                                          DEBUG="DEBUG"
+                                         ]
       Switch item=DebugButton mappings=[ON="Debug"]
     }
 }

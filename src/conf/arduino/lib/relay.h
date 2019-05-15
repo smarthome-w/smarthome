@@ -51,11 +51,11 @@ void processRelay()
   boolean hardwareON = false;
   boolean hardwareOFF = false;
   boolean hardwareON_ON = false;
-  //#ifdef fRelayAuto
+#ifndef fRelayPIR
   hardwareON = (digitalRead(buttons[2].pin) == LOW);
   hardwareOFF = (digitalRead(buttons[2].pin) == HIGH && buttons[2].previousValue == LOW);
   hardwareON_ON = (digitalRead(buttons[2].pin) == LOW && buttons[2].previousValue == HIGH);
-  //#endif
+#endif
   boolean toggleON = (digitalRead(buttons[1].pin) == LOW && buttons[1].previousValue == HIGH);
   boolean mqttON = (GLOBAL_MQTT_MSG == "ON");
   boolean mqttOFF = (GLOBAL_MQTT_MSG == "OFF");
@@ -77,8 +77,23 @@ void processRelay()
 
   if (GLOBAL_MQTT_MSG == "DEBUG")
   {
+#ifndef fRelayPIR
     String stateStr = "relay:" + String(currentRelay) + "pin:" + String(digitalRead(buttons[2].pin));
     sendDebugMQTTMessage("State", stateStr);
+#else
+    String stateStr = "relay:" + String(currentRelay);
+    sendDebugMQTTMessage("State", stateStr);
+    for (iix = 0; iix < CIRCUITS; iix++)
+    {
+      stateStr = circuits[iix].name + ":" + String(circuits[iix].previousValue);
+      sendDebugMQTTMessage("State", stateStr);
+    }
+#endif
+  }
+
+  if (GLOBAL_MQTT_MSG == "RESTART")
+  {
+    ESP.restart();
   }
 
   int nextRelay = currentRelay;

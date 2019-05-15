@@ -9,6 +9,11 @@ sitemap probes label="Czujki" {
         Switch item=CIR_FF_AnnRoom mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
     }
 
+    Frame label="Sypialnia szafa" icon="groundfloor" {
+        Switch item=PIR_FF_BedroomWardobe icon="alarm" mappings=[CLOSED="Czujka off", OPEN="Czujka on"]
+        Switch item=PIR_FF_BedroomWardobe_State icon="colorwheel" mappings=[OFF="Bezruch", ON="Ruch"]
+    }
+
     Frame label="Czujnik wejścia" icon="groundfloor" {
         Switch item=PIR_GF_EntryWatch icon="alarm" mappings=[CLOSED="Czujka off", OPEN="Czujka on"]
         Switch item=PIR_GF_EntryWatch_State icon="colorwheel" mappings=[OFF="Bezruch", ON="Ruch"]
