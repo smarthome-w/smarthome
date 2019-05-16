@@ -397,7 +397,6 @@ Switch         FF_Bedroom_Light_2
                (FF_Bedroom, gTC2, gFF_Bedroom_Scenario, gPersistenceSwitch)
                ["Switchable"]
 
-//Switch   FF_Bedroom_Lights  "Relax[]"     <light>        (FF_Bedroom, gSP2, gFF_Bedroom_Scenario, gPersistenceSwitch) ["Switchable"]
 Switch         FF_Bedroom_Lights
                "Relax[]"
                <light>
@@ -435,8 +434,6 @@ Switch         FF_AliceRoom_Light_2
                <light>
                (FF_AliceRoom, gTC2, gFF_AliceRoom_Scenario, gPersistenceSwitch)
                ["Switchable"]
-
-//Switch   FF_AliceRoom_Lights  "Pokój Alicji - światła[]"     <light>        (FF_AliceRoom, gSP2, gFF_AliceRoom_Scenario, gPersistenceSwitch)
 
 //DateTime FF_AliceRoom_Light_1_LastUpdate "Pokój Alicji - 1 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
 DateTime       FF_AliceRoom_Light_2_LastUpdate

@@ -152,6 +152,7 @@ Contact        PIR_Corridor_Storage
                "PIR Corridor Storage"
                <light>
                (GF_Corridor, gPIR, gPersistenceSwitch)
+               {mqtt="<[broker:myHomeY/GF_Corridor_Storage_Relay_Change:state:MAP(switch2contact.map)]"}
 
 Switch         PIR_GF_Corridor_State
                "PIR Korytarz"
@@ -201,7 +202,7 @@ Switch         PIR_GF_EntryWatch_State
 Switch         PIR_Corridor_Storage_State
                "PIR Corridor Storage"
                <rgb>
-               (gPIRState)
+               (gPIRState, gPersistenceSwitch)
 
 DateTime       PIR_GF_Corridor_LastUpdate
                "PIR Korytarz [%1$td.%1$tm %1$tH:%1$tM]"

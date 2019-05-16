@@ -89,11 +89,11 @@ then
       }
     }
 
-    if (elevation <= 6 && hourOfDay >= 12) {
+    if (elevation <= elevationDusk && hourOfDay >= 12) {
       calendar_SupportingLight.sendCommand(ON)
     }
 
-    if (elevation > 6 && hourOfDay <= 12) {
+    if (elevation > elevationDawn && hourOfDay <= 12) {
       calendar_SupportingLight.sendCommand(OFF)
     }
   } catch (Throwable t) {

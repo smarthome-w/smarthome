@@ -1,10 +1,12 @@
 sitemap timeline label="Timeline" {
-  Frame label="Ruch" icon="firstfloor" {
+  Frame label="Ruch - zegary" {
       Webview url="/static/Visualization/Timeline.html?Group=gPIRState&serviceId=jdbc&Hours=24" height=13
+  }
+  Frame label="Ruch - pir" {
       Webview url="/static/Visualization/Timeline.html?Group=gPIR&serviceId=jdbc&Hours=24" height=13
   }
 
-  Frame label="Okna i drzwi" icon="firstfloor" {
+  Frame label="Okna i drzwi" {
       Webview url="/static/Visualization/Timeline.html?Group=gCIR&ServiceId=jdbc&Hours=24" height=11
   }
 }
