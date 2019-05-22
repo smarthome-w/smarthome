@@ -137,6 +137,7 @@ sitemap system label="System" {
                                           RESET="RESET",
                                           DEBUG="DEBUG"
                                          ]
-      Switch item=DebugButton mappings=[ON="Debug"]
+//      Switch item=DebugButton mappings=[ON="Debug"]
+      Switch item=DebugButton
     }
 }

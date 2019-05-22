@@ -76,11 +76,12 @@ sitemap switches label="Włączniki" {
         Switch item=RTV_TV_UPC
 //        Switch item=RTV_TV_DVD
         Switch item=RTV_TV_XBOX
-        Switch item=RTV_TV_HDMI1
-        Switch item=RTV_TV_HDMI3
-        Switch item=RTV_TV_HDMI4
-        Switch item=RTV_TV_NETFLIX
-        Switch item=RTV_TV_YOUTUBE
+        Selection item=RTV_TV_Input  mappings=[HDMI__1_MHL="TV",
+                                            HDMI__3="XBOX",
+                                            HDMI__4="KODI",
+                                            YOUTUBE="Youtube",
+                                            NETFLIX="Netflix"
+                                            ]
     }
 
     Frame label="Tryby" icon="groundfloor" {

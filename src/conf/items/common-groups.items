@@ -113,11 +113,6 @@ Group          gPower
                (System)
 
 
-Group          gHDMI
-               <heating>
-               (System)
-
-
 Group          gHeartbeat
                <heating>
                (System)

@@ -1,0 +1,17 @@
+[Unit]
+Description=openhab-sony-mqtt
+
+[Service]
+User=root
+Group=root
+Type=simple
+Restart=always
+RestartSec=3
+ExecStart=/opt/openhab/conf/scripts/SONY/sonymqtt.py
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=openhab-sony-mqtt
+
+[Install]
+WantedBy=multi-user.target

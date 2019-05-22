@@ -114,13 +114,13 @@ Group          gGF_FamilyRoom_Scenario
 
 
 Switch         GF_ColorLights_Scenario
-               "Party"
+               "TV Show"
                <party>
                (gScenariosList, gPersistenceSwitch)
                ["Lighting"]
 
 Color          GF_ColorLights_Color
-               "LED"
+               "Family room LED"
                <party>
                ["Lighting"]
 
@@ -252,11 +252,13 @@ Switch         GF_FamilyRoom_Light_Table
                "Salon - stół[]"
                <light>
                (GF_FamilyRoom, gTC2, gGF_FamilyRoom_Scenario, gPersistenceSwitch)
+               {mqtt=">[broker:broadlink/TC2/GF_FamilyRoom_Light_Table:state:*:default]"}
 
 Switch         GF_FamilyRoom_Light_Sofa
                "Salon - sofa[]"
                <light>
                (GF_FamilyRoom, gTC2, gGF_FamilyRoom_Scenario, gPersistenceSwitch)
+               {mqtt=">[broker:broadlink/TC2/GF_FamilyRoom_Light_Sofa:state:*:default]"}
 
 Switch         GF_FamilyRoom_LightsRGB
                "Cinema"
@@ -298,12 +300,14 @@ Switch         GF_Kitchen_Light_Main
                <light>
                (GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch)
                ["Switchable"]
+               {mqtt=">[broker:broadlink/TC2/GF_Kitchen_Light_Main:state:*:default]"}
 
 Switch         GF_Kitchen_Light_LED
                "Kitchen light led[]"
                <light>
                (GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch)
                ["Switchable"]
+               {mqtt=">[broker:broadlink/TC2/GF_Kitchen_Light_LED:state:*:default]"}
 
 
 Switch         GF_Kitchen_LED
@@ -319,6 +323,7 @@ Switch         GF_Corridor_Light_Main
                <light>
                (GF_Corridor, gTC2, gGF_Corridor_Scenario, gCinemaOff, gPersistenceSwitch)
                ["Lighting"]
+               {mqtt=">[broker:broadlink/TC2/GF_Corridor_Light_Main:state:*:default]"}
 
 Switch         GF_Corridor_Light_LED
                "Corridor led[]"
@@ -377,6 +382,7 @@ Switch         GF_Restroom_Light_Main
                "Restroom lights[]"
                <light>
                (GF_Restroom, gTC2, gGF_Restroom_Scenario, gCinemaOff, gPersistenceSwitch)
+               {mqtt=">[broker:broadlink/TC2/GF_Restroom_Light_Main:state:*:default]"}
 
 DateTime       GF_Restroom_Light_Main_LastUpdate
                "Ubikacja [%1$td.%1$tm %1$tH:%1$tM]"
@@ -396,6 +402,7 @@ Switch         FF_Bedroom_Light_2
                <light>
                (FF_Bedroom, gTC2, gFF_Bedroom_Scenario, gPersistenceSwitch)
                ["Switchable"]
+               {mqtt=">[broker:broadlink/TC2/FF_Bedroom_Light_2:state:*:default]"}
 
 Switch         FF_Bedroom_Lights
                "Relax[]"
@@ -433,7 +440,8 @@ Switch         FF_AliceRoom_Light_2
                "Alice room lights[]"
                <light>
                (FF_AliceRoom, gTC2, gFF_AliceRoom_Scenario, gPersistenceSwitch)
-               ["Switchable"]
+               ["Lighting"]
+               {mqtt=">[broker:broadlink/TC2/FF_AliceRoom_Light_2:state:*:default]"}
 
 //DateTime FF_AliceRoom_Light_1_LastUpdate "Pokój Alicji - 1 [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
 DateTime       FF_AliceRoom_Light_2_LastUpdate
@@ -448,6 +456,7 @@ Switch         FF_AnnRoom_Light_Main
                <light>
                (FF_AnnRoom, gTC2, gFF_AnnRoom_Scenario, gPersistenceSwitch)
                ["Lighting"]
+               {mqtt=">[broker:broadlink/TC2/FF_AnnRoom_Light_Main:state:*:default]"}
 
 
 Switch         FF_BathRoom_Light_Up
@@ -455,12 +464,14 @@ Switch         FF_BathRoom_Light_Up
                <light>
                (FF_Bathroom, gTC2, gFF_BathRoom_Scenario, gPersistenceSwitch)
                ["Lighting"]
+               {mqtt=">[broker:broadlink/TC2/FF_BathRoom_Light_Up:state:*:default]"}
 
 Switch         FF_BathRoom_Light_Mirror
                "Bathroom led[]"
                <light>
                (FF_BathRoom, gTC2, gFF_BathRoom_Scenario, gPersistenceSwitch)
                ["Lighting"]
+               {mqtt=">[broker:broadlink/TC2/FF_BathRoom_Light_Mirror:state:*:default]"}
 
 
 DateTime       FF_BathRoom_Light_Up_LastUpdate
@@ -500,43 +511,12 @@ Switch         RTV_TV_XBOX
                (GF_FamilyRoom, gIRB, gRawRTV)
                ["Switchable"]
 
-
-Switch         RTV_TV_HDMI1
-               "TV input"
-               <network>
-               (GF_FamilyRoom, gIRB, gRawRTV, gHDMI)
+String         RTV_TV_Input
+               "TV Input"
+               <projector>
+               (GF_FamilyRoom, gSony, gPersistenceSwitch)
                ["Switchable"]
-
-Switch         RTV_TV_HDMI2
-               "HDMI2"
-               <network>
-               (GF_FamilyRoom, gIRB, gRawRTV, gHDMI)
-               ["Switchable"]
-
-Switch         RTV_TV_HDMI3
-               "XBox input"
-               <network>
-               (GF_FamilyRoom, gIRB, gRawRTV, gHDMI)
-               ["Switchable"]
-
-Switch         RTV_TV_HDMI4
-               "Kodi input"
-               <network>
-               (GF_FamilyRoom, gIRB, gRawRTV, gHDMI)
-               ["Switchable"]
-
-
-Switch         RTV_TV_NETFLIX
-               "Netflix"
-               <screen>
-               (GF_FamilyRoom, gSony)
-               ["Switchable"]
-
-Switch         RTV_TV_YOUTUBE
-               "Youtube"
-               <screen>
-               (GF_FamilyRoom, gSony)
-               ["Switchable"]
+               {mqtt=">[broker:sony/RC/RTV_TV_Input:state:*:default]"}
 
 Switch         RTV_TV_CONFIRM
                "Confirm"
@@ -1354,10 +1334,12 @@ String         RGB_Color
                "Kolor diod"
                <rgb>
                (GF_FamilyRoom, gIRRGB, gPersistenceSwitch)
+               {mqtt=">[broker:broadlink/IRCOLORS/Color:state:*:default]"}
 
 Switch         DebugButton
                "Debug Button"
                (gSystem)
+               {mqtt=">[broker:broadlink/TC2/GF_Corridor_Light_Main:state:*:default]"}
 
 String         DebugTarget
                "Target [%s]"
