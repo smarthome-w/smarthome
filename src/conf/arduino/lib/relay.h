@@ -13,6 +13,12 @@ void sendRelayMQTTMessage(String state)
   sendMQTTWithTypeConversion(messageTopic, state);
 }
 
+void sendRelayChangeMQTTMessage(String state)
+{
+  String messageTopic = GLOBAL_MQTT_MESSAGE_PREFIX + "/" + GLOBAL_MQTT_MULTISENSOR_NAME + "_Change";
+  sendMQTTWithTypeConversion(messageTopic, state);
+}
+
 void processRelayState()
 {
   if (abs(millis() - RelayLastReadInMillis) > RELAY_STATE_READ_INTERVAL_MILLIS)
@@ -37,6 +43,7 @@ void sendRelayMsg()
     state_msg = "ON";
   }
   sendRelayMQTTMessage(state_msg);
+  sendRelayChangeMQTTMessage(state_msg);
 }
 
 void initializeRelay()

@@ -34,7 +34,10 @@ openhab-core:
 	@sudo pip3 install setuptools
 	@sudo pip3 install wheel
 	#@sudo pip3 install broadlink paho-mqtt rpi-rf RPi.GPIO Adafruit_DHT Adafruit_BME280
-	@sudo pip3 install paho-mqtt rpi-rf RPi.GPIO Adafruit_DHT Adafruit_BME280 py-sony-bravia-remote
+	#@sudo pip3 install rpi-rf RPi.GPIO Adafruit_DHT Adafruit_BME280 py-sony-bravia-remote
+	@sudo pip3 install paho-mqtt py-sony-bravia-remote ruamel.yaml
+	@sudo pip3 install git+https://github.com/mjg59/python-broadlink.git
+	@sudo pip3 install git+https://github.com/aparraga/braviarc.git
 #	sudo mysql -u root -e `cat resources/sql/database.sql`
 # /etc/mysql/my.cnf
 #[mysqld]
@@ -72,6 +75,18 @@ openhab-servo-service-install:
 	@sudo systemctl enable openhab-servo
 	@sudo systemctl restart openhab-servo
 
+openhab-broadlink-mqtt-service-install:
+	@sudo cp $(RESOURCES)/service/openhab-broadlink-mqtt.service /etc/systemd/system/openhab-broadlink-mqtt.service
+	@sudo systemctl daemon-reload
+	@sudo systemctl enable openhab-broadlink-mqtt
+	@sudo systemctl restart openhab-broadlink-mqtt
+
+openhab-sony-mqtt-service-install:
+	@sudo cp $(RESOURCES)/service/openhab-sony-mqtt.service /etc/systemd/system/openhab-sony-mqtt.service
+	@sudo systemctl daemon-reload
+	@sudo systemctl enable openhab-sony-mqtt
+	@sudo systemctl restart openhab-sony-mqtt
+
 openhab-server-service-install:
 	@sudo cp $(RESOURCES)/service/openhab-server.service /etc/systemd/system/openhab-server.service
 	@sudo systemctl daemon-reload
@@ -102,7 +117,8 @@ openhab-info:
 openhab-develop: openhab-info openhab-docker-stop openhab-docker-build
 
 openhab-all: openhab-info openhab-docker-stop openhab-docker-build \
-	openhab-service-install openhab-service-restart
+	openhab-service-install openhab-broadlink-mqtt-service-install \
+	openhab-sony-mqtt-service-install openhab-service-restart
 
 # bmp280
 # http://faradaysclub.com/?p=1325

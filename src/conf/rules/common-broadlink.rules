@@ -66,7 +66,7 @@ then
   } finally {
   }
 end
-
+/*
 rule "tc2_rule"
 when
     Member of gTC2 received update
@@ -100,7 +100,8 @@ then
   } finally {
   }
 end
-
+*/
+/*
 rule "irrgb_rule"
 when
     Member of gIRRGB received update
@@ -127,7 +128,7 @@ then
   } finally {
   }
 end
-
+*/
 /*
 rule "shelly_rule"
 when

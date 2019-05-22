@@ -19,6 +19,7 @@ then
       sendCommand(HW_RMPro_Heartbeat, now.millis)
     }
 
+/*
     gSP2.members.forEach [E |
       //logError("HW_Heartbeat", "element: {}, state: {}", E.name, E.state)
       var String command = "/openhab/conf/scripts/BROADLINK/sp2.py " + E.name + " STATUS"
@@ -61,6 +62,7 @@ then
         }
       }
     ]
+  */
   } catch (Throwable t) {
     logError("Error", "Error in hw_heartbeat_rule {}", t.toString)
   } finally {

@@ -1,21 +1,5 @@
 ---
 mapping_dictionary:
-  RTV_TV_HDMI1:
-    ON: "code"
-    OFF: ""
-
-  RTV_TV_HDMI2:
-    ON: "code"
-    OFF: ""
-
-  RTV_TV_HDMI3:
-    ON: "code"
-    OFF: ""
-
-  RTV_TV_HDMI4:
-    ON: "code"
-    OFF: ""
-
   RTV_TV_XBOX:
     ON: "code"
     OFF: "code"

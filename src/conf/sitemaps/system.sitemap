@@ -10,7 +10,7 @@ sitemap system label="System" {
       Setpoint item=HH_Time_Day minValue=5 maxValue=10 step=1
       Setpoint item=HH_Time_Evening minValue=15 maxValue=19 step=1
       Setpoint item=HH_Time_Night minValue=20 maxValue=23 step=1
-      Setpoint item=HH_Elevation_Dusk minValue=0 maxValue=10 step=1
+      Setpoint item=HH_Elevation_Dusk minValue=0 maxValue=20 step=1
       Setpoint item=HH_Elevation_Dawn minValue=-10 maxValue=10 step=1
       
       Setpoint item=HH_Night_Bedroom_Blind_Level minValue=0 maxValue=100 step=5
@@ -137,6 +137,7 @@ sitemap system label="System" {
                                           RESET="RESET",
                                           DEBUG="DEBUG"
                                          ]
-      Switch item=DebugButton mappings=[ON="Debug"]
+//      Switch item=DebugButton mappings=[ON="Debug"]
+      Switch item=DebugButton
     }
 }

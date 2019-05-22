@@ -40,6 +40,9 @@ then
           ddd += "c"
       }
       else {
+          if (logLevel >= 6) {
+            logError("pir", "Reschedule {} with {} minutes", triggeringItem.name, timeOutMinutes)
+          }
           timers.get(triggeringItem.name).reschedule(now.plusMinutes(timeOutMinutes))
           ddd += "d"
       }

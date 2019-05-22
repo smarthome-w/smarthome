@@ -3,5 +3,12 @@ when
     Item GF_FamilyRoom_LightsRGB changed to ON
 then
   //logInfo("rgb", "send ir")
-  sendCommand(RGB_Color, "GREEN")
+
+  var color = "GREEN"
+
+  if (RGB_Color.state !== NULL) {
+    color = RGB_Color.state.toString
+  }
+
+  sendCommand(RGB_Color, color)
 end
