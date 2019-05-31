@@ -1,8 +1,8 @@
 sitemap monitoring label="Monitoring" {
     Frame label="Monitoring" icon="firstfloor" {
-        Switch item=GF_FamilyRoom_Camera label="Kamera[]" mappings=[OFF="Off", ON="On"]
-        Slider item=GF_FamilyRoom_Camera_Servo label="Rotacja [%.1f %%]"
-        Setpoint item=GF_FamilyRoom_Camera_Servo label="Rotacja [%.1f %%]" minValue=0 maxValue=100 step=10
+        Switch item=GF_FamilyRoom_Camera label="Kamera[]" //mappings=[OFF="Off", ON="On"]
+//        Slider item=GF_FamilyRoom_Camera_Servo label="Rotacja [%.1f %%]"
+//        Setpoint item=GF_FamilyRoom_Camera_Servo label="Rotacja [%.1f %%]" minValue=0 maxValue=100 step=10
     }
 
     Frame label="Kamera" visibility=[GF_FamilyRoom_Camera==ON] {

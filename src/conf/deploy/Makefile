@@ -1,9 +1,10 @@
 RESOURCES:=$(CURDIR)/resources
 
-DOCKER_TAG=smarthome-openhab
+DOCKER_TAG=smarthomew-openhab
 
 MACHINE=$(shell uname -m)
 
+VERSION=2.4.0
 OS_PLATFORM=amd64
 
 HOST_IP=`hostname -I | awk '{print $$1}'`
@@ -49,9 +50,11 @@ openhab-core:
 
 
 openhab-docker-build: openhab-docker-clean
-	sudo cp $(RESOURCES)/dockerfile/Dockerfile.template $(CURDIR)/Dockerfile
-	@sed -i "s/OS_PLATFORM/$(OS_PLATFORM)/g" $(CURDIR)/Dockerfile
-	docker build -t $(DOCKER_TAG) .
+#	sudo cp $(RESOURCES)/dockerfile/Dockerfile.template $(CURDIR)/Dockerfile
+#	@sed -i "s/OS_PLATFORM/$(OS_PLATFORM)/g" $(CURDIR)/Dockerfile
+#	docker build -t $(DOCKER_TAG) .
+	docker pull openhab/openhab:$(VERSION)-$(OS_PLATFORM)-debian
+	docker tag openhab/openhab:$(VERSION)-$(OS_PLATFORM)-debian $(DOCKER_TAG)	
 
 openhab-resources-workspace:
 	@mkdir -p $(RESOURCES)

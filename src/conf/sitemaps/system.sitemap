@@ -112,6 +112,7 @@ sitemap system label="System" {
       Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]
       Switch item=GH_Evening_Scene mappings=[ON="Set"]
       Switch item=GH_Day_Scene mappings=[ON="Set"]
+      Switch item=GH_TVShow_Scene mappings=[ON="Set"]
     }
     Frame label="Debug" icon="firstfloor" {
       Selection item=DebugTarget mappings=[

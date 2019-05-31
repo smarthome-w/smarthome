@@ -59,18 +59,22 @@ void initializeDigitalInput()
   Serial.println("Initialize definition data...");
   iix = 0;
 #ifdef fCIR
+  Serial.println("fCIR...");
   circuits[iix] = {"pinD6", pinD6, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
 #endif
 #ifdef fPIR
+  Serial.println("fPIR...");
   circuits[iix] = {"pinD5", pinD5, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
 #endif
 #ifdef fRelayPIR
+  Serial.println("fRelayPIR...");
   circuits[iix] = {"pinD4", pinD4, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT};
   iix++;
 #endif
 #ifdef TechnicalRoom1
+  Serial.println("TechnicalRoom1...");
   circuits[iix] = {"GF_FamilyRoom", pinD1, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
   circuits[iix] = {"GF_Kitchen", pinD2, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
@@ -79,8 +83,13 @@ void initializeDigitalInput()
   iix++;
   circuits[iix] = {"FF_Bedroom", pinD6, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
+  circuits[iix] = {"GF_FamilyBalcony", pinD7, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  iix++;
 #endif
 #ifdef TechnicalRoom2
+  Serial.println("TechnicalRoom2...");
+  circuits[iix] = {"FF_BedroomWardobe", pinD0, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  iix++;
   circuits[iix] = {"GF_FamilyRoom", pinD1, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
   iix++;
   circuits[iix] = {"GF_MainDoor", pinD2, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
@@ -135,7 +144,7 @@ void sendCircuitMQTTMessage(int circuitIndex, int value)
   }
 
   int currentType = circuits[circuitIndex].type;
-  String messageTopic = calculateMessageName(circuits[circuitIndex].sensorType, circuits[circuitIndex].sensorValueType);
+  String messageTopic = calculateMessageName(circuits[circuitIndex].sensorType, circuits[circuitIndex].sensorValueType, circuits[circuitIndex].name);
 
   if (currentType == NORMALLY_CLOSED)
   {

@@ -34,7 +34,7 @@
 
 //#define FamilyRoomLED
 //#define FamilyRoomLight
-#define CorridorStorage
+//#define CorridorStorage
 
 //#define Kitchen
 //#define BedroomLights
@@ -45,7 +45,7 @@
 //#define Bedroom
 //#define FamilyRoom
 //#define TechnicalRoom1
-//#define TechnicalRoom2
+#define TechnicalRoom2
 //#define FamilyRoomRollershutter
 //#define BedroomRollershutter
 //#define TestRoom
@@ -226,8 +226,9 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define WIFIIP 54
 #define fDitigalInput
 #define fMQTTOutput
-#define fCIR
-#define CIRCUITS_NO 4
+//#define fCIR
+#define CIRCUITS_NO 5
+#define BUTTONS_NO 0
 const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHome";
 const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #endif
@@ -237,8 +238,9 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define WIFIIP 55
 #define fDitigalInput
 #define fMQTTOutput
-#define fCIR
-#define CIRCUITS_NO 5
+//#define fCIR
+#define CIRCUITS_NO 6
+#define BUTTONS_NO 0
 const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHome";
 const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #endif

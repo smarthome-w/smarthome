@@ -114,7 +114,7 @@ Group          gGF_FamilyRoom_Scenario
 
 
 Switch         GF_ColorLights_Scenario
-               "TV Show"
+               "Color lights"
                <party>
                (gScenariosList, gPersistenceSwitch)
                ["Lighting"]
@@ -493,12 +493,14 @@ Switch         RTV_TV_TV
                <screen>
                (GF_FamilyRoom, gIRB, gRawRTV)
                ["Switchable"]
+               {mqtt=">[broker:broadlink/IRB/RTV_TV_TV:state:*:default]"}
 
 Switch         RTV_TV_UPC
                "UPC"
                <projector>
                (GF_FamilyRoom, gIRB, gRawRTV)
                ["Switchable"]
+               {mqtt=">[broker:broadlink/IRB/RTV_TV_UPC:state:*:default]"}
 
 Switch         RTV_TV_DVD
                "DVD"
@@ -510,6 +512,7 @@ Switch         RTV_TV_XBOX
                <screen>
                (GF_FamilyRoom, gIRB, gRawRTV)
                ["Switchable"]
+               {mqtt=">[broker:broadlink/IRB/RTV_TV_XBOX:state:*:default]"}
 
 String         RTV_TV_Input
                "TV Input"
@@ -547,6 +550,11 @@ Switch         RTV_VOLUME_MUTE
 ////////////////////////////////////////////////////////////////////////////////
 Switch         GH_Night_Scene
                "Good night"
+               (gScenes)
+               ["Switchable"]
+
+Switch         GH_TVShow_Scene
+               "TV Show"
                (gScenes)
                ["Switchable"]
 
@@ -880,6 +888,9 @@ Number         FF_AliceRoom_Pressure_Sensor
 ////////////////////////////////////////////////////////////////////////////////
 //                       Rollershutters
 ////////////////////////////////////////////////////////////////////////////////
+Switch         GF_FamilyRoom_Rollershutter_Expert_Mode
+               "Expert mode"
+
 Dimmer         GF_FamilyRoom_Rollershutter_Dimmer
                "Window  [%.1f %%]"
                <heating>
@@ -972,6 +983,8 @@ Number         GF_FamilyRoom_Rollershutter_Millis
                <heating>
                {mqtt="<[broker:myHomeX/GF_FamilyRoom_Rollershutter_Debug_Millis:state:JS(europeanNumber.js):.*]"}
 
+Switch         FF_Bedroom_Rollershutter_Expert_Mode
+               "Expert mode"
 
 Dimmer         FF_Bedroom_Rollershutter_Dimmer
                "Bedroom window  [%.1f %%]"
@@ -1208,10 +1221,15 @@ Switch         FF_TechnicalRoom2_Heartbeat_LastUpdate_Error
 Switch         HW_Heartbeat
                "Heartbeat"
 
+Switch         HW_RMPro_Heartbeat_Ticker
+               "RMPro Ticker"
+               (gSystem)
+               {mqtt=">[broker:broadlink/HEARTBEAT/HW_RMPro_Heartbeat:state:*:default]"}
 
 String         HW_RMPro_Heartbeat
                "RM Pro [%s]"
                (GF_FamilyRoom, gHeartbeat)
+               {mqtt="<[broker:myHome/HW_RMPro_Heartbeat:command:JS(string.js):.*]"}
 
 DateTime       HW_RMPro_Heartbeat_LastUpdate
                "RM Pro [%1$td.%1$tm %1$tH:%1$tM]"
