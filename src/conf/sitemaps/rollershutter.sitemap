@@ -1,18 +1,22 @@
-sitemap rollershutter label="Roleta" {
+sitemap rollershutter label="Rolety" {
   Frame label="Roleta" icon="groundfloor" {
       Slider item=GF_FamilyRoom_Rollershutter_Dimmer label="Blind [%.1f %%]"
+      Switch item=GF_FamilyRoom_Rollershutter_Expert_Mode
+  }
+
+  Frame label="Roleta" icon="groundfloor" visibility=[GF_FamilyRoom_Rollershutter_Expert_Mode==ON] {
       Switch item=GF_FamilyRoom_Rollershutter_AutoUp mappings=[ON="Up"]
       Switch item=GF_FamilyRoom_Rollershutter_AutoDown mappings=[ON="Down"]
   }
 
-  Frame label="Roleta - programowanie" icon="groundfloor" {
+  Frame label="Roleta - programowanie" icon="groundfloor" visibility=[GF_FamilyRoom_Rollershutter_Expert_Mode==ON] {
 //      Switch item=GF_FamilyRoom_Rollershutter
 //      Switch item=GF_FamilyRoom_Rollershutter_PrgUp mappings=[ON="Set"]
       Switch item=GF_FamilyRoom_Rollershutter_PrgDown mappings=[ON="Set"]
   }
 
-  Frame label="Roleta - stan" icon="groundfloor" {
-//      Text item=GF_FamilyRoom_Rollershutter_CurrPos
+  Frame label="Roleta - stan" icon="groundfloor"  visibility=[GF_FamilyRoom_Rollershutter_Expert_Mode==ON] {
+      Text item=GF_FamilyRoom_Rollershutter_CurrPos
       Text item=GF_FamilyRoom_Rollershutter_PWMCurrPos
 //      Text item=GF_FamilyRoom_Rollershutter_MinLimit
 //      Text item=GF_FamilyRoom_Rollershutter_MaxLimit
@@ -22,5 +26,34 @@ sitemap rollershutter label="Roleta" {
 //      Text item=GF_FamilyRoom_Rollershutter_RealDownLimitProbe
 //      Text item=GF_FamilyRoom_Rollershutter_Millis
       Switch item=GF_FamilyRoom_Rollershutter_Debug mappings=[ON="Debug"]
+  }
+
+  Frame label="Roleta - sypialnia" icon="groundfloor" {
+      Slider item=FF_Bedroom_Rollershutter_Dimmer label="Blind [%.1f %%]"
+      Switch item=FF_Bedroom_Rollershutter_Expert_Mode
+  }
+
+  Frame label="Roleta - sypialnia" icon="groundfloor" visibility=[FF_Bedroom_Rollershutter_Expert_Mode==ON] {
+      Switch item=FF_Bedroom_Rollershutter_AutoUp mappings=[ON="Up"]
+      Switch item=FF_Bedroom_Rollershutter_AutoDown mappings=[ON="Down"]
+  }
+
+  Frame label="Roleta - programowanie" icon="groundfloor" visibility=[FF_Bedroom_Rollershutter_Expert_Mode==ON] {
+//      Switch item=FF_Bedroom_Rollershutter
+//      Switch item=FF_Bedroom_Rollershutter_PrgUp mappings=[ON="Set"]
+      Switch item=FF_Bedroom_Rollershutter_PrgDown mappings=[ON="Set"]
+  }
+
+  Frame label="Roleta - stan - sypialnia" icon="groundfloor" visibility=[FF_Bedroom_Rollershutter_Expert_Mode==ON] {
+      Text item=FF_Bedroom_Rollershutter_CurrPos
+      Text item=FF_Bedroom_Rollershutter_PWMCurrPos
+//      Text item=FF_Bedroom_Rollershutter_MinLimit
+//      Text item=FF_Bedroom_Rollershutter_MaxLimit
+//      Text item=FF_Bedroom_Rollershutter_UpLimitProbe
+      Text item=FF_Bedroom_Rollershutter_DownLimitProbe
+//      Text item=FF_Bedroom_Rollershutter_RealUpLimitProbe
+//      Text item=FF_Bedroom_Rollershutter_RealDownLimitProbe
+//      Text item=FF_Bedroom_Rollershutter_Millis
+      Switch item=FF_Bedroom_Rollershutter_Debug mappings=[ON="Debug"]
   }
 }

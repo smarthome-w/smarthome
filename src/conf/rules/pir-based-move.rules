@@ -22,7 +22,7 @@ then
     }
 
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
-        if (calendar_SupportingLight.state.toString() == "ON" || DemoMode.state.toString() == "ON") {
+//        if (calendar_SupportingLight.state.toString() == "ON" || DemoMode.state.toString() == "ON") {
           if (triggeringItem.state == OPEN) {
             var int timeOutMinutes = 2
             if (HH_PIR_State_Timeout.state !== NULL) {
@@ -51,7 +51,7 @@ then
                 FF_Bedroom_Wardobe.sendCommand(ON);
             }
           }
-        }
+//        }
     }
   } catch (Throwable t) {
     logError("Error", "Error in movewatch_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)

@@ -28,6 +28,12 @@ Contact        CIR_GF_FamilyRoom
                (GF_FamilyRoom, gCIR, gPersistenceSwitch)
                {mqtt="<[broker:myHome/CIR_GF_FamilyRoom:state:default]"}
 
+Contact        CIR_GF_FamilyBalcony
+               "CIR Balkon"
+               <window>
+               (GF_FamilyRoom, gCIR, gPersistenceSwitch)
+               {mqtt="<[broker:myHome/CIR_GF_FamilyBalcony:state:default]"}
+
 Contact        CIR_GF_Kitchen
                "CIR Kuchnia"
                <window>
@@ -65,6 +71,11 @@ DateTime       CIR_GF_MainLock_LastUpdate
 
 DateTime       CIR_GF_FamilyRoom_LastUpdate
                "CIR Salon [%1$td.%1$tm %1$tH:%1$tM]"
+               <time>
+               (gLastUpdateCIR, gPersistenceSwitch)
+
+DateTime       CIR_GF_FamilyBalcony_LastUpdate
+               "CIR Balkon [%1$td.%1$tm %1$tH:%1$tM]"
                <time>
                (gLastUpdateCIR, gPersistenceSwitch)
 
@@ -139,8 +150,8 @@ Contact        PIR_FF_Bedroom
 Contact        PIR_FF_BedroomWardobe
                "PIR Sypialnia szafa"
                <light>
-               (FF_Bedroom, gPIR, gPersistenceSwitch)
-               {mqtt="<[broker:myHomeY/PIR_FF_BedroomWardobe_LED_Relay:state:default]"}
+               (FF_Bedroom, gMoveWatch, gPIR, gSlack, gPersistenceSwitch)
+               {mqtt="<[broker:myHome/PIR_FF_BedroomWardobe:state:default]"}
 
 Contact        PIR_GF_EntryWatch
                "PIR Entry Watch"

@@ -1,7 +1,16 @@
 #ifndef sensor_mqtt_h
 #define sensor_mqtt_h
-String calculateMessageName(int sensorType, int valueType)
+
+#define EMPTY_STRING ""
+
+String calculateMessageName(int sensorType, int valueType, String overrideMultisensorName)
 {
+  String multisensorName = GLOBAL_MQTT_MULTISENSOR_NAME;
+  if (overrideMultisensorName != EMPTY_STRING)
+  {
+    multisensorName = overrideMultisensorName;
+  }
+
   String messageName = "";
   if (sensorType == SENSOR_DHT22)
   {
@@ -39,11 +48,11 @@ String calculateMessageName(int sensorType, int valueType)
   }
   else if (sensorType == SENSOR_PIR)
   {
-    messageName = GLOBAL_MQTT_MESSAGE_PREFIX + "/" + "PIR_" + GLOBAL_MQTT_MULTISENSOR_NAME;
+    messageName = GLOBAL_MQTT_MESSAGE_PREFIX + "/" + "PIR_" + multisensorName;
   }
   else if (sensorType == SENSOR_CIRCUIT)
   {
-    messageName = GLOBAL_MQTT_MESSAGE_PREFIX + "/" + "CIR_" + GLOBAL_MQTT_MULTISENSOR_NAME;
+    messageName = GLOBAL_MQTT_MESSAGE_PREFIX + "/" + "CIR_" + multisensorName;
   }
   else if (sensorType == SENSOR_BUTTON)
   {

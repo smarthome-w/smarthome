@@ -16,24 +16,36 @@ then
         }
 
         if (triggeringItem.name == "GH_Day_Scene"){
-//            if (logLevel >= 6) {
+            if (logLevel >= 6) {
               logError("scene_rule", "day")
-//            }
+            }
             GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
         }
+
+        if (triggeringItem.name == "GH_TVShow_Scene"){
+            if (logLevel >= 6) {
+              logError("scene_rule", "tvshow")
+            }
+            GF_ColorLights_Scenario.sendCommand(ON)
+            GF_FamilyRoom_Scenario.sendCommand(OFF)
+        }
+
         if (triggeringItem.name == "GH_Evening_Scene"){
-//            if (logLevel >= 6) {
+            if (logLevel >= 6) {
               logError("scene_rule", "evening")
-//            }
-            GF_FamilyRoom_Scenario.sendCommand(ON)
-            GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
+            }
+            //GF_FamilyRoom_Scenario.sendCommand(ON)
+            GF_FamilyRoom_LightsRGB.sendCommand(ON)
+            if (CIR_GF_FamilyBalcony.state.toString == "CLOSED") {
+              GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
+            }
             FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
         }
         if (triggeringItem.name == "GH_Night_Scene"){
-//            if (logLevel >= 6) {
+            if (logLevel >= 6) {
               logError("scene_rule", "night")
-//            }
-            GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
+            }
+//            GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
 //            FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
             GF_Lights_Scenario.sendCommand(OFF)
             RTV_TV_TV.sendCommand(OFF)
@@ -42,27 +54,29 @@ then
 
         if (triggeringItem.name == "GH_Bedroom_Night_Scene"){
             logError("scene", "bedroom night")
-//            if (logLevel >= 6) {
+            if (logLevel >= 6) {
               logError("scene_rule", "FF_Bedroom_Lights to OFF")
-//            }
+            }
             FF_Bedroom_Lights.sendCommand(OFF)
-//            if (logLevel >= 6) {
+            if (logLevel >= 6) {
               logError("scene_rule", "FF_Bedroom_Rollershutter_Dimmer to {}", bedroomBlindLevel)
-//            }
+            }
             FF_Bedroom_Rollershutter_Dimmer.sendCommand(bedroomBlindLevel.intValue)
             GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)        }
 
         if (triggeringItem.name == "GH_BrightWindow_Scene"){
-//            if (logLevel >= 6) {
+            if (logLevel >= 6) {
             logError("scene", "bright window")
-//            }
+            }
             GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
         }
         if (triggeringItem.name == "GH_DarkWindow_Scene"){
-//            if (logLevel >= 6) {
+            if (logLevel >= 6) {
             logError("scene", "dark window")
-//            }
-            GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
+            }
+            if (CIR_GF_FamilyBalcony.state.toString == "CLOSED") {
+              GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
+            }
         }
     }
   } catch (Throwable t) {

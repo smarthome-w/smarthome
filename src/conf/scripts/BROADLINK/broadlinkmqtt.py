@@ -90,6 +90,12 @@ def on_message(client, userdata, msg):
     command = msg.payload.decode("utf-8")
     code = None
 
+    raw_element = element
+
+    if (type == "HEARTBEAT"):
+        type = "IRB"
+        element = "HEARTBEAT"
+
     ret_num = 1
     if (type == "IRCOLORS"):
         ret_num = 5
@@ -103,6 +109,11 @@ def on_message(client, userdata, msg):
         else:
             logger.info("Message type:{} element:{} command:{} status: SENT".format(
                 type, element, command))
+            # send handshake value if HEARTBEAT
+            if (element == "HEARTBEAT"):
+                logger.debug("Publish: myHome/{}".format(raw_element))
+                client.publish("myHome/" + raw_element,
+                               "{}".format(time.time()))
     except Exception as e:
         logger.info("ERR Message type:{} element:{} command:{}".format(
             type, element, command))

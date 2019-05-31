@@ -7,6 +7,6 @@ sitemap timeline label="Timeline" {
   }
 
   Frame label="Okna i drzwi" {
-      Webview url="/static/Visualization/Timeline.html?Group=gCIR&ServiceId=jdbc&Hours=24" height=11
+      Webview url="/static/Visualization/Timeline.html?Group=gCIR&ServiceId=jdbc&Hours=24" height=12
   }
 }
