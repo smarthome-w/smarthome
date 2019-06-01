@@ -24,12 +24,12 @@ then
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
 //        if (calendar_SupportingLight.state.toString() == "ON" || DemoMode.state.toString() == "ON") {
           if (triggeringItem.state == OPEN) {
-            var int timeOutMinutes = 2
-            if (HH_PIR_State_Timeout.state !== NULL) {
-              timeOutMinutes = (HH_PIR_State_Timeout.state as Number).intValue
+            var int timeOutSeconds = 30
+            if (HH_PIR_Wardobe_State_Timeout.state !== NULL) {
+              timeOutSeconds = (HH_PIR_Wardobe_State_Timeout.state as Number).intValue
             }
             if(movewatchTimers.get(movewatchTimerName) === null){
-                movewatchTimers.put(movewatchTimerName, createTimer(now.plusMinutes(timeOutMinutes), [|
+                movewatchTimers.put(movewatchTimerName, createTimer(now.plusSeconds(timeOutSeconds), [|
                     movewatchTimers.put(movewatchTimerName, null)
                     if (logLevel >= 6) {
                       logError("movewatch_rule", "Timer expired {}", movewatchTimerName)
@@ -44,7 +44,7 @@ then
                 FF_Bedroom_Wardobe.sendCommand(ON);
             }
             else {
-                movewatchTimers.get(movewatchTimerName).reschedule(now.plusMinutes(timeOutMinutes))
+                movewatchTimers.get(movewatchTimerName).reschedule(now.plusSeconds(timeOutSeconds))
                 if (logLevel >= 6) {
                   logError("movewatch_rule", "Timer rescheduled {}", movewatchTimerName)
                 }

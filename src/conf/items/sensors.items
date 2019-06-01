@@ -150,7 +150,7 @@ Contact        PIR_FF_Bedroom
 Contact        PIR_FF_BedroomWardobe
                "PIR Sypialnia szafa"
                <light>
-               (FF_Bedroom, gMoveWatch, gPIR, gSlack, gPersistenceSwitch)
+               (FF_Bedroom, gMoveWatch, gPIR, gPersistenceSwitch)
                {mqtt="<[broker:myHome/PIR_FF_BedroomWardobe:state:default]"}
 
 Contact        PIR_GF_EntryWatch

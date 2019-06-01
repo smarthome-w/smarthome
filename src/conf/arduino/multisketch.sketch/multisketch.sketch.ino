@@ -96,6 +96,9 @@ void loop() {
   #ifdef fDitigalInput
     processPinInputs();
   #endif
+  #ifdef TechnicalRoom2
+    processEntryWatch();
+  #endif
   #ifdef fDHT22
     processDHT22();
   #endif

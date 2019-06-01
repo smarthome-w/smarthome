@@ -185,7 +185,7 @@ void sendButtonMQTTMessage(int buttonIndex, int value)
   }
 
   int currentType = buttons[buttonIndex].type;
-  String messageTopic = calculateMessageName(buttons[buttonIndex].sensorType, buttons[buttonIndex].sensorValueType);
+  String messageTopic = calculateMessageName(buttons[buttonIndex].sensorType, buttons[buttonIndex].sensorValueType, EMPTY_STRING);
 
   if (currentType == NORMALLY_CLOSED)
   {

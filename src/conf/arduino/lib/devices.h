@@ -49,6 +49,7 @@
 //#define FamilyRoomRollershutter
 //#define BedroomRollershutter
 //#define TestRoom
+//#define TestRelay
 
 #ifdef Kitchen
 #define fName "GF_Kitchen_LED_Relay"
@@ -149,6 +150,22 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHomeY";
 const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define GLOBAL_MQTT_SUBSCRIBE_PREFIX "myHomeY/GF_Corridor_Storage_Relay_Command"
+#endif
+
+#ifdef TestRelay
+#define fName "Test_LED_Relay"
+#define WIFIIP 48
+#define CIRCUITS_NO 0
+#define BUTTONS_NO 3
+#define fRelay
+#define fRelayAuto
+#define fDitigalInput
+#define fMQTTInput
+#define fMQTTOutput
+const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHomeY";
+const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
+#define GLOBAL_MQTT_SUBSCRIBE_PREFIX "myHomeY/GTEST_LED_Relay_Command"
+#define fDisableSerial
 #endif
 
 #ifdef TestRoom
