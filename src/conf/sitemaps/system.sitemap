@@ -100,7 +100,7 @@ sitemap system label="System" {
       Group item=gErrors
     }
     Frame label="Błędy" icon="firstfloor" {
-      Chart item=gErrors period=D label="Błędy"
+      Chart item=gErrors period=W label="Błędy"
     }
     Frame label="Pi" icon="firstfloor" {
       Text item=OpenHAB_Restart

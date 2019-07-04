@@ -65,6 +65,11 @@ openhab-docker-stop:
 openhab-docker-clean:
 	@docker image prune -f
 
+pihole-service-install:
+	@sudo cp $(RESOURCES)/service/pihole.service /etc/systemd/system/pihole.service
+	@sudo systemctl daemon-reload
+	@sudo systemctl enable pihole
+
 openhab-service-install:
 	@sudo cp $(RESOURCES)/service/openhab.service /etc/systemd/system/openhab.service
 	@sed -i "s/DOCKER_TAG/$(DOCKER_TAG)/g" /etc/systemd/system/openhab.service

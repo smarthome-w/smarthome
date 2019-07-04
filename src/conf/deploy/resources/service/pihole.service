@@ -1,0 +1,32 @@
+[Unit]
+Description=pihole
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=180
+#User=root
+#Group=root
+
+ExecStart=/usr/bin/docker run \
+  --name pihole \
+  -p 53:53/tcp \
+  -p 53:53/udp \
+  -p 67:67/udp \
+  -p 7080:80 \
+  -p 7443:43 \
+  -e PUID=1000 -e PGID=1000 \
+  -e TZ=Europe/Warsaw \
+  -v /mnt/pihole/pihole/:/etc/pihole/ \
+  -v /mnt/pihole/dnsmasq.d/:/etc/dnsmasq.d/ \
+  -e 127.0.0.1 \
+  -e 1.1.1.1 \
+  --dns 8.8.8.8 --dns 1.1.1.1 \
+  --restart=unless-stopped \
+  pihole/pihole:latest 
+
+ExecStop=/usr/bin/docker stop -t 2 pihole ; /usr/bin/docker rm -f pihole
+
+[Install]
+WantedBy=multi-user.target

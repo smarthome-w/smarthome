@@ -299,14 +299,14 @@ Switch         GF_Kitchen_Light_Main
                "Main kitchen lights[]"
                <light>
                (GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch)
-               ["Switchable"]
+               ["Lighting"]
                {mqtt=">[broker:broadlink/TC2/GF_Kitchen_Light_Main:state:*:default]"}
 
 Switch         GF_Kitchen_Light_LED
                "Kitchen light led[]"
                <light>
                (GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch)
-               ["Switchable"]
+               ["Lighting"]
                {mqtt=">[broker:broadlink/TC2/GF_Kitchen_Light_LED:state:*:default]"}
 
 
@@ -401,7 +401,7 @@ Switch         FF_Bedroom_Light_2
                "Bedroom upper lights[]"
                <light>
                (FF_Bedroom, gTC2, gFF_Bedroom_Scenario, gPersistenceSwitch)
-               ["Switchable"]
+               ["Lighting"]
                {mqtt=">[broker:broadlink/TC2/FF_Bedroom_Light_2:state:*:default]"}
 
 Switch         FF_Bedroom_Lights
@@ -695,7 +695,7 @@ Number         GF_FamilyRoom_Indoor_Temperature_Mode
                "Family room Heating/Cooling Mode"
                <temperature>
                (v_GF_FamilyRoom_Thermostat)
-               ["homekit:HeatingCoolingMode"]
+               ["HeatingCoolingMode"]
 
 Number         GF_FamilyRoom_Indoor_Temperature_Setpoint
                "Family room Setpoint"
@@ -732,7 +732,7 @@ Number         GF_FamilyRoom_Outdoor_Temperature_Mode
                "External Heating/Cooling Mode"
                <temperature>
                (v_GF_FamilyRoom_Outdoor_Thermostat)
-               ["homekit:HeatingCoolingMode"]
+               ["HeatingCoolingMode"]
 
 Number         GF_FamilyRoom_Outdoor_Temperature_Setpoint
                "External Setpoint"
@@ -762,7 +762,7 @@ Number         FF_AnnRoom_Indoor_Temperature_Mode
                "Ann room Heating/Cooling Mode"
                <temperature>
                (v_FF_AnnRoom_Thermostat)
-               ["homekit:HeatingCoolingMode"]
+               ["HeatingCoolingMode"]
 
 Number         FF_AnnRoom_Indoor_Temperature_Setpoint
                "Ann room Setpoint"
@@ -799,7 +799,7 @@ Number         FF_Bedroom_Indoor_Temperature_Mode
                "Bedroom Heating/Cooling Mode"
                <temperature>
                (v_FF_Bedroom_Thermostat)
-               ["homekit:HeatingCoolingMode"]
+               ["HeatingCoolingMode"]
 
 Number         FF_Bedroom_Indoor_Temperature_Setpoint
                "Bedroom Setpoint"
@@ -836,7 +836,7 @@ Number         FF_AliceRoom_Indoor_Temperature_Mode
                "Alice room Heating/Cooling Mode"
                <temperature>
                (v_FF_AliceRoom_Thermostat)
-               ["homekit:HeatingCoolingMode"]
+               ["HeatingCoolingMode"]
 
 Number         FF_AliceRoom_Indoor_Temperature_Setpoint
                "Alice room Setpoint"
