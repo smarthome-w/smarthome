@@ -1359,6 +1359,10 @@ String         RGB_Color
                (GF_FamilyRoom, gIRRGB, gPersistenceSwitch)
                {mqtt=">[broker:broadlink/IRCOLORS/Color:state:*:default]"}
 
+Switch         HardResetButton
+               "Debug Button"
+               (gSystem)
+
 Switch         DebugButton
                "Debug Button"
                (gSystem)
