@@ -1360,7 +1360,7 @@ String         RGB_Color
                {mqtt=">[broker:broadlink/IRCOLORS/Color:state:*:default]"}
 
 Switch         HardResetButton
-               "Debug Button"
+               "Hard Reset Button"
                (gSystem)
 
 Switch         DebugButton
