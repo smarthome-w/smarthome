@@ -19,15 +19,15 @@ void sendDHT22MQTTMessage(float temperature, float humidity, float heatIndex)
     reconnectMQTT();
   }
 
-  String messageTopic = calculateMessageName(SENSOR_DHT22, SENSOR_VALUE_TEMPERATURE);
+  String messageTopic = calculateMessageName(SENSOR_DHT22, SENSOR_VALUE_TEMPERATURE, "");
   String messageValue = String(temperature);
   sendMQTTWithTypeConversion(messageTopic, messageValue);
 
-  messageTopic = calculateMessageName(SENSOR_DHT22, SENSOR_VALUE_HUMIDITY);
+  messageTopic = calculateMessageName(SENSOR_DHT22, SENSOR_VALUE_HUMIDITY, "");
   messageValue = String(humidity);
   sendMQTTWithTypeConversion(messageTopic, messageValue);
 
-  messageTopic = calculateMessageName(SENSOR_DHT22, SENSOR_VALUE_HEATINDEX);
+  messageTopic = calculateMessageName(SENSOR_DHT22, SENSOR_VALUE_HEATINDEX, "");
   messageValue = String(heatIndex);
   sendMQTTWithTypeConversion(messageTopic, messageValue);
 }
@@ -47,8 +47,8 @@ int processWatchdogSensor(long lastSuccessfulRead, long readInterval)
   Serial.print(":");
   Serial.println(readInterval * WATCHDOG_SENSOR_TRIGGER);
 
-  sendDebugMQTTMessage("DHT22_1", String(abs(millis() - lastSuccessfulRead)));
-  sendDebugMQTTMessage("DHT22_2", String(readInterval * WATCHDOG_SENSOR_TRIGGER));
+  //sendDebugMQTTMessage("DHT22_1", String(abs(millis() - lastSuccessfulRead)));
+  //sendDebugMQTTMessage("DHT22_2", String(readInterval * WATCHDOG_SENSOR_TRIGGER));
 
   if (abs(millis() - lastSuccessfulRead) >= (readInterval * WATCHDOG_SENSOR_TRIGGER))
   {
@@ -73,12 +73,10 @@ void processDHT22()
     if (isnan(h) || isnan(t))
     {
       Serial.println("Failed to read from DHT sensor!");
-      Serial.println(h);
-      Serial.println(t);
       processWatchdogSensor(DHT22LastSuccessfulReadInMillis, DHT22_READ_INTERVAL_MILLIS);
       DHT22LastReadInMillis = millis();
-      sendDebugMQTTMessage("DHT22_4", String(t));
-      sendDebugMQTTMessage("DHT22_5", String(h));
+      //sendDebugMQTTMessage("DHT22_4", String(t));
+      //sendDebugMQTTMessage("DHT22_5", String(h));
       return;
     }
 

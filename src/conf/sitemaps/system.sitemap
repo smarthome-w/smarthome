@@ -21,6 +21,7 @@ sitemap system label="System" {
     }
     Frame label="Błędy" icon="firstfloor" {
       Chart item=gErrors period=W label="Błędy"
+      Chart item=OverallErrorIndicator period=W label="Wskaźnik błędu"
     }
     Frame label="Pi" icon="firstfloor" {
       Text item=OpenHAB_Restart

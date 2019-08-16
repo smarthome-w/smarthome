@@ -489,7 +489,7 @@ DateTime       FF_BathRoom_Light_Mirror_LastUpdate
 //                       Raw RTV
 ////////////////////////////////////////////////////////////////////////////////
 Switch         RTV_TV_TV
-               "TV"
+               "Screen"
                <screen>
                (GF_FamilyRoom, gIRB, gRawRTV)
                ["Switchable"]
@@ -581,6 +581,23 @@ Switch         GH_BrightWindow_Scene
                "Bright window"
                (gScenes)
 
+Switch         GH_Netflix_Command
+               "Netflix"
+               (gSystem)
+               ["Switchable"]
+               {mqtt=">[broker:sony/RC/Command_Netflix:state:*:default]"}
+
+Switch         GH_YouTube_Command
+               "Youtube"
+               (gSystem)
+               ["Switchable"]
+               {mqtt=">[broker:sony/RC/Command_YouTube:state:*:default]"}
+
+Switch         GH_TV_Command
+               "TV"
+               (gSystem)
+               ["Switchable"]
+               {mqtt=">[broker:sony/RC/Command_TV:state:*:default]"}
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Sensors
@@ -752,7 +769,6 @@ Number         GF_FamilyRoom_Analog_Sensor
                <heating>
                (gSensorAnalog, gPersistenceSensor)
                {mqtt="<[broker:myHome/GF_FamilyRoom_Analog:state:JS(europeanNumber.js):.*]"}
-
 
 Group          v_FF_AnnRoom_Thermostat
                "Ann room thermostat"
@@ -1377,3 +1393,8 @@ String         DebugMessage
 Switch         DemoMode
                "Demo mode"
                (gSystem, gPersistenceSwitch)
+
+Switch         OverallErrorIndicator
+               "Error indicator"
+               <heating>
+               (gSystem, gPersistenceSwitch, gSlack)

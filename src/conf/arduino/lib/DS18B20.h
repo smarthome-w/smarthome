@@ -16,7 +16,7 @@ int DS18B20LastReadInMillis = 0;
 
 void sendDS18B20MQTTMessage(float temperature)
 {
-  String messageTopic = calculateMessageName(SENSOR_DS18B20, SENSOR_VALUE_TEMPERATURE);
+  String messageTopic = calculateMessageName(SENSOR_DS18B20, SENSOR_VALUE_TEMPERATURE, "");
   String messageValue = String(temperature);
   sendMQTTWithTypeConversion(messageTopic, messageValue);
 }

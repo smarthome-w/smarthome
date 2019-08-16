@@ -20,21 +20,21 @@ void sendBME280MQTTMessage(float temperature, float humidity, float pressure)
 
   if (!isnan(temperature))
   {
-    messageTopic = calculateMessageName(SENSOR_BME280, SENSOR_VALUE_TEMPERATURE);
+    messageTopic = calculateMessageName(SENSOR_BME280, SENSOR_VALUE_TEMPERATURE, "");
     messageValue = String(temperature);
     sendMQTTWithTypeConversion(messageTopic, messageValue);
   }
 
   if (!isnan(humidity))
   {
-    messageTopic = calculateMessageName(SENSOR_BME280, SENSOR_VALUE_HUMIDITY);
+    messageTopic = calculateMessageName(SENSOR_BME280, SENSOR_VALUE_HUMIDITY, "");
     messageValue = String(humidity);
     sendMQTTWithTypeConversion(messageTopic, messageValue);
   }
 
   if (!isnan(pressure))
   {
-    messageTopic = calculateMessageName(SENSOR_BME280, SENSOR_VALUE_PRESSURE);
+    messageTopic = calculateMessageName(SENSOR_BME280, SENSOR_VALUE_PRESSURE, "");
     messageValue = String(pressure);
     sendMQTTWithTypeConversion(messageTopic, messageValue);
   }

@@ -71,6 +71,12 @@ def on_message(client, userdata, msg):
                     braviarc.start_app("Netflix")
                 elif (command.startswith("YOUTUBE")):
                     braviarc.start_app("YouTube")
+            if (element.startswith("Command_Netflix")):
+                braviarc.start_app("Netflix")
+            if (element.startswith("Command_YouTube")):
+                braviarc.start_app("YouTube")
+            if (element.startswith("Command_TV")):
+                braviarc.select_source("HDMI 1/MHL")
         else:
             logger.error("TV not connected")
     except Exception as e:

@@ -15,6 +15,7 @@ then
     var nightAt = 23
     var elevationDusk = 6
     var elevationDawn = -6
+    var brightness = 0
 
     if (HH_Light_Dusk_Level.state !== NULL) {
       duskLevel = HH_Light_Dusk_Level.state as Number
@@ -39,8 +40,11 @@ then
     }
 
     val elevation = Astro_SunElevation.state as Number
-    val brightness = GF_FamilyRoom_Analog_Sensor.state as Number
 
+    if (GF_FamilyRoom_Analog_Sensor.state !== NULL) {
+      brightness = GF_FamilyRoom_Analog_Sensor.state as Number
+    }
+    
     val hourOfDay = now.getHourOfDay as Number
     val dayOfWeek = now.getDayOfWeek as Number
 

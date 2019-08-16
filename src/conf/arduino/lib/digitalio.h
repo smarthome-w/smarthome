@@ -19,6 +19,7 @@ struct circuit
   int previousValue;
   int type;
   int mode;
+  boolean isNameGeneric;
 };
 
 #ifdef fDitigalInput
@@ -60,45 +61,45 @@ void initializeDigitalInput()
   iix = 0;
 #ifdef fCIR
   Serial.println("fCIR...");
-  circuits[iix] = {"pinD6", pinD6, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  circuits[iix] = {"pinD6", pinD6, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP, true};
   iix++;
 #endif
 #ifdef fPIR
   Serial.println("fPIR...");
-  circuits[iix] = {"pinD5", pinD5, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  circuits[iix] = {"pinD5", pinD5, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP, true};
   iix++;
 #endif
 #ifdef fRelayPIR
   Serial.println("fRelayPIR...");
-  circuits[iix] = {"pinD4", pinD4, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT};
+  circuits[iix] = {"pinD4", pinD4, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT, true};
   iix++;
 #endif
 #ifdef TechnicalRoom1
   Serial.println("TechnicalRoom1...");
-  circuits[iix] = {"GF_FamilyRoom", pinD1, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  circuits[iix] = {"GF_FamilyRoom", pinD1, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP, false};
   iix++;
-  circuits[iix] = {"GF_Kitchen", pinD2, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  circuits[iix] = {"GF_Kitchen", pinD2, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP, false};
   iix++;
-  circuits[iix] = {"FF_Corridor", pinD5, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  circuits[iix] = {"FF_Corridor", pinD5, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP, false};
   iix++;
-  circuits[iix] = {"FF_Bedroom", pinD6, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  circuits[iix] = {"FF_Bedroom", pinD6, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP, false};
   iix++;
-  circuits[iix] = {"GF_FamilyBalcony", pinD7, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  circuits[iix] = {"GF_FamilyBalcony", pinD7, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP, false};
   iix++;
 #endif
 #ifdef TechnicalRoom2
   Serial.println("TechnicalRoom2...");
-  circuits[iix] = {"FF_BedroomWardobe", pinD0, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  circuits[iix] = {"FF_BedroomWardobe", pinD0, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP, false};
   iix++;
-  circuits[iix] = {"GF_FamilyRoom", pinD1, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  circuits[iix] = {"GF_FamilyRoom", pinD1, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP, false};
   iix++;
-  circuits[iix] = {"GF_MainDoor", pinD2, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  circuits[iix] = {"GF_MainDoor", pinD2, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP, false};
   iix++;
-  circuits[iix] = {"GF_Corridor", pinD5, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  circuits[iix] = {"GF_Corridor", pinD5, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP, false};
   iix++;
-  circuits[iix] = {"GF_MainLock", pinD6, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  circuits[iix] = {"GF_MainLock", pinD6, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP, false};
   iix++;
-  circuits[iix] = {"GF_Kitchen", pinD7, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  circuits[iix] = {"GF_Kitchen", pinD7, SENSOR_PIR, SENSOR_VALUE_PIR, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP, false};
   iix++;
 #endif
   Serial.println("Initialize digital input...");
@@ -115,12 +116,12 @@ void initializeDigitalButton()
 #ifdef fRelay
   Serial.println("Initialize button data...");
   iix = 0;
-  buttons[iix] = {"pinD6-relay", pinD6, SENSOR_RELAY, SENSOR_VALUE_RELAY, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  buttons[iix] = {"pinD6-relay", pinD6, SENSOR_RELAY, SENSOR_VALUE_RELAY, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP, false};
   iix++;
-  buttons[iix] = {"pinD3", pinD3, SENSOR_BUTTON, SENSOR_VALUE_BUTTON_GPIO0, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP};
+  buttons[iix] = {"pinD3", pinD3, SENSOR_BUTTON, SENSOR_VALUE_BUTTON_GPIO0, NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP, false};
   iix++;
 #ifndef fRelayPIR
-  buttons[iix] = {"pinD4", pinD4, SENSOR_BUTTON, SENSOR_VALUE_BUTTON_GPIO2, NO_VALUE, NORMALLY_OPEN, INPUT_PULLUP};
+  buttons[iix] = {"pinD4", pinD4, SENSOR_BUTTON, SENSOR_VALUE_BUTTON_GPIO2, NO_VALUE, NORMALLY_OPEN, INPUT_PULLUP, false};
   iix++;
 #endif
   Serial.println("Initialize button input...");
@@ -144,7 +145,12 @@ void sendCircuitMQTTMessage(int circuitIndex, int value)
   }
 
   int currentType = circuits[circuitIndex].type;
-  String messageTopic = calculateMessageName(circuits[circuitIndex].sensorType, circuits[circuitIndex].sensorValueType, circuits[circuitIndex].name);
+  String overrideName = "";
+  if (circuits[circuitIndex].isNameGeneric == false)
+  {
+    overrideName = circuits[circuitIndex].name;
+  }
+  String messageTopic = calculateMessageName(circuits[circuitIndex].sensorType, circuits[circuitIndex].sensorValueType, overrideName);
 
   if (currentType == NORMALLY_CLOSED)
   {

@@ -14,5 +14,6 @@ sitemap sensors_basic label="Status" {
     }
     Frame label="Miernik mocy" icon="firstfloor" {
         Text item=GF_PowerMeter_Current
+        Switch item=OverallErrorIndicator
     }
 }
