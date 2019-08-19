@@ -12,8 +12,10 @@ sitemap sensors_basic label="Status" {
         Text item=Astro_Sunset_Time
         Text item=Astro_SunElevation
     }
-    Frame label="Miernik mocy" icon="firstfloor" {
+
+    Frame label="Inne" icon="firstfloor" {
         Text item=GF_PowerMeter_Current
         Switch item=OverallErrorIndicator
+        Switch item=CIR_GF_MainLock mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
     }
 }

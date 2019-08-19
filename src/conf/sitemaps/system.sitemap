@@ -19,6 +19,11 @@ sitemap system label="System" {
 //      Group item=gHeartbeat
       Group item=gErrors
     }
+    Frame label="Drzwi" icon="firstfloor" {
+      Switch item=CIR_GF_MainLock mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
+      Chart item=CIR_GF_MainLock period=W label="Zamek"
+    }
+
     Frame label="Błędy" icon="firstfloor" {
       Chart item=gErrors period=W label="Błędy"
       Chart item=OverallErrorIndicator period=W label="Wskaźnik błędu"

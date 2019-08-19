@@ -42,10 +42,10 @@
 //#define CorridorLights
 //#define AnnRoom
 //#define AliceRoom
-//#define Bedroom
+//#define Bedroom // change CIR to D5 instead D6 (hardware issue)
 //#define FamilyRoom
 //#define TechnicalRoom1
-#define TechnicalRoom2
+//#define TechnicalRoom2
 //#define FamilyRoomRollershutter
 //#define BedroomRollershutter
 //#define TestRoom
