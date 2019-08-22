@@ -4,8 +4,8 @@ DOCKER_TAG=smarthomew-openhab
 
 MACHINE=$(shell uname -m)
 
-VERSION=2.4.0
-#VERSION=2.5.0-snapshot
+#VERSION=2.4.0
+VERSION=2.5.0-snapshot
 OS_PLATFORM=amd64
 
 HOST_IP=`hostname -I | awk '{print $$1}'`

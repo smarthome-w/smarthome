@@ -21,6 +21,7 @@ sitemap system label="System" {
     }
     Frame label="Drzwi" icon="firstfloor" {
       Switch item=CIR_GF_MainLock mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
+      Chart item=CIR_GF_MainLock period=D label="Zamek"
       Chart item=CIR_GF_MainLock period=W label="Zamek"
     }
 

@@ -10,7 +10,7 @@ import os
 
 MESSAGE_PREFIX = "sony"
 SONY_IP = None
-SONY_PIN = '9209'
+SONY_PIN = '8908'
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -35,7 +35,7 @@ def setup():
 
     braviarc = BraviaRC(SONY_IP)
     pin = SONY_PIN
-    braviarc.connect(pin, 'sony', 'sony')
+    braviarc.connect(pin, 'sony', 'sonyrc')
 
 
 def on_connect(client, userdata, flags, rc):
@@ -58,7 +58,7 @@ def on_message(client, userdata, msg):
     try:
         braviarc = BraviaRC(SONY_IP)
         pin = SONY_PIN
-        braviarc.connect(pin, 'sony', 'sony')
+        braviarc.connect(pin, 'sony', 'sonyrc')
         if (braviarc.is_connected()):
             if (element == "RTV_TV_Input"):
                 playing_content = braviarc.get_playing_info()

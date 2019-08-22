@@ -1397,4 +1397,4 @@ Switch         DemoMode
 Switch         OverallErrorIndicator
                "Error indicator"
                <heating>
-               (gSystem, gPersistenceSwitch, gSlack)
+               (gSystem, gPersistenceSwitch, gAlert)
