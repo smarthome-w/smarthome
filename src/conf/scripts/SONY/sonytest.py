@@ -50,7 +50,7 @@ if (braviarc.is_connected()):
     print('==')
     print(volume_info.get('volume'))
     print('==')
-    braviarc.set_volume_level(0.1)
+    braviarc.set_volume_level(0.2)
     # braviarc.volume_up()
     print('==')
     system_info = braviarc.get_system_info()
