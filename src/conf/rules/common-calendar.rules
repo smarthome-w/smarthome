@@ -8,8 +8,8 @@ then
       logLevel = (HH_DebugLevel_General.state as Number).intValue
     }
 
-    var duskLevel = 350
-    var dawnLevel = 750
+    var duskLevel = 724
+    var dawnLevel = 370
     var dayAt = 6
     var eveningAt = 17
     var nightAt = 23
@@ -18,19 +18,19 @@ then
     var brightness = 0
 
     if (HH_Light_Dusk_Level.state !== NULL) {
-      duskLevel = HH_Light_Dusk_Level.state as Number
+      duskLevel = (HH_Light_Dusk_Level.state as Number).intValue
     }
     if (HH_Light_Dawn_Level.state !== NULL) {
-      dawnLevel = HH_Light_Dawn_Level.state as Number
+      dawnLevel = (HH_Light_Dawn_Level.state as Number).intValue
     }
     if (HH_Time_Day.state !== NULL) {
-      dayAt = HH_Time_Day.state as Number
+      dayAt = (HH_Time_Day.state as Number).intValue
     }
     if (HH_Time_Evening.state !== NULL) {
-      eveningAt = HH_Time_Evening.state as Number
+      eveningAt = (HH_Time_Evening.state as Number).intValue
     }
     if (HH_Time_Night.state !== NULL) {
-      nightAt = HH_Time_Night.state as Number
+      nightAt = (HH_Time_Night.state as Number).intValue
     }
     if (HH_Elevation_Dusk.state !== NULL) {
       elevationDusk = HH_Elevation_Dusk.state as Number
@@ -42,7 +42,7 @@ then
     val elevation = Astro_SunElevation.state as Number
 
     if (GF_FamilyRoom_Analog_Sensor.state !== NULL) {
-      brightness = GF_FamilyRoom_Analog_Sensor.state as Number
+      brightness = (GF_FamilyRoom_Analog_Sensor.state as Number).intValue
     }
     
     val hourOfDay = now.getHourOfDay as Number
@@ -80,14 +80,14 @@ then
     }
 
     if (elevation <= elevationDusk && hourOfDay >= 12) {
-      if (brightness > duskLevel) {
+      if (brightness < duskLevel) {
         calendar_Dusk.sendCommand(ON)
         calendar_Dawn.sendCommand(OFF)
       }
     }
 
     if (elevation > elevationDawn && hourOfDay <= 12) {
-      if (brightness < dawnLevel) {
+      if (brightness >= dawnLevel) {
         calendar_Dusk.sendCommand(OFF)
         calendar_Dawn.sendCommand(ON)
       }

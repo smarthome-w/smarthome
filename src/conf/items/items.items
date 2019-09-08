@@ -768,7 +768,7 @@ Number         GF_FamilyRoom_Analog_Sensor
                "Natężenie światła - salon [%.0f]"
                <heating>
                (gSensorAnalog, gPersistenceSensor)
-               {mqtt="<[broker:myHome/GF_FamilyRoom_Analog:state:JS(europeanNumber.js):.*]"}
+               {mqtt="<[broker:myHome/GF_FamilyRoom_Analog:state:JS(brightness.js):.*]"}
 
 Group          v_FF_AnnRoom_Thermostat
                "Ann room thermostat"
@@ -841,7 +841,7 @@ Number         FF_Bedroom_Analog_Sensor
                "Natężenie światła - sypialnia [%.0f]"
                <heating>
                (gSensorAnalog, gPersistenceSensor)
-               {mqtt="<[broker:myHome/FF_Bedroom_Analog:state:JS(europeanNumber.js):.*]"}
+               {mqtt="<[broker:myHome/FF_Bedroom_Analog:state:JS(brightness.js):.*]"}
 
 
 Group          v_FF_AliceRoom_Thermostat
@@ -878,7 +878,7 @@ Number         FF_AliceRoom_Analog_Sensor
                "Natężenie światła - Alicja [%.0f]"
                <heating>
                (gSensorAnalog, gPersistenceSensor)
-               {mqtt="<[broker:myHome/FF_AliceRoom_Analog:state:JS(europeanNumber.js):.*]"}
+               {mqtt="<[broker:myHome/FF_AliceRoom_Analog:state:JS(brightness.js):.*]"}
 
 
 Number         FF_AliceRoom_Indoor_Temperature_Sensor1
@@ -1382,7 +1382,6 @@ Switch         HardResetButton
 Switch         DebugButton
                "Debug Button"
                (gSystem)
-               {mqtt=">[broker:broadlink/TC2/GF_Corridor_Light_Main:state:*:default]"}
 
 String         DebugTarget
                "Target [%s]"
