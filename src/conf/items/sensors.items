@@ -287,6 +287,12 @@ Number         GF_PowerMeter_Current
                (GF_Corridor, gPower, gPersistenceSwitch)
                {mqtt="<[broker:myHome/PowerMeter_Current:state:JS(europeanNumber.js):.*]"}
 
+Number         GF_PowerMeter_Current_In_Watts
+               "Current power [%.0f W]"
+               <battery-60>
+               (GF_Corridor, gPower, gPersistenceSwitch)
+               {mqtt="<[broker:myHome/PowerMeter_Current:state:JS(kilowatttowatts.js):.*]"}
+
 Number         GF_PowerMeter_DailyConsumption
                "Daily consumption [%.1f kWh]"
                <battery-60>
