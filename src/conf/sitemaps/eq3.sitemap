@@ -1,0 +1,10 @@
+sitemap eq3 label="Grzejniki" {
+    Frame label="Grzejniki" icon="firstfloor" {
+      Chart item=gEQ3Temp period=D label="Temperatura"
+      Chart item=gEQ3Valve period=D label="Zawór"
+    }
+    Frame label="Grzejniki" icon="firstfloor" {
+      Chart item=gEQ3Temp period=W label="Temperatura"
+      Chart item=gEQ3Valve period=W label="Zawór"
+    }
+}

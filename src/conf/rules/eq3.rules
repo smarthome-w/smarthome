@@ -1,0 +1,43 @@
+rule "eq3_rule"
+when
+    Member of gEQ3 received update
+then
+  try {
+    var NumberItem temperatureItem = NULL
+    var NumberItem valveItem = NULL
+    // {"trv":"00:1A:22:10:0C:7B","temp":"6.0","offsetTemp":"0.0","valve":"0% open","mode":"manual","boost":"inactive","window":"closed","state":"unlocked","battery":"GOOD"}
+    logInfo("eq3", "item: {}, value: {}", triggeringItem.name, triggeringItem.state)
+    if (triggeringItem.state !== NULL){
+        val json = (triggeringItem.state as StringType).toString
+        val String deviceId = transform("JSONPATH", "$.trv", json)
+        val String temp = transform("JSONPATH", "$.temp", json)
+        val String valve = transform("JSONPATH", "$.valve", json).replace("% open", "")
+        //val String mode = transform("JSONPATH", "$.mode", json)
+        logInfo("eq3", "deviceId: {}, temp: {}, valve: {}", deviceId, temp, valve)
+
+        if (deviceId == "00:1A:22:10:0C:C7") {
+            temperatureItem = EQ3_Bedroom_Temp
+            valveItem =  EQ3_Bedroom_Valve
+        }
+
+        if (deviceId == "00:1A:22:10:0C:7B") {
+            temperatureItem = EQ3_AnnRoom_Temp
+            valveItem =  EQ3_AnnRoom_Valve
+        }
+
+        if (temperatureItem !== NULL) {
+            temperatureItem.postUpdate(temp)
+        }
+        if (valveItem !== NULL) {
+            valveItem.postUpdate(valve)
+        }
+    }
+  } catch (Throwable t) {
+    logError("Error", "Error in notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+  } finally {
+  }
+end
+// MET-1METDST
+
+//mosquitto_pub -h 192.168.0.4 -t '/bedroomradin/trv' -m '00:1A:22:10:0C:C7 unlock'
+//mosquitto_pub -h 192.168.0.4 -t '/bedroomradin/trv' -m '00:1A:22:10:0C:7B unlock'

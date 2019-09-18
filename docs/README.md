@@ -17,7 +17,7 @@ Main assumption for hardware is alternative libraries accessibility (any shell, 
 |          Google Home Mini           |               Voice controller               |                          -                           |                                                              -                                                               |                                             -                                              |
 |            Sonoff Basic             |     Universal WiFi switch building block     |                          -                           |                                                              -                                                               |                                             -                                              |
 |            Broadlink SP2            |              Remote WiFi switch              |                Brighten manual toggle                |                                     Lack of manual network setup, no native MQTT support                                     |                                             -                                              |
-|         ESP32 (in progress)         | Universal WiFi building block with Bluetooth |            Embedded UART, 5V power supply            |                                                              -                                                               |                                             -                                              |
+|                ESP32                | Universal WiFi building block with Bluetooth |            Embedded UART, 5V power supply            |                                                              -                                                               |                                             -                                              |
 
 _Disclaimer_: I have router from my ISP without ability to match MAC and IP address. It requires additional attention and hacks. So ability to manually setup network is important to me
 
@@ -152,3 +152,7 @@ The best solution for me is one mechanical limit switch on the top and position 
 - Watchdog to detect WiFI network disconnection and restart device
 - Heartbeat messages sent every minute
 - Current functions present in each hardware piece is configurable in [devices.h](/src/conf/arduino/lib/devices.h)
+
+### eq3 integration
+
+Simple https://github.com/softypit/esp32_mqtt_eq3 and bluetooth-mqtt gateway.

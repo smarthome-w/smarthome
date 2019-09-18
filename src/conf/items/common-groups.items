@@ -196,3 +196,14 @@ Group          gParameters
                <heating>
                (System)
 
+Group          gEQ3
+               <heating>
+               (System)
+
+Group          gEQ3Temp
+               <heating>
+               (System)
+
+Group          gEQ3Valve
+               <heating>
+               (System)

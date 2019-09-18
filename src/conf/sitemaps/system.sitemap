@@ -18,6 +18,9 @@ sitemap system label="System" {
 //      Group item=gLastUpdate
 //      Group item=gHeartbeat
       Group item=gErrors
+      Group item=gEQ3
+      Group item=gEQ3Temp
+      Group item=gEQ3Valve
     }
     Frame label="Drzwi" icon="firstfloor" {
       Switch item=CIR_GF_MainLock mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
@@ -67,7 +70,7 @@ sitemap system label="System" {
                                           RESET="RESET",
                                           DEBUG="DEBUG"
                                          ]
-//      Switch item=DebugButton mappings=[ON="Debug"]
-      Switch item=DebugButton
+      Switch item=DebugButton mappings=[ON="Debug"]
+//      Switch item=DebugButton
     }
 }

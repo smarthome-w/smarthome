@@ -1,0 +1,25 @@
+String         EQ3_Bedroom
+               "Bedroom EQ3 [Bedroom: %s]"
+               <rgb>
+               (gEQ3)
+               {mqtt="<[broker:/bedroomradout/status:state:default]"}
+
+Number         EQ3_Bedroom_Temp
+               "EQ3 Bedroom Temp [%.0f \u00b0C]"
+               <temperature>
+               (gEQ3Temp, gPersistenceSwitch)
+
+Number         EQ3_Bedroom_Valve
+               "EQ3 Bedroom Valve [%.0f%%]"
+               <temperature>
+               (gEQ3Valve, gPersistenceSwitch)
+
+Number         EQ3_AnnRoom_Temp
+               "EQ3 Ann Room Temp [%.0f \u00b0C]"
+               <temperature>
+               (gEQ3Temp, gPersistenceSwitch)
+
+Number         EQ3_AnnRoom_Valve
+               "EQ3 Ann Room Valve [%.0f%%]"
+               <temperature>
+               (gEQ3Valve, gPersistenceSwitch)
