@@ -1,4 +1,23 @@
 sitemap eq3 label="Grzejniki" {
+
+    Frame label="Grzejniki" icon="firstfloor" {
+      Text item=EQ3_Bedroom_Temp  
+      Text item=EQ3_Bedroom_Valve  
+      Text item=EQ3_Bedroom_LastUpdate  
+      Text item=EQ3_AnnRoom_Temp  
+      Text item=EQ3_AnnRoom_Valve  
+      Text item=EQ3_AnnRoom_LastUpdate  
+      Text item=EQ3_AliceRoom_Temp  
+      Text item=EQ3_AliceRoom_Valve  
+      Text item=EQ3_AliceRoom_LastUpdate  
+      Text item=EQ3_FamilyRoom_Temp  
+      Text item=EQ3_FamilyRoom_Valve  
+      Text item=EQ3_FamilyRoom_LastUpdate  
+      Text item=EQ3_Kitchen_Temp  
+      Text item=EQ3_Kitchen_Valve  
+      Text item=EQ3_Kitchen_LastUpdate  
+    }
+
     Frame label="Grzejniki" icon="firstfloor" {
       Chart item=gEQ3Temp period=D label="Temperatura"
       Chart item=gEQ3Valve period=D label="Zawór"

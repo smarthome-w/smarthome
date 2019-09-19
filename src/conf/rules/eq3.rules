@@ -5,6 +5,7 @@ then
   try {
     var NumberItem temperatureItem = NULL
     var NumberItem valveItem = NULL
+    var DateTimeItem lastUpdateItem = NULL
     // {"trv":"00:1A:22:10:0C:7B","temp":"6.0","offsetTemp":"0.0","valve":"0% open","mode":"manual","boost":"inactive","window":"closed","state":"unlocked","battery":"GOOD"}
     logInfo("eq3", "item: {}, value: {}", triggeringItem.name, triggeringItem.state)
     if (triggeringItem.state !== NULL){
@@ -18,11 +19,31 @@ then
         if (deviceId == "00:1A:22:10:0C:C7") {
             temperatureItem = EQ3_Bedroom_Temp
             valveItem =  EQ3_Bedroom_Valve
+            lastUpdateItem = EQ3_Bedroom_LastUpdate
         }
 
         if (deviceId == "00:1A:22:10:0C:7B") {
             temperatureItem = EQ3_AnnRoom_Temp
             valveItem =  EQ3_AnnRoom_Valve
+            lastUpdateItem = EQ3_AnnRoom_LastUpdate
+        }
+
+        if (deviceId == "00:1A:22:10:09:0C") {
+            temperatureItem = EQ3_AliceRoom_Temp
+            valveItem =  EQ3_AliceRoom_Valve
+            lastUpdateItem = EQ3_AliceRoom_LastUpdate
+        }
+        
+        if (deviceId == "00:1A:22:0C:85:FA") {
+            temperatureItem = EQ3_FamilyRoom_Temp
+            valveItem =  EQ3_FamilyRoom_Valve
+            lastUpdateItem = EQ3_FamilyRoom_LastUpdate
+        }
+
+        if (deviceId == "00:1A:22:0E:06:A0") {
+            temperatureItem = EQ3_Kitchen_Temp
+            valveItem =  EQ3_Kitchen_Valve
+            lastUpdateItem = EQ3_Kitchen_LastUpdate
         }
 
         if (temperatureItem !== NULL) {
@@ -30,6 +51,7 @@ then
         }
         if (valveItem !== NULL) {
             valveItem.postUpdate(valve)
+            lastUpdateItem.postUpdate(now.toString())
         }
     }
   } catch (Throwable t) {
