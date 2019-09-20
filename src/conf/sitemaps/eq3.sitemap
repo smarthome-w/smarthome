@@ -1,21 +1,29 @@
 sitemap eq3 label="Grzejniki" {
 
-    Frame label="Grzejniki" icon="firstfloor" {
+    Frame label="Bedroom" icon="firstfloor" {
       Text item=EQ3_Bedroom_Temp  
       Text item=EQ3_Bedroom_Valve  
       Text item=EQ3_Bedroom_LastUpdate  
+    }
+    Frame label="Ann Room" icon="firstfloor" {
       Text item=EQ3_AnnRoom_Temp  
       Text item=EQ3_AnnRoom_Valve  
       Text item=EQ3_AnnRoom_LastUpdate  
-      Text item=EQ3_AliceRoom_Temp  
-      Text item=EQ3_AliceRoom_Valve  
-      Text item=EQ3_AliceRoom_LastUpdate  
+    }
+    Frame label="Family Room" icon="firstfloor" {
       Text item=EQ3_FamilyRoom_Temp  
       Text item=EQ3_FamilyRoom_Valve  
       Text item=EQ3_FamilyRoom_LastUpdate  
+    }
+    Frame label="Kitchen" icon="firstfloor" {
       Text item=EQ3_Kitchen_Temp  
       Text item=EQ3_Kitchen_Valve  
       Text item=EQ3_Kitchen_LastUpdate  
+    }
+    Frame label="Alice Room" icon="firstfloor" {
+      Text item=EQ3_AliceRoom_Temp  
+      Text item=EQ3_AliceRoom_Valve  
+      Text item=EQ3_AliceRoom_LastUpdate  
     }
 
     Frame label="Grzejniki" icon="firstfloor" {
