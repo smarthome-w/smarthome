@@ -1,0 +1,80 @@
+String         EQ3_Bedroom
+               "Bedroom EQ3 [Bedroom: %s]"
+               <rgb>
+               (gEQ3)
+               {mqtt="<[broker:/bedroomradout/status:state:default]"}
+
+Number         EQ3_Bedroom_Temp
+               "EQ3 Bedroom Temp [%.0f \u00b0C]"
+               <temperature>
+               (gEQ3Temp, gPersistenceSwitch)
+
+Number         EQ3_Bedroom_Valve
+               "EQ3 Bedroom Valve [%.0f%%]"
+               <temperature>
+               (gEQ3Valve, gPersistenceSwitch)
+
+DateTime       EQ3_Bedroom_LastUpdate
+               "Bedroom [%1$td.%1$tm %1$tH:%1$tM]"
+               <time>
+               (gPersistenceSwitch)
+
+Number         EQ3_AnnRoom_Temp
+               "EQ3 Ann Room Temp [%.0f \u00b0C]"
+               <temperature>
+               (gEQ3Temp, gPersistenceSwitch)
+
+Number         EQ3_AnnRoom_Valve
+               "EQ3 Ann Room Valve [%.0f%%]"
+               <temperature>
+               (gEQ3Valve, gPersistenceSwitch)
+
+DateTime       EQ3_AnnRoom_LastUpdate
+               "Ania [%1$td.%1$tm %1$tH:%1$tM]"
+               <time>
+               (gPersistenceSwitch)
+
+Number         EQ3_AliceRoom_Temp
+               "EQ3 Alice Room Temp [%.0f \u00b0C]"
+               <temperature>
+               (gEQ3Temp, gPersistenceSwitch)
+
+Number         EQ3_AliceRoom_Valve
+               "EQ3 Alice Room Valve [%.0f%%]"
+               <temperature>
+               (gEQ3Valve, gPersistenceSwitch)
+
+DateTime       EQ3_AliceRoom_LastUpdate
+               "Alice Room [%1$td.%1$tm %1$tH:%1$tM]"
+               <time>
+               (gPersistenceSwitch)
+
+Number         EQ3_FamilyRoom_Temp
+               "EQ3 Family Room Temp [%.0f \u00b0C]"
+               <temperature>
+               (gEQ3Temp, gPersistenceSwitch)
+
+Number         EQ3_FamilyRoom_Valve
+               "EQ3 Family Room Valve [%.0f%%]"
+               <temperature>
+               (gEQ3Valve, gPersistenceSwitch)
+
+DateTime       EQ3_FamilyRoom_LastUpdate
+               "Family Room [%1$td.%1$tm %1$tH:%1$tM]"
+               <time>
+               (gPersistenceSwitch)
+
+Number         EQ3_Kitchen_Temp
+               "EQ3 Kitchen Temp [%.0f \u00b0C]"
+               <temperature>
+               (gEQ3Temp, gPersistenceSwitch)
+
+Number         EQ3_Kitchen_Valve
+               "EQ3 Kitchen Valve [%.0f%%]"
+               <temperature>
+               (gEQ3Valve, gPersistenceSwitch)
+
+DateTime       EQ3_Kitchen_LastUpdate
+               "Kitchen [%1$td.%1$tm %1$tH:%1$tM]"
+               <time>
+               (gPersistenceSwitch)

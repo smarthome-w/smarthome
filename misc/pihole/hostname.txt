@@ -1,0 +1,2 @@
+# [General]
+0.0.0.0 a.spolecznosci.net

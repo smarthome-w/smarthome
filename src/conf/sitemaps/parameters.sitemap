@@ -1,0 +1,85 @@
+sitemap parameters label="Parametry" {
+    Frame label="Demo" {
+        Switch item=DemoMode
+    }
+
+    Frame label="Parametry" icon="firstfloor" {
+      Setpoint item=HH_Light_Dusk_Level label="Poziom zmierzchu [%.0f]" minValue=0 maxValue=1024 step=10
+      Setpoint item=HH_Light_Dawn_Level label="Poziom świtu [%.0f]" minValue=0 maxValue=1024 step=10
+      Setpoint item=HH_PIR_State_Timeout label="Timeout PIR [%.0f]" minValue=1 maxValue=10 step=1
+      Setpoint item=HH_PIR_Wardobe_State_Timeout label="Timeout Wardobe [%.0f]" minValue=20 maxValue=120 step=5
+
+      Setpoint item=HH_Time_Day minValue=5 maxValue=10 step=1
+      Setpoint item=HH_Time_Evening minValue=15 maxValue=19 step=1
+      Setpoint item=HH_Time_Night minValue=20 maxValue=23 step=1
+      Setpoint item=HH_Elevation_Dusk minValue=0 maxValue=20 step=1
+      Setpoint item=HH_Elevation_Dawn minValue=-10 maxValue=10 step=1
+      
+      Setpoint item=HH_Night_Bedroom_Blind_Level minValue=0 maxValue=100 step=5
+
+      Selection item=HH_DebugLevel_PIRCIR mappings=[
+                                          1.0="FATAL",
+                                          2.0="ERROR",
+                                          3.0="WARN",
+                                          4.0="INFO",
+                                          5.0="DEBUG",
+                                          6.0="TRACE"
+                                         ]
+      Selection item=HH_DebugLevel_Broadlink mappings=[
+                                          1.0="FATAL",
+                                          2.0="ERROR",
+                                          3.0="WARN",
+                                          4.0="INFO",
+                                          5.0="DEBUG",
+                                          6.0="TRACE"
+                                         ]
+      Selection item=HH_DebugLevel_Heartbeat mappings=[
+                                          1.0="FATAL",
+                                          2.0="ERROR",
+                                          3.0="WARN",
+                                          4.0="INFO",
+                                          5.0="DEBUG",
+                                          6.0="TRACE"
+                                         ]
+      Selection item=HH_DebugLevel_Scene mappings=[
+                                          1.0="FATAL",
+                                          2.0="ERROR",
+                                          3.0="WARN",
+                                          4.0="INFO",
+                                          5.0="DEBUG",
+                                          6.0="TRACE"
+                                         ]
+      Selection item=HH_DebugLevel_Nightwatch mappings=[
+                                          1.0="FATAL",
+                                          2.0="ERROR",
+                                          3.0="WARN",
+                                          4.0="INFO",
+                                          5.0="DEBUG",
+                                          6.0="TRACE"
+                                         ]
+      Selection item=HH_DebugLevel_Movewatch mappings=[
+                                          1.0="FATAL",
+                                          2.0="ERROR",
+                                          3.0="WARN",
+                                          4.0="INFO",
+                                          5.0="DEBUG",
+                                          6.0="TRACE"
+                                         ]
+      Selection item=HH_DebugLevel_Rollershutter mappings=[
+                                          1.0="FATAL",
+                                          2.0="ERROR",
+                                          3.0="WARN",
+                                          4.0="INFO",
+                                          5.0="DEBUG",
+                                          6.0="TRACE"
+                                         ]
+      Selection item=HH_DebugLevel_General mappings=[
+                                          1.0="FATAL",
+                                          2.0="ERROR",
+                                          3.0="WARN",
+                                          4.0="INFO",
+                                          5.0="DEBUG",
+                                          6.0="TRACE"
+                                         ]
+    }
+}

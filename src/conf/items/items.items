@@ -299,14 +299,14 @@ Switch         GF_Kitchen_Light_Main
                "Main kitchen lights[]"
                <light>
                (GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch)
-               ["Switchable"]
+               ["Lighting"]
                {mqtt=">[broker:broadlink/TC2/GF_Kitchen_Light_Main:state:*:default]"}
 
 Switch         GF_Kitchen_Light_LED
                "Kitchen light led[]"
                <light>
                (GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch)
-               ["Switchable"]
+               ["Lighting"]
                {mqtt=">[broker:broadlink/TC2/GF_Kitchen_Light_LED:state:*:default]"}
 
 
@@ -401,7 +401,7 @@ Switch         FF_Bedroom_Light_2
                "Bedroom upper lights[]"
                <light>
                (FF_Bedroom, gTC2, gFF_Bedroom_Scenario, gPersistenceSwitch)
-               ["Switchable"]
+               ["Lighting"]
                {mqtt=">[broker:broadlink/TC2/FF_Bedroom_Light_2:state:*:default]"}
 
 Switch         FF_Bedroom_Lights
@@ -489,7 +489,7 @@ DateTime       FF_BathRoom_Light_Mirror_LastUpdate
 //                       Raw RTV
 ////////////////////////////////////////////////////////////////////////////////
 Switch         RTV_TV_TV
-               "TV"
+               "Screen"
                <screen>
                (GF_FamilyRoom, gIRB, gRawRTV)
                ["Switchable"]
@@ -581,6 +581,23 @@ Switch         GH_BrightWindow_Scene
                "Bright window"
                (gScenes)
 
+Switch         GH_Netflix_Command
+               "Netflix"
+               (gSystem)
+               ["Switchable"]
+               {mqtt=">[broker:sony/RC/Command_Netflix:state:*:default]"}
+
+Switch         GH_YouTube_Command
+               "Youtube"
+               (gSystem)
+               ["Switchable"]
+               {mqtt=">[broker:sony/RC/Command_YouTube:state:*:default]"}
+
+Switch         GH_TV_Command
+               "TV"
+               (gSystem)
+               ["Switchable"]
+               {mqtt=">[broker:sony/RC/Command_TV:state:*:default]"}
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Sensors
@@ -608,6 +625,11 @@ Number         HH_Light_Dawn_Level
 
 Number         HH_PIR_State_Timeout
                "PIR state timeout [%.0f]"
+               <time>
+               (gParameters, gPersistenceSwitch)
+
+Number         HH_PIR_Wardobe_State_Timeout
+               "Wardobe state timeout [%.0f]"
                <time>
                (gParameters, gPersistenceSwitch)
 
@@ -690,7 +712,7 @@ Number         GF_FamilyRoom_Indoor_Temperature_Mode
                "Family room Heating/Cooling Mode"
                <temperature>
                (v_GF_FamilyRoom_Thermostat)
-               ["homekit:HeatingCoolingMode"]
+               ["HeatingCoolingMode"]
 
 Number         GF_FamilyRoom_Indoor_Temperature_Setpoint
                "Family room Setpoint"
@@ -727,7 +749,7 @@ Number         GF_FamilyRoom_Outdoor_Temperature_Mode
                "External Heating/Cooling Mode"
                <temperature>
                (v_GF_FamilyRoom_Outdoor_Thermostat)
-               ["homekit:HeatingCoolingMode"]
+               ["HeatingCoolingMode"]
 
 Number         GF_FamilyRoom_Outdoor_Temperature_Setpoint
                "External Setpoint"
@@ -746,8 +768,7 @@ Number         GF_FamilyRoom_Analog_Sensor
                "Natężenie światła - salon [%.0f]"
                <heating>
                (gSensorAnalog, gPersistenceSensor)
-               {mqtt="<[broker:myHome/GF_FamilyRoom_Analog:state:JS(europeanNumber.js):.*]"}
-
+               {mqtt="<[broker:myHome/GF_FamilyRoom_Analog:state:JS(brightness.js):.*]"}
 
 Group          v_FF_AnnRoom_Thermostat
                "Ann room thermostat"
@@ -757,7 +778,7 @@ Number         FF_AnnRoom_Indoor_Temperature_Mode
                "Ann room Heating/Cooling Mode"
                <temperature>
                (v_FF_AnnRoom_Thermostat)
-               ["homekit:HeatingCoolingMode"]
+               ["HeatingCoolingMode"]
 
 Number         FF_AnnRoom_Indoor_Temperature_Setpoint
                "Ann room Setpoint"
@@ -794,7 +815,7 @@ Number         FF_Bedroom_Indoor_Temperature_Mode
                "Bedroom Heating/Cooling Mode"
                <temperature>
                (v_FF_Bedroom_Thermostat)
-               ["homekit:HeatingCoolingMode"]
+               ["HeatingCoolingMode"]
 
 Number         FF_Bedroom_Indoor_Temperature_Setpoint
                "Bedroom Setpoint"
@@ -820,7 +841,7 @@ Number         FF_Bedroom_Analog_Sensor
                "Natężenie światła - sypialnia [%.0f]"
                <heating>
                (gSensorAnalog, gPersistenceSensor)
-               {mqtt="<[broker:myHome/FF_Bedroom_Analog:state:JS(europeanNumber.js):.*]"}
+               {mqtt="<[broker:myHome/FF_Bedroom_Analog:state:JS(brightness.js):.*]"}
 
 
 Group          v_FF_AliceRoom_Thermostat
@@ -831,7 +852,7 @@ Number         FF_AliceRoom_Indoor_Temperature_Mode
                "Alice room Heating/Cooling Mode"
                <temperature>
                (v_FF_AliceRoom_Thermostat)
-               ["homekit:HeatingCoolingMode"]
+               ["HeatingCoolingMode"]
 
 Number         FF_AliceRoom_Indoor_Temperature_Setpoint
                "Alice room Setpoint"
@@ -857,7 +878,7 @@ Number         FF_AliceRoom_Analog_Sensor
                "Natężenie światła - Alicja [%.0f]"
                <heating>
                (gSensorAnalog, gPersistenceSensor)
-               {mqtt="<[broker:myHome/FF_AliceRoom_Analog:state:JS(europeanNumber.js):.*]"}
+               {mqtt="<[broker:myHome/FF_AliceRoom_Analog:state:JS(brightness.js):.*]"}
 
 
 Number         FF_AliceRoom_Indoor_Temperature_Sensor1
@@ -1354,10 +1375,13 @@ String         RGB_Color
                (GF_FamilyRoom, gIRRGB, gPersistenceSwitch)
                {mqtt=">[broker:broadlink/IRCOLORS/Color:state:*:default]"}
 
+Switch         HardResetButton
+               "Hard Reset Button"
+               (gSystem)
+
 Switch         DebugButton
                "Debug Button"
                (gSystem)
-               {mqtt=">[broker:broadlink/TC2/GF_Corridor_Light_Main:state:*:default]"}
 
 String         DebugTarget
                "Target [%s]"
@@ -1368,3 +1392,8 @@ String         DebugMessage
 Switch         DemoMode
                "Demo mode"
                (gSystem, gPersistenceSwitch)
+
+Switch         OverallErrorIndicator
+               "Error indicator"
+               <heating>
+               (gSystem, gPersistenceSwitch, gAlert)

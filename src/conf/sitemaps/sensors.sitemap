@@ -1,7 +1,8 @@
 sitemap sensors label="Sensory" {
     Frame label="Miernik mocy" icon="firstfloor" {
         Text item=GF_PowerMeter_Total
-        Text item=GF_PowerMeter_Current
+//        Text item=GF_PowerMeter_Current
+        Text item=GF_PowerMeter_Current_In_Watts
 //        Text item=GF_PowerMeter_DailyConsumption
     }
     Frame label="Sensory w salonie" icon="firstfloor" {

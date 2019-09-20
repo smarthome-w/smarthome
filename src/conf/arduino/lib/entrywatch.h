@@ -20,8 +20,8 @@ void sendEntryWatchMQTTMessage(String msg)
 
 void processEntryWatch()
 {
-    int sPIR = circuits[2].previousValue;
-    int sCIR = circuits[1].previousValue;
+    int sPIR = circuits[3].previousValue;
+    int sCIR = circuits[2].previousValue;
 
     if (sPIR == HIGH)
     {

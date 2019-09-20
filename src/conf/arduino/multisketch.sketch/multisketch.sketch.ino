@@ -1,4 +1,4 @@
-#define SKETCH_VERSION "20190531"
+#define SKETCH_VERSION "20190816"
 #include "lib/devices.h"
 
 #include "lib/wifi.h"
@@ -95,6 +95,9 @@ void loop() {
   #endif
   #ifdef fDitigalInput
     processPinInputs();
+  #endif
+  #ifdef TechnicalRoom2
+    processEntryWatch();
   #endif
   #ifdef fDHT22
     processDHT22();

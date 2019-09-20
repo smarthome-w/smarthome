@@ -1,7 +1,10 @@
 sitemap probes label="Czujki" {
+    Frame label="Zamki" icon="groundfloor" {
+        Switch item=CIR_GF_MainLock mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
+    }
+
     Frame label="Okna i drzwi" icon="groundfloor" {
         Switch item=CIR_GF_MainDoor mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
-        Switch item=CIR_GF_MainLock mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
         Switch item=CIR_GF_FamilyRoom mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
         Switch item=CIR_GF_FamilyBalcony mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
         Switch item=CIR_GF_Kitchen mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]

@@ -4,7 +4,8 @@ DOCKER_TAG=smarthomew-openhab
 
 MACHINE=$(shell uname -m)
 
-VERSION=2.4.0
+#VERSION=2.4.0
+VERSION=2.5.0-snapshot
 OS_PLATFORM=amd64
 
 HOST_IP=`hostname -I | awk '{print $$1}'`
@@ -22,7 +23,7 @@ openhab-core:
   # sudo useradd openhab
 	# sudo usermod -u 9001 openhab
 	# sudo groupmod -g 9001 openhab
-	@sudo apt-get install mariadb-client mariadb-server mosquitto mosquitto-clients -y
+	@sudo apt-get install mariadb-client mariadb-server mosquitto mosquitto-clients moreutils -y
 	@sudo apt-get install python3 python3-dev python3-pip python3-venv gcc libffi-dev -y
 	@sudo apt-get install i2c-tools python3-smbus virtualenv logrotate vim motion git -y
 	#@sudo apt-get install mplayer alsa-utils usbutils -y
@@ -64,6 +65,11 @@ openhab-docker-stop:
 
 openhab-docker-clean:
 	@docker image prune -f
+
+pihole-service-install:
+	@sudo cp $(RESOURCES)/service/pihole.service /etc/systemd/system/pihole.service
+	@sudo systemctl daemon-reload
+	@sudo systemctl enable pihole
 
 openhab-service-install:
 	@sudo cp $(RESOURCES)/service/openhab.service /etc/systemd/system/openhab.service

@@ -5,7 +5,7 @@ then
   OpenHAB_Restart.postUpdate(now.toString())
 
   val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
-  var command = "/openhab/conf/scripts/SLACK/slack.sh ':warning:' `" + currentTime + "` OpenHAB restarted"
+  var command = "/openhab/conf/scripts/SLACK/slack.sh ':interrobang:' `" + currentTime + "` OpenHAB restarted"
   var result = executeCommandLine (command, 10000)
   if (result == "") {
   }

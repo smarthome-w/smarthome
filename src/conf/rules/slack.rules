@@ -41,7 +41,7 @@ end
 
 rule "error_notification_rule"
 when
-    Member of gErrors changed
+    Member of gErrors changed or Member of gAlert changed
 then
   try {
     val slack = triggeringItem

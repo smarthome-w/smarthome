@@ -10,7 +10,7 @@ import os
 
 MESSAGE_PREFIX = "sony"
 SONY_IP = None
-SONY_PIN = '9209'
+SONY_PIN = '8908'
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -35,7 +35,7 @@ def setup():
 
     braviarc = BraviaRC(SONY_IP)
     pin = SONY_PIN
-    braviarc.connect(pin, 'sony', 'sony')
+    braviarc.connect(pin, 'sony', 'sonyrc')
 
 
 def on_connect(client, userdata, flags, rc):
@@ -58,7 +58,7 @@ def on_message(client, userdata, msg):
     try:
         braviarc = BraviaRC(SONY_IP)
         pin = SONY_PIN
-        braviarc.connect(pin, 'sony', 'sony')
+        braviarc.connect(pin, 'sony', 'sonyrc')
         if (braviarc.is_connected()):
             if (element == "RTV_TV_Input"):
                 playing_content = braviarc.get_playing_info()
@@ -71,6 +71,12 @@ def on_message(client, userdata, msg):
                     braviarc.start_app("Netflix")
                 elif (command.startswith("YOUTUBE")):
                     braviarc.start_app("YouTube")
+            if (element.startswith("Command_Netflix")):
+                braviarc.start_app("Netflix")
+            if (element.startswith("Command_YouTube")):
+                braviarc.start_app("YouTube")
+            if (element.startswith("Command_TV")):
+                braviarc.select_source("HDMI 1/MHL")
         else:
             logger.error("TV not connected")
     except Exception as e:

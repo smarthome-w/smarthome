@@ -31,3 +31,28 @@ then
   } finally {
   }
 end
+
+rule "error_flag_rule"
+when
+    Member of gErrors changed
+then
+  try {
+    var overallError = false 
+
+    gErrors.members.forEach [E |
+//      logError("Error flag:", "item: {}, state: {}", E.name, E.state)
+      if (E.state == NULL || E.state == ON) {
+        overallError = true
+      }
+    ]
+//    logError("Error flag:", "overall: {}", overallError)
+    if (overallError == true) {
+      OverallErrorIndicator.state = ON
+    } else {
+      OverallErrorIndicator.state = OFF
+    }
+  } catch (Throwable t) {
+    logError("Error", "Error in error_flag_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+  } finally {
+  }
+end

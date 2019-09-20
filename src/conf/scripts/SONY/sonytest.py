@@ -10,7 +10,8 @@ import os
 
 MESSAGE_PREFIX = "sony"
 SONY_IP = None
-SONY_PIN = '9209'
+SONY_PIN = '8908'
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -35,14 +36,22 @@ def setup():
 
     braviarc = BraviaRC(SONY_IP)
     pin = SONY_PIN
-    braviarc.connect(pin, 'sony', 'sony')
+    braviarc.connect(pin, 'sony', 'sonyrc')
 
 
 setup()
 
 braviarc = BraviaRC(SONY_IP)
 pin = SONY_PIN
-braviarc.connect(pin, 'sony', 'sony')
+braviarc.connect(pin, 'sony', 'sonyrc')
 if (braviarc.is_connected()):
-    playing_content = braviarc.volume_up()
-    print(playing_content)
+    volume_info = braviarc.get_volume_info()
+    print(volume_info)
+    print('==')
+    print(volume_info.get('volume'))
+    print('==')
+    braviarc.set_volume_level(0.2)
+    # braviarc.volume_up()
+    print('==')
+    system_info = braviarc.get_system_info()
+    print(system_info)

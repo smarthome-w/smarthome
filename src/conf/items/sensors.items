@@ -150,7 +150,7 @@ Contact        PIR_FF_Bedroom
 Contact        PIR_FF_BedroomWardobe
                "PIR Sypialnia szafa"
                <light>
-               (FF_Bedroom, gMoveWatch, gPIR, gSlack, gPersistenceSwitch)
+               (FF_Bedroom, gMoveWatch, gPIR, gPersistenceSwitch)
                {mqtt="<[broker:myHome/PIR_FF_BedroomWardobe:state:default]"}
 
 Contact        PIR_GF_EntryWatch
@@ -286,6 +286,12 @@ Number         GF_PowerMeter_Current
                <battery-60>
                (GF_Corridor, gPower, gPersistenceSwitch)
                {mqtt="<[broker:myHome/PowerMeter_Current:state:JS(europeanNumber.js):.*]"}
+
+Number         GF_PowerMeter_Current_In_Watts
+               "Current power [%.0f W]"
+               <battery-60>
+               (GF_Corridor, gPower, gPersistenceSwitch)
+               {mqtt="<[broker:myHome/PowerMeter_Current:state:JS(kilowatttowatts.js):.*]"}
 
 Number         GF_PowerMeter_DailyConsumption
                "Daily consumption [%.1f kWh]"

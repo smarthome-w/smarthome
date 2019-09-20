@@ -348,7 +348,7 @@ class BraviaRC(object):
                 return command_data.get('value')
         return None
 
-    def get_volume_info(self, key="headphone"):
+    def get_volume_info(self, key="speaker"):
         """Get volume info."""
         resp = self.bravia_req_json("sony/audio",
                                     self._jdata_build("getVolumeInformation",
@@ -365,7 +365,7 @@ class BraviaRC(object):
     def set_volume_level(self, volume):
         """Set volume level, range 0..1."""
         api_volume = str(int(round(volume * 100)))
-        payload = {"target": "headphone", "volume": api_volume}
+        payload = {"target": "speaker", "volume": api_volume}
         self.bravia_req_json("sony/audio",
                              self._jdata_build("setAudioVolume", payload))
 

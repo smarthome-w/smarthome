@@ -1,0 +1,88 @@
+rule "eq3_rule"
+when
+    Member of gEQ3 received update
+then
+  try {
+    var NumberItem temperatureItem = NULL
+    var NumberItem valveItem = NULL
+    var DateTimeItem lastUpdateItem = NULL
+    // {"trv":"00:1A:22:10:0C:7B","temp":"6.0","offsetTemp":"0.0","valve":"0% open","mode":"manual","boost":"inactive","window":"closed","state":"unlocked","battery":"GOOD"}
+    logInfo("eq3", "item: {}, value: {}", triggeringItem.name, triggeringItem.state)
+    if (triggeringItem.state !== NULL){
+        var json = (triggeringItem.state as StringType).toString
+        var String valve = transform("JSONPATH", "$.valve", json).replace("% open", "")
+        var String temp = transform("JSONPATH", "$.temp", json)
+        var String deviceId = transform("JSONPATH", "$.trv", json)
+
+        var isOK = true
+        if (json.contains("available")) {
+            isOK = false
+        }
+        /*
+        try {
+            var int valveInt = Integer::parseInt(valve)
+            var float tempFloat = Float::parseFloat(temp)
+            if (valveInt.toString != valve) {
+                isOK = false
+                logInfo("eq3", "deviceId: {}, valve false", deviceId)
+            }
+            if (tempFloat.toString != temp) {
+                isOK = false
+                logInfo("eq3", "deviceId: {}, temp false", deviceId)
+            }
+        } catch (Error e) {
+            isOK = false
+        }
+        */
+        logInfo("eq3", "isOK: {}, {}", isOK, json)
+
+        if (isOK == true) {
+            //val String mode = transform("JSONPATH", "$.mode", json)
+            logInfo("eq3", "deviceId: {}, temp: {}, valve: {}", deviceId, temp, valve)
+
+            if (deviceId == "00:1A:22:10:0C:C7") {
+                temperatureItem = EQ3_Bedroom_Temp
+                valveItem =  EQ3_Bedroom_Valve
+                lastUpdateItem = EQ3_Bedroom_LastUpdate
+            }
+
+            if (deviceId == "00:1A:22:10:0C:7B") {
+                temperatureItem = EQ3_AnnRoom_Temp
+                valveItem =  EQ3_AnnRoom_Valve
+                lastUpdateItem = EQ3_AnnRoom_LastUpdate
+            }
+
+            if (deviceId == "00:1A:22:10:09:0C") {
+                temperatureItem = EQ3_AliceRoom_Temp
+                valveItem =  EQ3_AliceRoom_Valve
+                lastUpdateItem = EQ3_AliceRoom_LastUpdate
+            }
+            
+            if (deviceId == "00:1A:22:0C:85:FA") {
+                temperatureItem = EQ3_FamilyRoom_Temp
+                valveItem =  EQ3_FamilyRoom_Valve
+                lastUpdateItem = EQ3_FamilyRoom_LastUpdate
+            }
+
+            if (deviceId == "00:1A:22:0E:06:A0") {
+                temperatureItem = EQ3_Kitchen_Temp
+                valveItem =  EQ3_Kitchen_Valve
+                lastUpdateItem = EQ3_Kitchen_LastUpdate
+            }
+
+            if (temperatureItem !== NULL) {
+                temperatureItem.postUpdate(temp)
+                lastUpdateItem.postUpdate(now.toString())
+            }
+            if (valveItem !== NULL) {
+                valveItem.postUpdate(valve)
+            }
+            logInfo("eq3", "item: {}, deviceId: {}, temp: {}, valve: {}", temperatureItem.name, deviceId, temp, valve)
+        }
+    }
+  } catch (Throwable t) {
+    logError("Error", "Error in notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+  } finally {
+  }
+end
+// MET-1METDST
