@@ -38,7 +38,7 @@
 
 //#define Kitchen
 //#define BedroomLights
-//#define BedroomWardobe
+#define BedroomWardobe
 //#define CorridorLights
 //#define AnnRoom
 //#define AliceRoom

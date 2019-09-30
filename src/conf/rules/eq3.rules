@@ -6,6 +6,7 @@ then
     var NumberItem temperatureItem = NULL
     var NumberItem valveItem = NULL
     var DateTimeItem lastUpdateItem = NULL
+    var StringItem modeItem = NULL
     // {"trv":"00:1A:22:10:0C:7B","temp":"6.0","offsetTemp":"0.0","valve":"0% open","mode":"manual","boost":"inactive","window":"closed","state":"unlocked","battery":"GOOD"}
     logInfo("eq3", "item: {}, value: {}", triggeringItem.name, triggeringItem.state)
     if (triggeringItem.state !== NULL){
@@ -13,6 +14,7 @@ then
         var String valve = transform("JSONPATH", "$.valve", json).replace("% open", "")
         var String temp = transform("JSONPATH", "$.temp", json)
         var String deviceId = transform("JSONPATH", "$.trv", json)
+        var String mode = transform("JSONPATH", "$.mode", json)
 
         var isOK = true
         if (json.contains("available")) {
@@ -43,30 +45,35 @@ then
             if (deviceId == "00:1A:22:10:0C:C7") {
                 temperatureItem = EQ3_Bedroom_Temp
                 valveItem =  EQ3_Bedroom_Valve
+                modeItem = EQ3_Bedroom_Mode
                 lastUpdateItem = EQ3_Bedroom_LastUpdate
             }
 
             if (deviceId == "00:1A:22:10:0C:7B") {
                 temperatureItem = EQ3_AnnRoom_Temp
                 valveItem =  EQ3_AnnRoom_Valve
+                modeItem = EQ3_AnnRoom_Mode
                 lastUpdateItem = EQ3_AnnRoom_LastUpdate
             }
 
             if (deviceId == "00:1A:22:10:09:0C") {
                 temperatureItem = EQ3_AliceRoom_Temp
                 valveItem =  EQ3_AliceRoom_Valve
+                modeItem = EQ3_AliceRoom_Mode
                 lastUpdateItem = EQ3_AliceRoom_LastUpdate
             }
             
             if (deviceId == "00:1A:22:0C:85:FA") {
                 temperatureItem = EQ3_FamilyRoom_Temp
                 valveItem =  EQ3_FamilyRoom_Valve
+                modeItem = EQ3_FamilyRoom_Mode
                 lastUpdateItem = EQ3_FamilyRoom_LastUpdate
             }
 
             if (deviceId == "00:1A:22:0E:06:A0") {
                 temperatureItem = EQ3_Kitchen_Temp
                 valveItem =  EQ3_Kitchen_Valve
+                modeItem = EQ3_Kitchen_Mode
                 lastUpdateItem = EQ3_Kitchen_LastUpdate
             }
 
@@ -77,6 +84,9 @@ then
             if (valveItem !== NULL) {
                 valveItem.postUpdate(valve)
             }
+            if (modeItem !== NULL) {
+                modeItem.postUpdate(mode)
+            }
             logInfo("eq3", "item: {}, deviceId: {}, temp: {}, valve: {}", temperatureItem.name, deviceId, temp, valve)
         }
     }
@@ -84,5 +94,21 @@ then
     logError("Error", "Error in notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
   } finally {
   }
+end
+
+rule "eq3_rule_debug"
+when
+    Item EQ3_Debug received update
+then
+    logInfo("eq3", "debug eq3")
+    
+//    publish("broker", "product/device", "panic")
+
+    var command = "/openhab/conf/scripts/EQ3/eq3.sh"
+    var result = executeCommandLine (command, 100000)
+    if (result == "") {
+    }
+    logInfo("slack", "command: {} with result:\n>>\n{}\n<<\n", command, result)
+    logInfo("eq3", "debug eq3 end")
 end
 // MET-1METDST

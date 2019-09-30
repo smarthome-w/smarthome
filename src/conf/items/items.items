@@ -114,13 +114,13 @@ Group          gGF_FamilyRoom_Scenario
 
 
 Switch         GF_ColorLights_Scenario
-               "Color lights"
+               "TV Show"
                <party>
                (gScenariosList, gPersistenceSwitch)
                ["Lighting"]
 
 Color          GF_ColorLights_Color
-               "Family room LED"
+               "Color lights"
                <party>
                ["Lighting"]
 
@@ -723,7 +723,7 @@ Number         GF_FamilyRoom_Indoor_Temperature_Setpoint
 Number         GF_FamilyRoom_Indoor_Temperature_Sensor
                "Family room temperature [%.1f \u00b0C]"
                <temperature>
-               (v_GF_FamilyRoom_Thermostat, gSensorTemperature, gPersistenceSensor)
+               (v_GF_FamilyRoom_Thermostat, gSensorTemperature, gPersistenceSensor, gEQ3FamilyRoomTemp)
                ["CurrentTemperature"]
                {mqtt="<[broker:myHome/GF_FamilyRoom_Indoor_Temperature_Sensor:state:JS(europeanNumber.js):.*]"}
 
@@ -789,7 +789,7 @@ Number         FF_AnnRoom_Indoor_Temperature_Setpoint
 Number         FF_AnnRoom_Indoor_Temperature_Sensor
                "Ann room temperature [%.1f \u00b0C]"
                <temperature>
-               (v_FF_AnnRoom_Thermostat, gSensorTemperature, gPersistenceSensor)
+               (v_FF_AnnRoom_Thermostat, gSensorTemperature, gPersistenceSensor, gEQ3AnnRoomTemp)
                ["CurrentTemperature"]
                {mqtt="<[broker:myHome/FF_AnnRoom_Indoor_Temperature_Sensor:state:JS(europeanNumber.js):.*]"}
 
@@ -826,7 +826,7 @@ Number         FF_Bedroom_Indoor_Temperature_Setpoint
 Number         FF_Bedroom_Indoor_Temperature_Sensor
                "Bedroom temperature [%.1f \u00b0C]"
                <temperature>
-               (v_FF_Bedroom_Thermostat, gSensorTemperature, gPersistenceSensor)
+               (v_FF_Bedroom_Thermostat, gSensorTemperature, gPersistenceSensor, gEQ3BedroomTemp)
                ["CurrentTemperature"]
                {mqtt="<[broker:myHome/FF_Bedroom_Indoor_Temperature_Sensor:state:JS(europeanNumber.js):.*]"}
 
@@ -863,7 +863,7 @@ Number         FF_AliceRoom_Indoor_Temperature_Setpoint
 Number         FF_AliceRoom_Indoor_Temperature_Sensor
                "Alice room temperature [%.1f \u00b0C]"
                <temperature>
-               (v_FF_AliceRoom_Thermostat, gSensorTemperature, gTemperatureTest, gPersistenceSensor)
+               (v_FF_AliceRoom_Thermostat, gSensorTemperature, gTemperatureTest, gPersistenceSensor, gEQ3AliceRoomTemp)
                ["CurrentTemperature"]
                {mqtt="<[broker:myHome/FF_AliceRoom_Indoor_Temperature_Sensor:state:JS(europeanNumber.js):.*]"}
 

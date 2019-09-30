@@ -207,3 +207,23 @@ Group          gEQ3Temp
 Group          gEQ3Valve
                <heating>
                (System)
+
+Group          gEQ3FamilyRoomTemp
+               <heating>
+               (System)
+
+Group          gEQ3KitchenTemp
+               <heating>
+               (System)
+
+Group          gEQ3AliceRoomTemp
+               <heating>
+               (System)
+
+Group          gEQ3AnnRoomTemp
+               <heating>
+               (System)
+
+Group          gEQ3BedroomTemp
+               <heating>
+               (System)

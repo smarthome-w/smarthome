@@ -3,35 +3,51 @@ sitemap eq3 label="Grzejniki" {
     Frame label="Bedroom" icon="firstfloor" {
       Text item=EQ3_Bedroom_Temp  
       Text item=EQ3_Bedroom_Valve  
+      Text item=EQ3_Bedroom_Mode  
       Text item=EQ3_Bedroom_LastUpdate  
+      Chart item=gEQ3BedroomTemp period=D label="Bedroom"
     }
     Frame label="Ann Room" icon="firstfloor" {
       Text item=EQ3_AnnRoom_Temp  
       Text item=EQ3_AnnRoom_Valve  
+      Text item=EQ3_AnnRoom_Mode  
       Text item=EQ3_AnnRoom_LastUpdate  
+      Chart item=gEQ3AnnRoomTemp period=D label="Ann Room"
     }
     Frame label="Family Room" icon="firstfloor" {
       Text item=EQ3_FamilyRoom_Temp  
       Text item=EQ3_FamilyRoom_Valve  
+      Text item=EQ3_FamilyRoom_Mode  
       Text item=EQ3_FamilyRoom_LastUpdate  
+      Chart item=gEQ3FamilyRoomTemp period=D label="Family Room"
     }
     Frame label="Kitchen" icon="firstfloor" {
       Text item=EQ3_Kitchen_Temp  
       Text item=EQ3_Kitchen_Valve  
+      Text item=EQ3_Kitchen_Mode  
       Text item=EQ3_Kitchen_LastUpdate  
+      Chart item=gEQ3KitchenTemp period=D label="Kitchen"
     }
     Frame label="Alice Room" icon="firstfloor" {
       Text item=EQ3_AliceRoom_Temp  
       Text item=EQ3_AliceRoom_Valve  
+      Text item=EQ3_AliceRoom_Mode  
       Text item=EQ3_AliceRoom_LastUpdate  
+      Chart item=gEQ3AliceRoomTemp period=D label="Alice Room"
     }
 
     Frame label="Grzejniki" icon="firstfloor" {
       Chart item=gEQ3Temp period=D label="Temperatura"
       Chart item=gEQ3Valve period=D label="Zawór"
     }
+
     Frame label="Grzejniki" icon="firstfloor" {
       Chart item=gEQ3Temp period=W label="Temperatura"
       Chart item=gEQ3Valve period=W label="Zawór"
     }
+
+    Frame label="Sceny" icon="firstfloor" {
+      Switch item=EQ3_Debug mappings=[ON="Set"]
+    }
+
 }
