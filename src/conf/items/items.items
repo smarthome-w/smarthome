@@ -263,14 +263,14 @@ Switch         GF_FamilyRoom_Light_Sofa
 Switch         GF_FamilyRoom_LightsRGB
                "Cinema"
                <light>
-               (GF_FamilyRoom, gSonoff, gGF_ColorLights_Scenario, gPersistenceSwitch)
+               (GF_FamilyRoom, gSonoff, gGF_ColorLights_Scenario, gPersistenceSwitch, gLight)
                ["Lighting"]
                { mqtt=">[broker:myHomeY/GF_FamilyRoom_LED_Relay_Command:command:*:MAP(sonoff.map)],<[broker:myHomeY/GF_FamilyRoom_LED_Relay:state:MAP(sonoff.map)]" }
 
 Switch         GF_FamilyRoom_LightsLamp
                "Secondary lights"
                <light>
-               (GF_FamilyRoom, gSonoff, gGF_ColorLights_Scenario, gPersistenceSwitch)
+               (GF_FamilyRoom, gSonoff, gGF_ColorLights_Scenario, gPersistenceSwitch, gLight)
                ["Lighting"]
                { mqtt=">[broker:myHomeY/GF_FamilyRoom_Light_Relay_Command:command:*:MAP(sonoff.map)],<[broker:myHomeY/GF_FamilyRoom_Light_Relay:state:MAP(sonoff.map)]" }
 

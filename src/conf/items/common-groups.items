@@ -227,3 +227,7 @@ Group          gEQ3AnnRoomTemp
 Group          gEQ3BedroomTemp
                <heating>
                (System)
+
+Group          gLight
+               <heating>
+               (System)

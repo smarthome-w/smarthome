@@ -16,3 +16,10 @@ then
   var String command = "/openhab/conf/scripts/forkbomb"
   var result = executeCommandLine (command, 15000)
 end
+
+rule "light_change_rule"
+when
+    Member of gLight changed
+then
+  logError("light_change_rule", "Light change {} {}", triggeringItem.name, triggeringItem.state)
+end
