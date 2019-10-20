@@ -1,11 +1,11 @@
 sitemap eq3 label="Grzejniki" {
-
     Frame label="Bedroom" icon="firstfloor" {
       Text item=EQ3_Bedroom_Temp  
       Text item=EQ3_Bedroom_Valve  
       Text item=EQ3_Bedroom_Mode  
       Text item=EQ3_Bedroom_LastUpdate  
-      Chart item=gEQ3BedroomTemp period=D label="Bedroom"
+      Chart item=gEQ3BedroomTemp period=D label="Temperatura"
+      Chart item=EQ3_Bedroom_Valve period=D label="Zawór"
     }
     Frame label="Ann Room" icon="firstfloor" {
       Text item=EQ3_AnnRoom_Temp  
@@ -13,6 +13,7 @@ sitemap eq3 label="Grzejniki" {
       Text item=EQ3_AnnRoom_Mode  
       Text item=EQ3_AnnRoom_LastUpdate  
       Chart item=gEQ3AnnRoomTemp period=D label="Ann Room"
+      Chart item=EQ3_AnnRoom_Valve period=D label="Zawór"
     }
     Frame label="Family Room" icon="firstfloor" {
       Text item=EQ3_FamilyRoom_Temp  
@@ -20,6 +21,7 @@ sitemap eq3 label="Grzejniki" {
       Text item=EQ3_FamilyRoom_Mode  
       Text item=EQ3_FamilyRoom_LastUpdate  
       Chart item=gEQ3FamilyRoomTemp period=D label="Family Room"
+      Chart item=EQ3_FamilyRoom_Valve period=D label="Zawór"
     }
     Frame label="Kitchen" icon="firstfloor" {
       Text item=EQ3_Kitchen_Temp  
@@ -27,6 +29,7 @@ sitemap eq3 label="Grzejniki" {
       Text item=EQ3_Kitchen_Mode  
       Text item=EQ3_Kitchen_LastUpdate  
       Chart item=gEQ3KitchenTemp period=D label="Kitchen"
+      Chart item=EQ3_Kitchen_Valve period=D label="Zawór"
     }
     Frame label="Alice Room" icon="firstfloor" {
       Text item=EQ3_AliceRoom_Temp  
@@ -34,6 +37,7 @@ sitemap eq3 label="Grzejniki" {
       Text item=EQ3_AliceRoom_Mode  
       Text item=EQ3_AliceRoom_LastUpdate  
       Chart item=gEQ3AliceRoomTemp period=D label="Alice Room"
+      Chart item=EQ3_AliceRoom_Valve period=D label="Zawór"
     }
 
     Frame label="Grzejniki" icon="firstfloor" {
