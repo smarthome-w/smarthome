@@ -86,7 +86,7 @@ then
       }
     }
 
-    if (elevation > elevationDawn && hourOfDay <= 12) {
+    if (elevation >= elevationDawn && hourOfDay <= 12) {
       if (brightness >= dawnLevel) {
         calendar_Dusk.sendCommand(OFF)
         calendar_Dawn.sendCommand(ON)
