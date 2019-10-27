@@ -28,10 +28,16 @@ sitemap system label="System" {
       Chart item=CIR_GF_MainLock period=W label="Zamek"
     }
 
+    Frame label="Kalendarz" icon="firstfloor" {
+      Chart item=gCalendar period=D label="Dzień"
+      Chart item=gCalendar period=W label="Tydzień"
+    }
+
     Frame label="Błędy" icon="firstfloor" {
       Chart item=gErrors period=W label="Błędy"
       Chart item=OverallErrorIndicator period=W label="Wskaźnik błędu"
     }
+
     Frame label="Pi" icon="firstfloor" {
       Text item=OpenHAB_Restart
       Text item=Server_Temperature

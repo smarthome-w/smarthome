@@ -102,7 +102,7 @@ Switch         calendar_Night
 Switch         calendar_SupportingLight
                "supporting lights"
                <time>
-               (gCalendar)
+               (gCalendar, gPersistenceSwitch)
 
 Switch         calendar_Workday
                "workday"
@@ -117,10 +117,10 @@ Switch         calendar_Weekend
 Switch         calendar_Dawn
                "dawn"
                <time>
-               (gCalendar)
+               (gCalendar, gPersistenceSwitch)
 
 Switch         calendar_Dusk
                "dusk"
                <time>
-               (gCalendar)
+               (gCalendar, gPersistenceSwitch)
 

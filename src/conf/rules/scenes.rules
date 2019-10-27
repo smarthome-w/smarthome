@@ -40,6 +40,7 @@ then
               GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
             }
             FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
+            GF_FamilyRoom_Light_Table.sendCommand(ON)
         }
         if (triggeringItem.name == "GH_Night_Scene"){
             if (logLevel >= 6) {

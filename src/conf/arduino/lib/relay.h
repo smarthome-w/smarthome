@@ -1,7 +1,7 @@
 #ifndef relay_h
 #define relay_h
 #ifdef fRelay
-const int RELAY_PIN = pinD6;
+const int RELAY_PIN = 12; //pinD6;
 
 #define RELAY_STATE_READ_INTERVAL_MILLIS 30000
 
