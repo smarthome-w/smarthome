@@ -38,7 +38,7 @@
 
 //#define Kitchen
 //#define BedroomLights
-#define BedroomWardobe
+//#define BedroomWardobe
 //#define CorridorLights
 //#define AnnRoom
 //#define AliceRoom
@@ -49,7 +49,7 @@
 //#define FamilyRoomRollershutter
 //#define BedroomRollershutter
 //#define TestRoom
-//#define TestRelay
+#define TestRelay
 
 #ifdef Kitchen
 #define fName "GF_Kitchen_LED_Relay"

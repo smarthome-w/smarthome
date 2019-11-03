@@ -282,15 +282,32 @@ Switch         GF_PowerMeter_Total_LastUpdate_Error
                (gErrors, gPersistenceSwitch)
 
 Number         GF_PowerMeter_Current
-               "Current power [%.3f kW]"
+               "Current power in kilowatts[%.3f kW]"
                <battery-60>
                (GF_Corridor, gPower, gPersistenceSwitch)
                {mqtt="<[broker:myHome/PowerMeter_Current:state:JS(europeanNumber.js):.*]"}
 
+Group          v_GF_PowerMeter_Thermostat
+               "Power meter thermostat"
+               ["Thermostat"]
+
+Number         GF_PowerMeter_Temperature_Mode
+               "Power meter Heating/Cooling Mode"
+               <temperature>
+               (v_GF_PowerMeter_Thermostat)
+               ["homekit:TargetHeatingCoolingMode"]
+
+Number         GF_PowerMeter_Temperature_Setpoint
+               "Power meter Setpoint"
+               <temperature>
+               (v_GF_PowerMeter_Thermostat)
+               ["homekit:TargetTemperature"]
+
 Number         GF_PowerMeter_Current_In_Watts
-               "Current power [%.0f W]"
+               "Power temperature [%.0f W]"
                <battery-60>
-               (GF_Corridor, gPower, gPersistenceSwitch)
+               (v_GF_PowerMeter_Thermostat, GF_Corridor, gPower, gPersistenceSwitch)
+               ["CurrentTemperature"]
                {mqtt="<[broker:myHome/PowerMeter_Current:state:JS(kilowatttowatts.js):.*]"}
 
 Number         GF_PowerMeter_DailyConsumption

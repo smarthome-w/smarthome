@@ -712,13 +712,13 @@ Number         GF_FamilyRoom_Indoor_Temperature_Mode
                "Family room Heating/Cooling Mode"
                <temperature>
                (v_GF_FamilyRoom_Thermostat)
-               ["HeatingCoolingMode"]
+               ["homekit:TargetHeatingCoolingMode"]
 
 Number         GF_FamilyRoom_Indoor_Temperature_Setpoint
                "Family room Setpoint"
                <temperature>
                (v_GF_FamilyRoom_Thermostat)
-               ["TargetTemperature"]
+               ["homekit:TargetTemperature"]
 
 Number         GF_FamilyRoom_Indoor_Temperature_Sensor
                "Family room temperature [%.1f \u00b0C]"
@@ -749,13 +749,13 @@ Number         GF_FamilyRoom_Outdoor_Temperature_Mode
                "External Heating/Cooling Mode"
                <temperature>
                (v_GF_FamilyRoom_Outdoor_Thermostat)
-               ["HeatingCoolingMode"]
+               ["homekit:TargetHeatingCoolingMode"]
 
 Number         GF_FamilyRoom_Outdoor_Temperature_Setpoint
                "External Setpoint"
                <temperature>
                (v_GF_FamilyRoom_Outdoor_Thermostat)
-               ["TargetTemperature"]
+               ["homekit:TargetTemperature"]
 
 Number         GF_FamilyRoom_Outdoor_Temperature_Sensor
                "External temperature [%.1f \u00b0C]"
@@ -778,13 +778,13 @@ Number         FF_AnnRoom_Indoor_Temperature_Mode
                "Ann room Heating/Cooling Mode"
                <temperature>
                (v_FF_AnnRoom_Thermostat)
-               ["HeatingCoolingMode"]
+               ["homekit:TargetHeatingCoolingMode"]
 
 Number         FF_AnnRoom_Indoor_Temperature_Setpoint
                "Ann room Setpoint"
                <temperature>
                (v_FF_AnnRoom_Thermostat)
-               ["TargetTemperature"]
+               ["homekit:TargetTemperature"]
 
 Number         FF_AnnRoom_Indoor_Temperature_Sensor
                "Ann room temperature [%.1f \u00b0C]"
@@ -815,13 +815,13 @@ Number         FF_Bedroom_Indoor_Temperature_Mode
                "Bedroom Heating/Cooling Mode"
                <temperature>
                (v_FF_Bedroom_Thermostat)
-               ["HeatingCoolingMode"]
+               ["homekit:TargetHeatingCoolingMode"]
 
 Number         FF_Bedroom_Indoor_Temperature_Setpoint
                "Bedroom Setpoint"
                <temperature>
                (v_FF_Bedroom_Thermostat)
-               ["TargetTemperature"]
+               ["homekit:TargetTemperature"]
 
 Number         FF_Bedroom_Indoor_Temperature_Sensor
                "Bedroom temperature [%.1f \u00b0C]"
@@ -852,13 +852,13 @@ Number         FF_AliceRoom_Indoor_Temperature_Mode
                "Alice room Heating/Cooling Mode"
                <temperature>
                (v_FF_AliceRoom_Thermostat)
-               ["HeatingCoolingMode"]
+               ["homekit:TargetHeatingCoolingMode"]
 
 Number         FF_AliceRoom_Indoor_Temperature_Setpoint
                "Alice room Setpoint"
                <temperature>
                (v_FF_AliceRoom_Thermostat)
-               ["TargetTemperature"]
+               ["homekit:TargetTemperature"]
 
 Number         FF_AliceRoom_Indoor_Temperature_Sensor
                "Alice room temperature [%.1f \u00b0C]"
