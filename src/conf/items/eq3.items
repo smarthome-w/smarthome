@@ -16,6 +16,22 @@ String         EQ3_AliceRoom
                (gEQ3)
                {mqtt="<[broker:/aliceroomradout/status:state:default]"}
 
+String         EQ3_FamilyRoom_Status
+               "Family Room status [%s]"
+               <settings>
+
+String         EQ3_AliceRoom_Status
+               "Alice Room status [%s]"
+               <settings>
+
+String         EQ3_AnnRoom_Status
+               "Ann Room status [%s]"
+               <settings>
+
+String         EQ3_Bedroom_Status
+               "Bedroom status [%s]"
+               <settings>
+
 Number         EQ3_Bedroom_Temp
                "EQ3 Bedroom Temp [%.0f \u00b0C]"
                <temperature>

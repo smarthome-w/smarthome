@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat
+
 rule "eq3_rule"
 when
     Member of gEQ3 received update
@@ -7,6 +9,7 @@ then
     var NumberItem valveItem = NULL
     var DateTimeItem lastUpdateItem = NULL
     var StringItem modeItem = NULL
+    var StringItem statusItem = NULL
     // {"trv":"00:1A:22:10:0C:7B","temp":"6.0","offsetTemp":"0.0","valve":"0% open","mode":"manual","boost":"inactive","window":"closed","state":"unlocked","battery":"GOOD"}
     //logInfo("eq3", "item: {}, value: {}", triggeringItem.name, triggeringItem.state)
     if (triggeringItem.state !== NULL){
@@ -47,6 +50,7 @@ then
                 valveItem =  EQ3_Bedroom_Valve
                 modeItem = EQ3_Bedroom_Mode
                 lastUpdateItem = EQ3_Bedroom_LastUpdate
+                statusItem = EQ3_Bedroom_Status
             }
 
             if (deviceId == "00:1A:22:10:0C:7B") {
@@ -54,6 +58,7 @@ then
                 valveItem =  EQ3_AnnRoom_Valve
                 modeItem = EQ3_AnnRoom_Mode
                 lastUpdateItem = EQ3_AnnRoom_LastUpdate
+                statusItem = EQ3_AnnRoom_Status
             }
 
             if (deviceId == "00:1A:22:10:09:0C") {
@@ -61,6 +66,7 @@ then
                 valveItem =  EQ3_AliceRoom_Valve
                 modeItem = EQ3_AliceRoom_Mode
                 lastUpdateItem = EQ3_AliceRoom_LastUpdate
+                statusItem = EQ3_AliceRoom_Status
             }
             
             if (deviceId == "00:1A:22:0C:85:FA") {
@@ -68,6 +74,7 @@ then
                 valveItem =  EQ3_FamilyRoom_Valve
                 modeItem = EQ3_FamilyRoom_Mode
                 lastUpdateItem = EQ3_FamilyRoom_LastUpdate
+                statusItem = EQ3_FamilyRoom_Status
             }
 
             if (deviceId == "00:1A:22:0E:06:A0") {
@@ -75,11 +82,14 @@ then
                 valveItem =  EQ3_Kitchen_Valve
                 modeItem = EQ3_Kitchen_Mode
                 lastUpdateItem = EQ3_Kitchen_LastUpdate
+                statusItem = EQ3_KitchenRoom_Status
             }
 
             if (temperatureItem !== NULL) {
                 temperatureItem.postUpdate(temp)
                 lastUpdateItem.postUpdate(now.toString())
+                var String nowStr = now.toString("dd.MM HH:mm")
+                statusItem.postUpdate(nowStr + " - " + temp.toString() + "C - " + valveItem.state.toString() + "%")
             }
             if (valveItem !== NULL) {
                 valveItem.postUpdate(valve)

@@ -19,4 +19,11 @@ sitemap sensors_basic label="Status" {
         Switch item=CIR_GF_MainLock mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
         Switch item=OverallErrorIndicator
     }
+
+    Frame label="Grzejniki" icon="firstfloor" {
+      Text item=EQ3_Bedroom_Status  
+      Text item=EQ3_FamilyRoom_Status  
+      Text item=EQ3_AnnRoom_Status  
+      Text item=EQ3_AliceRoom_Status  
+    }
 }
