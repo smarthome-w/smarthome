@@ -36,7 +36,7 @@
 //#define FamilyRoomLight
 //#define CorridorStorage
 
-//#define Kitchen
+//#define KitchenLED
 //#define BedroomLights
 //#define BedroomWardobe
 //#define CorridorLights
@@ -51,7 +51,7 @@
 //#define TestRoom
 //#define TestRelay
 
-#ifdef Kitchen
+#ifdef KitchenLED
 #define fName "GF_Kitchen_LED_Relay"
 #define WIFIIP 35
 #define CIRCUITS_NO 0
