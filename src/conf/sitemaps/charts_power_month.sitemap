@@ -1,5 +1,5 @@
-sitemap charts_power_month label="Zużycie prądu - miesiąc" {
-    Frame label="Prąd tydzień" icon="firstfloor" {
-        Chart item=GF_PowerMeter_DailyConsumption period=M label="Zużycie"
+sitemap charts_power_month label="Monthly power consumption" {
+    Frame label="Monthly power consumption" icon="firstfloor" {
+        Chart item=GF_PowerMeter_DailyConsumption period=M label="Power consumption"
     }
 }

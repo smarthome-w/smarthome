@@ -1,11 +1,11 @@
-sitemap charts_sensors_week label="Sensory - tydzień" {
+sitemap charts_sensors_week label="Sensors - week" {
     Frame label="Sensory tydzień" icon="firstfloor" {
-        Chart item=gSensorTemperature period=W label="Temperatura"
-        Chart item=gSensorHumidity period=W label="Wilgotność"
-        Chart item=gSensorPressure period=W label="Ciśnienie"
+        Chart item=gSensorTemperature period=W label="Temperature"
+        Chart item=gSensorHumidity period=W label="Humidity"
+        Chart item=gSensorPressure period=W label="Pressure"
     }
 
     Frame label="Jasność tydzień" icon="firstfloor" {
-        Chart item=gSensorAnalog period=W label="Jasność"
+        Chart item=gSensorAnalog period=W label="Brightness"
     }
 }

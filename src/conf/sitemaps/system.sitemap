@@ -1,9 +1,9 @@
 sitemap system label="System" {
-    Frame label="Grupy systemowe" icon="groundfloor" {
+    Frame label="Hard reset" icon="groundfloor" {
       Switch item=HardResetButton
     }
 
-    Frame label="Grupy systemowe" icon="groundfloor" {
+    Frame label="System groups" icon="groundfloor" {
 //      Group item=gPersistenceSensor
 //      Group item=gPersistenceSwitch
 //      Group item=gHH_Lights_Scenario
@@ -22,20 +22,20 @@ sitemap system label="System" {
       Group item=gEQ3Temp
       Group item=gEQ3Valve
     }
-    Frame label="Drzwi" icon="firstfloor" {
+    Frame label="Lock" icon="firstfloor" {
       Switch item=CIR_GF_MainLock mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
       Chart item=CIR_GF_MainLock period=D label="Zamek"
       Chart item=CIR_GF_MainLock period=W label="Zamek"
     }
 
-    Frame label="Kalendarz" icon="firstfloor" {
-      Chart item=gCalendar period=D label="Dzień"
-      Chart item=gCalendar period=W label="Tydzień"
+    Frame label="Calendar" icon="firstfloor" {
+      Chart item=gCalendar period=D label="Day"
+      Chart item=gCalendar period=W label="Week"
     }
 
-    Frame label="Błędy" icon="firstfloor" {
-      Chart item=gErrors period=W label="Błędy"
-      Chart item=OverallErrorIndicator period=W label="Wskaźnik błędu"
+    Frame label="Errors" icon="firstfloor" {
+      Chart item=gErrors period=W label="Errors"
+      Chart item=OverallErrorIndicator period=W label="Error indicator"
     }
 
     Frame label="Pi" icon="firstfloor" {
@@ -45,7 +45,7 @@ sitemap system label="System" {
       Text item=Server_Uptime
 //      Text item=Server_LastRead
     }
-    Frame label="Sceny" icon="firstfloor" {
+    Frame label="Scenes" icon="firstfloor" {
       Switch item=GH_Night_Scene mappings=[ON="Set"]
       Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]
       Switch item=GH_Evening_Scene mappings=[ON="Set"]

@@ -53,14 +53,14 @@ sitemap eq3 label="Grzejniki" {
       Chart item=EQ3_AliceRoom_Valve period=D label="Zawór"
     }
 
-    Frame label="Grzejniki" icon="firstfloor" {
-      Chart item=gEQ3Temp period=D label="Temperatura"
-      Chart item=gEQ3Valve period=D label="Zawór"
+    Frame label="Heaters (day)" icon="firstfloor" {
+      Chart item=gEQ3Temp period=D label="Temperature"
+      Chart item=gEQ3Valve period=D label="Valve"
     }
 
-    Frame label="Grzejniki" icon="firstfloor" {
-      Chart item=gEQ3Temp period=W label="Temperatura"
-      Chart item=gEQ3Valve period=W label="Zawór"
+    Frame label="Heaters (week)" icon="firstfloor" {
+      Chart item=gEQ3Temp period=W label="Temperature"
+      Chart item=gEQ3Valve period=W label="Valve"
     }
 
 //    Frame label="Sceny" icon="firstfloor" {

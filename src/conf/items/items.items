@@ -249,7 +249,7 @@ Dimmer         GF_FamilyRoom_Camera_Servo
 
 
 Switch         GF_FamilyRoom_Light_Table
-               "Salon - stół[]"
+               "Salon - table[]"
                <light>
                (GF_FamilyRoom, gTC2, gGF_FamilyRoom_Scenario, gPersistenceSwitch)
                {mqtt=">[broker:broadlink/TC2/GF_FamilyRoom_Light_Table:state:*:default]"}
@@ -735,7 +735,7 @@ Number         GF_FamilyRoom_Indoor_Humidity_Sensor
                {mqtt="<[broker:myHome/GF_FamilyRoom_Humidity_Sensor:state:JS(europeanNumber.js):.*]"}
 
 Number         GF_FamilyRoom_Pressure_Sensor
-               "Ciśnienie [%.0f hPa]"
+               "Pressure [%.0f hPa]"
                <pressure>
                (gSensorPressure, gPressureTest, gPersistenceSensor)
                {mqtt="<[broker:myHome/GF_FamilyRoom_Pressure_Sensor:state:JS(pressure.js):.*]"}
@@ -765,7 +765,7 @@ Number         GF_FamilyRoom_Outdoor_Temperature_Sensor
                {mqtt="<[broker:myHome/GF_FamilyRoom_Outdoor_Temperature_Sensor:state:JS(europeanNumber.js):.*]"}
 
 Number         GF_FamilyRoom_Analog_Sensor
-               "Natężenie światła - salon [%.0f]"
+               "Family room brightness [%.0f]"
                <heating>
                (gSensorAnalog, gPersistenceSensor)
                {mqtt="<[broker:myHome/GF_FamilyRoom_Analog:state:JS(brightness.js):.*]"}
@@ -838,7 +838,7 @@ Number         FF_Bedroom_Indoor_Humidity_Sensor
                {mqtt="<[broker:myHome/FF_Bedroom_Humidity_Sensor:state:JS(europeanNumber.js):.*]"}
 
 Number         FF_Bedroom_Analog_Sensor
-               "Natężenie światła - sypialnia [%.0f]"
+               "Bedroom brightness [%.0f]"
                <heating>
                (gSensorAnalog, gPersistenceSensor)
                {mqtt="<[broker:myHome/FF_Bedroom_Analog:state:JS(brightness.js):.*]"}
@@ -875,7 +875,7 @@ Number         FF_AliceRoom_Indoor_Humidity_Sensor
                {mqtt="<[broker:myHome/FF_AliceRoom_Humidity_Sensor1:state:JS(europeanNumber.js):.*]"}
 
 Number         FF_AliceRoom_Analog_Sensor
-               "Natężenie światła - Alicja [%.0f]"
+               "Alice room brightness [%.0f]"
                <heating>
                (gSensorAnalog, gPersistenceSensor)
                {mqtt="<[broker:myHome/FF_AliceRoom_Analog:state:JS(brightness.js):.*]"}
@@ -900,7 +900,7 @@ Number         FF_AliceRoom_Indoor_Temperature_Sensor2
                {mqtt="<[broker:myHome/FF_AliceRoom_Outdoor_Temperature_Sensor:state:JS(europeanNumber.js):.*]"}
 
 Number         FF_AliceRoom_Pressure_Sensor
-               "Ciśnienie A [%.0f hPa]"
+               "Pressure A [%.0f hPa]"
                <pressure>
                (gPressureTest, gPersistenceSensor)
                {mqtt="<[broker:myHome/FF_AliceRoom_Pressure1:state:JS(pressure.js):.*]"}

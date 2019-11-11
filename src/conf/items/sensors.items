@@ -11,13 +11,13 @@
 //                       Circuit sensors
 ////////////////////////////////////////////////////////////////////////////////
 Contact        CIR_GF_MainDoor
-               "CIR Wejście"
+               "CIR Entry"
                <frontdoor>
                (GF_Corridor, gCIR, gSlack, gPersistenceSwitch)
                {mqtt="<[broker:myHome/CIR_GF_MainDoor:state:default]"}
 
 Contact        CIR_GF_MainLock
-               "CIR Zamek główny"
+               "CIR Main lock"
                <lock>
                (GF_Corridor, gCIR, gSlack, gPersistenceSwitch)
                {mqtt="<[broker:myHome/CIR_GF_MainLock:state:default]"}
@@ -29,43 +29,43 @@ Contact        CIR_GF_FamilyRoom
                {mqtt="<[broker:myHome/CIR_GF_FamilyRoom:state:default]"}
 
 Contact        CIR_GF_FamilyBalcony
-               "CIR Balkon"
+               "CIR Balcony"
                <window>
                (GF_FamilyRoom, gCIR, gPersistenceSwitch)
                {mqtt="<[broker:myHome/CIR_GF_FamilyBalcony:state:default]"}
 
 Contact        CIR_GF_Kitchen
-               "CIR Kuchnia"
+               "CIR Kitchen"
                <window>
                (GF_Kitchen, gCIR, gPersistenceSwitch)
                {mqtt="<[broker:myHome/CIR_GF_Kitchen:state:default]"}
 
 Contact        CIR_FF_Bedroom
-               "CIR Sypialnia"
+               "CIR Bedroom"
                <window>
                (FF_Bedroom, gCIR, gPersistenceSwitch)
                {mqtt="<[broker:myHome/CIR_FF_Bedroom:state:default]"}
 
 Contact        CIR_FF_AliceRoom
-               "CIR Alicja"
+               "CIR Alice"
                <window>
                (FF_AliceRoom, gCIR, gPersistenceSwitch)
                {mqtt="<[broker:myHome/CIR_FF_AliceRoom:state:default]"}
 
 Contact        CIR_FF_AnnRoom
-               "CIR Ania"
+               "CIR Ann"
                <window>
                (FF_AnnRoom, gCIR, gPersistenceSwitch)
                {mqtt="<[broker:myHome/CIR_FF_AnnRoom:state:default]"}
 
 
 DateTime       CIR_GF_MainDoor_LastUpdate
-               "CIR Wejście [%1$td.%1$tm %1$tH:%1$tM]"
+               "CIR Entry [%1$td.%1$tm %1$tH:%1$tM]"
                <time>
                (gLastUpdateCIR, gPersistenceSwitch)
 
 DateTime       CIR_GF_MainLock_LastUpdate
-               "CIR Zamek główny [%1$td.%1$tm %1$tH:%1$tM]"
+               "CIR Main lock [%1$td.%1$tm %1$tH:%1$tM]"
                <time>
                (gLastUpdateCIR, gPersistenceSwitch)
 
@@ -75,29 +75,27 @@ DateTime       CIR_GF_FamilyRoom_LastUpdate
                (gLastUpdateCIR, gPersistenceSwitch)
 
 DateTime       CIR_GF_FamilyBalcony_LastUpdate
-               "CIR Balkon [%1$td.%1$tm %1$tH:%1$tM]"
+               "CIR Balcony [%1$td.%1$tm %1$tH:%1$tM]"
                <time>
                (gLastUpdateCIR, gPersistenceSwitch)
 
 DateTime       CIR_GF_Kitchen_LastUpdate
-               "CIR Kuchnia [%1$td.%1$tm %1$tH:%1$tM]"
+               "CIR Kitchen [%1$td.%1$tm %1$tH:%1$tM]"
                <time>
                (gLastUpdateCIR, gPersistenceSwitch)
 
 DateTime       CIR_FF_Bedroom_LastUpdate
-               "CIR Sypialnia [%1$td.%1$tm %1$tH:%1$tM]"
+               "CIR Bedroom [%1$td.%1$tm %1$tH:%1$tM]"
                <time>
                (gLastUpdateCIR, gPersistenceSwitch)
 
 DateTime       CIR_FF_AliceRoom_LastUpdate
-
-
-               "CIR Alicja [%1$td.%1$tm %1$tH:%1$tM]"
+               "CIR Alice [%1$td.%1$tm %1$tH:%1$tM]"
                <time>
                (gLastUpdateCIR, gPersistenceSwitch)
 
 DateTime       CIR_FF_AnnRoom_LastUpdate
-               "CIR Ania [%1$td.%1$tm %1$tH:%1$tM]"
+               "CIR Ann [%1$td.%1$tm %1$tH:%1$tM]"
                <time>
                (gLastUpdateCIR, gPersistenceSwitch)
 
@@ -106,7 +104,7 @@ DateTime       CIR_FF_AnnRoom_LastUpdate
 //                       PIR sensors
 ////////////////////////////////////////////////////////////////////////////////
 Contact        PIR_GF_Corridor
-               "PIR Korytarz"
+               "PIR Corridor"
                <light>
                (GF_Corridor, gPIR, gNightWatch, gPersistenceSwitch)
                {mqtt="<[broker:myHome/PIR_GF_Corridor:state:default]"}
@@ -118,37 +116,37 @@ Contact        PIR_GF_FamilyRoom
                {mqtt="<[broker:myHome/PIR_GF_FamilyRoom:state:default]"}
 
 Contact        PIR_GF_Kitchen
-               "PIR Kuchnia"
+               "PIR Kitchen"
                <light>
                (GF_Kitchen, gPIR, gNightWatch, gPersistenceSwitch)
                {mqtt="<[broker:myHome/PIR_GF_Kitchen:state:default]"}
 
 Contact        PIR_FF_Corridor
-               "PIR Korytarz góra"
+               "PIR Corridor up"
                <light>
                (FF_Corridor, gNightWatch, gPIR, gPersistenceSwitch)
                {mqtt="<[broker:myHome/PIR_FF_Corridor:state:default]"}
 
 Contact        PIR_FF_AnnRoom
-               "PIR Ania"
+               "PIR Ann"
                <light>
                (FF_AnnRoom, gPIR, gPersistenceSwitch)
                {mqtt="<[broker:myHome/PIR_FF_AnnRoom:state:default]"}
 
 Contact        PIR_FF_AliceRoom
-               "PIR Alicja"
+               "PIR Alice"
                <light>
                (FF_AliceRoom, gPIR, gPersistenceSwitch)
                {mqtt="<[broker:myHome/PIR_FF_AliceRoom:state:default]"}
 
 Contact        PIR_FF_Bedroom
-               "PIR Sypialnia"
+               "PIR Bedroom"
                <light>
                (FF_Bedroom, gPIR, gPersistenceSwitch)
                {mqtt="<[broker:myHome/PIR_FF_Bedroom:state:default]"}
 
 Contact        PIR_FF_BedroomWardobe
-               "PIR Sypialnia szafa"
+               "PIR Bedroom wardobe"
                <light>
                (FF_Bedroom, gMoveWatch, gPIR, gPersistenceSwitch)
                {mqtt="<[broker:myHome/PIR_FF_BedroomWardobe:state:default]"}
@@ -166,7 +164,7 @@ Contact        PIR_Corridor_Storage
                {mqtt="<[broker:myHomeY/GF_Corridor_Storage_Relay_Change:state:MAP(switch2contact.map)]"}
 
 Switch         PIR_GF_Corridor_State
-               "PIR Korytarz"
+               "PIR Corridor"
                <rgb>
                (gPIRState, gPersistenceSwitch)
 
@@ -176,32 +174,32 @@ Switch         PIR_GF_FamilyRoom_State
                (gPIRState, gPersistenceSwitch)
 
 Switch         PIR_GF_Kitchen_State
-               "PIR Kuchnia"
+               "PIR Kitchen"
                <rgb>
                (gPIRState, gPersistenceSwitch)
 
 Switch         PIR_FF_Corridor_State
-               "PIR Korytarz góra"
+               "PIR Corridor up"
                <rgb>
                (gPIRState, gPersistenceSwitch)
 
 Switch         PIR_FF_AnnRoom_State
-               "PIR Ania"
+               "PIR Ann"
                <rgb>
                (gPIRState, gPersistenceSwitch)
 
 Switch         PIR_FF_AliceRoom_State
-               "PIR Alicja"
+               "PIR Alice"
                <rgb>
                (gPIRState, gPersistenceSwitch)
 
 Switch         PIR_FF_Bedroom_State
-               "PIR Sypialnia"
+               "PIR Bedroom"
                <rgb>
                (gPIRState, gPersistenceSwitch)
 
 Switch         PIR_FF_BedroomWardobe_State
-               "PIR Sypialnia szafa"
+               "PIR Bedroom wardobe"
                <rgb>
                (gPIRState, gPersistenceSwitch)
 
@@ -216,7 +214,7 @@ Switch         PIR_Corridor_Storage_State
                (gPIRState, gPersistenceSwitch)
 
 DateTime       PIR_GF_Corridor_LastUpdate
-               "PIR Korytarz [%1$td.%1$tm %1$tH:%1$tM]"
+               "PIR Corridor [%1$td.%1$tm %1$tH:%1$tM]"
                <time>
                (gLastUpdatePIR, gPersistenceSwitch)
 
@@ -226,32 +224,32 @@ DateTime       PIR_GF_FamilyRoom_LastUpdate
                (gLastUpdatePIR, gPersistenceSwitch)
 
 DateTime       PIR_GF_Kitchen_LastUpdate
-               "PIR Kuchnia [%1$td.%1$tm %1$tH:%1$tM]"
+               "PIR Kitchen [%1$td.%1$tm %1$tH:%1$tM]"
                <time>
                (gLastUpdatePIR, gPersistenceSwitch)
 
 DateTime       PIR_FF_Corridor_LastUpdate
-               "PIR Korytarz góra [%1$td.%1$tm %1$tH:%1$tM]"
+               "PIR Corridor up [%1$td.%1$tm %1$tH:%1$tM]"
                <time>
                (gLastUpdatePIR, gPersistenceSwitch)
 
 DateTime       PIR_FF_AnnRoom_LastUpdate
-               "PIR Ania [%1$td.%1$tm %1$tH:%1$tM]"
+               "PIR Ann [%1$td.%1$tm %1$tH:%1$tM]"
                <time>
                (gLastUpdatePIR, gPersistenceSwitch)
 
 DateTime       PIR_FF_AliceRoom_LastUpdate
-               "PIR Alicja [%1$td.%1$tm %1$tH:%1$tM]"
+               "PIR Alice [%1$td.%1$tm %1$tH:%1$tM]"
                <time>
                (gLastUpdatePIR, gPersistenceSwitch)
 
 DateTime       PIR_FF_Bedroom_LastUpdate
-               "PIR Sypialnia [%1$td.%1$tm %1$tH:%1$tM]"
+               "PIR Bedroom [%1$td.%1$tm %1$tH:%1$tM]"
                <time>
                (gLastUpdatePIR, gPersistenceSwitch)
 
 DateTime       PIR_FF_BedroomWardobe_LastUpdate
-               "PIR Sypialnia szafa [%1$td.%1$tm %1$tH:%1$tM]"
+               "PIR Bedroom wardobe [%1$td.%1$tm %1$tH:%1$tM]"
                <time>
                (gLastUpdatePIR, gPersistenceSwitch)
 
