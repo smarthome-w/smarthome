@@ -1,4 +1,4 @@
-sitemap charts_power_day label="Daily power consumption" {
+sitemap charts_power_day label="Power consumption (daily)" {
     Frame label="Power meter" icon="firstfloor" {
         Text item=GF_PowerMeter_Total
         Text item=GF_PowerMeter_Current

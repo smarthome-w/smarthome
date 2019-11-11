@@ -1,4 +1,4 @@
-sitemap charts_power_week label="Weekly power consumption" {
+sitemap charts_power_week label="Power consumption (weekly)" {
     Frame label="Weekly power consumption" icon="firstfloor" {
         Chart item=GF_PowerMeter_Total period=W label="Counter"
         Chart item=GF_PowerMeter_Current period=W label="Power"

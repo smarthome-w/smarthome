@@ -1,4 +1,4 @@
-sitemap eq3 label="Grzejniki" {
+sitemap eq3 label="Heaters" {
     Frame label="Status" icon="firstfloor" {
       Text item=EQ3_Bedroom_Status  
       Text item=EQ3_FamilyRoom_Status  

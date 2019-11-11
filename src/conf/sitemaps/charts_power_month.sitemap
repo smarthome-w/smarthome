@@ -1,4 +1,4 @@
-sitemap charts_power_month label="Monthly power consumption" {
+sitemap charts_power_month label="Power consumption (monthly)" {
     Frame label="Monthly power consumption" icon="firstfloor" {
         Chart item=GF_PowerMeter_DailyConsumption period=M label="Power consumption"
     }
