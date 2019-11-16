@@ -297,6 +297,7 @@ void processServo()
 
         if (isDebug)
         {
+            Serial.println("Send debug messages");
             sendDebugMQTTMessage("messageValue", String(messageValue));
             sendDebugMQTTMessage("CurrPos", String(SERVO_CURR_POS));
             sendDebugMQTTMessage("PWMCurrPos", String(PWM_CURR_POS));

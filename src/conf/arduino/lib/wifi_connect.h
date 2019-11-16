@@ -11,6 +11,7 @@ void initializeWiFi()
 
   WiFi.persistent(false);
   WiFi.mode(WIFI_STA);
+  //WiFi.softAPdisconnect(true);
   WiFi.hostname(fName);
   WiFi.begin(WIFI_SSID, WIFI_PASSWD);
 

@@ -1,4 +1,12 @@
 sitemap probes label="Probes" {
+    Frame label="Modes" icon="groundfloor" {
+        Text item=GF_FamilyRoom_Outdoor_Temperature_Mode
+        Text item=FF_AnnRoom_Indoor_Temperature_Mode
+        Text item=FF_Bedroom_Indoor_Temperature_Mode
+        Text item=FF_AliceRoom_Indoor_Temperature_Mode
+        Text item=GF_FamilyRoom_Indoor_Temperature_Mode
+        Text item=GF_PowerMeter_Temperature_Mode
+    }
     Frame label="Locks" icon="groundfloor" {
         Switch item=CIR_GF_MainLock mappings=[CLOSED="Closed", OPEN="Open"]
     }

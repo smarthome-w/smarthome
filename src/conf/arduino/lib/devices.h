@@ -46,7 +46,7 @@
 //#define FamilyRoom
 //#define TechnicalRoom1
 //#define TechnicalRoom2
-//#define FamilyRoomRollershutter
+#define FamilyRoomRollershutter
 //#define BedroomRollershutter
 //#define TestRoom
 //#define TestRelay

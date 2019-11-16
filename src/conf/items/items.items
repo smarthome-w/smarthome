@@ -708,8 +708,8 @@ Group          v_GF_FamilyRoom_Thermostat
                "Family room thermostat"
                ["Thermostat"]
 
-Number         GF_FamilyRoom_Indoor_Temperature_Mode
-               "Family room Heating/Cooling Mode"
+String         GF_FamilyRoom_Indoor_Temperature_Mode
+               "Family room Heating/Cooling Mode [%s]"
                <temperature>
                (v_GF_FamilyRoom_Thermostat)
                ["homekit:TargetHeatingCoolingMode"]
@@ -745,8 +745,8 @@ Group          v_GF_FamilyRoom_Outdoor_Thermostat
                "External thermostat"
                ["Thermostat"]
 
-Number         GF_FamilyRoom_Outdoor_Temperature_Mode
-               "External Heating/Cooling Mode"
+String         GF_FamilyRoom_Outdoor_Temperature_Mode
+               "External Heating/Cooling Mode [%s]"
                <temperature>
                (v_GF_FamilyRoom_Outdoor_Thermostat)
                ["homekit:TargetHeatingCoolingMode"]
@@ -774,8 +774,8 @@ Group          v_FF_AnnRoom_Thermostat
                "Ann room thermostat"
                ["Thermostat"]
 
-Number         FF_AnnRoom_Indoor_Temperature_Mode
-               "Ann room Heating/Cooling Mode"
+String         FF_AnnRoom_Indoor_Temperature_Mode
+               "Ann room Heating/Cooling Mode [%s]"
                <temperature>
                (v_FF_AnnRoom_Thermostat)
                ["homekit:TargetHeatingCoolingMode"]
@@ -811,8 +811,8 @@ Group          v_FF_Bedroom_Thermostat
                "Bedroom thermostat"
                ["Thermostat"]
 
-Number         FF_Bedroom_Indoor_Temperature_Mode
-               "Bedroom Heating/Cooling Mode"
+String         FF_Bedroom_Indoor_Temperature_Mode
+               "Bedroom Heating/Cooling Mode [%s]"
                <temperature>
                (v_FF_Bedroom_Thermostat)
                ["homekit:TargetHeatingCoolingMode"]
@@ -848,8 +848,8 @@ Group          v_FF_AliceRoom_Thermostat
                "Alice room thermostat"
                ["Thermostat"]
 
-Number         FF_AliceRoom_Indoor_Temperature_Mode
-               "Alice room Heating/Cooling Mode"
+String         FF_AliceRoom_Indoor_Temperature_Mode
+               "Alice room Heating/Cooling Mode [%s]"
                <temperature>
                (v_FF_AliceRoom_Thermostat)
                ["homekit:TargetHeatingCoolingMode"]

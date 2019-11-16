@@ -1,4 +1,4 @@
-#define SKETCH_VERSION "20191109"
+#define SKETCH_VERSION "20191114"
 #include "lib/devices.h"
 
 #include "lib/wifi.h"
@@ -121,5 +121,7 @@ void loop() {
   #ifdef fMQTTInput
     processMQTTInput();
   #endif
+  #ifndef fRollershutter
   delay(100);
+  #endif
 }

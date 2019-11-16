@@ -289,8 +289,8 @@ Group          v_GF_PowerMeter_Thermostat
                "Power meter thermostat"
                ["Thermostat"]
 
-Number         GF_PowerMeter_Temperature_Mode
-               "Power meter Heating/Cooling Mode"
+String         GF_PowerMeter_Temperature_Mode
+               "Power meter Heating/Cooling Mode [%s]"
                <temperature>
                (v_GF_PowerMeter_Thermostat)
                ["homekit:TargetHeatingCoolingMode"]
