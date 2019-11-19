@@ -11,17 +11,3 @@ then
   }
   //logInfo("slack", "command: {} with result:\n>>\n{}\n<<\n", command, result)
 end
-
-rule "mode_rule"
-when
-  Time cron "0 */1 * ? * MON-SUN"
-then
-    logError("temp", "Temperature modes - start")
-    GF_FamilyRoom_Outdoor_Temperature_Mode.sendCommand("on")
-    FF_AnnRoom_Indoor_Temperature_Mode.sendCommand("on")
-    FF_Bedroom_Indoor_Temperature_Mode.sendCommand("on")
-    FF_AliceRoom_Indoor_Temperature_Mode.sendCommand("on")
-    GF_FamilyRoom_Indoor_Temperature_Mode.sendCommand("on")
-    GF_PowerMeter_Temperature_Mode.sendCommand("on")
-    logError("temp", "Temperature modes were set")
-end

@@ -114,7 +114,7 @@ Group          gGF_FamilyRoom_Scenario
 
 
 Switch         GF_ColorLights_Scenario
-               "TV Show"
+               "Empty name"
                <party>
                (gScenariosList, gPersistenceSwitch)
                ["Lighting"]
@@ -484,7 +484,6 @@ DateTime       FF_BathRoom_Light_Mirror_LastUpdate
                <time>
                (gLastUpdateBroadlink, gPersistenceSwitch)
 
-
 ////////////////////////////////////////////////////////////////////////////////
 //                       Raw RTV
 ////////////////////////////////////////////////////////////////////////////////
@@ -702,7 +701,6 @@ Number         HH_DebugLevel_General
                "General debug level [%.0f]"
                <time>
                (gParameters, gPersistenceSwitch)
-
 
 Group          v_GF_FamilyRoom_Thermostat
                "Family room thermostat"

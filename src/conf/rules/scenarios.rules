@@ -6,7 +6,7 @@ then
     val GroupItem state_group = gScenarios.members.findFirst[name.equals("g" + triggeringItem.name)]
     val OnOffType set_state = triggeringItem.state
 
-    //logInfo("scenario", "Object {}: {}", state_group.name, state_group)
+    //logInfo("scenario", "Object {}: {}", state_group.name, set_state)
     state_group.members.forEach [E |
       if (E.type == "Switch") {
         sendCommand(E, set_state)

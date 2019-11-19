@@ -1,0 +1,11 @@
+rule "RGB Start"
+when
+    Item CIR_GF_MainLock received update
+then
+  logInfo ("lock", "State: {}", CIR_GF_MainLock.state.toString())
+  if (CIR_GF_MainLock.state.toString() == "OPEN") {
+    HH_FrontDoorSwitch.sendCommand(OFF)
+  } else {
+    HH_FrontDoorSwitch.sendCommand(ON)
+  }
+end

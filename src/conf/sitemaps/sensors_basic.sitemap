@@ -17,6 +17,7 @@ sitemap sensors_basic label="Status" {
 //        Text item=GF_PowerMeter_Current
         Text item=GF_PowerMeter_Current_In_Watts
         Switch item=CIR_GF_MainLock mappings=[CLOSED="Closed", OPEN="Open"]
+//        Switch item=HH_FrontDoorSwitch
         Switch item=OverallErrorIndicator
     }
 

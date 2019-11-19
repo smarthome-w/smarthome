@@ -17,10 +17,16 @@ Contact        CIR_GF_MainDoor
                {mqtt="<[broker:myHome/CIR_GF_MainDoor:state:default]"}
 
 Contact        CIR_GF_MainLock
-               "CIR Main lock"
+               "Front door"
                <lock>
                (GF_Corridor, gCIR, gSlack, gPersistenceSwitch)
                {mqtt="<[broker:myHome/CIR_GF_MainLock:state:default]"}
+
+Switch         HH_FrontDoorSwitch
+               "Front door []"
+               <lock>
+               (GF_Corridor, gPersistenceSwitch)
+               ["Lock"]
 
 Contact        CIR_GF_FamilyRoom
                "CIR Salon"

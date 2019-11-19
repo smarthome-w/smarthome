@@ -62,7 +62,7 @@ then
             if (logLevel >= 6) {
               logError("scene_rule", "FF_Bedroom_Rollershutter_Dimmer to {}", bedroomBlindLevel)
             }
-            FF_Bedroom_Rollershutter_Dimmer.sendCommand(bedroomBlindLevel.intValue)
+            //FF_Bedroom_Rollershutter_Dimmer.sendCommand(bedroomBlindLevel.intValue)
             //GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
         }
 
