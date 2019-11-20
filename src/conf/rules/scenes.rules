@@ -73,18 +73,26 @@ then
 
         if (triggeringItem.name == "GH_BrightWindow_Scene"){
             if (logLevel >= 6) {
-            logError("scene", "bright window")
+              logError("scene", "bright window")
             }
             GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
         }
         if (triggeringItem.name == "GH_DarkWindow_Scene"){
             if (logLevel >= 6) {
-            logError("scene", "dark window")
+              logError("scene", "dark window")
             }
             if (CIR_GF_FamilyBalcony.state.toString == "CLOSED") {
               GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
             }
         }
+    }
+    if (triggeringItem.name == "GH_Holiday"){
+        logError("scene", "welcome back")
+        GF_Presence_Mode.sendCommand("ABSENT")
+    }
+    if (triggeringItem.name == "GH_WelcomeBack"){
+        GF_Presence_Mode.sendCommand("PRESENT")
+        logError("scene", "welcome back")
     }
   } catch (Throwable t) {
     logError("Error", "Error in scene_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)

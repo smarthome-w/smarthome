@@ -547,6 +547,16 @@ Switch         RTV_VOLUME_MUTE
 ////////////////////////////////////////////////////////////////////////////////
 //                       Google Home scenes
 ////////////////////////////////////////////////////////////////////////////////
+Switch         GH_Holiday
+               "Holiday"
+               (gScenes)
+               ["Switchable"]
+
+Switch         GH_WelcomeBack
+               "Welcome back"
+               (gScenes)
+               ["Switchable"]
+
 Switch         GH_Night_Scene
                "Good night"
                (gScenes)
