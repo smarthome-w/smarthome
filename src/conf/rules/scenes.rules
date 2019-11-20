@@ -20,14 +20,19 @@ then
               logError("scene_rule", "day")
             }
             GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
+            GF_Bedroom_Rollershutter_AutoUp.sendCommand(ON)
         }
 
         if (triggeringItem.name == "GH_TVShow_Scene"){
             if (logLevel >= 6) {
-              logError("scene_rule", "tvshow")
+              logError("scene_rule", "scene: tvshow {}", triggeringItem.state)
             }
-            GF_ColorLights_Scenario.sendCommand(ON)
-            GF_FamilyRoom_Scenario.sendCommand(OFF)
+            if (triggeringItem.state == ON) {
+              GF_ColorLights_Scenario.sendCommand(ON)
+              GF_FamilyRoom_Scenario.sendCommand(OFF)
+            } else {
+              GF_ColorLights_Scenario.sendCommand(OFF)
+            }
         }
 
         if (triggeringItem.name == "GH_Evening_Scene"){
