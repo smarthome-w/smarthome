@@ -1,320 +1,64 @@
 ////////////////////////////////////////////////////////////////////////////////
-//                       Server
-////////////////////////////////////////////////////////////////////////////////
-
-// Number ServerZero_Temperature "Server zero temperature [%.0f \u00b0C]" <temperature> (gHardwareTemperature, gPersistenceSensor) {mqtt="<[broker:myHome/serverZeroTemperature:state:JS(europeanNumber.js):.*]"}
-// String ServerZero_CPUIdle "Server zero idle [%s %%]" {mqtt="<[broker:myHome/serverZeroIdle:state:JS(string.js):.*]"}
-// String ServerZero_Uptime "Server zero uptime [%s]" <time> {mqtt="<[broker:myHome/serverZeroUptime:state:JS(string.js):.*]"}
-// String ServerZero_LastRead "Server zero last read [%s]" <time> {mqtt="<[broker:myHome/lastReadServerZero:state:JS(string.js):.*]"}
-
-////////////////////////////////////////////////////////////////////////////////
 //                       Circuit sensors
 ////////////////////////////////////////////////////////////////////////////////
-Contact        CIR_GF_MainDoor
-               "CIR Entry"
-               <frontdoor>
-               (GF_Corridor, gCIR, gSlack, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/CIR_GF_MainDoor:state:default]"}
-
-Contact        CIR_GF_MainLock
-               "Front door"
-               <lock>
-               (GF_Corridor, gCIR, gSlack, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/CIR_GF_MainLock:state:default]"}
-
-Switch         HH_FrontDoorSwitch
-               "Front door []"
-               <lock>
-               (GF_Corridor, gPersistenceSwitch)
-               ["Lock"]
-
-Contact        CIR_GF_FamilyRoom
-               "CIR Salon"
-               <window>
-               (GF_FamilyRoom, gCIR, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/CIR_GF_FamilyRoom:state:default]"}
-
-Contact        CIR_GF_FamilyBalcony
-               "CIR Balcony"
-               <window>
-               (GF_FamilyRoom, gCIR, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/CIR_GF_FamilyBalcony:state:default]"}
-
-Contact        CIR_GF_Kitchen
-               "CIR Kitchen"
-               <window>
-               (GF_Kitchen, gCIR, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/CIR_GF_Kitchen:state:default]"}
-
-Contact        CIR_FF_Bedroom
-               "CIR Bedroom"
-               <window>
-               (FF_Bedroom, gCIR, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/CIR_FF_Bedroom:state:default]"}
-
-Contact        CIR_FF_AliceRoom
-               "CIR Alice"
-               <window>
-               (FF_AliceRoom, gCIR, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/CIR_FF_AliceRoom:state:default]"}
-
-Contact        CIR_FF_AnnRoom
-               "CIR Ann"
-               <window>
-               (FF_AnnRoom, gCIR, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/CIR_FF_AnnRoom:state:default]"}
-
-
-DateTime       CIR_GF_MainDoor_LastUpdate
-               "CIR Entry [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdateCIR, gPersistenceSwitch)
-
-DateTime       CIR_GF_MainLock_LastUpdate
-               "CIR Main lock [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdateCIR, gPersistenceSwitch)
-
-DateTime       CIR_GF_FamilyRoom_LastUpdate
-               "CIR Salon [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdateCIR, gPersistenceSwitch)
-
-DateTime       CIR_GF_FamilyBalcony_LastUpdate
-               "CIR Balcony [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdateCIR, gPersistenceSwitch)
-
-DateTime       CIR_GF_Kitchen_LastUpdate
-               "CIR Kitchen [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdateCIR, gPersistenceSwitch)
-
-DateTime       CIR_FF_Bedroom_LastUpdate
-               "CIR Bedroom [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdateCIR, gPersistenceSwitch)
-
-DateTime       CIR_FF_AliceRoom_LastUpdate
-               "CIR Alice [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdateCIR, gPersistenceSwitch)
-
-DateTime       CIR_FF_AnnRoom_LastUpdate
-               "CIR Ann [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdateCIR, gPersistenceSwitch)
+Contact		CIR_GF_MainDoor							"CIR Entry"											<frontdoor>		(GF_Corridor, gCIR, gSlack, gPersistenceSwitch)																	{mqtt="<[broker:myHome/CIR_GF_MainDoor:state:default]"}	
+Contact		CIR_GF_MainLock							"Front door"										<lock>			(GF_Corridor, gCIR, gSlack, gPersistenceSwitch)																	{mqtt="<[broker:myHome/CIR_GF_MainLock:state:default]"}	
+Switch		HH_FrontDoorSwitch						"Front door []"										<lock>			(GF_Corridor, gPersistenceSwitch)										["Lock"]									
+Contact		CIR_GF_FamilyRoom						"CIR Salon"											<window>		(GF_FamilyRoom, gCIR, gPersistenceSwitch)																		{mqtt="<[broker:myHome/CIR_GF_FamilyRoom:state:default]"}	
+Contact		CIR_GF_FamilyBalcony					"CIR Balcony"										<window>		(GF_FamilyRoom, gCIR, gPersistenceSwitch)																		{mqtt="<[broker:myHome/CIR_GF_FamilyBalcony:state:default]"}	
+Contact		CIR_GF_Kitchen							"CIR Kitchen"										<window>		(GF_Kitchen, gCIR, gPersistenceSwitch)																			{mqtt="<[broker:myHome/CIR_GF_Kitchen:state:default]"}	
+Contact		CIR_FF_Bedroom							"CIR Bedroom"										<window>		(FF_Bedroom, gCIR, gPersistenceSwitch)																			{mqtt="<[broker:myHome/CIR_FF_Bedroom:state:default]"}	
+Contact		CIR_FF_AliceRoom						"CIR Alice"											<window>		(FF_AliceRoom, gCIR, gPersistenceSwitch)																		{mqtt="<[broker:myHome/CIR_FF_AliceRoom:state:default]"}	
+Contact		CIR_FF_AnnRoom							"CIR Ann"											<window>		(FF_AnnRoom, gCIR, gPersistenceSwitch)																			{mqtt="<[broker:myHome/CIR_FF_AnnRoom:state:default]"}	
+DateTime	CIR_GF_MainDoor_LastUpdate				"CIR Entry [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateCIR, gPersistenceSwitch)																				
+DateTime	CIR_GF_MainLock_LastUpdate				"CIR Main lock [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateCIR, gPersistenceSwitch)																				
+DateTime	CIR_GF_FamilyRoom_LastUpdate			"CIR Salon [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateCIR, gPersistenceSwitch)																				
+DateTime	CIR_GF_FamilyBalcony_LastUpdate			"CIR Balcony [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateCIR, gPersistenceSwitch)																				
+DateTime	CIR_GF_Kitchen_LastUpdate				"CIR Kitchen [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateCIR, gPersistenceSwitch)																				
+DateTime	CIR_FF_Bedroom_LastUpdate				"CIR Bedroom [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateCIR, gPersistenceSwitch)																				
+DateTime	CIR_FF_AliceRoom_LastUpdate				"CIR Alice [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateCIR, gPersistenceSwitch)																				
+DateTime	CIR_FF_AnnRoom_LastUpdate				"CIR Ann [%1$td.%1$tm %1$tH:%1$tM]"					<time>			(gLastUpdateCIR, gPersistenceSwitch)																				
 
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       PIR sensors
 ////////////////////////////////////////////////////////////////////////////////
-Contact        PIR_GF_Corridor
-               "PIR Corridor"
-               <light>
-               (GF_Corridor, gPIR, gNightWatch, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/PIR_GF_Corridor:state:default]"}
-
-Contact        PIR_GF_FamilyRoom
-               "PIR Salon"
-               <light>
-               (GF_FamilyRoom, gPIR, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/PIR_GF_FamilyRoom:state:default]"}
-
-Contact        PIR_GF_Kitchen
-               "PIR Kitchen"
-               <light>
-               (GF_Kitchen, gPIR, gNightWatch, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/PIR_GF_Kitchen:state:default]"}
-
-Contact        PIR_FF_Corridor
-               "PIR Corridor up"
-               <light>
-               (FF_Corridor, gNightWatch, gPIR, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/PIR_FF_Corridor:state:default]"}
-
-Contact        PIR_FF_AnnRoom
-               "PIR Ann"
-               <light>
-               (FF_AnnRoom, gPIR, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/PIR_FF_AnnRoom:state:default]"}
-
-Contact        PIR_FF_AliceRoom
-               "PIR Alice"
-               <light>
-               (FF_AliceRoom, gPIR, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/PIR_FF_AliceRoom:state:default]"}
-
-Contact        PIR_FF_Bedroom
-               "PIR Bedroom"
-               <light>
-               (FF_Bedroom, gPIR, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/PIR_FF_Bedroom:state:default]"}
-
-Contact        PIR_FF_BedroomWardobe
-               "PIR Bedroom wardobe"
-               <light>
-               (FF_Bedroom, gMoveWatch, gPIR, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/PIR_FF_BedroomWardobe:state:default]"}
-
-Contact        PIR_GF_EntryWatch
-               "PIR Entry Watch"
-               <light>
-               (GF_Corridor, gPIR, gSlack, gEntryWatch, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/FF_TechnicalRoom2_EntryWatch:state:default]"}
-
-Contact        PIR_Corridor_Storage
-               "PIR Corridor Storage"
-               <light>
-               (GF_Corridor, gPIR, gPersistenceSwitch)
-               {mqtt="<[broker:myHomeY/GF_Corridor_Storage_Relay_Change:state:MAP(switch2contact.map)]"}
-
-Switch         PIR_GF_Corridor_State
-               "PIR Corridor"
-               <rgb>
-               (gPIRState, gPersistenceSwitch)
-
-Switch         PIR_GF_FamilyRoom_State
-               "PIR Salon"
-               <rgb>
-               (gPIRState, gPersistenceSwitch)
-
-Switch         PIR_GF_Kitchen_State
-               "PIR Kitchen"
-               <rgb>
-               (gPIRState, gPersistenceSwitch)
-
-Switch         PIR_FF_Corridor_State
-               "PIR Corridor up"
-               <rgb>
-               (gPIRState, gPersistenceSwitch)
-
-Switch         PIR_FF_AnnRoom_State
-               "PIR Ann"
-               <rgb>
-               (gPIRState, gPersistenceSwitch)
-
-Switch         PIR_FF_AliceRoom_State
-               "PIR Alice"
-               <rgb>
-               (gPIRState, gPersistenceSwitch)
-
-Switch         PIR_FF_Bedroom_State
-               "PIR Bedroom"
-               <rgb>
-               (gPIRState, gPersistenceSwitch)
-
-Switch         PIR_FF_BedroomWardobe_State
-               "PIR Bedroom wardobe"
-               <rgb>
-               (gPIRState, gPersistenceSwitch)
-
-Switch         PIR_GF_EntryWatch_State
-               "PIR Entry Watch"
-               <rgb>
-               (gPIRState, gPersistenceSwitch)
-
-Switch         PIR_Corridor_Storage_State
-               "PIR Corridor Storage"
-               <rgb>
-               (gPIRState, gPersistenceSwitch)
-
-DateTime       PIR_GF_Corridor_LastUpdate
-               "PIR Corridor [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdatePIR, gPersistenceSwitch)
-
-DateTime       PIR_GF_FamilyRoom_LastUpdate
-               "PIR Salon [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdatePIR, gPersistenceSwitch)
-
-DateTime       PIR_GF_Kitchen_LastUpdate
-               "PIR Kitchen [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdatePIR, gPersistenceSwitch)
-
-DateTime       PIR_FF_Corridor_LastUpdate
-               "PIR Corridor up [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdatePIR, gPersistenceSwitch)
-
-DateTime       PIR_FF_AnnRoom_LastUpdate
-               "PIR Ann [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdatePIR, gPersistenceSwitch)
-
-DateTime       PIR_FF_AliceRoom_LastUpdate
-               "PIR Alice [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdatePIR, gPersistenceSwitch)
-
-DateTime       PIR_FF_Bedroom_LastUpdate
-               "PIR Bedroom [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdatePIR, gPersistenceSwitch)
-
-DateTime       PIR_FF_BedroomWardobe_LastUpdate
-               "PIR Bedroom wardobe [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdatePIR, gPersistenceSwitch)
-
-DateTime       PIR_GF_EntryWatch_LastUpdate
-               "PIR Entry Watch [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdatePIR, gPersistenceSwitch)
-
-DateTime       PIR_Corridor_Storage_LastUpdate
-               "PIR Corridor Storage [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdatePIR)
-
-Number         GF_PowerMeter_Total
-               "Total power [%.3f kWh]"
-               <battery-60>
-               (GF_Corridor, gPower, gHeartbeat, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/PowerMeter_Total:state:JS(europeanNumber.js):.*]"}
-
-DateTime       GF_PowerMeter_Total_LastUpdate
-               "Powermeter [%1$td.%1$tm %1$tH:%1$tM]"
-               <time>
-               (gLastUpdateHeartbeat, gLastUpdateTimeout)
-
-Switch         GF_PowerMeter_Total_LastUpdate_Error
-               "Powermeter"
-               <time>
-               (gErrors, gPersistenceSwitch)
-
-Number         GF_PowerMeter_Current
-               "Current power in kilowatts[%.3f kW]"
-               <battery-60>
-               (GF_Corridor, gPower, gPersistenceSwitch)
-               {mqtt="<[broker:myHome/PowerMeter_Current:state:JS(europeanNumber.js):.*]"}
-
-Group          v_GF_PowerMeter_Thermostat
-               "Power meter thermostat"
-               ["Thermostat"]
-
-String         GF_PowerMeter_Temperature_Mode
-               "Power meter Heating/Cooling Mode [%s]"
-               <temperature>
-               (v_GF_PowerMeter_Thermostat)
-               ["homekit:TargetHeatingCoolingMode"]
-
-Number         GF_PowerMeter_Temperature_Setpoint
-               "Power meter Setpoint"
-               <temperature>
-               (v_GF_PowerMeter_Thermostat)
-               ["homekit:TargetTemperature"]
-
-Number         GF_PowerMeter_Current_In_Watts
-               "Power temperature [%.0f W]"
-               <battery-60>
-               (v_GF_PowerMeter_Thermostat, GF_Corridor, gPower, gPersistenceSwitch)
-               ["CurrentTemperature"]
-               {mqtt="<[broker:myHome/PowerMeter_Current:state:JS(kilowatttowatts.js):.*]"}
-
-Number         GF_PowerMeter_DailyConsumption
-               "Daily consumption [%.1f kWh]"
-               <battery-60>
-               (gPower, gPersistenceDummy)
+Contact		PIR_GF_Corridor							"PIR Corridor"										<light>			(GF_Corridor, gPIR, gNightWatch, gPersistenceSwitch)															{mqtt="<[broker:myHome/PIR_GF_Corridor:state:default]"}	
+Contact		PIR_GF_FamilyRoom						"PIR Salon"											<light>			(GF_FamilyRoom, gPIR, gPersistenceSwitch)																		{mqtt="<[broker:myHome/PIR_GF_FamilyRoom:state:default]"}	
+Contact		PIR_GF_Kitchen							"PIR Kitchen"										<light>			(GF_Kitchen, gPIR, gNightWatch, gPersistenceSwitch)																{mqtt="<[broker:myHome/PIR_GF_Kitchen:state:default]"}	
+Contact		PIR_FF_Corridor							"PIR Corridor up"									<light>			(FF_Corridor, gNightWatch, gPIR, gPersistenceSwitch)															{mqtt="<[broker:myHome/PIR_FF_Corridor:state:default]"}	
+Contact		PIR_FF_AnnRoom							"PIR Ann"											<light>			(FF_AnnRoom, gPIR, gPersistenceSwitch)																			{mqtt="<[broker:myHome/PIR_FF_AnnRoom:state:default]"}	
+Contact		PIR_FF_AliceRoom						"PIR Alice"											<light>			(FF_AliceRoom, gPIR, gPersistenceSwitch)																		{mqtt="<[broker:myHome/PIR_FF_AliceRoom:state:default]"}	
+Contact		PIR_FF_Bedroom							"PIR Bedroom"										<light>			(FF_Bedroom, gPIR, gPersistenceSwitch)																			{mqtt="<[broker:myHome/PIR_FF_Bedroom:state:default]"}	
+Contact		PIR_FF_BedroomWardobe					"PIR Bedroom wardobe"								<light>			(FF_Bedroom, gMoveWatch, gPIR, gPersistenceSwitch)																{mqtt="<[broker:myHome/PIR_FF_BedroomWardobe:state:default]"}	
+Contact		PIR_GF_EntryWatch						"PIR Entry Watch"									<light>			(GF_Corridor, gPIR, gSlack, gEntryWatch, gPersistenceSwitch)													{mqtt="<[broker:myHome/FF_TechnicalRoom2_EntryWatch:state:default]"}	
+Contact		PIR_Corridor_Storage					"PIR Corridor Storage"								<light>			(GF_Corridor, gPIR, gPersistenceSwitch)																			{mqtt="<[broker:myHomeY/GF_Corridor_Storage_Relay_Change:state:MAP(switch2contact.map)]"}	
+Switch		PIR_GF_Corridor_State					"PIR Corridor"										<rgb>			(gPIRState, gPersistenceSwitch)																						
+Switch		PIR_GF_FamilyRoom_State					"PIR Salon"											<rgb>			(gPIRState, gPersistenceSwitch)																						
+Switch		PIR_GF_Kitchen_State					"PIR Kitchen"										<rgb>			(gPIRState, gPersistenceSwitch)																						
+Switch		PIR_FF_Corridor_State					"PIR Corridor up"									<rgb>			(gPIRState, gPersistenceSwitch)																						
+Switch		PIR_FF_AnnRoom_State					"PIR Ann"											<rgb>			(gPIRState, gPersistenceSwitch)																						
+Switch		PIR_FF_AliceRoom_State					"PIR Alice"											<rgb>			(gPIRState, gPersistenceSwitch)																						
+Switch		PIR_FF_Bedroom_State					"PIR Bedroom"										<rgb>			(gPIRState, gPersistenceSwitch)																						
+Switch		PIR_FF_BedroomWardobe_State				"PIR Bedroom wardobe"								<rgb>			(gPIRState, gPersistenceSwitch)																						
+Switch		PIR_GF_EntryWatch_State					"PIR Entry Watch"									<rgb>			(gPIRState, gPersistenceSwitch)																						
+Switch		PIR_Corridor_Storage_State				"PIR Corridor Storage"								<rgb>			(gPIRState, gPersistenceSwitch)																						
+DateTime	PIR_GF_Corridor_LastUpdate				"PIR Corridor [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdatePIR, gPersistenceSwitch)																				
+DateTime	PIR_GF_FamilyRoom_LastUpdate			"PIR Salon [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdatePIR, gPersistenceSwitch)																				
+DateTime	PIR_GF_Kitchen_LastUpdate				"PIR Kitchen [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdatePIR, gPersistenceSwitch)																				
+DateTime	PIR_FF_Corridor_LastUpdate				"PIR Corridor up [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdatePIR, gPersistenceSwitch)																				
+DateTime	PIR_FF_AnnRoom_LastUpdate				"PIR Ann [%1$td.%1$tm %1$tH:%1$tM]"					<time>			(gLastUpdatePIR, gPersistenceSwitch)																				
+DateTime	PIR_FF_AliceRoom_LastUpdate				"PIR Alice [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdatePIR, gPersistenceSwitch)																				
+DateTime	PIR_FF_Bedroom_LastUpdate				"PIR Bedroom [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdatePIR, gPersistenceSwitch)																				
+DateTime	PIR_FF_BedroomWardobe_LastUpdate		"PIR Bedroom wardobe [%1$td.%1$tm %1$tH:%1$tM]"		<time>			(gLastUpdatePIR, gPersistenceSwitch)																				
+DateTime	PIR_GF_EntryWatch_LastUpdate			"PIR Entry Watch [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdatePIR, gPersistenceSwitch)																				
+DateTime	PIR_Corridor_Storage_LastUpdate			"PIR Corridor Storage [%1$td.%1$tm %1$tH:%1$tM]"	<time>			(gLastUpdatePIR)																									
+Number		GF_PowerMeter_Total						"Total power [%.3f kWh]"							<battery-60>	(GF_Corridor, gPower, gHeartbeat, gPersistenceSwitch)															{mqtt="<[broker:myHome/PowerMeter_Total:state:JS(europeanNumber.js):.*]"}	
+DateTime	GF_PowerMeter_Total_LastUpdate			"Powermeter [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)																			
+Switch		GF_PowerMeter_Total_LastUpdate_Error	"Powermeter"										<time>			(gErrors, gPersistenceSwitch)																						
+Number		GF_PowerMeter_Current					"Current power in kilowatts[%.3f kW]"				<battery-60>	(GF_Corridor, gPower, gPersistenceSwitch)																		{mqtt="<[broker:myHome/PowerMeter_Current:state:JS(europeanNumber.js):.*]"}	
+Group		v_GF_PowerMeter_Thermostat				"Power meter thermostat"																													["Thermostat"]								
+String		GF_PowerMeter_Temperature_Mode			"Power meter Heating/Cooling Mode [%s]"				<temperature>	(v_GF_PowerMeter_Thermostat)											["homekit:TargetHeatingCoolingMode"]		
+Number		GF_PowerMeter_Temperature_Setpoint		"Power meter Setpoint"								<temperature>	(v_GF_PowerMeter_Thermostat)											["homekit:TargetTemperature"]				
+Number		GF_PowerMeter_Current_In_Watts			"Power temperature [%.0f W]"						<battery-60>	(v_GF_PowerMeter_Thermostat, GF_Corridor, gPower, gPersistenceSwitch)	["CurrentTemperature"]					{mqtt="<[broker:myHome/PowerMeter_Current:state:JS(kilowatttowatts.js):.*]"}	
+Number		GF_PowerMeter_DailyConsumption			"Daily consumption [%.1f kWh]"						<battery-60>	(gPower, gPersistenceDummy)																							
