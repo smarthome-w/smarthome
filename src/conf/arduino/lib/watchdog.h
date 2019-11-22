@@ -6,23 +6,17 @@ Ticker secondTick;
 volatile int watchdogCount = 0;
 const int WATCHDOG_TRIGGER = 120;
 
-void ISRwatchdog()
-{
+void ISRwatchdog() {
   watchdogCount++;
-  if (watchdogCount >= WATCHDOG_TRIGGER)
-  {
+  if (watchdogCount >= WATCHDOG_TRIGGER) {
     ESP.restart();
   }
 }
 
-void initializeWatchdog()
-{
+void initializeWatchdog() {
   Serial.println("Initialize Watchdog...");
   secondTick.attach(1, ISRwatchdog);
 }
 
-void processWatchdog()
-{
-  watchdogCount = 0;
-}
+void processWatchdog() { watchdogCount = 0; }
 #endif

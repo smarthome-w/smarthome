@@ -107,7 +107,8 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define fMQTTOutput
 const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHomeY";
 const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
-#define GLOBAL_MQTT_SUBSCRIBE_PREFIX "myHomeY/FF_BedroomWardobe_LED_Relay_Command"
+#define GLOBAL_MQTT_SUBSCRIBE_PREFIX                                           \
+  "myHomeY/FF_BedroomWardobe_LED_Relay_Command"
 #endif
 
 #ifdef FamilyRoomLED

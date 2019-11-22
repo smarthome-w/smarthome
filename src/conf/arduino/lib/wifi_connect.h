@@ -5,8 +5,7 @@
 
 WiFiClient espClient;
 
-void initializeWiFi()
-{
+void initializeWiFi() {
   Serial.println("Initialize WIFI...");
 
   WiFi.persistent(false);
@@ -20,8 +19,7 @@ void initializeWiFi()
   IPAddress subnet(IP_SN1, IP_SN2, IP_SN3, IP_SN4);
   WiFi.config(ip, gateway, subnet);
 
-  while (WiFi.status() != WL_CONNECTED)
-  {
+  while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
