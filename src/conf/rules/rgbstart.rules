@@ -2,7 +2,8 @@ rule "RGB Start"
 when
     Item GF_FamilyRoom_LightsRGB changed to ON
 then
-//  logInfo("rgb", "send ir")
+  logInfo("rgb", "send ir")
+  Thread::sleep(1000)
   var color = "GREEN"
 
   if (RGB_Color.state !== NULL) {
