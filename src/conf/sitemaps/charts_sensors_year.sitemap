@@ -1,9 +1,9 @@
-sitemap charts_sensors_year label="Sensory - rok" {
-    Frame label="Sensory rok" icon="firstfloor" {
-        Chart item=gSensorExternalTemperature period=Y label="Temperatura"
+sitemap charts_sensors_year label="Sensors - year" {
+    Frame label="Sensors - year" icon="firstfloor" {
+        Chart item=gSensorExternalTemperature period=Y label="Temperature"
     }
 
-    Frame label="Jasność rok" icon="firstfloor" {
-        Chart item=gSensorAnalog period=Y label="Jasność"
+    Frame label="Brightness - year" icon="firstfloor" {
+        Chart item=gSensorAnalog period=Y label="Brightness"
     }
 }

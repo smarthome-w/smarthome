@@ -54,8 +54,10 @@ then
     }
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
         if (calendar_Dawn.state.toString() == "ON") {
-          GH_Day_Scene.sendCommand(ON)
-          logInfo("dailytrigger", "Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)
+          if (calendar_Workday.state.toString() == "ON") {
+            GH_Day_Scene.sendCommand(ON)
+            logInfo("dailytrigger", "Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)
+          }
         }
     }
   } catch (Throwable t) {

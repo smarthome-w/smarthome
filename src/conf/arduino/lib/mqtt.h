@@ -9,15 +9,12 @@ String GLOBAL_MQTT_MSG = "";
 char topic_buff[100];
 char value_buff[100];
 
-void callback(char *topic, byte *payload, unsigned int length)
-{
-  if (!ignoreFistMQTTMessage)
-  {
+void callback(char *topic, byte *payload, unsigned int length) {
+  if (!ignoreFistMQTTMessage) {
     Serial.print("Message arrived [");
     Serial.print(topic);
     Serial.print("] ");
-    for (int i = 0; i < length; i++)
-    {
+    for (int i = 0; i < length; i++) {
       Serial.print((char)payload[i]);
     }
     Serial.println();
@@ -27,25 +24,20 @@ void callback(char *topic, byte *payload, unsigned int length)
   ignoreFistMQTTMessage = false;
 }
 
-void reconnectMQTT()
-{
+void reconnectMQTT() {
   // Loop until we're reconnected
-  while (!client.connected())
-  {
+  while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
     // Create a random client ID
     String clientId = "ESP8266Client-";
     clientId += String(random(0xffff), HEX);
     // Attempt to connect
-    if (client.connect(clientId.c_str()))
-    {
+    if (client.connect(clientId.c_str())) {
       Serial.println("connected");
 #ifdef fMQTTInput
       client.subscribe(GLOBAL_MQTT_SUBSCRIBE_PREFIX);
 #endif
-    }
-    else
-    {
+    } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
       Serial.println(" try again in 5 seconds");
@@ -55,8 +47,7 @@ void reconnectMQTT()
   }
 }
 
-void initializeMQTT()
-{
+void initializeMQTT() {
   Serial.println("Initialize MQTT...");
   client.setServer(MQTT_SERVER, 1883);
 #ifdef fMQTTInput
@@ -65,18 +56,13 @@ void initializeMQTT()
   reconnectMQTT();
 }
 
-void processMQTTInput()
-{
-  client.loop();
-};
+void processMQTTInput() { client.loop(); };
 
-void sendMQTTWithTypeConversion(String messageTopic, String messageValue)
-{
+void sendMQTTWithTypeConversion(String messageTopic, String messageValue) {
   Serial.println("Publish message:" + messageTopic + " " + messageValue);
   boolean retained = true;
 
-  if (!client.connected())
-  {
+  if (!client.connected()) {
     reconnectMQTT();
   }
 
@@ -86,9 +72,9 @@ void sendMQTTWithTypeConversion(String messageTopic, String messageValue)
   client.publish(topic_buff, value_buff);
 }
 
-void sendDebugMQTTMessage(String prefix, String msg)
-{
-  String messageTopic = GLOBAL_MQTT_MESSAGE_PREFIX + "/" + GLOBAL_MQTT_MULTISENSOR_NAME + "_Debug_" + prefix;
+void sendDebugMQTTMessage(String prefix, String msg) {
+  String messageTopic = GLOBAL_MQTT_MESSAGE_PREFIX + "/" +
+                        GLOBAL_MQTT_MULTISENSOR_NAME + "_Debug_" + prefix;
   sendMQTTWithTypeConversion(messageTopic, msg);
 }
 #endif

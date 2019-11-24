@@ -1,21 +1,21 @@
-sitemap rollershutter label="Rolety" {
+sitemap rollershutter label="Blinds" {
   Frame label="Roleta" icon="groundfloor" {
       Slider item=GF_FamilyRoom_Rollershutter_Dimmer label="Blind [%.1f %%]"
       Switch item=GF_FamilyRoom_Rollershutter_Expert_Mode
   }
 
-  Frame label="Roleta" icon="groundfloor" visibility=[GF_FamilyRoom_Rollershutter_Expert_Mode==ON] {
+  Frame label="Blind" icon="groundfloor" visibility=[GF_FamilyRoom_Rollershutter_Expert_Mode==ON] {
       Switch item=GF_FamilyRoom_Rollershutter_AutoUp mappings=[ON="Up"]
       Switch item=GF_FamilyRoom_Rollershutter_AutoDown mappings=[ON="Down"]
   }
 
-  Frame label="Roleta - programowanie" icon="groundfloor" visibility=[GF_FamilyRoom_Rollershutter_Expert_Mode==ON] {
+  Frame label="Blind - setup" icon="groundfloor" visibility=[GF_FamilyRoom_Rollershutter_Expert_Mode==ON] {
 //      Switch item=GF_FamilyRoom_Rollershutter
 //      Switch item=GF_FamilyRoom_Rollershutter_PrgUp mappings=[ON="Set"]
       Switch item=GF_FamilyRoom_Rollershutter_PrgDown mappings=[ON="Set"]
   }
 
-  Frame label="Roleta - stan" icon="groundfloor"  visibility=[GF_FamilyRoom_Rollershutter_Expert_Mode==ON] {
+  Frame label="Blind - status" icon="groundfloor"  visibility=[GF_FamilyRoom_Rollershutter_Expert_Mode==ON] {
       Text item=GF_FamilyRoom_Rollershutter_CurrPos
       Text item=GF_FamilyRoom_Rollershutter_PWMCurrPos
 //      Text item=GF_FamilyRoom_Rollershutter_MinLimit
@@ -28,23 +28,23 @@ sitemap rollershutter label="Rolety" {
       Switch item=GF_FamilyRoom_Rollershutter_Debug mappings=[ON="Debug"]
   }
 
-  Frame label="Roleta - sypialnia" icon="groundfloor" {
+  Frame label="Bedroom blind" icon="groundfloor" {
       Slider item=FF_Bedroom_Rollershutter_Dimmer label="Blind [%.1f %%]"
       Switch item=FF_Bedroom_Rollershutter_Expert_Mode
   }
 
-  Frame label="Roleta - sypialnia" icon="groundfloor" visibility=[FF_Bedroom_Rollershutter_Expert_Mode==ON] {
+  Frame label="Bedroom blind" icon="groundfloor" visibility=[FF_Bedroom_Rollershutter_Expert_Mode==ON] {
       Switch item=FF_Bedroom_Rollershutter_AutoUp mappings=[ON="Up"]
       Switch item=FF_Bedroom_Rollershutter_AutoDown mappings=[ON="Down"]
   }
 
-  Frame label="Roleta - programowanie" icon="groundfloor" visibility=[FF_Bedroom_Rollershutter_Expert_Mode==ON] {
+  Frame label="Bedroom blind - setup" icon="groundfloor" visibility=[FF_Bedroom_Rollershutter_Expert_Mode==ON] {
 //      Switch item=FF_Bedroom_Rollershutter
 //      Switch item=FF_Bedroom_Rollershutter_PrgUp mappings=[ON="Set"]
       Switch item=FF_Bedroom_Rollershutter_PrgDown mappings=[ON="Set"]
   }
 
-  Frame label="Roleta - stan - sypialnia" icon="groundfloor" visibility=[FF_Bedroom_Rollershutter_Expert_Mode==ON] {
+  Frame label="Bedroom blind - status" icon="groundfloor" visibility=[FF_Bedroom_Rollershutter_Expert_Mode==ON] {
       Text item=FF_Bedroom_Rollershutter_CurrPos
       Text item=FF_Bedroom_Rollershutter_PWMCurrPos
 //      Text item=FF_Bedroom_Rollershutter_MinLimit

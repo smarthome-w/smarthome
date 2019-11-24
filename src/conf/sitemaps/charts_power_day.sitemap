@@ -1,11 +1,11 @@
-sitemap charts_power_day label="Zużycie prądu - dziś" {
-    Frame label="Miernik mocy" icon="firstfloor" {
+sitemap charts_power_day label="Power consumption (daily)" {
+    Frame label="Power meter" icon="firstfloor" {
         Text item=GF_PowerMeter_Total
         Text item=GF_PowerMeter_Current
 //        Text item=GF_PowerMeter_DailyConsumption
     }
-    Frame label="Prąd dzisiaj" icon="firstfloor" {
-        Chart item=GF_PowerMeter_Total period=D label="Licznik"
-        Chart item=GF_PowerMeter_Current period=D label="Moc"
+    Frame label="Power meter today" icon="firstfloor" {
+        Chart item=GF_PowerMeter_Total period=D label="Counter"
+        Chart item=GF_PowerMeter_Current period=D label="Power"
     }
 }

@@ -1,10 +1,17 @@
-sitemap eq3 label="Grzejniki" {
-    Frame label="Accessibility" icon="firstfloor" {
-      Text item=EQ3_Bedroom_LastUpdate  
-      Text item=EQ3_FamilyRoom_LastUpdate  
-      Text item=EQ3_AnnRoom_LastUpdate  
-      Text item=EQ3_AliceRoom_LastUpdate  
+sitemap eq3 label="Heaters" {
+    Frame label="Status" icon="firstfloor" {
+      Text item=EQ3_Bedroom_Status  
+      Text item=EQ3_FamilyRoom_Status  
+      Text item=EQ3_AnnRoom_Status  
+      Text item=EQ3_AliceRoom_Status  
     }
+
+//    Frame label="Accessibility" icon="firstfloor" {
+//      Text item=EQ3_Bedroom_LastUpdate  
+//      Text item=EQ3_FamilyRoom_LastUpdate  
+//      Text item=EQ3_AnnRoom_LastUpdate  
+//      Text item=EQ3_AliceRoom_LastUpdate  
+//    }
     Frame label="Bedroom" icon="firstfloor" {
       Text item=EQ3_Bedroom_Temp  
       Text item=EQ3_Bedroom_Valve  
@@ -46,14 +53,14 @@ sitemap eq3 label="Grzejniki" {
       Chart item=EQ3_AliceRoom_Valve period=D label="Zawór"
     }
 
-    Frame label="Grzejniki" icon="firstfloor" {
-      Chart item=gEQ3Temp period=D label="Temperatura"
-      Chart item=gEQ3Valve period=D label="Zawór"
+    Frame label="Heaters (day)" icon="firstfloor" {
+      Chart item=gEQ3Temp period=D label="Temperature"
+      Chart item=gEQ3Valve period=D label="Valve"
     }
 
-    Frame label="Grzejniki" icon="firstfloor" {
-      Chart item=gEQ3Temp period=W label="Temperatura"
-      Chart item=gEQ3Valve period=W label="Zawór"
+    Frame label="Heaters (week)" icon="firstfloor" {
+      Chart item=gEQ3Temp period=W label="Temperature"
+      Chart item=gEQ3Valve period=W label="Valve"
     }
 
 //    Frame label="Sceny" icon="firstfloor" {

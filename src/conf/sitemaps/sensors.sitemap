@@ -1,11 +1,11 @@
-sitemap sensors label="Sensory" {
-    Frame label="Miernik mocy" icon="firstfloor" {
+sitemap sensors label="Sensors" {
+    Frame label="Power meter" icon="firstfloor" {
         Text item=GF_PowerMeter_Total
 //        Text item=GF_PowerMeter_Current
         Text item=GF_PowerMeter_Current_In_Watts
 //        Text item=GF_PowerMeter_DailyConsumption
     }
-    Frame label="Sensory w salonie" icon="firstfloor" {
+    Frame label="Sensors in family room" icon="firstfloor" {
         Text item=GF_FamilyRoom_Indoor_Temperature_Sensor
         Text item=GF_FamilyRoom_Outdoor_Temperature_Sensor
         Text item=GF_FamilyRoom_Indoor_Humidity_Sensor
@@ -14,19 +14,19 @@ sitemap sensors label="Sensory" {
 //        Text item=GF_FamilyRoom_Last_Read_Sensor
     }
 
-    Frame label="Sensory w sypialni" icon="firstfloor" {
+    Frame label="Sensors in bedroom" icon="firstfloor" {
         Text item=FF_Bedroom_Indoor_Temperature_Sensor
         Text item=FF_Bedroom_Indoor_Humidity_Sensor
         Text item=FF_Bedroom_Analog_Sensor
     }
 
-    Frame label="Sensory w pokoju Alicji" icon="firstfloor" {
+    Frame label="Sensors in Alice room" icon="firstfloor" {
         Text item=FF_AliceRoom_Indoor_Temperature_Sensor
         Text item=FF_AliceRoom_Indoor_Humidity_Sensor
         Text item=FF_AliceRoom_Analog_Sensor
     }
 
-    Frame label="Sensory w pokoju Ani" icon="firstfloor" {
+    Frame label="Sensors in Ann room" icon="firstfloor" {
         Text item=FF_AnnRoom_Indoor_Temperature_Sensor
         Text item=FF_AnnRoom_Indoor_Humidity_Sensor
 //        Text item=FF_AnnRoom_Analog_Sensor

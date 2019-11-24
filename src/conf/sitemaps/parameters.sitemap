@@ -1,11 +1,11 @@
-sitemap parameters label="Parametry" {
+sitemap parameters label="Parameters" {
     Frame label="Demo" {
         Switch item=DemoMode
     }
 
-    Frame label="Parametry" icon="firstfloor" {
-      Setpoint item=HH_Light_Dusk_Level label="Poziom zmierzchu [%.0f]" minValue=0 maxValue=1024 step=10
-      Setpoint item=HH_Light_Dawn_Level label="Poziom świtu [%.0f]" minValue=0 maxValue=1024 step=10
+    Frame label="Parameters" icon="firstfloor" {
+      Setpoint item=HH_Light_Dusk_Level label="Dusk level [%.0f]" minValue=0 maxValue=1024 step=10
+      Setpoint item=HH_Light_Dawn_Level label="Dawn level [%.0f]" minValue=0 maxValue=1024 step=10
       Setpoint item=HH_PIR_State_Timeout label="Timeout PIR [%.0f]" minValue=1 maxValue=10 step=1
       Setpoint item=HH_PIR_Wardobe_State_Timeout label="Timeout Wardobe [%.0f]" minValue=20 maxValue=120 step=5
 

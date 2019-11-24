@@ -1,5 +1,5 @@
 sitemap sensors_basic label="Status" {
-    Frame label="Pogoda" icon="firstfloor" {
+    Frame label="Weather" icon="firstfloor" {
         Text item=GF_FamilyRoom_Outdoor_Temperature_Sensor
         Text item=FF_AnnRoom_Outdoor_Temperature_Sensor
         Text item=GF_FamilyRoom_Analog_Sensor
@@ -13,10 +13,18 @@ sitemap sensors_basic label="Status" {
         Text item=Astro_SunElevation
     }
 
-    Frame label="Inne" icon="firstfloor" {
+    Frame label="Other" icon="firstfloor" {
 //        Text item=GF_PowerMeter_Current
         Text item=GF_PowerMeter_Current_In_Watts
-        Switch item=CIR_GF_MainLock mappings=[CLOSED="Zamknięte", OPEN="Otwarte"]
+        Switch item=CIR_GF_MainLock mappings=[CLOSED="Closed", OPEN="Open"]
+//        Switch item=HH_FrontDoorSwitch
         Switch item=OverallErrorIndicator
+    }
+
+    Frame label="Heaters" icon="firstfloor" {
+      Text item=EQ3_Bedroom_Status  
+      Text item=EQ3_FamilyRoom_Status  
+      Text item=EQ3_AnnRoom_Status  
+      Text item=EQ3_AliceRoom_Status  
     }
 }
