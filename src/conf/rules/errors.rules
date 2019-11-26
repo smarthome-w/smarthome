@@ -34,7 +34,8 @@ end
 
 rule "error_flag_rule"
 when
-    Member of gErrors changed
+    Member of gErrors changed or
+    Time cron "0 */5 * ? * MON-SUN"
 then
   try {
     var overallError = false 
