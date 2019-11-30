@@ -29,7 +29,7 @@ then
     }
     ddd += "f"
   } catch (Throwable t) {
-    logError("Error", "Error in heartbeat_rule {} {} {} {}", ddd, triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in heartbeat_rule {} {} {} {}", ddd, triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end

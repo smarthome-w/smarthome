@@ -34,7 +34,7 @@ then
       }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in irb_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in irb_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end
@@ -69,7 +69,7 @@ then
       }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in sp2_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in sp2_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end
@@ -104,7 +104,7 @@ then
       }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in tc2_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in tc2_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end
@@ -132,7 +132,7 @@ then
       }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in irrgb_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in irrgb_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end
@@ -158,7 +158,7 @@ then
       }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in shelly_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in shelly_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end
@@ -183,7 +183,7 @@ then
       }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in sonoff_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in sonoff_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end

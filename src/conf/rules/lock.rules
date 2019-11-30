@@ -3,11 +3,11 @@ when
     Item CIR_GF_MainLock received update or
     Time cron "0 */5 * ? * MON-SUN"
 then
-//  logInfo ("lock", "State: {}", CIR_GF_MainLock.state.toString())
+  logInfo ("lock", "State: {}", CIR_GF_MainLock.state.toString())
   if (CIR_GF_MainLock.state.toString() == "OPEN") {
-    HH_FrontDoorSwitch.sendCommand(OFF)
+    HH_FrontDoorSwitch.postUpdate(OFF)
   } else {
-    HH_FrontDoorSwitch.sendCommand(ON)
+    HH_FrontDoorSwitch.postUpdate(ON)
   }
-//  logInfo ("lock", "Lock indicator: {}", HH_FrontDoorSwitch.state.toString())
+  logInfo ("lock", "Lock indicator: {}", HH_FrontDoorSwitch.state.toString())
 end

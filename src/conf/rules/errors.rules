@@ -27,7 +27,7 @@ then
       }
     ]
   } catch (Throwable t) {
-    logError("Error", "Error in err_rule {}", t.toString)
+    logError("Error", "Error in err_rule {}", t.toString())
   } finally {
   }
 end
@@ -53,7 +53,7 @@ then
       OverallErrorIndicator.state = OFF
     }
   } catch (Throwable t) {
-    logError("Error", "Error in error_flag_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in error_flag_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end
