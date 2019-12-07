@@ -117,7 +117,8 @@ openhab-develop: openhab-info openhab-docker-stop openhab-docker-build
 
 openhab-all: openhab-info openhab-docker-stop openhab-docker-build \
 	openhab-service-install openhab-broadlink-mqtt-service-install \
-	openhab-sony-mqtt-service-install openhab-powermeter-service-install openhab-service-restart
+	openhab-sony-mqtt-service-install openhab-powermeter-service-install \
+	openhab-server-service-install openhab-service-restart
 
 # bmp280
 # http://faradaysclub.com/?p=1325
