@@ -18,13 +18,13 @@ sitemap rollershutter label="Blinds" {
   Frame label="Blind - status" icon="groundfloor"  visibility=[GF_FamilyRoom_Rollershutter_Expert_Mode==ON] {
       Text item=GF_FamilyRoom_Rollershutter_CurrPos
       Text item=GF_FamilyRoom_Rollershutter_PWMCurrPos
-//      Text item=GF_FamilyRoom_Rollershutter_MinLimit
-//      Text item=GF_FamilyRoom_Rollershutter_MaxLimit
-//      Text item=GF_FamilyRoom_Rollershutter_UpLimitProbe
+      Text item=GF_FamilyRoom_Rollershutter_MinLimit
+      Text item=GF_FamilyRoom_Rollershutter_MaxLimit
+      Text item=GF_FamilyRoom_Rollershutter_UpLimitProbe
       Text item=GF_FamilyRoom_Rollershutter_DownLimitProbe
-//      Text item=GF_FamilyRoom_Rollershutter_RealUpLimitProbe
-//      Text item=GF_FamilyRoom_Rollershutter_RealDownLimitProbe
-//      Text item=GF_FamilyRoom_Rollershutter_Millis
+      Text item=GF_FamilyRoom_Rollershutter_RealUpLimitProbe
+      Text item=GF_FamilyRoom_Rollershutter_RealDownLimitProbe
+      Text item=GF_FamilyRoom_Rollershutter_Millis
       Switch item=GF_FamilyRoom_Rollershutter_Debug mappings=[ON="Debug"]
   }
 
@@ -47,13 +47,13 @@ sitemap rollershutter label="Blinds" {
   Frame label="Bedroom blind - status" icon="groundfloor" visibility=[FF_Bedroom_Rollershutter_Expert_Mode==ON] {
       Text item=FF_Bedroom_Rollershutter_CurrPos
       Text item=FF_Bedroom_Rollershutter_PWMCurrPos
-//      Text item=FF_Bedroom_Rollershutter_MinLimit
-//      Text item=FF_Bedroom_Rollershutter_MaxLimit
-//      Text item=FF_Bedroom_Rollershutter_UpLimitProbe
+      Text item=FF_Bedroom_Rollershutter_MinLimit
+      Text item=FF_Bedroom_Rollershutter_MaxLimit
+      Text item=FF_Bedroom_Rollershutter_UpLimitProbe
       Text item=FF_Bedroom_Rollershutter_DownLimitProbe
-//      Text item=FF_Bedroom_Rollershutter_RealUpLimitProbe
-//      Text item=FF_Bedroom_Rollershutter_RealDownLimitProbe
-//      Text item=FF_Bedroom_Rollershutter_Millis
+      Text item=FF_Bedroom_Rollershutter_RealUpLimitProbe
+      Text item=FF_Bedroom_Rollershutter_RealDownLimitProbe
+      Text item=FF_Bedroom_Rollershutter_Millis
       Switch item=FF_Bedroom_Rollershutter_Debug mappings=[ON="Debug"]
   }
 }

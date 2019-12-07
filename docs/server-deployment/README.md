@@ -8,13 +8,13 @@ Install process is optimized for OSMC distribution. Most of the routines are com
 
 - clone repository and set environment value
 
-```$xslt
+```bash
 export SMART_HOME=<repo_dir>
 ```
 
 - create `openhab` user:
 
-```$xslt
+```bash
   sudo useradd openhab
   sudo usermod -u 9001 openhab
   sudo groupmod -g 9001 openhab
@@ -22,7 +22,7 @@ export SMART_HOME=<repo_dir>
 
 - create `openhab` directories:
 
-```$xslt
+```bash
   sudo mkdir -p /opt/openhab
   sudo ln -s ${SMART_HOME}/src/conf /opt/openhab/conf
   sudo chown -R openhab:openhab /opt/openhab
@@ -30,20 +30,28 @@ export SMART_HOME=<repo_dir>
 
 - provide symbolic hostname by adding line to `/etc/hosts`
 
-```$xslt
+```bash
 <ip_address> openhab.master
 ```
 
 - install `make` package:
 
-```$xslt
+```bash
 sudo apt-get install make
 ```
 
 - install docker:
 
-```$xslt
+  - osmc
+
+```bash
 cd conf/deploy/docker-install && sudo ./get-docker-sh
+```
+
+- raspbian
+
+```bash
+sudo apt-get install docker.io
 ```
 
 _Disclaimer_ Original script was altered by proper OSMC detection.
@@ -52,7 +60,7 @@ _Disclaimer_ Original script was altered by proper OSMC detection.
 
 ## Core packages install
 
-```$xslt
+```bash
 cd $SMART_HOME/conf/deploy && sudo make openhab-core
 ```
 
@@ -61,7 +69,7 @@ cd $SMART_HOME/conf/deploy && sudo make openhab-core
 - run `sudo mysql -u root` and run commands from file `$SMART_HOME/deploy/resources/sql/database.sql`
 - edit `/etc/mysql/my.cnf` file and add section:
 
-```$xslt
+```bash
 [mysqld]
 bind-address = 0.0.0.0
 ```
@@ -70,17 +78,13 @@ _This is because OpenHAB is started in Docker, so client address is different th
 
 - restart mariadb server:
 
-```$xslt
+```bash
 sudo systemctl restart mariadb
 ```
 
-## Check port availability
-
-- Edit `~/.kodi/userdata/guisettings.xml` and change `webserverport` to free port 80.
-
 ## OpenHAB install
 
-```$xslt
+```bash
 cd $SMART_HOME/conf/deploy && sudo make openhab-all
 ```
 
@@ -88,7 +92,7 @@ cd $SMART_HOME/conf/deploy && sudo make openhab-all
 
 - run
 
-```$xslt
+```bash
 cd $SMART_HOME/conf/deploy && sudo make pi-all
 ```
 
@@ -96,20 +100,46 @@ cd $SMART_HOME/conf/deploy && sudo make pi-all
 
 - edit `/etc/default/motion` and change value
 
-```$xslt
+```bash
 start_motion_daemon=yes
 ```
 
 - alter original config
 
-```$xslt
+```bash
 cp $SMART_HOME/conf/deploy/resources/motion/motion.conf /etc/motion/motion/conf
 ```
 
-## Raspberry Pi LIRC
+## Raspbian buster settings
 
-- configure lirc
+### /boot/config.txt
 
-```$xslt
-sudo /usr/share/lirc/lirc-old2new
+```bash
+dtparam=watchdog=on
+dtoverlay=pi3-disable-bt
+hdmi_ignore_cec_init=1
+```
+
+### bluetooth
+
+In `/etc/systemd/system/bluetooth.target.wants/bluetooth.service` change:
+
+```bash
+ExecStart=/usr/lib/bluetooth/bluetoothd --noplugin=sap
+```
+
+Packages for iNode:
+
+## iNode packages and settings
+
+```bash
+apt-get install bluez-hcidump bc
+```
+
+## EQ3 settings
+
+crontab:
+
+```bash
+0/10 * * * /opt/openhab/conf/scripts/EQ3/eq3.sh
 ```

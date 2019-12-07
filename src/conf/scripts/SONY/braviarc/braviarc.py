@@ -483,6 +483,10 @@ class BraviaRC(object):
         """Send mute command."""
         self.send_req_ircc(self.get_command_code('Mute'))
 
+    def enter(self):
+        """Send mute command."""
+        self.send_req_ircc(self.get_command_code('Enter'))
+
     def select_source(self, source):
         """Set the input source."""
         if len(self._content_mapping) == 0:

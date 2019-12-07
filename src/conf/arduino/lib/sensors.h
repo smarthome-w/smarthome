@@ -4,8 +4,8 @@
 // Pins available
 ////////////////////////////////////////////////////////////////////////////////////////
 // D0 - unused
-// D1 - BMP280 (SCL)
-// D2 - BMP280 (SDA)
+// D1 - BMP280 (SCL) (GPIO2 for ESP 01)
+// D2 - BMP280 (SDA) (GPIO0 for ESP 01)
 // D3 - unused
 // D4 - DS18B20 (OneWire)
 // D5 - PIRu (LOW active)

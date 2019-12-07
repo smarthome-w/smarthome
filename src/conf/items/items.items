@@ -112,7 +112,7 @@ Switch			RTV_TV_UPC												"UPC"												<projector>		(GF_FamilyRoom, gIR
 Switch			RTV_TV_DVD												"DVD"												<receiver>		(GF_FamilyRoom, gIRB, gRawRTV)																															
 Switch			RTV_TV_XBOX												"XBox"												<screen>		(GF_FamilyRoom, gIRB, gRawRTV)																				["Switchable"]							{mqtt=">[broker:broadlink/IRB/RTV_TV_XBOX:state:*:default]"}	
 String			RTV_TV_Input											"TV Input"											<projector>		(GF_FamilyRoom, gSony, gPersistenceSwitch)																	["Switchable"]							{mqtt=">[broker:sony/RC/RTV_TV_Input:state:*:default]"}	
-Switch			RTV_TV_CONFIRM											"Confirm"											<screen>		(GF_FamilyRoom, gSony)																						["Switchable"]								
+//Switch			RTV_TV_CONFIRM											"Confirm"											<screen>		(GF_FamilyRoom, gSony)																						             								
 Switch			RTV_VOLUME_UP											"Volume Up"															(GF_FamilyRoom, gSony)																						["Switchable"]								
 Switch			RTV_VOLUME_DOWN											"Volume Down"														(GF_FamilyRoom, gSony)																						["Switchable"]								
 Switch			RTV_VOLUME_MUTE											"Mute"																(GF_FamilyRoom, gSony)																						["Switchable"]								
@@ -134,6 +134,7 @@ Switch			GH_BrightWindow_Scene									"Bright window"														(gScenes)
 Switch			GH_Netflix_Command										"Netflix"															(gSystem)																									["Switchable"]							{mqtt=">[broker:sony/RC/Command_Netflix:state:*:default]"}	
 Switch			GH_YouTube_Command										"Youtube"															(gSystem)																									["Switchable"]							{mqtt=">[broker:sony/RC/Command_YouTube:state:*:default]"}	
 Switch			GH_TV_Command											"TV"																(gSystem)																									["Switchable"]							{mqtt=">[broker:sony/RC/Command_TV:state:*:default]"}	
+Switch			GH_Confirm_Command										"Enter" 															(gSystem)																									["Switchable"]							{mqtt=">[broker:sony/RC/Command_Confirm:state:*:default]"}	
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Sensors
