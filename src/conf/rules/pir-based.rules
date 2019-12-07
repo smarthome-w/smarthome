@@ -19,7 +19,7 @@ then
       }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in entrywatch_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in entrywatch_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   } 
 end
@@ -32,7 +32,7 @@ then
     Thread::sleep(2000)
     PIR_Corridor_Storage.sendCommand(CLOSED)
   } catch (Throwable t) {
-    logError("Error", "Error in entrywatch_rule_1 {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in entrywatch_rule_1 {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end

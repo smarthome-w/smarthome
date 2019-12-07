@@ -27,14 +27,15 @@ then
       }
     ]
   } catch (Throwable t) {
-    logError("Error", "Error in err_rule {}", t.toString)
+    logError("Error", "Error in err_rule {}", t.toString())
   } finally {
   }
 end
 
 rule "error_flag_rule"
 when
-    Member of gErrors changed
+    Member of gErrors changed or
+    Time cron "0 */5 * ? * MON-SUN"
 then
   try {
     var overallError = false 
@@ -52,7 +53,7 @@ then
       OverallErrorIndicator.state = OFF
     }
   } catch (Throwable t) {
-    logError("Error", "Error in error_flag_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in error_flag_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end

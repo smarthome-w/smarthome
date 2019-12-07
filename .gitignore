@@ -2,3 +2,5 @@
 .vscode
 things/astro.things
 src/conf/deploy/Dockerfile
+*.stl
+*.STL

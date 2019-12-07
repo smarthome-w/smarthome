@@ -17,7 +17,7 @@ then
       //logInfo("rollershutter", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
     }
   } catch (Throwable t) {
-    logError("Error", "Error in rollershutter_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in rollershutter_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end
@@ -38,7 +38,7 @@ then
         }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in rollershutter_down_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in rollershutter_down_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end
@@ -61,7 +61,7 @@ then
         }
     }
   } catch (Throwable t) {
-    logError("Error", "Error in rollershutter_up_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in rollershutter_up_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end

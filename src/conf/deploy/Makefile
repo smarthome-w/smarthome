@@ -19,24 +19,20 @@ ifeq ($(OS_PLATFORM),)
 	exit 1
 endif
 
+openhab-init:
+	@sudo useradd openhab
+	@sudo usermod -u 9001 openhab
+	@sudo groupmod -g 9001 openhab
+
 openhab-core:
-  # sudo useradd openhab
-	# sudo usermod -u 9001 openhab
-	# sudo groupmod -g 9001 openhab
 	@sudo apt-get install mariadb-client mariadb-server mosquitto mosquitto-clients moreutils -y
+	@sudo apt install docker.io docker-compose -y
 	@sudo apt-get install python3 python3-dev python3-pip python3-venv gcc libffi-dev -y
-	@sudo apt-get install i2c-tools python3-smbus virtualenv logrotate vim motion git -y
-	#@sudo apt-get install mplayer alsa-utils usbutils -y
+	@sudo apt-get install logrotate vim motion git -y
 	@sudo apt-get install usbutils -y
 
-	# sudo modprobe i2c_dev
-	# dtoverlay=w1-gpio
-	# dtparam=i2c_arm=on /boot/config.txt
-	# sudo modprobe i2c_dev
 	@sudo pip3 install setuptools
 	@sudo pip3 install wheel
-	#@sudo pip3 install broadlink paho-mqtt rpi-rf RPi.GPIO Adafruit_DHT Adafruit_BME280
-	#@sudo pip3 install rpi-rf RPi.GPIO Adafruit_DHT Adafruit_BME280 py-sony-bravia-remote
 	@sudo pip3 install paho-mqtt py-sony-bravia-remote ruamel.yaml
 	@sudo pip3 install git+https://github.com/mjg59/python-broadlink.git
 	@sudo pip3 install git+https://github.com/aparraga/braviarc.git
@@ -47,13 +43,7 @@ openhab-core:
 
 #  /etc/default/motion start_motion_daemon=yes
 
-#Edit .kodi/userdata/guisettings.xml and search for section and look for <webserverport>8080</webserverport>
-
-
 openhab-docker-build: openhab-docker-clean
-#	sudo cp $(RESOURCES)/dockerfile/Dockerfile.template $(CURDIR)/Dockerfile
-#	@sed -i "s/OS_PLATFORM/$(OS_PLATFORM)/g" $(CURDIR)/Dockerfile
-#	docker build -t $(DOCKER_TAG) .
 	docker pull openhab/openhab:$(VERSION)-$(OS_PLATFORM)-debian
 	docker tag openhab/openhab:$(VERSION)-$(OS_PLATFORM)-debian $(DOCKER_TAG)	
 
@@ -127,7 +117,8 @@ openhab-develop: openhab-info openhab-docker-stop openhab-docker-build
 
 openhab-all: openhab-info openhab-docker-stop openhab-docker-build \
 	openhab-service-install openhab-broadlink-mqtt-service-install \
-	openhab-sony-mqtt-service-install openhab-service-restart
+	openhab-sony-mqtt-service-install openhab-powermeter-service-install \
+	openhab-server-service-install openhab-service-restart
 
 # bmp280
 # http://faradaysclub.com/?p=1325

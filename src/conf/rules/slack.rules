@@ -12,7 +12,7 @@ then
     //logInfo("slack", "command: {} with result:\n>>\n{}\n<<\n", command, result)
     slack.postUpdate(slack.state)
   } catch (Throwable t) {
-    logError("Error", "Error in notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end
@@ -34,7 +34,7 @@ then
       slack.postUpdate(slack.state)
     }
   } catch (Throwable t) {
-    logError("Error", "Error in alarm_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in alarm_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end
@@ -54,7 +54,7 @@ then
     //logInfo("slack", "command: {} with result:\n>>\n{}\n<<\n", command, result)
     slack.postUpdate(slack.state)
   } catch (Throwable t) {
-    logError("Error", "Error in error_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString)
+    logError("Error", "Error in error_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end

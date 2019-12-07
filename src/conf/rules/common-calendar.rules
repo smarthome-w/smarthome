@@ -101,7 +101,7 @@ then
       calendar_SupportingLight.sendCommand(OFF)
     }
   } catch (Throwable t) {
-    logError("Error", "Error in calendar_rule {}", t.toString)
+    logError("Error", "Error in calendar_rule {}", t.toString())
   } finally {
   }
 end

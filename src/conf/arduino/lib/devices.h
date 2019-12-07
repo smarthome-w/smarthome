@@ -36,6 +36,7 @@
 //#define FamilyRoomLight
 //#define CorridorStorage
 
+#define Kitchen
 //#define KitchenLED
 //#define BedroomLights
 //#define BedroomWardobe
@@ -46,7 +47,7 @@
 //#define FamilyRoom
 //#define TechnicalRoom1
 //#define TechnicalRoom2
-#define FamilyRoomRollershutter
+//#define FamilyRoomRollershutter
 //#define BedroomRollershutter
 //#define TestRoom
 //#define TestRelay
@@ -172,12 +173,12 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #ifdef TestRoom
 #define fName "FF_TestRoom"
 #define WIFIIP 49
-#define CIRCUITS_NO 0
-#define BUTTONS_NO 3
-#define fRelay
 #define fDitigalInput
-#define fMQTTInput
+#define fCIR
+#define fAnalog
+#define fBME280
 #define fMQTTOutput
+#define CIRCUITS_NO 1
 const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHomeY";
 const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define GLOBAL_MQTT_SUBSCRIBE_PREFIX "myHomeY/FF_Bedroom_LED_Relay_Command"
@@ -259,6 +260,18 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 //#define fCIR
 #define CIRCUITS_NO 6
 #define BUTTONS_NO 0
+const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHome";
+const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
+#endif
+
+// ESP-01
+#ifdef Kitchen
+#define fName "GF_Kitchen"
+#define WIFIIP 56
+#define fBME280
+#define fMQTTOutput
+#define CIRCUITS_NO 0
+#define ESP01
 const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHome";
 const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #endif
