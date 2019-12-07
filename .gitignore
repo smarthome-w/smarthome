@@ -4,3 +4,5 @@ things/astro.things
 src/conf/deploy/Dockerfile
 *.stl
 *.STL
+3d/export
+3d/import
