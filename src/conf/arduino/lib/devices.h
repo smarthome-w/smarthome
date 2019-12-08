@@ -36,7 +36,7 @@
 //#define FamilyRoomLight
 //#define CorridorStorage
 
-#define Kitchen
+//#define Kitchen
 //#define KitchenLED
 //#define BedroomLights
 //#define BedroomWardobe
@@ -50,7 +50,7 @@
 //#define FamilyRoomRollershutter
 //#define BedroomRollershutter
 //#define TestRoom
-//#define TestRelay
+#define TestRelay
 
 #ifdef KitchenLED
 #define fName "GF_Kitchen_LED_Relay"
@@ -285,8 +285,8 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define LOOP_DELAY_VALUE 0
 #define SERVO_UP 2500
 #define SERVO_DOWN 500
-#define CURRENT_DIRECTION_UP (-100.0 / 2187.0)
-#define CURRENT_DIRECTION_DOWN (100.0 / 1985.0)
+#define CURRENT_DIRECTION_UP (-100.0 / 2258.0)  // 1862 + 376 + 20
+#define CURRENT_DIRECTION_DOWN (100.0 / 2111.0) // 1862 + 249
 #define fRollershutter
 #define fMQTTInput
 #define fMQTTOutput
@@ -304,8 +304,8 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define LOOP_DELAY_VALUE 0
 #define SERVO_UP 500
 #define SERVO_DOWN 2500
-#define CURRENT_DIRECTION_UP (-100.0 / 2800.0)
-#define CURRENT_DIRECTION_DOWN (100.0 / 1667.0)
+#define CURRENT_DIRECTION_UP (-100.0 / 3206.0)  // 2678 + 408 + 120
+#define CURRENT_DIRECTION_DOWN (100.0 / 1769.0) // 1361 + 408
 #define fRollershutter
 #define fMQTTInput
 #define fMQTTOutput
