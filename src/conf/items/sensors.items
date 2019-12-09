@@ -29,7 +29,7 @@ Contact		PIR_GF_Kitchen							"PIR Kitchen"										<light>			(GF_Kitchen, gPIR
 Contact		PIR_FF_Corridor							"PIR Corridor up"									<light>			(FF_Corridor, gNightWatch, gPIR, gPersistenceSwitch)															{mqtt="<[broker:myHome/PIR_FF_Corridor:state:default]"}	
 Contact		PIR_FF_AnnRoom							"PIR Ann"											<light>			(FF_AnnRoom, gPIR, gPersistenceSwitch)																			{mqtt="<[broker:myHome/PIR_FF_AnnRoom:state:default]"}	
 Contact		PIR_FF_AliceRoom						"PIR Alice"											<light>			(FF_AliceRoom, gPIR, gPersistenceSwitch)																		{mqtt="<[broker:myHome/PIR_FF_AliceRoom:state:default]"}	
-Contact		PIR_FF_Bedroom							"PIR Bedroom"										<light>			(FF_Bedroom, gPIR, gPersistenceSwitch)																			{mqtt="<[broker:myHome/PIR_FF_Bedroom:state:default]"}	
+Contact		PIR_FF_Bedroom							"PIR Bedroom"										<light>			(FF_Bedroom, gBedroomWatch, gPIR, gPersistenceSwitch)																			{mqtt="<[broker:myHome/PIR_FF_Bedroom:state:default]"}	
 Contact		PIR_FF_BedroomWardobe					"PIR Bedroom wardobe"								<light>			(FF_Bedroom, gMoveWatch, gPIR, gPersistenceSwitch)																{mqtt="<[broker:myHome/PIR_FF_BedroomWardobe:state:default]"}	
 Contact		PIR_GF_EntryWatch						"PIR Entry Watch"									<light>			(GF_Corridor, gPIR, gSlack, gEntryWatch, gPersistenceSwitch)													{mqtt="<[broker:myHome/FF_TechnicalRoom2_EntryWatch:state:default]"}	
 Contact		PIR_Corridor_Storage					"PIR Corridor Storage"								<light>			(GF_Corridor, gPIR, gPersistenceSwitch)																			{mqtt="<[broker:myHomeY/GF_Corridor_Storage_Relay_Change:state:MAP(switch2contact.map)]"}	

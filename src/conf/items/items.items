@@ -126,6 +126,7 @@ Switch			GH_Holiday												"Holiday"															(gScenes)																
 Switch			GH_WelcomeBack											"Welcome back"														(gScenes)																									["Switchable"]								
 Switch			GH_Night_Scene											"Good night"														(gScenes)																									["Switchable"]								
 Switch			GH_TVShow_Scene											"TV Show"															(gScenes)																									["Switchable"]								
+Switch			GH_Room_Scene											"Room"  															(gScenes)																									["Switchable"]								
 Switch			GH_Bedroom_Night_Scene									"Go to sleep"														(gScenes)																									["Switchable"]								
 Switch			GH_Evening_Scene										"Good evening"														(gScenes)																									["Switchable"]								
 Switch			GH_Day_Scene											"Good morning"														(gScenes)																									["Switchable"]								
