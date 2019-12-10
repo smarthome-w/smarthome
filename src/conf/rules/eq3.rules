@@ -82,7 +82,7 @@ then
                 valveItem =  EQ3_Kitchen_Valve
                 modeItem = EQ3_Kitchen_Mode
                 lastUpdateItem = EQ3_Kitchen_LastUpdate
-                statusItem = EQ3_KitchenRoom_Status
+                statusItem = EQ3_Kitchen_Status
             }
 
             if (temperatureItem !== NULL) {
