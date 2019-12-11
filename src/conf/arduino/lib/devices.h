@@ -36,7 +36,7 @@
 //#define FamilyRoomLight
 //#define CorridorStorage
 
-//#define Kitchen
+#define Kitchen
 //#define KitchenLED
 //#define BedroomLights
 //#define BedroomWardobe
@@ -50,7 +50,7 @@
 //#define FamilyRoomRollershutter
 //#define BedroomRollershutter
 //#define TestRoom
-#define TestRelay
+//#define TestRelay
 
 #ifdef KitchenLED
 #define fName "GF_Kitchen_LED_Relay"
@@ -271,7 +271,6 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define fBME280
 #define fMQTTOutput
 #define CIRCUITS_NO 0
-#define ESP01
 const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHome";
 const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #endif

@@ -14,6 +14,12 @@ sitemap sensors label="Sensors" {
 //        Text item=GF_FamilyRoom_Last_Read_Sensor
     }
 
+    Frame label="Sensors in kitchen" icon="firstfloor" {
+        Text item=GF_Kitchen_Indoor_Temperature_Sensor
+        Text item=GF_Kitchen_Indoor_Humidity_Sensor
+        Text item=GF_Kitchen_Pressure_Sensor
+    }
+
     Frame label="Sensors in bedroom" icon="firstfloor" {
         Text item=FF_Bedroom_Indoor_Temperature_Sensor
         Text item=FF_Bedroom_Indoor_Humidity_Sensor

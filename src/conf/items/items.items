@@ -126,7 +126,7 @@ Switch			GH_Holiday												"Holiday"															(gScenes)																
 Switch			GH_WelcomeBack											"Welcome back"														(gScenes)																									["Switchable"]								
 Switch			GH_Night_Scene											"Good night"														(gScenes)																									["Switchable"]								
 Switch			GH_TVShow_Scene											"TV Show"															(gScenes)																									["Switchable"]								
-Switch			GH_Room_Scene											"Room"  															(gScenes)																									["Switchable"]								
+Switch			GH_Room_Scene											"Room"																(gScenes)																									["Switchable"]								
 Switch			GH_Bedroom_Night_Scene									"Go to sleep"														(gScenes)																									["Switchable"]								
 Switch			GH_Evening_Scene										"Good evening"														(gScenes)																									["Switchable"]								
 Switch			GH_Day_Scene											"Good morning"														(gScenes)																									["Switchable"]								
@@ -135,7 +135,7 @@ Switch			GH_BrightWindow_Scene									"Bright window"														(gScenes)
 Switch			GH_Netflix_Command										"Netflix"															(gSystem)																									["Switchable"]							{mqtt=">[broker:sony/RC/Command_Netflix:state:*:default]"}	
 Switch			GH_YouTube_Command										"Youtube"															(gSystem)																									["Switchable"]							{mqtt=">[broker:sony/RC/Command_YouTube:state:*:default]"}	
 Switch			GH_TV_Command											"TV"																(gSystem)																									["Switchable"]							{mqtt=">[broker:sony/RC/Command_TV:state:*:default]"}	
-Switch			GH_Confirm_Command										"Enter" 															(gSystem)																									["Switchable"]							{mqtt=">[broker:sony/RC/Command_Confirm:state:*:default]"}	
+Switch			GH_Confirm_Command										"Enter"																(gSystem)																									["Switchable"]							{mqtt=">[broker:sony/RC/Command_Confirm:state:*:default]"}	
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Sensors
@@ -171,6 +171,12 @@ String			GF_FamilyRoom_Outdoor_Temperature_Mode					"External Heating/Cooling Mo
 Number			GF_FamilyRoom_Outdoor_Temperature_Setpoint				"External Setpoint"									<temperature>	(v_GF_FamilyRoom_Outdoor_Thermostat)																		["homekit:TargetTemperature"]				
 Number			GF_FamilyRoom_Outdoor_Temperature_Sensor				"External temperature [%.1f \u00b0C]"				<temperature>	(v_GF_FamilyRoom_Outdoor_Thermostat, gSensorTemperature, gSensorExternalTemperature, gPersistenceSensor)	["CurrentTemperature"]					{mqtt="<[broker:myHome/GF_FamilyRoom_Outdoor_Temperature_Sensor:state:JS(europeanNumber.js):.*]"}	
 Number			GF_FamilyRoom_Analog_Sensor								"Family room brightness [%.0f]"						<heating>		(gSensorAnalog, gPersistenceSensor)																													{mqtt="<[broker:myHome/GF_FamilyRoom_Analog:state:JS(brightness.js):.*]"}	
+Group			v_GF_Kitchen_Thermostat									"Kitchen thermostat"																																							["Thermostat"]								
+String			GF_Kitchen_Indoor_Temperature_Mode						"Kitchen Heating/Cooling Mode [%s]"					<temperature>	(v_GF_Kitchen_Thermostat)																					["homekit:TargetHeatingCoolingMode"]		
+Number			GF_Kitchen_Indoor_Temperature_Setpoint					"Kitchen Setpoint"									<temperature>	(v_GF_Kitchen_Thermostat)																					["homekit:TargetTemperature"]				
+Number			GF_Kitchen_Indoor_Temperature_Sensor					"Kitchen temperature [%.1f \u00b0C]"				<temperature>	(v_GF_Kitchen_Thermostat, gSensorTemperature, gPersistenceSensor, gEQ3KitchenTemp)							["CurrentTemperature"]					{mqtt="<[broker:myHome/GF_Kitchen_Indoor_Temperature_Sensor1:state:JS(europeanNumber.js):.*]"}	
+Number			GF_Kitchen_Indoor_Humidity_Sensor						"Kitchen humidity [%.1f%%]"							<humidity>		(v_GF_Kitchen_Thermostat, gSensorHumidity, gPersistenceSensor)												["CurrentHumidity"]						{mqtt="<[broker:myHome/GF_Kitchen_Humidity_Sensor1:state:JS(europeanNumber.js):.*]"}	
+Number			GF_Kitchen_Pressure_Sensor								"Pressure [%.0f hPa]"								<pressure>		(gSensorPressure, gPressureTest, gPersistenceSensor)																								{mqtt="<[broker:myHome/GF_Kitchen_Pressure_Sensor1:state:JS(pressure.js):.*]"}	
 Group			v_FF_AnnRoom_Thermostat									"Ann room thermostat"																																							["Thermostat"]								
 String			FF_AnnRoom_Indoor_Temperature_Mode						"Ann room Heating/Cooling Mode [%s]"				<temperature>	(v_FF_AnnRoom_Thermostat)																					["homekit:TargetHeatingCoolingMode"]		
 Number			FF_AnnRoom_Indoor_Temperature_Setpoint					"Ann room Setpoint"									<temperature>	(v_FF_AnnRoom_Thermostat)																					["homekit:TargetTemperature"]				
