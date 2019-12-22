@@ -259,9 +259,9 @@ Switch			GF_FamilyRoom_Heartbeat_LastUpdate_Error				"8266 Family room"									
 String			GF_Kitchen_Heartbeat									"8266 Kitchen [%s]"														(GF_Kitchen, gHeartbeat)																															{mqtt="<[broker:myHome/GF_Kitchen_Heartbeat:state:JS(string.js):.*]"}	
 DateTime		GF_Kitchen_Heartbeat_LastUpdate							"8266 Kitchen [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)																												
 Switch			GF_Kitchen_Heartbeat_LastUpdate_Error					"8266 Kitchen"											<time>			(gErrors, gPersistenceSwitch)																															
-String			GF_FamilyRoomRollershutter_Heartbeat					"8266 Salon blinds [%s]"												(GF_FamilyRoom, gHeartbeat)																															{mqtt="<[broker:myHomeX/GF_FamilyRoom_Rollershutter_Heartbeat:state:JS(string.js):.*]"}	
-DateTime		GF_FamilyRoomRollershutter_Heartbeat_LastUpdate			"8266 blinds w salonie [%1$td.%1$tm %1$tH:%1$tM]"		<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)																												
-Switch			GF_FamilyRoomRollershutter_Heartbeat_LastUpdate_Error	"8266 Salon blinds"										<time>			(gErrors, gPersistenceSwitch)																															
+String			GF_FamilyRoomRollershutter_Heartbeat					"8266 Family room blinds [%s]"											(GF_FamilyRoom, gHeartbeat)																															{mqtt="<[broker:myHomeX/GF_FamilyRoom_Rollershutter_Heartbeat:state:JS(string.js):.*]"}	
+DateTime		GF_FamilyRoomRollershutter_Heartbeat_LastUpdate			"8266 Family room blinds [%1$td.%1$tm %1$tH:%1$tM]"		<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)																												
+Switch			GF_FamilyRoomRollershutter_Heartbeat_LastUpdate_Error	"8266 Family room blinds"								<time>			(gErrors, gPersistenceSwitch)																															
 String			FF_Bedroom_Heartbeat									"8266 Bedroom [%s]"														(FF_Bedroom, gHeartbeat)																															{mqtt="<[broker:myHome/FF_Bedroom_Heartbeat:state:JS(string.js):.*]"}	
 DateTime		FF_Bedroom_Heartbeat_LastUpdate							"8266 Bedroom [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)																												
 Switch			FF_Bedroom_Heartbeat_LastUpdate_Error					"8266 Bedroom"											<time>			(gErrors, gPersistenceSwitch)																															
