@@ -205,7 +205,7 @@ Number			FF_AliceRoom_Pressure_Sensor							"Pressure A [%.0f hPa]"									<pre
 //                       Rollershutters
 ////////////////////////////////////////////////////////////////////////////////
 Switch			GF_FamilyRoom_Rollershutter_Expert_Mode					"Expert mode"																																																					
-Dimmer			GF_FamilyRoom_Rollershutter_Dimmer						"Window  [%.1f %%]"										<heating>		(GF_FamilyRoom, gRollershutter_Dimmer)																		["Dimmer"]								{mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:state:*:default],<[broker:myHomeX/GF_FamilyRoom_Rollershutter_Position:state:JS(europeanNumber.js):.*]"}	
+Dimmer			GF_FamilyRoom_Rollershutter_Dimmer						"Window  [%.1f %%]"										<heating>		(GF_FamilyRoom, gRollershutter_Dimmer)																		["Lighting"]							{mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:state:*:default],<[broker:myHomeX/GF_FamilyRoom_Rollershutter_Position:state:JS(europeanNumber.js):.*]"}	
 Rollershutter	GF_FamilyRoom_Rollershutter								"Family room - blind [%s]"												(GF_FamilyRoom, gRollershutter, gPersistenceSwitch)																									{mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:command:*:default]"}	
 DateTime		GF_FamilyRoom_Rollershutter_LastUpdate					"Family room - blind [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateRollershutter, gPersistenceSwitch)																											
 Switch			GF_FamilyRoom_Rollershutter_PrgUp						"Family room - prg up"													(GF_FamilyRoom, gRollershutter)																														{mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:command:ON:PRGUP]"}	
@@ -224,7 +224,7 @@ Number			GF_FamilyRoom_Rollershutter_RealUpLimitProbe			"RealUpLimitProbe [%.0f]
 Number			GF_FamilyRoom_Rollershutter_RealDownLimitProbe			"RealDownLimitProbe [%.0f]"								<heating>																																							{mqtt="<[broker:myHomeX/GF_FamilyRoom_Rollershutter_Debug_RealDownLimitProbe (LOW active):state:JS(europeanNumber.js):.*]"}	
 Number			GF_FamilyRoom_Rollershutter_Millis						"Millis [%.0f]"											<heating>																																							{mqtt="<[broker:myHomeX/GF_FamilyRoom_Rollershutter_Debug_Millis:state:JS(europeanNumber.js):.*]"}	
 Switch			FF_Bedroom_Rollershutter_Expert_Mode					"Expert mode"																																																					
-Dimmer			FF_Bedroom_Rollershutter_Dimmer							"Bedroom window  [%.1f %%]"								<heating>		(FF_Bedroom, gRollershutter_Dimmer)																			["Dimmer"]								{mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:state:*:default],<[broker:myHomeX/FF_Bedroom_Rollershutter_Position:state:JS(europeanNumber.js):.*]"}	
+Dimmer			FF_Bedroom_Rollershutter_Dimmer							"Bedroom window  [%.1f %%]"								<heating>		(FF_Bedroom, gRollershutter_Dimmer)																			["Lighting"]							{mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:state:*:default],<[broker:myHomeX/FF_Bedroom_Rollershutter_Position:state:JS(europeanNumber.js):.*]"}	
 Rollershutter	FF_Bedroom_Rollershutter								"Bedroom - blind [%s]"													(FF_Bedroom, gRollershutter, gPersistenceSwitch)																									{mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:command:*:default]"}	
 DateTime		FF_Bedroom_Rollershutter_LastUpdate						"Bedroom - blind [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateRollershutter, gPersistenceSwitch)																											
 Switch			FF_Bedroom_Rollershutter_PrgUp							"Bedroom - prg up"														(FF_Bedroom, gRollershutter)																														{mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:command:ON:PRGUP]"}	
@@ -253,9 +253,12 @@ Switch			vSlack_Send												"Send slack"															(gSlack)
 ////////////////////////////////////////////////////////////////////////////////
 //                       Heartbeats
 ////////////////////////////////////////////////////////////////////////////////
-String			GF_FamilyRoom_Heartbeat									"8266 Salon [%s]"														(GF_FamilyRoom, gHeartbeat)																															{mqtt="<[broker:myHome/GF_FamilyRoom_Heartbeat:state:JS(string.js):.*]"}	
-DateTime		GF_FamilyRoom_Heartbeat_LastUpdate						"8266 w salonie [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)																												
-Switch			GF_FamilyRoom_Heartbeat_LastUpdate_Error				"8266 Salon"											<time>			(gErrors, gPersistenceSwitch)																															
+String			GF_FamilyRoom_Heartbeat									"8266 Family room [%s]"													(GF_FamilyRoom, gHeartbeat)																															{mqtt="<[broker:myHome/GF_FamilyRoom_Heartbeat:state:JS(string.js):.*]"}	
+DateTime		GF_FamilyRoom_Heartbeat_LastUpdate						"8266 Family room [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)																												
+Switch			GF_FamilyRoom_Heartbeat_LastUpdate_Error				"8266 Family room"										<time>			(gErrors, gPersistenceSwitch)																															
+String			GF_Kitchen_Heartbeat									"8266 Kitchen [%s]"														(GF_Kitchen, gHeartbeat)																															{mqtt="<[broker:myHome/GF_Kitchen_Heartbeat:state:JS(string.js):.*]"}	
+DateTime		GF_Kitchen_Heartbeat_LastUpdate							"8266 Kitchen [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)																												
+Switch			GF_Kitchen_Heartbeat_LastUpdate_Error					"8266 Kitchen"											<time>			(gErrors, gPersistenceSwitch)																															
 String			GF_FamilyRoomRollershutter_Heartbeat					"8266 Salon blinds [%s]"												(GF_FamilyRoom, gHeartbeat)																															{mqtt="<[broker:myHomeX/GF_FamilyRoom_Rollershutter_Heartbeat:state:JS(string.js):.*]"}	
 DateTime		GF_FamilyRoomRollershutter_Heartbeat_LastUpdate			"8266 blinds w salonie [%1$td.%1$tm %1$tH:%1$tM]"		<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)																												
 Switch			GF_FamilyRoomRollershutter_Heartbeat_LastUpdate_Error	"8266 Salon blinds"										<time>			(gErrors, gPersistenceSwitch)																															
@@ -282,11 +285,11 @@ Switch			HW_RMPro_Heartbeat_Ticker								"RMPro Ticker"															(gSystem)
 String			HW_RMPro_Heartbeat										"RM Pro [%s]"															(GF_FamilyRoom, gHeartbeat)																															{mqtt="<[broker:myHome/HW_RMPro_Heartbeat:command:JS(string.js):.*]"}	
 DateTime		HW_RMPro_Heartbeat_LastUpdate							"RM Pro [%1$td.%1$tm %1$tH:%1$tM]"						<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)																												
 Switch			HW_RMPro_Heartbeat_LastUpdate_Error						"RM Pro"												<time>			(gErrors, gPersistenceSwitch)																															
-String			GF_FamilyRoom_LightsRGB_Heartbeat						"Salon led [%s]"														(GF_FamilyRoom, gHeartbeat)																															{mqtt="<[broker:myHomeY/GF_FamilyRoom_LED_Relay_Heartbeat:command:JS(string.js):.*]"}	
-DateTime		GF_FamilyRoom_LightsRGB_Heartbeat_LastUpdate			"Salon led [%1$td.%1$tm %1$tH:%1$tM]"					<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)																												
-Switch			GF_FamilyRoom_LightsRGB_Heartbeat_LastUpdate_Error		"Sonoff Salon led"										<time>			(gErrors, gPersistenceSwitch)																															
-String			GF_FamilyRoom_LightsLamp_Heartbeat						"Salon lamps [%s]"														(GF_FamilyRoom, gHeartbeat)																															{mqtt="<[broker:myHomeY/GF_FamilyRoom_Light_Relay_Heartbeat:command:JS(string.js):.*]"}	
-DateTime		GF_FamilyRoom_LightsLamp_Heartbeat_LastUpdate			"Salon lamps [%1$td.%1$tm %1$tH:%1$tM]"					<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)																												
+String			GF_FamilyRoom_LightsRGB_Heartbeat						"Family room led [%s]"													(GF_FamilyRoom, gHeartbeat)																															{mqtt="<[broker:myHomeY/GF_FamilyRoom_LED_Relay_Heartbeat:command:JS(string.js):.*]"}	
+DateTime		GF_FamilyRoom_LightsRGB_Heartbeat_LastUpdate			"Family room led [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)																												
+Switch			GF_FamilyRoom_LightsRGB_Heartbeat_LastUpdate_Error		"Sonoff Family room led"								<time>			(gErrors, gPersistenceSwitch)																															
+String			GF_FamilyRoom_LightsLamp_Heartbeat						"Family room lamps [%s]"												(GF_FamilyRoom, gHeartbeat)																															{mqtt="<[broker:myHomeY/GF_FamilyRoom_Light_Relay_Heartbeat:command:JS(string.js):.*]"}	
+DateTime		GF_FamilyRoom_LightsLamp_Heartbeat_LastUpdate			"Family room lamps [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)																												
 Switch			GF_FamilyRoom_LightsLamp_Heartbeat_LastUpdate_Error		"Sonoff Family room lamps"								<time>			(gErrors, gPersistenceSwitch)																															
 String			GF_Corridor_Light_LED_Heartbeat							"Corridor led [%s]"														(GF_Corridor, gHeartbeat)																															{mqtt="<[broker:myHomeY/GF_Corridor_LED_Relay_Heartbeat:command:JS(string.js):.*]"}	
 String			GF_Kitchen_LED_Heartbeat								"Kitchen led [%s]"														(GF_Corridor, gHeartbeat)																															{mqtt="<[broker:myHomeY/GF_Kitchen_LED_Relay_Heartbeat:command:JS(string.js):.*]"}	

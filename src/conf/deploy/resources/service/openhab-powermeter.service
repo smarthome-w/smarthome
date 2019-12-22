@@ -8,7 +8,7 @@ Type=simple
 Restart=always
 RestartSec=60
 ExecStartPre=/bin/sleep 3
-ExecStartPre=/bin/systemctl restart bluetooth
+ExecStartPre=/usr/bin/pkill powermeter
 ExecStartPre=/bin/sleep 3
 ExecStart=/opt/openhab/conf/scripts/POWERMETER/powermeter.sh
 
