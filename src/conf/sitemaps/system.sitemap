@@ -1,7 +1,14 @@
 sitemap system label="System" {
-    Frame label="Hard reset" icon="groundfloor" {
-      Switch item=HardResetButton
+    Frame label="Scenes" icon="firstfloor" {
+      Switch item=GH_Night_Scene mappings=[ON="Set"]
+      Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]
+      Switch item=GH_Evening_Scene mappings=[ON="Set"]
+      Switch item=GH_Day_Scene mappings=[ON="Set"]
+      Switch item=GH_TVShow_Scene mappings=[ON="Set"]
     }
+//    Frame label="Hard reset" icon="groundfloor" {
+//      Switch item=HardResetButton
+//    }
 
     Frame label="System groups" icon="groundfloor" {
 //      Group item=gPersistenceSensor
@@ -46,14 +53,7 @@ sitemap system label="System" {
       Text item=Server_Uptime
 //      Text item=Server_LastRead
     }
-    Frame label="Scenes" icon="firstfloor" {
-      Switch item=GH_Night_Scene mappings=[ON="Set"]
-      Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]
-      Switch item=GH_Evening_Scene mappings=[ON="Set"]
-      Switch item=GH_Day_Scene mappings=[ON="Set"]
-      Switch item=GH_TVShow_Scene mappings=[ON="Set"]
-    }
-    Frame label="Debug" icon="firstfloor" {
+    Frame label="Debug" icon="firstfloor" visibility=[GH_Night_Scene==NULL] {
       Selection item=DebugTarget mappings=[
                                           GF_Kitchen_LED_Relay="GF_Kitchen_LED_Relay",
                                           FF_Bedroom_LED_Relay="FF_Bedroom_LED_Relay",

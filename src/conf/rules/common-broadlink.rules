@@ -39,42 +39,7 @@ then
   }
 end
 */
-/*
-rule "sp2_rule"
-when
-    Member of gSP2 received update
-then
-  try {
-    var int logLevel = 6
-    if (HH_DebugLevel_Broadlink.state !== NULL) {
-      logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
-    }
-    if (logLevel >= 6) {
-      logError("sp2", "SP2 change detected {} {}", triggeringItem.name, triggeringItem.state)
-    }
-    var String command = "/openhab/conf/scripts/BROADLINK/sp2.py " + triggeringItem.name + " " + triggeringItem.state
-    var long duration = now.millis
-    var result = executeCommandLine (command, 15000)
-    duration = now.millis - duration
-    if (!result.contains("==sent==")) {
-      if (logLevel >= 2) {
-        logError("sp2", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
-      }
-    }
-    var lastupdate_item = gLastUpdateBroadlink.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
-    if (lastupdate_item !== null) {
-      lastupdate_item.postUpdate(now.toString())
-      if (logLevel >= 6) {
-        logError("sp2", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
-      }
-    }
-  } catch (Throwable t) {
-    logError("Error", "Error in sp2_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
-  } finally {
-  }
-end
-*/
-/*
+
 rule "tc2_rule"
 when
     Member of gTC2 received update
@@ -86,15 +51,6 @@ then
     }
     if (logLevel >= 6) {
       logError("tc2", "TC2 change detected {} {}", triggeringItem.name, triggeringItem.state)
-    }
-    var String command = "/openhab/conf/scripts/BROADLINK/tc2.py " + triggeringItem.name + " " + triggeringItem.state
-    var long duration = now.millis
-    var result = executeCommandLine (command, 15000)
-    duration = now.millis - duration
-    if (!result.contains("==sent==")) {
-      if (logLevel >= 2) {
-        logError("tc2", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
-      }
     }
     var lastupdate_item = gLastUpdateBroadlink.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
@@ -108,7 +64,7 @@ then
   } finally {
   }
 end
-*/
+
 /*
 rule "irrgb_rule"
 when
@@ -137,7 +93,7 @@ then
   }
 end
 */
-/*
+
 rule "shelly_rule"
 when
     Member of gShelly received update
@@ -148,9 +104,9 @@ then
       logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
     }
     if (logLevel >= 6) {
-      logError("shelly", "TC2 change detected {} {}", triggeringItem.name, triggeringItem.state)
+      logError("shelly", "Shelly change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
-    var lastupdate_item = gLastUpdateBroadlink.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    var lastupdate_item = gLastUpdateShelly.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(now.toString())
       if (logLevel >= 6) {
@@ -173,9 +129,9 @@ then
       logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
     }
     if (logLevel >= 6) {
-      logError("sonoff", "TC2 change detected {} {}", triggeringItem.name, triggeringItem.state)
+      logError("sonoff", "Sonoff change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
-    var lastupdate_item = gLastUpdateBroadlink.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
+    var lastupdate_item = gLastUpdateSonoff.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(now.toString())
       if (logLevel >= 6) {
@@ -187,4 +143,3 @@ then
   } finally {
   }
 end
-*/
