@@ -100,6 +100,12 @@ then
     if ((elevation > elevationDawn || hourOfDay >= dayAt) && hourOfDay <= 12) {
       calendar_SupportingLight.sendCommand(OFF)
     }
+
+    if (calendar_SupportingLight.state.toString() == "ON" && hourOfDay < 23 && hourOfDay > 8) {
+      calendar_SupportingBedroomLight.sendCommand(ON)
+    } else {
+      calendar_SupportingBedroomLight.sendCommand(OFF)
+    }
   } catch (Throwable t) {
     logError("Error", "Error in calendar_rule {}", t.toString())
   } finally {

@@ -1,10 +1,12 @@
 String		EQ3_Bedroom					"Bedroom EQ3 [Bedroom: %s]"				<settings>		(gEQ3)													{mqtt="<[broker:/bedroomradout/status:state:default]"}	
 String		EQ3_FamilyRoom				"FamilyRoom EQ3 [FamilyRoom: %s]"		<settings>		(gEQ3)													{mqtt="<[broker:/familyroomradout/status:state:default]"}	
 String		EQ3_AliceRoom				"AliceRoom EQ3 [AliceRoom: %s]"			<settings>		(gEQ3)													{mqtt="<[broker:/aliceroomradout/status:state:default]"}	
+String		EQ3_Kitchen 				"Kitchen EQ3 [Kitchen : %s]"			<settings>		(gEQ3)													{mqtt="<[broker:/kitchenradout/status:state:default]"}	
 String		EQ3_FamilyRoom_Status		"Family Room status [%s]"				<settings>																	
 String		EQ3_AliceRoom_Status		"Alice Room status [%s]"				<settings>																	
 String		EQ3_AnnRoom_Status			"Ann Room status [%s]"					<settings>																	
 String		EQ3_Bedroom_Status			"Bedroom status [%s]"					<settings>																	
+String		EQ3_Kitchen_Status			"Kitchen status [%s]"					<settings>																	
 Number		EQ3_Bedroom_Temp			"EQ3 Bedroom Temp [%.0f \u00b0C]"		<temperature>	(gEQ3Temp, gPersistenceSwitch, gEQ3BedroomTemp)				
 Number		EQ3_Bedroom_Valve			"EQ3 Bedroom Valve [%.0f%%]"			<pump>			(gEQ3Valve, gPersistenceSwitch)								
 String		EQ3_Bedroom_Mode			"EQ3 Bedroom Mode [%s]"					<settings>																	

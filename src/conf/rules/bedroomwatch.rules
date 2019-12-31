@@ -1,0 +1,66 @@
+import java.util.Map
+
+val Map<String, Timer> bedroomwatchTimers = newHashMap
+
+rule "bedroomwatch_rule"
+when
+    Member of gBedroomWatch received update
+then
+  try {
+    var int logLevel = 6
+    if (HH_DebugLevel_Nightwatch.state !== NULL) {
+        logLevel = (HH_DebugLevel_Nightwatch.state as Number).intValue
+    }
+    if (logLevel >= 6) {
+      logError("bedroomwatch_rule", "Bedroomwatch change detected {} {}", triggeringItem.name, triggeringItem.state)
+    }
+
+    var bedroomwatchTimerName = "corridorBedroomwatchTimer"
+
+    if (logLevel >= 6) {
+      logError("bedroomwatch_rule", "bedroomwatchTimerName: {}", bedroomwatchTimerName)
+    }
+
+    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+        if (calendar_SupportingBedroomLight.state.toString() == "ON" || DemoMode.state.toString() == "ON") {
+          if (triggeringItem.state == OPEN) {
+            var int timeOutMinutes = 2
+            if (HH_PIR_State_Timeout.state !== NULL) {
+              timeOutMinutes = (HH_PIR_State_Timeout.state as Number).intValue
+            }
+            if(bedroomwatchTimers.get(bedroomwatchTimerName) === null){
+                bedroomwatchTimers.put(bedroomwatchTimerName, createTimer(now.plusMinutes(timeOutMinutes), [|
+                    bedroomwatchTimers.put(bedroomwatchTimerName, null)
+                    if (logLevel >= 6) {
+                      logError("bedroomwatch_rule", "Timer expired {}", bedroomwatchTimerName)
+                    }
+                    // off
+                    if (bedroomwatchTimerName == "corridorBedroomwatchTimer") {
+                      FF_Bedroom_Lights.sendCommand(OFF)
+                    }
+                ]))
+                if (logLevel >= 6) {
+                  logError("bedroomwatch_rule", "Timer created {}", bedroomwatchTimerName)
+                }
+                //on
+                if (bedroomwatchTimerName == "corridorBedroomwatchTimer") {
+                  FF_Bedroom_Lights.sendCommand(ON)
+                }
+            }
+            else {
+                bedroomwatchTimers.get(bedroomwatchTimerName).reschedule(now.plusMinutes(timeOutMinutes))
+                if (logLevel >= 6) {
+                  logError("bedroomwatch_rule", "Timer rescheduled {}", bedroomwatchTimerName)
+                }
+                if (bedroomwatchTimerName == "corridorBedroomwatchTimer") {
+                  FF_Bedroom_Lights.sendCommand(ON)
+                }
+            }
+          }
+        }
+    }
+  } catch (Throwable t) {
+    logError("Error", "Error in bedroomwatch_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
+  } finally {
+  }
+end

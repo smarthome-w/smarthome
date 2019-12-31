@@ -17,8 +17,9 @@ sitemap sensors_basic label="Status" {
 //        Text item=GF_PowerMeter_Current
         Text item=GF_PowerMeter_Current_In_Watts
         Switch item=CIR_GF_MainLock mappings=[CLOSED="Closed", OPEN="Open"]
-        Switch item=HH_FrontDoorSwitch
+//        Switch item=HH_FrontDoorSwitch
         Switch item=OverallErrorIndicator
+        Group item=gErrors visibility=[OverallErrorIndicator==ON]
     }
 
     Frame label="Heaters" icon="firstfloor" {
@@ -26,5 +27,6 @@ sitemap sensors_basic label="Status" {
       Text item=EQ3_FamilyRoom_Status  
       Text item=EQ3_AnnRoom_Status  
       Text item=EQ3_AliceRoom_Status  
+      Text item=EQ3_Kitchen_Status  
     }
 }

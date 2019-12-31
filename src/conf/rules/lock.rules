@@ -1,4 +1,4 @@
-rule "RGB Start"
+rule "lock_status"
 when
     Item CIR_GF_MainLock received update or
     Time cron "0 */5 * ? * MON-SUN"

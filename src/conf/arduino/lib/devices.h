@@ -271,7 +271,6 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define fBME280
 #define fMQTTOutput
 #define CIRCUITS_NO 0
-#define ESP01
 const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHome";
 const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #endif
@@ -285,8 +284,8 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define LOOP_DELAY_VALUE 0
 #define SERVO_UP 2500
 #define SERVO_DOWN 500
-#define CURRENT_DIRECTION_UP (-100.0 / 2187.0)
-#define CURRENT_DIRECTION_DOWN (100.0 / 1985.0)
+#define CURRENT_DIRECTION_UP (-100.0 / 2258.0)  // 1862 + 376 + 20
+#define CURRENT_DIRECTION_DOWN (100.0 / 2111.0) // 1862 + 249
 #define fRollershutter
 #define fMQTTInput
 #define fMQTTOutput
@@ -304,8 +303,8 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define LOOP_DELAY_VALUE 0
 #define SERVO_UP 500
 #define SERVO_DOWN 2500
-#define CURRENT_DIRECTION_UP (-100.0 / 2800.0)
-#define CURRENT_DIRECTION_DOWN (100.0 / 1667.0)
+#define CURRENT_DIRECTION_UP (-100.0 / 3206.0)  // 2678 + 408 + 120
+#define CURRENT_DIRECTION_DOWN (100.0 / 1769.0) // 1361 + 408
 #define fRollershutter
 #define fMQTTInput
 #define fMQTTOutput

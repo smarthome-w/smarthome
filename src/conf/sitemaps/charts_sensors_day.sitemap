@@ -1,11 +1,11 @@
-sitemap charts_sensors_day label="Sensors - today" {
+sitemap charts_sensors_day label="Sensors (daily)" {
     Frame label="Sensors today" icon="firstfloor" {
         Chart item=gSensorTemperature period=D label="Temperature"
         Chart item=gSensorPressure period=D label="Pressure"
         Chart item=gSensorHumidity period=D label="Humidity"
     }
 
-    Frame label="Brightness today" icon="firstfloor" {
+    Frame label="Brightness (daily)" icon="firstfloor" {
         Chart item=gSensorAnalog period=D label="Brightness"
     }
 }

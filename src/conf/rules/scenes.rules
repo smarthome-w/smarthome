@@ -19,8 +19,10 @@ then
             if (logLevel >= 6) {
               logError("scene_rule", "day")
             }
-            GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
-            FF_Bedroom_Rollershutter_AutoUp.sendCommand(ON)
+            if (calendar_Vacation.state.toString() == "OFF") {
+              GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
+              FF_Bedroom_Rollershutter_AutoUp.sendCommand(ON)
+            }
         }
 
         if (triggeringItem.name == "GH_TVShow_Scene"){
@@ -28,10 +30,34 @@ then
               logError("scene_rule", "scene: tvshow {}", triggeringItem.state)
             }
             if (triggeringItem.state == ON) {
-              GF_ColorLights_Scenario.sendCommand(ON)
-              GF_FamilyRoom_Scenario.sendCommand(OFF)
+//              GF_ColorLights_Scenario.sendCommand(ON)
+//              GF_FamilyRoom_Scenario.sendCommand(OFF)
+              GF_FamilyRoom_Light_Table.sendCommand(OFF)
+              GF_FamilyRoom_LightsRGB.sendCommand(ON)
+              GF_FamilyRoom_LightsLamp.sendCommand(ON)
+              GF_FamilyRoom_Light_Sofa.sendCommand(OFF)
             } else {
-              GF_ColorLights_Scenario.sendCommand(OFF)
+              GF_FamilyRoom_Light_Table.sendCommand(OFF)
+              GF_FamilyRoom_LightsRGB.sendCommand(OFF)
+              GF_FamilyRoom_LightsLamp.sendCommand(OFF)
+              GF_FamilyRoom_Light_Sofa.sendCommand(OFF)
+            }
+        }
+
+        if (triggeringItem.name == "GH_Room_Scene"){
+            if (logLevel >= 6) {
+              logError("scene_rule", "scene: room {}", triggeringItem.state)
+            }
+            if (triggeringItem.state == ON) {
+              GF_FamilyRoom_Light_Table.sendCommand(ON)
+              GF_FamilyRoom_LightsRGB.sendCommand(ON)
+              GF_FamilyRoom_LightsLamp.sendCommand(OFF)
+              GF_FamilyRoom_Light_Sofa.sendCommand(OFF)
+            } else {
+              GF_FamilyRoom_Light_Table.sendCommand(OFF)
+              GF_FamilyRoom_LightsRGB.sendCommand(OFF)
+              GF_FamilyRoom_LightsLamp.sendCommand(OFF)
+              GF_FamilyRoom_Light_Sofa.sendCommand(OFF)
             }
         }
 

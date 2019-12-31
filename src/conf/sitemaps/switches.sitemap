@@ -83,9 +83,4 @@ sitemap switches label="Switches" {
                                             NETFLIX="Netflix"
                                             ]
     }
-
-    Frame label="Modes" icon="groundfloor" {
-//        Switch item=GF_Motion_Mode mappings=[TRK="Tracking", ALM="Alarm", LGT="Light"]
-        Switch item=GF_Presence_Mode mappings=[ABSENT="Absent", PRESENT="Present"]
-    }
 }
