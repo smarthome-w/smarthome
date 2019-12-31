@@ -19,8 +19,10 @@ then
             if (logLevel >= 6) {
               logError("scene_rule", "day")
             }
-            GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
-            FF_Bedroom_Rollershutter_AutoUp.sendCommand(ON)
+            if (calendar_Vacation.state.toString() == "OFF") {
+              GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
+              FF_Bedroom_Rollershutter_AutoUp.sendCommand(ON)
+            }
         }
 
         if (triggeringItem.name == "GH_TVShow_Scene"){

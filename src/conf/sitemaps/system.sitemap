@@ -1,4 +1,9 @@
 sitemap system label="System" {
+    Frame label="Modes" icon="groundfloor" {
+        Switch item=calendar_Vacation mappings=[ON="On", OFF="Off"]
+        Switch item=GF_Presence_Mode mappings=[ABSENT="Absent", PRESENT="Present"]
+    }
+
     Frame label="Scenes" icon="firstfloor" {
       Switch item=GH_Night_Scene mappings=[ON="Set"]
       Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]

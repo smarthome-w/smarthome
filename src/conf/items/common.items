@@ -35,3 +35,5 @@ Switch		calendar_Workday				"Workday"											<time>			(gCalendar)
 Switch		calendar_Weekend				"Weekend"											<time>			(gCalendar)											
 Switch		calendar_Dawn					"Dawn"												<time>			(gCalendar, gPersistenceSwitch)						
 Switch		calendar_Dusk					"Dusk"												<time>			(gCalendar, gPersistenceSwitch)						
+
+Switch		calendar_Vacation				"Vacation"											<time>			(gCalendar, gPersistenceSwitch)						
