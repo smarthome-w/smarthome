@@ -1,0 +1,414 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+mqtt:
+  broker: 192.168.0.4
+  discovery: true
+
+light:
+  - platform: mqtt
+    name: "Family room LED"
+    state_topic: "myHomeY/GF_FamilyRoom_LED_Relay"
+    command_topic: "myHomeY/GF_FamilyRoom_LED_Relay_Command"
+    optimistic: true
+    payload_on: "ON"
+    payload_off: "OFF"
+    qos: 1
+    retain: true
+
+map:
+
+sensor:
+  - platform: mqtt
+    name: "Multisensor01 Temperature"
+    state_topic: "tele/multisensor01/SENSOR"
+    value_template: "{{ value_json['BME280'].Temperature }}"
+    unit_of_measurement: "°C"
+    availability_topic: "tele/multisensor01/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: temperature
+
+  - platform: mqtt
+    name: "Multisensor01 Humidity"
+    state_topic: "tele/multisensor01/SENSOR"
+    value_template: "{{ value_json['BME280'].Humidity }}"
+    unit_of_measurement: "%"
+    availability_topic: "tele/multisensor01/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: humidity
+
+  - platform: mqtt
+    name: "Multisensor01 Pressure"
+    state_topic: "tele/multisensor01/SENSOR"
+    value_template: "{{ value_json['BME280'].Pressure }}"
+    unit_of_measurement: "hPa"
+    availability_topic: "tele/multisensor01/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: pressure
+
+  - platform: mqtt
+    name: "Multisensor01 Wi-Fi Quality"
+    state_topic: "tele/multisensor01/STATE"
+    unit_of_measurement: "% signal"
+    value_template: "{{value_json['Wifi'].RSSI }}"
+    availability_topic: "tele/multisensor01/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: signal_strength
+
+  - platform: mqtt
+    name: "Multisensor01 Brightness"
+    state_topic: "tele/multisensor01/SENSOR"
+    unit_of_measurement: "adc"
+    value_template: "{{ (value_json['ANALOG'].A0 | int) * -1 + 1024 }}"
+    availability_topic: "tele/multisensor01/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: illuminance
+
+  - platform: mqtt
+    name: "Multisensor02 Temperature"
+    state_topic: "tele/multisensor02/SENSOR"
+    value_template: "{{ value_json['BME280'].Temperature }}"
+    unit_of_measurement: "°C"
+    availability_topic: "tele/multisensor02/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: temperature
+
+  - platform: mqtt
+    name: "Multisensor02 Humidity"
+    state_topic: "tele/multisensor02/SENSOR"
+    value_template: "{{ value_json['BME280'].Humidity }}"
+    unit_of_measurement: "%"
+    availability_topic: "tele/multisensor02/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: humidity
+
+  - platform: mqtt
+    name: "Multisensor02 Pressure"
+    state_topic: "tele/multisensor02/SENSOR"
+    value_template: "{{ value_json['BME280'].Pressure }}"
+    unit_of_measurement: "hPa"
+    availability_topic: "tele/multisensor02/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: pressure
+
+  - platform: mqtt
+    name: "Multisensor02 Wi-Fi Quality"
+    state_topic: "tele/multisensor02/STATE"
+    unit_of_measurement: "% signal"
+    value_template: "{{value_json['Wifi'].RSSI }}"
+    availability_topic: "tele/multisensor02/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: signal_strength
+
+  - platform: mqtt
+    name: "Multisensor02 Brightness"
+    state_topic: "tele/multisensor02/SENSOR"
+    unit_of_measurement: "adc"
+    value_template: "{{ (value_json['ANALOG'].A0 | int) * -1 + 1024 }}"
+    availability_topic: "tele/multisensor02/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: illuminance
+
+  - platform: mqtt
+    name: "Multisensor03 Temperature"
+    state_topic: "tele/multisensor03/SENSOR"
+    value_template: "{{ value_json['BME280'].Temperature }}"
+    unit_of_measurement: "°C"
+    availability_topic: "tele/multisensor03/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: temperature
+
+  - platform: mqtt
+    name: "Multisensor03 Humidity"
+    state_topic: "tele/multisensor03/SENSOR"
+    value_template: "{{ value_json['BME280'].Humidity }}"
+    unit_of_measurement: "%"
+    availability_topic: "tele/multisensor03/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: humidity
+
+  - platform: mqtt
+    name: "Multisensor03 Pressure"
+    state_topic: "tele/multisensor03/SENSOR"
+    value_template: "{{ value_json['BME280'].Pressure }}"
+    unit_of_measurement: "hPa"
+    availability_topic: "tele/multisensor03/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: pressure
+
+  - platform: mqtt
+    name: "Multisensor03 Wi-Fi Quality"
+    state_topic: "tele/multisensor03/STATE"
+    unit_of_measurement: "% signal"
+    value_template: "{{value_json['Wifi'].RSSI }}"
+    availability_topic: "tele/multisensor03/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: signal_strength
+
+  - platform: mqtt
+    name: "Multisensor03 Brightness"
+    state_topic: "tele/multisensor03/SENSOR"
+    unit_of_measurement: "adc"
+    value_template: "{{ (value_json['ANALOG'].A0 | int) * -1 + 1034 }}"
+    availability_topic: "tele/multisensor03/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: illuminance
+
+  - platform: mqtt
+    name: "Multisensor04 Temperature"
+    state_topic: "tele/multisensor04/SENSOR"
+    value_template: "{{ value_json['BME280'].Temperature }}"
+    unit_of_measurement: "°C"
+    availability_topic: "tele/multisensor04/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: temperature
+
+  - platform: mqtt
+    name: "Multisensor04 Humidity"
+    state_topic: "tele/multisensor04/SENSOR"
+    value_template: "{{ value_json['BME280'].Humidity }}"
+    unit_of_measurement: "%"
+    availability_topic: "tele/multisensor04/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: humidity
+
+  - platform: mqtt
+    name: "Multisensor04 Pressure"
+    state_topic: "tele/multisensor04/SENSOR"
+    value_template: "{{ value_json['BME280'].Pressure }}"
+    unit_of_measurement: "hPa"
+    availability_topic: "tele/multisensor04/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: pressure
+
+  - platform: mqtt
+    name: "Multisensor04 Wi-Fi Quality"
+    state_topic: "tele/multisensor04/STATE"
+    unit_of_measurement: "% signal"
+    value_template: "{{value_json['Wifi'].RSSI }}"
+    availability_topic: "tele/multisensor04/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: signal_strength
+
+  - platform: mqtt
+    name: "Multisensor04 Brightness"
+    state_topic: "tele/multisensor04/SENSOR"
+    unit_of_measurement: "adc"
+    value_template: "{{ (value_json['ANALOG'].A0 | int) * -1 + 1044 }}"
+    availability_topic: "tele/multisensor04/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: illuminance
+
+  - platform: mqtt
+    name: "Multisensor05 Temperature"
+    state_topic: "tele/multisensor05/SENSOR"
+    value_template: "{{ value_json['BME280'].Temperature }}"
+    unit_of_measurement: "°C"
+    availability_topic: "tele/multisensor05/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: temperature
+
+  - platform: mqtt
+    name: "Multisensor05 Humidity"
+    state_topic: "tele/multisensor05/SENSOR"
+    value_template: "{{ value_json['BME280'].Humidity }}"
+    unit_of_measurement: "%"
+    availability_topic: "tele/multisensor05/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: humidity
+
+  - platform: mqtt
+    name: "Multisensor05 Pressure"
+    state_topic: "tele/multisensor05/SENSOR"
+    value_template: "{{ value_json['BME280'].Pressure }}"
+    unit_of_measurement: "hPa"
+    availability_topic: "tele/multisensor05/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: pressure
+
+  - platform: mqtt
+    name: "Multisensor05 Wi-Fi Quality"
+    state_topic: "tele/multisensor05/STATE"
+    unit_of_measurement: "% signal"
+    value_template: "{{value_json['Wifi'].RSSI }}"
+    availability_topic: "tele/multisensor05/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: signal_strength
+
+  - platform: mqtt
+    name: "Multisensor05 Brightness"
+    state_topic: "tele/multisensor05/SENSOR"
+    unit_of_measurement: "adc"
+    value_template: "{{ (value_json['ANALOG'].A0 | int) * -1 + 1054 }}"
+    availability_topic: "tele/multisensor05/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: illuminance
+
+  - platform: mqtt
+    name: "Multisensor06 Temperature"
+    state_topic: "tele/multisensor06/SENSOR"
+    value_template: "{{ value_json['BME280'].Temperature }}"
+    unit_of_measurement: "°C"
+    availability_topic: "tele/multisensor06/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: temperature
+
+  - platform: mqtt
+    name: "Multisensor06 Humidity"
+    state_topic: "tele/multisensor06/SENSOR"
+    value_template: "{{ value_json['BME280'].Humidity }}"
+    unit_of_measurement: "% signal"
+    availability_topic: "tele/multisensor06/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: humidity
+
+  - platform: mqtt
+    name: "Multisensor06 Pressure"
+    state_topic: "tele/multisensor06/SENSOR"
+    value_template: "{{ value_json['BME280'].Pressure }}"
+    unit_of_measurement: "hPa"
+    availability_topic: "tele/multisensor06/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: pressure
+
+  - platform: mqtt
+    name: "Multisensor06 Wi-Fi Quality"
+    state_topic: "tele/multisensor06/STATE"
+    unit_of_measurement: "%"
+    value_template: "{{value_json['Wifi'].RSSI }}"
+    availability_topic: "tele/multisensor06/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: signal_strength
+
+  - platform: mqtt
+    name: "Multisensor06 Brightness"
+    state_topic: "tele/multisensor06/SENSOR"
+    unit_of_measurement: "adc"
+    value_template: "{{ (value_json['ANALOG'].A0 | int) * -1 + 1064 }}"
+    availability_topic: "tele/multisensor06/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: illuminance
+
+binary_sensor:
+  - platform: mqtt
+    name: "Multisensor01 Motion Sensor"
+    state_topic: "stat/multisensor01/PIR"
+    availability_topic: "tele/multisensor01/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: motion
+    qos: 1
+
+  - platform: mqtt
+    name: "Multisensor01 Window Sensor"
+    state_topic: "stat/multisensor01/CIR"
+    availability_topic: "tele/multisensor01/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: window # also: window, garage_door or opening
+    qos: 1
+
+  - platform: mqtt
+    name: "Multisensor02 Motion Sensor"
+    state_topic: "stat/multisensor02/PIR"
+    availability_topic: "tele/multisensor02/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: motion
+    qos: 1
+
+  - platform: mqtt
+    name: "Multisensor02 Window Sensor"
+    state_topic: "stat/multisensor02/CIR"
+    availability_topic: "tele/multisensor02/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: window # also: window, garage_door or opening
+    qos: 1
+
+  - platform: mqtt
+    name: "Multisensor03 Motion Sensor"
+    state_topic: "stat/multisensor03/PIR"
+    availability_topic: "tele/multisensor03/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: motion
+    qos: 1
+
+  - platform: mqtt
+    name: "Multisensor03 Window Sensor"
+    state_topic: "stat/multisensor03/CIR"
+    availability_topic: "tele/multisensor03/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: window # also: window, garage_door or opening
+    qos: 1
+
+  - platform: mqtt
+    name: "Multisensor04 Window Sensor"
+    state_topic: "stat/multisensor04/CIR"
+    availability_topic: "tele/multisensor04/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: window # also: window, garage_door or opening
+    qos: 1
+
+  - platform: mqtt
+    name: "Multisensor05 Window Sensor"
+    state_topic: "stat/multisensor05/CIR"
+    availability_topic: "tele/multisensor05/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: window # also: window, garage_door or opening
+    qos: 1
+
+  - platform: mqtt
+    name: "Multisensor06 Window Sensor"
+    state_topic: "stat/multisensor06/CIR"
+    availability_topic: "tele/multisensor06/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: window # also: window, garage_door or opening
+    qos: 1

@@ -29,4 +29,26 @@ sitemap sensors_basic label="Status" {
       Text item=EQ3_AliceRoom_Status  
       Text item=EQ3_Kitchen_Status  
     }
+
+    Frame label="Colors" icon="groundfloor" {
+        Selection item=RGB_Color  mappings=[PINK="Pink",
+                                            RED="Red",
+                                            GREEN="Green",
+                                            BLUE="Blue",
+                                            WHITE="White",
+                                            DARK_ORANGE="Dark orange",
+                                            AQUAMARINE="Aquamarine",
+                                            BLUE_1="Chabrowy",
+                                            LIGHT_PINK="Light pink",
+                                            LIGHT_ORANGE="Light orange",
+                                            LIGHT_AQUAMARINE="Light aquamarine",
+                                            BLUE_2="Ciemny chabrowy",
+                                            DARK_YELLOW="Dark yellow",
+                                            DARK_AQUAMARINE="Dark aquamarine",
+                                            DARK_PINK="Dark pink",
+                                            EMERALD="Emerald",
+                                            CYAN="Cyan",
+                                            YELLOW="Yellow"
+                                            ]
+    }
 }
