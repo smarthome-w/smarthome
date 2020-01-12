@@ -1,23 +1,23 @@
 sitemap switches label="Switches" {
     Frame label="Colors" icon="groundfloor" {
-        Selection item=RGB_Color  mappings=[PINK="Różowy",
-                                            RED="Czerwony",
-                                            GREEN="Zielony",
-                                            BLUE="Niebieski",
-                                            WHITE="Biały",
-                                            DARK_ORANGE="Ciemny pomarańczowy",
-                                            AQUAMARINE="Seledynowy",
+        Selection item=RGB_Color  mappings=[PINK="Pink",
+                                            RED="Red",
+                                            GREEN="Green",
+                                            BLUE="Blue",
+                                            WHITE="White",
+                                            DARK_ORANGE="Dark orange",
+                                            AQUAMARINE="Aquamarine",
                                             BLUE_1="Chabrowy",
-                                            LIGHT_PINK="Jasny różowy",
-                                            LIGHT_ORANGE="Jasny pomarańczowy",
-                                            LIGHT_AQUAMARINE="Jasny seledynowy",
+                                            LIGHT_PINK="Light pink",
+                                            LIGHT_ORANGE="Light orange",
+                                            LIGHT_AQUAMARINE="Light aquamarine",
                                             BLUE_2="Ciemny chabrowy",
-                                            DARK_YELLOW="Ciemny żółty",
-                                            DARK_AQUAMARINE="Ciemny seledynowy",
-                                            DARK_PINK="Ciemny różowy",
-                                            EMERALD="Szmaragdowy",
-                                            CYAN="Turkusowy",
-                                            YELLOW="Żółty"
+                                            DARK_YELLOW="Dark yellow",
+                                            DARK_AQUAMARINE="Dark aquamarine",
+                                            DARK_PINK="Dark pink",
+                                            EMERALD="Emerald",
+                                            CYAN="Cyan",
+                                            YELLOW="Yellow"
                                             ]
     }
 
