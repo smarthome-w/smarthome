@@ -4,8 +4,7 @@ DOCKER_TAG=smarthomew-openhab
 
 MACHINE=$(shell uname -m)
 
-#VERSION=2.4.0
-VERSION=2.5.0-snapshot
+VERSION=2.5.0
 OS_PLATFORM=amd64
 
 HOST_IP=`hostname -I | awk '{print $$1}'`
@@ -26,20 +25,30 @@ openhab-init:
 
 openhab-core:
 	@sudo apt-get install mariadb-client mariadb-server mosquitto mosquitto-clients moreutils -y
+ifeq ($(OS_PLATFORM),armhf)
 	@sudo apt install docker.io docker-compose -y
+endif
 	@sudo apt-get install python3 python3-dev python3-pip python3-venv gcc libffi-dev -y
 	@sudo apt-get install logrotate vim motion git -y
 	@sudo apt-get install usbutils -y
 
 	@sudo pip3 install setuptools
 	@sudo pip3 install wheel
-	@sudo pip3 install paho-mqtt py-sony-bravia-remote ruamel.yaml
-	@sudo pip3 install git+https://github.com/mjg59/python-broadlink.git
+	@sudo pip3 install paho-mqtt ruamel.yaml
+ifeq ($(OS_PLATFORM),armhf)
+	@sudo pip3 install py-sony-bravia-remote git+https://github.com/mjg59/python-broadlink.git
 	@sudo pip3 install git+https://github.com/aparraga/braviarc.git
-#	sudo mysql -u root -e `cat resources/sql/database.sql`
-# /etc/mysql/my.cnf
-#[mysqld]
-#bind-address = 0.0.0.0
+endif
+
+openhab-db:
+	# Prepare mysql connectivity from any network (important for docker)
+	@sudo echo -e "[mysqld]\n" > /etc/mysql/conf.d/openhab.cnf
+	@sudo echo -e "bind-address = 0.0.0.0" >> /etc/mysql/conf.d/openhab.cnf
+	# Restart mariadb service
+	@sudo systemctl restart mariadb
+
+	@sudo mysql -u root -e "CREATE DATABASE IF NOT EXISTS OpenHAB;"
+	@sudo mysql -u root OpenHAB < resources/sql/database.sql
 
 #  /etc/default/motion start_motion_daemon=yes
 
@@ -114,6 +123,9 @@ openhab-info:
 	@echo HOST_IP=$(HOST_IP)
 
 openhab-develop: openhab-info openhab-docker-stop openhab-docker-build
+
+openhab-basic: openhab-info openhab-docker-stop openhab-docker-build \
+	openhab-service-install openhab-service-restart
 
 openhab-all: openhab-info openhab-docker-stop openhab-docker-build \
 	openhab-service-install openhab-broadlink-mqtt-service-install \

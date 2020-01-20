@@ -40,19 +40,7 @@ export SMART_HOME=<repo_dir>
 sudo apt-get install make
 ```
 
-- install docker:
-
-  - osmc
-
-```bash
-cd conf/deploy/docker-install && sudo ./get-docker-sh
-```
-
-- raspbian
-
-```bash
-sudo apt-get install docker.io
-```
+- install docker (only osmc distribution):
 
 _Disclaimer_ Original script was altered by proper OSMC detection.
 
@@ -61,39 +49,29 @@ _Disclaimer_ Original script was altered by proper OSMC detection.
 ## Core packages install
 
 ```bash
-cd $SMART_HOME/conf/deploy && sudo make openhab-core
+cd $SMART_HOME/src/conf/deploy && sudo make openhab-core
 ```
 
 ## Create OpenHAB database and configure mariadb server
 
-- run `sudo mysql -u root` and run commands from file `$SMART_HOME/deploy/resources/sql/database.sql`
-- edit `/etc/mysql/my.cnf` file and add section:
-
 ```bash
-[mysqld]
-bind-address = 0.0.0.0
+cd $SMART_HOME/src/conf/deploy && sudo make openhab-db
 ```
 
-_This is because OpenHAB is started in Docker, so client address is different than localhost._
+_Disclaimer_ Please change password present in file `$SMART_HOME/src/conf/deploy/resources/sql/database.sql`. Password has to be the same as in `/opt/openhab/services/jdbc.cfg` file.
 
-- restart mariadb server:
-
-```bash
-sudo systemctl restart mariadb
-```
-
-## OpenHAB install
+## OpenHAB install and run
 
 ```bash
-cd $SMART_HOME/conf/deploy && sudo make openhab-all
+cd $SMART_HOME/src/conf/deploy && sudo make openhab-basic
 ```
 
-## OpenHAB services
+## OpenHAB install with full list of services
 
 - run
 
 ```bash
-cd $SMART_HOME/conf/deploy && sudo make pi-all
+cd $SMART_HOME/src/conf/deploy && sudo make openhab-all
 ```
 
 ## USB camera and motion package

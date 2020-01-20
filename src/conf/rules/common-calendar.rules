@@ -111,3 +111,36 @@ then
   } finally {
   }
 end
+
+rule "dusk-debug"
+when
+    Item calendar_Dusk changed
+then
+    var elevationDusk = 6
+    var duskLevel = 724
+    if (HH_Elevation_Dusk.state !== NULL) {
+      elevationDusk = HH_Elevation_Dusk.state as Number
+    }
+    if (HH_Light_Dusk_Level.state !== NULL) {
+      duskLevel = (HH_Light_Dusk_Level.state as Number).intValue
+    }
+  
+    logInfo("dusk debug", "Time: {}, Elevation: {}, Elevation_dusk: {}, Light: {}, Light_dusk_level: {}", 
+        now, Astro_SunElevation.state, elevationDusk, GF_FamilyRoom_Analog_Sensor.state, duskLevel)
+end
+
+rule "dawn-debug"
+when
+    Item calendar_Dawn changed
+then
+    var elevationDawn = 6
+    var dawnLevel = 724
+    if (HH_Elevation_Dawn.state !== NULL) {
+      elevationDusk = HH_Elevation_Dawn.state as Number
+    }
+    if (HH_Light_Dawn_Level.state !== NULL) {
+      dawnLevel = (HH_Light_Dawn_Level.state as Number).intValue
+    }
+    logInfo("dawn debug", "Time: {}, Elevation: {}, Elevation_dawn: {}, Light: {}, Light_dawn_level: {}", 
+        now, Astro_SunElevation.state, elevationDawn, GF_FamilyRoom_Analog_Sensor.state, dawnLevel)
+end
