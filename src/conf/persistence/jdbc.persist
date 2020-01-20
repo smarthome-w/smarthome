@@ -2,8 +2,8 @@ Strategies {
 	// if no strategy is specified for an item entry below, the default list will be used
 	everyMinute	: "0 * * * * ?"
 	every5Minutes : "0 */5 * * * ?"
-  everyHour   : "0 0 * * * ?"
-  everyDay    : "0 0 0 * * ?"
+    everyHour   : "0 0 * * * ?"
+    everyDay    : "0 0 0 * * ?"
 
 	everyMonth   : "0 0 0 * * ?"
 
@@ -14,6 +14,6 @@ Strategies {
 
 Items {
     gPersistenceSwitch* : strategy = everyChange, everyHour, restoreOnStartup
-		gPersistenceSensor* : strategy = every5Minutes
-		gPersistenceDummy* : strategy = veryRare
+	gPersistenceSensor* : strategy = every5Minutes
+	gPersistenceDummy* : strategy = veryRare
 }

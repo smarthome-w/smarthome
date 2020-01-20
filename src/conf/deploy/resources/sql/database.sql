@@ -1,8 +1,6 @@
-CREATE DATABASE IF NOT EXISTS OpenHAB;
+CREATE USER IF NOT EXISTS 'openhab'@'localhost' IDENTIFIED BY 'somepass';
 
-CREATE USER 'openhab'@'localhost' IDENTIFIED BY 'somepass';
-
-CREATE USER 'openhab'@'%' IDENTIFIED BY 'somepass';
+CREATE USER  IF NOT EXISTS 'openhab'@'%' IDENTIFIED BY 'somepass';
 
 GRANT ALL PRIVILEGES ON OpenHAB.* TO 'openhab'@'localhost';
 
