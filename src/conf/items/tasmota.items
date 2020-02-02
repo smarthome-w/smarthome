@@ -1,0 +1,8 @@
+Switch	HH_PowermeterPlug01					"Media plug[]"							<light>	(GF_FamilyRoom, gTasmota, gPersistenceSwitch)		{ mqtt=">[broker:cmnd/powermeterplug01/POWER:command:*:MAP(sonoff.map)],<[broker:stat/powermeterplug01/POWER:state:MAP(sonoff.map)]" }
+Number	HH_PowermeterPlug01_Power			"Media plug power [%.0fW]"				<power>	(gSensorPower, gPersistenceSensor)					{ mqtt="<[broker:tele/powermeterplug01/SENSOR:state:JSONPATH($.ENERGY.Power)]"}
+Number	HH_PowermeterPlug01_ReactivePower	"Media plug reactive power [%.0f Var]"	<power>	(gSensorPower, gPersistenceSensor)					{ mqtt="<[broker:tele/powermeterplug01/SENSOR:state:JSONPATH($.ENERGY.ReactivePower)]"}
+Number	HH_PowermeterPlug01_ApparentPower	"Media plug apparent power [%.0f VA]"	<power>	(gSensorPower, gPersistenceSensor)					{ mqtt="<[broker:tele/powermeterplug01/SENSOR:state:JSONPATH($.ENERGY.ApparentPower)]"}
+Number	HH_PowermeterPlug01_TotalPower		"Media plug total power [%.3f kWh]"		<power>	(gSensorPower, gPersistenceSensor)					{ mqtt="<[broker:tele/powermeterplug01/SENSOR:state:JSONPATH($.ENERGY.Total)]"}
+Number	HH_PowermeterPlug01_YesterdayPower	"Media plug yesterday power [%.3f kWh]"	<power>	(gSensorPower, gPersistenceSensor)					{ mqtt="<[broker:tele/powermeterplug01/SENSOR:state:JSONPATH($.ENERGY.Yesterday)]"}
+Number	HH_PowermeterPlug01_TodayPower		"Media plug today power [%.3f kWh]"		<power>	(gSensorPower, gPersistenceSensor)					{ mqtt="<[broker:tele/powermeterplug01/SENSOR:state:JSONPATH($.ENERGY.Today)]"}
+Number	HH_PowermeterPlug01_Factor			"Media plug factor [%.2f]"				<power>	(gSensorPower, gPersistenceSensor)					{ mqtt="<[broker:tele/powermeterplug01/SENSOR:state:JSONPATH($.ENERGY.Factor)]"}

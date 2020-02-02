@@ -43,9 +43,9 @@ Switch			FF_AliceRoom_Scenario									"Alice room"										<girl_3>		(gScenari
 Group			gFF_AliceRoom_Scenario									"FF_AliceRoom_Scenario"								<heating>		(gScenarios, gFF_Lights_Scenario)
 Switch			FF_BathRoom_Scenario									"Bathroom"											<bath>			(gScenariosList, gPersistenceSwitch)
 Group			gFF_BathRoom_Scenario									"FF_BathRoom_Scenario"								<heating>		(gScenarios, gFF_Lights_Scenario)
-Switch			GF_Cinema_Scenario										"Kino"												<light>			(gScenariosList, gPersistenceSwitch)
+Switch			GF_Cinema_Scenario										"Cinema"											<light>			(gScenariosList, gPersistenceSwitch)
 Group			gGF_Cinema_Scenario										"GF_Cinema_Scenario"								<heating>		(gScenarios)
-String			GF_Motion_Mode											"Ruch"												<rgb>			(gPersistenceSwitch)
+String			GF_Motion_Mode											"Motion"											<rgb>			(gPersistenceSwitch)
 String			GF_Presence_Mode										"Presence"											<rgb>			(gPersistenceSwitch)
 
 
@@ -142,16 +142,16 @@ Switch			GH_Confirm_Command										"Enter"																(gSystem)											
 ////////////////////////////////////////////////////////////////////////////////
 Number			HH_Humidity_Min											"Humidity min [%.1f%%]"								<humidity>		(gSensorHumidity, gPersistenceSensor)
 Number			HH_Humidity_Max											"Humidity max [%.1f%%]"								<humidity>		(gSensorHumidity, gPersistenceSensor)
-Number			HH_Light_Dusk_Level										"Light dusk level [%.0f]"							<time>			(gParameters, gPersistenceSwitch)
-Number			HH_Light_Dawn_Level										"Light dawn level [%.0f]"							<time>			(gParameters, gPersistenceSwitch)
+Number			HH_Light_Dusk_Level										"Light dusk level [%.0f]"							<time>			(gSensorBrightness, gParameters, gPersistenceSwitch)
+Number			HH_Light_Dawn_Level										"Light dawn level [%.0f]"							<time>			(gSensorBrightness, gParameters, gPersistenceSwitch)
 Number			HH_PIR_State_Timeout									"PIR state timeout [%.0f]"							<time>			(gParameters, gPersistenceSwitch)
 Number			HH_PIR_Wardobe_State_Timeout							"Wardobe state timeout [%.0f]"						<time>			(gParameters, gPersistenceSwitch)
 Number			HH_Night_Bedroom_Blind_Level							"Night bedroom blind [%.0f]"						<time>			(gParameters, gPersistenceSwitch)
 Number			HH_Time_Day												"Day starts at [%.0f]"								<time>			(gParameters, gPersistenceSwitch)
 Number			HH_Time_Evening											"Evening starts at [%.0f]"							<time>			(gParameters, gPersistenceSwitch)
 Number			HH_Time_Night											"Night starts at [%.0f]"							<time>			(gParameters, gPersistenceSwitch)
-Number			HH_Elevation_Dusk										"Elevation dusk below [%.0f]"						<time>			(gParameters, gPersistenceSwitch)
-Number			HH_Elevation_Dawn										"Elevation dawn above [%.0f]"						<time>			(gParameters, gPersistenceSwitch)
+Number			HH_Elevation_Dusk										"Elevation dusk below [%.0f]"						<time>			(gAstroBrightness, gParameters, gPersistenceSwitch)
+Number			HH_Elevation_Dawn										"Elevation dawn above [%.0f]"						<time>			(gAstroBrightness, gParameters, gPersistenceSwitch)
 Number			HH_DebugLevel_PIRCIR									"PIR/CIR debug level [%.0f]"						<time>			(gParameters, gPersistenceSwitch)
 Number			HH_DebugLevel_Broadlink									"Broadlink HW debug level [%.0f]"					<time>			(gParameters, gPersistenceSwitch)
 Number			HH_DebugLevel_Heartbeat									"Heartbeat debug level [%.0f]"						<time>			(gParameters, gPersistenceSwitch)
@@ -170,13 +170,13 @@ Group			v_GF_FamilyRoom_Outdoor_Thermostat						"External thermostat"											
 String			GF_FamilyRoom_Outdoor_Temperature_Mode					"External Heating/Cooling Mode [%s]"				<temperature>	(v_GF_FamilyRoom_Outdoor_Thermostat)																		["homekit:TargetHeatingCoolingMode"]
 Number			GF_FamilyRoom_Outdoor_Temperature_Setpoint				"External Setpoint"									<temperature>	(v_GF_FamilyRoom_Outdoor_Thermostat)																		["homekit:TargetTemperature"]
 Number			GF_FamilyRoom_Outdoor_Temperature_Sensor				"External temperature [%.1f \u00b0C]"				<temperature>	(v_GF_FamilyRoom_Outdoor_Thermostat, gSensorTemperature, gSensorExternalTemperature, gPersistenceSensor)	["CurrentTemperature"]					{mqtt="<[broker:myHome/GF_FamilyRoom_Outdoor_Temperature_Sensor:state:JS(europeanNumber.js):.*]"}
-Number			GF_FamilyRoom_Analog_Sensor								"Family room brightness [%.0f]"						<heating>		(gSensorAnalog, gPersistenceSensor)																													{mqtt="<[broker:myHome/GF_FamilyRoom_Analog:state:JS(brightness.js):.*]"}
+Number			GF_FamilyRoom_Analog_Sensor								"Family room brightness [%.0f]"						<heating>		(gSensorAnalog, gSensorBrightness, gPersistenceSensor)																								{mqtt="<[broker:myHome/GF_FamilyRoom_Analog:state:JS(brightness.js):.*]"}
 Group			v_GF_Kitchen_Thermostat									"Kitchen thermostat"																																							["Thermostat"]
 String			GF_Kitchen_Indoor_Temperature_Mode						"Kitchen Heating/Cooling Mode [%s]"					<temperature>	(v_GF_Kitchen_Thermostat)																					["homekit:TargetHeatingCoolingMode"]
 Number			GF_Kitchen_Indoor_Temperature_Setpoint					"Kitchen Setpoint"									<temperature>	(v_GF_Kitchen_Thermostat)																					["homekit:TargetTemperature"]
 Number			GF_Kitchen_Indoor_Temperature_Sensor					"Kitchen temperature [%.1f \u00b0C]"				<temperature>	(v_GF_Kitchen_Thermostat, gSensorTemperature, gPersistenceSensor, gEQ3KitchenTemp)							["CurrentTemperature"]					{mqtt="<[broker:myHome/GF_Kitchen_Indoor_Temperature_Sensor1:state:JS(europeanNumber.js):.*]"}
 Number			GF_Kitchen_Indoor_Humidity_Sensor						"Kitchen humidity [%.1f%%]"							<humidity>		(v_GF_Kitchen_Thermostat, gSensorHumidity, gPersistenceSensor)												["CurrentHumidity"]						{mqtt="<[broker:myHome/GF_Kitchen_Humidity_Sensor1:state:JS(europeanNumber.js):.*]"}
-Number			GF_Kitchen_Pressure_Sensor								"Pressure [%.0f hPa]"								<pressure>		(gSensorPressure, gPressureTest, gPersistenceSensor)																								{mqtt="<[broker:myHome/GF_Kitchen_Pressure_Sensor1:state:JS(pressure.js):.*]"}
+Number			GF_Kitchen_Pressure_Sensor								"Pressure kitchen [%.0f hPa]"						<pressure>		(gSensorPressure, gPressureTest, gPersistenceSensor)																								{mqtt="<[broker:myHome/GF_Kitchen_Pressure1:state:JS(pressure.js):.*]"}
 Group			v_FF_AnnRoom_Thermostat									"Ann room thermostat"																																							["Thermostat"]
 String			FF_AnnRoom_Indoor_Temperature_Mode						"Ann room Heating/Cooling Mode [%s]"				<temperature>	(v_FF_AnnRoom_Thermostat)																					["homekit:TargetHeatingCoolingMode"]
 Number			FF_AnnRoom_Indoor_Temperature_Setpoint					"Ann room Setpoint"									<temperature>	(v_FF_AnnRoom_Thermostat)																					["homekit:TargetTemperature"]
@@ -194,7 +194,7 @@ String			FF_AliceRoom_Indoor_Temperature_Mode					"Alice room Heating/Cooling Mo
 Number			FF_AliceRoom_Indoor_Temperature_Setpoint				"Alice room Setpoint"								<temperature>	(v_FF_AliceRoom_Thermostat)																					["homekit:TargetTemperature"]
 Number			FF_AliceRoom_Indoor_Temperature_Sensor					"Alice room temperature [%.1f \u00b0C]"				<temperature>	(v_FF_AliceRoom_Thermostat, gSensorTemperature, gTemperatureTest, gPersistenceSensor, gEQ3AliceRoomTemp)	["CurrentTemperature"]					{mqtt="<[broker:myHome/FF_AliceRoom_Indoor_Temperature_Sensor:state:JS(europeanNumber.js):.*]"}
 Number			FF_AliceRoom_Indoor_Humidity_Sensor						"Alice room humidity[%.1f%%]"						<humidity>		(v_FF_AliceRoom_Thermostat, gSensorHumidity, gHumidityTest, gPersistenceSensor)								["CurrentHumidity"]						{mqtt="<[broker:myHome/FF_AliceRoom_Humidity_Sensor1:state:JS(europeanNumber.js):.*]"}
-Number			FF_AliceRoom_Analog_Sensor								"Alice room brightness [%.0f]"						<heating>		(gSensorAnalog, gPersistenceSensor)																													{mqtt="<[broker:myHome/FF_AliceRoom_Analog:state:JS(brightness.js):.*]"}
+Number			FF_AliceRoom_Analog_Sensor								"Alice room brightness [%.0f]"						<heating>		(gSensorAnalog, gSensorBrightness, gPersistenceSensor)																								{mqtt="<[broker:myHome/FF_AliceRoom_Analog:state:JS(brightness.js):.*]"}
 Number			FF_AliceRoom_Indoor_Temperature_Sensor1					"Alice room temperature 1 [%.1f \u00b0C]"			<temperature>	(gTemperatureTest, gPersistenceSensor)																												{mqtt="<[broker:myHome/FF_AliceRoom_Indoor_Temperature_Sensor1:state:JS(europeanNumber.js):.*]"}
 Number			FF_AliceRoom_Indoor_Humidity_Sensor1					"Alice room humidity 1[%.1f%%]"						<humidity>		(gHumidityTest, gPersistenceSensor)																													{mqtt="<[broker:myHome/FF_AliceRoom_Humidity_Sensor:state:JS(europeanNumber.js):.*]"}
 Number			FF_AliceRoom_Indoor_Temperature_Sensor2					"Alice room temperature 2 [%.1f \u00b0C]"			<temperature>	(gTemperatureTest, gPersistenceSensor)																												{mqtt="<[broker:myHome/FF_AliceRoom_Outdoor_Temperature_Sensor:state:JS(europeanNumber.js):.*]"}
@@ -205,7 +205,7 @@ Number			FF_AliceRoom_Pressure_Sensor							"Pressure A [%.0f hPa]"								<pres
 //                       Rollershutters
 ////////////////////////////////////////////////////////////////////////////////
 Switch			GF_FamilyRoom_Rollershutter_Expert_Mode					"Expert mode"
-Dimmer			GF_FamilyRoom_Rollershutter_Dimmer						"Window  [%.1f %%]"									<heating>		(GF_FamilyRoom, gRollershutter_Dimmer)																		["Lighting"]							{mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:state:*:default],<[broker:myHomeX/GF_FamilyRoom_Rollershutter_Position:state:JS(europeanNumber.js):.*]"}
+Dimmer			GF_FamilyRoom_Rollershutter_Dimmer						"Window  [%.1f %%]"									<heating>		(gRollershutter_Dimmer)																						["Lighting"]							{mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:state:*:default],<[broker:myHomeX/GF_FamilyRoom_Rollershutter_Position:state:JS(europeanNumber.js):.*]"}
 Rollershutter	GF_FamilyRoom_Rollershutter								"Family room - blind [%s]"											(GF_FamilyRoom, gRollershutter, gPersistenceSwitch)																									{mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:command:*:default]"}
 //DateTime		GF_FamilyRoom_Rollershutter_LastUpdate					"Family room - blind [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateRollershutter, gPersistenceSwitch)
 Switch			GF_FamilyRoom_Rollershutter_PrgUp						"Family room - prg up"												(GF_FamilyRoom, gRollershutter)																														{mqtt=">[broker:myHomeX/GF_FamilyRoom_Rollershutter:command:ON:PRGUP]"}
@@ -224,7 +224,7 @@ Number			GF_FamilyRoom_Rollershutter_RealUpLimitProbe			"RealUpLimitProbe [%.0f]
 Number			GF_FamilyRoom_Rollershutter_RealDownLimitProbe			"RealDownLimitProbe [%.0f]"							<heating>																																							{mqtt="<[broker:myHomeX/GF_FamilyRoom_Rollershutter_Debug_RealDownLimitProbe (LOW active):state:JS(europeanNumber.js):.*]"}
 Number			GF_FamilyRoom_Rollershutter_Millis						"Millis [%.0f]"										<heating>																																							{mqtt="<[broker:myHomeX/GF_FamilyRoom_Rollershutter_Debug_Millis:state:JS(europeanNumber.js):.*]"}
 Switch			FF_Bedroom_Rollershutter_Expert_Mode					"Expert mode"
-Dimmer			FF_Bedroom_Rollershutter_Dimmer							"Bedroom window  [%.1f %%]"							<heating>		(FF_Bedroom, gRollershutter_Dimmer)																			["Lighting"]							{mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:state:*:default],<[broker:myHomeX/FF_Bedroom_Rollershutter_Position:state:JS(europeanNumber.js):.*]"}
+Dimmer			FF_Bedroom_Rollershutter_Dimmer							"Bedroom window  [%.1f %%]"							<heating>		(gRollershutter_Dimmer)																						["Lighting"]							{mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:state:*:default],<[broker:myHomeX/FF_Bedroom_Rollershutter_Position:state:JS(europeanNumber.js):.*]"}
 Rollershutter	FF_Bedroom_Rollershutter								"Bedroom - blind [%s]"												(FF_Bedroom, gRollershutter, gPersistenceSwitch)																									{mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:command:*:default]"}
 //DateTime		FF_Bedroom_Rollershutter_LastUpdate						"Bedroom - blind [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateRollershutter, gPersistenceSwitch)
 Switch			FF_Bedroom_Rollershutter_PrgUp							"Bedroom - prg up"													(FF_Bedroom, gRollershutter)																														{mqtt=">[broker:myHomeX/FF_Bedroom_Rollershutter:command:ON:PRGUP]"}
@@ -242,6 +242,24 @@ Number			FF_Bedroom_Rollershutter_DownLimitProbe					"DownLimitProbe [%.0f]"				
 Number			FF_Bedroom_Rollershutter_RealUpLimitProbe				"RealUpLimitProbe [%.0f]"							<heating>																																							{mqtt="<[broker:myHomeX/FF_Bedroom_Rollershutter_Debug_RealUpLimitProbe (LOW active):state:JS(europeanNumber.js):.*]"}
 Number			FF_Bedroom_Rollershutter_RealDownLimitProbe				"RealDownLimitProbe [%.0f]"							<heating>																																							{mqtt="<[broker:myHomeX/FF_Bedroom_Rollershutter_Debug_RealDownLimitProbe (LOW active):state:JS(europeanNumber.js):.*]"}
 Number			FF_Bedroom_Rollershutter_Millis							"Millis [%.0f]"										<heating>																																							{mqtt="<[broker:myHomeX/FF_Bedroom_Rollershutter_Debug_Millis:state:JS(europeanNumber.js):.*]"}
+Switch			GF_FamilyRoom_Stepper_Expert_Mode						"Expert mode"
+Dimmer			GF_FamilyRoom_Stepper_Dimmer							"Window  [%.1f %%]"									<heating>		(GF_FamilyRoom, gStepper_Dimmer)																			["Lighting"]							{mqtt=">[broker:myHomeX/GF_FamilyRoom_Stepper:state:*:default],<[broker:myHomeX/GF_FamilyRoom_Stepper_Position:state:JS(europeanNumber.js):.*]"}
+//DateTime		GF_FamilyRoom_Stepper_LastUpdate					"Family room - blind [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateStepper, gPersistenceSwitch)
+Switch			GF_FamilyRoom_Stepper_PrgUp								"Family room - prg up"												(GF_FamilyRoom, gStepper)																															{mqtt=">[broker:myHomeX/GF_FamilyRoom_Stepper:command:ON:PRGUP]"}
+Switch			GF_FamilyRoom_Stepper_PrgDown							"Family room - prg down"											(GF_FamilyRoom, gStepper)																															{mqtt=">[broker:myHomeX/GF_FamilyRoom_Stepper:command:ON:PRGDOWN]"}
+Switch			GF_FamilyRoom_Stepper_AutoUp							"Stepper up"														(GF_FamilyRoom, gStepper)																															{mqtt=">[broker:myHomeX/GF_FamilyRoom_Stepper:command:ON:AUTOUP]"}
+Switch			GF_FamilyRoom_Stepper_AutoDown							"Stepper down"														(GF_FamilyRoom, gStepper)																															{mqtt=">[broker:myHomeX/GF_FamilyRoom_Stepper:command:ON:AUTODOWN]"}
+Switch			GF_FamilyRoom_Stepper_AutoStop							"Stepper stop"														(GF_FamilyRoom, gStepper)																															{mqtt=">[broker:myHomeX/GF_FamilyRoom_Stepper:command:ON:STOP]"}
+Switch			GF_FamilyRoom_Stepper_Debug								"Stepper debug"														(GF_FamilyRoom, gStepper)																															{mqtt=">[broker:myHomeX/GF_FamilyRoom_Stepper:command:ON:DEBUG]"}
+Number			GF_FamilyRoom_Stepper_CurrPos							"Position [%.1f]"									<heating>																																							{mqtt="<[broker:myHomeX/GF_FamilyRoom_Stepper_Debug_CurrPos:state:JS(europeanNumber.js):.*]"}
+Number			GF_FamilyRoom_Stepper_StepCurrPos						"Step Position [%.0f]"								<heating>																																							{mqtt="<[broker:myHomeX/GF_FamilyRoom_Stepper_Debug_StepCurrPos:state:JS(europeanNumber.js):.*]"}
+Number			GF_FamilyRoom_Stepper_MinLimit							"MinLimit [%.0f]"									<heating>																																							{mqtt="<[broker:myHomeX/GF_FamilyRoom_Stepper_Debug_MinLimit:state:JS(europeanNumber.js):.*]"}
+Number			GF_FamilyRoom_Stepper_MaxLimit							"MaxLimit [%.0f]"									<heating>																																							{mqtt="<[broker:myHomeX/GF_FamilyRoom_Stepper_Debug_MaxLimit:state:JS(europeanNumber.js):.*]"}
+Number			GF_FamilyRoom_Stepper_UpLimitProbe						"UpLimitProbe [%.0f]"								<heating>																																							{mqtt="<[broker:myHomeX/GF_FamilyRoom_Stepper_Debug_UpLimitProbe (LOW active):state:JS(europeanNumber.js):.*]"}
+Number			GF_FamilyRoom_Stepper_DownLimitProbe					"DownLimitProbe [%.0f]"								<heating>																																							{mqtt="<[broker:myHomeX/GF_FamilyRoom_Stepper_Debug_DownLimitProbe (LOW active):state:JS(europeanNumber.js):.*]"}
+Number			GF_FamilyRoom_Stepper_RealUpLimitProbe					"RealUpLimitProbe [%.0f]"							<heating>																																							{mqtt="<[broker:myHomeX/GF_FamilyRoom_Stepper_Debug_RealUpLimitProbe (LOW active):state:JS(europeanNumber.js):.*]"}
+Number			GF_FamilyRoom_Stepper_RealDownLimitProbe				"RealDownLimitProbe [%.0f]"							<heating>																																							{mqtt="<[broker:myHomeX/GF_FamilyRoom_Stepper_Debug_RealDownLimitProbe (LOW active):state:JS(europeanNumber.js):.*]"}
+Number			GF_FamilyRoom_Stepper_Millis							"Millis [%.0f]"										<heating>																																							{mqtt="<[broker:myHomeX/GF_FamilyRoom_Stepper_Debug_Millis:state:JS(europeanNumber.js):.*]"}
 
 
 ////////////////////////////////////////////////////////////////////////////////

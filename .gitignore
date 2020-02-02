@@ -6,3 +6,4 @@ src/conf/deploy/Dockerfile
 *.STL
 3d/export
 3d/import
+*.presence

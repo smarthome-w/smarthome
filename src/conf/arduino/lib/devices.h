@@ -51,6 +51,7 @@
 //#define BedroomRollershutter
 //#define TestRoom
 //#define TestRelay
+#define TestStepper
 
 #ifdef KitchenLED
 #define fName "GF_Kitchen_LED_Relay"
@@ -312,4 +313,23 @@ const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHomeX";
 const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define GLOBAL_MQTT_SUBSCRIBE_PREFIX "myHomeX/FF_Bedroom_Rollershutter"
 #endif
+#endif
+
+#ifdef TestStepper
+#define fName "GF_FamilyRoom_Stepper"
+#define WIFIIP 62
+#define messagePrefix "myHomeX"
+#define STEPPER_UP_MARIGIN_VALUE 0
+#define STEPPER_MAXIMUM_RANGE_VALUE 100
+#define LOOP_DELAY_VALUE 0
+#define STEPPER_UP 2500
+#define STEPPER_DOWN 500
+#define CURRENT_DIRECTION_UP (-100.0 / 2000.0)
+#define CURRENT_DIRECTION_DOWN (100.0 / 2000.0)
+#define fStepperMotor
+#define fMQTTInput
+#define fMQTTOutput
+const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHomeX";
+const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
+#define GLOBAL_MQTT_SUBSCRIBE_PREFIX "myHomeX/GF_FamilyRoom_Stepper"
 #endif

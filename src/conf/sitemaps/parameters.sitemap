@@ -16,7 +16,8 @@ sitemap parameters label="Parameters" {
       Setpoint item=HH_Elevation_Dawn minValue=-10 maxValue=10 step=1
       
       Setpoint item=HH_Night_Bedroom_Blind_Level minValue=0 maxValue=100 step=5
-
+    }
+    Frame label="Logging" icon="firstfloor" {
       Selection item=HH_DebugLevel_PIRCIR mappings=[
                                           1.0="FATAL",
                                           2.0="ERROR",

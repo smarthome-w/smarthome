@@ -1,11 +1,15 @@
 sitemap charts_sensors_day label="Sensors (daily)" {
-    Frame label="Sensors today" icon="firstfloor" {
+    Frame label="Sensors (daily)" icon="firstfloor" {
         Chart item=gSensorTemperature period=D label="Temperature"
-        Chart item=gSensorPressure period=D label="Pressure"
         Chart item=gSensorHumidity period=D label="Humidity"
+        Chart item=GF_FamilyRoom_Pressure_Sensor period=D label="Pressure"
     }
 
     Frame label="Brightness (daily)" icon="firstfloor" {
-        Chart item=gSensorAnalog period=D label="Brightness"
+        Chart item=gSensorBrightness period=D label="Brightness"
+    }
+
+    Frame label="Astro (daily)" icon="firstfloor" {
+        Chart item=gAstroBrightness period=D label="Astro"
     }
 }

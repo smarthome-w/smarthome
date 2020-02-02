@@ -19,6 +19,7 @@
 #include "lib/analog.h"
 #include "lib/relay.h"
 #include "lib/rollershutter.h"
+#include "lib/stepper.h"
 
 void setup() {
   Serial.begin(9600);
@@ -33,6 +34,9 @@ void setup() {
 
   #ifdef watchdog_h
     initializeWatchdog();
+  #endif
+  #ifdef fStepperMotor
+    initializeStepperMotor();
   #endif
   #ifdef fDitigalInput
     initializeDigitalInput();
@@ -118,13 +122,19 @@ void loop() {
   #ifdef fRollershutter
     processServo();
   #endif
+  #ifdef fStepperMotor
+    processStepperMotor();
+  #endif
   #ifdef fMQTTInput
     processMQTTInput();
   #endif
   // loop for rollershutter is shorter due to proper PWM modulation
   #ifndef fRollershutter
+  #ifndef fStepperMotor
   delay(100);
+  #endif
   #else
   delay(5);
   #endif
+//  makeStep();
 }
