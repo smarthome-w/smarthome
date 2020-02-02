@@ -1,11 +1,11 @@
 sitemap charts_power_day label="Power consumption (daily)" {
     Frame label="Power meter" icon="firstfloor" {
         Text item=GF_PowerMeter_Total
-        Text item=GF_PowerMeter_Current
+        Text item=GF_PowerMeter_Current_In_Watts
 //        Text item=GF_PowerMeter_DailyConsumption
     }
     Frame label="Power meter today" icon="firstfloor" {
         Chart item=GF_PowerMeter_Total period=D label="Counter"
-        Chart item=GF_PowerMeter_Current period=D label="Power"
+        Chart item=GF_PowerMeter_Current_In_Watts period=D label="Power"
     }
 }

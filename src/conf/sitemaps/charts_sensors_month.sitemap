@@ -1,0 +1,15 @@
+sitemap charts_sensors_month label="Sensors (monthly)" {
+    Frame label="Sensors (monthly)" icon="firstfloor" {
+        Chart item=gSensorTemperature period=M label="Temperature"
+        Chart item=gSensorHumidity period=M label="Humidity"
+        Chart item=GF_FamilyRoom_Pressure_Sensor period=M label="Pressure"
+    }
+
+    Frame label="Brightness (monthly)" icon="firstfloor" {
+        Chart item=gSensorBrightness period=M label="Brightness"
+    }
+
+    Frame label="Astro (monthly)" icon="firstfloor" {
+        Chart item=gAstroBrightness period=M label="Astro"
+    }
+}

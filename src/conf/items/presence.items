@@ -1,0 +1,4 @@
+Contact	Presence_Waldek	"Presence Waldek"	<lock>	(gPresence, gPersistenceSwitch)		{mqtt="<[broker:presence/waldek:state:default]"}
+Contact	Presence_Aldona	"Presence Aldona"	<lock>	(gPresence, gPersistenceSwitch)		{mqtt="<[broker:presence/aldona:state:default]"}
+Contact	Presence_Alice	"Presence Alice"	<lock>	(gPresence, gPersistenceSwitch)		{mqtt="<[broker:presence/alice:state:default]"}
+Contact	Presence_Ann	"Presence Ann"  	<lock>	(gPresence, gPersistenceSwitch)		{mqtt="<[broker:presence/ann:state:default]"}

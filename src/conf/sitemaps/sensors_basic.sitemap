@@ -51,4 +51,14 @@ sitemap sensors_basic label="Status" {
                                             YELLOW="Yellow"
                                             ]
     }
+    Frame label="Presence" icon="groundfloor" {
+        Switch item=Presence_Waldek mappings=[CLOSED="Present", OPEN="Absent"]
+        Switch item=Presence_Aldona mappings=[CLOSED="Present", OPEN="Absent"]
+        Switch item=Presence_Ann mappings=[CLOSED="Present", OPEN="Absent"]
+        Switch item=Presence_Alice mappings=[CLOSED="Present", OPEN="Absent"]
+        Chart item=Presence_Waldek period=D label="Waldek"
+        Chart item=Presence_Aldona period=D label="Aldona"
+        Chart item=Presence_Ann period=D label="Ann"
+        Chart item=Presence_Alice period=D label="Alice"
+    }
 }

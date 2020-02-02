@@ -24,7 +24,7 @@ openhab-init:
 	@sudo groupmod -g 9001 openhab
 
 openhab-core:
-	@sudo apt-get install mariadb-client mariadb-server mosquitto mosquitto-clients moreutils -y
+	@sudo apt-get install mariadb-client mariadb-server mosquitto mosquitto-clients moreutils nmap -y
 ifeq ($(OS_PLATFORM),armhf)
 	@sudo apt install docker.io docker-compose -y
 endif

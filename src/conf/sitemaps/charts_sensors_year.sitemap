@@ -1,9 +1,13 @@
-sitemap charts_sensors_year label="Sensors (monthly)" {
-    Frame label="Sensors (monthly)" icon="firstfloor" {
-        Chart item=gSensorExternalTemperature period=M label="Temperature"
+sitemap charts_sensors_year label="Sensors (year)" {
+    Frame label="Sensors (year)" icon="firstfloor" {
+        Chart item=gSensorExternalTemperature period=Y label="Temperature"
     }
 
-    Frame label="Brightness (monthly)" icon="firstfloor" {
-        Chart item=gSensorAnalog period=M label="Brightness"
+    Frame label="Brightness (year)" icon="firstfloor" {
+        Chart item=gSensorBrightness period=Y label="Brightness"
+    }
+
+    Frame label="Astro (year)" icon="firstfloor" {
+        Chart item=gAstroBrightness period=Y label="Astro"
     }
 }

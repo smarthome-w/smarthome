@@ -1,11 +1,15 @@
 sitemap charts_sensors_week label="Sensors (weekly)" {
-    Frame label="Sensory tydzień" icon="firstfloor" {
+    Frame label="Sensors (weekly)" icon="firstfloor" {
         Chart item=gSensorTemperature period=W label="Temperature"
         Chart item=gSensorHumidity period=W label="Humidity"
-        Chart item=gSensorPressure period=W label="Pressure"
+        Chart item=GF_FamilyRoom_Pressure_Sensor period=W label="Pressure"
     }
 
     Frame label="Brightness (weekly)" icon="firstfloor" {
-        Chart item=gSensorAnalog period=W label="Brightness"
+        Chart item=gSensorBrightness period=W label="Brightness"
+    }
+
+    Frame label="Astro (weekly)" icon="firstfloor" {
+        Chart item=gAstroBrightness period=W label="Astro"
     }
 }
