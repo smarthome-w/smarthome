@@ -47,11 +47,11 @@
 //#define FamilyRoom
 //#define TechnicalRoom1
 //#define TechnicalRoom2
-//#define FamilyRoomRollershutter
+#define FamilyRoomRollershutter
 //#define BedroomRollershutter
 //#define TestRoom
 //#define TestRelay
-#define TestStepper
+//#define TestStepper
 
 #ifdef KitchenLED
 #define fName "GF_Kitchen_LED_Relay"

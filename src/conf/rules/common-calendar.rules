@@ -101,7 +101,7 @@ then
       calendar_SupportingLight.sendCommand(OFF)
     }
 
-    if (calendar_SupportingLight.state.toString() == "ON" && hourOfDay < 23 && hourOfDay > 8) {
+    if (calendar_SupportingLight.state.toString() == "ON" && hourOfDay < 22 && hourOfDay > 8) {
       calendar_SupportingBedroomLight.sendCommand(ON)
     } else {
       calendar_SupportingBedroomLight.sendCommand(OFF)
@@ -136,7 +136,7 @@ then
     var elevationDawn = 6
     var dawnLevel = 724
     if (HH_Elevation_Dawn.state !== NULL) {
-      elevationDusk = HH_Elevation_Dawn.state as Number
+      elevationDawn = HH_Elevation_Dawn.state as Number
     }
     if (HH_Light_Dawn_Level.state !== NULL) {
       dawnLevel = (HH_Light_Dawn_Level.state as Number).intValue
