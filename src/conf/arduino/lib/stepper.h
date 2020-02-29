@@ -273,6 +273,25 @@ void processStepperMotor() {
       digitalWrite(steppers[iix].enablePin, HIGH); // disable driver
     }
 
+    boolean currMoveInProgress = ((oldPosition - STEPPER_CURR_POS) != 0);
+    if (prevMoveInProgress && !currMoveInProgress) {
+      // stepper was stopped during the cycle
+
+      // correct to <0,100> for OpenHAB dimmer
+      if (STEPPER_CURR_POS > 100) {
+        STEPPER_CURR_POS = 100;
+      }
+      if (STEPPER_CURR_POS < 0) {
+        STEPPER_CURR_POS = 0;
+      }
+      sendPositionMQTTMessage(String(STEPPER_CURR_POS));
+      isDebug = true; // send debug messages if move is ended
+    }
+
+    if (currentDirection != 0.0) {
+      delay(LOOP_DELAY_VALUE);
+    }
+
     if (isDebug) {
       Serial.println("Send debug messages");
       sendDebugMQTTMessage("messageValue", String(messageValue));
@@ -290,23 +309,6 @@ void processStepperMotor() {
       sendDebugMQTTMessage("Millis", String(millis()));
     }
 
-    boolean currMoveInProgress = ((oldPosition - STEPPER_CURR_POS) != 0);
-    if (prevMoveInProgress && !currMoveInProgress) {
-      // stepper was stopped during the cycle
-
-      // correct to <0,100> for OpenHAB dimmer
-      if (STEPPER_CURR_POS > 100) {
-        STEPPER_CURR_POS = 100;
-      }
-      if (STEPPER_CURR_POS < 0) {
-        STEPPER_CURR_POS = 0;
-      }
-      sendPositionMQTTMessage(String(STEPPER_CURR_POS));
-    }
-
-    if (currentDirection != 0.0) {
-      delay(LOOP_DELAY_VALUE);
-    }
     prevMoveInProgress = currMoveInProgress;
   }
 }
