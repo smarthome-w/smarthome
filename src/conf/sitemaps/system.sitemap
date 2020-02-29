@@ -34,6 +34,7 @@ sitemap system label="System" {
       Group item=gEQ3Temp
       Group item=gEQ3Valve
       Group item=gSensorPower
+      Group item=gHeartbeat
     }
     Frame label="Lock" icon="firstfloor" {
       Switch item=CIR_GF_MainLock mappings=[CLOSED="Closed", OPEN="Open"]
