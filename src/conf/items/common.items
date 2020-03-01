@@ -15,10 +15,10 @@ String		Astro_Zodiac_Sign				"Zodiac [MAP(zodiac_pl.map):%s]"					<zodiac>						
 ////////////////////////////////////////////////////////////////////////////////
 //                       Server
 ////////////////////////////////////////////////////////////////////////////////
-Number		Server_Temperature				"Server temperature [%.0f \u00b0C]"					<temperature>	(gHardwareTemperature, gPersistenceSensor)		{mqtt="<[broker:myHome/serverTemperature:state:JS(europeanNumber.js):.*]"}
-String		Server_CPUIdle					"Server idle [%s %%]"																								{mqtt="<[broker:myHome/serverIdle:state:JS(string.js):.*]"}
-String		Server_Uptime					"Server uptime [%s]"								<time>															{mqtt="<[broker:myHome/serverUptime:state:JS(string.js):.*]"}
-String		Server_LastRead					"Server last read [%s]"								<time>															{mqtt="<[broker:myHome/lastReadServer:state:JS(string.js):.*]"}
+Number		Server_Temperature				"Server temperature [%.0f \u00b0C]"					<temperature>	(gHardwareTemperature, gPersistenceSensor)		{channel="mqtt:topic:MyMQTTBroker:Server:Temperature"}
+String		Server_CPUIdle					"Server idle [%s %%]"																								{channel="mqtt:topic:MyMQTTBroker:Server:Idle"}
+String		Server_Uptime					"Server uptime [%s]"								<time>															{channel="mqtt:topic:MyMQTTBroker:Server:Uptime"}
+String		Server_LastRead					"Server last read [%s]"								<time>															{channel="mqtt:topic:MyMQTTBroker:Server:LastRead"}
 DateTime	OpenHAB_Restart					"Last OpenHAB restart [%1$td.%1$tm %1$tH:%1$tM]"	<time>			(gLastUpdate, gPersistenceSwitch)
 
 

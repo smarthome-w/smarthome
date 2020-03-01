@@ -1,7 +1,9 @@
 [Unit]
 Description=openHAB 2
-Requires=docker.service mariadb.service mosquitto.service
-After=docker.service mariadb.service mosquitto.service
+Requires=docker.service
+After=docker.service
+#Requires=docker.service mariadb.service mosquitto.service
+#After=docker.service mariadb.service mosquitto.service
 
 [Service]
 Restart=always
