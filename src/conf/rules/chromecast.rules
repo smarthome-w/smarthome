@@ -1,0 +1,17 @@
+rule "say_main_lock_unlocked_rule"
+when
+  Time cron "0 */5 23 ? * MON-SUN" or Item DebugButton received update
+then
+  logError("Chromecast", "Main lock unlocked - trigger")
+  if (CIR_GF_MainLock.state.toString() == "OPEN") {
+
+    // For local only http because of untrusted certificate
+    val mainLockUnlockedURI = "http://192.168.0.4/static/sounds/main_lock_is_unlocked.mp3"
+    // val mainLockUnlockedURI = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+
+    logError("Chromecast", "Main lock unlocked - play - {}", mainLockUnlockedURI)
+    FamilyRoomChromecastMediaURI.sendCommand(mainLockUnlockedURI)
+    BedroomChromecastMediaURI.sendCommand(mainLockUnlockedURI)
+    logError("Chromecast", "Main lock unlocked - end - {}", mainLockUnlockedURI)
+  }
+end
