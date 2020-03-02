@@ -1,0 +1,2 @@
+Thing chromecast:chromecast:bedroom "Google Home in bedroom" [ipAddress="192.168.0.103", port=8009]
+Thing chromecast:chromecast:familyroom "Google Home in family room" [ipAddress="192.168.0.165", port=8009]
