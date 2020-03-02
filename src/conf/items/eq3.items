@@ -1,3 +1,7 @@
+////////////////////////////////////////////////////////////////////////////////
+//                       Valves
+////////////////////////////////////////////////////////////////////////////////
+
 String		EQ3_Bedroom					"Bedroom EQ3 [Bedroom: %s]"				<settings>		(gEQ3)													{channel="mqtt:topic:MyMQTTBroker:EQ3:EQ3Bedroom"}
 String		EQ3_FamilyRoom				"FamilyRoom EQ3 [FamilyRoom: %s]"		<settings>		(gEQ3)													{channel="mqtt:topic:MyMQTTBroker:EQ3:EQ3FamilyRoom"}
 String		EQ3_AliceRoom				"AliceRoom EQ3 [AliceRoom: %s]"			<settings>		(gEQ3)													{channel="mqtt:topic:MyMQTTBroker:EQ3:EQ3AliceRoom"}

@@ -17,6 +17,8 @@ int STEP_CURR_POS = 0;
 int STEPPER_MAXIMUM_RANGE = STEPPER_MAXIMUM_RANGE_VALUE;
 int STEPPER_UP_MARIGIN = STEPPER_UP_MARIGIN_VALUE;
 
+#define STEPPER_READ_INTERVAL_MILLIS 60000
+int StepperLastReadInMillis = 0;
 const int STEPPERS = 1;
 
 struct stepper {
@@ -286,8 +288,13 @@ void processStepperMotor() {
       }
       sendPositionMQTTMessage(String(STEPPER_CURR_POS));
       isDebug = true; // send debug messages if move is ended
+    } else {
+      if (abs(millis() - StepperLastReadInMillis) >
+          STEPPER_READ_INTERVAL_MILLIS) {
+        isDebug = true;
+        StepperLastReadInMillis = millis();
+      }
     }
-
     if (currentDirection != 0.0) {
       delay(LOOP_DELAY_VALUE);
     }

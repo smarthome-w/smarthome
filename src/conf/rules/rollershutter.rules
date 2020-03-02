@@ -16,6 +16,7 @@ then
       lastupdate_item.postUpdate(now.toString())
       //logInfo("rollershutter", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
     }
+    if (logLevel == 1) {}
   } catch (Throwable t) {
     logError("Error", "Error in rollershutter_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
@@ -37,6 +38,7 @@ then
           logInfo("dailytrigger", "Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)
         }
     }
+    if (logLevel == 1) {}
   } catch (Throwable t) {
     logError("Error", "Error in rollershutter_down_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
@@ -60,6 +62,7 @@ then
           }
         }
     }
+    if (logLevel == 1) {}
   } catch (Throwable t) {
     logError("Error", "Error in rollershutter_up_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {

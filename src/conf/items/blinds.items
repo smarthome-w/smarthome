@@ -1,0 +1,60 @@
+////////////////////////////////////////////////////////////////////////////////
+//                       Rollershutters
+////////////////////////////////////////////////////////////////////////////////
+Switch			GF_FamilyRoom_Rollershutter_Expert_Mode			"Expert mode[]"
+Dimmer			GF_FamilyRoom_Rollershutter_Dimmer				"Window  [%.1f %%]"			<heating>	(gRollershutter_Dimmer)								["Lighting"]	{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:Dimmer_"}
+Rollershutter	GF_FamilyRoom_Rollershutter						"Family room - blind [%s]"				(GF_FamilyRoom, gRollershutter, gPersistenceSwitch)					{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:Rollershutter_"}
+//DateTime		GF_FamilyRoom_Rollershutter_LastUpdate					"Family room - blind [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateRollershutter, gPersistenceSwitch)
+Switch			GF_FamilyRoom_Rollershutter_PrgUp				"Family room - prg up[]"				(GF_FamilyRoom, gRollershutter)										{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:PrgUp"}
+Switch			GF_FamilyRoom_Rollershutter_PrgDown				"Family room - prg down[]"				(GF_FamilyRoom, gRollershutter)										{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:PrgDown"}
+Switch			GF_FamilyRoom_Rollershutter_AutoUp				"Rollershutter up[]"					(GF_FamilyRoom, gRollershutter)										{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:AutoUp"}
+Switch			GF_FamilyRoom_Rollershutter_AutoDown			"Rollershutter down[]"					(GF_FamilyRoom, gRollershutter)										{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:AutoDown"}
+Switch			GF_FamilyRoom_Rollershutter_AutoStop			"Rollershutter stop[]"					(GF_FamilyRoom, gRollershutter)										{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:AutoStop"}
+Switch			GF_FamilyRoom_Rollershutter_Debug				"Rollershutter debug[]"					(GF_FamilyRoom, gRollershutter)										{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:Debug"}
+Number			GF_FamilyRoom_Rollershutter_CurrPos				"Position [%.1f]"			<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugCurrPos"}
+Number			GF_FamilyRoom_Rollershutter_PWMCurrPos			"PWM Position [%.0f]"		<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugPWMCurrPos"}
+Number			GF_FamilyRoom_Rollershutter_MinLimit			"MinLimit [%.0f]"			<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugMinLimit"}
+Number			GF_FamilyRoom_Rollershutter_MaxLimit			"MaxLimit [%.0f]"			<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugMaxLimit"}
+Number			GF_FamilyRoom_Rollershutter_UpLimitProbe		"UpLimitProbe [%.0f]"		<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugUpLimitProbe"}
+Number			GF_FamilyRoom_Rollershutter_DownLimitProbe		"DownLimitProbe [%.0f]"		<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugDownLimitProbe"}
+Number			GF_FamilyRoom_Rollershutter_RealUpLimitProbe	"RealUpLimitProbe [%.0f]"	<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugRealUpLimitProbe"}
+Number			GF_FamilyRoom_Rollershutter_RealDownLimitProbe	"RealDownLimitProbe [%.0f]"	<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugRealDownLimitProbe"}
+Number			GF_FamilyRoom_Rollershutter_Millis				"Millis [%.0f]"				<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugMillis"}
+Switch			FF_Bedroom_Rollershutter_Expert_Mode			"Expert mode"
+Dimmer			FF_Bedroom_Rollershutter_Dimmer					"Bedroom window  [%.1f %%]"	<heating>	(gRollershutter_Dimmer)								["Lighting"]	{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Dimmer_"}
+Rollershutter	FF_Bedroom_Rollershutter						"Bedroom - blind [%s]"					(FF_Bedroom, gRollershutter, gPersistenceSwitch)					{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Rollershutter_"}
+//DateTime		FF_Bedroom_Rollershutter_LastUpdate						"Bedroom - blind [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateRollershutter, gPersistenceSwitch)
+Switch			FF_Bedroom_Rollershutter_PrgUp					"Bedroom - prg up[]"					(FF_Bedroom, gRollershutter)										{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:PrgUp"}
+Switch			FF_Bedroom_Rollershutter_PrgDown				"Bedroom - prg down[]"					(FF_Bedroom, gRollershutter)										{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:PrgDown"}
+Switch			FF_Bedroom_Rollershutter_AutoUp					"Rollershutter up[]"					(FF_Bedroom, gRollershutter)										{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:AutoUp"}
+Switch			FF_Bedroom_Rollershutter_AutoDown				"Rollershutter down[]"					(FF_Bedroom, gRollershutter)										{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:AutoDown"}
+Switch			FF_Bedroom_Rollershutter_AutoStop				"Rollershutter stop[]"					(FF_Bedroom, gRollershutter)										{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:AutoStop"}
+Switch			FF_Bedroom_Rollershutter_Debug					"Rollershutter debug[]"					(FF_Bedroom, gRollershutter)										{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Debug"}
+Number			FF_Bedroom_Rollershutter_CurrPos				"Position [%.1f]"			<heating>																		{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugCurrPos"}
+Number			FF_Bedroom_Rollershutter_PWMCurrPos				"PWM Position [%.0f]"		<heating>																		{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugPWMCurrPos"}
+Number			FF_Bedroom_Rollershutter_MinLimit				"MinLimit [%.0f]"			<heating>																		{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugMinLimit"}
+Number			FF_Bedroom_Rollershutter_MaxLimit				"MaxLimit [%.0f]"			<heating>																		{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugMaxLimit"}
+Number			FF_Bedroom_Rollershutter_UpLimitProbe			"UpLimitProbe [%.0f]"		<heating>																		{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugUpLimitProbe"}
+Number			FF_Bedroom_Rollershutter_DownLimitProbe			"DownLimitProbe [%.0f]"		<heating>																		{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugDownLimitProbe"}
+Number			FF_Bedroom_Rollershutter_RealUpLimitProbe		"RealUpLimitProbe [%.0f]"	<heating>																		{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugRealUpLimitProbe"}
+Number			FF_Bedroom_Rollershutter_RealDownLimitProbe		"RealDownLimitProbe [%.0f]"	<heating>																		{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugRealDownLimitProbe"}
+Number			FF_Bedroom_Rollershutter_Millis					"Millis [%.0f]"				<heating>																		{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugMillis"}
+Switch			GF_FamilyRoom_Stepper_Expert_Mode				"Expert mode"
+Dimmer			GF_FamilyRoom_Stepper_Dimmer					"Window  [%.1f %%]"			<heating>	(GF_FamilyRoom, gStepper_Dimmer)					["Lighting"]	{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Dimmer_"}
+Rollershutter	GF_FamilyRoom_Stepper_Rollershutter				"Stepper - blind [%s]"					(FF_Bedroom, gRollershutter, gPersistenceSwitch)					{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Rollershutter_"}
+//DateTime		GF_FamilyRoom_Stepper_LastUpdate					"Family room - blind [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateStepper, gPersistenceSwitch)
+Switch			GF_FamilyRoom_Stepper_PrgUp						"Family room - prg up[]"				(GF_FamilyRoom, gStepper)											{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:PrgUp"}
+Switch			GF_FamilyRoom_Stepper_PrgDown					"Family room - prg down[]"				(GF_FamilyRoom, gStepper)											{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:PrgDown"}
+Switch			GF_FamilyRoom_Stepper_AutoUp					"Stepper up[]"							(GF_FamilyRoom, gStepper)											{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:AutoUp"}
+Switch			GF_FamilyRoom_Stepper_AutoDown					"Stepper down[]"						(GF_FamilyRoom, gStepper)											{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:AutoDown"}
+Switch			GF_FamilyRoom_Stepper_AutoStop					"Stepper stop[]"						(GF_FamilyRoom, gStepper)											{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:AutoStop"}
+Switch			GF_FamilyRoom_Stepper_Debug						"Stepper debug[]"						(GF_FamilyRoom, gStepper)											{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Debug"}
+Number			GF_FamilyRoom_Stepper_CurrPos					"Position [%.1f]"			<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:DebugCurrPos"}
+Number			GF_FamilyRoom_Stepper_StepCurrPos				"Step Position [%.0f]"		<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:DebugStepCurrPos"}
+Number			GF_FamilyRoom_Stepper_MinLimit					"MinLimit [%.0f]"			<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:DebugMinLimit"}
+Number			GF_FamilyRoom_Stepper_MaxLimit					"MaxLimit [%.0f]"			<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:DebugMaxLimit"}
+Number			GF_FamilyRoom_Stepper_UpLimitProbe				"UpLimitProbe [%.0f]"		<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:DebugUpLimitProbe"}
+Number			GF_FamilyRoom_Stepper_DownLimitProbe			"DownLimitProbe [%.0f]"		<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:DebugDownLimitProbe"}
+Number			GF_FamilyRoom_Stepper_RealUpLimitProbe			"RealUpLimitProbe [%.0f]"	<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:DebugRealUpLimitProbe"}
+Number			GF_FamilyRoom_Stepper_RealDownLimitProbe		"RealDownLimitProbe [%.0f]"	<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:DebugRealDownLimitProbe"}
+Number			GF_FamilyRoom_Stepper_Millis					"Millis [%.0f]"				<heating>																		{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:DebugMillis"}
