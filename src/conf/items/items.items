@@ -107,15 +107,15 @@ DateTime		FF_BathRoom_Light_Mirror_LastUpdate						"Bathroom led [%1$td.%1$tm %1
 ////////////////////////////////////////////////////////////////////////////////
 //                       Raw RTV
 ////////////////////////////////////////////////////////////////////////////////
-Switch			RTV_TV_TV												"Screen"											<screen>		(GF_FamilyRoom, gIRB, gRawRTV)																				["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Broadlink:RTV_TV_TV"}
-Switch			RTV_TV_UPC												"UPC"												<projector>		(GF_FamilyRoom, gIRB, gRawRTV)																				["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Broadlink:RTV_TV_UPC"}
-Switch			RTV_TV_DVD												"DVD"												<receiver>		(GF_FamilyRoom, gIRB, gRawRTV)
-Switch			RTV_TV_XBOX												"XBox"												<screen>		(GF_FamilyRoom, gIRB, gRawRTV)																				["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Broadlink:RTV_TV_XBOX"}
-String			RTV_TV_Input											"Television"										<projector>		(GF_FamilyRoom, gSony, gPersistenceSwitch)																	["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:RTV_TV_Input"}
-//Switch			RTV_TV_CONFIRM											"Confirm"											<screen>		(GF_FamilyRoom, gSony)
-Switch			RTV_VOLUME_UP											"Volume Up"															(GF_FamilyRoom, gSony)																						["Switchable"]
-Switch			RTV_VOLUME_DOWN											"Volume Down"														(GF_FamilyRoom, gSony)																						["Switchable"]
-Switch			RTV_VOLUME_MUTE											"Mute"																(GF_FamilyRoom, gSony)																						["Switchable"]
+Switch			RTV_TV_TV												"Screen[]"											<screen>		(GF_FamilyRoom, gIRB, gRawRTV)																				["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Broadlink:RTV_TV_TV"}
+Switch			RTV_TV_UPC												"UPC[]"												<projector>		(GF_FamilyRoom, gIRB, gRawRTV)																				["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Broadlink:RTV_TV_UPC"}
+Switch			RTV_TV_DVD												"DVD[]"												<receiver>		(GF_FamilyRoom, gIRB, gRawRTV)
+Switch			RTV_TV_XBOX												"XBox[]"											<screen>		(GF_FamilyRoom, gIRB, gRawRTV)																				["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Broadlink:RTV_TV_XBOX"}
+String			RTV_TV_Input											"Television[]"										<projector>		(GF_FamilyRoom, gSony, gPersistenceSwitch)																	["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:RTV_TV_Input"}
+//Switch			RTV_TV_CONFIRM											"Confirm[]"											<screen>		(GF_FamilyRoom, gSony)
+Switch			RTV_VOLUME_UP											"Volume Up[]"														(GF_FamilyRoom, gSony)																						["Switchable"]
+Switch			RTV_VOLUME_DOWN											"Volume Down[]"														(GF_FamilyRoom, gSony)																						["Switchable"]
+Switch			RTV_VOLUME_MUTE											"Mute[]"															(GF_FamilyRoom, gSony)																						["Switchable"]
 
 
 
@@ -227,9 +227,9 @@ Switch			FF_Bedroom_Rollershutter_Expert_Mode					"Expert mode"
 Dimmer			FF_Bedroom_Rollershutter_Dimmer							"Bedroom window  [%.1f %%]"							<heating>		(gRollershutter_Dimmer)																						["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Dimmer_"}
 Rollershutter	FF_Bedroom_Rollershutter								"Bedroom - blind [%s]"												(FF_Bedroom, gRollershutter, gPersistenceSwitch)																									{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Rollershutter_"}
 //DateTime		FF_Bedroom_Rollershutter_LastUpdate						"Bedroom - blind [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateRollershutter, gPersistenceSwitch)
-Switch			FF_Bedroom_Rollershutter_PrgUp							"Bedroom - prg up[]"													(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:PrgUp"}
+Switch			FF_Bedroom_Rollershutter_PrgUp							"Bedroom - prg up[]"												(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:PrgUp"}
 Switch			FF_Bedroom_Rollershutter_PrgDown						"Bedroom - prg down[]"												(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:PrgDown"}
-Switch			FF_Bedroom_Rollershutter_AutoUp							"Rollershutter up[]"													(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:AutoUp"}
+Switch			FF_Bedroom_Rollershutter_AutoUp							"Rollershutter up[]"												(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:AutoUp"}
 Switch			FF_Bedroom_Rollershutter_AutoDown						"Rollershutter down[]"												(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:AutoDown"}
 Switch			FF_Bedroom_Rollershutter_AutoStop						"Rollershutter stop[]"												(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:AutoStop"}
 Switch			FF_Bedroom_Rollershutter_Debug							"Rollershutter debug[]"												(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Debug"}
@@ -246,12 +246,12 @@ Switch			GF_FamilyRoom_Stepper_Expert_Mode						"Expert mode"
 Dimmer			GF_FamilyRoom_Stepper_Dimmer							"Window  [%.1f %%]"									<heating>		(GF_FamilyRoom, gStepper_Dimmer)																			["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Dimmer_"}
 Rollershutter	GF_FamilyRoom_Stepper_Rollershutter						"Stepper - blind [%s]"												(FF_Bedroom, gRollershutter, gPersistenceSwitch)																									{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Rollershutter_"}
 //DateTime		GF_FamilyRoom_Stepper_LastUpdate					"Family room - blind [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateStepper, gPersistenceSwitch)
-Switch			GF_FamilyRoom_Stepper_PrgUp								"Family room - prg up[]"												(GF_FamilyRoom, gStepper)																															{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:PrgUp"}
+Switch			GF_FamilyRoom_Stepper_PrgUp								"Family room - prg up[]"											(GF_FamilyRoom, gStepper)																															{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:PrgUp"}
 Switch			GF_FamilyRoom_Stepper_PrgDown							"Family room - prg down[]"											(GF_FamilyRoom, gStepper)																															{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:PrgDown"}
 Switch			GF_FamilyRoom_Stepper_AutoUp							"Stepper up[]"														(GF_FamilyRoom, gStepper)																															{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:AutoUp"}
-Switch			GF_FamilyRoom_Stepper_AutoDown							"Stepper down[]"														(GF_FamilyRoom, gStepper)																															{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:AutoDown"}
-Switch			GF_FamilyRoom_Stepper_AutoStop							"Stepper stop[]"														(GF_FamilyRoom, gStepper)																															{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:AutoStop"}
-Switch			GF_FamilyRoom_Stepper_Debug								"Stepper debug[]"														(GF_FamilyRoom, gStepper)																															{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Debug"}
+Switch			GF_FamilyRoom_Stepper_AutoDown							"Stepper down[]"													(GF_FamilyRoom, gStepper)																															{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:AutoDown"}
+Switch			GF_FamilyRoom_Stepper_AutoStop							"Stepper stop[]"													(GF_FamilyRoom, gStepper)																															{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:AutoStop"}
+Switch			GF_FamilyRoom_Stepper_Debug								"Stepper debug[]"													(GF_FamilyRoom, gStepper)																															{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Debug"}
 Number			GF_FamilyRoom_Stepper_CurrPos							"Position [%.1f]"									<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:DebugCurrPos"}
 Number			GF_FamilyRoom_Stepper_StepCurrPos						"Step Position [%.0f]"								<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:DebugStepCurrPos"}
 Number			GF_FamilyRoom_Stepper_MinLimit							"MinLimit [%.0f]"									<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:DebugMinLimit"}
@@ -314,21 +314,21 @@ String			GF_Corridor_Light_LED_Heartbeat							"Corridor led [%s]"													(
 String			GF_Kitchen_LED_Heartbeat								"Kitchen led [%s]"													(GF_Corridor, gHeartbeat)																															{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:HeartbeatKitchenLED"}
 DateTime		GF_Corridor_Light_LED_Heartbeat_LastUpdate				"Corridor led [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 DateTime		GF_Kitchen_LED_Heartbeat_LastUpdate						"Kitchen led [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch			GF_Corridor_Light_LED_Heartbeat_LastUpdate_Error		"Sonoff Corridor led"								<time>			(gErrors, gPersistenceSwitch)
-Switch			GF_Kitchen_LED_Heartbeat_LastUpdate_Error				"Sonoff Kitchen"									<time>			(gErrors, gPersistenceSwitch)
+Switch			GF_Corridor_Light_LED_Heartbeat_LastUpdate_Error		"Sonoff Corridor led[]"								<time>			(gErrors, gPersistenceSwitch)
+Switch			GF_Kitchen_LED_Heartbeat_LastUpdate_Error				"Sonoff Kitchen[]"									<time>			(gErrors, gPersistenceSwitch)
 String			GF_Corridor_Storage_Heartbeat							"Corridor shelfs [%s]"												(GF_Corridor, gHeartbeat)																															{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:HeartbeatCorridorStorage"}
 DateTime		GF_Corridor_Storage_Heartbeat_LastUpdate				"Corridor shelfs [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			GF_Corridor_Storage_Heartbeat_LastUpdate_Error			"Sonoff Corridor shelfs"							<time>			(gErrors, gPersistenceSwitch)
 String			FF_Bedroom_Lights_Heartbeat								"Sonoff Bedroom LED[%s]"											(FF_Bedroom, gHeartbeat)																															{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:HeartbeatBedroomRelay"}
 DateTime		FF_Bedroom_Lights_Heartbeat_LastUpdate					"Sonoff Bedroom LED [%1$td.%1$tm %1$tH:%1$tM]"		<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch			FF_Bedroom_Lights_Heartbeat_LastUpdate_Error			"Sonoff Bedroom LED"								<time>			(gErrors, gPersistenceSwitch)
+Switch			FF_Bedroom_Lights_Heartbeat_LastUpdate_Error			"Sonoff Bedroom LED[]"								<time>			(gErrors, gPersistenceSwitch)
 String			FF_Bedroom_Wardobe_Heartbeat							"Sonoff Bedroom wardobe[%s]"										(FF_Bedroom, gHeartbeat)																															{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:HeartbeatBedroomWardobeRelay"}
 DateTime		FF_Bedroom_Wardobe_Heartbeat_LastUpdate					"Sonoff Bedroom wardobe [%1$td.%1$tm %1$tH:%1$tM]"	<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch			FF_Bedroom_Wardobe_Heartbeat_LastUpdate_Error			"Sonoff Bedroom wardobe"							<time>			(gErrors, gPersistenceSwitch)
+Switch			FF_Bedroom_Wardobe_Heartbeat_LastUpdate_Error			"Sonoff Bedroom wardob[]e"							<time>			(gErrors, gPersistenceSwitch)
 String			RGB_Color												"LED color"											<rgb>			(GF_FamilyRoom, gIRRGB, gPersistenceSwitch)																											{channel="mqtt:topic:MyMQTTBroker:Broadlink:RGB_Color"}
-Switch			HardResetButton											"Hard Reset Button"													(gSystem)
-Switch			DebugButton												"Debug Button"														(gSystem)
+Switch			HardResetButton											"Hard Reset Button[]"												(gSystem)
+Switch			DebugButton												"Debug Button[]"													(gSystem)
 String			DebugTarget												"Target [%s]"
 String			DebugMessage											"Message [%s]"
-Switch			DemoMode												"Demo mode"															(gSystem, gPersistenceSwitch)
-Switch			OverallErrorIndicator									"Error indicator"									<heating>		(gSystem, gPersistenceSwitch, gAlert)
+Switch			DemoMode												"Demo mode[]"														(gSystem, gPersistenceSwitch)
+Switch			OverallErrorIndicator									"Error indicator[]"									<heating>		(gSystem, gPersistenceSwitch, gAlert)

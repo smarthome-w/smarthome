@@ -17,6 +17,8 @@ int PWM_CURR_POS = 0;
 int SERVO_MAXIMUM_RANGE = SERVO_MAXIMUM_RANGE_VALUE;
 int SERVO_UP_MARIGIN = SERVO_UP_MARIGIN_VALUE;
 
+#define SERVO_READ_INTERVAL_MILLIS 60000
+int ServoLastReadInMillis = 0;
 const int SERVOS = 1;
 
 struct servo {
@@ -272,6 +274,11 @@ void processServo() {
       }
       sendPositionMQTTMessage(String(SERVO_CURR_POS));
       isDebug = true; // send debug messages if move is ended
+    } else {
+      if (abs(millis() - ServoLastReadInMillis) > SERVO_READ_INTERVAL_MILLIS) {
+        isDebug = true;
+        ServoLastReadInMillis = millis();
+      }
     }
 
     if (currentDirection != 0.0) {

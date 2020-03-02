@@ -62,7 +62,7 @@ Bridge mqtt:broker:MyMQTTBroker [ host="192.168.0.4", port="1883", clientId="myc
       Type contact : CirAnnRoom [stateTopic="myHome/CIR_FF_AnnRoom"]
 
       Type contact : PirGfCorridor [stateTopic="myHome/PIR_GF_Corridor"]
-      Type contact : PirFamilyRoom [stateTopic="myHome/PIR_GF_FamilyRoom"]
+      Type contact  : PirFamilyRoom [stateTopic="myHome/PIR_GF_FamilyRoom"]
       Type contact : PirKitchen [stateTopic="myHome/PIR_GF_Kitchen"]
       Type contact : PirFfCorridor [stateTopic="myHome/PIR_FF_Corridor"]
       Type contact : PirAnnRoom [stateTopic="myHome/PIR_FF_AnnRoom"]
@@ -125,7 +125,7 @@ Bridge mqtt:broker:MyMQTTBroker [ host="192.168.0.4", port="1883", clientId="myc
       Type switch : RTV_TV_XBOX [commandTopic="broadlink/IRB/RTV_TV_XBOX", on="ON", off="OFF" ]
 
       Type string : RGB_Color [commandTopic="broadlink/IRCOLORS/Color", on="ON", off="OFF" ]
-      Type string : HW_RMPro_Heartbeat [commandTopic="broadlink/HEARTBEAT/HW_RMPro_Heartbeat"]
+      Type switch : HW_RMPro_Heartbeat [commandTopic="broadlink/HEARTBEAT/HW_RMPro_Heartbeat", on="ON", off="OFF"]
   }
 
   Thing topic Sony "Sony" {
@@ -144,8 +144,8 @@ Bridge mqtt:broker:MyMQTTBroker [ host="192.168.0.4", port="1883", clientId="myc
       Type switch : GF_Kitchen_LED [stateTopic="myHomeY/GF_Kitchen_LED_Relay", commandTopic="myHomeY/GF_Kitchen_LED_Relay_Command", on="ON", off="OFF" ]
       Type switch : GF_Corridor_LED [stateTopic="myHomeY/GF_Corridor_LED_Relay", commandTopic="myHomeY/GF_Corridor_LED_Relay_Command", on="ON", off="OFF" ]
       Type switch : GF_Corridor_Storage [stateTopic="myHomeY/GF_Corridor_Storage_Relay", commandTopic="myHomeY/GF_Corridor_Storage_Relay_Command", on="ON", off="OFF" ]
-      Type switch : FF_Bedroom_Lights [stateTopic="myHomeY/FF_Bedroom_Lights_Relay", commandTopic="myHomeY/FF_Bedroom_Lights_Relay_Command", on="ON", off="OFF" ]
-      Type switch : FF_Bedroom_Wardobe [stateTopic="myHomeY/FF_Bedroom_Wardobe_Relay", commandTopic="myHomeY/FF_Bedroom_Wardobe_Relay_Command", on="ON", off="OFF" ]
+      Type switch : FF_Bedroom_Lights [stateTopic="myHomeY/FF_Bedroom_LED_Relay", commandTopic="myHomeY/FF_Bedroom_LED_Relay_Command", on="ON", off="OFF" ]
+      Type switch : FF_Bedroom_Wardobe [stateTopic="myHomeY/FF_BedroomWardobe_LED_Relay", commandTopic="myHomeY/FF_BedroomWardobe_LED_Relay_Command", on="ON", off="OFF" ]
   }
 
   Thing topic Shelly "Shelly" {
@@ -201,6 +201,7 @@ Bridge mqtt:broker:MyMQTTBroker [ host="192.168.0.4", port="1883", clientId="myc
 
       Type number : DebugCurrPos [stateTopic="myHomeX/GF_FamilyRoom_Rollershutter_Debug_CurrPos"]
       Type number : DebugPWMCurrPos [stateTopic="myHomeX/GF_FamilyRoom_Rollershutter_Debug_PWMCurrPos"]
+      Type number : DebugStepCurrPos [stateTopic="myHomeX/GF_FamilyRoom_Rollershutter_Debug_StepCurrPos"]
 
       Type number : DebugMinLimit [stateTopic="myHomeX/GF_FamilyRoom_Rollershutter_Debug_MinLimit"]
       Type number : DebugMaxLimit [stateTopic="myHomeX/GF_FamilyRoom_Rollershutter_Debug_MaxLimit"]
@@ -224,6 +225,7 @@ Bridge mqtt:broker:MyMQTTBroker [ host="192.168.0.4", port="1883", clientId="myc
 
       Type number : DebugCurrPos [stateTopic="myHomeX/FF_Bedroom_Rollershutter_Debug_CurrPos"]
       Type number : DebugPWMCurrPos [stateTopic="myHomeX/FF_Bedroom_Rollershutter_Debug_PWMCurrPos"]
+      Type number : DebugStepCurrPos [stateTopic="myHomeX/FF_Bedroom_Rollershutter_Debug_StepCurrPos"]
 
       Type number : DebugMinLimit [stateTopic="myHomeX/FF_Bedroom_Rollershutter_Debug_MinLimit"]
       Type number : DebugMaxLimit [stateTopic="myHomeX/FF_Bedroom_Rollershutter_Debug_MaxLimit"]
@@ -244,9 +246,10 @@ Bridge mqtt:broker:MyMQTTBroker [ host="192.168.0.4", port="1883", clientId="myc
       Type switch : AutoDown  [commandTopic="myHomeX/GF_FamilyRoom_Stepper", on="AUTODOWN"]
       Type switch : PrgUp  [commandTopic="myHomeX/GF_FamilyRoom_Stepper", on="PRGUP"]
       Type switch : PrgDown  [commandTopic="myHomeX/GF_FamilyRoom_Stepper", on="PRGDOWN"]
-
+                                            
       Type number : DebugCurrPos [stateTopic="myHomeX/GF_FamilyRoom_Stepper_Debug_CurrPos"]
       Type number : DebugPWMCurrPos [stateTopic="myHomeX/GF_FamilyRoom_Stepper_Debug_PWMCurrPos"]
+      Type number : DebugStepCurrPos [stateTopic="myHomeX/GF_FamilyRoom_Stepper_Debug_StepCurrPos"]
 
       Type number : DebugMinLimit [stateTopic="myHomeX/GF_FamilyRoom_Stepper_Debug_MinLimit"]
       Type number : DebugMaxLimit [stateTopic="myHomeX/GF_FamilyRoom_Stepper_Debug_MaxLimit"]

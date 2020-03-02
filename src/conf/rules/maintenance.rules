@@ -15,4 +15,5 @@ then
   logError("hardreset_rule", "HardReset detected")
   var String command = "/openhab/conf/scripts/forkbomb"
   var result = executeCommandLine (command, 15000)
+  if (result == "") {}
 end

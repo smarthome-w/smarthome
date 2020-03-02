@@ -4,7 +4,7 @@
 Contact		CIR_GF_MainDoor							"CIR Entry []"										<frontdoor>		(GF_Corridor, gCIR, gSlack, gPersistenceSwitch)																	{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirMainDoor"}
 Contact		CIR_GF_MainLock							"Front door []"										<lock>			(GF_Corridor, gCIR, gSlack, gPersistenceSwitch)																	{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:MainLock"}
 Switch		HH_FrontDoorSwitch						"Front door []"										<lock>			(GF_Corridor, gPersistenceSwitch)										["Lock"]
-Contact		CIR_GF_FamilyRoom						"CIR Family room"									<window>		(GF_FamilyRoom, gCIR, gPersistenceSwitch)																		{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirFamilyRoom"}
+Contact		CIR_GF_FamilyRoom						"CIR Family room[]"									<window>		(GF_FamilyRoom, gCIR, gPersistenceSwitch)																		{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirFamilyRoom"}
 Contact		CIR_GF_FamilyBalcony					"CIR Balcony []"									<window>		(GF_FamilyRoom, gCIR, gPersistenceSwitch)																		{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirFamilyBalcony"}
 Contact		CIR_GF_Kitchen							"CIR Kitchen []"									<window>		(GF_Kitchen, gCIR, gPersistenceSwitch)																			{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirKitchen"}
 Contact		CIR_FF_Bedroom							"CIR Bedroom []"									<window>		(FF_Bedroom, gCIR, gPersistenceSwitch)																			{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirBedroom"}
