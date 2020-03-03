@@ -1,10 +1,14 @@
 rule "say_main_lock_unlocked_rule"
 when
-  Time cron "0 */5 23 ? * MON-SUN" or Item DebugButton received update
+  Time cron "0 */5 20-23 ? * MON-SUN" or Item DebugButton received update
 then
-  logError("Chromecast", "Main lock unlocked - trigger")
-  if (CIR_GF_MainLock.state.toString() == "OPEN") {
-
+  var warningHour = 22
+  if (HH_LockWarningHour.state !== NULL) {
+    warningHour = (HH_LockWarningHour.state as Number).intValue
+  }
+  val hourOfDay = now.getHourOfDay as Number
+    
+  if (CIR_GF_MainLock.state.toString() == "OPEN" && hourOfDay >= warningHour) {
     // For local only http because of untrusted certificate
     val mainLockUnlockedURI = "http://192.168.0.4/static/sounds/main_lock_is_unlocked.mp3"
     // val mainLockUnlockedURI = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"

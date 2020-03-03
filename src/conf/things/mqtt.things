@@ -1,4 +1,4 @@
-Bridge mqtt:broker:MyMQTTBroker [ host="192.168.0.4", port="1883", clientId="myclientid", secure=false] {
+Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientId="myclientid", secure=false, lwtRetain=true] {
 
   Thing topic GF_FamilyRoom_Sensor "GF_FamilyRoom_Sensor" {
     Channels:
