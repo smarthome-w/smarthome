@@ -62,10 +62,10 @@ DateTime		GF_FamilyRoom_Light_Table_LastUpdate					"Family room table [%1$td.%1$
 DateTime		GF_FamilyRoom_Light_Sofa_LastUpdate						"Family room sofa [%1$td.%1$tm %1$tH:%1$tM]"		<time>			(gLastUpdateBroadlink, gPersistenceSwitch)
 DateTime		GF_FamilyRoom_LightsRGB_LastUpdate						"Cinema [%1$td.%1$tm %1$tH:%1$tM]"					<time>			(gLastUpdateSonoff, gPersistenceSwitch)
 DateTime		GF_FamilyRoom_LightsLamp_LastUpdate						"Secondary lights [%1$td.%1$tm %1$tH:%1$tM]"		<time>			(gLastUpdateSonoff, gPersistenceSwitch)
-Switch			GF_Kitchen_Light_Main									"Kitchen light main[]"								<light>			(GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch)									["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:Sonoff:GF_Kitchen_Light_Main"}
-Switch			GF_Kitchen_Light_LED									"Kitchen light led[]"								<light>			(GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch)									["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:Sonoff:GF_Kitchen_Light_LED"}
+Switch			GF_Kitchen_Light_Main									"Kitchen light main[]"								<light>			(GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch)									["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:Broadlink:GF_Kitchen_Light_Main"}
+Switch			GF_Kitchen_Light_LED									"Kitchen light led[]"								<light>			(GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch)									["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:Broadlink:GF_Kitchen_Light_LED"}
 Switch			GF_Kitchen_LED											"Kitchen led[]"										<light>			(GF_Kitchen, gSonoff, gPersistenceSwitch)																	["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:Sonoff:GF_Kitchen_LED"}
-Switch			GF_Corridor_Light_Main									"Main corridor lights[]"							<light>			(GF_Corridor, gTC2, gGF_Corridor_Scenario, gCinemaOff, gPersistenceSwitch)									["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:Sonoff:GF_Corridor_Light_Main"}
+Switch			GF_Corridor_Light_Main									"Main corridor lights[]"							<light>			(GF_Corridor, gTC2, gGF_Corridor_Scenario, gCinemaOff, gPersistenceSwitch)									["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:Broadlink:GF_Corridor_Light_Main"}
 Switch			GF_Corridor_Light_LED									"Corridor led[]"									<light>			(GF_Corridor, gSonoff, gPersistenceSwitch)																	["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:Sonoff:GF_Corridor_LED"}
 Switch			GF_Corridor_Cross										"Corridor cross[]"									<light>			(GF_Corridor, gShelly, gPersistenceSwitch)																	["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:Shelly:GF_Corridor_Cross"}
 Switch			GF_Corridor_Storage										"Corridor storage[]"								<light>			(GF_Corridor, gSonoff, gPersistenceSwitch)																	["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:Sonoff:GF_Corridor_Storage"}
@@ -152,6 +152,7 @@ Number			HH_Time_Evening											"Evening starts at [%.0f]"							<time>			(gP
 Number			HH_Time_Night											"Night starts at [%.0f]"							<time>			(gParameters, gPersistenceSwitch)
 Number			HH_Elevation_Dusk										"Elevation dusk below [%.0f]"						<time>			(gAstroBrightness, gParameters, gPersistenceSwitch)
 Number			HH_Elevation_Dawn										"Elevation dawn above [%.0f]"						<time>			(gAstroBrightness, gParameters, gPersistenceSwitch)
+Number			HH_LockWarningHour										"Lock warning hour  [%.0f]"							<time>			(gParameters, gPersistenceSwitch)
 Number			HH_DebugLevel_PIRCIR									"PIR/CIR debug level [%.0f]"						<time>			(gParameters, gPersistenceSwitch)
 Number			HH_DebugLevel_Broadlink									"Broadlink HW debug level [%.0f]"					<time>			(gParameters, gPersistenceSwitch)
 Number			HH_DebugLevel_Heartbeat									"Heartbeat debug level [%.0f]"						<time>			(gParameters, gPersistenceSwitch)
