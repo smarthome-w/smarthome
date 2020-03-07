@@ -16,7 +16,19 @@ then
     var elevationDusk = 6
     var elevationDawn = -6
     var brightness = 0
+    var blindsNotBefore = 8
+    var dailyInfoHour = 0
+    var dailyInfoMinute = 0
 
+    if (HH_DailyInfoHour.state !== NULL) {
+      dailyInfoHour = (HH_DailyInfoHour.state as Number).intValue
+    }
+    if (HH_DailyInfoMinute.state !== NULL) {
+      dailyInfoMinute = (HH_DailyInfoMinute.state as Number).intValue
+    }
+    if (HH_BlindsNotBefore.state !== NULL) {
+      blindsNotBefore = (HH_BlindsNotBefore.state as Number).intValue
+    }
     if (HH_Light_Dusk_Level.state !== NULL) {
       duskLevel = (HH_Light_Dusk_Level.state as Number).intValue
     }
@@ -46,6 +58,7 @@ then
     }
     
     val hourOfDay = now.getHourOfDay as Number
+    val minuteOfHour = now.getMinuteOfHour as Number
     val dayOfWeek = now.getDayOfWeek as Number
 
     if (logLevel >= 6) {
@@ -105,6 +118,24 @@ then
       calendar_SupportingBedroomLight.sendCommand(ON)
     } else {
       calendar_SupportingBedroomLight.sendCommand(OFF)
+    }
+
+    if (calendar_Dawn.state.toString() == "ON") {
+      if (calendar_Workday.state.toString() == "ON") {
+        if (hourOfDay >= blindsNotBefore && hourOfDay < 12) {
+          calendar_WakeUp.sendCommand(ON)
+        }
+      }
+    } else {
+      calendar_WakeUp.sendCommand(OFF)
+    }
+
+    if (calendar_Workday.state.toString() == "ON") {
+      if (dailyInfoHour == hourOfDay && dailyInfoMinute == minuteOfHour) {
+        calendar_DailyInfo.sendCommand(ON)
+      }
+    } else {
+        calendar_DailyInfo.sendCommand(OFF)
     }
   } catch (Throwable t) {
     logError("Error", "Error in calendar_rule {}", t.toString())

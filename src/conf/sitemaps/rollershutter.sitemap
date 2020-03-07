@@ -2,9 +2,6 @@ sitemap rollershutter label="Blinds" {
   Frame label="Blind" icon="groundfloor" {
       Slider item=GF_FamilyRoom_Rollershutter_Dimmer label="Blind [%.1f %%]"
       Switch item=GF_FamilyRoom_Rollershutter_Expert_Mode
-  }
-
-  Frame label="Blind" icon="groundfloor" visibility=[GF_FamilyRoom_Rollershutter_Expert_Mode==ON] {
       Switch item=GF_FamilyRoom_Rollershutter_AutoUp mappings=[ON="Up"]
       Switch item=GF_FamilyRoom_Rollershutter_AutoDown mappings=[ON="Down"]
   }
@@ -31,9 +28,6 @@ sitemap rollershutter label="Blinds" {
   Frame label="Bedroom blind" icon="groundfloor" {
       Slider item=FF_Bedroom_Rollershutter_Dimmer label="Blind [%.1f %%]"
       Switch item=FF_Bedroom_Rollershutter_Expert_Mode
-  }
-
-  Frame label="Bedroom blind" icon="groundfloor" visibility=[FF_Bedroom_Rollershutter_Expert_Mode==ON] {
       Switch item=FF_Bedroom_Rollershutter_AutoUp mappings=[ON="Up"]
       Switch item=FF_Bedroom_Rollershutter_AutoDown mappings=[ON="Down"]
   }

@@ -4,8 +4,6 @@ when
 then
   logError("maintenace_rule", "Debug detected {} {}", DebugTarget.state, DebugMessage.state)
 //  publish("broker", DebugTarget.state, DebugMessage.state)
-//  val mqttActions = getActions("mqtt","mqtt:systemBroker:embedded-mqtt-broker")
-//  mqttActions.publishMQTT(DebugTarget.state, DebugMessage.state)
 end
 
 rule "hardreset_rule"
@@ -13,7 +11,4 @@ when
   Item HardResetButton received update
 then
   logError("hardreset_rule", "HardReset detected")
-  var String command = "/openhab/conf/scripts/forkbomb"
-  var result = executeCommandLine (command, 15000)
-  if (result == "") {}
 end

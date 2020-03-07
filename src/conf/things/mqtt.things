@@ -176,18 +176,6 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientId="mycl
       Type string : LastRead [stateTopic="myHome/lastReadServer"]
   }
 
-  Thing topic PowermeterPlug01 "PowermeterPlug01" {
-    Channels:
-      Type switch : PowerSwitch [stateTopic="stat/powermeterplug01/POWER", commandTopic="cmnd/powermeterplug01/POWER", on="ON", off="OFF" ]
-      Type number : Power [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
-      Type number : ReactivePower [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.ReactivePower"]
-      Type number : ApparentPower [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.ApparentPower"]
-      Type number : Total [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Total"]
-      Type number : Yesterday [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
-      Type number : Today [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
-      Type number : Factor [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Factor"]
-  }
-
   Thing topic GF_FamilyRoom_Rollershutter "GF_FamilyRoom_Rollershutter" {
     Channels:
       Type number : Dimmer_ [stateTopic="myHomeX/GF_FamilyRoom_Rollershutter_Position", commandTopic="myHomeX/GF_FamilyRoom_Rollershutter"]
@@ -258,5 +246,17 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientId="mycl
       Type number : DebugRealUpLimitProbe [stateTopic="myHomeX/GF_FamilyRoom_Stepper_Debug_RealUpLimitProbe (LOW active)"]
       Type number : DebugRealDownLimitProbe [stateTopic="myHomeX/GF_FamilyRoom_Stepper_Debug_RealDownLimitProbe (LOW active)"]
       Type number : DebugMillis [stateTopic="myHomeX/GF_FamilyRoom_Stepper_Debug_Millis"]
+  }
+
+  Thing topic PowermeterPlug01 "PowermeterPlug01" {
+    Channels:
+      Type switch : PowerSwitch [stateTopic="stat/powermeterplug01/POWER", commandTopic="cmnd/powermeterplug01/POWER", on="ON", off="OFF" ]
+      Type number : Power [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
+      Type number : ReactivePower [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.ReactivePower"]
+      Type number : ApparentPower [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.ApparentPower"]
+      Type number : Total [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Total"]
+      Type number : Yesterday [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
+      Type number : Today [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
+      Type number : Factor [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Factor"]
   }
 }

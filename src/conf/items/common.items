@@ -1,15 +1,15 @@
 ////////////////////////////////////////////////////////////////////////////////
 //                       Astro
 ////////////////////////////////////////////////////////////////////////////////
-DateTime	Astro_Sunrise_Time				"Sunrise [%1$tH:%1$tM]"								<sunrise>														{ channel="astro:sun:home:rise#start" }
-DateTime	Astro_Sunset_Time				"Sunset [%1$tH:%1$tM]"								<sunset>														{ channel="astro:sun:home:set#start" }
-Number		Astro_SunElevation				"Sun elevation [%.0f °]"											(gAstroBrightness, gPersistenceSensor)			{ channel="astro:sun:home:position#elevation" }
-Number		Astro_Azimuth					"Sun Azimuth [%.2f]"																								{ channel="astro:sun:home:position#azimuth" }
-Number		Astro_Elevation					"Sun Elevation [%.2f]"																								{ channel="astro:sun:home:position#elevation" }
-String		Astro_MoonPhase					"Moon phase [MAP(moon_pl.map):%s]"					<moon>															{ channel="astro:moon:home:phase#name" }
-Number		Astro_Total_Radiation			"Sun Radiation [%.2f W/m\u00B2]"																					{ channel="astro:sun:home:radiation#total" }
-Number		Astro_Diffuse_Radiation			"Sun Diffuse Radiation [%.2f W/m\u00B2]"																			{ channel="astro:sun:home:radiation#diffuse" }
-String		Astro_Zodiac_Sign				"Zodiac [MAP(zodiac_pl.map):%s]"					<zodiac>														{ channel="astro:sun:home:zodiac#sign"}
+DateTime	Astro_Sunrise_Time				"Sunrise [%1$tH:%1$tM]"								<sunrise>														{channel="astro:sun:home:rise#start"}
+DateTime	Astro_Sunset_Time				"Sunset [%1$tH:%1$tM]"								<sunset>														{channel="astro:sun:home:set#start"}
+Number		Astro_SunElevation				"Sun elevation [%.0f °]"											(gAstroBrightness, gPersistenceSensor)			{channel="astro:sun:home:position#elevation"}
+Number		Astro_Azimuth					"Sun Azimuth [%.2f]"																								{channel="astro:sun:home:position#azimuth"}
+Number		Astro_Elevation					"Sun Elevation [%.2f]"																								{channel="astro:sun:home:position#elevation"}
+String		Astro_MoonPhase					"Moon phase [MAP(moon_pl.map):%s]"					<moon>															{channel="astro:moon:home:phase#name"}
+Number		Astro_Total_Radiation			"Sun Radiation [%.2f W/m\u00B2]"																					{channel="astro:sun:home:radiation#total"}
+Number		Astro_Diffuse_Radiation			"Sun Diffuse Radiation [%.2f W/m\u00B2]"																			{channel="astro:sun:home:radiation#diffuse"}
+String		Astro_Zodiac_Sign				"Zodiac [MAP(zodiac_pl.map):%s]"					<zodiac>														{channel="astro:sun:home:zodiac#sign"}
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -36,3 +36,5 @@ Switch		calendar_Weekend				"Weekend"											<time>			(gCalendar)
 Switch		calendar_Dawn					"Dawn"												<time>			(gCalendar, gPersistenceSwitch)
 Switch		calendar_Dusk					"Dusk"												<time>			(gCalendar, gPersistenceSwitch)
 Switch		calendar_Vacation				"Vacation"											<time>			(gCalendar, gPersistenceSwitch)
+Switch		calendar_WakeUp					"Wake up"											<time>			(gCalendar, gPersistenceSwitch)
+Switch		calendar_DailyInfo				"DailyInfo"											<time>			(gCalendar, gPersistenceSwitch)

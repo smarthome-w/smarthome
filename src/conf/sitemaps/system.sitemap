@@ -2,6 +2,7 @@ sitemap system label="System" {
     Frame label="Modes" icon="groundfloor" {
         Switch item=calendar_Vacation mappings=[ON="On", OFF="Off"]
         Switch item=GF_Presence_Mode mappings=[ABSENT="Absent", PRESENT="Present"]
+        Switch item=DebugButton mappings=[ON="Debug"]
     }
 
     Frame label="Scenes" icon="firstfloor" {
@@ -84,7 +85,6 @@ sitemap system label="System" {
                                           RESET="RESET",
                                           DEBUG="DEBUG"
                                          ]
-      Switch item=DebugButton mappings=[ON="Debug"]
 //      Switch item=DebugButton
     }
 }
