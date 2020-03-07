@@ -1,2 +1,5 @@
 String FamilyRoomChromecastMediaURI "Family room media uri" {channel="chromecast:chromecast:familyroom:playuri"}
 String BedroomChromecastMediaURI "Bedroom media uri" {channel="chromecast:chromecast:bedroom:playuri"}
+
+String ttsText "TTS Text"
+String ttsLanguage "TTS Language"

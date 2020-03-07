@@ -1,6 +1,6 @@
 rule "say_main_lock_unlocked_rule"
 when
-  Time cron "0 */5 20-23 ? * MON-SUN" or Item DebugButton received update
+  Time cron "0 */5 20-23 ? * MON-SUN"
 then
   var warningHour = 22
   if (HH_LockWarningHour.state !== NULL) {
@@ -11,11 +11,59 @@ then
   if (CIR_GF_MainLock.state.toString() == "OPEN" && hourOfDay >= warningHour) {
     // For local only http because of untrusted certificate
     val mainLockUnlockedURI = "http://192.168.0.4/static/sounds/main_lock_is_unlocked.mp3"
-    // val mainLockUnlockedURI = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
 
     logError("Chromecast", "Main lock unlocked - play - {}", mainLockUnlockedURI)
     FamilyRoomChromecastMediaURI.sendCommand(mainLockUnlockedURI)
     BedroomChromecastMediaURI.sendCommand(mainLockUnlockedURI)
     logError("Chromecast", "Main lock unlocked - end - {}", mainLockUnlockedURI)
   }
+end
+
+rule "say_text"
+when
+  Item ttsText received update
+then
+  var key = "66d531cf46544319bd7cbca26d80aa76"
+
+  logError("Chromecast", "Start")
+  if (ttsText.state !== NULL) {
+    var textToSpeech = ttsText.state.toString()
+    var language = ttsLanguage.state.toString()
+
+    logError("Chromecast", "Text: {}", textToSpeech)
+    var textURI = "https://api.voicerss.org/?key=" + key + "&hl=" + language + "&src=" + textToSpeech
+
+    logError("Chromecast", "Text play - play - {}", textToSpeech)
+    FamilyRoomChromecastMediaURI.sendCommand(textURI)
+    BedroomChromecastMediaURI.sendCommand(textURI)
+    logError("Chromecast", "Text play - end - {}", textToSpeech)
+  }
+end
+
+rule "trigger_text"
+when
+  Item Dummy received update
+then
+//  var ttsMessage = "Current power consumption is " + GF_PowerMeter_Current_In_Watts.state + " watts."
+//  var lang = "en-us"
+
+  var ttsMessage = "Bieżące zużycie energii to " + GF_PowerMeter_Current_In_Watts.state + " watów."
+  var lang = "pl-pl"
+
+  ttsLanguage.sendCommand(lang)
+  ttsText.sendCommand(ttsMessage)
+end
+
+
+rule "daily_info"
+when
+  Item calendar_DailyInfo changed to ON or Item DebugButton received update
+then
+  var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).intValue
+  var ttsMessage = "Dzień dobry. Na zewnątrz jest " + externalTemp + " stopni."
+  var lang = "pl-pl"
+
+  ttsLanguage.sendCommand(lang)
+  ttsText.sendCommand(ttsMessage)
+  calendar_DailyInfo.postUpdate(OFF)
 end

@@ -35,7 +35,7 @@ then
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
         if (calendar_Dusk.state.toString() == "ON") {
           GH_Evening_Scene.sendCommand(ON)
-          logInfo("dailytrigger", "Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)
+          logInfo("dailytrigger", "rollershutter_down_rule: Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)
         }
     }
     if (logLevel == 1) {}
@@ -47,19 +47,18 @@ end
 
 rule "rollershutter_up_rule"
 when
-    Item calendar_Dawn changed
+    Item calendar_WakeUp changed
 then
   try {
     var int logLevel = 6
     if (HH_DebugLevel_Rollershutter.state !== NULL) {
       logLevel = HH_DebugLevel_Scene.state as Number
     }
+    logError("Error", "calendar_WakeUp: {}", calendar_WakeUp)
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
-        if (calendar_Dawn.state.toString() == "ON") {
-          if (calendar_Workday.state.toString() == "ON") {
-            GH_Day_Scene.sendCommand(ON)
-            logInfo("dailytrigger", "Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)
-          }
+        if (calendar_WakeUp.state.toString() == "ON") {
+          GH_Day_Scene.sendCommand(ON)
+          logInfo("dailytrigger", "rollershutter_up_rule: Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)
         }
     }
     if (logLevel == 1) {}

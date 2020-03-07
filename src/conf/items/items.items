@@ -153,6 +153,9 @@ Number			HH_Time_Night											"Night starts at [%.0f]"							<time>			(gParam
 Number			HH_Elevation_Dusk										"Elevation dusk below [%.0f]"						<time>			(gAstroBrightness, gParameters, gPersistenceSwitch)
 Number			HH_Elevation_Dawn										"Elevation dawn above [%.0f]"						<time>			(gAstroBrightness, gParameters, gPersistenceSwitch)
 Number			HH_LockWarningHour										"Lock warning hour  [%.0f]"							<time>			(gParameters, gPersistenceSwitch)
+Number			HH_BlindsNotBefore										"Blinds not before hour  [%.0f]"					<time>			(gParameters, gPersistenceSwitch)
+Number			HH_DailyInfoHour										"Daily info hour  [%.0f]"							<time>			(gParameters, gPersistenceSwitch)
+Number			HH_DailyInfoMinute										"Daily info minute  [%.0f]"							<time>			(gParameters, gPersistenceSwitch)
 Number			HH_DebugLevel_PIRCIR									"PIR/CIR debug level [%.0f]"						<time>			(gParameters, gPersistenceSwitch)
 Number			HH_DebugLevel_Broadlink									"Broadlink HW debug level [%.0f]"					<time>			(gParameters, gPersistenceSwitch)
 Number			HH_DebugLevel_Heartbeat									"Heartbeat debug level [%.0f]"						<time>			(gParameters, gPersistenceSwitch)
@@ -333,3 +336,11 @@ String			DebugTarget												"Target [%s]"
 String			DebugMessage											"Message [%s]"
 Switch			DemoMode												"Demo mode[]"														(gSystem, gPersistenceSwitch)
 Switch			OverallErrorIndicator									"Error indicator[]"									<heating>		(gSystem, gPersistenceSwitch, gAlert)
+Switch			HH_PowermeterPlug01										"Media plug[]"										<light>			(GF_FamilyRoom, gTasmota, gPersistenceSwitch)																										{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:PowerSwitch"}
+Number			HH_PowermeterPlug01_Power								"Media plug power [%.0fW]"							<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Power"}
+Number			HH_PowermeterPlug01_ReactivePower						"Media plug reactive power [%.0f Var]"				<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:ReactivePower"}
+Number			HH_PowermeterPlug01_ApparentPower						"Media plug apparent power [%.0f VA]"				<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:ApparentPower"}
+Number			HH_PowermeterPlug01_TotalPower							"Media plug total power [%.3f kWh]"					<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Total"}
+Number			HH_PowermeterPlug01_YesterdayPower						"Media plug yesterday power [%.3f kWh]"				<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Yesterday"}
+Number			HH_PowermeterPlug01_TodayPower							"Media plug today power [%.3f kWh]"					<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Today"}
+Number			HH_PowermeterPlug01_Factor								"Media plug factor [%.2f]"							<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Factor"}

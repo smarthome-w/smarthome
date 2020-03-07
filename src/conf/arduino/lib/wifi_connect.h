@@ -9,9 +9,9 @@ void initializeWiFi() {
   Serial.println("Initialize WIFI...");
 
   WiFi.persistent(false);
+  WiFi.hostname(fName);
   WiFi.mode(WIFI_STA);
   WiFi.softAPdisconnect(true);
-  WiFi.hostname(fName);
   WiFi.begin(WIFI_SSID, WIFI_PASSWD);
 
   IPAddress ip(IP_O1, IP_O2, IP_O3, WIFIIP);
