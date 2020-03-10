@@ -5,7 +5,7 @@ then
   try {
     var int logLevel = 6
     if (HH_DebugLevel_Rollershutter.state !== NULL) {
-      logLevel = HH_DebugLevel_Scene.state as Number
+      logLevel = (HH_DebugLevel_Scene.state as Number).intValue
     }
 
     //logInfo("rollershutter", "Rollershutter change detected {} {}", triggeringItem.name, triggeringItem.state)
@@ -16,7 +16,7 @@ then
       lastupdate_item.postUpdate(now.toString())
       //logInfo("rollershutter", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
     }
-    if (logLevel == 1) {}
+    if (logLevel >= 6) {}
   } catch (Throwable t) {
     logError("Error", "Error in rollershutter_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
@@ -30,7 +30,7 @@ then
   try {
     var int logLevel = 6
     if (HH_DebugLevel_Rollershutter.state !== NULL) {
-      logLevel = HH_DebugLevel_Scene.state as Number
+      logLevel = (HH_DebugLevel_Scene.state as Number).intValue
     }
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
         if (calendar_Dusk.state.toString() == "ON") {
@@ -38,7 +38,7 @@ then
           logInfo("dailytrigger", "rollershutter_down_rule: Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)
         }
     }
-    if (logLevel == 1) {}
+    if (logLevel >= 6.0) {}
   } catch (Throwable t) {
     logError("Error", "Error in rollershutter_down_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
@@ -52,7 +52,7 @@ then
   try {
     var int logLevel = 6
     if (HH_DebugLevel_Rollershutter.state !== NULL) {
-      logLevel = HH_DebugLevel_Scene.state as Number
+      logLevel = (HH_DebugLevel_Scene.state as Number).intValue
     }
     logError("Error", "calendar_WakeUp: {}", calendar_WakeUp)
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
@@ -61,7 +61,7 @@ then
           logInfo("dailytrigger", "rollershutter_up_rule: Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)
         }
     }
-    if (logLevel == 1) {}
+    if (logLevel >=6) {}
   } catch (Throwable t) {
     logError("Error", "Error in rollershutter_up_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {

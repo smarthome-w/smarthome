@@ -1,4 +1,4 @@
-Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientId="myclientid", secure=false, lwtRetain=true] {
+Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="openhab", secure=false, lwtRetain=true] {
 
   Thing topic GF_FamilyRoom_Sensor "GF_FamilyRoom_Sensor" {
     Channels:
@@ -259,4 +259,10 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientId="mycl
       Type number : Today [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
       Type number : Factor [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Factor"]
   }
+
+  Thing topic TestSonoff "TestSonoff" {
+    Channels:
+      Type switch : PowerSwitch [stateTopic="stat/sonofftest/POWER", commandTopic="cmnd/sonofftest/POWER", on="ON", off="OFF" ]
+      Type string : Heartbeat [stateTopic="tele/sonofftest/STATE", transformationPattern="JSONPATH:$.Time"]
+    }
 }
