@@ -16,7 +16,7 @@ Main assumption for hardware is alternative libraries accessibility (any shell, 
 |        Equiva eQ3 Bluetooth         |          Smart radiator thermostat           |                          -                           |                                                              -                                                               |                                             -                                              |
 |          Google Home Mini           |               Voice controller               |                          -                           |                                                              -                                                               |                                             -                                              |
 |            Sonoff Basic             |     Universal WiFi switch building block     |                          -                           |                                                              -                                                               |                                             -                                              |
-|            Broadlink SP2            |              Remote WiFi switch              |                Brighten manual toggle                |                                     Lack of manual network setup, no native MQTT support                                     |                                             -                                              |
+|          ~~Broadlink SP2~~          |            ~~Remote WiFi switch~~            |              ~~Brighten manual toggle~~              |                                   ~~Lack of manual network setup, no native MQTT support~~                                   |                                             -                                              |
 |                ESP32                | Universal WiFi building block with Bluetooth |            Embedded UART, 5V power supply            |                                                              -                                                               |                                             -                                              |
 
 _Disclaimer_: I have router from my ISP without ability to match MAC and IP address. It requires additional attention and hacks. So ability to manually setup network is important to me
@@ -27,19 +27,21 @@ _Disclaimer_: I have router from my ISP without ability to match MAC and IP addr
 
 - It looks pretty well
 - There is no availability problem due to RF transmission (RM Pro is required).
-- **_Does not require separate power, so it is perfect for installation with separated junction box for lights_**
+- ~~**_Does not require separate power, so it is perfect for installation with separated junction box for lights_**~~
 - **_But there is no chance to retrieve current state. If it is changed manually you have no chance to detect it_**
-- There's no good alternative: Shelly 1 in the junction box and standard switches, Sonoff is not solution for my electrical installation.
+- ~~There's no good alternative: Shelly 1 in the junction box and standard switches, Sonoff is not solution for my electrical installation.~~
+- A lot of no-neutral alternatives accessible now (Sonoff, other). Lack of last state synchronization - **Do not buy it, only legacy usage**.
 
 #### Broadlink SP2
 
-- It has physical, highlighted toogle
-- Does not requires dedicated electrical contact, you can use cables to attach
-- Reasonable in hidden places
-- No native MQTT support
-- Alternatives: Any RF switch with RM Pro+ routines
-- Funny alternative: [Sonoff with capacity button](https://www.youtube.com/watch?v=B38e1HAMUXs)
-- DIY block with toggle: parts costs (we have here 230V) like ESP with shield, 230V-5V stepdown supply with good quality without fire risk, chassis which keeps my fingers away from 230V - it is not cheaper than SP2 or any other.
+- ~~It has physical, highlighted toogle~~
+- ~~Does not requires dedicated electrical contact, you can use cables to attach~~
+- ~~Reasonable in hidden places~~
+- ~~No native MQTT support~~
+- ~~Alternatives: Any RF switch with RM Pro+ routines~~
+- ~~Funny alternative: [Sonoff with capacity button](https://www.youtube.com/watch?v=B38e1HAMUXs)~~
+- ~~DIY block with toggle: parts costs (we have here 230V) like ESP with shield, 230V-5V stepdown supply with good quality without fire risk, chassis which keeps my fingers away from 230V - it is not cheaper than SP2 or any other.~~
+- Lack of native MQTT support, poor network settings, necessity of usage proxy-software - migrated to Sonoff Basic
 
 #### Shelly 1
 

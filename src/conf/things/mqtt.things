@@ -62,7 +62,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type contact : CirAnnRoom [stateTopic="myHome/CIR_FF_AnnRoom"]
 
       Type contact : PirGfCorridor [stateTopic="myHome/PIR_GF_Corridor"]
-      Type contact  : PirFamilyRoom [stateTopic="myHome/PIR_GF_FamilyRoom"]
+      Type contact : PirFamilyRoom [stateTopic="myHome/PIR_GF_FamilyRoom"]
       Type contact : PirKitchen [stateTopic="myHome/PIR_GF_Kitchen"]
       Type contact : PirFfCorridor [stateTopic="myHome/PIR_FF_Corridor"]
       Type contact : PirAnnRoom [stateTopic="myHome/PIR_FF_AnnRoom"]
@@ -178,7 +178,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
 
   Thing topic GF_FamilyRoom_Rollershutter "GF_FamilyRoom_Rollershutter" {
     Channels:
-      Type number : Dimmer_ [stateTopic="myHomeX/GF_FamilyRoom_Rollershutter_Position", commandTopic="myHomeX/GF_FamilyRoom_Rollershutter"]
+      Type dimmer : Dimmer_ [stateTopic="myHomeX/GF_FamilyRoom_Rollershutter_Position", commandTopic="myHomeX/GF_FamilyRoom_Rollershutter"]
       Type string : Rollershutter_  [commandTopic="myHomeX/GF_FamilyRoom_Rollershutter"]
       Type switch : Debug  [commandTopic="myHomeX/GF_FamilyRoom_Rollershutter", on="DEBUG"]
       Type switch : AutoStop  [commandTopic="myHomeX/GF_FamilyRoom_Rollershutter", on="STOP"]
@@ -202,7 +202,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
 
   Thing topic FF_Bedroom_Rollershutter "FF_Bedroom_Rollershutter" {
     Channels:
-      Type number : Dimmer_ [stateTopic="myHomeX/FF_Bedroom_Rollershutter_Position", commandTopic="myHomeX/FF_Bedroom_Rollershutter"]
+      Type dimmer : Dimmer_ [stateTopic="myHomeX/FF_Bedroom_Rollershutter_Position", commandTopic="myHomeX/FF_Bedroom_Rollershutter"]
       Type string : Rollershutter_  [commandTopic="myHomeX/FF_Bedroom_Rollershutter"]
       Type switch : Debug  [commandTopic="myHomeX/FF_Bedroom_Rollershutter", on="DEBUG"]
       Type switch : AutoStop  [commandTopic="myHomeX/FF_Bedroom_Rollershutter", on="STOP"]
@@ -226,7 +226,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
 
   Thing topic GF_FamilyRoom_Stepper "GF_FamilyRoom_Stepper" {
     Channels:
-      Type number : Dimmer_ [stateTopic="myHomeX/GF_FamilyRoom_Stepper_Position", commandTopic="myHomeX/GF_FamilyRoom_Stepper"]
+      Type dimmer : Dimmer_ [stateTopic="myHomeX/GF_FamilyRoom_Stepper_Position", commandTopic="myHomeX/GF_FamilyRoom_Stepper"]
       Type string : Rollershutter_  [commandTopic="myHomeX/GF_FamilyRoom_Stepper"]
       Type switch : Debug  [commandTopic="myHomeX/GF_FamilyRoom_Stepper", on="DEBUG"]
       Type switch : AutoStop  [commandTopic="myHomeX/GF_FamilyRoom_Stepper", on="STOP"]

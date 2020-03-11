@@ -1,0 +1,6 @@
+sitemap test label="Test" {
+    Frame label="Test" icon="firstfloor" {
+        Switch item=TestSonoff
+        Text item=TestSonoffHeartbeat
+    }
+}

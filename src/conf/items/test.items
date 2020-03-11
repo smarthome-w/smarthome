@@ -1,0 +1,2 @@
+Switch	TestSonoff			"Test sonoff[]"					<light>	(gTasmota, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:TestSonoff:PowerSwitch"}
+String	TestSonoffHeartbeat	"Test sonoff heartbeat [%s]"	<time>										{channel="mqtt:topic:MyMQTTBroker:TestSonoff:Heartbeat"}
