@@ -57,7 +57,7 @@ end
 
 rule "daily_info"
 when
-  Item calendar_DailyInfo changed to ON or Item DebugButton received update
+  Item calendar_DailyInfo changed to ON or Item DebugButton received update or Item GH_DailyInfo received update
 then
   var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
   logError("Chromecast", "number {}", externalTemp)
