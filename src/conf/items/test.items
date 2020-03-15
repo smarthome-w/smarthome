@@ -1,2 +1,7 @@
-Switch	TestSonoff			"Test sonoff[]"					<light>	(gTasmota, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:TestSonoff:PowerSwitch"}
-String	TestSonoffHeartbeat	"Test sonoff heartbeat [%s]"	<time>										{channel="mqtt:topic:MyMQTTBroker:TestSonoff:Heartbeat"}
+Switch	TestSonoff					"Test sonoff[]"								<light>	(gTasmota, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:TestSonoff:PowerSwitch"}
+String	TestSonoffHeartbeat			"Test sonoff heartbeat [%s]"				<time>										{channel="mqtt:topic:MyMQTTBroker:TestSonoff:Heartbeat"}
+Number	Multisensor01Temperature	"Multisensor01 Temperature [%.1f \u00b0C]"	<light>	(gTasmota, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Temperature"}
+Number	Multisensor01Humidity		"Multisensor01 Humidity [%.1f %%]"			<light>	(gTasmota, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Humidity"}
+Number	Multisensor01Brightness		"Multisensor01 Brightness [%.0f]"			<light>	(gTasmota, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Brightness"}
+Number	Multisensor01Pressure		"Multisensor01 Pressure [%.1f hPa]"			<light>	(gTasmota, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Pressure"}
+String	Multisensor01Heartbeat		"Multisensor01 Heartbeat [%s]"				<light>										{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Heartbeat"}

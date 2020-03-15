@@ -61,10 +61,24 @@ when
 then
   var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
   logError("Chromecast", "number {}", externalTemp)
-  var ttsMessage = String.format("Good morning, there is %.1f Celcius outside.", externalTemp)
+  var ttsMessage = String.format("There is %.1f Celcius outside.", externalTemp)
   var lang = "en-gb"
 
   ttsLanguage.sendCommand(lang)
   ttsText.sendCommand(ttsMessage)
   calendar_DailyInfo.postUpdate(OFF)
+end
+
+rule "sensor_info"
+when
+  Item GH_SensorsInfo received update
+then
+  var power = (GF_PowerMeter_Current_In_Watts.state as Number).floatValue
+  logError("Chromecast", "number {}", power)
+  var ttsMessage = String.format("Current power usage is %.0f watts.", power)
+  var lang = "en-gb"
+
+  ttsLanguage.sendCommand(lang)
+  ttsText.sendCommand(ttsMessage)
+//  calendar_DailyInfo.postUpdate(OFF)
 end

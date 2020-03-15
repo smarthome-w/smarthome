@@ -123,20 +123,21 @@ Switch			RTV_VOLUME_MUTE											"Mute[]"															(GF_FamilyRoom, gSony)
 //                       Google Home scenes
 ////////////////////////////////////////////////////////////////////////////////
 Switch			GH_DailyInfo											"Daily info[]"																																									["Lighting"]
+Switch			GH_SensorsInfo											"Sensors info[]"																																								["Lighting"]
 Switch			GH_Holiday												"Holiday[]"															(gScenes)																									["Switchable"]
-Switch			GH_WelcomeBack											"Welcome back[]"														(gScenes)																									["Switchable"]
+Switch			GH_WelcomeBack											"Welcome back[]"													(gScenes)																									["Switchable"]
 Switch			GH_Night_Scene											"Good night[]"														(gScenes)																									["Switchable"]
 Switch			GH_TVShow_Scene											"TV Show[]"															(gScenes)																									["Switchable"]
-Switch			GH_Room_Scene											"Room[]"																(gScenes)																									["Switchable"]
+Switch			GH_Room_Scene											"Room[]"															(gScenes)																									["Switchable"]
 Switch			GH_Bedroom_Night_Scene									"Go to sleep[]"														(gScenes)																									["Switchable"]
-Switch			GH_Evening_Scene										"Good evening[]"														(gScenes)																									["Switchable"]
-Switch			GH_Day_Scene											"Good morning[]"														(gScenes)																									["Switchable"]
+Switch			GH_Evening_Scene										"Good evening[]"													(gScenes)																									["Switchable"]
+Switch			GH_Day_Scene											"Good morning[]"													(gScenes)																									["Switchable"]
 Switch			GH_DarkWindow_Scene										"Dark window[]"														(gScenes)
-Switch			GH_BrightWindow_Scene									"Bright window[]"														(gScenes)
+Switch			GH_BrightWindow_Scene									"Bright window[]"													(gScenes)
 Switch			GH_Netflix_Command										"Netflix[]"															(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_Netflix"}
 Switch			GH_YouTube_Command										"Youtube[]"															(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_YouTube"}
 Switch			GH_TV_Command											"TV[]"																(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_TV"}
-Switch			GH_Confirm_Command										"Enter[]"																(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_Confirm"}
+Switch			GH_Confirm_Command										"Enter[]"															(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_Confirm"}
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Sensors
