@@ -273,5 +273,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Pressure [stateTopic="tele/multisensor01/SENSOR", transformationPattern="JS:tasmotaBME280Pressure.js"]
       Type number : Brightness [stateTopic="tele/multisensor01/SENSOR", transformationPattern="JS:tasmotaAnalogReverse.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor01/STATE", transformationPattern="JSONPATH:$.Time"]
+      Type contact : Cir [stateTopic="stat/multisensor01/CIR", on="ON", off="OFF"]
+      Type contact : Move [stateTopic="stat/multisensor01/PIR", on="ON", off="OFF"]
   } 
 }

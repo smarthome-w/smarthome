@@ -5,3 +5,5 @@ Number	Multisensor01Humidity		"Multisensor01 Humidity [%.1f %%]"			<light>	(gTas
 Number	Multisensor01Brightness		"Multisensor01 Brightness [%.0f]"			<light>	(gTasmota, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Brightness"}
 Number	Multisensor01Pressure		"Multisensor01 Pressure [%.1f hPa]"			<light>	(gTasmota, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Pressure"}
 String	Multisensor01Heartbeat		"Multisensor01 Heartbeat [%s]"				<light>										{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Heartbeat"}
+Contact	Multisensor01Move			"Multisensor01 Move"						<light>	(gTasmota, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Move"}
+Contact	Multisensor01Cir			"Multisensor01 Cir"							<light>	(gTasmota, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Cir"}
