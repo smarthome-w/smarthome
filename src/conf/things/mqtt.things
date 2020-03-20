@@ -276,4 +276,11 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type contact : Cir [stateTopic="stat/multisensor01/CIR", on="ON", off="OFF"]
       Type contact : Move [stateTopic="stat/multisensor01/PIR", on="ON", off="OFF"]
   } 
+
+
+  Thing topic Minitiger01 "Minitiger01" {
+    Channels:
+      Type switch : PowerSwitch [stateTopic="stat/minitiger01/POWER", commandTopic="cmnd/minitiger01/POWER", on="ON", off="OFF" ]
+      Type string : Heartbeat [stateTopic="tele/minitiger01/STATE", transformationPattern="JSONPATH:$.Time"]
+    }
 }
