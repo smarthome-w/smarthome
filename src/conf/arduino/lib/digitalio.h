@@ -21,6 +21,9 @@ struct circuit {
   boolean isNameGeneric;
 };
 
+#define CIR_READ_INTERVAL_MILLIS 60000
+int CIRLastReadInMillis = 0;
+
 #ifdef fDitigalInput
 circuit circuits[CIRCUITS];
 #endif
@@ -249,6 +252,16 @@ void processPinInputs() {
       buttons[iix].previousValue = value;
       sendButtonMQTTMessage(iix, value);
     }
+  }
+#endif
+
+#ifdef fDitigalInput
+  if (abs(millis() - CIRLastReadInMillis) > CIR_READ_INTERVAL_MILLIS) {
+    for (iix = 0; iix < CIRCUITS; iix++) {
+      value = digitalRead(circuits[iix].pin);
+      sendCircuitMQTTMessage(iix, value);
+    }
+    CIRLastReadInMillis = millis();
   }
 #endif
 }
