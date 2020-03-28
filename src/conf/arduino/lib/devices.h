@@ -305,7 +305,7 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define SERVO_UP 500
 #define SERVO_DOWN 2500
 #define CURRENT_DIRECTION_UP (-100.0 / 3322.0)  // 3202 + 120
-#define CURRENT_DIRECTION_DOWN (100.0 / 1829.0) // 1829
+#define CURRENT_DIRECTION_DOWN (100.0 / 1779.0) // 1829 - 50
 #define fRollershutter
 #define fMQTTInput
 #define fMQTTOutput

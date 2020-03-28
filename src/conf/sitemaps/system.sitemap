@@ -39,7 +39,7 @@ sitemap system label="System" {
     }
     Frame label="Lock" icon="firstfloor" {
       Switch item=CIR_GF_MainLock mappings=[CLOSED="Closed", OPEN="Open"]
-      Switch item=HH_FrontDoorSwitch
+//      Switch item=HH_FrontDoorSwitch
       Chart item=CIR_GF_MainLock period=D label="Lock"
       Chart item=CIR_GF_MainLock period=W label="Lock"
     }

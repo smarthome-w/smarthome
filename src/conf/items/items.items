@@ -122,8 +122,8 @@ Switch			RTV_VOLUME_MUTE											"Mute[]"															(GF_FamilyRoom, gSony)
 ////////////////////////////////////////////////////////////////////////////////
 //                       Google Home scenes
 ////////////////////////////////////////////////////////////////////////////////
-Switch			GH_DailyInfo											"Daily info[]"														(gVoice)																											["Lighting"]
-Switch			GH_SensorsInfo											"Sensors info[]"													(gVoice)																											["Lighting"]
+Switch			GH_DailyInfo											"Daily info[]"														(gVoice)																									["Lighting"]
+Switch			GH_SensorsInfo											"Sensors info[]"													(gVoice)																									["Lighting"]
 Switch			GH_Holiday												"Holiday[]"															(gScenes)																									["Switchable"]
 Switch			GH_WelcomeBack											"Welcome back[]"													(gScenes)																									["Switchable"]
 Switch			GH_Night_Scene											"Good night[]"														(gScenes)																									["Switchable"]
@@ -249,7 +249,7 @@ Number			FF_Bedroom_Rollershutter_RealUpLimitProbe				"RealUpLimitProbe [%.0f]"	
 Number			FF_Bedroom_Rollershutter_RealDownLimitProbe				"RealDownLimitProbe [%.0f]"							<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugRealDownLimitProbe"}
 Number			FF_Bedroom_Rollershutter_Millis							"Millis [%.0f]"										<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugMillis"}
 Switch			GF_FamilyRoom_Stepper_Expert_Mode						"Expert mode"
-Dimmer			GF_FamilyRoom_Stepper_Dimmer							"Window  [%.1f %%]"									<heating>		(GF_FamilyRoom, gStepper_Dimmer)																			["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Dimmer_"}
+Dimmer			GF_FamilyRoom_Stepper_Dimmer							"Stepper  [%.1f %%]"								<heating>		(GF_FamilyRoom, gStepper_Dimmer)																													{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Dimmer_"}
 Rollershutter	GF_FamilyRoom_Stepper_Rollershutter						"Stepper - blind [%s]"												(FF_Bedroom, gRollershutter, gPersistenceSwitch)																									{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Rollershutter_"}
 //DateTime		GF_FamilyRoom_Stepper_LastUpdate					"Family room - blind [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateStepper, gPersistenceSwitch)
 Switch			GF_FamilyRoom_Stepper_PrgUp								"Family room - prg up[]"											(GF_FamilyRoom, gStepper)																															{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:PrgUp"}
