@@ -57,13 +57,28 @@ end
 
 rule "daily_info"
 when
-  Item calendar_DailyInfo changed to ON or Item DebugButton received update
+  Item calendar_DailyInfo changed to ON or Item DebugButton received update or Item GH_DailyInfo received update
 then
-  var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).intValue
-  var ttsMessage = "Dzień dobry. Na zewnątrz jest " + externalTemp + " stopni."
-  var lang = "pl-pl"
+  var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
+  logError("Chromecast", "number {}", externalTemp)
+  var ttsMessage = String.format("There is %.1f Celcius outside.", externalTemp)
+  var lang = "en-gb"
 
   ttsLanguage.sendCommand(lang)
   ttsText.sendCommand(ttsMessage)
   calendar_DailyInfo.postUpdate(OFF)
+end
+
+rule "sensor_info"
+when
+  Item GH_SensorsInfo received update
+then
+  var power = (GF_PowerMeter_Current_In_Watts.state as Number).floatValue
+  logError("Chromecast", "number {}", power)
+  var ttsMessage = String.format("Current power usage is %.0f watts.", power)
+  var lang = "en-gb"
+
+  ttsLanguage.sendCommand(lang)
+  ttsText.sendCommand(ttsMessage)
+//  calendar_DailyInfo.postUpdate(OFF)
 end

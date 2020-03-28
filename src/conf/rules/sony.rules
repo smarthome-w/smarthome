@@ -2,18 +2,4 @@ rule "sony_rule"
 when
     Member of gSony received update
 then
-/*
-  try {
-    var String command = "/openhab/conf/scripts/SONY/sony.py " + triggeringItem.name + " " + triggeringItem.state
-    var long duration = now.millis
-    var result = executeCommandLine (command, 15000)
-    duration = now.millis - duration
-    if (!result.contains("==sent==")) {
-        logInfo("logSony", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
-    }
-  } catch (Throwable t) {
-    logError("Error", "Error in sony_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
-  } finally {
-  }
-*/
 end

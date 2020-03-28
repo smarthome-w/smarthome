@@ -75,7 +75,7 @@ DateTime		GF_Corridor_Light_Main_LastUpdate						"Main corridor lights [%1$td.%1
 DateTime		GF_Corridor_Light_LED_LastUpdate						"Corridor led [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateSonoff, gPersistenceSwitch)
 DateTime		GF_Corridor_Cross_LastUpdate							"Corridor cross [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateShelly, gPersistenceSwitch)
 DateTime		GF_Corridor_Storage_LastUpdate							"Corridor storage [%1$td.%1$tm %1$tH:%1$tM]"		<time>			(gLastUpdateSonoff, gPersistenceSwitch)
-Switch			GF_Restroom_Light_Main									"Restroom lights[]"									<light>			(GF_Restroom, gTC2, gGF_Restroom_Scenario, gCinemaOff, gPersistenceSwitch)																			{channel="mqtt:topic:MyMQTTBroker:Broadlink:GF_Restroom_Light_Main"}
+Switch			GF_Restroom_Light_Main									"Restroom lights[]"									<light>			(GF_Restroom, gTC2, gGF_Restroom_Scenario, gCinemaOff, gPersistenceSwitch)									["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:Broadlink:GF_Restroom_Light_Main"}
 DateTime		GF_Restroom_Light_Main_LastUpdate						"Restroom [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateBroadlink, gPersistenceSwitch)
 String			GF_RTV_Complex_Scenario									"RTV"												<rgb>			(gPersistenceSwitch)
 
@@ -122,20 +122,22 @@ Switch			RTV_VOLUME_MUTE											"Mute[]"															(GF_FamilyRoom, gSony)
 ////////////////////////////////////////////////////////////////////////////////
 //                       Google Home scenes
 ////////////////////////////////////////////////////////////////////////////////
-Switch			GH_Holiday												"Holiday"															(gScenes)																									["Switchable"]
-Switch			GH_WelcomeBack											"Welcome back"														(gScenes)																									["Switchable"]
-Switch			GH_Night_Scene											"Good night"														(gScenes)																									["Switchable"]
-Switch			GH_TVShow_Scene											"TV Show"															(gScenes)																									["Switchable"]
-Switch			GH_Room_Scene											"Room"																(gScenes)																									["Switchable"]
-Switch			GH_Bedroom_Night_Scene									"Go to sleep"														(gScenes)																									["Switchable"]
-Switch			GH_Evening_Scene										"Good evening"														(gScenes)																									["Switchable"]
-Switch			GH_Day_Scene											"Good morning"														(gScenes)																									["Switchable"]
-Switch			GH_DarkWindow_Scene										"Dark window"														(gScenes)
-Switch			GH_BrightWindow_Scene									"Bright window"														(gScenes)
-Switch			GH_Netflix_Command										"Netflix"															(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_Netflix"}
-Switch			GH_YouTube_Command										"Youtube"															(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_YouTube"}
-Switch			GH_TV_Command											"TV"																(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_TV"}
-Switch			GH_Confirm_Command										"Enter"																(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_Confirm"}
+Switch			GH_DailyInfo											"Daily info[]"														(gVoice)																									["Lighting"]
+Switch			GH_SensorsInfo											"Sensors info[]"													(gVoice)																									["Lighting"]
+Switch			GH_Holiday												"Holiday[]"															(gScenes)																									["Switchable"]
+Switch			GH_WelcomeBack											"Welcome back[]"													(gScenes)																									["Switchable"]
+Switch			GH_Night_Scene											"Good night[]"														(gScenes)																									["Switchable"]
+Switch			GH_TVShow_Scene											"TV Show[]"															(gScenes)																									["Switchable"]
+Switch			GH_Room_Scene											"Room[]"															(gScenes)																									["Switchable"]
+Switch			GH_Bedroom_Night_Scene									"Go to sleep[]"														(gScenes)																									["Switchable"]
+Switch			GH_Evening_Scene										"Good evening[]"													(gScenes)																									["Switchable"]
+Switch			GH_Day_Scene											"Good morning[]"													(gScenes)																									["Switchable"]
+Switch			GH_DarkWindow_Scene										"Dark window[]"														(gScenes)
+Switch			GH_BrightWindow_Scene									"Bright window[]"													(gScenes)
+Switch			GH_Netflix_Command										"Netflix[]"															(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_Netflix"}
+Switch			GH_YouTube_Command										"Youtube[]"															(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_YouTube"}
+Switch			GH_TV_Command											"TV[]"																(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_TV"}
+Switch			GH_Confirm_Command										"Enter[]"															(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_Confirm"}
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Sensors
@@ -247,7 +249,7 @@ Number			FF_Bedroom_Rollershutter_RealUpLimitProbe				"RealUpLimitProbe [%.0f]"	
 Number			FF_Bedroom_Rollershutter_RealDownLimitProbe				"RealDownLimitProbe [%.0f]"							<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugRealDownLimitProbe"}
 Number			FF_Bedroom_Rollershutter_Millis							"Millis [%.0f]"										<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugMillis"}
 Switch			GF_FamilyRoom_Stepper_Expert_Mode						"Expert mode"
-Dimmer			GF_FamilyRoom_Stepper_Dimmer							"Window  [%.1f %%]"									<heating>		(GF_FamilyRoom, gStepper_Dimmer)																			["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Dimmer_"}
+Dimmer			GF_FamilyRoom_Stepper_Dimmer							"Stepper  [%.1f %%]"								<heating>		(GF_FamilyRoom, gStepper_Dimmer)																													{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Dimmer_"}
 Rollershutter	GF_FamilyRoom_Stepper_Rollershutter						"Stepper - blind [%s]"												(FF_Bedroom, gRollershutter, gPersistenceSwitch)																									{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Rollershutter_"}
 //DateTime		GF_FamilyRoom_Stepper_LastUpdate					"Family room - blind [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateStepper, gPersistenceSwitch)
 Switch			GF_FamilyRoom_Stepper_PrgUp								"Family room - prg up[]"											(GF_FamilyRoom, gStepper)																															{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:PrgUp"}

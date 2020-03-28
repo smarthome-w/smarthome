@@ -52,11 +52,9 @@ sitemap rollershutter label="Blinds" {
   }
 
   Frame label="Blind - stepper" icon="groundfloor" {
-      Slider item=GF_FamilyRoom_Stepper_Dimmer label="Blind [%.1f %%]"
+      Slider item=GF_FamilyRoom_Stepper_Dimmer label="Blind [%.0f %%]"
+//      Setpoint item=GF_FamilyRoom_Stepper_Dimmer label="Blind [%.0f %%]" minValue=0 maxValue=100 step=10
       Switch item=GF_FamilyRoom_Stepper_Expert_Mode
-  }
-
-  Frame label="Blind" icon="groundfloor" visibility=[GF_FamilyRoom_Stepper_Expert_Mode==ON] {
       Switch item=GF_FamilyRoom_Stepper_AutoUp mappings=[ON="Up"]
       Switch item=GF_FamilyRoom_Stepper_AutoDown mappings=[ON="Down"]
   }

@@ -43,7 +43,7 @@
 //#define CorridorLights
 //#define AnnRoom
 //#define AliceRoom
-//#define Bedroom // change CIR to D5 instead D6 (hardware issue)
+#define Bedroom // change CIR to D5 instead D6 (hardware issue)
 //#define FamilyRoom
 //#define TechnicalRoom1
 //#define TechnicalRoom2
@@ -304,8 +304,8 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define LOOP_DELAY_VALUE 0
 #define SERVO_UP 500
 #define SERVO_DOWN 2500
-#define CURRENT_DIRECTION_UP (-100.0 / 3206.0)  // 2678 + 408 + 120
-#define CURRENT_DIRECTION_DOWN (100.0 / 1769.0) // 1361 + 408
+#define CURRENT_DIRECTION_UP (-100.0 / 3322.0)  // 3202 + 120
+#define CURRENT_DIRECTION_DOWN (100.0 / 1779.0) // 1829 - 50
 #define fRollershutter
 #define fMQTTInput
 #define fMQTTOutput
