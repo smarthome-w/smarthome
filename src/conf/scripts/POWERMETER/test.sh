@@ -68,8 +68,8 @@ if [[ $1 == "parse" ]]; then
                 #echo CALCIM $CALCIM
 
                 #set +e
-                PREVCALC=$(cat /opt/openhab/userdata/logs/CALC)
-                PREVCALCIM=$(cat /opt/openhab/userdata/logs/CALCIM)
+                PREVCALC=$(cat /tmp/CALC)
+                PREVCALCIM=$(cat /tmp/CALCIM)
                 #set -e
                 TODOMOTICZ=$(echo $CALCIM | sed -r 's/\.//g')
 
@@ -83,8 +83,7 @@ if [[ $1 == "parse" ]]; then
                 #logowanie do lokalnego sysloga
                 #logger POWER: $CALC W $CALCIM kWh -p local2.info
                 #print na ekranie
-                echo MAC: $MAC CONST: $CONST POWER: $CALC kW TOTAL: $CALCIM kWh | awk '{ print strftime("%Y-%m-%d %H:%M:%S"), $0; fflush(); }'
-                echo mp: $mp | awk '{ print strftime("%Y-%m-%d %H:%M:%S"), $0; fflush(); }'
+                echo MAC: $MAC POWER: $CALC kW TOTAL: $CALCIM kWh | awk '{ print strftime("%Y-%m-%d %H:%M:%S"), $0; fflush(); }'
                 if [ "${PREVCALC}" != "${CALC}" ]; then
                   echo "CALC:${PREVCALC}:${CALC}"
                   /usr/bin/mosquitto_pub -t myHome/PowerMeter_Current -m "${CALC}" -h "openhab.master"
@@ -93,8 +92,8 @@ if [[ $1 == "parse" ]]; then
                   echo "CALCIM:${PREVCALCIM}:${CALCIM}"
                   /usr/bin/mosquitto_pub -t myHome/PowerMeter_Total -m "${CALCIM}" -h "openhab.master"
                 fi
-                echo ${CALC} >/opt/openhab/userdata/logs/CALC
-                echo ${CALCIM} >/opt/openhab/userdata/logs/CALCIM
+                echo ${CALC} >/tmp/CALC
+                echo ${CALCIM} >/tmp/CALCIM
                 DTYPE=0
               fi
 

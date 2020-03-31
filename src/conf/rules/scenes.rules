@@ -70,6 +70,7 @@ then
             if (CIR_GF_FamilyBalcony.state.toString == "CLOSED") {
               GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
             }
+            logError("scene_rule", "Rollershutter - autodown")
             FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
             GF_FamilyRoom_Light_Table.sendCommand(ON)
 
