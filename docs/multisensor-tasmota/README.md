@@ -34,3 +34,8 @@ SwitchTopic 0
 Rule2 on switch2#state=1 do publish stat/multisensor01/PIR ON endon on switch2#state=0 do publish stat/multisensor01/PIR OFF endon
 Rule2 1
 ```
+
+## Hardware
+
+- multisensor01 - Bedroom sensor (01)
+- multisensor02 - Kitchen sensor (02)

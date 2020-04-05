@@ -7,7 +7,7 @@ Switch		HH_FrontDoorSwitch						"Front door []"										<lock>			(GF_Corridor, 
 Contact		CIR_GF_FamilyRoom						"CIR Family room[]"									<window>		(GF_FamilyRoom, gCIR, gPersistenceSwitch)																		{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirFamilyRoom"}
 Contact		CIR_GF_FamilyBalcony					"CIR Balcony []"									<window>		(GF_FamilyRoom, gCIR, gPersistenceSwitch)																		{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirFamilyBalcony"}
 Contact		CIR_GF_Kitchen							"CIR Kitchen []"									<window>		(GF_Kitchen, gCIR, gPersistenceSwitch)																			{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirKitchen"}
-Contact		CIR_FF_Bedroom							"CIR Bedroom []"									<window>		(FF_Bedroom, gCIR, gPersistenceSwitch)																			{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirBedroom"}
+Contact		CIR_FF_Bedroom							"CIR Bedroom []"									<window>		(FF_Bedroom, gCIR, gPersistenceSwitch)																			{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Cir"}
 Contact		CIR_FF_AliceRoom						"CIR Alice []"										<window>		(FF_AliceRoom, gCIR, gPersistenceSwitch)																		{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirAliceRoom"}
 Contact		CIR_FF_AnnRoom							"CIR Ann []"										<window>		(FF_AnnRoom, gCIR, gPersistenceSwitch)																			{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirAnnRoom"}
 DateTime	CIR_GF_MainDoor_LastUpdate				"CIR Entry [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateCIR, gPersistenceSwitch)
