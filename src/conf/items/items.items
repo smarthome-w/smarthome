@@ -195,7 +195,7 @@ Number			FF_Bedroom_Indoor_Temperature_Setpoint					"Bedroom Setpoint"										
 Number			FF_Bedroom_Indoor_Temperature_Sensor					"Bedroom temperature [%.1f \u00b0C]"					<temperature>	(v_FF_Bedroom_Thermostat, gSensorTemperature, gPersistenceSensor, gEQ3BedroomTemp)							["CurrentTemperature"]					{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Temperature"}
 Number			FF_Bedroom_Indoor_Humidity_Sensor						"Bedroom humidity [%.1f %%]"							<humidity>		(v_FF_Bedroom_Thermostat, gSensorHumidity, gPersistenceSensor)												["CurrentHumidity"]						{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Humidity"}
 Number			FF_Bedroom_Pressure_Sensor								"Bedroom pressure [%.1f hPa]"							<pressure>		(gSensorPressure, gPressureTest, gPersistenceSensor)																								{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Pressure"}
-Number			FF_Bedroom_Analog_Sensor								"Bedroom brightness [%.0f]"								<heating>		(gSensorAnalog, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Brightness"}
+Number			FF_Bedroom_Analog_Sensor								"Bedroom brightness [%.0f]"								<heating>		(gSensorBrightness, gSensorAnalog, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Brightness"}
 Group			v_FF_AliceRoom_Thermostat								"Alice room thermostat"																																								["Thermostat"]
 String			FF_AliceRoom_Indoor_Temperature_Mode					"Alice room Heating/Cooling Mode [%s]"					<temperature>	(v_FF_AliceRoom_Thermostat)																					["homekit:TargetHeatingCoolingMode"]
 Number			FF_AliceRoom_Indoor_Temperature_Setpoint				"Alice room Setpoint"									<temperature>	(v_FF_AliceRoom_Thermostat)																					["homekit:TargetTemperature"]
