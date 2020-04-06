@@ -23,12 +23,14 @@ sitemap sensors label="Sensors" {
     Frame label="Sensors in bedroom" icon="firstfloor" {
         Text item=FF_Bedroom_Indoor_Temperature_Sensor
         Text item=FF_Bedroom_Indoor_Humidity_Sensor
+        Text item=FF_Bedroom_Pressure_Sensor
         Text item=FF_Bedroom_Analog_Sensor
     }
 
     Frame label="Sensors in Alice room" icon="firstfloor" {
         Text item=FF_AliceRoom_Indoor_Temperature_Sensor
         Text item=FF_AliceRoom_Indoor_Humidity_Sensor
+        Text item=FF_AliceRoom_Pressure_Sensor
         Text item=FF_AliceRoom_Analog_Sensor
     }
 

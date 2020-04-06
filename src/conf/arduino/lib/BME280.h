@@ -40,7 +40,7 @@ void sendBME280MQTTMessage(float temperature, float humidity, float pressure) {
 
 void initializeBME280() {
   Serial.println("Initialize BME280...");
-  if (!bme.begin()) {
+  if (!bme.begin(0x76, &Wire)) {
     Serial.println("Could not find a valid BME280 sensor, check wiring!");
   }
 }

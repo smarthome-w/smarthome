@@ -59,12 +59,17 @@ void initializeDigitalInput() {
   iix = 0;
 #ifdef fCIR
   Serial.println("fCIR...");
-  // circuits[iix] = {"pinD5", pinD5, SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT,
-  // NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP, true};
+#ifdef Bedroom
+  circuits[iix] = {
+      "pinD5",  pinD5,           SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT,
+      NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP,   true};
+  iix++;
+#else
   circuits[iix] = {
       "pinD6",  pinD6,           SENSOR_CIRCUIT, SENSOR_VALUE_CIRCUIT,
       NO_VALUE, NORMALLY_CLOSED, INPUT_PULLUP,   true};
   iix++;
+#endif
 #endif
 #ifdef fPIR
   Serial.println("fPIR...");

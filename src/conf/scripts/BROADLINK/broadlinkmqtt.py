@@ -113,7 +113,7 @@ def on_message(client, userdata, msg):
             if (element == "HEARTBEAT"):
                 logger.debug("Publish: myHome/{}".format(raw_element))
                 client.publish("myHome/" + raw_element,
-                               "{}".format(time.time()))
+                               "{}".format(time.strftime('%Y-%m-%dT%H:%M:%S')))
     except Exception as e:
         logger.info("ERR Message type:{} element:{} command:{}".format(
             type, element, command))

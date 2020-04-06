@@ -36,17 +36,15 @@
 //#define FamilyRoomLight
 //#define CorridorStorage
 
-//#define Kitchen
+#define Kitchen // migrated to tasmota
 //#define KitchenLED
-//#define BedroomLights
+//#define BedroomLights // migrated to tasmota
 //#define BedroomWardobe
 //#define CorridorLights
 //#define AnnRoom
 //#define AliceRoom
-#define Bedroom // change CIR to D5 instead D6 (hardware issue)
-//#define FamilyRoom
-//#define TechnicalRoom1
-//#define TechnicalRoom2
+//#define Bedroom // change CIR to D5 instead D6 (hardware issue) // migrated to
+//tasmota #define FamilyRoom #define TechnicalRoom1 #define TechnicalRoom2
 //#define FamilyRoomRollershutter
 //#define BedroomRollershutter
 //#define TestRoom
@@ -175,14 +173,13 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define fName "FF_TestRoom"
 #define WIFIIP 49
 #define fDitigalInput
+#define fBME280
 #define fCIR
 #define fAnalog
-#define fBME280
 #define fMQTTOutput
 #define CIRCUITS_NO 1
-const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHomeY";
+const String GLOBAL_MQTT_MESSAGE_PREFIX = "myHome";
 const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
-#define GLOBAL_MQTT_SUBSCRIBE_PREFIX "myHomeY/FF_Bedroom_LED_Relay_Command"
 #endif
 
 #ifdef Bedroom
