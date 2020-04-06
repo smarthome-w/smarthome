@@ -36,17 +36,15 @@
 //#define FamilyRoomLight
 //#define CorridorStorage
 
-#define Kitchen
+#define Kitchen // migrated to tasmota
 //#define KitchenLED
-//#define BedroomLights
+//#define BedroomLights // migrated to tasmota
 //#define BedroomWardobe
 //#define CorridorLights
 //#define AnnRoom
 //#define AliceRoom
-//#define Bedroom // change CIR to D5 instead D6 (hardware issue)
-//#define FamilyRoom
-//#define TechnicalRoom1
-//#define TechnicalRoom2
+//#define Bedroom // change CIR to D5 instead D6 (hardware issue) // migrated to
+//tasmota #define FamilyRoom #define TechnicalRoom1 #define TechnicalRoom2
 //#define FamilyRoomRollershutter
 //#define BedroomRollershutter
 //#define TestRoom
