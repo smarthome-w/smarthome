@@ -61,4 +61,13 @@ sitemap sensors_basic label="Status" {
 //        Chart item=Presence_Ann period=D label="Ann"
 //        Chart item=Presence_Alice period=D label="Alice"
     }
+
+    Frame label="Scenes" icon="firstfloor" {
+      Switch item=GH_Night_Scene mappings=[ON="Set"]
+      Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]
+      Switch item=GF_FamilyRoom_Rollershutter_AutoUp mappings=[ON="Up"]
+      Switch item=GF_FamilyRoom_Rollershutter_AutoDown mappings=[ON="Down"]
+      Switch item=FF_Bedroom_Rollershutter_AutoUp mappings=[ON="Up"]
+      Switch item=FF_Bedroom_Rollershutter_AutoDown mappings=[ON="Down"]
+    }
 }

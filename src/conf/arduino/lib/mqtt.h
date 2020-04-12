@@ -1,13 +1,17 @@
 #ifndef mqtt_h
 #define mqtt_h
+
 #include <PubSubClient.h>
+
+#undef MQTT_MAX_PACKET_SIZE
+#define MQTT_MAX_PACKET_SIZE 200
 
 boolean ignoreFistMQTTMessage = true;
 PubSubClient client(espClient);
 String GLOBAL_MQTT_MSG = "";
 
 char topic_buff[100];
-char value_buff[100];
+char value_buff[1000];
 
 void callback(char *topic, byte *payload, unsigned int length) {
   if (!ignoreFistMQTTMessage) {

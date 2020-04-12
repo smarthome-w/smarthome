@@ -1,10 +1,11 @@
-#define SKETCH_VERSION "20200405"
+#define SKETCH_VERSION "20200408"
 #include "lib/devices.h"
 
 #include "lib/wifi.h"
 #include "lib/wifi_connect.h"
 #include "lib/mqtt.h"
 #include "lib/watchdog.h"
+#include "lib/ntp.h"
 #include "lib/sensors.h"
 #include "lib/sensor_mqtt.h"
 #include "lib/ota.h"
@@ -46,6 +47,9 @@ void setup() {
   #endif
   #ifdef wifi_connect_h
     initializeWiFi();
+  #endif
+  #ifdef ntp_h
+//    initializeNTP();
   #endif
 
   #ifdef ota_h
@@ -91,6 +95,9 @@ void loop() {
     processOTA();
   #endif
     processHeartbeat();
+  #ifdef ntp_h
+ //   processNTP();
+  #endif
   // relay MUST be before digital input
   // raw previous value is required
   #ifdef fRelay

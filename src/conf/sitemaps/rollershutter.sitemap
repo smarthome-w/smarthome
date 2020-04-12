@@ -78,4 +78,7 @@ sitemap rollershutter label="Blinds" {
       Switch item=GF_FamilyRoom_Stepper_Debug mappings=[ON="Debug"]
   }
 
+    Frame label="Health" icon="firstfloor" {
+      Chart item=gRollershutterHealth period=1D label="Day"
+    }
 }

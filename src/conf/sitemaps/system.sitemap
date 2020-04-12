@@ -61,30 +61,4 @@ sitemap system label="System" {
       Text item=Server_Uptime
 //      Text item=Server_LastRead
     }
-    Frame label="Debug" icon="firstfloor" visibility=[GH_Night_Scene==NULL] {
-      Selection item=DebugTarget mappings=[
-                                          GF_Kitchen_LED_Relay="GF_Kitchen_LED_Relay",
-                                          FF_Bedroom_LED_Relay="FF_Bedroom_LED_Relay",
-                                          GF_Corridor_LED_Relay="GF_Corridor_LED_Relay",
-                                          FF_BedroomWardobe_LED_Relay="FF_BedroomWardobe_LED_Relay",
-                                          GF_FamilyRoom_LED_Relay="GF_FamilyRoom_LED_Relay",
-                                          GF_FamilyRoom_Light_Relay="GF_FamilyRoom_Light_Relay",
-                                          GF_Corridor_LED_Relay="GF_Corridor_LED_Relay",
-                                          GF_Corridor_Storage_Relay="GF_Corridor_Storage_Relay",
-                                          FF_TestRoom="FF_TestRoom",
-                                          FF_Bedroom="FF_Bedroom",
-                                          FF_AliceRoom="FF_AliceRoom",
-                                          FF_AnnRoom="FF_AnnRoom",
-                                          GF_FamilyRoom="GF_FamilyRoom",
-                                          FF_TechnicalRoom1="FF_TechnicalRoom1",
-                                          FF_TechnicalRoom2="FF_TechnicalRoom2",
-                                          GF_FamilyRoom_Rollershutter="GF_FamilyRoom_Rollershutter",
-                                          FF_Bedroom_Rollershutter="FF_Bedroom_Rollershutter"
-                                          ]
-      Selection item=DebugMessage mappings=[
-                                          RESET="RESET",
-                                          DEBUG="DEBUG"
-                                         ]
-//      Switch item=DebugButton
-    }
 }
