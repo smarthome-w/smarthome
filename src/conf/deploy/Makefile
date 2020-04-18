@@ -117,6 +117,12 @@ openhab-service-restart:
 	@sudo systemctl restart openhab
 	@tail -f /opt/openhab/userdata/logs/openhab.log
 
+tasmoadmin-service-install:
+	@sudo cp $(RESOURCES)/service/tasmoadmin.service /etc/systemd/system/tasmoadmin.service
+	@sudo systemctl daemon-reload
+	@sudo systemctl enable tasmoadmin
+	@sudo systemctl restart tasmoadmin
+
 openhab-info:
 	@echo MACHINE=$(MACHINE)
 	@echo OS_PLATFORM=$(OS_PLATFORM)

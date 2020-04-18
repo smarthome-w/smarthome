@@ -1,0 +1,21 @@
+[Unit]
+Description=tasmoadmin
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=180
+User=root
+Group=root
+ExecStart=/usr/bin/docker run --name=%n -d \
+  --name=tasmoadmin \
+  --restart=always\
+  -p 9999:80 \
+  -v /opt/tasmoadmin:/data \
+  raymondmm/tasmoadmin
+
+#ExecStop=/usr/bin/docker stop -t 2 %n ; /usr/bin/docker rm -f %n
+
+[Install]
+WantedBy=multi-user.target

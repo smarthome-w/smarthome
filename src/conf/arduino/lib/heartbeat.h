@@ -11,24 +11,36 @@ void sendHeartbeatMQTTMessage(float milliseconds) {
   sendMQTTWithTypeConversion(messageTopic, messageValue);
 }
 
-/*
+// Tasmota algorithm to relalculate rssi signal strenght
+int WifiGetRssiAsQuality(int rssi) {
+  int quality = 0;
+
+  if (rssi <= -100) {
+    quality = 0;
+  } else if (rssi >= -50) {
+    quality = 100;
+  } else {
+    quality = 2 * (rssi + 100);
+  }
+  return quality;
+}
+
 void sendHeartbeatInfoMQTTMessage() {
   String messageTopic = "tele/" + GLOBAL_MQTT_MULTISENSOR_NAME + "/STATE";
-  // String messageValue = "{\"Time\":\"123\"}";
+  int signalStrength = WifiGetRssiAsQuality(WiFi.RSSI());
 
-  String messageValue = "{\"Time\":\"" + String(timeClient.getFormattedTime()) +
+  String messageValue = "{\"Time\":\"" + String(millis()) +
                         "\",\"FreeMem\":" + String(ESP.getFreeHeap()) +
-                        ",\"Wifi\":{\"RSSI\":" + String(WiFi.RSSI()) +
+                        ",\"Wifi\":{\"RSSI\":" + String(signalStrength) +
                         ",\"MAC\":\"" + String(WiFi.macAddress()) + "\"}}";
   sendMQTTWithTypeConversion(messageTopic, messageValue);
 }
-*/
 
 void processHeartbeat() {
   if (abs(millis() - HeartbeatLastReadInMillis) >
       HEARTBEAT_READ_INTERVAL_MILLIS) {
     sendHeartbeatMQTTMessage(millis());
-    //    sendHeartbeatInfoMQTTMessage();
+    sendHeartbeatInfoMQTTMessage();
     HeartbeatLastReadInMillis = millis();
   }
 }
