@@ -93,7 +93,7 @@ then
                 temperatureItem.postUpdate(temp)
                 lastUpdateItem.postUpdate(now.toString())
                 var String nowStr = now.toString("HH:mm")
-                statusItem.postUpdate(nowStr + " - " + temp.toString() + "C - " + thermometerItem.state.toString() + " C - " + valve.toString() + "%")
+                statusItem.postUpdate(nowStr + " - " + temp.toString() + " C - " + thermometerItem.state.toString() + " C - " + valve.toString() + "%")
             }
             if (valveItem !== NULL) {
                 valveItem.postUpdate(valve)

@@ -57,7 +57,7 @@ end
 
 rule "daily_info"
 when
-  Item calendar_DailyInfo changed to ON or Item DebugButton received update or Item GH_DailyInfo received update
+  Item calendar_DailyInfo changed to ON or Item GH_DailyInfo received update
 then
   var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
   logError("Chromecast", "number {}", externalTemp)
@@ -81,4 +81,53 @@ then
   ttsLanguage.sendCommand(lang)
   ttsText.sendCommand(ttsMessage)
 //  calendar_DailyInfo.postUpdate(OFF)
+end
+
+rule "open-window-temperature-warning"
+when
+  Time cron "0 */10 6-23 ? * MON-SUN" or Item DebugButton received update 
+then
+  var warningTemperature = 10
+  if (HH_OpenWindowTemperatureAlert.state !== NULL) {
+    warningTemperature = (HH_OpenWindowTemperatureAlert.state as Number).intValue
+  }
+  var externalTemperature = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
+  if (externalTemperature < warningTemperature) {
+    var ttsMessage = String.format("There is %.1f Celcius outside. Warning level is set to %d Celcius.", externalTemperature, warningTemperature)
+    var lang = "en-gb"
+
+    var String openedWindows = ""
+    var Boolean opened = false
+
+    if (CIR_GF_FamilyBalcony.state.toString() == "OPEN") {
+        openedWindows += " balcony in family room,"
+        opened = true
+    }
+    if (CIR_GF_FamilyRoom.state.toString() == "OPEN") {
+        openedWindows += openedWindows + " family room,"
+        opened = true
+    }
+    if (CIR_GF_Kitchen.state.toString() == "OPEN") {
+        openedWindows += openedWindows + " kitchen,"
+        opened = true
+    }
+    if (CIR_FF_Bedroom.state.toString() == "OPEN") {
+        openedWindows += openedWindows + " bedroom,"
+        opened = true
+    }
+    if (CIR_FF_AliceRoom.state.toString() == "OPEN") {
+        openedWindows += openedWindows + " Alice room,"
+        opened = true
+    }
+    if (CIR_FF_AnnRoom.state.toString() == "OPEN") {
+        openedWindows += openedWindows + " Ann room,"
+        opened = true
+    }
+
+    if (opened) {
+      ttsMessage = ttsMessage + " Opened windows: " + openedWindows
+      ttsLanguage.sendCommand(lang)
+      ttsText.sendCommand(ttsMessage)
+    }
+  }
 end
