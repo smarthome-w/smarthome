@@ -25,7 +25,7 @@ when
 then
   var key = "66d531cf46544319bd7cbca26d80aa76"
 
-  logError("Chromecast", "Start")
+//  logError("Chromecast", "Start")
   if (ttsText.state !== NULL) {
     var textToSpeech = ttsText.state.toString()
     var language = ttsLanguage.state.toString()
@@ -33,7 +33,7 @@ then
     logError("Chromecast", "Text: {}", textToSpeech)
     var textURI = "https://api.voicerss.org/?key=" + key + "&hl=" + language + "&src=" + textToSpeech
 
-    logError("Chromecast", "Text play - play - {}", textToSpeech)
+//    logError("Chromecast", "Text play - play - {}", textToSpeech)
     FamilyRoomChromecastMediaURI.sendCommand(textURI)
     BedroomChromecastMediaURI.sendCommand(textURI)
     logError("Chromecast", "Text play - end - {}", textToSpeech)
@@ -60,8 +60,9 @@ when
   Item calendar_DailyInfo changed to ON or Item GH_DailyInfo received update
 then
   var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
-  logError("Chromecast", "number {}", externalTemp)
-  var ttsMessage = String.format("There is %.1f Celcius outside.", externalTemp)
+  var pressure = (GF_FamilyRoom_Pressure_Sensor.state as Number).floatValue
+//  logError("Chromecast", "number {}", externalTemp)
+  var ttsMessage = String.format("There is %.1f Celcius outside. Current pressure is %.0f hectopascals.", externalTemp, pressure)
   var lang = "en-gb"
 
   ttsLanguage.sendCommand(lang)
@@ -104,23 +105,23 @@ then
         opened = true
     }
     if (CIR_GF_FamilyRoom.state.toString() == "OPEN") {
-        openedWindows += openedWindows + " family room,"
+        openedWindows += " family room,"
         opened = true
     }
     if (CIR_GF_Kitchen.state.toString() == "OPEN") {
-        openedWindows += openedWindows + " kitchen,"
+        openedWindows += " kitchen,"
         opened = true
     }
     if (CIR_FF_Bedroom.state.toString() == "OPEN") {
-        openedWindows += openedWindows + " bedroom,"
+        openedWindows += " bedroom,"
         opened = true
     }
     if (CIR_FF_AliceRoom.state.toString() == "OPEN") {
-        openedWindows += openedWindows + " Alice room,"
+        openedWindows += " Alice room,"
         opened = true
     }
     if (CIR_FF_AnnRoom.state.toString() == "OPEN") {
-        openedWindows += openedWindows + " Ann room,"
+        openedWindows += " Ann room,"
         opened = true
     }
 

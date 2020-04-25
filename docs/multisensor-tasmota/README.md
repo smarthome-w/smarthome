@@ -72,15 +72,17 @@ GPIO# |00| 01|02| 03|04| 05| 09| 10| 12| 13| 14| 15| 16|
 
 ### Pinout
 
-| Wemos D1 | GPIO |   Tasmota   | Sensor  |
-| :------: | :--: | :---------: | :-----: |
-|    D4    |  2   | DS18x20 (4) | DS18B20 |
-|    D7    |  13  | SI7021 (3)  |  DHT22  |
+| Wemos D1 | GPIO |    Tasmota    | Sensor  |
+| :------: | :--: | :-----------: | :-----: |
+|    D4    |  2   |  DS18x20 (4)  | DS18B20 |
+|    D5    |  14  | Switch 1 (9)  |  AM312  |
+|    D6    |  12  | Switch 2 (10) | contact |
+|    D7    |  13  |  SI7021 (3)   |  DHT22  |
 
 ### Tasmota template
 
 ```bash
-{"NAME":"Multisensor3","GPIO":[255,255,4,255,255,255,255,255,255,3,255,255,255],"FLAG":1,"BASE":18}
+{"NAME":"Multisensor3","GPIO":[255,255,4,255,255,255,255,255,10,3,9,255,255],"FLAG":1,"BASE":18}
 ```
 
 ```bash

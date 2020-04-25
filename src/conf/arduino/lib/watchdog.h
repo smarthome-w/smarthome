@@ -4,7 +4,7 @@
 
 Ticker secondTick;
 volatile int watchdogCount = 0;
-const int WATCHDOG_TRIGGER = 120;
+const int WATCHDOG_TRIGGER = 300;
 
 void ISRwatchdog() {
   watchdogCount++;

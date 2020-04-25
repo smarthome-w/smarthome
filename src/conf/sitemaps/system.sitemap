@@ -52,6 +52,7 @@ sitemap system label="System" {
     Frame label="Errors" icon="firstfloor" {
       Chart item=gErrors period=W label="Errors"
       Chart item=OverallErrorIndicator period=W label="Error indicator"
+      Chart item=gErrors period=D label="Errors"
     }
 
     Frame label="Pi" icon="firstfloor" {

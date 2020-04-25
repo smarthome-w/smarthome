@@ -122,7 +122,7 @@ Switch			RTV_VOLUME_MUTE											"Mute[]"																(GF_FamilyRoom, gSony
 ////////////////////////////////////////////////////////////////////////////////
 //                       Google Home scenes
 ////////////////////////////////////////////////////////////////////////////////
-Switch			GH_DailyInfo											"Daily info[]"															(gVoice)																									["Lighting"]
+Switch			GH_DailyInfo											"Daily info[]"															(gVoice)																									["Switchable"]
 Switch			GH_SensorsInfo											"Sensors info[]"														(gVoice)																									["Lighting"]
 Switch			GH_Holiday												"Holiday[]"																(gScenes)																									["Switchable"]
 Switch			GH_WelcomeBack											"Welcome back[]"														(gScenes)																									["Switchable"]
