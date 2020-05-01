@@ -77,6 +77,12 @@ openhab-service-install:
 	@sudo systemctl daemon-reload
 	@sudo systemctl enable openhab
 
+openhab-mosquitto-external-service-install:
+	@sudo cp $(RESOURCES)/service/openhab-mosquitto-external.service /etc/systemd/system/openhab-mosquitto-external.service
+	@sudo systemctl daemon-reload
+	@sudo systemctl enable openhab-mosquitto-external
+	@sudo systemctl restart openhab-mosquitto-external
+
 openhab-servo-service-install:
 	@sudo cp $(RESOURCES)/service/openhab-servo.service /etc/systemd/system/openhab-servo.service
 	@sudo systemctl daemon-reload
