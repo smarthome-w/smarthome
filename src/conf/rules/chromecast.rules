@@ -57,12 +57,12 @@ end
 
 rule "daily_info"
 when
-  Item calendar_DailyInfo changed to ON or Item GH_DailyInfo received update
+  Item calendar_DailyInfo changed to ON or Item GH_DailyInfo received update or Item DebugButton received update
 then
   var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
   var pressure = (GF_FamilyRoom_Pressure_Sensor.state as Number).floatValue
 //  logError("Chromecast", "number {}", externalTemp)
-  var ttsMessage = String.format("There is %.1f Celcius outside. Current pressure is %.0f hectopascals.", externalTemp, pressure)
+  var ttsMessage = String.format("There is %.1f Celsius outside. Current pressure is %.0f hectopascals.", externalTemp, pressure)
   var lang = "en-gb"
 
   ttsLanguage.sendCommand(lang)
@@ -86,7 +86,7 @@ end
 
 rule "open-window-temperature-warning"
 when
-  Time cron "0 */10 6-23 ? * MON-SUN" or Item DebugButton received update 
+  Time cron "0 */10 6-23 ? * MON-SUN" 
 then
   var warningTemperature = 10
   if (HH_OpenWindowTemperatureAlert.state !== NULL) {
@@ -94,7 +94,7 @@ then
   }
   var externalTemperature = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
   if (externalTemperature < warningTemperature) {
-    var ttsMessage = String.format("There is %.1f Celcius outside. Warning level is set to %d Celcius.", externalTemperature, warningTemperature)
+    var ttsMessage = String.format("There is %.1f Celsius outside. Warning level is set to %d Celsius.", externalTemperature, warningTemperature)
     var lang = "en-gb"
 
     var String openedWindows = ""

@@ -228,6 +228,7 @@ Number			GF_FamilyRoom_Rollershutter_DownLimitProbe				"DownLimitProbe [%.0f]"		
 Number			GF_FamilyRoom_Rollershutter_RealUpLimitProbe			"RealUpLimitProbe [%.0f]"								<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugRealUpLimitProbe"}
 Number			GF_FamilyRoom_Rollershutter_RealDownLimitProbe			"RealDownLimitProbe [%.0f]"								<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugRealDownLimitProbe"}
 Number			GF_FamilyRoom_Rollershutter_Millis						"Millis [%.0f]"											<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugMillis"}
+Number			GF_FamilyRoom_Rollershutter_Uptime						"Uptime [%.4f]"											<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugUptime"}
 Switch			FF_Bedroom_Rollershutter_Expert_Mode					"Expert mode"
 Dimmer			FF_Bedroom_Rollershutter_Dimmer							"Bedroom window  [%.1f %%]"								<heating>		(gRollershutter_Dimmer)																						["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Dimmer_"}
 Rollershutter	FF_Bedroom_Rollershutter								"Bedroom - blind [%s]"													(FF_Bedroom, gRollershutter, gPersistenceSwitch)																									{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Rollershutter_"}
@@ -247,6 +248,7 @@ Number			FF_Bedroom_Rollershutter_DownLimitProbe					"DownLimitProbe [%.0f]"				
 Number			FF_Bedroom_Rollershutter_RealUpLimitProbe				"RealUpLimitProbe [%.0f]"								<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugRealUpLimitProbe"}
 Number			FF_Bedroom_Rollershutter_RealDownLimitProbe				"RealDownLimitProbe [%.0f]"								<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugRealDownLimitProbe"}
 Number			FF_Bedroom_Rollershutter_Millis							"Millis [%.0f]"											<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugMillis"}
+Number			FF_Bedroom_Rollershutter_Uptime							"Uptime [%.4f]"											<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugUptime"}
 Switch			GF_FamilyRoom_Stepper_Expert_Mode						"Expert mode"
 Dimmer			GF_FamilyRoom_Stepper_Dimmer							"Stepper  [%.1f %%]"									<heating>		(GF_FamilyRoom, gStepper_Dimmer)																													{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Dimmer_"}
 Rollershutter	GF_FamilyRoom_Stepper_Rollershutter						"Stepper - blind [%s]"													(FF_Bedroom, gRollershutter, gPersistenceSwitch)																									{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Rollershutter_"}

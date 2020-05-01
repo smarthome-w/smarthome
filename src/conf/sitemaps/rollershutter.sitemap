@@ -22,6 +22,7 @@ sitemap rollershutter label="Blinds" {
 //      Text item=GF_FamilyRoom_Rollershutter_RealUpLimitProbe
 //      Text item=GF_FamilyRoom_Rollershutter_RealDownLimitProbe
       Text item=GF_FamilyRoom_Rollershutter_Millis
+      Text item=GF_FamilyRoom_Rollershutter_Uptime
       Switch item=GF_FamilyRoom_Rollershutter_Debug mappings=[ON="Debug"]
   }
 
@@ -48,6 +49,7 @@ sitemap rollershutter label="Blinds" {
 //      Text item=FF_Bedroom_Rollershutter_RealUpLimitProbe
 //      Text item=FF_Bedroom_Rollershutter_RealDownLimitProbe
       Text item=FF_Bedroom_Rollershutter_Millis
+      Text item=FF_Bedroom_Rollershutter_Uptime
       Switch item=FF_Bedroom_Rollershutter_Debug mappings=[ON="Debug"]
   }
 

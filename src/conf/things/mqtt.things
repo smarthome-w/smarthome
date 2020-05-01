@@ -131,6 +131,8 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : DebugRealUpLimitProbe [stateTopic="myHomeX/GF_FamilyRoom_Rollershutter_Debug_RealUpLimitProbe (LOW active)"]
       Type number : DebugRealDownLimitProbe [stateTopic="myHomeX/GF_FamilyRoom_Rollershutter_Debug_RealDownLimitProbe (LOW active)"]
       Type number : DebugMillis [stateTopic="myHomeX/GF_FamilyRoom_Rollershutter_Debug_Millis"]
+
+      Type number : DebugUptime [stateTopic="tele/GF_FamilyRoom_Rollershutter/STATE", transformationPattern="JSONPATH:$.Uptime"]
   }
 
   Thing topic FF_Bedroom_Rollershutter "FF_Bedroom_Rollershutter" {
@@ -155,6 +157,8 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : DebugRealUpLimitProbe [stateTopic="myHomeX/FF_Bedroom_Rollershutter_Debug_RealUpLimitProbe (LOW active)"]
       Type number : DebugRealDownLimitProbe [stateTopic="myHomeX/FF_Bedroom_Rollershutter_Debug_RealDownLimitProbe (LOW active)"]
       Type number : DebugMillis [stateTopic="myHomeX/FF_Bedroom_Rollershutter_Debug_Millis"]
+
+      Type number : DebugUptime [stateTopic="tele/FF_Bedroom_Rollershutter/STATE", transformationPattern="JSONPATH:$.Uptime"]
   }
 
   Thing topic GF_FamilyRoom_Stepper "GF_FamilyRoom_Stepper" {

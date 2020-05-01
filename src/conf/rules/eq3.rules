@@ -9,6 +9,7 @@ then
     var StringItem modeItem = NULL
     var NumberItem thermometerItem = NULL
     var StringItem statusItem = NULL
+    var ContactItem batteryItem = NULL
     // {"trv":"00:1A:22:10:0C:7B","temp":"6.0","offsetTemp":"0.0","valve":"0% open","mode":"manual","boost":"inactive","window":"closed","state":"unlocked","battery":"GOOD"}
     //logInfo("eq3", "item: {}, value: {}", triggeringItem.name, triggeringItem.state)
     if (triggeringItem.state !== NULL){
@@ -17,6 +18,7 @@ then
         var String temp = transform("JSONPATH", "$.temp", json)
         var String deviceId = transform("JSONPATH", "$.trv", json)
         var String mode = transform("JSONPATH", "$.mode", json)
+        var String battery = transform("JSONPATH", "$.battery", json)
 
         var isOK = true
         if (json.contains("available")) {
@@ -50,6 +52,7 @@ then
                 modeItem = EQ3_Bedroom_Mode
                 lastUpdateItem = EQ3_Bedroom_LastUpdate
                 statusItem = EQ3_Bedroom_Status
+                batteryItem = EQ3_Bedroom_Battery
                 thermometerItem = FF_Bedroom_Indoor_Temperature_Sensor
             }
 
@@ -59,6 +62,7 @@ then
                 modeItem = EQ3_AnnRoom_Mode
                 lastUpdateItem = EQ3_AnnRoom_LastUpdate
                 statusItem = EQ3_AnnRoom_Status
+                batteryItem = EQ3_AnnRoom_Battery
                 thermometerItem = FF_AnnRoom_Indoor_Temperature_Sensor
             }
 
@@ -68,6 +72,7 @@ then
                 modeItem = EQ3_AliceRoom_Mode
                 lastUpdateItem = EQ3_AliceRoom_LastUpdate
                 statusItem = EQ3_AliceRoom_Status
+                batteryItem = EQ3_AliceRoom_Battery
                 thermometerItem = FF_AliceRoom_Indoor_Temperature_Sensor
             }
             
@@ -77,6 +82,7 @@ then
                 modeItem = EQ3_FamilyRoom_Mode
                 lastUpdateItem = EQ3_FamilyRoom_LastUpdate
                 statusItem = EQ3_FamilyRoom_Status
+                batteryItem = EQ3_FamilyRoom_Battery
                 thermometerItem = GF_FamilyRoom_Indoor_Temperature_Sensor
             }
 
@@ -86,6 +92,7 @@ then
                 modeItem = EQ3_Kitchen_Mode
                 lastUpdateItem = EQ3_Kitchen_LastUpdate
                 statusItem = EQ3_Kitchen_Status
+                batteryItem = EQ3_Kitchen_Battery
                 thermometerItem = GF_Kitchen_Indoor_Temperature_Sensor
             }
 
@@ -100,6 +107,13 @@ then
             }
             if (modeItem !== NULL) {
                 modeItem.postUpdate(mode)
+            }
+            if (batteryItem !== NULL) {
+                if (battery.equals("LOW")) {
+                    batteryItem.postUpdate(OPEN)
+                } else {
+                    batteryItem.postUpdate(CLOSED)
+                }
             }
             //logInfo("eq3", "item: {}, deviceId: {}, temp: {}, valve: {}", temperatureItem.name, deviceId, temp, valve)
         }

@@ -5,13 +5,6 @@ sitemap system label="System" {
         Switch item=DebugButton mappings=[ON="Debug"]
     }
 
-    Frame label="Scenes" icon="firstfloor" {
-      Switch item=GH_Night_Scene mappings=[ON="Set"]
-      Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]
-      Switch item=GH_Evening_Scene mappings=[ON="Set"]
-      Switch item=GH_Day_Scene mappings=[ON="Set"]
-      Switch item=GH_TVShow_Scene mappings=[ON="Set"]
-    }
 //    Frame label="Hard reset" icon="groundfloor" {
 //      Switch item=HardResetButton
 //    }
@@ -36,6 +29,7 @@ sitemap system label="System" {
       Group item=gEQ3Valve
       Group item=gSensorPower
       Group item=gHeartbeat
+      Group item=gBattery
     }
     Frame label="Lock" icon="firstfloor" {
       Switch item=CIR_GF_MainLock mappings=[CLOSED="Closed", OPEN="Open"]
@@ -55,11 +49,27 @@ sitemap system label="System" {
       Chart item=gErrors period=D label="Errors"
     }
 
+
+    Frame label="Presence" icon="firstfloor" {
+        Chart item=Presence_Waldek period=D label="Waldek"
+        Chart item=Presence_Aldona period=D label="Aldona"
+        Chart item=Presence_Ann period=D label="Ann"
+        Chart item=Presence_Alice period=D label="Alice"
+    }
+
     Frame label="Pi" icon="firstfloor" {
       Text item=OpenHAB_Restart
       Text item=Server_Temperature
 //      Text item=Server_CPUIdle
       Text item=Server_Uptime
 //      Text item=Server_LastRead
+    }
+
+    Frame label="Scenes" icon="firstfloor" {
+      Switch item=GH_Night_Scene mappings=[ON="Set"]
+      Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]
+      Switch item=GH_Evening_Scene mappings=[ON="Set"]
+      Switch item=GH_Day_Scene mappings=[ON="Set"]
+      Switch item=GH_TVShow_Scene mappings=[ON="Set"]
     }
 }
