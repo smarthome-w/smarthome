@@ -22,6 +22,7 @@ sitemap rollershutter label="Blinds" {
 //      Text item=GF_FamilyRoom_Rollershutter_RealUpLimitProbe
 //      Text item=GF_FamilyRoom_Rollershutter_RealDownLimitProbe
       Text item=GF_FamilyRoom_Rollershutter_Millis
+      Text item=GF_FamilyRoom_Rollershutter_Uptime
       Switch item=GF_FamilyRoom_Rollershutter_Debug mappings=[ON="Debug"]
   }
 
@@ -48,34 +49,11 @@ sitemap rollershutter label="Blinds" {
 //      Text item=FF_Bedroom_Rollershutter_RealUpLimitProbe
 //      Text item=FF_Bedroom_Rollershutter_RealDownLimitProbe
       Text item=FF_Bedroom_Rollershutter_Millis
+      Text item=FF_Bedroom_Rollershutter_Uptime
       Switch item=FF_Bedroom_Rollershutter_Debug mappings=[ON="Debug"]
   }
 
-  Frame label="Blind - stepper" icon="groundfloor" {
-      Slider item=GF_FamilyRoom_Stepper_Dimmer label="Blind [%.0f %%]"
-//      Setpoint item=GF_FamilyRoom_Stepper_Dimmer label="Blind [%.0f %%]" minValue=0 maxValue=100 step=10
-      Switch item=GF_FamilyRoom_Stepper_Expert_Mode
-      Switch item=GF_FamilyRoom_Stepper_AutoUp mappings=[ON="Up"]
-      Switch item=GF_FamilyRoom_Stepper_AutoDown mappings=[ON="Down"]
+  Frame label="Health" icon="firstfloor" {
+      Chart item=gRollershutterHealth period=1D label="Day"
   }
-
-  Frame label="Blind - setup" icon="groundfloor" visibility=[GF_FamilyRoom_Stepper_Expert_Mode==ON] {
-//      Switch item=GF_FamilyRoom_Stepper
-//      Switch item=GF_FamilyRoom_Stepper_PrgUp mappings=[ON="Set"]
-      Switch item=GF_FamilyRoom_Stepper_PrgDown mappings=[ON="Set"]
-  }
-
-  Frame label="Blind - status" icon="groundfloor"  visibility=[GF_FamilyRoom_Stepper_Expert_Mode==ON] {
-      Text item=GF_FamilyRoom_Stepper_CurrPos
-      Text item=GF_FamilyRoom_Stepper_StepCurrPos
-//      Text item=GF_FamilyRoom_Stepper_MinLimit
-//      Text item=GF_FamilyRoom_Stepper_MaxLimit
-      Text item=GF_FamilyRoom_Stepper_UpLimitProbe
-//      Text item=GF_FamilyRoom_Stepper_DownLimitProbe
-//      Text item=GF_FamilyRoom_Stepper_RealUpLimitProbe
-//      Text item=GF_FamilyRoom_Stepper_RealDownLimitProbe
-      Text item=GF_FamilyRoom_Stepper_Millis
-      Switch item=GF_FamilyRoom_Stepper_Debug mappings=[ON="Debug"]
-  }
-
 }

@@ -10,6 +10,7 @@ Restart=always
 RestartSec=180
 User=root
 Group=root
+ExecStartPre=-/usr/bin/docker rm -f %n
 ExecStart=/usr/bin/docker run --name=%n --tty \
   -v /etc/localtime:/etc/localtime:ro \
   -v /etc/timezone:/etc/timezone:ro \
@@ -22,7 +23,7 @@ ExecStart=/usr/bin/docker run --name=%n --tty \
   --privileged \
   DOCKER_TAG
 
-ExecStartPost=/usr/bin/mkdir -p /opt/openhab/addons 
+ExecStartPost=/bin/mkdir -p /opt/openhab/addons 
 ExecStartPost=/bin/ln -fs /opt/openhab/conf/deploy/resources/addons/mariadb-java-client-2.2.5.jar /opt/openhab/addons/mariadb-java-client-2.2.5.jar 
 
 ExecStop=/usr/bin/docker stop -t 2 %n ; /usr/bin/docker rm -f %n

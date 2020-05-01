@@ -36,17 +36,20 @@
 //#define FamilyRoomLight
 //#define CorridorStorage
 
-#define Kitchen // migrated to tasmota
+//#define TechnicalRoom1
+//#define TechnicalRoom2
+#define FamilyRoomRollershutter
+//#define BedroomRollershutter
 //#define KitchenLED
+
+//#define Kitchen // migrated to tasmota
 //#define BedroomLights // migrated to tasmota
 //#define BedroomWardobe
 //#define CorridorLights
 //#define AnnRoom
 //#define AliceRoom
 //#define Bedroom // change CIR to D5 instead D6 (hardware issue) // migrated to
-//tasmota #define FamilyRoom #define TechnicalRoom1 #define TechnicalRoom2
-//#define FamilyRoomRollershutter
-//#define BedroomRollershutter
+// tasmota #define FamilyRoom
 //#define TestRoom
 //#define TestRelay
 //#define TestStepper
@@ -282,7 +285,7 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define LOOP_DELAY_VALUE 0
 #define SERVO_UP 2500
 #define SERVO_DOWN 500
-#define CURRENT_DIRECTION_UP (-100.0 / 2258.0)  // 1862 + 376 + 20
+#define CURRENT_DIRECTION_UP (-100.0 / 2278.0)  // 1862 + 376 + 20 + 20
 #define CURRENT_DIRECTION_DOWN (100.0 / 2111.0) // 1862 + 249
 #define fRollershutter
 #define fMQTTInput

@@ -21,6 +21,8 @@ sitemap parameters label="Parameters" {
 
       Setpoint item=HH_DailyInfoHour minValue=0 maxValue=23 step=1
       Setpoint item=HH_DailyInfoMinute minValue=0 maxValue=59 step=5
+
+      Setpoint item=HH_OpenWindowTemperatureAlert minValue=9 maxValue=20 step=1
     }
 
     Frame label="Logging" icon="firstfloor" {

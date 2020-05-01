@@ -1,13 +1,19 @@
 #ifndef mqtt_h
 #define mqtt_h
+
 #include <PubSubClient.h>
 
-boolean ignoreFistMQTTMessage = true;
+#undef MQTT_MAX_PACKET_SIZE
+#define MQTT_MAX_PACKET_SIZE 200
+
+// Do not ignore first message now. Retain flag is set on message.
+boolean ignoreFistMQTTMessage = false;
+
 PubSubClient client(espClient);
 String GLOBAL_MQTT_MSG = "";
 
 char topic_buff[100];
-char value_buff[100];
+char value_buff[1000];
 
 void callback(char *topic, byte *payload, unsigned int length) {
   if (!ignoreFistMQTTMessage) {
@@ -41,8 +47,8 @@ void reconnectMQTT() {
       Serial.print("failed, rc=");
       Serial.print(client.state());
       Serial.println(" try again in 5 seconds");
-      // Wait 5 seconds before retrying
-      delay(5000);
+      // Wait 1 second before retrying
+      delay(1000);
     }
   }
 }

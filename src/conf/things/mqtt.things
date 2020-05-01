@@ -14,8 +14,6 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type contact : CirFamilyRoom [stateTopic="myHome/CIR_GF_FamilyRoom"]
       Type contact : CirFamilyBalcony [stateTopic="myHome/CIR_GF_FamilyBalcony"]
       Type contact : CirKitchen [stateTopic="myHome/CIR_GF_Kitchen"]
-//      Type contact : CirBedroom [stateTopic="myHome/CIR_FF_Bedroom"]
-//      Type contact : CirAliceRoom [stateTopic="myHome/CIR_FF_AliceRoom"]
       Type contact : CirAnnRoom [stateTopic="myHome/CIR_FF_AnnRoom"]
 
       Type contact : PirGfCorridor [stateTopic="myHome/PIR_GF_Corridor"]
@@ -23,7 +21,6 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type contact : PirKitchen [stateTopic="myHome/PIR_GF_Kitchen"]
       Type contact : PirFfCorridor [stateTopic="myHome/PIR_FF_Corridor"]
       Type contact : PirAnnRoom [stateTopic="myHome/PIR_FF_AnnRoom"]
-//      Type contact : PirAliceRoom [stateTopic="myHome/PIR_FF_AliceRoom"]
       Type contact : PirBedroom [stateTopic="myHome/PIR_FF_Bedroom"]
       Type contact : PirBedroomWardobe [stateTopic="myHome/PIR_FF_BedroomWardobe"]
       Type contact : PirEntryWatch [stateTopic="myHome/FF_TechnicalRoom2_EntryWatch"]
@@ -40,23 +37,11 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
 
   Thing topic Heartbeat_Sensor "Heartbeat_Sensor" {
     Channels:
-//      Type string : HeartbeatFamilyRoom [stateTopic="myHome/GF_FamilyRoom_Heartbeat"]
-//      Type string : HeartbeatKitchen [stateTopic="myHome/GF_Kitchen_Heartbeat"]
-//      Type string : HeartbeatAnnRoom [stateTopic="myHome/FF_AnnRoom_Heartbeat"]
-//      Type string : HeartbeatAliceRoom [stateTopic="myHome/FF_AliceRoom_Heartbeat"]
       Type string : HeartbeatFamilyRoomRollershutter [stateTopic="myHomeX/GF_FamilyRoom_Rollershutter_Heartbeat"]
-//      Type string : HeartbeatBedroom [stateTopic="myHome/FF_Bedroom_Heartbeat"]
       Type string : HeartbeatBedroomRollershutter [stateTopic="myHomeX/FF_Bedroom_Rollershutter_Heartbeat"]
       Type string : HeartbeatTechnicalRoom1 [stateTopic="myHome/FF_TechnicalRoom1_Heartbeat"]
       Type string : HeartbeatTechnicalRoom2 [stateTopic="myHome/FF_TechnicalRoom2_Heartbeat"]
       Type string : HeartbeatRMPro [stateTopic="myHome/HW_RMPro_Heartbeat"]
-
-//      Type string : HeartbeatLightsLED [stateTopic="myHomeY/GF_FamilyRoom_LED_Relay_Heartbeat"]
-//      Type string : HeartbeatLights [stateTopic="myHomeY/GF_FamilyRoom_Light_Relay_Heartbeat"]
-//      Type string : HeartbeatCorridorLED [stateTopic="myHomeY/GF_Corridor_LED_Relay_Heartbeat"]
-//      Type string : HeartbeatBedroomRelay [stateTopic="myHomeY/FF_Bedroom_LED_Relay_Heartbeat"]
-//      Type string : HeartbeatBedroomWardobeRelay [stateTopic="myHomeY/FF_BedroomWardobe_LED_Relay_Heartbeat"]
-//      Type string : HeartbeatCorridorStorage [stateTopic="myHomeY/GF_Corridor_Storage_Relay_Heartbeat"]
       Type string : HeartbeatKitchenLED [stateTopic="myHomeY/GF_Kitchen_LED_Relay_Heartbeat"]
   }
 
@@ -93,13 +78,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
 
   Thing topic Sonoff "Sonoff" {
     Channels:
-//      Type switch : GF_FamilyRoom_LED [stateTopic="myHomeY/GF_FamilyRoom_LED_Relay", commandTopic="myHomeY/GF_FamilyRoom_LED_Relay_Command", on="ON", off="OFF" ]
-//      Type switch : GF_FamilyRoom_Light [stateTopic="myHomeY/GF_FamilyRoom_Light_Relay", commandTopic="myHomeY/GF_FamilyRoom_Light_Relay_Command", on="ON", off="OFF" ]
       Type switch : GF_Kitchen_LED [stateTopic="myHomeY/GF_Kitchen_LED_Relay", commandTopic="myHomeY/GF_Kitchen_LED_Relay_Command", on="ON", off="OFF" ]
-//      Type switch : GF_Corridor_LED [stateTopic="myHomeY/GF_Corridor_LED_Relay", commandTopic="myHomeY/GF_Corridor_LED_Relay_Command", on="ON", off="OFF" ]
-//      Type switch : GF_Corridor_Storage [stateTopic="myHomeY/GF_Corridor_Storage_Relay", commandTopic="myHomeY/GF_Corridor_Storage_Relay_Command", on="ON", off="OFF" ]
-//      Type switch : FF_Bedroom_Lights [stateTopic="myHomeY/FF_Bedroom_LED_Relay", commandTopic="myHomeY/FF_Bedroom_LED_Relay_Command", on="ON", off="OFF" ]
-//      Type switch : FF_Bedroom_Wardobe [stateTopic="myHomeY/FF_BedroomWardobe_LED_Relay", commandTopic="myHomeY/FF_BedroomWardobe_LED_Relay_Command", on="ON", off="OFF" ]
   }
 
   Thing topic Shelly "Shelly" {
@@ -152,6 +131,8 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : DebugRealUpLimitProbe [stateTopic="myHomeX/GF_FamilyRoom_Rollershutter_Debug_RealUpLimitProbe (LOW active)"]
       Type number : DebugRealDownLimitProbe [stateTopic="myHomeX/GF_FamilyRoom_Rollershutter_Debug_RealDownLimitProbe (LOW active)"]
       Type number : DebugMillis [stateTopic="myHomeX/GF_FamilyRoom_Rollershutter_Debug_Millis"]
+
+      Type number : DebugUptime [stateTopic="tele/GF_FamilyRoom_Rollershutter/STATE", transformationPattern="JSONPATH:$.Uptime"]
   }
 
   Thing topic FF_Bedroom_Rollershutter "FF_Bedroom_Rollershutter" {
@@ -176,6 +157,8 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : DebugRealUpLimitProbe [stateTopic="myHomeX/FF_Bedroom_Rollershutter_Debug_RealUpLimitProbe (LOW active)"]
       Type number : DebugRealDownLimitProbe [stateTopic="myHomeX/FF_Bedroom_Rollershutter_Debug_RealDownLimitProbe (LOW active)"]
       Type number : DebugMillis [stateTopic="myHomeX/FF_Bedroom_Rollershutter_Debug_Millis"]
+
+      Type number : DebugUptime [stateTopic="tele/FF_Bedroom_Rollershutter/STATE", transformationPattern="JSONPATH:$.Uptime"]
   }
 
   Thing topic GF_FamilyRoom_Stepper "GF_FamilyRoom_Stepper" {
@@ -264,12 +247,6 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
   }
 
 // Bedroom
-//  Thing topic FF_Bedroom_Sensor "FF_Bedroom_Sensor" {
-//    Channels:
-//      Type number : Temperature [stateTopic="myHome/FF_Bedroom_Indoor_Temperature_Sensor"]
-//      Type number : Humidity [stateTopic="myHome/FF_Bedroom_Humidity_Sensor"]
-//      Type number : Brightness [stateTopic="myHome/FF_Bedroom_Analog", transformationPattern="JS:brightness.js"]
-//  } 
   Thing topic Multisensor01 "Multisensor01" {
     Channels:
       Type number : Temperature [stateTopic="tele/multisensor01/SENSOR", transformationPattern="JSONPATH:$.BME280.Temperature"]
@@ -279,39 +256,20 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Brightness [stateTopic="tele/multisensor01/SENSOR", transformationPattern="JS:tasmotaAnalogReverse.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor01/STATE", transformationPattern="JSONPATH:$.Time"]
       Type contact : Cir [stateTopic="stat/multisensor01/CIR", on="ON", off="OFF"]
-//      Type contact : Move [stateTopic="stat/multisensor01/PIR", on="ON", off="OFF"]
   } 
 
 // Kitchen
-//  Thing topic GF_Kitchen_Sensor "GF_Kitchen_Sensor" {
-//    Channels:
-//      Type number : Temperature [stateTopic="myHome/GF_Kitchen_Indoor_Temperature_Sensor1"]
-//      Type number : Humidity [stateTopic="myHome/GF_Kitchen_Humidity_Sensor1"]
-//      Type number : Pressure [stateTopic="myHome/GF_Kitchen_Pressure1", transformationPattern="JS:pressure.js"]
-//  } 
   Thing topic Multisensor02 "Multisensor02" {
     Channels:
       Type number : Temperature [stateTopic="tele/multisensor02/SENSOR", transformationPattern="JSONPATH:$.BME280.Temperature"]
       Type number : Humidity [stateTopic="tele/multisensor02/SENSOR", transformationPattern="JSONPATH:$.BME280.Humidity"]
       Type number : DewPoint [stateTopic="tele/multisensor02/SENSOR", transformationPattern="JSONPATH:$.BME280.DewPoint"]
       Type number : Pressure [stateTopic="tele/multisensor02/SENSOR", transformationPattern="JS:tasmotaBME280Pressure.js"]
-//      Type number : Brightness [stateTopic="tele/multisensor02/SENSOR", transformationPattern="JS:tasmotaAnalogReverse.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor02/STATE", transformationPattern="JSONPATH:$.Time"]
-//      Type contact : Cir [stateTopic="stat/multisensor02/CIR", on="ON", off="OFF"]
-//      Type contact : Move [stateTopic="stat/multisensor02/PIR", on="ON", off="OFF"]
   } 
 
 
-//  Thing topic GF_FamilyRoom_Sensor "GF_FamilyRoom_Sensor" {
-//    Channels:
-//      Type number : Temperature [stateTopic="myHome/GF_FamilyRoom_Indoor_Temperature_Sensor"]
-//      Type number : Humidity [stateTopic="myHome/GF_FamilyRoom_Humidity_Sensor"]
-//      Type number : Pressure [stateTopic="myHome/GF_FamilyRoom_Pressure_Sensor", transformationPattern="JS:pressure.js"]
-//      Type number : OutdoorTemperature [stateTopic="myHome/GF_FamilyRoom_Outdoor_Temperature_Sensor"]
-//      Type number : Brightness [stateTopic="myHome/GF_FamilyRoom_Analog", transformationPattern="JS:brightness.js"]
-//  } 
-
-
+//  GF_FamilyRoom_Sensor
   Thing topic Multisensor03 "Multisensor03" {
     Channels:
       Type number : Temperature [stateTopic="tele/multisensor03/SENSOR", transformationPattern="JSONPATH:$.SI7021.Temperature"]
@@ -321,24 +279,10 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Brightness [stateTopic="tele/multisensor03/SENSOR", transformationPattern="JS:tasmotaAnalogReverse.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor03/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number : OutdoorTemperature [stateTopic="tele/multisensor03/SENSOR", transformationPattern="JSONPATH:$.DS18B20.Temperature"]
-//      Type contact : Cir [stateTopic="stat/multisensor03/CIR", on="ON", off="OFF"]
-//      Type contact : Move [stateTopic="stat/multisensor03/PIR", on="ON", off="OFF"]
   } 
 
 
-//  Thing topic FF_AliceRoom_Sensor "FF_AliceRoom_Sensor" {
-//    Channels:
-//      Type number : Temperature [stateTopic="myHome/FF_AliceRoom_Indoor_Temperature_Sensor"]
-//      Type number : Humidity [stateTopic="myHome/FF_AliceRoom_Humidity_Sensor1"]
-//      Type number : Pressure [stateTopic="myHome/FF_AliceRoom_Pressure1", transformationPattern="JS:pressure.js"]
-//      Type number : OutdoorTemperature [stateTopic="myHome/FF_AliceRoom_Outdoor_Temperature_Sensor"]
-//      Type number : Brightness [stateTopic="myHome/FF_AliceRoom_Analog", transformationPattern="JS:brightness.js"]
-
-//      Type number : Temperature1 [stateTopic="myHome/FF_AliceRoom_Indoor_Temperature_Sensor1"]
-//      Type number : Temperature2 [stateTopic="myHome/FF_AliceRoom_Indoor_Temperature_Sensor2"]
-//      Type number : Humidity1 [stateTopic="myHome/FF_AliceRoom_Humidity_Sensor"]   
-//  } 
-
+//  FF_AliceRoom_Sensor
   Thing topic Multisensor04 "Multisensor04" {
     Channels:
       Type number : Temperature [stateTopic="tele/multisensor04/SENSOR", transformationPattern="JSONPATH:$.BME280.Temperature"]
@@ -351,13 +295,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type contact : Move [stateTopic="stat/multisensor04/PIR", on="ON", off="OFF"]
   } 
 
-//  Thing topic FF_AnnRoom_Sensor "FF_AnnRoom_Sensor" {
-//    Channels:
-//      Type number : Temperature [stateTopic="myHome/FF_AnnRoom_Indoor_Temperature_Sensor"]
-//      Type number : Humidity [stateTopic="myHome/FF_AnnRoom_Humidity_Sensor"]
-//      Type number : OutdoorTemperature [stateTopic="myHome/FF_AnnRoom_Outdoor_Temperature_Sensor"]
-//  } 
-
+//  FF_AnnRoom_Sensor
   Thing topic Multisensor05 "Multisensor05" {
     Channels:
       Type number : Temperature [stateTopic="tele/multisensor05/SENSOR", transformationPattern="JSONPATH:$.SI7021.Temperature"]

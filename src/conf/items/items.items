@@ -122,7 +122,7 @@ Switch			RTV_VOLUME_MUTE											"Mute[]"																(GF_FamilyRoom, gSony
 ////////////////////////////////////////////////////////////////////////////////
 //                       Google Home scenes
 ////////////////////////////////////////////////////////////////////////////////
-Switch			GH_DailyInfo											"Daily info[]"															(gVoice)																									["Lighting"]
+Switch			GH_DailyInfo											"Daily info[]"															(gVoice)																									["Switchable"]
 Switch			GH_SensorsInfo											"Sensors info[]"														(gVoice)																									["Lighting"]
 Switch			GH_Holiday												"Holiday[]"																(gScenes)																									["Switchable"]
 Switch			GH_WelcomeBack											"Welcome back[]"														(gScenes)																									["Switchable"]
@@ -154,10 +154,11 @@ Number			HH_Time_Evening											"Evening starts at [%.0f]"								<time>			(g
 Number			HH_Time_Night											"Night starts at [%.0f]"								<time>			(gParameters, gPersistenceSwitch)
 Number			HH_Elevation_Dusk										"Elevation dusk below [%.0f]"							<time>			(gAstroBrightness, gParameters, gPersistenceSwitch)
 Number			HH_Elevation_Dawn										"Elevation dawn above [%.0f]"							<time>			(gAstroBrightness, gParameters, gPersistenceSwitch)
-Number			HH_LockWarningHour										"Lock warning hour  [%.0f]"								<time>			(gParameters, gPersistenceSwitch)
-Number			HH_BlindsNotBefore										"Blinds not before hour  [%.0f]"						<time>			(gParameters, gPersistenceSwitch)
-Number			HH_DailyInfoHour										"Daily info hour  [%.0f]"								<time>			(gParameters, gPersistenceSwitch)
-Number			HH_DailyInfoMinute										"Daily info minute  [%.0f]"								<time>			(gParameters, gPersistenceSwitch)
+Number			HH_LockWarningHour										"Lock warning hour [%.0f]"								<time>			(gParameters, gPersistenceSwitch)
+Number			HH_BlindsNotBefore										"Blinds not before hour [%.0f]"							<time>			(gParameters, gPersistenceSwitch)
+Number			HH_DailyInfoHour										"Daily info hour [%.0f]"								<time>			(gParameters, gPersistenceSwitch)
+Number			HH_DailyInfoMinute										"Daily info minute [%.0f]"								<time>			(gParameters, gPersistenceSwitch)
+Number			HH_OpenWindowTemperatureAlert							"Open windows temperature alert [%.0f]"					<time>			(gParameters, gPersistenceSwitch)
 Number			HH_DebugLevel_PIRCIR									"PIR/CIR debug level [%.0f]"							<time>			(gParameters, gPersistenceSwitch)
 Number			HH_DebugLevel_Broadlink									"Broadlink HW debug level [%.0f]"						<time>			(gParameters, gPersistenceSwitch)
 Number			HH_DebugLevel_Heartbeat									"Heartbeat debug level [%.0f]"							<time>			(gParameters, gPersistenceSwitch)
@@ -195,7 +196,7 @@ Number			FF_Bedroom_Indoor_Temperature_Setpoint					"Bedroom Setpoint"										
 Number			FF_Bedroom_Indoor_Temperature_Sensor					"Bedroom temperature [%.1f \u00b0C]"					<temperature>	(v_FF_Bedroom_Thermostat, gSensorTemperature, gPersistenceSensor, gEQ3BedroomTemp)							["CurrentTemperature"]					{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Temperature"}
 Number			FF_Bedroom_Indoor_Humidity_Sensor						"Bedroom humidity [%.1f %%]"							<humidity>		(v_FF_Bedroom_Thermostat, gSensorHumidity, gPersistenceSensor)												["CurrentHumidity"]						{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Humidity"}
 Number			FF_Bedroom_Pressure_Sensor								"Bedroom pressure [%.1f hPa]"							<pressure>		(gSensorPressure, gPressureTest, gPersistenceSensor)																								{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Pressure"}
-Number			FF_Bedroom_Analog_Sensor								"Bedroom brightness [%.0f]"								<heating>		(gSensorBrightness, gSensorAnalog, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Brightness"}
+Number			FF_Bedroom_Analog_Sensor								"Bedroom brightness [%.0f]"								<heating>		(gSensorBrightness, gSensorAnalog, gPersistenceSensor)																								{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Brightness"}
 Group			v_FF_AliceRoom_Thermostat								"Alice room thermostat"																																								["Thermostat"]
 String			FF_AliceRoom_Indoor_Temperature_Mode					"Alice room Heating/Cooling Mode [%s]"					<temperature>	(v_FF_AliceRoom_Thermostat)																					["homekit:TargetHeatingCoolingMode"]
 Number			FF_AliceRoom_Indoor_Temperature_Setpoint				"Alice room Setpoint"									<temperature>	(v_FF_AliceRoom_Thermostat)																					["homekit:TargetTemperature"]
@@ -214,38 +215,40 @@ Rollershutter	GF_FamilyRoom_Rollershutter								"Family room - blind [%s]"					
 //DateTime		GF_FamilyRoom_Rollershutter_LastUpdate					"Family room - blind [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateRollershutter, gPersistenceSwitch)
 Switch			GF_FamilyRoom_Rollershutter_PrgUp						"Family room - prg up[]"												(GF_FamilyRoom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:PrgUp"}
 Switch			GF_FamilyRoom_Rollershutter_PrgDown						"Family room - prg down[]"												(GF_FamilyRoom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:PrgDown"}
-Switch			GF_FamilyRoom_Rollershutter_AutoUp						"Rollershutter up[]"													(GF_FamilyRoom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:AutoUp"}
-Switch			GF_FamilyRoom_Rollershutter_AutoDown					"Rollershutter down[]"													(GF_FamilyRoom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:AutoDown"}
-Switch			GF_FamilyRoom_Rollershutter_AutoStop					"Rollershutter stop[]"													(GF_FamilyRoom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:AutoStop"}
-Switch			GF_FamilyRoom_Rollershutter_Debug						"Rollershutter debug[]"													(GF_FamilyRoom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:Debug"}
+Switch			GF_FamilyRoom_Rollershutter_AutoUp						"Family room blind up[]"												(GF_FamilyRoom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:AutoUp"}
+Switch			GF_FamilyRoom_Rollershutter_AutoDown					"Family room blind down[]"												(GF_FamilyRoom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:AutoDown"}
+Switch			GF_FamilyRoom_Rollershutter_AutoStop					"Family room blind stop[]"												(GF_FamilyRoom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:AutoStop"}
+Switch			GF_FamilyRoom_Rollershutter_Debug						"Family room blind debug[]"												(GF_FamilyRoom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:Debug"}
 Number			GF_FamilyRoom_Rollershutter_CurrPos						"Position [%.1f]"										<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugCurrPos"}
 Number			GF_FamilyRoom_Rollershutter_PWMCurrPos					"PWM Position [%.0f]"									<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugPWMCurrPos"}
-Number			GF_FamilyRoom_Rollershutter_MinLimit					"MinLimit [%.0f]"										<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugMinLimit"}
+Number			GF_FamilyRoom_Rollershutter_MinLimit					"Family Room MinLimit [%.0f]"							<heating>		(gPersistenceSwitch, gRollershutterHealth)																											{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugMinLimit"}
 Number			GF_FamilyRoom_Rollershutter_MaxLimit					"MaxLimit [%.0f]"										<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugMaxLimit"}
 Number			GF_FamilyRoom_Rollershutter_UpLimitProbe				"UpLimitProbe [%.0f]"									<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugUpLimitProbe"}
 Number			GF_FamilyRoom_Rollershutter_DownLimitProbe				"DownLimitProbe [%.0f]"									<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugDownLimitProbe"}
 Number			GF_FamilyRoom_Rollershutter_RealUpLimitProbe			"RealUpLimitProbe [%.0f]"								<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugRealUpLimitProbe"}
 Number			GF_FamilyRoom_Rollershutter_RealDownLimitProbe			"RealDownLimitProbe [%.0f]"								<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugRealDownLimitProbe"}
 Number			GF_FamilyRoom_Rollershutter_Millis						"Millis [%.0f]"											<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugMillis"}
+Number			GF_FamilyRoom_Rollershutter_Uptime						"Uptime [%.4f]"											<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugUptime"}
 Switch			FF_Bedroom_Rollershutter_Expert_Mode					"Expert mode"
 Dimmer			FF_Bedroom_Rollershutter_Dimmer							"Bedroom window  [%.1f %%]"								<heating>		(gRollershutter_Dimmer)																						["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Dimmer_"}
 Rollershutter	FF_Bedroom_Rollershutter								"Bedroom - blind [%s]"													(FF_Bedroom, gRollershutter, gPersistenceSwitch)																									{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Rollershutter_"}
 //DateTime		FF_Bedroom_Rollershutter_LastUpdate						"Bedroom - blind [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateRollershutter, gPersistenceSwitch)
 Switch			FF_Bedroom_Rollershutter_PrgUp							"Bedroom - prg up[]"													(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:PrgUp"}
 Switch			FF_Bedroom_Rollershutter_PrgDown						"Bedroom - prg down[]"													(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:PrgDown"}
-Switch			FF_Bedroom_Rollershutter_AutoUp							"Rollershutter up[]"													(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:AutoUp"}
-Switch			FF_Bedroom_Rollershutter_AutoDown						"Rollershutter down[]"													(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:AutoDown"}
-Switch			FF_Bedroom_Rollershutter_AutoStop						"Rollershutter stop[]"													(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:AutoStop"}
-Switch			FF_Bedroom_Rollershutter_Debug							"Rollershutter debug[]"													(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Debug"}
+Switch			FF_Bedroom_Rollershutter_AutoUp							"Bedroom blind up[]"													(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:AutoUp"}
+Switch			FF_Bedroom_Rollershutter_AutoDown						"Bedroom blind down[]"													(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:AutoDown"}
+Switch			FF_Bedroom_Rollershutter_AutoStop						"Bedroom blind stop[]"													(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:AutoStop"}
+Switch			FF_Bedroom_Rollershutter_Debug							"Bedroom blind debug[]"													(FF_Bedroom, gRollershutter)																														{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Debug"}
 Number			FF_Bedroom_Rollershutter_CurrPos						"Position [%.1f]"										<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugCurrPos"}
 Number			FF_Bedroom_Rollershutter_PWMCurrPos						"PWM Position [%.0f]"									<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugPWMCurrPos"}
-Number			FF_Bedroom_Rollershutter_MinLimit						"MinLimit [%.0f]"										<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugMinLimit"}
+Number			FF_Bedroom_Rollershutter_MinLimit						"Bedroom MinLimit [%.0f]"								<heating>		(gPersistenceSwitch, gRollershutterHealth)																											{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugMinLimit"}
 Number			FF_Bedroom_Rollershutter_MaxLimit						"MaxLimit [%.0f]"										<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugMaxLimit"}
 Number			FF_Bedroom_Rollershutter_UpLimitProbe					"UpLimitProbe [%.0f]"									<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugUpLimitProbe"}
 Number			FF_Bedroom_Rollershutter_DownLimitProbe					"DownLimitProbe [%.0f]"									<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugDownLimitProbe"}
 Number			FF_Bedroom_Rollershutter_RealUpLimitProbe				"RealUpLimitProbe [%.0f]"								<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugRealUpLimitProbe"}
 Number			FF_Bedroom_Rollershutter_RealDownLimitProbe				"RealDownLimitProbe [%.0f]"								<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugRealDownLimitProbe"}
 Number			FF_Bedroom_Rollershutter_Millis							"Millis [%.0f]"											<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugMillis"}
+Number			FF_Bedroom_Rollershutter_Uptime							"Uptime [%.4f]"											<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugUptime"}
 Switch			GF_FamilyRoom_Stepper_Expert_Mode						"Expert mode"
 Dimmer			GF_FamilyRoom_Stepper_Dimmer							"Stepper  [%.1f %%]"									<heating>		(GF_FamilyRoom, gStepper_Dimmer)																													{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Dimmer_"}
 Rollershutter	GF_FamilyRoom_Stepper_Rollershutter						"Stepper - blind [%s]"													(FF_Bedroom, gRollershutter, gPersistenceSwitch)																									{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Rollershutter_"}
@@ -285,12 +288,16 @@ Switch			GF_Kitchen_Heartbeat_LastUpdate_Error					"8266 Kitchen"											<tim
 String			GF_FamilyRoomRollershutter_Heartbeat					"8266 Family room blinds [%s]"											(GF_FamilyRoom, gHeartbeat)																															{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:HeartbeatFamilyRoomRollershutter"}
 DateTime		GF_FamilyRoomRollershutter_Heartbeat_LastUpdate			"8266 Family room blinds [%1$td.%1$tm %1$tH:%1$tM]"		<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			GF_FamilyRoomRollershutter_Heartbeat_LastUpdate_Error	"8266 Family room blinds"								<time>			(gErrors, gPersistenceSwitch)
+DateTime		GF_FamilyRoomRollershutter_Health_LastUpdate			"Family room blinds [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch			GF_FamilyRoomRollershutter_Health_LastUpdate_Error		"Family room blinds health"								<time>			(gErrors, gPersistenceSwitch)
 String			FF_Bedroom_Heartbeat									"8266 Bedroom [%s]"														(FF_Bedroom, gHeartbeat)																															{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Heartbeat"}
 DateTime		FF_Bedroom_Heartbeat_LastUpdate							"8266 Bedroom [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			FF_Bedroom_Heartbeat_LastUpdate_Error					"8266 Bedroom"											<time>			(gErrors, gPersistenceSwitch)
 String			FF_BedroomRollershutter_Heartbeat						"8266 Bedroom blinds [%s]"												(FF_Bedroom, gHeartbeat)																															{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:HeartbeatBedroomRollershutter"}
 DateTime		FF_BedroomRollershutter_Heartbeat_LastUpdate			"8266 Bedroom blinds [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			FF_BedroomRollershutter_Heartbeat_LastUpdate_Error		"8266 Bedroom blinds"									<time>			(gErrors, gPersistenceSwitch)
+DateTime		FF_BedroomRollershutter_Health_LastUpdate				"Bedroom blinds [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch			FF_BedroomRollershutter_Health_LastUpdate_Error			"Bedroom blinds health"									<time>			(gErrors, gPersistenceSwitch)
 String			FF_AliceRoom_Heartbeat									"8266 Alice room [%s]"													(FF_AliceRoom, gHeartbeat)																															{channel="mqtt:topic:MyMQTTBroker:Multisensor04:Heartbeat"}
 DateTime		FF_AliceRoom_Heartbeat_LastUpdate						"8266 Alice room [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			FF_AliceRoom_Heartbeat_LastUpdate_Error					"8266 Alice room"										<time>			(gErrors, gPersistenceSwitch)
@@ -346,4 +353,4 @@ Number			HH_PowermeterPlug01_TodayPower							"Media plug today power [%.3f kWh]
 Number			HH_PowermeterPlug01_Factor								"Media plug factor [%.2f]"								<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Factor"}
 String			HH_PowermeterPlug01_Heartbeat							"DGM Media plug [%s]"													(gHeartbeat)																																		{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Heartbeat"}
 DateTime		HH_PowermeterPlug01_Heartbeat_LastUpdate				"DGM Media plug [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
-    Switch			HH_PowermeterPlug01_Heartbeat_LastUpdate_Error			"DGM Media plug"										<time>			(gErrors, gPersistenceSwitch)
+Switch			HH_PowermeterPlug01_Heartbeat_LastUpdate_Error			"DGM Media plug"										<time>			(gErrors, gPersistenceSwitch)

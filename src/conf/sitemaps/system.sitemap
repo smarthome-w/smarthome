@@ -5,13 +5,6 @@ sitemap system label="System" {
         Switch item=DebugButton mappings=[ON="Debug"]
     }
 
-    Frame label="Scenes" icon="firstfloor" {
-      Switch item=GH_Night_Scene mappings=[ON="Set"]
-      Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]
-      Switch item=GH_Evening_Scene mappings=[ON="Set"]
-      Switch item=GH_Day_Scene mappings=[ON="Set"]
-      Switch item=GH_TVShow_Scene mappings=[ON="Set"]
-    }
 //    Frame label="Hard reset" icon="groundfloor" {
 //      Switch item=HardResetButton
 //    }
@@ -36,6 +29,7 @@ sitemap system label="System" {
       Group item=gEQ3Valve
       Group item=gSensorPower
       Group item=gHeartbeat
+      Group item=gBattery
     }
     Frame label="Lock" icon="firstfloor" {
       Switch item=CIR_GF_MainLock mappings=[CLOSED="Closed", OPEN="Open"]
@@ -52,6 +46,15 @@ sitemap system label="System" {
     Frame label="Errors" icon="firstfloor" {
       Chart item=gErrors period=W label="Errors"
       Chart item=OverallErrorIndicator period=W label="Error indicator"
+      Chart item=gErrors period=D label="Errors"
+    }
+
+
+    Frame label="Presence" icon="firstfloor" {
+        Chart item=Presence_Waldek period=D label="Waldek"
+        Chart item=Presence_Aldona period=D label="Aldona"
+        Chart item=Presence_Ann period=D label="Ann"
+        Chart item=Presence_Alice period=D label="Alice"
     }
 
     Frame label="Pi" icon="firstfloor" {
@@ -61,30 +64,12 @@ sitemap system label="System" {
       Text item=Server_Uptime
 //      Text item=Server_LastRead
     }
-    Frame label="Debug" icon="firstfloor" visibility=[GH_Night_Scene==NULL] {
-      Selection item=DebugTarget mappings=[
-                                          GF_Kitchen_LED_Relay="GF_Kitchen_LED_Relay",
-                                          FF_Bedroom_LED_Relay="FF_Bedroom_LED_Relay",
-                                          GF_Corridor_LED_Relay="GF_Corridor_LED_Relay",
-                                          FF_BedroomWardobe_LED_Relay="FF_BedroomWardobe_LED_Relay",
-                                          GF_FamilyRoom_LED_Relay="GF_FamilyRoom_LED_Relay",
-                                          GF_FamilyRoom_Light_Relay="GF_FamilyRoom_Light_Relay",
-                                          GF_Corridor_LED_Relay="GF_Corridor_LED_Relay",
-                                          GF_Corridor_Storage_Relay="GF_Corridor_Storage_Relay",
-                                          FF_TestRoom="FF_TestRoom",
-                                          FF_Bedroom="FF_Bedroom",
-                                          FF_AliceRoom="FF_AliceRoom",
-                                          FF_AnnRoom="FF_AnnRoom",
-                                          GF_FamilyRoom="GF_FamilyRoom",
-                                          FF_TechnicalRoom1="FF_TechnicalRoom1",
-                                          FF_TechnicalRoom2="FF_TechnicalRoom2",
-                                          GF_FamilyRoom_Rollershutter="GF_FamilyRoom_Rollershutter",
-                                          FF_Bedroom_Rollershutter="FF_Bedroom_Rollershutter"
-                                          ]
-      Selection item=DebugMessage mappings=[
-                                          RESET="RESET",
-                                          DEBUG="DEBUG"
-                                         ]
-//      Switch item=DebugButton
+
+    Frame label="Scenes" icon="firstfloor" {
+      Switch item=GH_Night_Scene mappings=[ON="Set"]
+      Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]
+      Switch item=GH_Evening_Scene mappings=[ON="Set"]
+      Switch item=GH_Day_Scene mappings=[ON="Set"]
+      Switch item=GH_TVShow_Scene mappings=[ON="Set"]
     }
 }

@@ -2,7 +2,7 @@ rule "maintenace_rule"
 when
   Item DebugButton received update
 then
-  logError("maintenace_rule", "Debug detected {} {}", DebugTarget.state, DebugMessage.state)
+//  logError("maintenace_rule", "Debug detected {} {}", DebugTarget.state, DebugMessage.state)
 //  publish("broker", DebugTarget.state, DebugMessage.state)
 end
 
