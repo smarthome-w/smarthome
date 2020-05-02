@@ -1,1 +1,24 @@
-Number Tracker_Waldek_BatteryLevel 
+Location	Tracker_Waldek_Location		"Waldek Location [%s]"									<line>		(gTracker)							{channel="gpstracker:tracker:Wk:lastLocation"}
+Number		Tracker_Waldek_BatteryLevel	"Waldek tracker battery level [%.0f%%]"					<battery>	(gTracker)							{channel="gpstracker:tracker:Wk:batteryLevel"}
+DateTime	Tracker_Waldek_LastSeen		"Waldek tracker last seen [%1$td.%1$tm %1$tH:%1$tM]"	<time>		(gTracker)							{channel="gpstracker:tracker:Wk:lastReport"}
+Number		Tracker_Waldek_Accuracy		"Waldek tracker accuracy [%.0f m]"						<incline>	(gTracker)							{channel="gpstracker:tracker:Wk:gpsAccuracy"}
+Number		Tracker_Waldek_HomeDistance	"Waldek tracker home distance [%.3f km]"				<incline>	(gTracker)							{channel="gpstracker:tracker:Wk:homeDistance"}
+Switch		Tracker_Waldek_AtHome		"Waldek home presence"									<man_3>		(gTracker, gPersistenceSwitch)		{channel="gpstracker:tracker:Wk:regionTrigger" [profile="gpstracker:trigger-geofence", regionName="Home"]}
+Location	Tracker_Aldona_Location		"Aldona Location [%s]"									<line>		(gTracker)							{channel="gpstracker:tracker:Ad:lastLocation"}
+Number		Tracker_Aldona_BatteryLevel	"Aldona tracker battery level [%.0f%%]"					<battery>	(gTracker)							{channel="gpstracker:tracker:Ad:batteryLevel"}
+DateTime	Tracker_Aldona_LastSeen		"Aldona tracker last seen [%1$td.%1$tm %1$tH:%1$tM]"	<time>		(gTracker)							{channel="gpstracker:tracker:Ad:lastReport"}
+Number		Tracker_Aldona_Accuracy		"Aldona tracker accuracy [%.0f m]"						<incline>	(gTracker)							{channel="gpstracker:tracker:Ad:gpsAccuracy"}
+Number		Tracker_Aldona_HomeDistance	"Aldona tracker home distance [%.3f km]"				<incline>	(gTracker)							{channel="gpstracker:tracker:Ad:homeDistance"}
+Switch		Tracker_Aldona_AtHome		"Aldona home presence"									<woman_3>	(gTracker, gPersistenceSwitch)		{channel="gpstracker:tracker:Ad:regionTrigger" [profile="gpstracker:trigger-geofence", regionName="Home"]}
+Location	Tracker_Ann_Location		"Ann Location [%s]"										<line>		(gTracker)							{channel="gpstracker:tracker:An:lastLocation"}
+Number		Tracker_Ann_BatteryLevel	"Ann tracker battery level [%.0f%%]"					<battery>	(gTracker)							{channel="gpstracker:tracker:An:batteryLevel"}
+DateTime	Tracker_Ann_LastSeen		"Ann tracker last seen [%1$td.%1$tm %1$tH:%1$tM]"		<time>		(gTracker)							{channel="gpstracker:tracker:An:lastReport"}
+Number		Tracker_Ann_Accuracy		"Ann tracker accuracy [%.0f m]"							<incline>	(gTracker)							{channel="gpstracker:tracker:An:gpsAccuracy"}
+Number		Tracker_Ann_HomeDistance	"Ann tracker home distance [%.3f km]"					<incline>	(gTracker)							{channel="gpstracker:tracker:An:homeDistance"}
+Switch		Tracker_Ann_AtHome			"Ann home presence"										<girl_2>	(gTracker, gPersistenceSwitch)		{channel="gpstracker:tracker:An:regionTrigger" [profile="gpstracker:trigger-geofence", regionName="Home"]}
+Location	Tracker_Alice_Location		"Alice Location [%s]"									<line>		(gTracker)							{channel="gpstracker:tracker:Al:lastLocation"}
+Number		Tracker_Alice_BatteryLevel	"Alice tracker battery level [%.0f%%]"					<battery>	(gTracker)							{channel="gpstracker:tracker:Al:batteryLevel"}
+DateTime	Tracker_Alice_LastSeen		"Alice tracker last seen [%1$td.%1$tm %1$tH:%1$tM]"		<time>		(gTracker)							{channel="gpstracker:tracker:Al:lastReport"}
+Number		Tracker_Alice_Accuracy		"Alice tracker accuracy [%.0f m]"						<incline>	(gTracker)							{channel="gpstracker:tracker:Al:gpsAccuracy"}
+Number		Tracker_Alice_HomeDistance	"Alice tracker home distance [%.3f km]"					<incline>	(gTracker)							{channel="gpstracker:tracker:Al:homeDistance"}
+Switch		Tracker_Alice_AtHome		"Alice home presence"									<girl_3>	(gTracker, gPersistenceSwitch)		{channel="gpstracker:tracker:Al:regionTrigger" [profile="gpstracker:trigger-geofence", regionName="Home"]}

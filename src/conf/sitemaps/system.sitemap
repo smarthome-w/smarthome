@@ -30,6 +30,7 @@ sitemap system label="System" {
       Group item=gSensorPower
       Group item=gHeartbeat
       Group item=gBattery
+      Group item=gTracker
     }
     Frame label="Lock" icon="firstfloor" {
       Switch item=CIR_GF_MainLock mappings=[CLOSED="Closed", OPEN="Open"]
