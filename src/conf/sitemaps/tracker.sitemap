@@ -4,6 +4,7 @@ sitemap tracker label="Tracker" {
     Text item=Tracker_Waldek_BatteryLevel
     Text item=Tracker_Waldek_Accuracy
     Text item=Tracker_Waldek_Location
+    Text item=Tracker_Waldek_HomeDistance
     Mapview item=Tracker_Waldek_Location height=4
 
     Text item=Tracker_Aldona_AtHome
@@ -11,6 +12,7 @@ sitemap tracker label="Tracker" {
     Text item=Tracker_Aldona_BatteryLevel
     Text item=Tracker_Aldona_Accuracy
     Text item=Tracker_Aldona_Location
+    Text item=Tracker_Aldona_HomeDistance
     Mapview item=Tracker_Aldona_Location height=4
 
     Text item=Tracker_Ann_AtHome
@@ -18,6 +20,7 @@ sitemap tracker label="Tracker" {
     Text item=Tracker_Ann_BatteryLevel
     Text item=Tracker_Ann_Accuracy
     Text item=Tracker_Ann_Location
+    Text item=Tracker_Ann_HomeDistance
     Mapview item=Tracker_Ann_Location height=4
 
     Text item=Tracker_Alice_AtHome
@@ -25,5 +28,8 @@ sitemap tracker label="Tracker" {
     Text item=Tracker_Alice_BatteryLevel
     Text item=Tracker_Alice_Accuracy
     Text item=Tracker_Alice_Location
+    Text item=Tracker_Alice_HomeDistance
     Mapview item=Tracker_Alice_Location height=4
+
+    Chart item=gTrackerBattery period=3D label="Batteries"    
 }

@@ -228,7 +228,8 @@ Number			GF_FamilyRoom_Rollershutter_DownLimitProbe				"DownLimitProbe [%.0f]"		
 Number			GF_FamilyRoom_Rollershutter_RealUpLimitProbe			"RealUpLimitProbe [%.0f]"								<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugRealUpLimitProbe"}
 Number			GF_FamilyRoom_Rollershutter_RealDownLimitProbe			"RealDownLimitProbe [%.0f]"								<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugRealDownLimitProbe"}
 Number			GF_FamilyRoom_Rollershutter_Millis						"Millis [%.0f]"											<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugMillis"}
-Number			GF_FamilyRoom_Rollershutter_Uptime						"Uptime [%.4f]"											<heating>																																							{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugUptime"}
+Number			GF_FamilyRoom_Rollershutter_Uptime						"Family blind uptime [%.4f]"							<heating>		(gUptime)																																			{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugUptime"}
+Number			GF_FamilyRoom_Rollershutter_RSSI						"Family blind RSSI [%.0f]"								<heating>		(gRSSI)																																				{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugRSSI"}
 Switch			FF_Bedroom_Rollershutter_Expert_Mode					"Expert mode"
 Dimmer			FF_Bedroom_Rollershutter_Dimmer							"Bedroom window  [%.1f %%]"								<heating>		(gRollershutter_Dimmer)																						["Lighting"]							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Dimmer_"}
 Rollershutter	FF_Bedroom_Rollershutter								"Bedroom - blind [%s]"													(FF_Bedroom, gRollershutter, gPersistenceSwitch)																									{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Rollershutter_"}
@@ -248,7 +249,8 @@ Number			FF_Bedroom_Rollershutter_DownLimitProbe					"DownLimitProbe [%.0f]"				
 Number			FF_Bedroom_Rollershutter_RealUpLimitProbe				"RealUpLimitProbe [%.0f]"								<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugRealUpLimitProbe"}
 Number			FF_Bedroom_Rollershutter_RealDownLimitProbe				"RealDownLimitProbe [%.0f]"								<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugRealDownLimitProbe"}
 Number			FF_Bedroom_Rollershutter_Millis							"Millis [%.0f]"											<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugMillis"}
-Number			FF_Bedroom_Rollershutter_Uptime							"Uptime [%.4f]"											<heating>																																							{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugUptime"}
+Number			FF_Bedroom_Rollershutter_Uptime							"Bedroom blind Uptime [%.4f]"							<heating>		(gUptime)																																			{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugUptime"}
+Number			FF_Bedroom_Rollershutter_RSSI							"Bedroom blind RSSI [%.0f]"								<heating>		(gRSSI)																																				{channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugRSSI"}
 Switch			GF_FamilyRoom_Stepper_Expert_Mode						"Expert mode"
 Dimmer			GF_FamilyRoom_Stepper_Dimmer							"Stepper  [%.1f %%]"									<heating>		(GF_FamilyRoom, gStepper_Dimmer)																													{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Dimmer_"}
 Rollershutter	GF_FamilyRoom_Stepper_Rollershutter						"Stepper - blind [%s]"													(FF_Bedroom, gRollershutter, gPersistenceSwitch)																									{channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Rollershutter_"}
@@ -307,9 +309,13 @@ Switch			FF_AnnRoom_Heartbeat_LastUpdate_Error					"8266 Ann room"											<ti
 String			FF_TechnicalRoom1_Heartbeat								"8266 Technical 1 [%s]"													(FF_AnnRoom, gHeartbeat)																															{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:HeartbeatTechnicalRoom1"}
 DateTime		FF_TechnicalRoom1_Heartbeat_LastUpdate					"8266 Technical 1 [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			FF_TechnicalRoom1_Heartbeat_LastUpdate_Error			"8266 Technical 1"										<time>			(gErrors, gPersistenceSwitch)
+Number			FF_TechnicalRoom1_Uptime								"Technical room 1 uptime [%.4f]"						<heating>		(gUptime)																																			{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:TechnicalRoom1Uptime"}
+Number			FF_TechnicalRoom1_RSSI									"Technical room 1 RSSI [%.0f]"							<heating>		(gRSSI)																																				{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:TechnicalRoom1RSSI"}
 String			FF_TechnicalRoom2_Heartbeat								"8266 Technical 2 [%s]"													(FF_AnnRoom, gHeartbeat)																															{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:HeartbeatTechnicalRoom2"}
 DateTime		FF_TechnicalRoom2_Heartbeat_LastUpdate					"8266 Technical 2 [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			FF_TechnicalRoom2_Heartbeat_LastUpdate_Error			"8266 Technical 2"										<time>			(gErrors, gPersistenceSwitch)
+Number			FF_TechnicalRoom2_Uptime								"Technical room 2 uptime [%.4f]"						<heating>		(gUptime)																																			{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:TechnicalRoom2Uptime"}
+Number			FF_TechnicalRoom2_RSSI									"Technical room 2 RSSI [%.0f]"							<heating>		(gRSSI)																																				{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:TechnicalRoom2RSSI"}
 Switch			HW_Heartbeat											"Heartbeat"
 Switch			HW_RMPro_Heartbeat_Ticker								"RMPro Ticker"															(gSystem)																																			{channel="mqtt:topic:MyMQTTBroker:Broadlink:HW_RMPro_Heartbeat"}
 String			HW_RMPro_Heartbeat										"RM Pro [%s]"															(GF_FamilyRoom, gHeartbeat)																															{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:HeartbeatRMPro"}
@@ -327,6 +333,8 @@ DateTime		GF_Corridor_Light_LED_Heartbeat_LastUpdate				"Sonoff Corridor led [%1
 DateTime		GF_Kitchen_LED_Heartbeat_LastUpdate						"Sonoff Kitchen led [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			GF_Corridor_Light_LED_Heartbeat_LastUpdate_Error		"Sonoff Corridor led[]"									<time>			(gErrors, gPersistenceSwitch)
 Switch			GF_Kitchen_LED_Heartbeat_LastUpdate_Error				"Sonoff Kitchen[]"										<time>			(gErrors, gPersistenceSwitch)
+Number			GF_Kitchen_LED_Uptime									"Kitchen LED uptime [%.4f]"								<heating>		(gUptime)																																			{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:KitchenLEDUptime"}
+Number			GF_Kitchen_LED_RSSI										"Kitchen LED RSSI [%.0f]"								<heating>		(gRSSI)																																				{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:KitchenLEDRSSI"}
 String			GF_Corridor_Storage_Heartbeat							"Sonoff Corridor shelfs [%s]"											(GF_Corridor, gHeartbeat)																															{channel="mqtt:topic:MyMQTTBroker:Switch04:Heartbeat"}
 DateTime		GF_Corridor_Storage_Heartbeat_LastUpdate				"Sonoff Corridor shelfs [%1$td.%1$tm %1$tH:%1$tM]"		<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			GF_Corridor_Storage_Heartbeat_LastUpdate_Error			"Sonoff Corridor shelfs"								<time>			(gErrors, gPersistenceSwitch)
@@ -343,7 +351,7 @@ String			DebugTarget												"Target [%s]"
 String			DebugMessage											"Message [%s]"
 Switch			DemoMode												"Demo mode[]"															(gSystem, gPersistenceSwitch)
 Switch			OverallErrorIndicator									"Error indicator[]"										<heating>		(gSystem, gPersistenceSwitch, gAlert)
-Switch			HH_PowermeterPlug01										"Media plug[]"											<light>			(GF_FamilyRoom, gTasmota, gPersistenceSwitch)																										{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:PowerSwitch"}
+Switch			HH_PowermeterPlug01										"Desk[]"												<light>			(GF_FamilyRoom, gTasmota, gPersistenceSwitch)																["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:PowerSwitch"}
 Number			HH_PowermeterPlug01_Power								"Media plug power [%.0fW]"								<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Power"}
 Number			HH_PowermeterPlug01_ReactivePower						"Media plug reactive power [%.0f Var]"					<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:ReactivePower"}
 Number			HH_PowermeterPlug01_ApparentPower						"Media plug apparent power [%.0f VA]"					<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:ApparentPower"}

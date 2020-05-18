@@ -27,6 +27,10 @@ sitemap sensors_basic label="Status" {
         Switch item=Tracker_Aldona_AtHome mappings=[ON="Present", OFF="Absent"]
         Switch item=Tracker_Ann_AtHome mappings=[ON="Present", OFF="Absent"]
         Switch item=Tracker_Alice_AtHome mappings=[ON="Present", OFF="Absent"]
+        Text item=Tracker_Waldek_HomeDistance
+        Text item=Tracker_Aldona_HomeDistance
+        Text item=Tracker_Ann_HomeDistance
+        Text item=Tracker_Alice_HomeDistance
     }
 
     Frame label="Heaters" icon="firstfloor" {

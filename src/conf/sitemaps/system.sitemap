@@ -31,6 +31,8 @@ sitemap system label="System" {
       Group item=gHeartbeat
       Group item=gBattery
       Group item=gTracker
+      Group item=gRSSI
+      Group item=gUptime
     }
     Frame label="Lock" icon="firstfloor" {
       Switch item=CIR_GF_MainLock mappings=[CLOSED="Closed", OPEN="Open"]
