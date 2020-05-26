@@ -16,3 +16,7 @@ mosquitto_pub -h 192.168.0.4 -t 'broadlink/IRCOLORS/Color LIGHT_PINK' -n -r -d
 mosquitto_pub -h 192.168.0.4 -t 'broadlink/IRB/RTV_TV_TV' -n -r -d
 mosquitto_pub -h 192.168.0.4 -t 'broadlink/IRB/RTV_TV_UPC' -n -r -d
 mosquitto_pub -h 192.168.0.4 -t 'broadlink/HEARTBEAT/HW_RMPro_Heartbeat' -n -r -d
+
+mosquitto_pub -h 192.168.0.4 -t 'sony/RC/Command_YouTube' -n -r -d
+mosquitto_pub -h 192.168.0.4 -t 'sony/RC/Command_TV' -n -r -d
+mosquitto_pub -h 192.168.0.4 -t 'sony/RC/RTV_TV_Input' -n -r -d

@@ -60,6 +60,7 @@ then
       }
       ddd += "g"
     }
+  } catch (IllegalStateException ise) {
   } catch (Throwable t) {
     logError("Error", "Error in pir_rule {} {} {} {}", ddd, triggeringItem.name, triggeringItem.state, t.toString())
   } finally {

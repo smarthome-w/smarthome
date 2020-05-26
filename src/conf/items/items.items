@@ -105,18 +105,16 @@ DateTime		FF_BathRoom_Light_Up_LastUpdate							"Bathroom lights [%1$td.%1$tm %1
 DateTime		FF_BathRoom_Light_Mirror_LastUpdate						"Bathroom led [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateBroadlink, gPersistenceSwitch)
 
 ////////////////////////////////////////////////////////////////////////////////
-//                       Raw RTV
+//                       RTV
 ////////////////////////////////////////////////////////////////////////////////
 Switch			RTV_TV_TV												"Screen[]"												<screen>		(GF_FamilyRoom, gIRB, gRawRTV)																				["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Broadlink:RTV_TV_TV"}
-Switch			RTV_TV_UPC												"UPC[]"													<projector>		(GF_FamilyRoom, gIRB, gRawRTV)																				["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Broadlink:RTV_TV_UPC"}
-Switch			RTV_TV_DVD												"DVD[]"													<receiver>		(GF_FamilyRoom, gIRB, gRawRTV)
-Switch			RTV_TV_XBOX												"XBox[]"												<screen>		(GF_FamilyRoom, gIRB, gRawRTV)																				["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Broadlink:RTV_TV_XBOX"}
-String			RTV_TV_Input											"Television[]"											<projector>		(GF_FamilyRoom, gSony, gPersistenceSwitch)																	["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:RTV_TV_Input"}
+//Switch			RTV_TV_UPC												"UPC[]"													<projector>		(GF_FamilyRoom, gIRB, gRawRTV)																				["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Broadlink:RTV_TV_UPC"}
+//Switch			RTV_TV_XBOX												"XBox[]"												<screen>		(GF_FamilyRoom, gIRB, gRawRTV)																				["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Broadlink:RTV_TV_XBOX"}
+String			RTV_TV_Input											"Television[]"											<projector>		(GF_FamilyRoom, gSony, gPersistenceSwitch)																											{channel="mqtt:topic:MyMQTTBroker:Sony:RTV_TV_Input"}
 //Switch			RTV_TV_CONFIRM											"Confirm[]"											<screen>		(GF_FamilyRoom, gSony)
 Switch			RTV_VOLUME_UP											"Volume Up[]"															(GF_FamilyRoom, gSony)																						["Switchable"]
 Switch			RTV_VOLUME_DOWN											"Volume Down[]"															(GF_FamilyRoom, gSony)																						["Switchable"]
 Switch			RTV_VOLUME_MUTE											"Mute[]"																(GF_FamilyRoom, gSony)																						["Switchable"]
-
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -134,6 +132,7 @@ Switch			GH_Evening_Scene										"Good evening[]"														(gScenes)						
 Switch			GH_Day_Scene											"Good morning[]"														(gScenes)																									["Switchable"]
 Switch			GH_DarkWindow_Scene										"Dark window[]"															(gScenes)
 Switch			GH_BrightWindow_Scene									"Bright window[]"														(gScenes)
+Switch			GH_XBOX_Command											"XBox[]"																(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_XBOX"}
 Switch			GH_Netflix_Command										"Netflix[]"																(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_Netflix"}
 Switch			GH_YouTube_Command										"Youtube[]"																(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_YouTube"}
 Switch			GH_TV_Command											"TV[]"																	(gSystem)																									["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:Sony:Command_TV"}
@@ -352,13 +351,24 @@ String			DebugMessage											"Message [%s]"
 Switch			DemoMode												"Demo mode[]"															(gSystem, gPersistenceSwitch)
 Switch			OverallErrorIndicator									"Error indicator[]"										<heating>		(gSystem, gPersistenceSwitch, gAlert)
 Switch			HH_PowermeterPlug01										"Desk[]"												<light>			(GF_FamilyRoom, gTasmota, gPersistenceSwitch)																["Switchable"]							{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:PowerSwitch"}
-Number			HH_PowermeterPlug01_Power								"Media plug power [%.0fW]"								<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Power"}
-Number			HH_PowermeterPlug01_ReactivePower						"Media plug reactive power [%.0f Var]"					<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:ReactivePower"}
-Number			HH_PowermeterPlug01_ApparentPower						"Media plug apparent power [%.0f VA]"					<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:ApparentPower"}
-Number			HH_PowermeterPlug01_TotalPower							"Media plug total power [%.3f kWh]"						<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Total"}
-Number			HH_PowermeterPlug01_YesterdayPower						"Media plug yesterday power [%.3f kWh]"					<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Yesterday"}
-Number			HH_PowermeterPlug01_TodayPower							"Media plug today power [%.3f kWh]"						<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Today"}
-Number			HH_PowermeterPlug01_Factor								"Media plug factor [%.2f]"								<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Factor"}
-String			HH_PowermeterPlug01_Heartbeat							"DGM Media plug [%s]"													(gHeartbeat)																																		{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Heartbeat"}
-DateTime		HH_PowermeterPlug01_Heartbeat_LastUpdate				"DGM Media plug [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch			HH_PowermeterPlug01_Heartbeat_LastUpdate_Error			"DGM Media plug"										<time>			(gErrors, gPersistenceSwitch)
+Number			HH_PowermeterPlug01_Power								"Powermeter01 plug power [%.0fW]"						<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Power"}
+Number			HH_PowermeterPlug01_ReactivePower						"Powermeter01 plug reactive power [%.0f Var]"			<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:ReactivePower"}
+Number			HH_PowermeterPlug01_ApparentPower						"Powermeter01 plug apparent power [%.0f VA]"			<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:ApparentPower"}
+Number			HH_PowermeterPlug01_TotalPower							"Powermeter01 plug total power [%.3f kWh]"				<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Total"}
+Number			HH_PowermeterPlug01_YesterdayPower						"Powermeter01 plug yesterday power [%.3f kWh]"			<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Yesterday"}
+Number			HH_PowermeterPlug01_TodayPower							"Powermeter01 plug today power [%.3f kWh]"				<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Today"}
+Number			HH_PowermeterPlug01_Factor								"Powermeter01 plug factor [%.2f]"						<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Factor"}
+String			HH_PowermeterPlug01_Heartbeat							"Powermeter01 plug [%s]"												(gHeartbeat)																																		{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Heartbeat"}
+DateTime		HH_PowermeterPlug01_Heartbeat_LastUpdate				"Powermeter01 plug [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch			HH_PowermeterPlug01_Heartbeat_LastUpdate_Error			"Powermeter01 plug"										<time>			(gErrors, gPersistenceSwitch)
+Switch			HH_PowermeterPlug02										"Universal[]"											<light>			(GF_FamilyRoom, gTasmota, gPersistenceSwitch)																										{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:PowerSwitch", ga="Light"}
+Number			HH_PowermeterPlug02_Power								"Powermeter02 plug power [%.0fW]"						<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:Power"}
+Number			HH_PowermeterPlug02_ReactivePower						"Powermeter02 plug reactive power [%.0f Var]"			<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:ReactivePower"}
+Number			HH_PowermeterPlug02_ApparentPower						"Powermeter02 plug apparent power [%.0f VA]"			<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:ApparentPower"}
+Number			HH_PowermeterPlug02_TotalPower							"Powermeter02 plug total power [%.3f kWh]"				<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:Total"}
+Number			HH_PowermeterPlug02_YesterdayPower						"Powermeter02 plug yesterday power [%.3f kWh]"			<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:Yesterday"}
+Number			HH_PowermeterPlug02_TodayPower							"Powermeter02 plug today power [%.3f kWh]"				<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:Today"}
+Number			HH_PowermeterPlug02_Factor								"Powermeter02 plug factor [%.2f]"						<power>			(gSensorPower, gPersistenceSensor)																													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:Factor"}
+String			HH_PowermeterPlug02_Heartbeat							"Powermeter02 plug [%s]"												(gHeartbeat)																																		{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:Heartbeat"}
+DateTime		HH_PowermeterPlug02_Heartbeat_LastUpdate				"Powermeter02 plug [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch			HH_PowermeterPlug02_Heartbeat_LastUpdate_Error			"Powermeter02 plug"										<time>			(gErrors, gPersistenceSwitch)

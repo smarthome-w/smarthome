@@ -106,3 +106,11 @@ Rule2 1
 ### Hardware
 
 - multisensor05 - Ann room sensor (05)
+
+## SmartDGM
+
+### Tasmota template
+
+```bash
+{"NAME":"SmartDGM Plug","GPIO":[0,0,0,17,134,132,0,0,131,52,21,0,0],"FLAG":0,"BASE":18}
+```

@@ -77,10 +77,11 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
 
   Thing topic Sony "Sony" {
     Channels:
-      Type switch : RTV_TV_Input [commandTopic="sony/RC/RTV_TV_Input", on="ON", off="OFF" ]
+      Type string : RTV_TV_Input [commandTopic="sony/RC/RTV_TV_Input"]
       Type switch : Command_Netflix [commandTopic="sony/RC/Command_Netflix", on="ON", off="OFF" ]
       Type switch : Command_YouTube [commandTopic="sony/RC/Command_YouTube", on="ON", off="OFF" ]
       Type switch : Command_TV [commandTopic="sony/RC/Command_TV", on="ON", off="OFF" ]
+      Type switch : Command_XBOX [commandTopic="sony/RC/Command_XBOX", on="ON", off="OFF" ]
       Type switch : Command_Confirm [commandTopic="sony/RC/Command_Confirm", on="ON", off="OFF" ]
   }
 
@@ -206,6 +207,19 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Today [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
       Type number : Factor [stateTopic="tele/powermeterplug01/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Factor"]
       Type string : Heartbeat [stateTopic="tele/powermeterplug01/STATE", transformationPattern="JSONPATH:$.Time"]
+  }
+
+  Thing topic PowermeterPlug02 "PowermeterPlug02" {
+    Channels:
+      Type switch : PowerSwitch [stateTopic="stat/powermeterplug02/POWER", commandTopic="cmnd/powermeterplug02/POWER", on="ON", off="OFF" ]
+      Type number : Power [stateTopic="tele/powermeterplug02/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
+      Type number : ReactivePower [stateTopic="tele/powermeterplug02/SENSOR", transformationPattern="JSONPATH:$.ENERGY.ReactivePower"]
+      Type number : ApparentPower [stateTopic="tele/powermeterplug02/SENSOR", transformationPattern="JSONPATH:$.ENERGY.ApparentPower"]
+      Type number : Total [stateTopic="tele/powermeterplug02/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Total"]
+      Type number : Yesterday [stateTopic="tele/powermeterplug02/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
+      Type number : Today [stateTopic="tele/powermeterplug02/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
+      Type number : Factor [stateTopic="tele/powermeterplug02/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Factor"]
+      Type string : Heartbeat [stateTopic="tele/powermeterplug02/STATE", transformationPattern="JSONPATH:$.Time"]
   }
 
   Thing topic TestSonoff "TestSonoff" {

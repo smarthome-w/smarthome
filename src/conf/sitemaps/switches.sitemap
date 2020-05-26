@@ -74,12 +74,9 @@ sitemap switches label="Switches" {
 
     Frame label="Multimedia" icon="firstfloor" {
         Switch item=RTV_TV_TV
-        Switch item=RTV_TV_UPC
-//        Switch item=RTV_TV_DVD
-        Switch item=RTV_TV_XBOX
+        //Switch item=RTV_TV_XBOX
         Selection item=RTV_TV_Input  mappings=[HDMI__1_MHL="TV",
                                             HDMI__3="XBOX",
-                                            HDMI__4="KODI",
                                             YOUTUBE="Youtube",
                                             NETFLIX="Netflix"
                                             ]

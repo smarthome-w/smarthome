@@ -77,6 +77,8 @@ def on_message(client, userdata, msg):
                 braviarc.start_app("YouTube")
             if (element.startswith("Command_TV")):
                 braviarc.select_source("HDMI 1/MHL")
+            if (element.startswith("Command_XBOX")):
+                braviarc.select_source("HDMI 3")
             if (element.startswith("Command_Confirm")):
                 braviarc.enter()
         else:
@@ -86,6 +88,7 @@ def on_message(client, userdata, msg):
             type, element, command))
         logger.error(e)
 
+# sources: HDMI 1/MHL, HDMI 2, HDMI 3, HDMI 4
 
 setup()
 client = mqtt.Client()
