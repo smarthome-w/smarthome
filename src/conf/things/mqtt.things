@@ -43,6 +43,14 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type string : HeartbeatTechnicalRoom2 [stateTopic="myHome/FF_TechnicalRoom2_Heartbeat"]
       Type string : HeartbeatRMPro [stateTopic="myHome/HW_RMPro_Heartbeat"]
       Type string : HeartbeatKitchenLED [stateTopic="myHomeY/GF_Kitchen_LED_Relay_Heartbeat"]
+
+      Type number : TechnicalRoom1Uptime [stateTopic="tele/FF_TechnicalRoom1/STATE", transformationPattern="JSONPATH:$.Uptime"]
+      Type number : TechnicalRoom2Uptime [stateTopic="tele/FF_TechnicalRoom1/STATE", transformationPattern="JSONPATH:$.Uptime"]
+      Type number : KitchenLEDUptime [stateTopic="tele/GF_Kitchen_LED_Relay/STATE", transformationPattern="JSONPATH:$.Uptime"]
+
+      Type number : TechnicalRoom1RSSI [stateTopic="tele/FF_TechnicalRoom1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+      Type number : TechnicalRoom2RSSI [stateTopic="tele/FF_TechnicalRoom2/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+      Type number : KitchenLEDRSSI [stateTopic="tele/GF_Kitchen_LED_Relay/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
   Thing topic Broadlink "Broadlink" {
@@ -69,10 +77,11 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
 
   Thing topic Sony "Sony" {
     Channels:
-      Type switch : RTV_TV_Input [commandTopic="sony/RC/RTV_TV_Input", on="ON", off="OFF" ]
+      Type string : RTV_TV_Input [commandTopic="sony/RC/RTV_TV_Input"]
       Type switch : Command_Netflix [commandTopic="sony/RC/Command_Netflix", on="ON", off="OFF" ]
       Type switch : Command_YouTube [commandTopic="sony/RC/Command_YouTube", on="ON", off="OFF" ]
       Type switch : Command_TV [commandTopic="sony/RC/Command_TV", on="ON", off="OFF" ]
+      Type switch : Command_XBOX [commandTopic="sony/RC/Command_XBOX", on="ON", off="OFF" ]
       Type switch : Command_Confirm [commandTopic="sony/RC/Command_Confirm", on="ON", off="OFF" ]
   }
 
@@ -133,6 +142,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : DebugMillis [stateTopic="myHomeX/GF_FamilyRoom_Rollershutter_Debug_Millis"]
 
       Type number : DebugUptime [stateTopic="tele/GF_FamilyRoom_Rollershutter/STATE", transformationPattern="JSONPATH:$.Uptime"]
+      Type number : DebugRSSI [stateTopic="tele/GF_FamilyRoom_Rollershutter/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
   Thing topic FF_Bedroom_Rollershutter "FF_Bedroom_Rollershutter" {
@@ -159,6 +169,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : DebugMillis [stateTopic="myHomeX/FF_Bedroom_Rollershutter_Debug_Millis"]
 
       Type number : DebugUptime [stateTopic="tele/FF_Bedroom_Rollershutter/STATE", transformationPattern="JSONPATH:$.Uptime"]
+      Type number : DebugRSSI [stateTopic="tele/FF_Bedroom_Rollershutter/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
   Thing topic GF_FamilyRoom_Stepper "GF_FamilyRoom_Stepper" {
@@ -198,6 +209,19 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type string : Heartbeat [stateTopic="tele/powermeterplug01/STATE", transformationPattern="JSONPATH:$.Time"]
   }
 
+  Thing topic PowermeterPlug02 "PowermeterPlug02" {
+    Channels:
+      Type switch : PowerSwitch [stateTopic="stat/powermeterplug02/POWER", commandTopic="cmnd/powermeterplug02/POWER", on="ON", off="OFF" ]
+      Type number : Power [stateTopic="tele/powermeterplug02/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
+      Type number : ReactivePower [stateTopic="tele/powermeterplug02/SENSOR", transformationPattern="JSONPATH:$.ENERGY.ReactivePower"]
+      Type number : ApparentPower [stateTopic="tele/powermeterplug02/SENSOR", transformationPattern="JSONPATH:$.ENERGY.ApparentPower"]
+      Type number : Total [stateTopic="tele/powermeterplug02/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Total"]
+      Type number : Yesterday [stateTopic="tele/powermeterplug02/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
+      Type number : Today [stateTopic="tele/powermeterplug02/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
+      Type number : Factor [stateTopic="tele/powermeterplug02/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Factor"]
+      Type string : Heartbeat [stateTopic="tele/powermeterplug02/STATE", transformationPattern="JSONPATH:$.Time"]
+  }
+
   Thing topic TestSonoff "TestSonoff" {
     Channels:
       Type switch : PowerSwitch [stateTopic="stat/sonofftest/POWER", commandTopic="cmnd/sonofftest/POWER", on="ON", off="OFF" ]
@@ -209,6 +233,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
     Channels:
       Type switch : PowerSwitch [stateTopic="stat/switch01/POWER", commandTopic="cmnd/switch01/POWER", on="ON", off="OFF" ]
       Type string : Heartbeat [stateTopic="tele/switch01/STATE", transformationPattern="JSONPATH:$.Time"]
+      Type number : RSSI [stateTopic="tele/switch01/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
 // GF_FamilyRoom_Light
@@ -216,6 +241,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
     Channels:
       Type switch : PowerSwitch [stateTopic="stat/switch02/POWER", commandTopic="cmnd/switch02/POWER", on="ON", off="OFF" ]
       Type string : Heartbeat [stateTopic="tele/switch02/STATE", transformationPattern="JSONPATH:$.Time"]
+      Type number : RSSI [stateTopic="tele/switch02/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
 // GF_FamilyRoom_LED
@@ -223,6 +249,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
     Channels:
       Type switch : PowerSwitch [stateTopic="stat/switch03/POWER", commandTopic="cmnd/switch03/POWER", on="ON", off="OFF" ]
       Type string : Heartbeat [stateTopic="tele/switch03/STATE", transformationPattern="JSONPATH:$.Time"]
+      Type number : RSSI [stateTopic="tele/switch03/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
 // GF_Corridor_Storage
@@ -230,6 +257,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
     Channels:
       Type switch : PowerSwitch [stateTopic="stat/switch04/POWER", commandTopic="cmnd/switch04/POWER", on="ON", off="OFF" ]
       Type string : Heartbeat [stateTopic="tele/switch04/STATE", transformationPattern="JSONPATH:$.Time"]
+      Type number : RSSI [stateTopic="tele/switch04/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
 // GF_Corridor_LED
@@ -237,6 +265,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
     Channels:
       Type switch : PowerSwitch [stateTopic="stat/switch05/POWER", commandTopic="cmnd/switch05/POWER", on="ON", off="OFF" ]
       Type string : Heartbeat [stateTopic="tele/switch05/STATE", transformationPattern="JSONPATH:$.Time"]
+      Type number : RSSI [stateTopic="tele/switch05/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
 // FF_Bedroom_Wardobe
@@ -244,6 +273,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
     Channels:
       Type switch : PowerSwitch [stateTopic="stat/switch06/POWER", commandTopic="cmnd/switch06/POWER", on="ON", off="OFF" ]
       Type string : Heartbeat [stateTopic="tele/switch06/STATE", transformationPattern="JSONPATH:$.Time"]
+      Type number : RSSI [stateTopic="tele/switch06/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
 // Bedroom
@@ -256,6 +286,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Brightness [stateTopic="tele/multisensor01/SENSOR", transformationPattern="JS:tasmotaAnalogReverse.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor01/STATE", transformationPattern="JSONPATH:$.Time"]
       Type contact : Cir [stateTopic="stat/multisensor01/CIR", on="ON", off="OFF"]
+      Type number : RSSI [stateTopic="tele/multisensor01/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   } 
 
 // Kitchen
@@ -266,6 +297,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : DewPoint [stateTopic="tele/multisensor02/SENSOR", transformationPattern="JSONPATH:$.BME280.DewPoint"]
       Type number : Pressure [stateTopic="tele/multisensor02/SENSOR", transformationPattern="JS:tasmotaBME280Pressure.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor02/STATE", transformationPattern="JSONPATH:$.Time"]
+      Type number : RSSI [stateTopic="tele/multisensor02/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   } 
 
 
@@ -279,6 +311,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Brightness [stateTopic="tele/multisensor03/SENSOR", transformationPattern="JS:tasmotaAnalogReverse.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor03/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number : OutdoorTemperature [stateTopic="tele/multisensor03/SENSOR", transformationPattern="JSONPATH:$.DS18B20.Temperature"]
+      Type number : RSSI [stateTopic="tele/multisensor03/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   } 
 
 
@@ -293,6 +326,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type string : Heartbeat [stateTopic="tele/multisensor04/STATE", transformationPattern="JSONPATH:$.Time"]
       Type contact : Cir [stateTopic="stat/multisensor04/CIR", on="ON", off="OFF"]
       Type contact : Move [stateTopic="stat/multisensor04/PIR", on="ON", off="OFF"]
+      Type number : RSSI [stateTopic="tele/multisensor04/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   } 
 
 //  FF_AnnRoom_Sensor
@@ -305,6 +339,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type string : Heartbeat [stateTopic="tele/multisensor05/STATE", transformationPattern="JSONPATH:$.Time"]
       Type contact : Cir [stateTopic="stat/multisensor05/CIR", on="ON", off="OFF"]
       Type contact : Move [stateTopic="stat/multisensor05/PIR", on="ON", off="OFF"]
+      Type number : RSSI [stateTopic="tele/multisensor05/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   } 
 
   Thing topic Minitiger01 "Minitiger01" {

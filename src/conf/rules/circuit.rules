@@ -28,6 +28,7 @@ then
         }
     }
     ddd += "f"
+  } catch (IllegalStateException ise) {
   } catch (Throwable t) {
     logError("Error", "Error in cir_rule {} {} {} {}", ddd, triggeringItem.name, triggeringItem.state, t.toString())
   } finally {

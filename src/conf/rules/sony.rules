@@ -2,4 +2,5 @@ rule "sony_rule"
 when
     Member of gSony received update
 then
+    logError("Sony", "Sony {} {}", triggeringItem.name, triggeringItem.state)
 end

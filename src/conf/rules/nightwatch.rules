@@ -1,11 +1,14 @@
 import java.util.Map
 
-val Map<String, Timer> nightwatchTimers = newHashMap
+var Map<String, Timer> nightwatchTimers = newHashMap
 
 rule "nightwatch_rule"
 when
     Member of gNightWatch received update
 then
+  if (nightwatchTimers == NULL) {
+    nightwatchTimers = newHashMap
+  }
   try {
     var int logLevel = 6
     if (HH_DebugLevel_Nightwatch.state !== NULL) {

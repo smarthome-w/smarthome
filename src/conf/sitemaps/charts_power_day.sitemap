@@ -19,6 +19,18 @@ sitemap charts_power_day label="Power consumption (daily)" {
         Text item=HH_PowermeterPlug01_TodayPower
 //        Text item=GF_PowerMeter_DailyConsumption
     }
+
+    Frame label="Test power" icon="firstfloor" {
+        Text item=HH_PowermeterPlug02_Power
+        Text item=HH_PowermeterPlug02_TotalPower
+        Text item=HH_PowermeterPlug02_ReactivePower
+        Text item=HH_PowermeterPlug02_ApparentPower
+        Text item=HH_PowermeterPlug02_Factor
+        Text item=HH_PowermeterPlug02_YesterdayPower
+        Text item=HH_PowermeterPlug02_TodayPower
+//        Text item=GF_PowerMeter_DailyConsumption
+    }
+
     Frame label="Test power today" icon="firstfloor" {
         Chart item=HH_PowermeterPlug01_Power period=D label="Counter"
         Chart item=HH_PowermeterPlug01_TotalPower period=D label="Power"

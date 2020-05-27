@@ -55,3 +55,6 @@ if (braviarc.is_connected()):
     print('==')
     system_info = braviarc.get_system_info()
     print(system_info)
+    print('==')
+    system_info = braviarc.load_source_list()
+    print(system_info)

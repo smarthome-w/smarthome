@@ -22,6 +22,17 @@ sitemap sensors_basic label="Status" {
         Group item=gErrors visibility=[OverallErrorIndicator==ON]
     }
 
+    Frame label="Tracker" icon="groundfloor" {
+        Switch item=Tracker_Waldek_AtHome mappings=[ON="Present", OFF="Absent"]
+        Switch item=Tracker_Aldona_AtHome mappings=[ON="Present", OFF="Absent"]
+        Switch item=Tracker_Ann_AtHome mappings=[ON="Present", OFF="Absent"]
+        Switch item=Tracker_Alice_AtHome mappings=[ON="Present", OFF="Absent"]
+        Text item=Tracker_Waldek_HomeDistance
+        Text item=Tracker_Aldona_HomeDistance
+        Text item=Tracker_Ann_HomeDistance
+        Text item=Tracker_Alice_HomeDistance
+    }
+
     Frame label="Heaters" icon="firstfloor" {
       Text item=EQ3_Bedroom_Status  
       Text item=EQ3_FamilyRoom_Status  
@@ -50,12 +61,6 @@ sitemap sensors_basic label="Status" {
                                             CYAN="Cyan",
                                             YELLOW="Yellow"
                                             ]
-    }
-    Frame label="Presence" icon="groundfloor" {
-        Switch item=Presence_Waldek mappings=[CLOSED="Present", OPEN="Absent"]
-        Switch item=Presence_Aldona mappings=[CLOSED="Present", OPEN="Absent"]
-        Switch item=Presence_Ann mappings=[CLOSED="Present", OPEN="Absent"]
-        Switch item=Presence_Alice mappings=[CLOSED="Present", OPEN="Absent"]
     }
 
     Frame label="Scenes" icon="firstfloor" {

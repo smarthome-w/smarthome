@@ -106,6 +106,20 @@ In `/etc/systemd/system/bluetooth.target.wants/bluetooth.service` change:
 ExecStart=/usr/lib/bluetooth/bluetoothd --noplugin=sap
 ```
 
+### watchdog
+
+```bash
+sudo apt-get install watchdog
+sudo update-rc.d watchdog defaults
+
+# /etc/watchdog.conf - uncomment and add
+#watchdog-device
+#max-load-1
+# watchdog-timeout = 15
+
+# forkbomb: :(){ :|:& };:
+```
+
 Packages for iNode:
 
 ## iNode packages and settings
