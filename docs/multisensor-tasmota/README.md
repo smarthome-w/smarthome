@@ -26,15 +26,24 @@ GPIO# |00| 01|02| 03|04| 05| 09| 10| 12| 13| 14| 15| 16|
 ### Tasmota rules
 
 ```bash
-SwitchMode1 1
-SwitchTopic 0
-Rule1 on switch1#state=1 do publish stat/multisensor01/CIR ON endon on switch1#state=0 do publish stat/multisensor01/CIR OFF endon
+Rule1 on switch1#state=1 do publish tele/multisensor01/SENSOR {"Switch1":"ON"} endon on switch1#state=0 do publish tele/multisensor01/SENSOR {"Switch1":"OFF"} endon
 Rule1 1
 
-SwitchMode2 1
-SwitchTopic 0
-Rule2 on switch2#state=1 do publish stat/multisensor01/PIR ON endon on switch2#state=0 do publish stat/multisensor01/PIR OFF endon
+Rule2 on switch2#state=1 do publish tele/multisensor01/SENSOR {"Switch2":"ON"} endon on switch2#state=0 do publish tele/multisensor01/SENSOR {"Switch2":"OFF"} endon
 Rule2 1
+
+Rule1 on switch1#state=1 do publish tele/multisensor04/SENSOR {"Switch1":"ON"} endon on switch1#state=0 do publish tele/multisensor04/SENSOR {"Switch1":"OFF"} endon
+Rule1 1
+
+Rule2 on switch2#state=1 do publish tele/multisensor04/SENSOR {"Switch2":"ON"} endon on switch2#state=0 do publish tele/multisensor04/SENSOR {"Switch2":"OFF"} endon
+Rule2 1
+
+Rule1 on switch1#state=1 do publish tele/multisensor05/SENSOR {"Switch1":"ON"} endon on switch1#state=0 do publish tele/multisensor05/SENSOR {"Switch1":"OFF"} endon
+Rule1 1
+
+Rule2 on switch2#state=1 do publish tele/multisensor05/SENSOR {"Switch2":"ON"} endon on switch2#state=0 do publish tele/multisensor05/SENSOR {"Switch2":"OFF"} endon
+Rule2 1
+
 ```
 
 ### Hardware
@@ -101,6 +110,11 @@ SwitchMode2 1
 SwitchTopic 0
 Rule2 on switch2#state=1 do publish stat/multisensor05/PIR ON endon on switch2#state=0 do publish stat/multisensor05/PIR OFF endon
 Rule2 1
+
+Rule3 on switch1#state=1 do publish stat/multisensor05/SENSOR {"Switch1":"ON"} endon on switch1#state=0 do publish stat/multisensor05/SENSOR {"Switch1":"OFF"} endon
+
+Rule4 on switch2#state=1 do publish stat/multisensor05/SENSOR {"Switch2":"ON"} endon on switch2#state=0 do publish stat/multisensor05/SENSOR {"Switch2":"OFF"} endon
+
 ```
 
 ### Hardware

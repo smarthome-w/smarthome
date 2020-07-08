@@ -31,8 +31,8 @@ Contact		PIR_FF_AnnRoom							"PIR Ann []"										<light>			(FF_AnnRoom, gPIR,
 Contact		PIR_FF_AliceRoom						"PIR Alice []"										<light>			(FF_AliceRoom, gPIR, gPersistenceSwitch)							{channel="mqtt:topic:MyMQTTBroker:Multisensor04:Move"}
 Contact		PIR_FF_Bedroom							"PIR Bedroom []"									<light>			(FF_Bedroom, gBedroomWatch, gPIR, gPersistenceSwitch)				{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirBedroom"}
 Contact		PIR_FF_BedroomWardobe					"PIR Bedroom wardobe []"							<light>			(FF_Bedroom, gMoveWatch, gPIR, gPersistenceSwitch)					{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirBedroomWardobe"}
-Contact		PIR_GF_EntryWatch						"PIR Entry Watch []"								<light>			(GF_Corridor, gPIR, gSlack, gEntryWatch, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirEntryWatch"}
-Contact		PIR_Corridor_Storage					"PIR Corridor Storage []"							<light>			(GF_Corridor, gPIR, gPersistenceSwitch)								{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirCorridorStorage"}
+Contact		PIR_GF_EntryWatch						"PIR Entry Watch (virt) []"							<light>			(GF_Corridor, gPIR, gSlack, gEntryWatch, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirEntryWatch"}
+Switch		PIR_Corridor_Storage					"PIR Corridor Storage (virt) []"					<light>			(GF_Corridor, gPIR, gPersistenceSwitch)								{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirCorridorStorage"}
 Switch		PIR_GF_Corridor_State					"PIR Corridor []"									<rgb>			(gPIRState, gPersistenceSwitch)
 Switch		PIR_GF_FamilyRoom_State					"PIR Family room []"								<rgb>			(gPIRState, gPersistenceSwitch)
 Switch		PIR_GF_Kitchen_State					"PIR Kitchen []"									<rgb>			(gPIRState, gPersistenceSwitch)

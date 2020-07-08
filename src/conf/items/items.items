@@ -262,9 +262,11 @@ Switch			vSlack_Send												"Send slack"															(gSlack)
 ////////////////////////////////////////////////////////////////////////////////
 //                       Heartbeats
 ////////////////////////////////////////////////////////////////////////////////
+Number			GF_FamilyRoom_RSSI										"8266 Family room RSSI [%.0f]"							<heating>		(gRSSI)																				{channel="mqtt:topic:MyMQTTBroker:Multisensor03:RSSI"}
 String			GF_FamilyRoom_Heartbeat									"8266 Family room [%s]"													(GF_FamilyRoom, gHeartbeat)															{channel="mqtt:topic:MyMQTTBroker:Multisensor03:Heartbeat"}
 DateTime		GF_FamilyRoom_Heartbeat_LastUpdate						"8266 Family room [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			GF_FamilyRoom_Heartbeat_LastUpdate_Error				"8266 Family room"										<time>			(gErrors, gPersistenceSwitch)
+Number			GF_Kitchen_RSSI											"8266 Kitchen RSSI [%.0f]"								<heating>		(gRSSI)																				{channel="mqtt:topic:MyMQTTBroker:Multisensor02:RSSI"}
 String			GF_Kitchen_Heartbeat									"8266 Kitchen [%s]"														(GF_Kitchen, gHeartbeat)															{channel="mqtt:topic:MyMQTTBroker:Multisensor02:Heartbeat"}
 DateTime		GF_Kitchen_Heartbeat_LastUpdate							"8266 Kitchen [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			GF_Kitchen_Heartbeat_LastUpdate_Error					"8266 Kitchen"											<time>			(gErrors, gPersistenceSwitch)
@@ -273,6 +275,7 @@ DateTime		GF_FamilyRoomRollershutter_Heartbeat_LastUpdate			"8266 Family room bl
 Switch			GF_FamilyRoomRollershutter_Heartbeat_LastUpdate_Error	"8266 Family room blinds"								<time>			(gErrors, gPersistenceSwitch)
 DateTime		GF_FamilyRoomRollershutter_Health_LastUpdate			"Family room blinds [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			GF_FamilyRoomRollershutter_Health_LastUpdate_Error		"Family room blinds health"								<time>			(gErrors, gPersistenceSwitch)
+Number			FF_Bedroom_RSSI											"8266 Bedroom RSSI [%.0f]"								<heating>		(gRSSI)																				{channel="mqtt:topic:MyMQTTBroker:Multisensor01:RSSI"}
 String			FF_Bedroom_Heartbeat									"8266 Bedroom [%s]"														(FF_Bedroom, gHeartbeat)															{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Heartbeat"}
 DateTime		FF_Bedroom_Heartbeat_LastUpdate							"8266 Bedroom [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			FF_Bedroom_Heartbeat_LastUpdate_Error					"8266 Bedroom"											<time>			(gErrors, gPersistenceSwitch)
@@ -281,9 +284,11 @@ DateTime		FF_BedroomRollershutter_Heartbeat_LastUpdate			"8266 Bedroom blinds [%
 Switch			FF_BedroomRollershutter_Heartbeat_LastUpdate_Error		"8266 Bedroom blinds"									<time>			(gErrors, gPersistenceSwitch)
 DateTime		FF_BedroomRollershutter_Health_LastUpdate				"Bedroom blinds [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			FF_BedroomRollershutter_Health_LastUpdate_Error			"Bedroom blinds health"									<time>			(gErrors, gPersistenceSwitch)
+Number			FF_AliceRoom_RSSI										"8266 Alice room RSSI [%.0f]"							<heating>		(gRSSI)																				{channel="mqtt:topic:MyMQTTBroker:Multisensor04:RSSI"}
 String			FF_AliceRoom_Heartbeat									"8266 Alice room [%s]"													(FF_AliceRoom, gHeartbeat)															{channel="mqtt:topic:MyMQTTBroker:Multisensor04:Heartbeat"}
 DateTime		FF_AliceRoom_Heartbeat_LastUpdate						"8266 Alice room [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			FF_AliceRoom_Heartbeat_LastUpdate_Error					"8266 Alice room"										<time>			(gErrors, gPersistenceSwitch)
+Number			FF_AnnRoom_RSSI											"8266 Ann room RSSI [%.0f]"								<heating>		(gRSSI)																				{channel="mqtt:topic:MyMQTTBroker:Multisensor05:RSSI"}
 String			FF_AnnRoom_Heartbeat									"8266 Ann room [%s]"													(FF_AnnRoom, gHeartbeat)															{channel="mqtt:topic:MyMQTTBroker:Multisensor05:Heartbeat"}
 DateTime		FF_AnnRoom_Heartbeat_LastUpdate							"8266 Ann room  [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			FF_AnnRoom_Heartbeat_LastUpdate_Error					"8266 Ann room"											<time>			(gErrors, gPersistenceSwitch)
@@ -302,12 +307,15 @@ Switch			HW_RMPro_Heartbeat_Ticker								"RMPro Ticker"															(gSystem)
 String			HW_RMPro_Heartbeat										"RM Pro [%s]"															(GF_FamilyRoom, gHeartbeat)															{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:HeartbeatRMPro"}
 DateTime		HW_RMPro_Heartbeat_LastUpdate							"RM Pro [%1$td.%1$tm %1$tH:%1$tM]"						<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			HW_RMPro_Heartbeat_LastUpdate_Error						"RM Pro"												<time>			(gErrors, gPersistenceSwitch)
+Number			GF_FamilyRoom_LightsRGB_RSSI							"Sonoff Family room led RSSI [%.0f]"					<heating>		(gRSSI)																				{channel="mqtt:topic:MyMQTTBroker:Switch03:RSSI"}
 String			GF_FamilyRoom_LightsRGB_Heartbeat						"Sonoff Family room led [%s]"											(GF_FamilyRoom, gHeartbeat)															{channel="mqtt:topic:MyMQTTBroker:Switch03:Heartbeat"}
 DateTime		GF_FamilyRoom_LightsRGB_Heartbeat_LastUpdate			"Sonoff Family room led [%1$td.%1$tm %1$tH:%1$tM]"		<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			GF_FamilyRoom_LightsRGB_Heartbeat_LastUpdate_Error		"Sonoff Family room led"								<time>			(gErrors, gPersistenceSwitch)
+Number			GF_FamilyRoom_LightsLamp_RSSI							"Sonoff Family room lamps RSSI [%.0f]"					<heating>		(gRSSI)																				{channel="mqtt:topic:MyMQTTBroker:Switch02:RSSI"}
 String			GF_FamilyRoom_LightsLamp_Heartbeat						"Sonoff Family room lamps [%s]"											(GF_FamilyRoom, gHeartbeat)															{channel="mqtt:topic:MyMQTTBroker:Switch02:Heartbeat"}
 DateTime		GF_FamilyRoom_LightsLamp_Heartbeat_LastUpdate			"Sonoff Family room lamps [%1$td.%1$tm %1$tH:%1$tM]"	<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			GF_FamilyRoom_LightsLamp_Heartbeat_LastUpdate_Error		"Sonoff Family room lamps"								<time>			(gErrors, gPersistenceSwitch)
+Number			GF_Corridor_Light_LED_RSSI								"Sonoff Corridor led RSSI [%.0f]"						<heating>		(gRSSI)																				{channel="mqtt:topic:MyMQTTBroker:Switch05:RSSI"}
 String			GF_Corridor_Light_LED_Heartbeat							"Sonoff Corridor led [%s]"												(GF_Corridor, gHeartbeat)															{channel="mqtt:topic:MyMQTTBroker:Switch05:Heartbeat"}
 String			GF_Kitchen_LED_Heartbeat								"Sonoff Kitchen led [%s]"												(GF_Corridor, gHeartbeat)															{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:HeartbeatKitchenLED"}
 DateTime		GF_Corridor_Light_LED_Heartbeat_LastUpdate				"Sonoff Corridor led [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
@@ -316,12 +324,15 @@ Switch			GF_Corridor_Light_LED_Heartbeat_LastUpdate_Error		"Sonoff Corridor led[
 Switch			GF_Kitchen_LED_Heartbeat_LastUpdate_Error				"Sonoff Kitchen[]"										<time>			(gErrors, gPersistenceSwitch)
 Number			GF_Kitchen_LED_Uptime									"Kitchen LED uptime [%.4f]"								<heating>		(gUptime)																			{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:KitchenLEDUptime"}
 Number			GF_Kitchen_LED_RSSI										"Kitchen LED RSSI [%.0f]"								<heating>		(gRSSI)																				{channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:KitchenLEDRSSI"}
+Number			GF_Corridor_Storage_RSSI								"Sonoff Corridor shelfs RSSI [%.0f]"					<heating>		(gRSSI)																				{channel="mqtt:topic:MyMQTTBroker:Switch04:RSSI"}
 String			GF_Corridor_Storage_Heartbeat							"Sonoff Corridor shelfs [%s]"											(GF_Corridor, gHeartbeat)															{channel="mqtt:topic:MyMQTTBroker:Switch04:Heartbeat"}
 DateTime		GF_Corridor_Storage_Heartbeat_LastUpdate				"Sonoff Corridor shelfs [%1$td.%1$tm %1$tH:%1$tM]"		<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			GF_Corridor_Storage_Heartbeat_LastUpdate_Error			"Sonoff Corridor shelfs"								<time>			(gErrors, gPersistenceSwitch)
+Number			FF_Bedroom_Lights_RSSI									"Sonoff Bedroom RSSI [%.0f]"							<heating>		(gRSSI)																				{channel="mqtt:topic:MyMQTTBroker:Switch01:RSSI"}
 String			FF_Bedroom_Lights_Heartbeat								"Sonoff Bedroom LED[%s]"												(FF_Bedroom, gHeartbeat)															{channel="mqtt:topic:MyMQTTBroker:Switch01:Heartbeat"}
 DateTime		FF_Bedroom_Lights_Heartbeat_LastUpdate					"Sonoff Bedroom LED [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			FF_Bedroom_Lights_Heartbeat_LastUpdate_Error			"Sonoff Bedroom LED[]"									<time>			(gErrors, gPersistenceSwitch)
+Number			FF_Bedroom_Wardobe_RSSI									"Sonoff Bedroom wardrobe RSSI [%.0f]"					<heating>		(gRSSI)																				{channel="mqtt:topic:MyMQTTBroker:Switch06:RSSI"}
 String			FF_Bedroom_Wardobe_Heartbeat							"Sonoff Bedroom wardobe[%s]"											(FF_Bedroom, gHeartbeat)															{channel="mqtt:topic:MyMQTTBroker:Switch06:Heartbeat"}
 DateTime		FF_Bedroom_Wardobe_Heartbeat_LastUpdate					"Sonoff Bedroom wardobe [%1$td.%1$tm %1$tH:%1$tM]"		<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			FF_Bedroom_Wardobe_Heartbeat_LastUpdate_Error			"Sonoff Bedroom wardobe[]"								<time>			(gErrors, gPersistenceSwitch)
@@ -340,6 +351,7 @@ Number			HH_PowermeterPlug01_TotalPower							"Powermeter01 plug total power [%.
 Number			HH_PowermeterPlug01_YesterdayPower						"Powermeter01 plug yesterday power [%.3f kWh]"			<power>			(gSensorPower, gPersistenceSensor)													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Yesterday"}
 Number			HH_PowermeterPlug01_TodayPower							"Powermeter01 plug today power [%.3f kWh]"				<power>			(gSensorPower, gPersistenceSensor)													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Today"}
 Number			HH_PowermeterPlug01_Factor								"Powermeter01 plug factor [%.2f]"						<power>			(gSensorPower, gPersistenceSensor)													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Factor"}
+Number			HH_PowermeterPlug01_RSSI								"Powermeter01 plug RSSI [%.0f]"							<heating>		(gRSSI)																				{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:RSSI"}
 String			HH_PowermeterPlug01_Heartbeat							"Powermeter01 plug [%s]"												(gHeartbeat)																		{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Heartbeat"}
 DateTime		HH_PowermeterPlug01_Heartbeat_LastUpdate				"Powermeter01 plug [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			HH_PowermeterPlug01_Heartbeat_LastUpdate_Error			"Powermeter01 plug"										<time>			(gErrors, gPersistenceSwitch)
@@ -351,6 +363,7 @@ Number			HH_PowermeterPlug02_TotalPower							"Powermeter02 plug total power [%.
 Number			HH_PowermeterPlug02_YesterdayPower						"Powermeter02 plug yesterday power [%.3f kWh]"			<power>			(gSensorPower, gPersistenceSensor)													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:Yesterday"}
 Number			HH_PowermeterPlug02_TodayPower							"Powermeter02 plug today power [%.3f kWh]"				<power>			(gSensorPower, gPersistenceSensor)													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:Today"}
 Number			HH_PowermeterPlug02_Factor								"Powermeter02 plug factor [%.2f]"						<power>			(gSensorPower, gPersistenceSensor)													{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:Factor"}
+Number			HH_PowermeterPlug02_RSSI								"Powermeter02 plug RSSI [%.0f]"							<heating>		(gRSSI)																				{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:RSSI"}
 String			HH_PowermeterPlug02_Heartbeat							"Powermeter02 plug [%s]"												(gHeartbeat)																		{channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:Heartbeat"}
 DateTime		HH_PowermeterPlug02_Heartbeat_LastUpdate				"Powermeter02 plug [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch			HH_PowermeterPlug02_Heartbeat_LastUpdate_Error			"Powermeter02 plug"										<time>			(gErrors, gPersistenceSwitch)

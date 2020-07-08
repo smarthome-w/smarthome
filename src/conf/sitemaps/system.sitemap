@@ -53,12 +53,12 @@ sitemap system label="System" {
     }
 
 
-    Frame label="Presence" icon="firstfloor" {
-        Chart item=Presence_Waldek period=D label="Waldek"
-        Chart item=Presence_Aldona period=D label="Aldona"
-        Chart item=Presence_Ann period=D label="Ann"
-        Chart item=Presence_Alice period=D label="Alice"
-    }
+//    Frame label="Presence" icon="firstfloor" {
+//        Chart item=Presence_Waldek period=D label="Waldek"
+//        Chart item=Presence_Aldona period=D label="Aldona"
+//        Chart item=Presence_Ann period=D label="Ann"
+//        Chart item=Presence_Alice period=D label="Alice"
+//    }
 
     Frame label="Pi" icon="firstfloor" {
       Text item=OpenHAB_Restart

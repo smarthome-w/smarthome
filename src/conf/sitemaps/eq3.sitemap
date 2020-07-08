@@ -7,11 +7,18 @@ sitemap eq3 label="Heaters" {
       Text item=EQ3_Kitchen_Status  
     }
 
+    Frame label="Battery" icon="battery" {
+      Switch item=EQ3_FamilyRoom_Battery mappings=[CLOSED="GOOD", OPEN="LOW"] 
+      Switch item=EQ3_Bedroom_Battery mappings=[CLOSED="GOOD", OPEN="LOW"]
+      Switch item=EQ3_AnnRoom_Battery mappings=[CLOSED="GOOD", OPEN="LOW"]
+      Switch item=EQ3_Kitchen_Battery mappings=[CLOSED="GOOD", OPEN="LOW"]
+      Switch item=EQ3_AliceRoom_Battery mappings=[CLOSED="GOOD", OPEN="LOW"]
+    }
+
     Frame label="Family Room" icon="firstfloor" {
       Text item=EQ3_FamilyRoom_Temp  
       Text item=EQ3_FamilyRoom_Valve  
       Text item=EQ3_FamilyRoom_Mode  
-      Switch item=EQ3_FamilyRoom_Battery mappings=[CLOSED="GOOD", OPEN="LOW"] 
       Text item=EQ3_FamilyRoom_LastUpdate  
       Chart item=gEQ3FamilyRoomTemp period=D label="Family Room"
       Chart item=EQ3_FamilyRoom_Valve period=D label="Valve"
@@ -21,7 +28,6 @@ sitemap eq3 label="Heaters" {
       Text item=EQ3_Bedroom_Temp  
       Text item=EQ3_Bedroom_Valve  
       Text item=EQ3_Bedroom_Mode  
-      Switch item=EQ3_Bedroom_Battery mappings=[CLOSED="GOOD", OPEN="LOW"]
       Text item=EQ3_Bedroom_LastUpdate  
       Chart item=gEQ3BedroomTemp period=D label="Bedroom"
       Chart item=EQ3_Bedroom_Valve period=D label="Valve"
@@ -31,7 +37,6 @@ sitemap eq3 label="Heaters" {
       Text item=EQ3_AnnRoom_Temp  
       Text item=EQ3_AnnRoom_Valve  
       Text item=EQ3_AnnRoom_Mode  
-      Switch item=EQ3_AnnRoom_Battery mappings=[CLOSED="GOOD", OPEN="LOW"]
       Text item=EQ3_AnnRoom_LastUpdate  
       Chart item=gEQ3AnnRoomTemp period=D label="Ann Room"
       Chart item=EQ3_AnnRoom_Valve period=D label="Valve"
@@ -41,7 +46,6 @@ sitemap eq3 label="Heaters" {
       Text item=EQ3_Kitchen_Temp  
       Text item=EQ3_Kitchen_Valve  
       Text item=EQ3_Kitchen_Mode  
-      Switch item=EQ3_Kitchen_Battery mappings=[CLOSED="GOOD", OPEN="LOW"]
       Text item=EQ3_Kitchen_LastUpdate  
       Chart item=gEQ3KitchenTemp period=D label="Kitchen"
       Chart item=EQ3_Kitchen_Valve period=D label="Valve"
@@ -51,7 +55,6 @@ sitemap eq3 label="Heaters" {
       Text item=EQ3_AliceRoom_Temp  
       Text item=EQ3_AliceRoom_Valve  
       Text item=EQ3_AliceRoom_Mode  
-      Switch item=EQ3_AliceRoom_Battery mappings=[CLOSED="GOOD", OPEN="LOW"]
       Text item=EQ3_AliceRoom_LastUpdate  
       Chart item=gEQ3AliceRoomTemp period=D label="Alice Room"
       Chart item=EQ3_AliceRoom_Valve period=D label="Valve"

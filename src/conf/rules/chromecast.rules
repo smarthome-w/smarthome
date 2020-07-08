@@ -65,8 +65,12 @@ then
   var ttsMessage = String.format("There is %.1f Celsius outside. Current pressure is %.0f hectopascals.", externalTemp, pressure)
   var lang = "en-gb"
 
-  ttsLanguage.sendCommand(lang)
-  ttsText.sendCommand(ttsMessage)
+  if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (calendar_Vacation.state.toString() == "OFF") {
+      ttsLanguage.sendCommand(lang)
+      ttsText.sendCommand(ttsMessage)
+    }
+  }
   calendar_DailyInfo.postUpdate(OFF)
 end
 
@@ -79,8 +83,12 @@ then
   var ttsMessage = String.format("Current power usage is %.0f watts.", power)
   var lang = "en-gb"
 
-  ttsLanguage.sendCommand(lang)
-  ttsText.sendCommand(ttsMessage)
+  if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (calendar_Vacation.state.toString() == "OFF") {
+      ttsLanguage.sendCommand(lang)
+      ttsText.sendCommand(ttsMessage)
+    }
+  }
 //  calendar_DailyInfo.postUpdate(OFF)
 end
 

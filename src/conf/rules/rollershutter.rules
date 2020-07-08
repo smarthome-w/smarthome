@@ -68,6 +68,30 @@ then
   }
 end
 
+rule "rollershutter_daily_info"
+when
+  Item calendar_DailyInfo changed to ON
+then
+  try {
+    var int logLevel = 6
+    if (HH_DebugLevel_Rollershutter.state !== NULL) {
+      logLevel = (HH_DebugLevel_Scene.state as Number).intValue
+    }
+    logError("Error", "rollershutter_daily_info: {}", calendar_WakeUp)
+    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+      if (calendar_Vacation.state.toString() == "OFF") {
+        GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
+        logInfo("dailytrigger", "rollershutter_daily_info: Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)
+      }
+    }
+    if (logLevel >=6) {}
+  } catch (Throwable t) {
+    logError("Error", "Error in rollershutter_daily_info {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
+  } finally {
+  }
+end
+
+
 rule "rollershutter_health_rule"
 when
   Time cron "0 */3 * ? * MON-SUN" 
