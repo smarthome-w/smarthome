@@ -57,5 +57,5 @@ Number		GF_PowerMeter_Total						"Total power [%.3f kWh]"							<battery-60>	(GF
 DateTime	GF_PowerMeter_Total_LastUpdate			"Powermeter [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch		GF_PowerMeter_Total_LastUpdate_Error	"Powermeter []"										<time>			(gErrors, gPersistenceSwitch)
 Number		GF_PowerMeter_Current					"Current power in kilowatts[%.3f kW]"				<battery-60>	(GF_Corridor, gPower, gPersistenceSwitch)							{channel="mqtt:topic:MyMQTTBroker:Powermeter_Sensor:Current"}
-Number		GF_PowerMeter_Current_In_Watts			"Power temperature [%.0f W]"						<battery-60>	(GF_Corridor, gPower, gPersistenceSwitch)							{channel="mqtt:topic:MyMQTTBroker:Powermeter_Sensor:CurrentInWatts"}
+Number		GF_PowerMeter_Current_In_Watts			"Overall power [%.0f W]"						    <battery-60>	(GF_Corridor, gPower, gPersistenceSwitch)							{channel="mqtt:topic:MyMQTTBroker:Powermeter_Sensor:CurrentInWatts"}
 Number		GF_PowerMeter_DailyConsumption			"Daily consumption [%.1f kWh]"						<battery-60>	(gPower, gPersistenceDummy)

@@ -38,8 +38,7 @@ then
           }
           state_item.postUpdate(ON)
           ddd += "c"
-      }
-      else {
+      } else {
           if (logLevel >= 6) {
             logError("pir", "Reschedule {} with {} minutes", triggeringItem.name, timeOutMinutes)
           }
