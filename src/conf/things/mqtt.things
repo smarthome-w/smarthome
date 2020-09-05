@@ -96,13 +96,6 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type switch : GF_Corridor_Cross [stateTopic="shellies/shelly1-55424A/relay/0", commandTopic="shellies/shelly1-55424A/relay/0/command", on="on", off="off" ]
   }
 
-  Thing topic Camera "Camera" {
-    Channels:
-      Type switch : GF_FamilyRoom_Camera [commandTopic="myHome/camera", on="ON", off="OFF" ]
-      Type number : GF_FamilyRoom_Camera_Servo [commandTopic="myHome/GF_FamilyRoom_Camera_Servo"]
-    
-  }
-
   Thing topic EQ3 "EQ3" {
     Channels:
       Type string : EQ3Bedroom [stateTopic="/bedroomradout/status"]

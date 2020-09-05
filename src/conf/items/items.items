@@ -52,8 +52,6 @@ String      GF_Presence_Mode                                         "Presence" 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Switches
 ////////////////////////////////////////////////////////////////////////////////
-Switch      GF_FamilyRoom_Camera                                     "Camera[]"                                              <camera>         (GF_FamilyRoom, gCamera, gPersistenceSwitch)                                      {channel="mqtt:topic:MyMQTTBroker:Camera:GF_FamilyRoom_Camera"}
-Dimmer      GF_FamilyRoom_Camera_Servo                               "Camera angle  [%.1f %%]"                               <hue>            (GF_FamilyRoom, gPersistenceSwitch)                                               {channel="mqtt:topic:MyMQTTBroker:Camera:GF_FamilyRoom_Camera_Servo"}
 Switch      GF_FamilyRoom_Light_Table                                "Family room table[]"                                   <light>          (GF_FamilyRoom, gTC2, gGF_FamilyRoom_Scenario, gPersistenceSwitch)                {channel="mqtt:topic:MyMQTTBroker:Broadlink:GF_FamilyRoom_Light_Table"}
 Switch      GF_FamilyRoom_Light_Sofa                                 "Family room sofa[]"                                    <light>          (GF_FamilyRoom, gTC2, gGF_FamilyRoom_Scenario, gPersistenceSwitch)                {channel="mqtt:topic:MyMQTTBroker:Broadlink:GF_FamilyRoom_Light_Sofa"}
 Switch      GF_FamilyRoom_LightsRGB                                  "Cinema[]"                                              <light>          (GF_FamilyRoom, gSonoff, gGF_ColorLights_Scenario, gPersistenceSwitch, gLight)    {channel="mqtt:topic:MyMQTTBroker:Switch03:PowerSwitch", ga="Light"}
@@ -141,31 +139,6 @@ Switch      GH_Confirm_Command                                       "Enter[]"  
 ////////////////////////////////////////////////////////////////////////////////
 //                       Sensors
 ////////////////////////////////////////////////////////////////////////////////
-Number      HH_Humidity_Min                                          "Humidity min [%.1f%%]"                                 <humidity>       (gSensorHumidity, gPersistenceSensor)
-Number      HH_Humidity_Max                                          "Humidity max [%.1f%%]"                                 <humidity>       (gSensorHumidity, gPersistenceSensor)
-Number      HH_Light_Dusk_Level                                      "Light dusk level [%.0f]"                               <time>           (gSensorBrightness, gParameters, gPersistenceSwitch)
-Number      HH_Light_Dawn_Level                                      "Light dawn level [%.0f]"                               <time>           (gSensorBrightness, gParameters, gPersistenceSwitch)
-Number      HH_PIR_State_Timeout                                     "PIR state timeout [%.0f]"                              <time>           (gParameters, gPersistenceSwitch)
-Number      HH_PIR_Wardobe_State_Timeout                             "Wardobe state timeout [%.0f]"                          <time>           (gParameters, gPersistenceSwitch)
-Number      HH_Night_Bedroom_Blind_Level                             "Night bedroom blind [%.0f]"                            <time>           (gParameters, gPersistenceSwitch)
-Number      HH_Time_Day                                              "Day starts at [%.0f]"                                  <time>           (gParameters, gPersistenceSwitch)
-Number      HH_Time_Evening                                          "Evening starts at [%.0f]"                              <time>           (gParameters, gPersistenceSwitch)
-Number      HH_Time_Night                                            "Night starts at [%.0f]"                                <time>           (gParameters, gPersistenceSwitch)
-Number      HH_Elevation_Dusk                                        "Elevation dusk below [%.0f]"                           <time>           (gAstroBrightness, gParameters, gPersistenceSwitch)
-Number      HH_Elevation_Dawn                                        "Elevation dawn above [%.0f]"                           <time>           (gAstroBrightness, gParameters, gPersistenceSwitch)
-Number      HH_LockWarningHour                                       "Lock warning hour [%.0f]"                              <time>           (gParameters, gPersistenceSwitch)
-Number      HH_BlindsNotBefore                                       "Blinds not before hour [%.0f]"                         <time>           (gParameters, gPersistenceSwitch)
-Number      HH_DailyInfoHour                                         "Daily info hour [%.0f]"                                <time>           (gParameters, gPersistenceSwitch)
-Number      HH_DailyInfoMinute                                       "Daily info minute [%.0f]"                              <time>           (gParameters, gPersistenceSwitch)
-Number      HH_OpenWindowTemperatureAlert                            "Open windows temperature alert [%.0f]"                 <time>           (gParameters, gPersistenceSwitch)
-Number      HH_DebugLevel_PIRCIR                                     "PIR/CIR debug level [%.0f]"                            <time>           (gParameters, gPersistenceSwitch)
-Number      HH_DebugLevel_Broadlink                                  "Broadlink HW debug level [%.0f]"                       <time>           (gParameters, gPersistenceSwitch)
-Number      HH_DebugLevel_Heartbeat                                  "Heartbeat debug level [%.0f]"                          <time>           (gParameters, gPersistenceSwitch)
-Number      HH_DebugLevel_Scene                                      "Scene debug level [%.0f]"                              <time>           (gParameters, gPersistenceSwitch)
-Number      HH_DebugLevel_Nightwatch                                 "Nightwatch debug level [%.0f]"                         <time>           (gParameters, gPersistenceSwitch)
-Number      HH_DebugLevel_Movewatch                                  "Movewatch debug level [%.0f]"                          <time>           (gParameters, gPersistenceSwitch)
-Number      HH_DebugLevel_Rollershutter                              "Rollershutter debug level [%.0f]"                      <time>           (gParameters, gPersistenceSwitch)
-Number      HH_DebugLevel_General                                    "General debug level [%.0f]"                            <time>           (gParameters, gPersistenceSwitch)
 Number      GF_FamilyRoom_Indoor_Temperature_Sensor                  "Family room temperature [%.1f \u00b0C]"                <temperature>    (gSensorTemperature, gPersistenceSensor, gEQ3FamilyRoomTemp)                      {channel="mqtt:topic:MyMQTTBroker:Multisensor03:Temperature"}
 Number      GF_FamilyRoom_Indoor_Humidity_Sensor                     "Family room humidity [%.1f %%]"                        <humidity>       (gSensorHumidity, gPersistenceSensor)                                             {channel="mqtt:topic:MyMQTTBroker:Multisensor03:Humidity"}
 Number      GF_FamilyRoom_Pressure_Sensor                            "Pressure [%.1f hPa]"                                   <pressure>       (gSensorPressure, gPressureTest, gPersistenceSensor)                              {channel="mqtt:topic:MyMQTTBroker:Multisensor03:Pressure"}
