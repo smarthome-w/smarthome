@@ -1,61 +1,61 @@
 ////////////////////////////////////////////////////////////////////////////////
 //                       Circuit sensors
 ////////////////////////////////////////////////////////////////////////////////
-Contact		CIR_GF_MainDoor							"CIR Entry []"										<frontdoor>		(GF_Corridor, gCIR, gSlack, gPersistenceSwitch)						{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirMainDoor"}
-Contact		CIR_GF_MainLock							"Front door []"										<lock>			(GF_Corridor, gCIR, gSlack, gPersistenceSwitch)						{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:MainLock"}
-Switch		HH_FrontDoorSwitch						"Front door []"										<lock>			(GF_Corridor, gPersistenceSwitch)									{ga="Lock"}
-Contact		CIR_GF_FamilyRoom						"CIR Family room[]"									<window>		(GF_FamilyRoom, gCIR, gPersistenceSwitch)							{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirFamilyRoom"}
-Contact		CIR_GF_FamilyBalcony					"CIR Balcony []"									<window>		(GF_FamilyRoom, gCIR, gPersistenceSwitch)							{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirFamilyBalcony"}
-Contact		CIR_GF_Kitchen							"CIR Kitchen []"									<window>		(GF_Kitchen, gCIR, gPersistenceSwitch)								{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirKitchen"}
-Contact		CIR_FF_Bedroom							"CIR Bedroom []"									<window>		(FF_Bedroom, gCIR, gPersistenceSwitch)								{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Cir"}
-Contact		CIR_FF_AliceRoom						"CIR Alice []"										<window>		(FF_AliceRoom, gCIR, gPersistenceSwitch)							{channel="mqtt:topic:MyMQTTBroker:Multisensor04:Cir"}
-Contact		CIR_FF_AnnRoom							"CIR Ann []"										<window>		(FF_AnnRoom, gCIR, gPersistenceSwitch)								{channel="mqtt:topic:MyMQTTBroker:Multisensor05:Cir"}
-DateTime	CIR_GF_MainDoor_LastUpdate				"CIR Entry [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateCIR, gPersistenceSwitch)
-DateTime	CIR_GF_MainLock_LastUpdate				"CIR Main lock [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateCIR, gPersistenceSwitch)
-DateTime	CIR_GF_FamilyRoom_LastUpdate			"CIR Family room [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateCIR, gPersistenceSwitch)
-DateTime	CIR_GF_FamilyBalcony_LastUpdate			"CIR Balcony [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateCIR, gPersistenceSwitch)
-DateTime	CIR_GF_Kitchen_LastUpdate				"CIR Kitchen [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateCIR, gPersistenceSwitch)
-DateTime	CIR_FF_Bedroom_LastUpdate				"CIR Bedroom [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateCIR, gPersistenceSwitch)
-DateTime	CIR_FF_AliceRoom_LastUpdate				"CIR Alice [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateCIR, gPersistenceSwitch)
-DateTime	CIR_FF_AnnRoom_LastUpdate				"CIR Ann [%1$td.%1$tm %1$tH:%1$tM]"					<time>			(gLastUpdateCIR, gPersistenceSwitch)
+Contact     CIR_GF_MainDoor                         "CIR Entry []"                                      <frontdoor>     (GF_Corridor, gCIR, gSlack, gPersistenceSwitch)                 {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirMainDoor"}
+Contact     CIR_GF_MainLock                         "Front door []"                                     <lock>          (GF_Corridor, gCIR, gSlack, gPersistenceSwitch)                 {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:MainLock"}
+Switch      HH_FrontDoorSwitch                      "Front door []"                                     <lock>          (GF_Corridor, gPersistenceSwitch)                               {ga="Lock"}
+Contact     CIR_GF_FamilyRoom                       "CIR Family room[]"                                 <window>        (GF_FamilyRoom, gCIR, gPersistenceSwitch)                       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirFamilyRoom"}
+Contact     CIR_GF_FamilyBalcony                    "CIR Balcony []"                                    <window>        (GF_FamilyRoom, gCIR, gPersistenceSwitch)                       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirFamilyBalcony"}
+Contact     CIR_GF_Kitchen                          "CIR Kitchen []"                                    <window>        (GF_Kitchen, gCIR, gPersistenceSwitch)                          {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirKitchen"}
+Contact     CIR_FF_Bedroom                          "CIR Bedroom []"                                    <window>        (FF_Bedroom, gCIR, gPersistenceSwitch)                          {channel="mqtt:topic:MyMQTTBroker:Multisensor01:Cir"}
+Contact     CIR_FF_AliceRoom                        "CIR Alice []"                                      <window>        (FF_AliceRoom, gCIR, gPersistenceSwitch)                        {channel="mqtt:topic:MyMQTTBroker:Multisensor04:Cir"}
+Contact     CIR_FF_AnnRoom                          "CIR Ann []"                                        <window>        (FF_AnnRoom, gCIR, gPersistenceSwitch)                          {channel="mqtt:topic:MyMQTTBroker:Multisensor05:Cir"}
+DateTime    CIR_GF_MainDoor_LastUpdate              "CIR Entry [%1$td.%1$tm %1$tH:%1$tM]"               <time>          (gLastUpdateCIR, gPersistenceSwitch)
+DateTime    CIR_GF_MainLock_LastUpdate              "CIR Main lock [%1$td.%1$tm %1$tH:%1$tM]"           <time>          (gLastUpdateCIR, gPersistenceSwitch)
+DateTime    CIR_GF_FamilyRoom_LastUpdate            "CIR Family room [%1$td.%1$tm %1$tH:%1$tM]"         <time>          (gLastUpdateCIR, gPersistenceSwitch)
+DateTime    CIR_GF_FamilyBalcony_LastUpdate         "CIR Balcony [%1$td.%1$tm %1$tH:%1$tM]"             <time>          (gLastUpdateCIR, gPersistenceSwitch)
+DateTime    CIR_GF_Kitchen_LastUpdate               "CIR Kitchen [%1$td.%1$tm %1$tH:%1$tM]"             <time>          (gLastUpdateCIR, gPersistenceSwitch)
+DateTime    CIR_FF_Bedroom_LastUpdate               "CIR Bedroom [%1$td.%1$tm %1$tH:%1$tM]"             <time>          (gLastUpdateCIR, gPersistenceSwitch)
+DateTime    CIR_FF_AliceRoom_LastUpdate             "CIR Alice [%1$td.%1$tm %1$tH:%1$tM]"               <time>          (gLastUpdateCIR, gPersistenceSwitch)
+DateTime    CIR_FF_AnnRoom_LastUpdate               "CIR Ann [%1$td.%1$tm %1$tH:%1$tM]"                 <time>          (gLastUpdateCIR, gPersistenceSwitch)
 
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       PIR sensors
 ////////////////////////////////////////////////////////////////////////////////
-Contact		PIR_GF_Corridor							"PIR Corridor []"									<light>			(GF_Corridor, gPIR, gNightWatch, gPersistenceSwitch)				{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirGfCorridor"}
-Contact		PIR_GF_FamilyRoom						"PIR Family room []"								<light>			(GF_FamilyRoom, gPIR, gPersistenceSwitch)							{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirFamilyRoom"}
-Contact		PIR_GF_Kitchen							"PIR Kitchen []"									<light>			(GF_Kitchen, gPIR, gNightWatch, gPersistenceSwitch)					{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirKitchen"}
-Contact		PIR_FF_Corridor							"PIR Corridor up []"								<light>			(FF_Corridor, gNightWatch, gPIR, gPersistenceSwitch)				{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirFfCorridor"}
-Contact		PIR_FF_AnnRoom							"PIR Ann []"										<light>			(FF_AnnRoom, gPIR, gPersistenceSwitch)								{channel="mqtt:topic:MyMQTTBroker:Multisensor05:Move"}
-Contact		PIR_FF_AliceRoom						"PIR Alice []"										<light>			(FF_AliceRoom, gPIR, gPersistenceSwitch)							{channel="mqtt:topic:MyMQTTBroker:Multisensor04:Move"}
-Contact		PIR_FF_Bedroom							"PIR Bedroom []"									<light>			(FF_Bedroom, gBedroomWatch, gPIR, gPersistenceSwitch)				{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirBedroom"}
-Contact		PIR_FF_BedroomWardobe					"PIR Bedroom wardobe []"							<light>			(FF_Bedroom, gMoveWatch, gPIR, gPersistenceSwitch)					{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirBedroomWardobe"}
-Contact		PIR_GF_EntryWatch						"PIR Entry Watch (virt) []"							<light>			(GF_Corridor, gPIR, gSlack, gEntryWatch, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirEntryWatch"}
-Switch		PIR_Corridor_Storage					"PIR Corridor Storage (virt) []"					<light>			(GF_Corridor, gPIR, gPersistenceSwitch)								{channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirCorridorStorage"}
-Switch		PIR_GF_Corridor_State					"PIR Corridor []"									<rgb>			(gPIRState, gPersistenceSwitch)
-Switch		PIR_GF_FamilyRoom_State					"PIR Family room []"								<rgb>			(gPIRState, gPersistenceSwitch)
-Switch		PIR_GF_Kitchen_State					"PIR Kitchen []"									<rgb>			(gPIRState, gPersistenceSwitch)
-Switch		PIR_FF_Corridor_State					"PIR Corridor up []"								<rgb>			(gPIRState, gPersistenceSwitch)
-Switch		PIR_FF_AnnRoom_State					"PIR Ann []"										<rgb>			(gPIRState, gPersistenceSwitch)
-Switch		PIR_FF_AliceRoom_State					"PIR Alice []"										<rgb>			(gPIRState, gPersistenceSwitch)
-Switch		PIR_FF_Bedroom_State					"PIR Bedroom []"									<rgb>			(gPIRState, gPersistenceSwitch)
-Switch		PIR_FF_BedroomWardobe_State				"PIR Bedroom wardobe []"							<rgb>			(gPIRState, gPersistenceSwitch)
-Switch		PIR_GF_EntryWatch_State					"PIR Entry Watch []"								<rgb>			(gPIRState, gPersistenceSwitch)
-Switch		PIR_Corridor_Storage_State				"PIR Corridor Storage []"							<rgb>			(gPIRState, gPersistenceSwitch)
-DateTime	PIR_GF_Corridor_LastUpdate				"PIR Corridor [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdatePIR, gPersistenceSwitch)
-DateTime	PIR_GF_FamilyRoom_LastUpdate			"PIR Family room [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdatePIR, gPersistenceSwitch)
-DateTime	PIR_GF_Kitchen_LastUpdate				"PIR Kitchen [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdatePIR, gPersistenceSwitch)
-DateTime	PIR_FF_Corridor_LastUpdate				"PIR Corridor up [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdatePIR, gPersistenceSwitch)
-DateTime	PIR_FF_AnnRoom_LastUpdate				"PIR Ann [%1$td.%1$tm %1$tH:%1$tM]"					<time>			(gLastUpdatePIR, gPersistenceSwitch)
-DateTime	PIR_FF_AliceRoom_LastUpdate				"PIR Alice [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdatePIR, gPersistenceSwitch)
-DateTime	PIR_FF_Bedroom_LastUpdate				"PIR Bedroom [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdatePIR, gPersistenceSwitch)
-DateTime	PIR_FF_BedroomWardobe_LastUpdate		"PIR Bedroom wardobe [%1$td.%1$tm %1$tH:%1$tM]"		<time>			(gLastUpdatePIR, gPersistenceSwitch)
-DateTime	PIR_GF_EntryWatch_LastUpdate			"PIR Entry Watch [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdatePIR, gPersistenceSwitch)
-DateTime	PIR_Corridor_Storage_LastUpdate			"PIR Corridor Storage [%1$td.%1$tm %1$tH:%1$tM]"	<time>			(gLastUpdatePIR)
-Number		GF_PowerMeter_Total						"Total power [%.3f kWh]"							<battery-60>	(GF_Corridor, gPower, gHeartbeat, gPersistenceSwitch)				{channel="mqtt:topic:MyMQTTBroker:Powermeter_Sensor:Total"}
-DateTime	GF_PowerMeter_Total_LastUpdate			"Powermeter [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch		GF_PowerMeter_Total_LastUpdate_Error	"Powermeter []"										<time>			(gErrors, gPersistenceSwitch)
-Number		GF_PowerMeter_Current					"Current power in kilowatts[%.3f kW]"				<battery-60>	(GF_Corridor, gPower, gPersistenceSwitch)							{channel="mqtt:topic:MyMQTTBroker:Powermeter_Sensor:Current"}
-Number		GF_PowerMeter_Current_In_Watts			"Overall power [%.0f W]"						    <battery-60>	(GF_Corridor, gPower, gPersistenceSwitch)							{channel="mqtt:topic:MyMQTTBroker:Powermeter_Sensor:CurrentInWatts"}
-Number		GF_PowerMeter_DailyConsumption			"Daily consumption [%.1f kWh]"						<battery-60>	(gPower, gPersistenceDummy)
+Contact     PIR_GF_Corridor                         "PIR Corridor []"                                   <light>         (GF_Corridor, gPIR, gNightWatch, gPersistenceSwitch)            {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirGfCorridor"}
+Contact     PIR_GF_FamilyRoom                       "PIR Family room []"                                <light>         (GF_FamilyRoom, gPIR, gPersistenceSwitch)                       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirFamilyRoom"}
+Contact     PIR_GF_Kitchen                          "PIR Kitchen []"                                    <light>         (GF_Kitchen, gPIR, gNightWatch, gPersistenceSwitch)             {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirKitchen"}
+Contact     PIR_FF_Corridor                         "PIR Corridor up []"                                <light>         (FF_Corridor, gNightWatch, gPIR, gPersistenceSwitch)            {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirFfCorridor"}
+Contact     PIR_FF_AnnRoom                          "PIR Ann []"                                        <light>         (FF_AnnRoom, gPIR, gPersistenceSwitch)                          {channel="mqtt:topic:MyMQTTBroker:Multisensor05:Move"}
+Contact     PIR_FF_AliceRoom                        "PIR Alice []"                                      <light>         (FF_AliceRoom, gPIR, gPersistenceSwitch)                        {channel="mqtt:topic:MyMQTTBroker:Multisensor04:Move"}
+Contact     PIR_FF_Bedroom                          "PIR Bedroom []"                                    <light>         (FF_Bedroom, gBedroomWatch, gPIR, gPersistenceSwitch)           {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirBedroom"}
+Contact     PIR_FF_BedroomWardobe                   "PIR Bedroom wardobe []"                            <light>         (FF_Bedroom, gMoveWatch, gPIR, gPersistenceSwitch)              {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirBedroomWardobe"}
+Contact     PIR_GF_EntryWatch                       "PIR Entry Watch (virt) []"                         <light>         (GF_Corridor, gPIR, gSlack, gEntryWatch, gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirEntryWatch"}
+Switch      PIR_Corridor_Storage                    "PIR Corridor Storage (virt) []"                    <light>         (GF_Corridor, gPIR, gPersistenceSwitch)                         {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirCorridorStorage"}
+Switch      PIR_GF_Corridor_State                   "PIR Corridor []"                                   <rgb>           (gPIRState, gPersistenceSwitch)
+Switch      PIR_GF_FamilyRoom_State                 "PIR Family room []"                                <rgb>           (gPIRState, gPersistenceSwitch)
+Switch      PIR_GF_Kitchen_State                    "PIR Kitchen []"                                    <rgb>           (gPIRState, gPersistenceSwitch)
+Switch      PIR_FF_Corridor_State                   "PIR Corridor up []"                                <rgb>           (gPIRState, gPersistenceSwitch)
+Switch      PIR_FF_AnnRoom_State                    "PIR Ann []"                                        <rgb>           (gPIRState, gPersistenceSwitch)
+Switch      PIR_FF_AliceRoom_State                  "PIR Alice []"                                      <rgb>           (gPIRState, gPersistenceSwitch)
+Switch      PIR_FF_Bedroom_State                    "PIR Bedroom []"                                    <rgb>           (gPIRState, gPersistenceSwitch)
+Switch      PIR_FF_BedroomWardobe_State             "PIR Bedroom wardobe []"                            <rgb>           (gPIRState, gPersistenceSwitch)
+Switch      PIR_GF_EntryWatch_State                 "PIR Entry Watch []"                                <rgb>           (gPIRState, gPersistenceSwitch)
+Switch      PIR_Corridor_Storage_State              "PIR Corridor Storage []"                           <rgb>           (gPIRState, gPersistenceSwitch)
+DateTime    PIR_GF_Corridor_LastUpdate              "PIR Corridor [%1$td.%1$tm %1$tH:%1$tM]"            <time>          (gLastUpdatePIR, gPersistenceSwitch)
+DateTime    PIR_GF_FamilyRoom_LastUpdate            "PIR Family room [%1$td.%1$tm %1$tH:%1$tM]"         <time>          (gLastUpdatePIR, gPersistenceSwitch)
+DateTime    PIR_GF_Kitchen_LastUpdate               "PIR Kitchen [%1$td.%1$tm %1$tH:%1$tM]"             <time>          (gLastUpdatePIR, gPersistenceSwitch)
+DateTime    PIR_FF_Corridor_LastUpdate              "PIR Corridor up [%1$td.%1$tm %1$tH:%1$tM]"         <time>          (gLastUpdatePIR, gPersistenceSwitch)
+DateTime    PIR_FF_AnnRoom_LastUpdate               "PIR Ann [%1$td.%1$tm %1$tH:%1$tM]"                 <time>          (gLastUpdatePIR, gPersistenceSwitch)
+DateTime    PIR_FF_AliceRoom_LastUpdate             "PIR Alice [%1$td.%1$tm %1$tH:%1$tM]"               <time>          (gLastUpdatePIR, gPersistenceSwitch)
+DateTime    PIR_FF_Bedroom_LastUpdate               "PIR Bedroom [%1$td.%1$tm %1$tH:%1$tM]"             <time>          (gLastUpdatePIR, gPersistenceSwitch)
+DateTime    PIR_FF_BedroomWardobe_LastUpdate        "PIR Bedroom wardobe [%1$td.%1$tm %1$tH:%1$tM]"     <time>          (gLastUpdatePIR, gPersistenceSwitch)
+DateTime    PIR_GF_EntryWatch_LastUpdate            "PIR Entry Watch [%1$td.%1$tm %1$tH:%1$tM]"         <time>          (gLastUpdatePIR, gPersistenceSwitch)
+DateTime    PIR_Corridor_Storage_LastUpdate         "PIR Corridor Storage [%1$td.%1$tm %1$tH:%1$tM]"    <time>          (gLastUpdatePIR)
+Number      GF_PowerMeter_Total                     "Total power [%.3f kWh]"                            <battery-60>    (GF_Corridor, gPower, gHeartbeat, gPersistenceSwitch)           {channel="mqtt:topic:MyMQTTBroker:Powermeter_Sensor:Total"}
+DateTime    GF_PowerMeter_Total_LastUpdate          "Powermeter [%1$td.%1$tm %1$tH:%1$tM]"              <time>          (gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch      GF_PowerMeter_Total_LastUpdate_Error    "Powermeter []"                                     <time>          (gErrors, gPersistenceSwitch)
+Number      GF_PowerMeter_Current                   "Current power in kilowatts[%.3f kW]"               <battery-60>    (GF_Corridor, gPower, gPersistenceSwitch)                       {channel="mqtt:topic:MyMQTTBroker:Powermeter_Sensor:Current"}
+Number      GF_PowerMeter_Current_In_Watts          "Overall power [%.0f W]"                            <battery-60>    (GF_Corridor, gPower, gPersistenceSwitch)                       {channel="mqtt:topic:MyMQTTBroker:Powermeter_Sensor:CurrentInWatts"}
+Number      GF_PowerMeter_DailyConsumption          "Daily consumption [%.1f kWh]"                      <battery-60>    (gPower, gPersistenceDummy)

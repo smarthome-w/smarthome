@@ -1,6 +1,8 @@
 import java.util.Map
 
 var Map<String, Timer> nightwatchTimers = newHashMap
+var nightwatchTimerName = "corridorNightwatchTimer"
+var int nigthwatchLogLevel = 6
 
 rule "nightwatch_rule"
 when
@@ -10,20 +12,18 @@ then
     nightwatchTimers = newHashMap
   }
   try {
-    var int logLevel = 6
     if (HH_DebugLevel_Nightwatch.state !== NULL) {
-        logLevel = (HH_DebugLevel_Nightwatch.state as Number).intValue
+        nigthwatchLogLevel = (HH_DebugLevel_Nightwatch.state as Number).intValue
     }
-    if (logLevel >= 6) {
+    if (nigthwatchLogLevel >= 6) {
       logError("nightwatch_rule", "Nightwatch change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
 
-    var nightwatchTimerName = "corridorNightwatchTimer"
     if (triggeringItem.name == "PIR_GF_Kitchen") {
       nightwatchTimerName = "kitchenNightwatchTimer"
     }
 
-    if (logLevel >= 6) {
+    if (nigthwatchLogLevel >= 6) {
       logError("nightwatch_rule", "nightwatchTimerName: {}", nightwatchTimerName)
     }
 
@@ -37,7 +37,7 @@ then
             if(nightwatchTimers.get(nightwatchTimerName) === null){
                 nightwatchTimers.put(nightwatchTimerName, createTimer(now.plusMinutes(timeOutMinutes), [|
                     nightwatchTimers.put(nightwatchTimerName, null)
-                    if (logLevel >= 6) {
+                    if (nigthwatchLogLevel >= 6) {
                       logError("nightwatch_rule", "Timer expired {}", nightwatchTimerName)
                     }
                     // off
@@ -47,7 +47,7 @@ then
                       GF_Kitchen_LED.sendCommand(OFF);
                     }
                 ]))
-                if (logLevel >= 6) {
+                if (nigthwatchLogLevel >= 6) {
                   logError("nightwatch_rule", "Timer created {}", nightwatchTimerName)
                 }
                 //on
@@ -59,7 +59,7 @@ then
             }
             else {
                 nightwatchTimers.get(nightwatchTimerName).reschedule(now.plusMinutes(timeOutMinutes))
-                if (logLevel >= 6) {
+                if (nigthwatchLogLevel >= 6) {
                   logError("nightwatch_rule", "Timer rescheduled {}", nightwatchTimerName)
                 }
                 if (nightwatchTimerName == "corridorNightwatchTimer") {

@@ -45,10 +45,10 @@ then
       nightAt = (HH_Time_Night.state as Number).intValue
     }
     if (HH_Elevation_Dusk.state !== NULL) {
-      elevationDusk = HH_Elevation_Dusk.state as Number
+      elevationDusk = (HH_Elevation_Dusk.state as Number).intValue
     }
     if (HH_Elevation_Dawn.state !== NULL) {
-      elevationDawn = HH_Elevation_Dawn.state as Number
+      elevationDawn = (HH_Elevation_Dawn.state as Number).intValue
     }
 
     val elevation = Astro_SunElevation.state as Number
@@ -150,7 +150,7 @@ then
     var elevationDusk = 6
     var duskLevel = 724
     if (HH_Elevation_Dusk.state !== NULL) {
-      elevationDusk = HH_Elevation_Dusk.state as Number
+      elevationDusk = (HH_Elevation_Dusk.state as Number).intValue
     }
     if (HH_Light_Dusk_Level.state !== NULL) {
       duskLevel = (HH_Light_Dusk_Level.state as Number).intValue
@@ -167,7 +167,7 @@ then
     var elevationDawn = 6
     var dawnLevel = 724
     if (HH_Elevation_Dawn.state !== NULL) {
-      elevationDawn = HH_Elevation_Dawn.state as Number
+      elevationDawn = (HH_Elevation_Dawn.state as Number).intValue
     }
     if (HH_Light_Dawn_Level.state !== NULL) {
       dawnLevel = (HH_Light_Dawn_Level.state as Number).intValue

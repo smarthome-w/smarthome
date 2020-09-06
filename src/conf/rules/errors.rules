@@ -1,22 +1,25 @@
+var errOverallError = false
+var int errLogLevel = 6 
+
 rule "err_rule"
 when
   Time cron "0 */5 * ? * MON-SUN"
 then
   try {
-    var int logLevel = 6
+    errLogLevel = 6
     if (HH_DebugLevel_General.state !== NULL) {
-      logLevel = (HH_DebugLevel_General.state as Number).intValue
+      errLogLevel = (HH_DebugLevel_General.state as Number).intValue
     }
     gLastUpdateTimeout.members.forEach [E |
       var Number diff = 20
       if (E.state !== NULL) {
         var DateTimeType previous = E.state as DateTimeType
-        diff = Minutes::minutesBetween(new DateTime(previous.calendar.timeInMillis), now).getMinutes()
+        diff = Minutes::minutesBetween(new DateTime(previous.zonedDateTime.toInstant.toEpochMilli), now).getMinutes()
       }
-      if (logLevel >= 6) {
+      if (errLogLevel >= 6) {
         logError("Errors detection", "item: {}, diff: {}", E.name, diff)
       }
-      val SwitchItem errorIndicator = gErrors.members.findFirst[name.equals(E.name + "_Error")]
+      val SwitchItem errorIndicator = (gErrors.members.findFirst[name.equals(E.name + "_Error")] as SwitchItem)
 
       if (errorIndicator !== null) {
         if (diff >= 15) {
@@ -32,22 +35,20 @@ then
   }
 end
 
+
 rule "error_flag_rule"
 when
     Member of gErrors changed or
     Time cron "0 */5 * ? * MON-SUN"
 then
   try {
-    var overallError = false 
-
+    errOverallError = false
     gErrors.members.forEach [E |
-//      logError("Error flag:", "item: {}, state: {}", E.name, E.state)
       if (E.state == NULL || E.state == ON) {
-        overallError = true
+        errOverallError = true
       }
     ]
-//    logError("Error flag:", "overall: {}", overallError)
-    if (overallError == true) {
+    if (errOverallError == true) {
       OverallErrorIndicator.state = ON
     } else {
       OverallErrorIndicator.state = OFF

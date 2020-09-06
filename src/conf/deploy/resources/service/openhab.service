@@ -20,6 +20,7 @@ ExecStart=/usr/bin/docker run --name=%n --tty \
   --add-host "openhab.master:HOST_IP" \
   -p 80:8080 \
   -p 443:8443 \
+  -p 5007:5007 \
   --privileged \
   DOCKER_TAG
 

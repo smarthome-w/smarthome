@@ -69,9 +69,4 @@ sitemap eq3 label="Heaters" {
       Chart item=gEQ3Temp period=W label="Temperature"
       Chart item=gEQ3Valve period=W label="Valve"
     }
-
-//    Frame label="Sceny" icon="firstfloor" {
-//      Switch item=EQ3_Debug mappings=[ON="Set"]
-//    }
-
 }
