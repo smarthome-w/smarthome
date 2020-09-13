@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 Switch           GF_FamilyRoom_Rollershutter_Expert_Mode           "Expert mode[]"
 Dimmer           GF_FamilyRoom_Rollershutter_Dimmer                "Window  [%.1f %%]"              <heating>    (gRollershutter_Dimmer)                                {channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:Dimmer_", ga="Light"}
-Rollershutter    GF_FamilyRoom_Rollershutter                       "Family room - blind [%s]"                    (GF_FamilyRoom, gRollershutter, gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:Rollershutter_"}
+//Rollershutter    GF_FamilyRoom_Rollershutter                       "Family room - blind [%s]"                    (GF_FamilyRoom, gRollershutter, gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:Rollershutter_"}
 //DateTime		GF_FamilyRoom_Rollershutter_LastUpdate					"Family room - blind [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateRollershutter, gPersistenceSwitch)
 Switch           GF_FamilyRoom_Rollershutter_PrgUp                 "Family room - prg up[]"                      (GF_FamilyRoom, gRollershutter)                        {channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:PrgUp"}
 Switch           GF_FamilyRoom_Rollershutter_PrgDown               "Family room - prg down[]"                    (GF_FamilyRoom, gRollershutter)                        {channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:PrgDown"}
@@ -24,7 +24,7 @@ Number           GF_FamilyRoom_Rollershutter_Uptime                "Family blind
 Number           GF_FamilyRoom_Rollershutter_RSSI                  "Family blind RSSI [%.0f]"       <heating>    (gRSSI)                                                {channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:DebugRSSI"}
 Switch           FF_Bedroom_Rollershutter_Expert_Mode              "Expert mode"
 Dimmer           FF_Bedroom_Rollershutter_Dimmer                   "Bedroom window  [%.1f %%]"      <heating>    (gRollershutter_Dimmer)                                {channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Dimmer_", ga="Light"}
-Rollershutter    FF_Bedroom_Rollershutter                          "Bedroom - blind [%s]"                        (FF_Bedroom, gRollershutter, gPersistenceSwitch)       {channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Rollershutter_"}
+//Rollershutter    FF_Bedroom_Rollershutter                          "Bedroom - blind [%s]"                        (FF_Bedroom, gRollershutter, gPersistenceSwitch)       {channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Rollershutter_"}
 //DateTime		FF_Bedroom_Rollershutter_LastUpdate						"Bedroom - blind [%1$td.%1$tm %1$tH:%1$tM]"				<time>			(gLastUpdateRollershutter, gPersistenceSwitch)
 Switch           FF_Bedroom_Rollershutter_PrgUp                    "Bedroom - prg up[]"                          (FF_Bedroom, gRollershutter)                           {channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:PrgUp"}
 Switch           FF_Bedroom_Rollershutter_PrgDown                  "Bedroom - prg down[]"                        (FF_Bedroom, gRollershutter)                           {channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:PrgDown"}
@@ -45,7 +45,7 @@ Number           FF_Bedroom_Rollershutter_Uptime                   "Bedroom blin
 Number           FF_Bedroom_Rollershutter_RSSI                     "Bedroom blind RSSI [%.0f]"      <heating>    (gRSSI)                                                {channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:DebugRSSI"}
 Switch           GF_FamilyRoom_Stepper_Expert_Mode                 "Expert mode"
 Dimmer           GF_FamilyRoom_Stepper_Dimmer                      "Stepper window  [%.1f %%]"      <heating>    (GF_FamilyRoom, gStepper_Dimmer)                       {channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Dimmer_"}
-Rollershutter    GF_FamilyRoom_Stepper_Rollershutter               "Stepper - blind [%s]"                        (FF_Bedroom, gRollershutter, gPersistenceSwitch)       {channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Rollershutter_"}
+//Rollershutter    GF_FamilyRoom_Stepper_Rollershutter               "Stepper - blind [%s]"                        (FF_Bedroom, gRollershutter, gPersistenceSwitch)       {channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:Rollershutter_"}
 //DateTime		GF_FamilyRoom_Stepper_LastUpdate					"Family room - blind [%1$td.%1$tm %1$tH:%1$tM]"			<time>			(gLastUpdateStepper, gPersistenceSwitch)
 Switch           GF_FamilyRoom_Stepper_PrgUp                       "Family room - prg up[]"                      (GF_FamilyRoom, gStepper)                              {channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:PrgUp"}
 Switch           GF_FamilyRoom_Stepper_PrgDown                     "Family room - prg down[]"                    (GF_FamilyRoom, gStepper)                              {channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Stepper:PrgDown"}
