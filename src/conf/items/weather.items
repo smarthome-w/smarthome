@@ -1,0 +1,8 @@
+Number    WeatherTomorrowMinTemp        "Tomorrow Min Temp [%.1f \u00b0C]"    <temperature>    (gWeather)    {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:TomorrowMinTemp"}
+Number    WeatherTomorrowMaxTemp        "Tomorrow Max Temp [%.1f \u00b0C]"    <temperature>    (gWeather)    {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:TomorrowMaxTemp"}
+
+Number    WeatherTodayMinTemp           "Today Min Temp [%.1f \u00b0C]"       <temperature>    (gWeather)    {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:TodayMinTemp"}
+Number    WeatherTodayMaxTemp           "Today Max Temp [%.1f \u00b0C]"       <temperature>    (gWeather)    {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:TodayMaxTemp"}
+
+String    WeatherNextPossiblePrecip    "Next possible precip [%s]"           <humidity>       (gWeather)    {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:NextPossiblePrecip"}
+String    WeatherNextPrecip            "Next precip [%s]"                    <humidity>       (gWeather)    {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:NextPrecip"}

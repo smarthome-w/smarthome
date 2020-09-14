@@ -33,6 +33,7 @@ sitemap system label="System" {
       Group item=gTracker
       Group item=gRSSI
       Group item=gUptime
+      Group item=gWeather
     }
     Frame label="Lock" icon="firstfloor" {
       Switch item=CIR_GF_MainLock mappings=[CLOSED="Closed", OPEN="Open"]

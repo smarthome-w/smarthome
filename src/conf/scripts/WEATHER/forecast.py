@@ -24,21 +24,6 @@ MAX_TEMP_NOT_DEFINED = -273.0
 MQTT_TOPIC_NAME = "weather/info"
 
 
-class DailyForecast:
-    def __init__(self):
-        self.day = None
-        self.min_temp = MIN_TEMP_NOT_DEFINED
-        self.max_temp = MAX_TEMP_NOT_DEFINED
-        self.precipitation_total = 0.0
-        self.precipitation_min_total = 0.0
-        self.precipitation_max_total = 0.0
-        self.precipitation_kind = None
-
-    def __repr__(self):
-        return "day: {}, precipitation_min_total: {}, precipitation_max_total: {}, precipitation_total: {}, min_temp: {}, max_temp: {}".format(
-            self.day, self.precipitation_min_total, self.precipitation_max_total, self.precipitation_total, self.min_temp, self.max_temp)
-
-
 class Forecast:
     def __init__(self):
         base_path = os.path.dirname(os.path.abspath(__file__))
@@ -51,7 +36,7 @@ class Forecast:
             self._config_data = yaml.load(text_file)
             url = self._config_data["link"]
 
-        logger.info("Forecast at: {}".format(url))
+        #logger.info("Forecast at: {}".format(url))
 
         r = requests.get(url, allow_redirects=True)
         self._weather_dict = xmltodict.parse(
@@ -69,41 +54,51 @@ class Forecast:
                 forecast_duration = to_date - from_date
                 if forecast_duration <= timedelta(hours=1):
                     if a_date not in self._detailed_forecasts:
-                        element = DailyForecast()
-                        element.day = a_date
+                        element = {}
+                        self._initialize_forecast_map(element)
+                        element["day"] = a_date
                         self._detailed_forecasts[a_date] = element
 
                     precipitation = weather_value["location"]["precipitation"]
-                    self._detailed_forecasts[a_date].precipitation_total += float(
+                    self._detailed_forecasts[a_date]["precip_total"] += float(
                         precipitation["@value"])
-                    self._detailed_forecasts[a_date].precipitation_min_total += float(
+                    self._detailed_forecasts[a_date]["precip_min_total"] += float(
                         precipitation["@minvalue"])
-                    self._detailed_forecasts[a_date].precipitation_max_total += float(
+                    self._detailed_forecasts[a_date]["precip_max_total"] += float(
                         precipitation["@maxvalue"])
                 else:
                     # normal forecast
                     if a_date not in self._normal_forecasts:
-                        element = DailyForecast()
-                        element.day = a_date
+                        element = {}
+                        element["day"] = a_date
+                        self._initialize_forecast_map(element)
                         self._normal_forecasts[a_date] = element
+
                     precipitation = weather_value["location"]["precipitation"]
-                    self._normal_forecasts[a_date].precipitation_total += float(
+                    self._normal_forecasts[a_date]["precip_total"] += float(
                         precipitation["@value"])
-                    self._normal_forecasts[a_date].precipitation_min_total += float(
+                    self._normal_forecasts[a_date]["precip_min_total"] += float(
                         precipitation["@minvalue"])
-                    self._normal_forecasts[a_date].precipitation_max_total += float(
+                    self._normal_forecasts[a_date]["precip_max_total"] += float(
                         precipitation["@maxvalue"])
                     min_temp = weather_value["location"]["minTemperature"]
                     max_temp = weather_value["location"]["maxTemperature"]
-                    if float(min_temp["@value"]) < self._normal_forecasts[a_date].min_temp:
-                        self._normal_forecasts[a_date].min_temp = float(
+                    if float(min_temp["@value"]) < self._normal_forecasts[a_date]["min_temp"]:
+                        self._normal_forecasts[a_date]["min_temp"] = float(
                             min_temp["@value"])
-                    if float(max_temp["@value"]) > self._normal_forecasts[a_date].max_temp:
-                        self._normal_forecasts[a_date].max_temp = float(
+                    if float(max_temp["@value"]) > self._normal_forecasts[a_date]["max_temp"]:
+                        self._normal_forecasts[a_date]["max_temp"] = float(
                             max_temp["@value"])
 
-        logger.info("detailed forecasts: {}".format(self._detailed_forecasts))
-        logger.info("normal forecasts: {}".format(self._normal_forecasts))
+        #logger.info("detailed forecasts: {}".format(self._detailed_forecasts))
+        #logger.info("normal forecasts: {}".format(self._normal_forecasts))
+
+    def _initialize_forecast_map(self, a_map):
+        a_map["precip_total"] = 0.0
+        a_map["precip_min_total"] = 0.0
+        a_map["precip_max_total"] = 0.0
+        a_map["max_temp"] = MAX_TEMP_NOT_DEFINED
+        a_map["min_temp"] = MIN_TEMP_NOT_DEFINED
 
     def _get_today(self):
         return datetime.date.today()
@@ -111,23 +106,42 @@ class Forecast:
     def _get_tomorrow(self):
         return datetime.date.today() + datetime.timedelta(days=1)
 
-    def calculate_message(self):
+    def calculate_messages(self):
         message_map = {}
-        curr_date_str = self._get_today().strftime(DAY_FORMAT_STRING)
+        today_date_str = self._get_today().strftime(DAY_FORMAT_STRING)
         tomorrow_date_str = self._get_tomorrow().strftime(DAY_FORMAT_STRING)
-        logger.info("curr_date: {}".format(curr_date_str))
-        logger.info("tomorrow_date: {}".format(tomorrow_date_str))
+
+        today_forecast = self._normal_forecasts[today_date_str]
+        tomorrow_forecast = self._normal_forecasts[tomorrow_date_str]
+
+        #logger.info("today_forecast: {}".format(today_forecast))
+        message_map["today"] = today_forecast
+        #logger.info("tomorrow_forecast: {}".format(tomorrow_forecast))
+        message_map["tomorrow"] = tomorrow_forecast
+
+        next_precip_date_str = ""
+        next_possible_precip_date_str = ""
+        for key, value in self._normal_forecasts.items():
+            if value["precip_total"] > 0.0 and next_precip_date_str == "":
+                next_precip_date_str = key
+
+            if value["precip_max_total"] > 0.0 and next_possible_precip_date_str == "":
+                next_possible_precip_date_str = key
+
+        message_map["next_precip"] = next_precip_date_str
+        message_map["next_possible_precip"] = next_possible_precip_date_str
         return message_map
 
-    def send_message(self, messages):
+    def send_messages(self, messages):
         logger.info("Send messages: {}".format(messages))
 
+        messages_str = "{}".format(messages).replace('\'', '"')
         client = mqtt.Client()
         client.connect("openhab.master", 1883, 60)
         client.publish("{}".format(MQTT_TOPIC_NAME),
-                       "{}".format(messages))
+                       "{}".format(messages_str))
 
 
 runner = Forecast()
-message = runner.calculate_message()
-runner.send_message(message)
+messages = runner.calculate_messages()
+runner.send_messages(messages)

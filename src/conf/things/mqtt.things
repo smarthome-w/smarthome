@@ -1,4 +1,13 @@
 Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="openhab", secure=false, lwtRetain=true] {
+  Thing topic WeatherForecast "WeatherForecast" {
+    Channels:
+      Type number : TomorrowMinTemp [stateTopic="weather/info", transformationPattern="JSONPATH:$.tomorrow.min_temp"]
+      Type number : TomorrowMaxTemp [stateTopic="weather/info", transformationPattern="JSONPATH:$.tomorrow.max_temp"]
+      Type number : TodayMinTemp [stateTopic="weather/info", transformationPattern="JSONPATH:$.today.min_temp"]
+      Type number : TodayMaxTemp [stateTopic="weather/info", transformationPattern="JSONPATH:$.today.max_temp"]
+      Type string : NextPossiblePrecip [stateTopic="weather/info", transformationPattern="JSONPATH:$.next_possible_precip"]
+      Type string : NextPrecip [stateTopic="weather/info", transformationPattern="JSONPATH:$.next_precip"]
+  }
 
   Thing topic Powermeter_Sensor "Powermeter_Sensor" {
     Channels:
@@ -349,5 +358,5 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
     Channels:
       Type switch : PowerSwitch [stateTopic="stat/minitiger01/POWER", commandTopic="cmnd/minitiger01/POWER", on="ON", off="OFF" ]
       Type string : Heartbeat [stateTopic="tele/minitiger01/STATE", transformationPattern="JSONPATH:$.Time"]
-    }
+  }
 }

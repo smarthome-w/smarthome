@@ -2,6 +2,10 @@ sitemap sensors_basic label="Status" {
     Frame label="Weather" icon="firstfloor" {
         Text item=GF_FamilyRoom_Outdoor_Temperature_Sensor
         Text item=FF_AnnRoom_Outdoor_Temperature_Sensor
+        Text item=WeatherTodayMinTemp
+        Text item=WeatherTodayMaxTemp
+        Text item=WeatherNextPrecip
+        Text item=WeatherNextPossiblePrecip
         Text item=GF_FamilyRoom_Analog_Sensor
         Text item=FF_Bedroom_Analog_Sensor
         Text item=FF_AliceRoom_Analog_Sensor
