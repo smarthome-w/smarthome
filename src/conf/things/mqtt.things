@@ -5,8 +5,10 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : TomorrowMaxTemp [stateTopic="weather/info", transformationPattern="JSONPATH:$.tomorrow.max_temp"]
       Type number : TodayMinTemp [stateTopic="weather/info", transformationPattern="JSONPATH:$.today.min_temp"]
       Type number : TodayMaxTemp [stateTopic="weather/info", transformationPattern="JSONPATH:$.today.max_temp"]
-      Type string : NextPossiblePrecip [stateTopic="weather/info", transformationPattern="JSONPATH:$.next_possible_precip"]
-      Type string : NextPrecip [stateTopic="weather/info", transformationPattern="JSONPATH:$.next_precip"]
+      Type string : NextPossiblePrecipDate [stateTopic="weather/info", transformationPattern="JSONPATH:$.next_possible_precip_date"]
+      Type string : NextPossiblePrecipVolume [stateTopic="weather/info", transformationPattern="JSONPATH:$.next_possible_precip_volume"]
+      Type string : NextPrecipDate [stateTopic="weather/info", transformationPattern="JSONPATH:$.next_precip_date"]
+      Type string : NextPrecipVolume [stateTopic="weather/info", transformationPattern="JSONPATH:$.next_precip_volume"]
   }
 
   Thing topic Powermeter_Sensor "Powermeter_Sensor" {
@@ -279,6 +281,14 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type switch : PowerSwitch [stateTopic="stat/switch06/POWER", commandTopic="cmnd/switch06/POWER", on="ON", off="OFF" ]
       Type string : Heartbeat [stateTopic="tele/switch06/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number : RSSI [stateTopic="tele/switch06/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+  }
+
+// FF_Bathroom
+  Thing topic WallSwitch01 "WallSwitch01" {
+    Channels:
+      Type switch : PowerSwitch [stateTopic="stat/wallswitch01/POWER", commandTopic="cmnd/wallswitch01/POWER", on="ON", off="OFF" ]
+      Type string : Heartbeat [stateTopic="tele/wallswitch01/STATE", transformationPattern="JSONPATH:$.Time"]
+      Type number : RSSI [stateTopic="tele/wallswitch01/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
 // Bedroom

@@ -135,3 +135,12 @@ crontab:
 ```bash
 0/10 * * * /opt/openhab/conf/scripts/EQ3/eq3.sh
 ```
+
+## Sonoff flash
+
+```bash
+./esptool.py --port /dev/ttyUSB0 read_flash 0x00000 0x100000 ../tasmota/firmware1MB.bin
+
+./esptool.py -p /dev/ttyUSB0 write_flash -fm dout 0x0 ../tasmota/tasmota.bin
+
+```

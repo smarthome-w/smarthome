@@ -120,16 +120,24 @@ class Forecast:
         message_map["tomorrow"] = tomorrow_forecast
 
         next_precip_date_str = ""
+        next_precip_volume_str = ""
         next_possible_precip_date_str = ""
+        next_possible_precip_volume_str = ""
+
         for key, value in self._normal_forecasts.items():
             if value["precip_total"] > 0.0 and next_precip_date_str == "":
                 next_precip_date_str = key
+                next_precip_volume_str = "{} mm".format(value["precip_total"])
 
             if value["precip_max_total"] > 0.0 and next_possible_precip_date_str == "":
                 next_possible_precip_date_str = key
+                next_possible_precip_volume_str = "{} mm".format(
+                    value["precip_max_total"])
 
-        message_map["next_precip"] = next_precip_date_str
-        message_map["next_possible_precip"] = next_possible_precip_date_str
+        message_map["next_precip_date"] = next_precip_date_str
+        message_map["next_precip_volume"] = next_precip_volume_str
+        message_map["next_possible_precip_date"] = next_possible_precip_date_str
+        message_map["next_possible_precip_volume"] = next_possible_precip_volume_str
         return message_map
 
     def send_messages(self, messages):
