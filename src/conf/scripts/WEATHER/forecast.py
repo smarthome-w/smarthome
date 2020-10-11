@@ -36,8 +36,6 @@ class Forecast:
             self._config_data = yaml.load(text_file)
             url = self._config_data["link"]
 
-        #logger.info("Forecast at: {}".format(url))
-
         r = requests.get(url, allow_redirects=True)
         self._weather_dict = xmltodict.parse(
             r.content, process_namespaces=True)
@@ -90,9 +88,6 @@ class Forecast:
                         self._normal_forecasts[a_date]["max_temp"] = float(
                             max_temp["@value"])
 
-        #logger.info("detailed forecasts: {}".format(self._detailed_forecasts))
-        #logger.info("normal forecasts: {}".format(self._normal_forecasts))
-
     def _initialize_forecast_map(self, a_map):
         a_map["precip_total"] = 0.0
         a_map["precip_min_total"] = 0.0
@@ -127,11 +122,12 @@ class Forecast:
         for key, value in self._normal_forecasts.items():
             if value["precip_total"] > 0.0 and next_precip_date_str == "":
                 next_precip_date_str = key
-                next_precip_volume_str = "{} mm".format(value["precip_total"])
+                next_precip_volume_str = "{:4.1f} mm".format(
+                    value["precip_total"])
 
             if value["precip_max_total"] > 0.0 and next_possible_precip_date_str == "":
                 next_possible_precip_date_str = key
-                next_possible_precip_volume_str = "{} mm".format(
+                next_possible_precip_volume_str = "{:4.1f} mm".format(
                     value["precip_max_total"])
 
         message_map["next_precip_date"] = next_precip_date_str

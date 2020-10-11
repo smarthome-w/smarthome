@@ -26,7 +26,7 @@ Switch      FF_Lights_Scenario                                       "First floo
 Group       gFF_Lights_Scenario                                      "FF_Lights_Scenario"                                    <heating>        (gScenarios, gHH_Lights_Scenario)
 Switch      GF_FamilyRoom_Scenario                                   "Upper lights"                                          <colorwheel>     (gScenariosList, gPersistenceSwitch)                                              {ga="Light"}
 Group       gGF_FamilyRoom_Scenario                                  "GF_FamilyRoom_Scenario"                                <heating>        (gScenarios, gGF_Lights_Scenario)
-Switch      GF_ColorLights_Scenario                                  "Empty name"                                            <party>          (gScenariosList, gPersistenceSwitch)                                              {ga="Light"}
+//Switch      GF_ColorLights_Scenario                                  "Empty name"                                            <party>          (gScenariosList, gPersistenceSwitch)                                              {ga="Light"}
 Color       GF_ColorLights_Color                                     "Color lights"                                          <party>                                                                                            {ga="Light"}
 Group       gGF_ColorLights_Scenario                                 "GF_ColorLights_Scenario"                               <heating>        (gScenarios, gGF_Lights_Scenario)
 Switch      GF_Kitchen_Scenario                                      "Kitchen"                                               <kitchen>        (gScenariosList, gPersistenceSwitch)
@@ -60,8 +60,8 @@ DateTime    GF_FamilyRoom_Light_Table_LastUpdate                     "Family roo
 DateTime    GF_FamilyRoom_Light_Sofa_LastUpdate                      "Family room sofa [%1$td.%1$tm %1$tH:%1$tM]"            <time>           (gLastUpdateBroadlink, gPersistenceSwitch)
 DateTime    GF_FamilyRoom_LightsRGB_LastUpdate                       "Cinema [%1$td.%1$tm %1$tH:%1$tM]"                      <time>           (gLastUpdateSonoff, gPersistenceSwitch)
 DateTime    GF_FamilyRoom_LightsLamp_LastUpdate                      "Secondary lights [%1$td.%1$tm %1$tH:%1$tM]"            <time>           (gLastUpdateSonoff, gPersistenceSwitch)
-Switch      GF_Kitchen_Light_Main                                    "Kitchen light main[]"                                  <light>          (GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch)          {channel="mqtt:topic:MyMQTTBroker:Broadlink:GF_Kitchen_Light_Main", ga="Light"}
-Switch      GF_Kitchen_Light_LED                                     "Kitchen light led[]"                                   <light>          (GF_Kitchen, gTC2, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch)          {channel="mqtt:topic:MyMQTTBroker:Broadlink:GF_Kitchen_Light_LED", ga="Light"}
+Switch      GF_Kitchen_Light_Main                                    "Kitchen light main[]"                                  <light>          (GF_Kitchen, gTasmota, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch)      {channel="mqtt:topic:MyMQTTBroker:WallSwitch02:PowerSwitch1", ga="Light"}
+Switch      GF_Kitchen_Light_LED                                     "Kitchen light led[]"                                   <light>          (GF_Kitchen, gTasmota, gGF_Kitchen_Scenario, gCinemaOff, gPersistenceSwitch)      {channel="mqtt:topic:MyMQTTBroker:WallSwitch02:PowerSwitch2", ga="Light"}
 Switch      GF_Kitchen_LED                                           "Kitchen led[]"                                         <light>          (GF_Kitchen, gSonoff, gPersistenceSwitch)                                         {channel="mqtt:topic:MyMQTTBroker:Sonoff:GF_Kitchen_LED", ga="Light"}
 Switch      GF_Corridor_Light_Main                                   "Main corridor lights[]"                                <light>          (GF_Corridor, gTC2, gGF_Corridor_Scenario, gCinemaOff, gPersistenceSwitch)        {channel="mqtt:topic:MyMQTTBroker:Broadlink:GF_Corridor_Light_Main", ga="Light"}
 Switch      GF_Corridor_Light_LED                                    "Corridor led[]"                                        <light>          (GF_Corridor, gSonoff, gPersistenceSwitch)                                        {channel="mqtt:topic:MyMQTTBroker:Switch05:PowerSwitch", ga="Light"}
@@ -97,10 +97,10 @@ DateTime    FF_AliceRoom_Light_2_LastUpdate                          "Alice room
 
 //DateTime FF_AliceRoom_Lights_LastUpdate "Alice room - lights [%1$td.%1$tm %1$tH:%1$tM]" <time> (gLastUpdateBroadlink, gPersistenceSwitch)
 Switch      FF_AnnRoom_Light_Main                                    "Ann room lights[]"                                     <light>          (FF_AnnRoom, gTC2, gFF_AnnRoom_Scenario, gPersistenceSwitch)                      {channel="mqtt:topic:MyMQTTBroker:Broadlink:FF_AnnRoom_Light_Main", ga="Light"}
-Switch      FF_BathRoom_Light_Up                                     "Bathroom lights[]"                                     <light>          (FF_Bathroom, gTC2, gFF_BathRoom_Scenario, gPersistenceSwitch)                    {channel="mqtt:topic:MyMQTTBroker:Broadlink:FF_BathRoom_Light_Up", ga="Light"}
-Switch      FF_BathRoom_Light_Mirror                                 "Bathroom led[]"                                        <light>          (FF_BathRoom, gTC2, gFF_BathRoom_Scenario, gPersistenceSwitch)                    {channel="mqtt:topic:MyMQTTBroker:Broadlink:FF_BathRoom_Light_Mirror", ga="Light"}
+Switch      FF_BathRoom_Light_Up                                     "Bathroom lights[]"                                     <light>          (FF_Bathroom, gTasmota, gFF_BathRoom_Scenario, gPersistenceSwitch)                {channel="mqtt:topic:MyMQTTBroker:WallSwitch01:PowerSwitch", ga="Light"}
+//Switch      FF_BathRoom_Light_Mirror                                 "Bathroom led[]"                                        <light>          (FF_BathRoom, gTC2, gFF_BathRoom_Scenario, gPersistenceSwitch)                    {channel="mqtt:topic:MyMQTTBroker:Broadlink:FF_BathRoom_Light_Mirror", ga="Light"}
 DateTime    FF_BathRoom_Light_Up_LastUpdate                          "Bathroom lights [%1$td.%1$tm %1$tH:%1$tM]"             <time>           (gLastUpdateBroadlink, gPersistenceSwitch)
-DateTime    FF_BathRoom_Light_Mirror_LastUpdate                      "Bathroom led [%1$td.%1$tm %1$tH:%1$tM]"                <time>           (gLastUpdateBroadlink, gPersistenceSwitch)
+//DateTime    FF_BathRoom_Light_Mirror_LastUpdate                      "Bathroom led [%1$td.%1$tm %1$tH:%1$tM]"                <time>           (gLastUpdateBroadlink, gPersistenceSwitch)
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       RTV
@@ -119,6 +119,7 @@ Switch      RTV_VOLUME_MUTE                                          "Mute[]"   
 //                       Google Home scenes
 ////////////////////////////////////////////////////////////////////////////////
 Switch      GH_DailyInfo                                             "Daily info[]"                                                           (gVoice)                                                                          {ga="Switch"}
+Switch      GH_BathroomInfo                                          "Bathroom info[]"                                                           (gVoice)                                                                          {ga="Switch"}
 Switch      GH_SensorsInfo                                           "Sensors info[]"                                                         (gVoice)                                                                          {ga="Light"}
 Switch      GH_Holiday                                               "Holiday[]"                                                              (gScenes)
 Switch      GH_WelcomeBack                                           "Welcome back[]"                                                         (gScenes)
@@ -175,6 +176,14 @@ Number      GF_Kitchen_RSSI                                          "8266 Kitch
 String      GF_Kitchen_Heartbeat                                     "8266 Kitchen [%s]"                                                      (GF_Kitchen, gHeartbeat)                                                          {channel="mqtt:topic:MyMQTTBroker:Multisensor02:Heartbeat"}
 DateTime    GF_Kitchen_Heartbeat_LastUpdate                          "8266 Kitchen [%1$td.%1$tm %1$tH:%1$tM]"                <time>           (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch      GF_Kitchen_Heartbeat_LastUpdate_Error                    "8266 Kitchen"                                          <time>           (gErrors, gPersistenceSwitch)
+Number      GF_KitchenWall_RSSI                                      "Minitiger Kitchen RSSI [%.0f]"                         <heating>        (gRSSI)                                                                           {channel="mqtt:topic:MyMQTTBroker:WallSwitch02:RSSI"}
+String      GF_KitchenWall_Heartbeat                                 "Minitiger Kitchen [%s]"                                                 (GF_Kitchen, gHeartbeat)                                                          {channel="mqtt:topic:MyMQTTBroker:WallSwitch02:Heartbeat"}
+DateTime    GF_KitchenWall_Heartbeat_LastUpdate                      "Minitiger Kitchen [%1$td.%1$tm %1$tH:%1$tM]"           <time>           (gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch      GF_KitchenWall_Heartbeat_LastUpdate_Error                "Minitiger Kitchen"                                     <time>           (gErrors, gPersistenceSwitch)
+Number      FF_BathroomWall_RSSI                                     "Sonoff Bathroom RSSI [%.0f]"                           <heating>        (gRSSI)                                                                           {channel="mqtt:topic:MyMQTTBroker:WallSwitch01:RSSI"}
+String      FF_BathroomWall_Heartbeat                                "Sonoff Bathroom [%s]"                                                   (GF_Kitchen, gHeartbeat)                                                          {channel="mqtt:topic:MyMQTTBroker:WallSwitch01:Heartbeat"}
+DateTime    FF_BathroomWall_Heartbeat_LastUpdate                     "Sonoff Bathroom [%1$td.%1$tm %1$tH:%1$tM]"             <time>           (gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch      FF_BathroomWall_Heartbeat_LastUpdate_Error               "Sonoff Bathroom"                                       <time>           (gErrors, gPersistenceSwitch)
 String      GF_FamilyRoomRollershutter_Heartbeat                     "8266 Family room blinds [%s]"                                           (GF_FamilyRoom, gHeartbeat)                                                       {channel="mqtt:topic:MyMQTTBroker:Heartbeat_Sensor:HeartbeatFamilyRoomRollershutter"}
 DateTime    GF_FamilyRoomRollershutter_Heartbeat_LastUpdate          "8266 Family room blinds [%1$td.%1$tm %1$tH:%1$tM]"     <time>           (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch      GF_FamilyRoomRollershutter_Heartbeat_LastUpdate_Error    "8266 Family room blinds"                               <time>           (gErrors, gPersistenceSwitch)
@@ -272,3 +281,6 @@ Number      HH_PowermeterPlug02_RSSI                                 "Powermeter
 String      HH_PowermeterPlug02_Heartbeat                            "Powermeter02 plug [%s]"                                                 (gHeartbeat)                                                                      {channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:Heartbeat"}
 DateTime    HH_PowermeterPlug02_Heartbeat_LastUpdate                 "Powermeter02 plug [%1$td.%1$tm %1$tH:%1$tM]"           <time>           (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch      HH_PowermeterPlug02_Heartbeat_LastUpdate_Error           "Powermeter02 plug"                                     <time>           (gErrors, gPersistenceSwitch)
+
+DateTime    FF_Bathroom_Entry_Time                                   "Bathroom entrytime [%s]"                                <time>
+Switch      FF_Bathroom_Entry_Confirmation                           "Bathroom entry confirmation [%s]"                       <time>

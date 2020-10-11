@@ -1,0 +1,3 @@
+Thing wifiled:wifiled:WifiLED1 [ ip="192.168.0.133", port=5577, pollingPeriod=3000, protocol="LD382A", driver="CLASSIC", fadeDurationInMs=1000, fadeSteps=100 ]
+Thing wifiled:wifiled:WifiLED2 [ ip="192.168.0.235", port=5577, pollingPeriod=3000, protocol="LD382A", driver="CLASSIC", fadeDurationInMs=1000, fadeSteps=100 ]
+Thing wifiled:wifiled:WifiLED3 [ ip="192.168.0.188", port=5577, pollingPeriod=3000, protocol="LD382A", driver="CLASSIC", fadeDurationInMs=1000, fadeSteps=100 ]

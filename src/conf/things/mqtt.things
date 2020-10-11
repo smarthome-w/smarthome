@@ -69,15 +69,15 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
     Channels:
       Type switch : GF_FamilyRoom_Light_Table [commandTopic="broadlink/TC2/GF_FamilyRoom_Light_Table", on="ON", off="OFF" ]
       Type switch : GF_FamilyRoom_Light_Sofa [commandTopic="broadlink/TC2/GF_FamilyRoom_Light_Sofa", on="ON", off="OFF" ]
-      Type switch : GF_Kitchen_Light_Main [commandTopic="broadlink/TC2/GF_Kitchen_Light_Main", on="ON", off="OFF" ]
-      Type switch : GF_Kitchen_Light_LED [commandTopic="broadlink/TC2/GF_Kitchen_Light_LED", on="ON", off="OFF" ]
+//      Type switch : GF_Kitchen_Light_Main [commandTopic="broadlink/TC2/GF_Kitchen_Light_Main", on="ON", off="OFF" ]
+//      Type switch : GF_Kitchen_Light_LED [commandTopic="broadlink/TC2/GF_Kitchen_Light_LED", on="ON", off="OFF" ]
       Type switch : GF_Corridor_Light_Main [commandTopic="broadlink/TC2/GF_Corridor_Light_Main", on="ON", off="OFF" ]
       Type switch : GF_Restroom_Light_Main [commandTopic="broadlink/TC2/GF_Restroom_Light_Main", on="ON", off="OFF" ]
       Type switch : FF_Bedroom_Light_2 [commandTopic="broadlink/TC2/FF_Bedroom_Light_2", on="ON", off="OFF" ]
       Type switch : FF_AliceRoom_Light_2 [commandTopic="broadlink/TC2/FF_AliceRoom_Light_2", on="ON", off="OFF" ]
       Type switch : FF_AnnRoom_Light_Main [commandTopic="broadlink/TC2/FF_AnnRoom_Light_Main", on="ON", off="OFF" ]
-      Type switch : FF_BathRoom_Light_Up [commandTopic="broadlink/TC2/FF_BathRoom_Light_Up", on="ON", off="OFF" ]
-      Type switch : FF_BathRoom_Light_Mirror [commandTopic="broadlink/TC2/FF_BathRoom_Light_Mirror", on="ON", off="OFF" ]
+//      Type switch : FF_BathRoom_Light_Up [commandTopic="broadlink/TC2/FF_BathRoom_Light_Up", on="ON", off="OFF" ]
+//      Type switch : FF_BathRoom_Light_Mirror [commandTopic="broadlink/TC2/FF_BathRoom_Light_Mirror", on="ON", off="OFF" ]
 
       Type switch : RTV_TV_TV [commandTopic="broadlink/IRB/RTV_TV_TV", on="ON", off="OFF" ]
       Type switch : RTV_TV_UPC [commandTopic="broadlink/IRB/RTV_TV_UPC", on="ON", off="OFF" ]
@@ -283,25 +283,17 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : RSSI [stateTopic="tele/switch06/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
-// FF_Bathroom
-  Thing topic WallSwitch01 "WallSwitch01" {
-    Channels:
-      Type switch : PowerSwitch [stateTopic="stat/wallswitch01/POWER", commandTopic="cmnd/wallswitch01/POWER", on="ON", off="OFF" ]
-      Type string : Heartbeat [stateTopic="tele/wallswitch01/STATE", transformationPattern="JSONPATH:$.Time"]
-      Type number : RSSI [stateTopic="tele/wallswitch01/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
-  }
-
 // Bedroom
   Thing topic Multisensor01 "Multisensor01" {
     Channels:
-      Type number : Temperature [stateTopic="tele/multisensor01/SENSOR", transformationPattern="JSONPATH:$.BME280.Temperature"]
-      Type number : Humidity [stateTopic="tele/multisensor01/SENSOR", transformationPattern="JSONPATH:$.BME280.Humidity"]
-      Type number : DewPoint [stateTopic="tele/multisensor01/SENSOR", transformationPattern="JSONPATH:$.BME280.DewPoint"]
-      Type number : Pressure [stateTopic="tele/multisensor01/SENSOR", transformationPattern="JS:tasmotaBME280Pressure.js"]
+      Type number : Temperature [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Temperature"]
+      Type number : Humidity [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Humidity"]
+      Type number : DewPoint [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.DewPoint"]
+      Type number : Pressure [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JS:tasmotaBME280Pressure.js"]
       Type number : Brightness [stateTopic="tele/multisensor01/SENSOR", transformationPattern="JS:tasmotaAnalogReverse.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor01/STATE", transformationPattern="JSONPATH:$.Time"]
 
-      Type contact : Cir [stateTopic="tele/multisensor01/SENSOR", transformationPattern="JSONPATH:$.Switch1", on="ON", off="OFF"]
+      Type contact : Cir [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*Switch1.*)∩JSONPATH:$.Switch1", on="ON", off="OFF"]
 //      Type contact : Cir [stateTopic="stat/multisensor01/CIR", on="ON", off="OFF"]
       Type number : RSSI [stateTopic="tele/multisensor01/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   } 
@@ -309,10 +301,10 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
 // Kitchen
   Thing topic Multisensor02 "Multisensor02" {
     Channels:
-      Type number : Temperature [stateTopic="tele/multisensor02/SENSOR", transformationPattern="JSONPATH:$.BME280.Temperature"]
-      Type number : Humidity [stateTopic="tele/multisensor02/SENSOR", transformationPattern="JSONPATH:$.BME280.Humidity"]
-      Type number : DewPoint [stateTopic="tele/multisensor02/SENSOR", transformationPattern="JSONPATH:$.BME280.DewPoint"]
-      Type number : Pressure [stateTopic="tele/multisensor02/SENSOR", transformationPattern="JS:tasmotaBME280Pressure.js"]
+      Type number : Temperature [stateTopic="tele/multisensor02/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Temperature"]
+      Type number : Humidity [stateTopic="tele/multisensor02/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Humidity"]
+      Type number : DewPoint [stateTopic="tele/multisensor02/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.DewPoint"]
+      Type number : Pressure [stateTopic="tele/multisensor02/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JS:tasmotaBME280Pressure.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor02/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number : RSSI [stateTopic="tele/multisensor02/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   } 
@@ -321,13 +313,13 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
 //  GF_FamilyRoom_Sensor
   Thing topic Multisensor03 "Multisensor03" {
     Channels:
-      Type number : Temperature [stateTopic="tele/multisensor03/SENSOR", transformationPattern="JSONPATH:$.SI7021.Temperature"]
-      Type number : Humidity [stateTopic="tele/multisensor03/SENSOR", transformationPattern="JSONPATH:$.SI7021.Humidity"]
-      Type number : DewPoint [stateTopic="tele/multisensor03/SENSOR", transformationPattern="JSONPATH:$.SI7021.DewPoint"]
+      Type number : Temperature [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*SI7021.*)∩JSONPATH:$.SI7021.Temperature"]
+      Type number : Humidity [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*SI7021.*)∩JSONPATH:$.SI7021.Humidity"]
+      Type number : DewPoint [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*SI7021.*)∩JSONPATH:$.SI7021.DewPoint"]
       Type number : Pressure [stateTopic="tele/multisensor03/SENSOR", transformationPattern="JS:tasmotaBMP280Pressure.js"]
       Type number : Brightness [stateTopic="tele/multisensor03/SENSOR", transformationPattern="JS:tasmotaAnalogReverse.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor03/STATE", transformationPattern="JSONPATH:$.Time"]
-      Type number : OutdoorTemperature [stateTopic="tele/multisensor03/SENSOR", transformationPattern="JSONPATH:$.DS18B20.Temperature"]
+      Type number : OutdoorTemperature [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*DS18B20.*)∩JSONPATH:$.DS18B20.Temperature"]
       Type number : RSSI [stateTopic="tele/multisensor03/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   } 
 
@@ -335,38 +327,50 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
 //  FF_AliceRoom_Sensor
   Thing topic Multisensor04 "Multisensor04" {
     Channels:
-      Type number : Temperature [stateTopic="tele/multisensor04/SENSOR", transformationPattern="JSONPATH:$.BME280.Temperature"]
-      Type number : Humidity [stateTopic="tele/multisensor04/SENSOR", transformationPattern="JSONPATH:$.BME280.Humidity"]
-      Type number : DewPoint [stateTopic="tele/multisensor04/SENSOR", transformationPattern="JSONPATH:$.BME280.DewPoint"]
-      Type number : Pressure [stateTopic="tele/multisensor04/SENSOR", transformationPattern="JS:tasmotaBME280Pressure.js"]
+      Type number : Temperature [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Temperature"]
+      Type number : Humidity [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Humidity"]
+      Type number : DewPoint [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.DewPoint"]
+      Type number : Pressure [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JS:tasmotaBME280Pressure.js"]
       Type number : Brightness [stateTopic="tele/multisensor04/SENSOR", transformationPattern="JS:tasmotaAnalogReverse.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor04/STATE", transformationPattern="JSONPATH:$.Time"]
   
 //      Type contact : Cir [stateTopic="stat/multisensor04/CIR", on="ON", off="OFF"]
-      Type contact : Cir [stateTopic="tele/multisensor04/SENSOR", transformationPattern="JSONPATH:$.Switch1", on="ON", off="OFF"]
+      Type contact : Cir [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*Switch1.*)∩JSONPATH:$.Switch1", on="ON", off="OFF"]
 //      Type contact : Move [stateTopic="stat/multisensor04/PIR", on="ON", off="OFF"]
-      Type contact : Move [stateTopic="tele/multisensor04/SENSOR", transformationPattern="JSONPATH:$.Switch2", on="ON", off="OFF"]
+      Type contact : Move [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*Switch2.*)∩JSONPATH:$.Switch2", on="ON", off="OFF"]
       Type number : RSSI [stateTopic="tele/multisensor04/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   } 
 
 //  FF_AnnRoom_Sensor
   Thing topic Multisensor05 "Multisensor05" {
     Channels:
-      Type number : Temperature [stateTopic="tele/multisensor05/SENSOR", transformationPattern="JSONPATH:$.SI7021.Temperature"]
-      Type number : Humidity [stateTopic="tele/multisensor05/SENSOR", transformationPattern="JSONPATH:$.SI7021.Humidity"]
-      Type number : DewPoint [stateTopic="tele/multisensor05/SENSOR", transformationPattern="JSONPATH:$.SI7021.DewPoint"]
-      Type number : OutdoorTemperature [stateTopic="tele/multisensor05/SENSOR", transformationPattern="JSONPATH:$.DS18B20.Temperature"]
+      Type number : Temperature [stateTopic="tele/multisensor05/SENSOR", transformationPattern="REGEX:(.*SI7021.*)∩JSONPATH:$.SI7021.Temperature"]
+      Type number : Humidity [stateTopic="tele/multisensor05/SENSOR", transformationPattern="REGEX:(.*SI7021.*)∩JSONPATH:$.SI7021.Humidity"]
+      Type number : DewPoint [stateTopic="tele/multisensor05/SENSOR", transformationPattern="REGEX:(.*SI7021.*)∩JSONPATH:$.SI7021.DewPoint"]
+      Type number : OutdoorTemperature [stateTopic="tele/multisensor05/SENSOR", transformationPattern="REGEX:(.*DS18B20.*)∩JSONPATH:$.DS18B20.Temperature"]
       Type string : Heartbeat [stateTopic="tele/multisensor05/STATE", transformationPattern="JSONPATH:$.Time"]
 //      Type contact : Cir [stateTopic="stat/multisensor05/CIR", on="ON", off="OFF"]
-      Type contact : Cir [stateTopic="tele/multisensor05/SENSOR", transformationPattern="JSONPATH:$.Switch1", on="ON", off="OFF"]
+      Type contact : Cir [stateTopic="tele/multisensor05/SENSOR", transformationPattern="REGEX:(.*Switch1.*)∩JSONPATH:$.Switch1", on="ON", off="OFF"]
 //      Type contact : Move [stateTopic="stat/multisensor05/PIR", on="ON", off="OFF"]
-      Type contact : Move [stateTopic="tele/multisensor05/SENSOR", transformationPattern="JSONPATH:$.Switch2", on="ON", off="OFF"]
+      Type contact : Move [stateTopic="tele/multisensor05/SENSOR", transformationPattern="REGEX:(.*Switch2.*)∩JSONPATH:$.Switch2", on="ON", off="OFF"]
       Type number : RSSI [stateTopic="tele/multisensor05/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   } 
 
-  Thing topic Minitiger01 "Minitiger01" {
+
+// FF_Bathroom
+  Thing topic WallSwitch01 "WallSwitch01" {
     Channels:
-      Type switch : PowerSwitch [stateTopic="stat/minitiger01/POWER", commandTopic="cmnd/minitiger01/POWER", on="ON", off="OFF" ]
-      Type string : Heartbeat [stateTopic="tele/minitiger01/STATE", transformationPattern="JSONPATH:$.Time"]
+      Type switch : PowerSwitch [stateTopic="stat/wallswitch01/POWER", commandTopic="cmnd/wallswitch01/POWER", on="ON", off="OFF" ]
+      Type string : Heartbeat [stateTopic="tele/wallswitch01/STATE", transformationPattern="JSONPATH:$.Time"]
+      Type number : RSSI [stateTopic="tele/wallswitch01/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+  }
+
+// GF_Kitchen
+  Thing topic WallSwitch02 "WallSwitch02" {
+    Channels:
+      Type switch : PowerSwitch1 [stateTopic="stat/wallswitch02/POWER1", commandTopic="cmnd/wallswitch02/POWER1", on="ON", off="OFF" ]
+      Type switch : PowerSwitch2 [stateTopic="stat/wallswitch02/POWER2", commandTopic="cmnd/wallswitch02/POWER2", on="ON", off="OFF" ]
+      Type string : Heartbeat [stateTopic="tele/wallswitch02/STATE", transformationPattern="JSONPATH:$.Time"]
+      Type number : RSSI [stateTopic="tele/wallswitch02/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 }

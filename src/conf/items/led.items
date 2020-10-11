@@ -1,0 +1,8 @@
+Switch    WiFiLED1_power         "WiFiLED1 power"          (gPersistenceSwitch)    {channel="wifiled:wifiled:WifiLED1:power"}
+Color     WiFiLED1_color         "WiFiLED1 color"          (gPersistenceSwitch)    {channel="wifiled:wifiled:WifiLED1:color"}
+
+Switch    WiFiLED2_power         "Alice led power"         (gPersistenceSwitch)    {channel="wifiled:wifiled:WifiLED2:power"}
+Color     WiFiLED2_color         "Alice led color"         (gPersistenceSwitch)    {channel="wifiled:wifiled:WifiLED2:color"}
+
+Switch    WiFiLED3_power         "Ann led power"           (gPersistenceSwitch)    {channel="wifiled:wifiled:WifiLED3:power"}
+Color     WiFiLED3_color         "Ann led color"           (gPersistenceSwitch)    {channel="wifiled:wifiled:WifiLED3:color"}

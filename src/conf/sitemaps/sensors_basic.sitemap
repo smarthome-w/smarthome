@@ -78,5 +78,6 @@ sitemap sensors_basic label="Status" {
       Switch item=FF_Bedroom_Rollershutter_AutoDown mappings=[ON="Down"]
       Switch item=HH_PowermeterPlug01
       Switch item=HH_PowermeterPlug02
+      Switch item=GH_BathroomInfo mappings=[ON="Set"]
     }
 }

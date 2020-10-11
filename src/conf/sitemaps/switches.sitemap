@@ -23,7 +23,8 @@ sitemap switches label="Switches" {
 
     Frame label="Scenarios" icon="groundfloor" {
         Switch item=GF_FamilyRoom_Scenario mappings=[OFF="Off", ON="On"]
-        Switch item=GF_ColorLights_Scenario mappings=[OFF="Off", ON="On"]
+        //Switch item=GF_ColorLights_Scenario mappings=[OFF="Off", ON="On"]
+        //Switch item=GH_TVShow_Scene mappings=[OFF="Off", ON="On"]
         Switch item=GF_Kitchen_Scenario mappings=[OFF="Off", ON="On"]
         Switch item=GF_Corridor_Scenario mappings=[OFF="Off", ON="On"]
         Switch item=GF_Restroom_Scenario mappings=[OFF="Off", ON="On"]
@@ -43,7 +44,7 @@ sitemap switches label="Switches" {
     Frame label="Ground floor" icon="firstfloor" {
         Switch item=GF_FamilyRoom_Light_Table
         Switch item=GF_FamilyRoom_Light_Sofa
-        Switch item=HH_PowermeterPlug01
+        Switch item=HH_PowermeterPlug02
         Switch item=GF_Kitchen_Light_Main
         Switch item=GF_Kitchen_Light_LED
         Switch item=GF_Kitchen_LED
@@ -68,8 +69,24 @@ sitemap switches label="Switches" {
         Switch item=FF_Bedroom_Lights
         Switch item=FF_Bedroom_Wardobe
         Switch item=FF_AnnRoom_Light_Main
+        Switch item=HH_PowermeterPlug01
         Switch item=FF_BathRoom_Light_Up
-        Switch item=FF_BathRoom_Light_Mirror
+        //Switch item=FF_BathRoom_Light_Mirror
+    }
+
+	Frame label="" {
+		Switch       item=WiFiLED1_power
+		Colorpicker  item=WiFiLED1_color
+    }
+
+	Frame label="" {
+		Switch       item=WiFiLED2_power
+		Colorpicker  item=WiFiLED2_color
+    }
+
+	Frame label="" {
+		Switch       item=WiFiLED3_power
+		Colorpicker  item=WiFiLED3_color
     }
 
     Frame label="Multimedia" icon="firstfloor" {

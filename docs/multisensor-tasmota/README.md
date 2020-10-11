@@ -128,3 +128,24 @@ Rule4 on switch2#state=1 do publish stat/multisensor05/SENSOR {"Switch2":"ON"} e
 ```bash
 {"NAME":"SmartDGM Plug","GPIO":[0,0,0,17,134,132,0,0,131,52,21,0,0],"FLAG":0,"BASE":18}
 ```
+
+## Sonoff flash
+
+```bash
+./esptool.py --port /dev/ttyUSB0 read_flash 0x00000 0x100000 ../tasmota/firmware1MB.bin
+
+./esptool.py -p /dev/ttyUSB0 write_flash -fm dout 0x0 ../tasmota/tasmota.bin
+
+```
+
+Minitiger
+
+```
+Standard Sonoff 2 buttons
+```
+
+## Timezone
+
+```
+backlog Timezone 99; TimeDST 0,4,3,1,3,120; TimeSTD 0,4,10,1,3,60
+```

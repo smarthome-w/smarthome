@@ -140,3 +140,32 @@ then
     }
   }
 end
+
+rule "bathroom_info"
+when
+  Item GH_BathroomInfo received update
+then
+  var ttsMessage = ""
+  var occupied = new DateTime((FF_Bathroom_Entry_Time.state as DateTimeType).zonedDateTime.toInstant.toEpochMilli)
+  var occupied_millis = (occupied.toDate().getTime())
+  var now_millis = now.millis
+  var occupation_duration = (now_millis - occupied_millis)/1000/60
+
+  if (FF_BathRoom_Light_Up.state.toString() == "ON") {
+    //ttsMessage = String.format("Bathroom is occupied since %d minutes.", occupation_duration)
+    ttsMessage = String.format("Ktoś siedzi w łazience od %d minut.", occupation_duration)
+    FF_Bathroom_Entry_Confirmation.postUpdate(ON)
+  } else {
+    //ttsMessage = String.format("Bathroom is free.")
+    ttsMessage = String.format("Łazienka jest wolna.")
+  }
+  //var lang = "en-gb"
+  var lang = "pl-pl"
+
+  if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (calendar_Vacation.state.toString() == "OFF") {
+      ttsLanguage.sendCommand(lang)
+      ttsText.sendCommand(ttsMessage)
+    }
+  }
+end

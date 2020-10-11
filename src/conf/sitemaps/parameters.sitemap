@@ -91,4 +91,9 @@ sitemap parameters label="Parameters" {
                                           6.0="TRACE"
                                          ]
     }
+    Frame label="" icon="firstfloor" {
+        Switch item=HH_AliceAtSchool
+        Switch item=HH_AnnAtSchool
+        Switch item=HH_WaldekAtWork
+    }
 }
