@@ -16,7 +16,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Total [stateTopic="myHome/PowerMeter_Total"]
       Type number : Current [stateTopic="myHome/PowerMeter_Current"]
       Type number : CurrentInWatts [stateTopic="myHome/PowerMeter_Current", transformationPattern="JS:kilowatttowatts.js"]
-  } 
+  }
 
   Thing topic Indoor_Sensor "Indoor_Sensor" {
     Channels:
@@ -187,7 +187,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type switch : AutoDown  [commandTopic="myHomeX/GF_FamilyRoom_Stepper", on="AUTODOWN"]
       Type switch : PrgUp  [commandTopic="myHomeX/GF_FamilyRoom_Stepper", on="PRGUP"]
       Type switch : PrgDown  [commandTopic="myHomeX/GF_FamilyRoom_Stepper", on="PRGDOWN"]
-                                            
+
       Type number : DebugCurrPos [stateTopic="myHomeX/GF_FamilyRoom_Stepper_Debug_CurrPos"]
       Type number : DebugPWMCurrPos [stateTopic="myHomeX/GF_FamilyRoom_Stepper_Debug_PWMCurrPos"]
       Type number : DebugStepCurrPos [stateTopic="myHomeX/GF_FamilyRoom_Stepper_Debug_StepCurrPos"]
@@ -290,13 +290,13 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Humidity [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Humidity"]
       Type number : DewPoint [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.DewPoint"]
       Type number : Pressure [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JS:tasmotaBME280Pressure.js"]
-      Type number : Brightness [stateTopic="tele/multisensor01/SENSOR", transformationPattern="JS:tasmotaAnalogReverse.js"]
+      Type number : Brightness [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*A0.*)∩JS:tasmotaAnalogReverse.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor01/STATE", transformationPattern="JSONPATH:$.Time"]
 
       Type contact : Cir [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*Switch1.*)∩JSONPATH:$.Switch1", on="ON", off="OFF"]
 //      Type contact : Cir [stateTopic="stat/multisensor01/CIR", on="ON", off="OFF"]
       Type number : RSSI [stateTopic="tele/multisensor01/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
-  } 
+  }
 
 // Kitchen
   Thing topic Multisensor02 "Multisensor02" {
@@ -307,7 +307,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Pressure [stateTopic="tele/multisensor02/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JS:tasmotaBME280Pressure.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor02/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number : RSSI [stateTopic="tele/multisensor02/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
-  } 
+  }
 
 
 //  GF_FamilyRoom_Sensor
@@ -317,11 +317,11 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Humidity [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*SI7021.*)∩JSONPATH:$.SI7021.Humidity"]
       Type number : DewPoint [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*SI7021.*)∩JSONPATH:$.SI7021.DewPoint"]
       Type number : Pressure [stateTopic="tele/multisensor03/SENSOR", transformationPattern="JS:tasmotaBMP280Pressure.js"]
-      Type number : Brightness [stateTopic="tele/multisensor03/SENSOR", transformationPattern="JS:tasmotaAnalogReverse.js"]
+      Type number : Brightness [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*A0.*)∩JS:tasmotaAnalogReverse.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor03/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number : OutdoorTemperature [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*DS18B20.*)∩JSONPATH:$.DS18B20.Temperature"]
       Type number : RSSI [stateTopic="tele/multisensor03/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
-  } 
+  }
 
 
 //  FF_AliceRoom_Sensor
@@ -331,15 +331,15 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Humidity [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Humidity"]
       Type number : DewPoint [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.DewPoint"]
       Type number : Pressure [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JS:tasmotaBME280Pressure.js"]
-      Type number : Brightness [stateTopic="tele/multisensor04/SENSOR", transformationPattern="JS:tasmotaAnalogReverse.js"]
+      Type number : Brightness [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*A0.*)∩JS:tasmotaAnalogReverse.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor04/STATE", transformationPattern="JSONPATH:$.Time"]
-  
+
 //      Type contact : Cir [stateTopic="stat/multisensor04/CIR", on="ON", off="OFF"]
       Type contact : Cir [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*Switch1.*)∩JSONPATH:$.Switch1", on="ON", off="OFF"]
 //      Type contact : Move [stateTopic="stat/multisensor04/PIR", on="ON", off="OFF"]
       Type contact : Move [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*Switch2.*)∩JSONPATH:$.Switch2", on="ON", off="OFF"]
       Type number : RSSI [stateTopic="tele/multisensor04/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
-  } 
+  }
 
 //  FF_AnnRoom_Sensor
   Thing topic Multisensor05 "Multisensor05" {
@@ -354,7 +354,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
 //      Type contact : Move [stateTopic="stat/multisensor05/PIR", on="ON", off="OFF"]
       Type contact : Move [stateTopic="tele/multisensor05/SENSOR", transformationPattern="REGEX:(.*Switch2.*)∩JSONPATH:$.Switch2", on="ON", off="OFF"]
       Type number : RSSI [stateTopic="tele/multisensor05/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
-  } 
+  }
 
 
 // FF_Bathroom
@@ -372,5 +372,82 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type switch : PowerSwitch2 [stateTopic="stat/wallswitch02/POWER2", commandTopic="cmnd/wallswitch02/POWER2", on="ON", off="OFF" ]
       Type string : Heartbeat [stateTopic="tele/wallswitch02/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number : RSSI [stateTopic="tele/wallswitch02/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+  }
+
+  Thing topic WifiLED1 "WifiLED1" {
+    Channels:
+      Type switch : PowerSwitch [stateTopic="stat/wifiled01/POWER", commandTopic="cmnd/wifiled01/POWER", on="ON", off="OFF" ]
+
+      Type switch   : Fade [ stateTopic="tele/wifiled01/STATE", commandTopic="cmnd/wifiled01/FADE", transformationPattern="JSONPATH:$.Fade" ]
+      Type dimmer   : Dimmer_ [stateTopic="tele/wifiled01/STATE", commandTopic="cmnd/wifiled01/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
+      Type string   : Mode [stateTopic="tele/wifiled01/STATE", commandTopic="cmnd/wifiled01/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
+      Type colorHSB : Color_ [stateTopic="tele/wifiled01/STATE", commandTopic="cmnd/wifiled01/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+      Type number   : RSSI  [stateTopic="tele/wifiled01/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+  }
+
+  Thing topic WifiLED2 "WifiLED2" {
+    Channels:
+      Type switch : PowerSwitch [stateTopic="stat/wifiled02/POWER", commandTopic="cmnd/wifiled02/POWER", on="ON", off="OFF" ]
+
+      Type switch   : Fade [ stateTopic="tele/wifiled02/STATE", commandTopic="cmnd/wifiled02/FADE", transformationPattern="JSONPATH:$.Fade" ]
+      Type dimmer   : Dimmer_ [stateTopic="tele/wifiled02/STATE", commandTopic="cmnd/wifiled02/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
+      Type string   : Mode [stateTopic="tele/wifiled02/STATE", commandTopic="cmnd/wifiled02/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
+      Type colorHSB : Color_ [stateTopic="tele/wifiled02/STATE", commandTopic="cmnd/wifiled02/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+      Type number   : RSSI  [stateTopic="tele/wifiled02/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+  }
+
+  Thing topic WifiLED3 "WifiLED3" {
+    Channels:
+      Type switch : PowerSwitch [stateTopic="stat/wifiled03/POWER", commandTopic="cmnd/wifiled03/POWER", on="ON", off="OFF" ]
+
+      Type switch   : Fade [ stateTopic="tele/wifiled03/STATE", commandTopic="cmnd/wifiled03/FADE", transformationPattern="JSONPATH:$.Fade" ]
+      Type dimmer   : Dimmer_ [stateTopic="tele/wifiled03/STATE", commandTopic="cmnd/wifiled03/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
+      Type string   : Mode [stateTopic="tele/wifiled03/STATE", commandTopic="cmnd/wifiled03/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
+      Type colorHSB : Color_ [stateTopic="tele/wifiled03/STATE", commandTopic="cmnd/wifiled03/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+      Type number   : RSSI  [stateTopic="tele/wifiled03/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+  }
+
+  Thing topic WifiLED4 "WifiLED4" {
+    Channels:
+      Type switch : PowerSwitch [stateTopic="stat/wifiled04/POWER", commandTopic="cmnd/wifiled04/POWER", on="ON", off="OFF" ]
+
+      Type switch   : Fade [ stateTopic="tele/wifiled04/STATE", commandTopic="cmnd/wifiled04/FADE", transformationPattern="JSONPATH:$.Fade" ]
+      Type dimmer   : Dimmer_ [stateTopic="tele/wifiled04/STATE", commandTopic="cmnd/wifiled04/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
+      Type string   : Mode [stateTopic="tele/wifiled04/STATE", commandTopic="cmnd/wifiled04/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
+      Type colorHSB : Color_ [stateTopic="tele/wifiled04/STATE", commandTopic="cmnd/wifiled04/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+      Type number   : RSSI  [stateTopic="tele/wifiled04/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+  }
+
+  Thing topic WifiLED5 "WifiLED5" {
+    Channels:
+      Type switch : PowerSwitch [stateTopic="stat/wifiled05/POWER", commandTopic="cmnd/wifiled05/POWER", on="ON", off="OFF" ]
+
+      Type switch   : Fade [ stateTopic="tele/wifiled05/STATE", commandTopic="cmnd/wifiled05/FADE", transformationPattern="JSONPATH:$.Fade" ]
+      Type dimmer   : Dimmer_ [stateTopic="tele/wifiled05/STATE", commandTopic="cmnd/wifiled05/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
+      Type string   : Mode [stateTopic="tele/wifiled05/STATE", commandTopic="cmnd/wifiled05/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
+      Type colorHSB : Color_ [stateTopic="tele/wifiled05/STATE", commandTopic="cmnd/wifiled05/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+      Type number   : RSSI  [stateTopic="tele/wifiled05/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+  }
+
+  Thing topic WifiLED6 "WifiLED6" {
+    Channels:
+      Type switch : PowerSwitch [stateTopic="stat/wifiled06/POWER", commandTopic="cmnd/wifiled06/POWER", on="ON", off="OFF" ]
+
+      Type switch   : Fade [ stateTopic="tele/wifiled06/STATE", commandTopic="cmnd/wifiled06/FADE", transformationPattern="JSONPATH:$.Fade" ]
+      Type dimmer   : Dimmer_ [stateTopic="tele/wifiled06/STATE", commandTopic="cmnd/wifiled06/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
+      Type string   : Mode [stateTopic="tele/wifiled06/STATE", commandTopic="cmnd/wifiled06/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
+      Type colorHSB : Color_ [stateTopic="tele/wifiled06/STATE", commandTopic="cmnd/wifiled06/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+      Type number   : RSSI  [stateTopic="tele/wifiled06/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+  }
+
+  Thing topic WifiLED7 "WifiLED7" {
+    Channels:
+      Type switch : PowerSwitch [stateTopic="stat/wifiled07/POWER", commandTopic="cmnd/wifiled07/POWER", on="ON", off="OFF" ]
+
+      Type switch   : Fade [ stateTopic="tele/wifiled07/STATE", commandTopic="cmnd/wifiled07/FADE", transformationPattern="JSONPATH:$.Fade" ]
+      Type dimmer   : Dimmer_ [stateTopic="tele/wifiled07/STATE", commandTopic="cmnd/wifiled07/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
+      Type string   : Mode [stateTopic="tele/wifiled07/STATE", commandTopic="cmnd/wifiled07/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
+      Type colorHSB : Color_ [stateTopic="tele/wifiled07/STATE", commandTopic="cmnd/wifiled07/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+      Type number   : RSSI  [stateTopic="tele/wifiled07/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 }

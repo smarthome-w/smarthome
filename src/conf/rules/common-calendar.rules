@@ -56,7 +56,7 @@ then
     if (GF_FamilyRoom_Analog_Sensor.state !== NULL) {
       brightness = (GF_FamilyRoom_Analog_Sensor.state as Number).intValue
     }
-    
+
     val hourOfDay = now.getHourOfDay as Number
     val minuteOfHour = now.getMinuteOfHour as Number
     val dayOfWeek = now.getDayOfWeek as Number
@@ -64,7 +64,7 @@ then
     if (logLevel >= 6) {
       logError ("crontab", "duskLevel:{}, dawnLevel:{}, dayAt:{}, eveningAt:{}, nightAt:{}, elevation: {}, brightness: {}, hourOfDay: {}, dayOfWeek:{}",
           duskLevel, dawnLevel, dayAt, eveningAt, nightAt, elevation, brightness, hourOfDay, dayOfWeek)
-    }  
+    }
 
     if (hourOfDay > eveningAt && hourOfDay < nightAt) {
       calendar_Evening.sendCommand(ON)
@@ -155,8 +155,8 @@ then
     if (HH_Light_Dusk_Level.state !== NULL) {
       duskLevel = (HH_Light_Dusk_Level.state as Number).intValue
     }
-  
-    logInfo("dusk debug", "Time: {}, Elevation: {}, Elevation_dusk: {}, Light: {}, Light_dusk_level: {}", 
+
+    logInfo("dusk debug", "Time: {}, Elevation: {}, Elevation_dusk: {}, Light: {}, Light_dusk_level: {}",
         now, Astro_SunElevation.state, elevationDusk, GF_FamilyRoom_Analog_Sensor.state, duskLevel)
 end
 
@@ -172,6 +172,6 @@ then
     if (HH_Light_Dawn_Level.state !== NULL) {
       dawnLevel = (HH_Light_Dawn_Level.state as Number).intValue
     }
-    logInfo("dawn debug", "Time: {}, Elevation: {}, Elevation_dawn: {}, Light: {}, Light_dawn_level: {}", 
+    logInfo("dawn debug", "Time: {}, Elevation: {}, Elevation_dawn: {}, Light: {}, Light_dawn_level: {}",
         now, Astro_SunElevation.state, elevationDawn, GF_FamilyRoom_Analog_Sensor.state, dawnLevel)
 end

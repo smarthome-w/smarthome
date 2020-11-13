@@ -1,9 +1,44 @@
 sitemap waldek label="Waldek" {
 	Frame label="" {
-		Switch       item=WiFiLED2_power  	 
+		Switch       item=WiFiLED2_power
 		Colorpicker  item=WiFiLED2_color
-		Switch       item=WiFiLED3_power  	 
+		Slider       item=WiFiLED2_dimmer
+    }
+
+	Frame label="" {
+		Switch       item=WiFiLED3_power
 		Colorpicker  item=WiFiLED3_color
+		Slider       item=WiFiLED3_dimmer
+    }
+
+	Frame label="" {
+		Switch       item=WiFiLED1_power
+		Colorpicker  item=WiFiLED1_color
+		Slider       item=WiFiLED1_dimmer
+    }
+
+	Frame label="" {
+		Switch       item=WiFiLED4_power
+		Colorpicker  item=WiFiLED4_color
+		Slider       item=WiFiLED4_dimmer
+    }
+
+	Frame label="" {
+		Switch       item=WiFiLED5_power
+		Colorpicker  item=WiFiLED5_color
+		Slider       item=WiFiLED5_dimmer
+    }
+
+	Frame label="" {
+		Switch       item=WiFiLED6_power
+		Colorpicker  item=WiFiLED6_color
+		Slider       item=WiFiLED6_dimmer
+    }
+
+	Frame label="" {
+		Switch       item=WiFiLED7_power
+		Colorpicker  item=WiFiLED7_color
+		Slider       item=WiFiLED7_dimmer
     }
 
 	Frame label="" {
@@ -35,5 +70,6 @@ sitemap waldek label="Waldek" {
 	Frame label="" {
         Switch item=HH_AliceAtSchool
         Switch item=HH_AnnAtSchool
+        Switch item=HH_WaldekAtWork
     }
 }

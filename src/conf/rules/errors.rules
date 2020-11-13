@@ -1,5 +1,5 @@
 var errOverallError = false
-var int errLogLevel = 6 
+var int errLogLevel = 6
 
 rule "err_rule"
 when

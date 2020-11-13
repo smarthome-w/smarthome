@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 
+import datetime
 import json
-import paho.mqtt.client as mqtt
-import os
 import logging
-from ruamel.yaml import YAML
+import os
+import pprint
+import time
+from datetime import timedelta
+
+import paho.mqtt.client as mqtt
 import requests
 import xmltodict
-import pprint
-import datetime
-from datetime import timedelta
-import json
-import time
+from ruamel.yaml import YAML
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

@@ -153,7 +153,11 @@ then
 
   if (FF_BathRoom_Light_Up.state.toString() == "ON") {
     //ttsMessage = String.format("Bathroom is occupied since %d minutes.", occupation_duration)
-    ttsMessage = String.format("Ktoś siedzi w łazience od %d minut.", occupation_duration)
+    if (occupation_duration < 3) {
+      ttsMessage = "Ktoś siedzi w łazience."
+    } else {
+      ttsMessage = String.format("Ktoś siedzi w łazience od %d minut.", occupation_duration)
+    }
     FF_Bathroom_Entry_Confirmation.postUpdate(ON)
   } else {
     //ttsMessage = String.format("Bathroom is free.")

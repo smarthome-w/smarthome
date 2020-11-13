@@ -15,7 +15,7 @@ ExecStart=/usr/bin/docker run \
   -p 53:53/udp \
   -p 67:67/udp \
   -p 7080:80 \
-  -p 7443:43 \
+  -p 7443:443 \
   -e PUID=1000 -e PGID=1000 \
   -e TZ=Europe/Warsaw \
   -v /mnt/pihole/pihole/:/etc/pihole/ \

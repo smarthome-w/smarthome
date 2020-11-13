@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-from braviarc.braviarc import BraviaRC
-from ruamel.yaml import YAML
-import paho.mqtt.client as mqtt
-import logging
-import time
 import codecs
-import sys
+import logging
 import os
+import sys
+import time
+
+import paho.mqtt.client as mqtt
+from ruamel.yaml import YAML
+
+from braviarc.braviarc import BraviaRC
 
 MESSAGE_PREFIX = "sony"
 SONY_IP = None
@@ -89,6 +91,7 @@ def on_message(client, userdata, msg):
         logger.error(e)
 
 # sources: HDMI 1/MHL, HDMI 2, HDMI 3, HDMI 4
+
 
 setup()
 client = mqtt.Client()

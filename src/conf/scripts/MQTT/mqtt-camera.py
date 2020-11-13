@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
-import paho.mqtt.client as mqtt
-import os
 import logging
+import os
+
+import paho.mqtt.client as mqtt
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

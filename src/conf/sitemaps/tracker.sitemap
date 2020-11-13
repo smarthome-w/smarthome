@@ -31,5 +31,5 @@ sitemap tracker label="Tracker" {
     Text item=Tracker_Alice_HomeDistance
     Mapview item=Tracker_Alice_Location height=4
 
-    Chart item=gTrackerBattery period=3D label="Batteries"    
+    Chart item=gTrackerBattery period=3D label="Batteries"
 }

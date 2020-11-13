@@ -1,7 +1,8 @@
 sitemap ann label="Ann" {
 	Frame label="" {
-		Switch       item=WiFiLED3_power  	 
+		Switch       item=WiFiLED3_power
 		Colorpicker  item=WiFiLED3_color
+		Slider       item=WiFiLED3_dimmer
     }
 
 	Frame label="" {

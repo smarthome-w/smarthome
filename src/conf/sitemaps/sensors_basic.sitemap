@@ -40,11 +40,11 @@ sitemap sensors_basic label="Status" {
     }
 
     Frame label="Heaters" icon="firstfloor" {
-      Text item=EQ3_Bedroom_Status  
-      Text item=EQ3_FamilyRoom_Status  
-      Text item=EQ3_AnnRoom_Status  
-      Text item=EQ3_AliceRoom_Status  
-      Text item=EQ3_Kitchen_Status  
+      Text item=EQ3_Bedroom_Status
+      Text item=EQ3_FamilyRoom_Status
+      Text item=EQ3_AnnRoom_Status
+      Text item=EQ3_AliceRoom_Status
+      Text item=EQ3_Kitchen_Status
     }
 
     Frame label="Colors" icon="groundfloor" {
@@ -79,5 +79,10 @@ sitemap sensors_basic label="Status" {
       Switch item=HH_PowermeterPlug01
       Switch item=HH_PowermeterPlug02
       Switch item=GH_BathroomInfo mappings=[ON="Set"]
+    }
+	Frame label="" {
+		Switch       item=WiFiLED4_power
+		Colorpicker  item=WiFiLED4_color
+		Slider       item=WiFiLED4_dimmer
     }
 }

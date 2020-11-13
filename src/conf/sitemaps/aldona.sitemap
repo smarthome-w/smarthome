@@ -1,8 +1,8 @@
 sitemap aldona label="Aldona" {
 	Frame label="" {
-		Switch       item=WiFiLED2_power  	 
+		Switch       item=WiFiLED2_power
 		Colorpicker  item=WiFiLED2_color
-		Switch       item=WiFiLED3_power  	 
+		Switch       item=WiFiLED3_power
 		Colorpicker  item=WiFiLED3_color
     }
 

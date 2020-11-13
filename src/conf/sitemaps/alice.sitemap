@@ -1,7 +1,8 @@
 sitemap alice label="Alice" {
 	Frame label="" {
-		Switch       item=WiFiLED2_power  	 
+		Switch       item=WiFiLED2_power
 		Colorpicker  item=WiFiLED2_color
+		Slider       item=WiFiLED2_dimmer
     }
 
 	Frame label="" {
