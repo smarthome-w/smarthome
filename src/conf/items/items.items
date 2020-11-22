@@ -26,7 +26,7 @@ Switch      FF_Lights_Scenario                                       "First floo
 Group       gFF_Lights_Scenario                                      "FF_Lights_Scenario"                                    <heating>        (gScenarios, gHH_Lights_Scenario)
 Switch      GF_FamilyRoom_Scenario                                   "Upper lights"                                          <colorwheel>     (gScenariosList, gPersistenceSwitch)                                              {ga="Light"}
 Group       gGF_FamilyRoom_Scenario                                  "GF_FamilyRoom_Scenario"                                <heating>        (gScenarios, gGF_Lights_Scenario)
-//Switch      GF_ColorLights_Scenario                                  "Empty name"                                            <party>          (gScenariosList, gPersistenceSwitch)                                              {ga="Light"}
+Switch      GF_ColorLights_Scenario                                  "Secondary lights"                                      <party>          (gScenariosList, gPersistenceSwitch)
 Color       GF_ColorLights_Color                                     "Color lights"                                          <party>                                                                                            {ga="Light"}
 Group       gGF_ColorLights_Scenario                                 "GF_ColorLights_Scenario"                               <heating>        (gScenarios, gGF_Lights_Scenario)
 Switch      GF_Kitchen_Scenario                                      "Kitchen"                                               <kitchen>        (gScenariosList, gPersistenceSwitch)
@@ -119,7 +119,7 @@ Switch      RTV_VOLUME_MUTE                                          "Mute[]"   
 //                       Google Home scenes
 ////////////////////////////////////////////////////////////////////////////////
 Switch      GH_DailyInfo                                             "Daily info[]"                                                           (gVoice)                                                                          {ga="Switch"}
-Switch      GH_BathroomInfo                                          "Bathroom info[]"                                                           (gVoice)                                                                          {ga="Switch"}
+Switch      GH_BathroomInfo                                          "Bathroom info[]"                                                        (gVoice)                                                                          {ga="Switch"}
 Switch      GH_SensorsInfo                                           "Sensors info[]"                                                         (gVoice)                                                                          {ga="Light"}
 Switch      GH_Holiday                                               "Holiday[]"                                                              (gScenes)
 Switch      GH_WelcomeBack                                           "Welcome back[]"                                                         (gScenes)
@@ -282,5 +282,5 @@ String      HH_PowermeterPlug02_Heartbeat                            "Powermeter
 DateTime    HH_PowermeterPlug02_Heartbeat_LastUpdate                 "Powermeter02 plug [%1$td.%1$tm %1$tH:%1$tM]"           <time>           (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch      HH_PowermeterPlug02_Heartbeat_LastUpdate_Error           "Powermeter02 plug"                                     <time>           (gErrors, gPersistenceSwitch)
 
-DateTime    FF_Bathroom_Entry_Time                                   "Bathroom entrytime [%s]"                                <time>
-Switch      FF_Bathroom_Entry_Confirmation                           "Bathroom entry confirmation [%s]"                       <time>
+DateTime    FF_Bathroom_Entry_Time                                   "Bathroom entrytime [%s]"                               <time>
+Switch      FF_Bathroom_Entry_Confirmation                           "Bathroom entry confirmation [%s]"                      <time>

@@ -94,16 +94,16 @@ end
 
 rule "rollershutter_health_rule"
 when
-  Time cron "0 */3 * ? * MON-SUN" 
+  Time cron "0 */3 * ? * MON-SUN"
 then
   if (GF_FamilyRoom_Rollershutter_MinLimit.state !== NULL) {
     if ((GF_FamilyRoom_Rollershutter_MinLimit.state as Number).intValue != -1) {
       GF_FamilyRoomRollershutter_Health_LastUpdate.postUpdate(now.toString())
-    }    
+    }
   }
   if (FF_Bedroom_Rollershutter_MinLimit.state !== NULL) {
     if ((FF_Bedroom_Rollershutter_MinLimit.state as Number).intValue != -1) {
       FF_BedroomRollershutter_Health_LastUpdate.postUpdate(now.toString())
-    }    
+    }
   }
 end

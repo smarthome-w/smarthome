@@ -87,9 +87,9 @@ then
             }
 //            GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
 //            FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
-            GF_Lights_Scenario.sendCommand(OFF)
             RTV_TV_TV.sendCommand(OFF)
-            FF_Bedroom_Lights.sendCommand(ON)
+//            FF_Bedroom_Lights.sendCommand(ON)
+            GF_Lights_Scenario.sendCommand(OFF)
         }
 
         if (triggeringItem.name == "GH_Bedroom_Night_Scene"){

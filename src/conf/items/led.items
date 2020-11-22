@@ -11,7 +11,7 @@ Color     WiFiLED3_color     "Ann led color"       (gPersistenceSwitch)    {chan
 Dimmer    WiFiLED3_dimmer    "Ann led dimmer"      (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED3:Dimmer_"}
 
 Switch    WiFiLED4_power     "Desk led power"      (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED4:PowerSwitch"}
-Color     WiFiLED4_color     "Desk led color"      (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED4:Color_"}
+Color     WiFiLED4_color     "Desk led color"      (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED4:Color_", ga="Light"}
 Dimmer    WiFiLED4_dimmer    "Desk led dimmer"     (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED4:Dimmer_"}
 
 Switch    WiFiLED5_power     "wifiled05 power"     (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED5:PowerSwitch"}
