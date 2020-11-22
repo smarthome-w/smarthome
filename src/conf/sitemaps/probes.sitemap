@@ -24,7 +24,7 @@ sitemap probes label="Probes" {
     Frame label="PIR" icon="groundfloor" {
         Switch item=PIR_FF_BedroomWardobe icon="alarm" mappings=[CLOSED="Probe off", OPEN="Probe on"]
         Switch item=PIR_FF_BedroomWardobe_State icon="colorwheel" mappings=[OFF="No move", ON="Move"]
-        Switch item=PIR_Corridor_Storage icon="alarm" mappings=[CLOSED="Probe off", OPEN="Probe on"]
+        Switch item=PIR_Corridor_Storage icon="alarm" mappings=[OFF="Probe off", ON="Probe on"]
         Switch item=PIR_Corridor_Storage_State icon="colorwheel" mappings=[OFF="No move", ON="Move"]
         Switch item=PIR_GF_EntryWatch icon="alarm" mappings=[CLOSED="Probe off", OPEN="Probe on"]
         Switch item=PIR_GF_EntryWatch_State icon="colorwheel" mappings=[OFF="No move", ON="Move"]

@@ -1,6 +1,6 @@
 rule "hw_heartbeat_rule"
 when
-  Time cron "0 */3 * ? * MON-SUN" 
+  Time cron "0 */3 * ? * MON-SUN"
 then
   sendCommand(HW_RMPro_Heartbeat_Ticker, ON)
 end

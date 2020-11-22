@@ -9,7 +9,7 @@ sitemap charts_power_day label="Power consumption (daily)" {
         Chart item=GF_PowerMeter_Current_In_Watts period=D label="Power"
         Chart item=GF_PowerMeter_Current_In_Watts period=h label="Power"
     }
-    Frame label="Test power" icon="firstfloor" {
+    Frame label="Desk power" icon="firstfloor" {
         Text item=HH_PowermeterPlug01_Power
         Text item=HH_PowermeterPlug01_TotalPower
         Text item=HH_PowermeterPlug01_ReactivePower
@@ -20,7 +20,7 @@ sitemap charts_power_day label="Power consumption (daily)" {
 //        Text item=GF_PowerMeter_DailyConsumption
     }
 
-    Frame label="Test power" icon="firstfloor" {
+    Frame label="Universal power" icon="firstfloor" {
         Text item=HH_PowermeterPlug02_Power
         Text item=HH_PowermeterPlug02_TotalPower
         Text item=HH_PowermeterPlug02_ReactivePower
@@ -31,8 +31,13 @@ sitemap charts_power_day label="Power consumption (daily)" {
 //        Text item=GF_PowerMeter_DailyConsumption
     }
 
-    Frame label="Test power today" icon="firstfloor" {
+    Frame label="Desk power today" icon="firstfloor" {
         Chart item=HH_PowermeterPlug01_Power period=D label="Counter"
         Chart item=HH_PowermeterPlug01_TotalPower period=D label="Power"
+    }
+
+    Frame label="Universal power today" icon="firstfloor" {
+        Chart item=HH_PowermeterPlug02_Power period=D label="Counter"
+        Chart item=HH_PowermeterPlug02_TotalPower period=D label="Power"
     }
 }

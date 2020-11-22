@@ -1,0 +1,36 @@
+sitemap alice label="Alice" {
+	Frame label="" {
+		Switch       item=WiFiLED2_power
+		Colorpicker  item=WiFiLED2_color
+		Slider       item=WiFiLED2_dimmer
+    }
+
+	Frame label="" {
+        Switch item=FF_AliceRoom_Light_2
+    }
+
+	Frame label="" {
+        Switch item=FF_BathRoom_Light_Up
+    }
+
+    Frame label="Astro" icon="firstfloor" {
+        Text item=Astro_Sunrise_Time
+        Text item=Astro_Sunset_Time
+        Text item=Astro_SunElevation
+    }
+
+    Frame label="Weather" icon="firstfloor" {
+        Text item=GF_FamilyRoom_Outdoor_Temperature_Sensor
+        Text item=FF_AnnRoom_Outdoor_Temperature_Sensor
+        Text item=WeatherTodayMinTemp
+        Text item=WeatherTodayMaxTemp
+        Text item=WeatherNextPrecipDate
+        Text item=WeatherNextPrecipVolume
+        Text item=WeatherNextPossiblePrecipDate
+        Text item=WeatherNextPossiblePrecipVolume
+    }
+
+	Frame label="" {
+        Switch item=HH_AliceAtSchool
+    }
+}

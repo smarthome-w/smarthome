@@ -3,13 +3,13 @@ when
     Member of gEQ3 received update
 then
   try {
-    var NumberItem temperatureItem = NULL
-    var NumberItem valveItem = NULL
-    var DateTimeItem lastUpdateItem = NULL
-    var StringItem modeItem = NULL
-    var NumberItem thermometerItem = NULL
-    var StringItem statusItem = NULL
-    var ContactItem batteryItem = NULL
+    var NumberItem temperatureItem
+    var NumberItem valveItem
+    var DateTimeItem lastUpdateItem
+    var StringItem modeItem
+    var NumberItem thermometerItem
+    var StringItem statusItem
+    var ContactItem batteryItem
     // {"trv":"00:1A:22:10:0C:7B","temp":"6.0","offsetTemp":"0.0","valve":"0% open","mode":"manual","boost":"inactive","window":"closed","state":"unlocked","battery":"GOOD"}
     //logInfo("eq3", "item: {}, value: {}", triggeringItem.name, triggeringItem.state)
     if (triggeringItem.state !== NULL){

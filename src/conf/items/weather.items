@@ -1,0 +1,10 @@
+Number    WeatherTomorrowMinTemp             "Tomorrow Min Temp [%.1f \u00b0C]"    <temperature>    (gWeather)    {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:TomorrowMinTemp"}
+Number    WeatherTomorrowMaxTemp             "Tomorrow Max Temp [%.1f \u00b0C]"    <temperature>    (gWeather)    {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:TomorrowMaxTemp"}
+
+Number    WeatherTodayMinTemp                "Today Min Temp [%.1f \u00b0C]"       <temperature>    (gWeather)    {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:TodayMinTemp"}
+Number    WeatherTodayMaxTemp                "Today Max Temp [%.1f \u00b0C]"       <temperature>    (gWeather)    {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:TodayMaxTemp"}
+
+String    WeatherNextPossiblePrecipDate      "Next possible precip [%s]"           <humidity>       (gWeather)    {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:NextPossiblePrecipDate"}
+String    WeatherNextPossiblePrecipVolume    "Next possible precip vol [%s]"       <humidity>       (gWeather)    {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:NextPossiblePrecipVolume"}
+String    WeatherNextPrecipDate              "Next precip [%s]"                    <humidity>       (gWeather)    {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:NextPrecipDate"}
+String    WeatherNextPrecipVolume            "Next precip vol [%s]"                <humidity>       (gWeather)    {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:NextPrecipVolume"}

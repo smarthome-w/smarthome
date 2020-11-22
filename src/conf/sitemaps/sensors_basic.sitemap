@@ -2,6 +2,12 @@ sitemap sensors_basic label="Status" {
     Frame label="Weather" icon="firstfloor" {
         Text item=GF_FamilyRoom_Outdoor_Temperature_Sensor
         Text item=FF_AnnRoom_Outdoor_Temperature_Sensor
+        Text item=WeatherTodayMinTemp
+        Text item=WeatherTodayMaxTemp
+        Text item=WeatherNextPrecipDate
+        Text item=WeatherNextPrecipVolume
+        Text item=WeatherNextPossiblePrecipDate
+        Text item=WeatherNextPossiblePrecipVolume
         Text item=GF_FamilyRoom_Analog_Sensor
         Text item=FF_Bedroom_Analog_Sensor
         Text item=FF_AliceRoom_Analog_Sensor
@@ -34,11 +40,11 @@ sitemap sensors_basic label="Status" {
     }
 
     Frame label="Heaters" icon="firstfloor" {
-      Text item=EQ3_Bedroom_Status  
-      Text item=EQ3_FamilyRoom_Status  
-      Text item=EQ3_AnnRoom_Status  
-      Text item=EQ3_AliceRoom_Status  
-      Text item=EQ3_Kitchen_Status  
+      Text item=EQ3_Bedroom_Status
+      Text item=EQ3_FamilyRoom_Status
+      Text item=EQ3_AnnRoom_Status
+      Text item=EQ3_AliceRoom_Status
+      Text item=EQ3_Kitchen_Status
     }
 
     Frame label="Colors" icon="groundfloor" {
@@ -70,5 +76,13 @@ sitemap sensors_basic label="Status" {
       Switch item=GF_FamilyRoom_Rollershutter_AutoDown mappings=[ON="Down"]
       Switch item=FF_Bedroom_Rollershutter_AutoUp mappings=[ON="Up"]
       Switch item=FF_Bedroom_Rollershutter_AutoDown mappings=[ON="Down"]
+      Switch item=HH_PowermeterPlug01
+      Switch item=HH_PowermeterPlug02
+      Switch item=GH_BathroomInfo mappings=[ON="Set"]
+    }
+	Frame label="" {
+		Switch       item=WiFiLED4_power
+		Colorpicker  item=WiFiLED4_color
+		Slider       item=WiFiLED4_dimmer
     }
 }

@@ -1,4 +1,9 @@
 sitemap test label="Test" {
+
+    Frame label="" {
+        Setpoint item=myClock label="Clock [JS(numberToClock.js):%s]" minValue=0 maxValue=1425 step=1
+    }
+
     Frame label="Test" icon="firstfloor" {
         Switch item=TestSonoff
         Text item=TestSonoffHeartbeat

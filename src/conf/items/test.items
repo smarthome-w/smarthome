@@ -10,3 +10,5 @@ Contact	Multisensor01Move			"Multisensor01 Move"						<light>	(gTasmota, gPersis
 Contact	Multisensor01Cir			"Multisensor01 Cir"							<light>	(gTasmota, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Multisensor01:Cir"}
 Switch	Minitiger01					"Minitiger01[]"								<light>	(gTasmota, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Minitiger01:PowerSwitch"}
 String	Minitiger01Heartbeat		"Minitiger01 heartbeat [%s]"				<time>										{channel="mqtt:topic:MyMQTTBroker:Minitiger01:Heartbeat"}
+
+Number myClock

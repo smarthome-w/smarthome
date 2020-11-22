@@ -7,3 +7,4 @@ things/astro.things
 3d/import
 *.presence
 src/conf/things/tracker.things
+network.md

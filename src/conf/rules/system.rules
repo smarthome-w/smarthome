@@ -9,5 +9,4 @@ then
   var result = executeCommandLine (command, 10000)
   if (result == "") {
   }
-  //logInfo("slack", "command: {} with result:\n>>\n{}\n<<\n", command, result)
 end

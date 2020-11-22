@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 
-import paho.mqtt.client as mqtt
-import os
-import logging
-import time
 import codecs
-from ruamel.yaml import YAML
+import logging
+import os
+import time
+
 import broadlink
+import paho.mqtt.client as mqtt
+from ruamel.yaml import YAML
 
 MESSAGE_PREFIX = "broadlink"
 RMPRO_IP = None

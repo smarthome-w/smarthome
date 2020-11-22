@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-from sonybraviaremote import TV, TVConfig
-import sys
 import os
+import sys
+
 from ruamel.yaml import YAML
+from sonybraviaremote import TV, TVConfig
 
 
 def on_auth():

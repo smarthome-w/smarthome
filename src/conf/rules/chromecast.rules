@@ -65,8 +65,12 @@ then
   var ttsMessage = String.format("There is %.1f Celsius outside. Current pressure is %.0f hectopascals.", externalTemp, pressure)
   var lang = "en-gb"
 
-  ttsLanguage.sendCommand(lang)
-  ttsText.sendCommand(ttsMessage)
+  if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (calendar_Vacation.state.toString() == "OFF") {
+      ttsLanguage.sendCommand(lang)
+      ttsText.sendCommand(ttsMessage)
+    }
+  }
   calendar_DailyInfo.postUpdate(OFF)
 end
 
@@ -79,8 +83,12 @@ then
   var ttsMessage = String.format("Current power usage is %.0f watts.", power)
   var lang = "en-gb"
 
-  ttsLanguage.sendCommand(lang)
-  ttsText.sendCommand(ttsMessage)
+  if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (calendar_Vacation.state.toString() == "OFF") {
+      ttsLanguage.sendCommand(lang)
+      ttsText.sendCommand(ttsMessage)
+    }
+  }
 //  calendar_DailyInfo.postUpdate(OFF)
 end
 
@@ -127,6 +135,39 @@ then
 
     if (opened) {
       ttsMessage = ttsMessage + " Opened windows: " + openedWindows
+      ttsLanguage.sendCommand(lang)
+      ttsText.sendCommand(ttsMessage)
+    }
+  }
+end
+
+rule "bathroom_info"
+when
+  Item GH_BathroomInfo received update
+then
+  var ttsMessage = ""
+  var occupied = new DateTime((FF_Bathroom_Entry_Time.state as DateTimeType).zonedDateTime.toInstant.toEpochMilli)
+  var occupied_millis = (occupied.toDate().getTime())
+  var now_millis = now.millis
+  var occupation_duration = (now_millis - occupied_millis)/1000/60
+
+  if (FF_BathRoom_Light_Up.state.toString() == "ON") {
+    //ttsMessage = String.format("Bathroom is occupied since %d minutes.", occupation_duration)
+    if (occupation_duration < 3) {
+      ttsMessage = "Ktoś siedzi w łazience."
+    } else {
+      ttsMessage = String.format("Ktoś siedzi w łazience od %d minut.", occupation_duration)
+    }
+    FF_Bathroom_Entry_Confirmation.postUpdate(ON)
+  } else {
+    //ttsMessage = String.format("Bathroom is free.")
+    ttsMessage = String.format("Łazienka jest wolna.")
+  }
+  //var lang = "en-gb"
+  var lang = "pl-pl"
+
+  if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (calendar_Vacation.state.toString() == "OFF") {
       ttsLanguage.sendCommand(lang)
       ttsText.sendCommand(ttsMessage)
     }

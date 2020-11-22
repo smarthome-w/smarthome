@@ -34,7 +34,7 @@ endif
 
 	@sudo pip3 install setuptools
 	@sudo pip3 install wheel
-	@sudo pip3 install paho-mqtt ruamel.yaml
+	@sudo pip3 install paho-mqtt ruamel.yaml xmltodict
 ifeq ($(OS_PLATFORM),armhf)
 	@sudo pip3 install py-sony-bravia-remote git+https://github.com/mjg59/python-broadlink.git
 	@sudo pip3 install git+https://github.com/aparraga/braviarc.git
