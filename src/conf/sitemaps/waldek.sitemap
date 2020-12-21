@@ -24,6 +24,16 @@ sitemap waldek label="Waldek" {
     }
 
 	Frame label="" {
+        Switch item=GF_FamilyRoom_LightsRGB
+    }
+
+	Frame label="" {
+		Switch       item=WiFiLEDFamilyRoom_power
+		Colorpicker  item=WiFiLEDFamilyRoom_color
+		Slider       item=WiFiLEDFamilyRoom_dimmer
+    }
+
+	Frame label="" {
 		Switch       item=WiFiLED5_power
 		Colorpicker  item=WiFiLED5_color
 		Slider       item=WiFiLED5_dimmer
@@ -39,6 +49,12 @@ sitemap waldek label="Waldek" {
 		Switch       item=WiFiLED7_power
 		Colorpicker  item=WiFiLED7_color
 		Slider       item=WiFiLED7_dimmer
+    }
+
+	Frame label="" {
+		Switch       item=WiFiLED8_power
+		Colorpicker  item=WiFiLED8_color
+		Slider       item=WiFiLED8_dimmer
     }
 
 	Frame label="" {

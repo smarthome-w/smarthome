@@ -74,12 +74,6 @@ then
             FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
             GF_FamilyRoom_Light_Table.sendCommand(ON)
             GF_FamilyRoom_Light_Sofa.sendCommand(ON)
-
-            //var color = "GREEN"
-            //if (RGB_Color.state !== NULL) {
-            //  color = RGB_Color.state.toString
-            //}
-            //sendCommand(RGB_Color, color)
         }
         if (triggeringItem.name == "GH_Night_Scene"){
             if (logLevel >= 6) {
