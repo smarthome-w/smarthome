@@ -41,6 +41,13 @@ sitemap sensors label="Sensors" {
         Text item=FF_AnnRoom_Outdoor_Temperature_Sensor
     }
 
+    Frame label="Sensors in garage" icon="firstfloor" {
+        Text item=GA_Garage_Indoor_Temperature_Sensor
+        Text item=GA_Garage_Indoor_Humidity_Sensor
+        Text item=GA_Garage_Pressure_Sensor
+        Text item=GA_Garage_Analog_Sensor
+    }
+
     Frame label="Astro" icon="firstfloor" {
         Text item=Astro_Sunrise_Time
         Text item=Astro_Sunset_Time

@@ -5,7 +5,7 @@ then
   try {
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
         logError("scene", "scene: {}", triggeringItem.name)
-        var int logLevel = 6
+        var int logLevel = 1
         if (HH_DebugLevel_Scene.state !== NULL) {
           logLevel = (HH_DebugLevel_Scene.state as Number).intValue
         }
@@ -72,14 +72,9 @@ then
             }
             logError("scene_rule", "Rollershutter - autodown")
             FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
-            GF_FamilyRoom_Light_Table.sendCommand(ON)
-            GF_FamilyRoom_Light_Sofa.sendCommand(ON)
-
-            //var color = "GREEN"
-            //if (RGB_Color.state !== NULL) {
-            //  color = RGB_Color.state.toString
-            //}
-            //sendCommand(RGB_Color, color)
+            //GF_FamilyRoom_Light_Table.sendCommand(ON)
+            //GF_FamilyRoom_Light_Sofa.sendCommand(ON)
+            GH_TVShow_Scene.sendCommand(ON)
         }
         if (triggeringItem.name == "GH_Night_Scene"){
             if (logLevel >= 6) {
@@ -88,7 +83,7 @@ then
 //            GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
 //            FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
             RTV_TV_TV.sendCommand(OFF)
-//            FF_Bedroom_Lights.sendCommand(ON)
+            FF_Bedroom_Lights.sendCommand(ON)
             GF_Lights_Scenario.sendCommand(OFF)
         }
 
@@ -98,9 +93,14 @@ then
               logError("scene_rule", "FF_Bedroom_Lights to OFF")
             }
             FF_Bedroom_Lights.sendCommand(OFF)
-            if (logLevel >= 6) {
-              logError("scene_rule", "FF_Bedroom_Rollershutter_Dimmer to {}", bedroomBlindLevel)
-            }
+            RTV_TV_TV.sendCommand(OFF)
+            GF_Lights_Scenario.sendCommand(OFF)
+            GF_Corridor_Scenario.sendCommand(OFF)
+            GF_Restroom_Scenario.sendCommand(OFF)
+
+            //if (logLevel >= 6) {
+            //  logError("scene_rule", "FF_Bedroom_Rollershutter_Dimmer to {}", bedroomBlindLevel)
+            //}
             //FF_Bedroom_Rollershutter_Dimmer.sendCommand(bedroomBlindLevel.intValue)
             //GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
         }

@@ -4,7 +4,7 @@ when
 then
   var ddd = ""
   try {
-    var int logLevel = 6
+    var int logLevel = 1
     ddd += "a"
     if (HH_DebugLevel_PIRCIR.state !== NULL) {
         logLevel = (HH_DebugLevel_PIRCIR.state as Number).intValue
@@ -22,7 +22,7 @@ then
     }
     ddd += "e"
     if (lastupdate_item !== null) {
-        lastupdate_item.postUpdate(now.toString())
+        lastupdate_item.postUpdate(new DateTimeType())
         if (logLevel >= 6) {
           logError("cir", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
         }

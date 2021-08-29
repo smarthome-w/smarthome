@@ -30,6 +30,7 @@ struct stepper {
   int manualDownPin;
   int upLimitPin;
   int downLimitPin;
+  int solenoidPin;
   String messageTopic;
   String messageValue;
   int currentStepper;
@@ -58,8 +59,8 @@ void initializeStepperMotor() {
 
   // name, stepperPin, dirPin, enablePin, manualUpPin, manualDownPin,
   // upLimitPin, downLimitPin, messageTopic, messageValue, currentStepper
-  steppers[iix] = {"window", pinD3, pinD4,           pinD2, pinD6, pinD7,
-                   pinD1,    pinD5, "stepperWindow", "",    0};
+  steppers[iix] = {"window", pinD3, pinD4, pinD2,           pinD6, pinD7,
+                   pinD1,    pinD5, pinD8, "stepperWindow", "",    0};
   iix++;
 
   for (iix = 0; iix < STEPPERS; iix = iix + 1) {
@@ -70,12 +71,15 @@ void initializeStepperMotor() {
     pinMode(steppers[iix].manualDownPin, INPUT_PULLUP);
     pinMode(steppers[iix].upLimitPin, INPUT_PULLUP);
     pinMode(steppers[iix].downLimitPin, INPUT_PULLUP);
+    pinMode(steppers[iix].solenoidPin, OUTPUT);
     Serial.println("Stepper (stepper) " + steppers[iix].name + " pin " +
                    steppers[iix].stepperPin + " set to OUTPUT");
     Serial.println("Stepper (dir) " + steppers[iix].name + " pin " +
                    steppers[iix].dirPin + " set to OUTPUT");
     Serial.println("Stepper (enable) " + steppers[iix].name + " pin " +
                    steppers[iix].enablePin + " set to OUTPUT");
+    Serial.println("Stepper (solenoid) " + steppers[iix].name + " pin " +
+                   steppers[iix].solenoidPin + " set to OUTPUT");
     Serial.println(
         "Stepper " + steppers[iix].name + " pins " + steppers[iix].manualUpPin +
         ", " + steppers[iix].manualDownPin + ", " + steppers[iix].upLimitPin +
@@ -90,7 +94,9 @@ void processStepperMotor() {
 
   for (iix = 0; iix < STEPPERS; iix = iix + 1) {
     int manualUpValue = digitalRead(steppers[iix].manualUpPin);
-    int manualDownValue = digitalRead(steppers[iix].manualDownPin);
+    //    int manualDownValue = digitalRead(steppers[iix].manualDownPin);
+    //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    int manualDownValue = HIGH;
     int upLimitValue = digitalRead(steppers[iix].upLimitPin);
     int downLimitValue = digitalRead(steppers[iix].downLimitPin);
     // String messageValue = steppers[iix].messageValue;
@@ -124,6 +130,17 @@ void processStepperMotor() {
     boolean isDown =
         (manualDownValue == LOW || messageValue == EFFECTIVE_DOWN ||
          messageValue == EFFECTIVE_AUTO_DOWN);
+
+    //    Serial.print("isPercent:");
+    //    Serial.print(isPercent);
+    //    Serial.print(", isAuto:");
+    //    Serial.print(isAuto);
+    //    Serial.print(", isManual:");
+    //    Serial.print(isManual);
+    //    Serial.print(", isUp:");
+    //    Serial.print(isUp);
+    //    Serial.print(", isDown:");
+    //    Serial.println(isDown);
 
     float oldPosition = STEPPER_CURR_POS;
 
@@ -256,8 +273,10 @@ void processStepperMotor() {
       Serial.println("Cancel auto message - not calibrated");
     }
 
+    //    if (false) {
     if (currentStepper != 0) {
-      digitalWrite(steppers[iix].enablePin, LOW); // enable driver
+      digitalWrite(steppers[iix].solenoidPin, HIGH); // enable solenoid
+      digitalWrite(steppers[iix].enablePin, LOW);    // enable driver
       if (sign(currentDirection) > 0) {
         digitalWrite(steppers[iix].dirPin, LOW);
       } else {
@@ -270,9 +289,9 @@ void processStepperMotor() {
       delayMicroseconds(1500);
       STEPPER_CURR_POS += currentDirection;
       STEP_CURR_POS += sign(currentDirection);
-      //      Serial.println("step");
     } else {
-      digitalWrite(steppers[iix].enablePin, HIGH); // disable driver
+      digitalWrite(steppers[iix].enablePin, HIGH);  // disable driver
+      digitalWrite(steppers[iix].solenoidPin, LOW); // disable solenoid
     }
 
     boolean currMoveInProgress = ((oldPosition - STEPPER_CURR_POS) != 0);

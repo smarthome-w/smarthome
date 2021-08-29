@@ -9,7 +9,7 @@ when
     Member of gIRB received update
 then
   try {
-    var int logLevel = 6
+    var int logLevel = 1
     if (HH_DebugLevel_Broadlink.state !== NULL) {
       logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
     }
@@ -28,7 +28,7 @@ then
     var lastupdate_item = gLastUpdateBroadlink.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
 
     if (lastupdate_item !== null) {
-      lastupdate_item.postUpdate(now.toString())
+      lastupdate_item.postUpdate(new DateTimeType())
       if (logLevel >= 6) {
         logError("irb", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
       }
@@ -45,7 +45,7 @@ when
     Member of gTC2 received update
 then
   try {
-    var int logLevel = 6
+    var int logLevel = 1
     if (HH_DebugLevel_Broadlink.state !== NULL) {
       logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
     }
@@ -54,7 +54,7 @@ then
     }
     var lastupdate_item = gLastUpdateBroadlink.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
-      lastupdate_item.postUpdate(now.toString())
+      lastupdate_item.postUpdate(new DateTimeType())
       if (logLevel >= 6) {
         logError("sp2", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
       }
@@ -71,7 +71,7 @@ when
     Member of gIRRGB received update
 then
   try {
-    var int logLevel = 6
+    var int logLevel = 1
     if (HH_DebugLevel_Broadlink.state !== NULL) {
       logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
     }
@@ -99,7 +99,7 @@ when
     Member of gShelly received update
 then
   try {
-    var int logLevel = 6
+    var int logLevel = 1
     if (HH_DebugLevel_Broadlink.state !== NULL) {
       logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
     }
@@ -108,7 +108,7 @@ then
     }
     var lastupdate_item = gLastUpdateShelly.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
-      lastupdate_item.postUpdate(now.toString())
+      lastupdate_item.postUpdate(new DateTimeType())
       if (logLevel >= 6) {
         logError("shelly", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
       }
@@ -118,13 +118,13 @@ then
   } finally {
   }
 end
-  
+
 rule "sonoff_rule"
 when
     Member of gSonoff received update
 then
   try {
-    var int logLevel = 6
+    var int logLevel = 1
     if (HH_DebugLevel_Broadlink.state !== NULL) {
       logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
     }
@@ -133,7 +133,7 @@ then
     }
     var lastupdate_item = gLastUpdateSonoff.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
-      lastupdate_item.postUpdate(now.toString())
+      lastupdate_item.postUpdate(new DateTimeType())
       if (logLevel >= 6) {
         logError("sonoff", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
       }
