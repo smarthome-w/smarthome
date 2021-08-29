@@ -36,7 +36,10 @@ class Forecast:
             self._config_data = yaml.load(text_file)
             url = self._config_data["link"]
 
-        r = requests.get(url, allow_redirects=True)
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+        r = requests.get(url, headers=headers, allow_redirects=True)
+
         self._weather_dict = xmltodict.parse(
             r.content, process_namespaces=True)
 

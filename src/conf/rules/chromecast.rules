@@ -1,13 +1,13 @@
 rule "say_main_lock_unlocked_rule"
 when
-  Time cron "0 */5 20-23 ? * MON-SUN"
+  Time cron "0 */5 20-23 ? * *"
 then
   var warningHour = 22
   if (HH_LockWarningHour.state !== NULL) {
     warningHour = (HH_LockWarningHour.state as Number).intValue
   }
   val hourOfDay = now.getHourOfDay as Number
-    
+
   if (CIR_GF_MainLock.state.toString() == "OPEN" && hourOfDay >= warningHour) {
     // For local only http because of untrusted certificate
     val mainLockUnlockedURI = "http://192.168.0.4/static/sounds/main_lock_is_unlocked.mp3"
@@ -62,7 +62,7 @@ then
   var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
   var pressure = (GF_FamilyRoom_Pressure_Sensor.state as Number).floatValue
 //  logError("Chromecast", "number {}", externalTemp)
-  var ttsMessage = String.format("There is %.1f Celsius outside. Current pressure is %.0f hectopascals.", externalTemp, pressure)
+  var ttsMessage = String.format("There is %.1f Celsius outside.", externalTemp)
   var lang = "en-gb"
 
   if (GF_Presence_Mode.state.toString() == "PRESENT") {
@@ -94,7 +94,7 @@ end
 
 rule "open-window-temperature-warning"
 when
-  Time cron "0 */10 6-23 ? * MON-SUN" 
+  Time cron "0 */10 6-23 ? * *"
 then
   var warningTemperature = 10
   if (HH_OpenWindowTemperatureAlert.state !== NULL) {
@@ -161,15 +161,28 @@ then
     FF_Bathroom_Entry_Confirmation.postUpdate(ON)
   } else {
     //ttsMessage = String.format("Bathroom is free.")
-    ttsMessage = String.format("Łazienka jest wolna.")
+
+    logError("Chromecast", "FF_Bathroom_Occupation_Minutes - {}", FF_Bathroom_Occupation_Minutes)
+    var int occupation_minutes = 0
+    if (FF_Bathroom_Occupation_Minutes.state !== NULL) {
+      occupation_minutes = Integer.parseInt(FF_Bathroom_Occupation_Minutes.state.toString())
+    }
+    FF_Bathroom_Occupation_Minutes.postUpdate(0)
+    if (occupation_minutes > 0) {
+      ttsMessage = String.format("Łazienka jest już wolna. Czas %d minut", occupation_minutes)
+    } else {
+      ttsMessage = String.format("Łazienka jest wolna.")
+    }
   }
   //var lang = "en-gb"
   var lang = "pl-pl"
 
   if (GF_Presence_Mode.state.toString() == "PRESENT") {
-    if (calendar_Vacation.state.toString() == "OFF") {
+//    if (calendar_Vacation.state.toString() == "OFF") {
       ttsLanguage.sendCommand(lang)
       ttsText.sendCommand(ttsMessage)
-    }
+//    }
   }
 end
+
+

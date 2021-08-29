@@ -19,6 +19,7 @@ sitemap probes label="Probes" {
         Switch item=CIR_FF_Bedroom mappings=[CLOSED="Closed", OPEN="Open"]
         Switch item=CIR_FF_AliceRoom mappings=[CLOSED="Closed", OPEN="Open"]
         Switch item=CIR_FF_AnnRoom mappings=[CLOSED="Closed", OPEN="Open"]
+        Switch item=CIR_GA_Garage mappings=[CLOSED="Closed", OPEN="Open"]
     }
 
     Frame label="PIR" icon="groundfloor" {
@@ -42,5 +43,7 @@ sitemap probes label="Probes" {
         Switch item=PIR_GF_Kitchen_State icon="colorwheel" mappings=[OFF="No move", ON="Move"]
         Switch item=PIR_FF_Bedroom icon="alarm" mappings=[CLOSED="Probe off", OPEN="Probe on"]
         Switch item=PIR_FF_Bedroom_State icon="colorwheel" mappings=[OFF="No move", ON="Move"]
+        Switch item=PIR_GA_Garage icon="alarm" mappings=[CLOSED="Probe off", OPEN="Probe on"]
+        Switch item=PIR_GA_Garage_State icon="colorwheel" mappings=[OFF="No move", ON="Move"]
     }
 }

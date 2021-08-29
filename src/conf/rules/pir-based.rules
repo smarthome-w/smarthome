@@ -4,7 +4,7 @@ when
   Item PIR_Corridor_Storage_State received update
 then
   try {
-    var int logLevel = 6
+    var int logLevel = 1
     if (HH_DebugLevel_PIRCIR.state !== NULL) {
         logLevel = (HH_DebugLevel_PIRCIR.state as Number).intValue
     }

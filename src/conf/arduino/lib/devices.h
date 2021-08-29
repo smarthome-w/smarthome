@@ -39,7 +39,7 @@
 //#define TechnicalRoom1
 //#define TechnicalRoom2
 //#define FamilyRoomRollershutter
-//#define BedroomRollershutter
+#define BedroomRollershutter
 //#define KitchenLED
 
 //#define Kitchen // migrated to tasmota
@@ -52,7 +52,7 @@
 // tasmota #define FamilyRoom
 //#define TestRoom
 //#define TestRelay
-//#define TestStepper
+// define TestStepper
 
 #ifdef KitchenLED
 #define fName "GF_Kitchen_LED_Relay"
@@ -285,8 +285,8 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define LOOP_DELAY_VALUE 0
 #define SERVO_UP 2500
 #define SERVO_DOWN 500
-#define CURRENT_DIRECTION_UP (-100.0 / 2278.0)  // 1862 + 376 + 20 + 20
-#define CURRENT_DIRECTION_DOWN (100.0 / 2111.0) // 1862 + 249
+#define CURRENT_DIRECTION_UP (-100.0 / 2378.0)  // 1862 + 376 + 20 + 20
+#define CURRENT_DIRECTION_DOWN (100.0 / 2060.0) // 1862 + 249
 #define fRollershutter
 #define fMQTTInput
 #define fMQTTOutput
@@ -305,7 +305,7 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define SERVO_UP 500
 #define SERVO_DOWN 2500
 #define CURRENT_DIRECTION_UP (-100.0 / 3322.0)  // 3202 + 120
-#define CURRENT_DIRECTION_DOWN (100.0 / 1779.0) // 1829 - 50
+#define CURRENT_DIRECTION_DOWN (100.0 / 1729.0) // 1829 - 50
 #define fRollershutter
 #define fMQTTInput
 #define fMQTTOutput
@@ -324,8 +324,8 @@ const String GLOBAL_MQTT_MULTISENSOR_NAME = fName;
 #define LOOP_DELAY_VALUE 0
 #define STEPPER_UP 2500
 #define STEPPER_DOWN 500
-#define CURRENT_DIRECTION_UP (-100.0 / 2000.0)
-#define CURRENT_DIRECTION_DOWN (100.0 / 2000.0)
+#define CURRENT_DIRECTION_UP (-100.0 / 6000.0)
+#define CURRENT_DIRECTION_DOWN (100.0 / 6000.0)
 #define fStepperMotor
 #define fMQTTInput
 #define fMQTTOutput

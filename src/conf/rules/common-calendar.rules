@@ -1,9 +1,9 @@
 rule "calendar_rule"
 when
-  Time cron "0 */5 * ? * MON-SUN"
+  Time cron "0 */5 * ? * *"
 then
   try {
-    var int logLevel = 6
+    var int logLevel = 1
     if (HH_DebugLevel_General.state !== NULL) {
       logLevel = (HH_DebugLevel_General.state as Number).intValue
     }

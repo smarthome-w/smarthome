@@ -21,3 +21,12 @@ module box (width, depth, height, thickness) {
         }
     }
 }
+
+module rounded_cube(x, y, h, r) {
+    hull() {
+        translate([r, r, 0]) cylinder(h, r, $fn=100);
+        translate([x - r, y - r, 0]) cylinder(h, r, $fn=100);
+        translate([r, y - r, 0]) cylinder(h, r, $fn=100);
+        translate([x -r, r, 0]) cylinder(h, r, $fn=100);
+    }
+}

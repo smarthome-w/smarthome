@@ -3,7 +3,7 @@ when
     Member of gRollershutter changed
 then
   try {
-    var int logLevel = 6
+    var int logLevel = 1
     if (HH_DebugLevel_Rollershutter.state !== NULL) {
       logLevel = (HH_DebugLevel_Scene.state as Number).intValue
     }
@@ -13,7 +13,7 @@ then
 
     //logInfo("rollershutter", "lastupdate_item {}", lastupdate_item)
     if (lastupdate_item !== null) {
-      lastupdate_item.postUpdate(now.toString())
+      lastupdate_item.postUpdate(new DateTimeType())
       //logInfo("rollershutter", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
     }
     if (logLevel >= 6) {}
@@ -28,7 +28,7 @@ when
     Item calendar_Dusk changed
 then
   try {
-    var int logLevel = 6
+    var int logLevel = 1
     if (HH_DebugLevel_Rollershutter.state !== NULL) {
       logLevel = (HH_DebugLevel_Scene.state as Number).intValue
     }
@@ -50,7 +50,7 @@ when
     Item calendar_WakeUp changed
 then
   try {
-    var int logLevel = 6
+    var int logLevel = 1
     if (HH_DebugLevel_Rollershutter.state !== NULL) {
       logLevel = (HH_DebugLevel_Scene.state as Number).intValue
     }
@@ -73,7 +73,7 @@ when
   Item calendar_DailyInfo changed to ON
 then
   try {
-    var int logLevel = 6
+    var int logLevel = 1
     if (HH_DebugLevel_Rollershutter.state !== NULL) {
       logLevel = (HH_DebugLevel_Scene.state as Number).intValue
     }
@@ -94,16 +94,16 @@ end
 
 rule "rollershutter_health_rule"
 when
-  Time cron "0 */3 * ? * MON-SUN"
+  Time cron "0 */3 * ? * *"
 then
   if (GF_FamilyRoom_Rollershutter_MinLimit.state !== NULL) {
     if ((GF_FamilyRoom_Rollershutter_MinLimit.state as Number).intValue != -1) {
-      GF_FamilyRoomRollershutter_Health_LastUpdate.postUpdate(now.toString())
+      GF_FamilyRoomRollershutter_Health_LastUpdate.postUpdate(new DateTimeType())
     }
   }
   if (FF_Bedroom_Rollershutter_MinLimit.state !== NULL) {
     if ((FF_Bedroom_Rollershutter_MinLimit.state as Number).intValue != -1) {
-      FF_BedroomRollershutter_Health_LastUpdate.postUpdate(now.toString())
+      FF_BedroomRollershutter_Health_LastUpdate.postUpdate(new DateTimeType())
     }
   }
 end

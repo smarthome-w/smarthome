@@ -1,7 +1,7 @@
 rule "lock_status"
 when
     Item CIR_GF_MainLock received update or
-    Time cron "0 */5 * ? * MON-SUN"
+    Time cron "0 */5 * ? * *"
 then
 //  logInfo ("lock", "Main lock state, before: {}", CIR_GF_MainLock.state.toString())
   if (CIR_GF_MainLock.state.toString() == "OPEN") {

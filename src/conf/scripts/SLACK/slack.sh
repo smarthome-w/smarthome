@@ -5,8 +5,20 @@ source "${MY_PATH}/slack.sensitive"
 
 CHANNEL="#home"
 
-if [[ "$@" == *"interrobang"* ]]; then
-  CHANNEL="#alert"
+if [[ "$@" == *":interrobang:"* ]]; then
+  CHANNEL="#alerton"
+fi
+
+if [[ "$@" == *":ok:"* ]]; then
+  CHANNEL="#alertoff"
+fi
+
+if [[ "$@" == *":car:"* ]]; then
+  CHANNEL="#garage"
+fi
+
+if [[ "$@" == *":articulated_lorry:"* ]]; then
+  CHANNEL="#garage"
 fi
 
 ENCODED_PART=""

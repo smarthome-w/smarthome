@@ -5,6 +5,12 @@ sitemap system label="System" {
         Switch item=DebugButton mappings=[ON="Debug"]
     }
 
+	Frame label="" {
+        Switch item=HH_AliceAtSchool
+        Switch item=HH_AnnAtSchool
+        Switch item=HH_WaldekAtWork
+    }
+
 //    Frame label="Hard reset" icon="groundfloor" {
 //      Switch item=HardResetButton
 //    }

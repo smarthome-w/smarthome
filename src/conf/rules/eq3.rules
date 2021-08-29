@@ -75,7 +75,7 @@ then
                 batteryItem = EQ3_AliceRoom_Battery
                 thermometerItem = FF_AliceRoom_Indoor_Temperature_Sensor
             }
-            
+
             if (deviceId == "00:1A:22:0C:85:FA") {
                 temperatureItem = EQ3_FamilyRoom_Temp
                 valveItem =  EQ3_FamilyRoom_Valve
@@ -98,7 +98,7 @@ then
 
             if (temperatureItem !== NULL) {
                 temperatureItem.postUpdate(temp)
-                lastUpdateItem.postUpdate(now.toString())
+                lastUpdateItem.postUpdate(new DateTimeType())
                 var String nowStr = now.toString("HH:mm")
                 statusItem.postUpdate(nowStr + " - " + temp.toString() + " C - " + thermometerItem.state.toString() + " C - " + valve.toString() + "%")
             }
@@ -129,7 +129,7 @@ when
     Item EQ3_Debug received update
 then
     logInfo("eq3", "debug eq3")
-    
+
 //    publish("broker", "product/device", "panic")
 
     var command = "/openhab/conf/scripts/EQ3/eq3.sh"
