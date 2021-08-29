@@ -29,3 +29,6 @@ for IP in $IP_ADDRS; do
         echo
     fi
 done
+
+#Backlog IPAddress1 192.168.0.48; IPAddress2 192.168.0.1; IPAddress3 255.255.255.0; IPAddress4 192.168.0.4; restart 1
+#Backlog IPAddress1 192.168.1.48; IPAddress2 192.168.1.1; IPAddress3 255.255.255.0; IPAddress4 192.168.0.4; restart 1

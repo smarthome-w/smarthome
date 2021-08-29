@@ -1,0 +1,26 @@
+sitemap garage label="Garage" {
+    Frame label="Doors" icon="groundfloor" {
+        Switch item=CIR_GA_Garage mappings=[CLOSED="Closed", OPEN="Open"]
+    }
+
+    Frame label="PIR" icon="groundfloor" {
+        Switch item=PIR_GA_Garage icon="alarm" mappings=[CLOSED="Probe off", OPEN="Probe on"]
+        Switch item=PIR_GA_Garage_State icon="colorwheel" mappings=[OFF="No move", ON="Move"]
+    }
+
+    Frame label="Sensors in garage" icon="firstfloor" {
+        Text item=GA_Garage_Indoor_Temperature_Sensor
+        Text item=GA_Garage_Indoor_Humidity_Sensor
+        Text item=GA_Garage_Pressure_Sensor
+        Text item=GA_Garage_Analog_Sensor
+    }
+
+    Frame label="Health" icon="groundfloor" {
+        Text item=GA_Garage_Heartbeat_LastUpdate
+        Switch item=GA_Garage_Heartbeat_LastUpdate_Error
+    }
+
+    Frame label="Brightness (daily)" icon="firstfloor" {
+        Chart item=GA_Garage_Analog_Sensor period=D label="Brightness"
+    }
+}

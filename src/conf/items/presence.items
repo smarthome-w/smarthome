@@ -1,4 +1,6 @@
-Contact	Presence_Waldek	"Presence Waldek []"	<lock>	(gPresence, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Presence_Sensor:PresenceWaldek"}
-Contact	Presence_Aldona	"Presence Aldona []"	<lock>	(gPresence, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Presence_Sensor:PresenceAldona"}
-Contact	Presence_Alice	"Presence Alice []"		<lock>	(gPresence, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Presence_Sensor:PresenceAlice"}
-Contact	Presence_Ann	"Presence Ann []"		<lock>	(gPresence, gPersistenceSwitch)		{channel="mqtt:topic:MyMQTTBroker:Presence_Sensor:PresenceAnn"}
+Group      gPresence          "Presence subsystem"    <time>    (gCore)                            ["NetworkAppliance"]
+
+Contact    Presence_Waldek    "Presence Waldek []"    <lock>    (gPresence, gPersistenceSwitch)    ["Presence"]            {channel="mqtt:topic:MyMQTTBroker:Presence_Sensor:PresenceWaldek"}
+Contact    Presence_Aldona    "Presence Aldona []"    <lock>    (gPresence, gPersistenceSwitch)    ["Presence"]            {channel="mqtt:topic:MyMQTTBroker:Presence_Sensor:PresenceAldona"}
+Contact    Presence_Alice     "Presence Alice []"     <lock>    (gPresence, gPersistenceSwitch)    ["Presence"]            {channel="mqtt:topic:MyMQTTBroker:Presence_Sensor:PresenceAlice"}
+Contact    Presence_Ann       "Presence Ann []"       <lock>    (gPresence, gPersistenceSwitch)    ["Presence"]            {channel="mqtt:topic:MyMQTTBroker:Presence_Sensor:PresenceAnn"}

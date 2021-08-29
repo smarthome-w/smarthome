@@ -1,6 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //                       Parameters
 ////////////////////////////////////////////////////////////////////////////////
+Group     gParameters                      "System parameters"                        <time>        (gCore)                                                 ["NetworkAppliance"]
+
 Number    HH_Humidity_Min                  "Humidity min [%.1f%%]"                    <humidity>    (gSensorHumidity, gPersistenceSensor)
 Number    HH_Humidity_Max                  "Humidity max [%.1f%%]"                    <humidity>    (gSensorHumidity, gPersistenceSensor)
 Number    HH_Light_Dusk_Level              "Light dusk level [%.0f]"                  <time>        (gSensorBrightness, gParameters, gPersistenceSwitch)

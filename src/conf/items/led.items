@@ -1,27 +1,39 @@
-Switch    WiFiLED1_power     "wifiled01 power"              (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED1:PowerSwitch"}
-Color     WiFiLED1_color     "wifiled01 color"              (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED1:Color_"}
-Dimmer    WiFiLED1_dimmer    "wifiled01 dimmer"             (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED1:Dimmer_"}
+Group     gWiFILED1                   "Bedroom led"                  (gBedroom)                                  ["LightStripe"]
+Switch    WiFiLED1_power              "Bedroom led power"            (gWiFILED1, gPersistenceSwitch)             ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED1:PowerSwitch"}
+Color     WiFiLED1_color              "Bedroom led color"            (gWiFILED1, gPersistenceSwitch)             ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED1:Color_"}
+Dimmer    WiFiLED1_dimmer             "Bedroom led dimmer"           (gWiFILED1, gPersistenceSwitch)             ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED1:Dimmer_"}
 
-Switch    WiFiLED2_power     "Alice led power"              (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED2:PowerSwitch"}
-Color     WiFiLED2_color     "Alice led color"              (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED2:Color_"}
-Dimmer    WiFiLED2_dimmer    "Alice led dimmer"             (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED2:Dimmer_"}
+Group     gWiFILED2                   "Alice led"                    (gAliceRoom)                                ["LightStripe"]
+Switch    WiFiLED2_power              "Alice led power"              (gWiFILED2, gPersistenceSwitch)             ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED2:PowerSwitch"}
+Color     WiFiLED2_color              "Alice led color"              (gWiFILED2, gPersistenceSwitch)             ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED2:Color_"}
+Dimmer    WiFiLED2_dimmer             "Alice led dimmer"             (gWiFILED2, gPersistenceSwitch)             ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED2:Dimmer_"}
 
-Switch    WiFiLED3_power     "Ann led power"                (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED3:PowerSwitch"}
-Color     WiFiLED3_color     "Ann led color"                (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED3:Color_"}
-Dimmer    WiFiLED3_dimmer    "Ann led dimmer"               (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED3:Dimmer_"}
+Group     gWiFILED3                   "Ann led"                      (gAnnRoom)                                  ["LightStripe"]
+Switch    WiFiLED3_power              "Ann led power"                (gWiFILED3, gPersistenceSwitch)             ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED3:PowerSwitch"}
+Color     WiFiLED3_color              "Ann led color"                (gWiFILED3, gPersistenceSwitch)             ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED3:Color_"}
+Dimmer    WiFiLED3_dimmer             "Ann led dimmer"               (gWiFILED3, gPersistenceSwitch)             ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED3:Dimmer_"}
 
-Switch    WiFiLED4_power     "Desk led power"               (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED4:PowerSwitch"}
-Color     WiFiLED4_color     "Desk led color"               (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED4:Color_", ga="Light"}
-Dimmer    WiFiLED4_dimmer    "Desk led dimmer"              (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED4:Dimmer_"}
+Group     gWiFILED4                   "Desk led"                     (gOffice)                                   ["LightStripe"]
+Switch    WiFiLED4_power              "Desk led power"               (gWiFILED4, gPersistenceSwitch)             ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED4:PowerSwitch"}
+Color     WiFiLED4_color              "Desk led color"               (gWiFILED4, gPersistenceSwitch)             ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED4:Color_"}
+Dimmer    WiFiLED4_dimmer             "Desk led dimmer"              (gWiFILED4, gPersistenceSwitch)             ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED4:Dimmer_"}
 
-Switch    WiFiLED5_power     "Family room sofa power"       (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED5:PowerSwitch"}
-Color     WiFiLED5_color     "Family room sofa color"       (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Color_"}
-Dimmer    WiFiLED5_dimmer    "Family room sofa dimmer"      (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Dimmer_"}
+Group     gWiFILED5                   "Family room sofa led"         (gFamilyRoom)                               ["LightStripe"]
+Switch    WiFiLED5_power              "Family room sofa power"       (gWiFILED5, gPersistenceSwitch)             ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED5:PowerSwitch"}
+Color     WiFiLED5_color              "Family room sofa color"       (gWiFILED5, gPersistenceSwitch)             ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Color_"}
+Dimmer    WiFiLED5_dimmer             "Family room sofa dimmer"      (gWiFILED5, gPersistenceSwitch)             ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Dimmer_"}
 
-Switch    WiFiLED6_power     "Family room window power"     (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED6:PowerSwitch"}
-Color     WiFiLED6_color     "Family room window color"     (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED6:Color_"}
-Dimmer    WiFiLED6_dimmer    "Family room window dimmer"    (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED6:Dimmer_"}
+Group     gWiFILED6                   "Family room led"              (gFamilyRoom)                               ["LightStripe"]
+Switch    WiFiLED6_power              "Family room window power"     (gWiFILED6, gPersistenceSwitch)             ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED6:PowerSwitch"}
+Color     WiFiLED6_color              "Family room window color"     (gWiFILED6, gPersistenceSwitch)             ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED6:Color_"}
+Dimmer    WiFiLED6_dimmer             "Family room window dimmer"    (gWiFILED6, gPersistenceSwitch)             ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED6:Dimmer_"}
 
-Switch    WiFiLED7_power     "Family room tv power"         (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED7:PowerSwitch"}
-Color     WiFiLED7_color     "Family room tv color"         (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED7:Color_"}
-Dimmer    WiFiLED7_dimmer    "Family room tv dimmer"        (gPersistenceSwitch)    {channel="mqtt:topic:MyMQTTBroker:WifiLED7:Dimmer_"}
+Group     gWiFILED7                   "Family room tv"               (gFamilyRoom)                               ["LightStripe"]
+Switch    WiFiLED7_power              "Family room tv power"         (gWiFILED7, gPersistenceSwitch)             ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED7:PowerSwitch"}
+Color     WiFiLED7_color              "Family room tv color"         (gWiFILED7, gPersistenceSwitch)             ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED7:Color_"}
+Dimmer    WiFiLED7_dimmer             "Family room tv dimmer"        (gWiFILED7, gPersistenceSwitch)             ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED7:Dimmer_"}
+
+Group     gWiFiLEDFamilyRoom          "Family room all led"          (gFamilyRoom)                               ["LightStripe"]
+Switch    WiFiLEDFamilyRoom_power     "Color lights power"           (gWiFiLEDFamilyRoom, gPersistenceSwitch)    ["Switch"]
+Color     WiFiLEDFamilyRoom_color     "Color lights"                 (gWiFiLEDFamilyRoom, gPersistenceSwitch)    ["ColorTemperature"]    {ga="Light"}
+Dimmer    WiFiLEDFamilyRoom_dimmer    "Color lights dimmer"          (gWiFiLEDFamilyRoom, gPersistenceSwitch)    ["Level"]
