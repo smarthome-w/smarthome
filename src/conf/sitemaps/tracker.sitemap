@@ -1,35 +1,33 @@
 sitemap tracker label="Tracker" {
-    Text item=Tracker_Waldek_AtHome
+    Switch item=Tracker_Waldek_AtHome mappings=[CLOSED="Present", OPEN="Absent"]
     Text item=Tracker_Waldek_LastSeen
     Text item=Tracker_Waldek_BatteryLevel
     Text item=Tracker_Waldek_Accuracy
     Text item=Tracker_Waldek_Location
-    Text item=Tracker_Waldek_HomeDistance
-    Mapview item=Tracker_Waldek_Location height=4
+    Mapview item=Tracker_Waldek_Location_Map height=4
 
-    Text item=Tracker_Aldona_AtHome
+    Switch item=Tracker_Aldona_AtHome mappings=[CLOSED="Present", OPEN="Absent"]
     Text item=Tracker_Aldona_LastSeen
     Text item=Tracker_Aldona_BatteryLevel
     Text item=Tracker_Aldona_Accuracy
     Text item=Tracker_Aldona_Location
-    Text item=Tracker_Aldona_HomeDistance
-    Mapview item=Tracker_Aldona_Location height=4
+    Mapview item=Tracker_Aldona_Location_Map height=4
 
-    Text item=Tracker_Ann_AtHome
+    Switch item=Tracker_Ann_AtHome mappings=[CLOSED="Present", OPEN="Absent"]
+    Switch item=Tracker_Ann_AtSchool mappings=[CLOSED="Present", OPEN="Absent"]
     Text item=Tracker_Ann_LastSeen
     Text item=Tracker_Ann_BatteryLevel
     Text item=Tracker_Ann_Accuracy
     Text item=Tracker_Ann_Location
-    Text item=Tracker_Ann_HomeDistance
-    Mapview item=Tracker_Ann_Location height=4
+    Mapview item=Tracker_Ann_Location_Map height=4
 
-    Text item=Tracker_Alice_AtHome
+    Switch item=Tracker_Alice_AtHome mappings=[CLOSED="Present", OPEN="Absent"]
+    Switch item=Tracker_Alice_AtSchool mappings=[CLOSED="Present", OPEN="Absent"]
     Text item=Tracker_Alice_LastSeen
     Text item=Tracker_Alice_BatteryLevel
     Text item=Tracker_Alice_Accuracy
     Text item=Tracker_Alice_Location
-    Text item=Tracker_Alice_HomeDistance
-    Mapview item=Tracker_Alice_Location height=4
+    Mapview item=Tracker_Alice_Location_Map height=4
 
     Chart item=gTrackerBattery period=3D label="Batteries"
 }

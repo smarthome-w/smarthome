@@ -482,4 +482,46 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type colorHSB : Color_ [stateTopic="tele/wifiled08/STATE", commandTopic="cmnd/wifiled08/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
       Type number   : RSSI  [stateTopic="tele/wifiled08/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
+
+  Thing topic GoogleTrackerWaldek "GoogleTrackerWaldek" {
+    Channels:
+      Type string : LastLocation [stateTopic="location/Waldek", transformationPattern="REGEX:(.*location.*)∩JSONPATH:$.location"]
+      Type string : Address [stateTopic="location/Waldek", transformationPattern="REGEX:(.*address.*)∩JSONPATH:$.address"]
+      Type number : BatteryLevel [stateTopic="location/Waldek", transformationPattern="REGEX:(.*battery_level.*)∩JSONPATH:$.battery_level"]
+      Type number : Accuracy [stateTopic="location/Waldek", transformationPattern="REGEX:(.*accuracy.*)∩JSONPATH:$.accuracy"]
+      Type string : LastSeen [stateTopic="location/Waldek", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
+      Type contact : AtHome [stateTopic="location/Waldek", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
+  }
+
+  Thing topic GoogleTrackerAldona "GoogleTrackerAldona" {
+    Channels:
+      Type string : LastLocation [stateTopic="location/Aldona", transformationPattern="REGEX:(.*location.*)∩JSONPATH:$.location"]
+      Type string : Address [stateTopic="location/Aldona", transformationPattern="REGEX:(.*address.*)∩JSONPATH:$.address"]
+      Type number : BatteryLevel [stateTopic="location/Aldona", transformationPattern="REGEX:(.*battery_level.*)∩JSONPATH:$.battery_level"]
+      Type number : Accuracy [stateTopic="location/Aldona", transformationPattern="REGEX:(.*accuracy.*)∩JSONPATH:$.accuracy"]
+      Type string : LastSeen [stateTopic="location/Aldona", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
+      Type contact : AtHome [stateTopic="location/Aldona", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
+  }
+
+  Thing topic GoogleTrackerAnn "GoogleTrackerAnn" {
+    Channels:
+      Type string : LastLocation [stateTopic="location/Anna", transformationPattern="REGEX:(.*location.*)∩JSONPATH:$.location"]
+      Type string : Address [stateTopic="location/Anna", transformationPattern="REGEX:(.*address.*)∩JSONPATH:$.address"]
+      Type number : BatteryLevel [stateTopic="location/Anna", transformationPattern="REGEX:(.*battery_level.*)∩JSONPATH:$.battery_level"]
+      Type number : Accuracy [stateTopic="location/Anna", transformationPattern="REGEX:(.*accuracy.*)∩JSONPATH:$.accuracy"]
+      Type string : LastSeen [stateTopic="location/Anna", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
+      Type contact : AtHome [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
+      Type contact : AtSchool [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.school"]
+  }
+
+  Thing topic GoogleTrackerAlice "GoogleTrackerAlice" {
+    Channels:
+      Type string : LastLocation [stateTopic="location/Alicja", transformationPattern="REGEX:(.*location.*)∩JSONPATH:$.location"]
+      Type string : Address [stateTopic="location/Alicja", transformationPattern="REGEX:(.*address.*)∩JSONPATH:$.address"]
+      Type number : BatteryLevel [stateTopic="location/Alicja", transformationPattern="REGEX:(.*battery_level.*)∩JSONPATH:$.battery_level"]
+      Type number : Accuracy [stateTopic="location/Alicja", transformationPattern="REGEX:(.*accuracy.*)∩JSONPATH:$.accuracy"]
+      Type string : LastSeen [stateTopic="location/Alicja", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
+      Type contact : AtHome [stateTopic="location/Alicja", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
+      Type contact : AtSchool [stateTopic="location/Alicja", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.school"]
+  }
 }

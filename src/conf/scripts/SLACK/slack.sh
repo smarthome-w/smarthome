@@ -21,6 +21,14 @@ if [[ "$@" == *":articulated_lorry:"* ]]; then
   CHANNEL="#garage"
 fi
 
+if [[ "$@" == *":house:"* ]]; then
+  CHANNEL="#presence"
+fi
+
+if [[ "$@" == *":cityscape:"* ]]; then
+  CHANNEL="#presence"
+fi
+
 ENCODED_PART=""
 ENCODED_PART="token=${SLACK_TOKEN}"
 ENCODED_PART+="&as_user=false"

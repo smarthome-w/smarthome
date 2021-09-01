@@ -34,7 +34,7 @@ endif
 
 	@sudo pip3 install setuptools
 	@sudo pip3 install wheel
-	@sudo pip3 install paho-mqtt ruamel.yaml xmltodict
+	@sudo pip3 install paho-mqtt ruamel.yaml xmltodict locationsharinglib
 ifeq ($(OS_PLATFORM),armhf)
 	@sudo pip3 install py-sony-bravia-remote git+https://github.com/mjg59/python-broadlink.git
 	@sudo pip3 install git+https://github.com/aparraga/braviarc.git
@@ -54,7 +54,7 @@ openhab-db:
 
 openhab-docker-build: openhab-docker-clean
 	docker pull openhab/openhab:$(VERSION)-$(OS_PLATFORM)-debian
-	docker tag openhab/openhab:$(VERSION)-$(OS_PLATFORM)-debian $(DOCKER_TAG)	
+	docker tag openhab/openhab:$(VERSION)-$(OS_PLATFORM)-debian $(DOCKER_TAG)
 
 openhab-resources-workspace:
 	@mkdir -p $(RESOURCES)
