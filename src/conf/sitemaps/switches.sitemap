@@ -19,6 +19,10 @@ sitemap switches label="Switches" {
         Switch item=FF_Lights_Scenario mappings=[OFF="Off", ON="On"]
     }
 
+    Frame label="Garage" icon="firstfloor" {
+        Switch item=GA_Garage_Cross
+    }
+
     Frame label="Ground floor" icon="firstfloor" {
         Switch item=GF_FamilyRoom_Light_Table
         Switch item=GF_FamilyRoom_Light_Sofa

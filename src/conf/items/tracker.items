@@ -4,7 +4,8 @@ String      Tracker_Waldek_Address         "Waldek Address [%s]"                
 Number      Tracker_Waldek_BatteryLevel    "Waldek tracker battery level [%.0f%%]"    <battery>    (gTracker, gTrackerBattery, gPersistenceSwitch)     {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerWaldek:BatteryLevel"}
 String      Tracker_Waldek_LastSeen        "Waldek tracker last seen [%s]"            <time>       (gTracker)                                          {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerWaldek:LastSeen"}
 Number      Tracker_Waldek_Accuracy        "Waldek tracker accuracy [%.0f m]"         <incline>    (gTracker)                                          {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerWaldek:Accuracy"}
-Contact     Tracker_Waldek_AtHome          "Waldek home presence []"                  <man_3>      (gTracker, gPersistenceSwitch, gTrackerPresence)    {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerWaldek:AtHome"}
+Contact     Waldek_AtHome                  "Waldek home presence []"                  <man_3>      (gTracker, gPersistenceSwitch, gTrackerPresence)    {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerWaldek:AtHome"}
+Contact     Waldek_AtDistrict              "Waldek district presence []"              <man_3>      (gTracker, gPersistenceSwitch, gTrackerPresence)    {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerWaldek:AtDistrict"}
 
 Location    Tracker_Aldona_Location_Map    "Aldona Map [%s]"                          <line>       (gTracker, gTrackerLocation)
 String      Tracker_Aldona_Location        "Aldona Location [%s]"                     <line>       (gTracker, gTrackerRawLocation)                     {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAldona:LastLocation"}
@@ -12,7 +13,8 @@ String      Tracker_Aldona_Address         "Aldona Address [%s]"                
 Number      Tracker_Aldona_BatteryLevel    "Aldona tracker battery level [%.0f%%]"    <battery>    (gTracker, gTrackerBattery, gPersistenceSwitch)     {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAldona:BatteryLevel"}
 String      Tracker_Aldona_LastSeen        "Aldona tracker last seen [%s]"            <time>       (gTracker)                                          {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAldona:LastSeen"}
 Number      Tracker_Aldona_Accuracy        "Aldona tracker accuracy [%.0f m]"         <incline>    (gTracker)                                          {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAldona:Accuracy"}
-Contact     Tracker_Aldona_AtHome          "Aldona home presence []"                  <woman_3>    (gTracker, gPersistenceSwitch, gTrackerPresence)    {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAldona:AtHome"}
+Contact     Aldona_AtHome                  "Aldona home presence []"                  <woman_3>    (gTracker, gPersistenceSwitch, gTrackerPresence)    {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAldona:AtHome"}
+Contact     Aldona_AtDistrict              "Aldona district presence []"              <woman_3>    (gTracker, gPersistenceSwitch, gTrackerPresence)    {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAldona:AtDistrict"}
 
 Location    Tracker_Ann_Location_Map       "Ann Map [%s]"                             <line>       (gTracker, gTrackerLocation)
 String      Tracker_Ann_Location           "Ann Location [%s]"                        <line>       (gTracker, gTrackerRawLocation)                     {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAnn:LastLocation"}
@@ -20,8 +22,9 @@ String      Tracker_Ann_Address            "Ann Address [%s]"                   
 Number      Tracker_Ann_BatteryLevel       "Ann tracker battery level [%.0f%%]"       <battery>    (gTracker, gTrackerBattery, gPersistenceSwitch)     {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAnn:BatteryLevel"}
 String      Tracker_Ann_LastSeen           "Ann tracker last seen [%s]"               <time>       (gTracker)                                          {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAnn:LastSeen"}
 Number      Tracker_Ann_Accuracy           "Ann tracker accuracy [%.0f m]"            <incline>    (gTracker)                                          {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAnn:Accuracy"}
-Contact     Tracker_Ann_AtHome             "Ann home presence []"                     <girl_2>     (gTracker, gPersistenceSwitch, gTrackerPresence)    {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAnn:AtHome"}
-Contact     Tracker_Ann_AtSchool           "Ann school presence []"                   <girl_2>     (gTracker, gPersistenceSwitch, gTrackerPresence)    {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAnn:AtSchool"}
+Contact     Ann_AtHome                     "Ann home presence []"                     <girl_2>     (gTracker, gPersistenceSwitch, gTrackerPresence)    {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAnn:AtHome"}
+Contact     Ann_AtDistrict                 "Ann district presence []"                 <girl_2>     (gTracker, gPersistenceSwitch, gTrackerPresence)    {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAnn:AtDistrict"}
+Contact     Ann_AtSchool                   "Ann school presence []"                   <girl_2>     (gTracker, gPersistenceSwitch, gTrackerPresence)    {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAnn:AtSchool"}
 
 Location    Tracker_Alice_Location_Map     "Alice Map [%s]"                           <line>       (gTracker, gTrackerLocation)
 String      Tracker_Alice_Location         "Alice Location [%s]"                      <line>       (gTracker, gTrackerRawLocation)                     {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAlice:LastLocation"}
@@ -29,5 +32,6 @@ String      Tracker_Alice_Address          "Alice Address [%s]"                 
 Number      Tracker_Alice_BatteryLevel     "Alice tracker battery level [%.0f%%]"     <battery>    (gTracker, gTrackerBattery, gPersistenceSwitch)     {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAlice:BatteryLevel"}
 String      Tracker_Alice_LastSeen         "Alice tracker last seen [%s]"             <time>       (gTracker)                                          {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAlice:LastSeen"}
 Number      Tracker_Alice_Accuracy         "Alice tracker accuracy [%.0f m]"          <incline>    (gTracker)                                          {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAlice:Accuracy"}
-Contact     Tracker_Alice_AtHome           "Alice home presence []"                   <girl_3>     (gTracker, gPersistenceSwitch, gTrackerPresence)    {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAlice:AtHome"}
-Contact     Tracker_Alice_AtSchool         "Alice school presence []"                 <girl_3>     (gTracker, gPersistenceSwitch, gTrackerPresence)    {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAlice:AtSchool"}
+Contact     Alice_AtHome                   "Alice home presence []"                   <girl_3>     (gTracker, gPersistenceSwitch, gTrackerPresence)    {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAlice:AtHome"}
+Contact     Alice_AtDistrict               "Alice district presence []"               <girl_3>     (gTracker, gPersistenceSwitch, gTrackerPresence)    {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAlice:AtDistrict"}
+Contact     Alice_AtSchool                 "Alice school presence []"                 <girl_3>     (gTracker, gPersistenceSwitch, gTrackerPresence)    {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAlice:AtSchool"}

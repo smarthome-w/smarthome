@@ -4,7 +4,7 @@ when
 then
   try {
     val GroupItem state_group = gScenarios.members.findFirst[name.equals("g" + triggeringItem.name)]
-    val OnOffType set_state = triggeringItem.state
+    val OnOffType set_state = triggeringItem.state as OnOffType
 
     logInfo("scenario", "Object {}: {}", state_group.name, set_state)
     state_group.members.forEach [E |

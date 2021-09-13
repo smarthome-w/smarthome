@@ -14,7 +14,8 @@ then
       var Number diff = 20
       if (E.state !== NULL) {
         var DateTimeType previous = E.state as DateTimeType
-        diff = Minutes::minutesBetween(new DateTime(previous.zonedDateTime.toInstant.toEpochMilli), now).getMinutes()
+        diff = (now.toInstant.toEpochMilli - previous.zonedDateTime.toInstant.toEpochMilli) / 1000 / 60
+        // diff = Minutes::minutesBetween(new DateTime(previous.zonedDateTime.toInstant.toEpochMilli), now).getMinutes()
       }
       if (errLogLevel >= 6) {
         logError("Errors detection", "item: {}, diff: {}", E.name, diff)

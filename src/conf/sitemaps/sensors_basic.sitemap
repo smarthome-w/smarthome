@@ -33,10 +33,10 @@ sitemap sensors_basic label="Status" {
     }
 
     Frame label="Tracker" icon="groundfloor" {
-        Switch item=Tracker_Waldek_AtHome mappings=[ON="Present", OFF="Absent"]
-        Switch item=Tracker_Aldona_AtHome mappings=[ON="Present", OFF="Absent"]
-        Switch item=Tracker_Ann_AtHome mappings=[ON="Present", OFF="Absent"]
-        Switch item=Tracker_Alice_AtHome mappings=[ON="Present", OFF="Absent"]
+        Switch item=Waldek_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
+        Switch item=Aldona_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
+        Switch item=Ann_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
+        Switch item=Alice_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
     }
 
     Frame label="Heaters" icon="firstfloor" {

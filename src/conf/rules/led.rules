@@ -29,7 +29,8 @@ rule "alice_led_on"
 when
 //    Time cron "0 55 5 ? * MON,WED" or
 //    Time cron "0 50 6 ? * TUE,THU,FRI"
-    Time cron "0 40 7 ? * MON,TUE,WED,THU,FRI"
+//    Time cron "0 40 7 ? * MON,TUE,WED,THU,FRI"
+    Time cron "0 40 5 ? * MON,TUE,WED,THU,FRI"
 then
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
         if (HH_AliceAtSchool.state.toString() == "ON") {
@@ -42,7 +43,7 @@ rule "alice_led_off"
 when
 //    Time cron "0 15 6 ? * MON,WED" or
 //    Time cron "0 15 7 ? * TUE,THU,FRI" or
-    Time cron "0 58 7 ? * MON,TUE,WED,THU,FRI" or
+    Time cron "0 20 6 ? * MON,TUE,WED,THU,FRI" or
     Time cron "59 59 23 ? * *"
 then
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
@@ -54,7 +55,8 @@ rule "ann_led_on"
 when
 //    Time cron "0 40 5 ? * MON,TUE,THU" or
 //    Time cron "0 10 6 ? * WED,FRI"
-    Time cron "0 40 7 ? * MON,TUE,WED,THU,FRI"
+//    Time cron "0 40 7 ? * MON,TUE,WED,THU,FRI"
+    Time cron "0 40 5 ? * MON,TUE,WED,THU,FRI"
 then
     logInfo ("lock", "Ann led: before on")
 
@@ -69,7 +71,8 @@ rule "ann_led_off"
 when
 //    Time cron "0 20 6 ? * MON,TUE,THU" or
 //    Time cron "0 50 6 ? * WED,FRI" or
-    Time cron "0 58 7 ? * MON,TUE,WED,THU,FRI" or
+//    Time cron "0 58 7 ? * MON,TUE,WED,THU,FRI" or
+    Time cron "0 20 6 ? * MON,TUE,WED,THU,FRI" or
     Time cron "59 59 23 ? * *"
 then
     logInfo ("lock", "Ann led: before off")

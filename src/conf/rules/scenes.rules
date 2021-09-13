@@ -12,7 +12,7 @@ then
 
         var int bedroomBlindLevel = 0
         if (HH_Night_Bedroom_Blind_Level.state !== NULL) {
-            bedroomBlindLevel = logLevel = (HH_Night_Bedroom_Blind_Level.state as Number).intValue
+            bedroomBlindLevel = (HH_Night_Bedroom_Blind_Level.state as Number).intValue
         }
 
         if (triggeringItem.name == "GH_Day_Scene"){

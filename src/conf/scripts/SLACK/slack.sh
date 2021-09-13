@@ -32,7 +32,7 @@ fi
 ENCODED_PART=""
 ENCODED_PART="token=${SLACK_TOKEN}"
 ENCODED_PART+="&as_user=false"
-ENCODED_PART+="&username=OpenHAB"
+ENCODED_PART+="&username=OH"
 ENCODED_PART+="&channel=${CHANNEL}"
 ENCODED_PART+="&text=$@"
 

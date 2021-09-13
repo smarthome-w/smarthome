@@ -104,9 +104,9 @@ def send_person_zones(client, person):
         range = PRESENCE_ZONES[zone]["range"]
         distance = calculate_distance(lat1, lon1, lat2, lon2)
         if (distance <= range):
-            presence[zone] = "CLOSED"
-        else:
             presence[zone] = "OPEN"
+        else:
+            presence[zone] = "CLOSED"
 
     # logger.info("Nickname: {}, Zone: {}, distance: {}, presence: {}".format(
     #    nickname, zone, distance, presence[zone]))

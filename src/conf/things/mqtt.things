@@ -290,6 +290,14 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : RSSI [stateTopic="tele/switch07/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
+// GA_Garage_Cross
+  Thing topic GarageCross "GarageCross" {
+    Channels:
+      Type switch : PowerSwitch [stateTopic="stat/garagecross/POWER", commandTopic="cmnd/garagecross/POWER", on="ON", off="OFF" ]
+      Type string : Heartbeat [stateTopic="tele/garagecross/STATE", transformationPattern="JSONPATH:$.Time"]
+      Type number : RSSI [stateTopic="tele/garagecross/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+  }
+
 // Bedroom
   Thing topic Multisensor01 "Multisensor01" {
     Channels:
@@ -491,6 +499,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Accuracy [stateTopic="location/Waldek", transformationPattern="REGEX:(.*accuracy.*)∩JSONPATH:$.accuracy"]
       Type string : LastSeen [stateTopic="location/Waldek", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
       Type contact : AtHome [stateTopic="location/Waldek", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
+      Type contact : AtDistrict [stateTopic="location/Waldek", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
   }
 
   Thing topic GoogleTrackerAldona "GoogleTrackerAldona" {
@@ -501,6 +510,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Accuracy [stateTopic="location/Aldona", transformationPattern="REGEX:(.*accuracy.*)∩JSONPATH:$.accuracy"]
       Type string : LastSeen [stateTopic="location/Aldona", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
       Type contact : AtHome [stateTopic="location/Aldona", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
+      Type contact : AtDistrict [stateTopic="location/Aldona", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
   }
 
   Thing topic GoogleTrackerAnn "GoogleTrackerAnn" {
@@ -511,6 +521,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Accuracy [stateTopic="location/Anna", transformationPattern="REGEX:(.*accuracy.*)∩JSONPATH:$.accuracy"]
       Type string : LastSeen [stateTopic="location/Anna", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
       Type contact : AtHome [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
+      Type contact : AtDistrict [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
       Type contact : AtSchool [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.school"]
   }
 
@@ -522,6 +533,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Accuracy [stateTopic="location/Alicja", transformationPattern="REGEX:(.*accuracy.*)∩JSONPATH:$.accuracy"]
       Type string : LastSeen [stateTopic="location/Alicja", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
       Type contact : AtHome [stateTopic="location/Alicja", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
+      Type contact : AtDistrict [stateTopic="location/Alicja", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
       Type contact : AtSchool [stateTopic="location/Alicja", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.school"]
   }
 }
