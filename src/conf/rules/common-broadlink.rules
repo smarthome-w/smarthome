@@ -14,7 +14,7 @@ then
       logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
     }
     if (logLevel >= 6) {
-      logError("irb", "IRB change detected {} {}", triggeringItem.name, triggeringItem.state)
+      logInfo("irb", "IRB change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
     var String command = "/openhab/conf/scripts/BROADLINK/ir.py " + triggeringItem.name + " " + triggeringItem.state
     var long duration = now.millis
@@ -22,7 +22,7 @@ then
     duration = now.millis - duration
     if (!result.contains("==sent==")) {
       if (logLevel >= 2) {
-        logError("irb", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+        logInfo("irb", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
       }
     }
     var lastupdate_item = gLastUpdateBroadlink.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
@@ -30,7 +30,7 @@ then
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(new DateTimeType())
       if (logLevel >= 6) {
-        logError("irb", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+        logInfo("irb", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
       }
     }
   } catch (Throwable t) {
@@ -50,13 +50,13 @@ then
       logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
     }
     if (logLevel >= 6) {
-      logError("tc2", "TC2 change detected {} {}", triggeringItem.name, triggeringItem.state)
+      logInfo("tc2", "TC2 change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
     var lastupdate_item = gLastUpdateBroadlink.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(new DateTimeType())
       if (logLevel >= 6) {
-        logError("sp2", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+        logInfo("sp2", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
       }
     }
   } catch (Throwable t) {
@@ -76,7 +76,7 @@ then
       logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
     }
     if (logLevel >= 6) {
-      logError("irrgb", "IR RGB change detected {} {}", triggeringItem.name, triggeringItem.state)
+      logInfo("irrgb", "IR RGB change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
     var String command = "/openhab/conf/scripts/BROADLINK/irrgb.py " + triggeringItem.name + " " + triggeringItem.state
     var long duration = now.millis
@@ -84,7 +84,7 @@ then
     duration = now.millis - duration
     if (!result.contains("==sent==")) {
       if (logLevel >= 2) {
-        logError("irrgb", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
+        logInfo("irrgb", "command: {}, duration: {} with result:>> {} <<", command, duration, result)
       }
     }
   } catch (Throwable t) {
@@ -104,13 +104,13 @@ then
       logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
     }
     if (logLevel >= 6) {
-      logError("shelly", "Shelly change detected {} {}", triggeringItem.name, triggeringItem.state)
+      logInfo("shelly", "Shelly change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
     var lastupdate_item = gLastUpdateShelly.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(new DateTimeType())
       if (logLevel >= 6) {
-        logError("shelly", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+        logInfo("shelly", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
       }
     }
   } catch (Throwable t) {
@@ -129,13 +129,13 @@ then
       logLevel = (HH_DebugLevel_Broadlink.state as Number).intValue
     }
     if (logLevel >= 6) {
-      logError("sonoff", "Sonoff change detected {} {}", triggeringItem.name, triggeringItem.state)
+      logInfo("sonoff", "Sonoff change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
     var lastupdate_item = gLastUpdateSonoff.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     if (lastupdate_item !== null) {
       lastupdate_item.postUpdate(new DateTimeType())
       if (logLevel >= 6) {
-        logError("sonoff", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+        logInfo("sonoff", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
       }
     }
   } catch (Throwable t) {

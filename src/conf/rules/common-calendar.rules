@@ -62,7 +62,7 @@ then
     val dayOfWeek = now.getDayOfWeek().getValue() as Number
 
     if (logLevel >= 6) {
-      logError ("crontab", "duskLevel:{}, dawnLevel:{}, dayAt:{}, eveningAt:{}, nightAt:{}, elevation: {}, brightness: {}, hourOfDay: {}, dayOfWeek:{}",
+      logInfo ("crontab", "duskLevel:{}, dawnLevel:{}, dayAt:{}, eveningAt:{}, nightAt:{}, elevation: {}, brightness: {}, hourOfDay: {}, dayOfWeek:{}",
           duskLevel, dawnLevel, dayAt, eveningAt, nightAt, elevation, brightness, hourOfDay, dayOfWeek)
     }
 

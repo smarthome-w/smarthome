@@ -77,7 +77,7 @@ when
   Item GH_SensorsInfo received update
 then
   var power = (GF_PowerMeter_Current_In_Watts.state as Number).floatValue
-  logError("Chromecast", "number {}", power)
+  logInfo("Chromecast", "power {}", power)
   var ttsMessage = String.format("Current power usage is %.0f watts.", power)
   var lang = "en-gb"
 
@@ -144,7 +144,7 @@ when
   Item GH_BathroomInfo received update
 then
   var ttsMessage = ""
-  var occupied_millis
+  var long occupied_millis = 0
   if (FF_Bathroom_Entry_Time.state != NULL) {
     occupied_millis = (FF_Bathroom_Entry_Time.state as DateTimeType).zonedDateTime.toInstant.toEpochMilli
   } else {

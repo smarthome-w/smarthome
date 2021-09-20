@@ -14,7 +14,7 @@ then
       logLevel = (HH_DebugLevel_PIRCIR.state as Number).intValue
     }
     if (logLevel >= 6) {
-      logError("pir", "PIR change detected {} {}", triggeringItem.name, triggeringItem.state)
+      logInfo("pir", "PIR change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
     if (triggeringItem.state == OPEN || triggeringItem.state == ON) {
       var int timeOutMinutes = 2
@@ -26,7 +26,7 @@ then
       if(timers.get(triggeringItem.name) === null){
           // find appropriate Item state
           if (logLevel >= 6) {
-            logError("pir", "Creating motion end timer for item {}", triggeringItem.name)
+            logInfo("pir", "Creating motion end timer for item {}", triggeringItem.name)
           }
           val state_item = gPIRState.members.findFirst[name.equals(triggeringItem.name + "_State")]
           timers.put(triggeringItem.name, createTimer(now.plusMinutes(timeOutMinutes), [|
@@ -34,13 +34,13 @@ then
               timers.put(triggeringItem.name, null)
           ]))
           if (logLevel >= 6) {
-            logError("pir", "State item {}", state_item.name)
+            logInfo("pir", "State item {}", state_item.name)
           }
           state_item.postUpdate(ON)
           ddd += "c"
       } else {
           if (logLevel >= 6) {
-            logError("pir", "Reschedule {} with {} minutes", triggeringItem.name, timeOutMinutes)
+            logInfo("pir", "Reschedule {} with {} minutes", triggeringItem.name, timeOutMinutes)
           }
           timers.get(triggeringItem.name).reschedule(now.plusMinutes(timeOutMinutes))
           ddd += "d"
@@ -49,12 +49,12 @@ then
       var lastupdate_item = gLastUpdatePIR.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
       ddd += "f"
       if (logLevel >= 6) {
-        logError("pir", "Last update item {} (1)", lastupdate_item)
+        logInfo("pir", "Last update item {} (1)", lastupdate_item)
       }
       if (lastupdate_item !== null) {
         lastupdate_item.postUpdate(new DateTimeType())
         if (logLevel >= 6) {
-          logError("pir", "Last update item {} {} (2)", lastupdate_item.name, lastupdate_item.state)
+          logInfo("pir", "Last update item {} {} (2)", lastupdate_item.name, lastupdate_item.state)
         }
       }
       ddd += "g"

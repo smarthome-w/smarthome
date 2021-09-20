@@ -4,7 +4,7 @@ when
 then
   try {
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
-        logError("scene", "scene: {}", triggeringItem.name)
+        logInfo("scene", "scene: {}", triggeringItem.name)
         var int logLevel = 1
         if (HH_DebugLevel_Scene.state !== NULL) {
           logLevel = (HH_DebugLevel_Scene.state as Number).intValue
@@ -17,7 +17,7 @@ then
 
         if (triggeringItem.name == "GH_Day_Scene"){
             if (logLevel >= 6) {
-              logError("scene_rule", "day")
+              logInfo("scene_rule", "day")
             }
             if (calendar_Vacation.state.toString() == "OFF") {
               GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
@@ -27,7 +27,7 @@ then
 
         if (triggeringItem.name == "GH_TVShow_Scene"){
             if (logLevel >= 6) {
-              logError("scene_rule", "scene: tvshow {}", triggeringItem.state)
+              logInfo("scene_rule", "scene: tvshow {}", triggeringItem.state)
             }
             if (triggeringItem.state == ON) {
 //              GF_ColorLights_Scenario.sendCommand(ON)
@@ -46,7 +46,7 @@ then
 
         if (triggeringItem.name == "GH_Room_Scene"){
             if (logLevel >= 6) {
-              logError("scene_rule", "scene: room {}", triggeringItem.state)
+              logInfo("scene_rule", "scene: room {}", triggeringItem.state)
             }
             if (triggeringItem.state == ON) {
               GF_FamilyRoom_Light_Table.sendCommand(ON)
@@ -63,14 +63,14 @@ then
 
         if (triggeringItem.name == "GH_Evening_Scene"){
             if (logLevel >= 6) {
-              logError("scene_rule", "evening")
+              logInfo("scene_rule", "evening")
             }
             //GF_FamilyRoom_Scenario.sendCommand(ON)
             //GF_FamilyRoom_LightsRGB.sendCommand(ON)
             if (CIR_GF_FamilyBalcony.state.toString == "CLOSED") {
               GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
             }
-            logError("scene_rule", "Rollershutter - autodown")
+            logInfo("scene_rule", "Rollershutter - autodown")
             FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
             //GF_FamilyRoom_Light_Table.sendCommand(ON)
             //GF_FamilyRoom_Light_Sofa.sendCommand(ON)
@@ -78,7 +78,7 @@ then
         }
         if (triggeringItem.name == "GH_Night_Scene"){
             if (logLevel >= 6) {
-              logError("scene_rule", "night")
+              logInfo("scene_rule", "night")
             }
 //            GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
 //            FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
@@ -88,9 +88,9 @@ then
         }
 
         if (triggeringItem.name == "GH_Bedroom_Night_Scene"){
-            logError("scene", "bedroom night")
+            logInfo("scene", "bedroom night")
             if (logLevel >= 6) {
-              logError("scene_rule", "FF_Bedroom_Lights to OFF")
+              logInfo("scene_rule", "FF_Bedroom_Lights to OFF")
             }
             FF_Bedroom_Lights.sendCommand(OFF)
             RTV_TV_TV.sendCommand(OFF)
@@ -107,13 +107,13 @@ then
 
         if (triggeringItem.name == "GH_BrightWindow_Scene"){
             if (logLevel >= 6) {
-              logError("scene", "bright window")
+              logInfo("scene", "bright window")
             }
             GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
         }
         if (triggeringItem.name == "GH_DarkWindow_Scene"){
             if (logLevel >= 6) {
-              logError("scene", "dark window")
+              logInfo("scene", "dark window")
             }
             if (CIR_GF_FamilyBalcony.state.toString == "CLOSED") {
               GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
@@ -121,12 +121,12 @@ then
         }
     }
     if (triggeringItem.name == "GH_Holiday"){
-        logError("scene", "welcome back")
+        logInfo("scene", "welcome back")
         GF_Presence_Mode.sendCommand("ABSENT")
     }
     if (triggeringItem.name == "GH_WelcomeBack"){
         GF_Presence_Mode.sendCommand("PRESENT")
-        logError("scene", "welcome back")
+        logInfo("scene", "welcome back")
     }
   } catch (Throwable t) {
     logError("Error", "Error in scene_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())

@@ -117,7 +117,9 @@
 			}
 
 			if ( stateChanges.length == 0) {
-				chartData.addRow([label,'','','opacity: 0',new Date(),new Date()]) //add dummy entry
+				var dd = new Date()
+				dd.setHours(dd.getHours()+1)
+				chartData.addRow([label,'','','opacity: 0',new Date(),dd]) //add dummy entry
 			} else {
 				for (var i = 0; i < stateChanges.length; i++) {
 					var entry = [];

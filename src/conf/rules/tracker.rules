@@ -9,11 +9,11 @@ then
       var latitude = itemValue.split(',').get(0)
       var longitude = itemValue.split(',').get(1)
       val PointType home = new PointType(DecimalType.valueOf(latitude), DecimalType.valueOf(longitude))
-      //logError("Info", "Raw location of {} equals: {}", triggeringItem.name, home)
+      //logInfo("Info", "Raw location of {} equals: {}", triggeringItem.name, home)
 
       if (lastupdate_item !== null) {
         lastupdate_item.postUpdate(home)
-        //logError("Info", "{} set to: {}", lastupdate_item.name, home)
+        //logInfo("Info", "{} set to: {}", lastupdate_item.name, home)
       }
   } catch (Throwable t) {
     logError("Error", "Error in presence_map_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())

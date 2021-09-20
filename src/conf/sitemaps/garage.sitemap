@@ -24,6 +24,10 @@ sitemap garage label="Garage" {
         Switch item=GA_Garage_Heartbeat_LastUpdate_Error
     }
 
+    Frame label="Detectors" icon="firstfloor" {
+        Webview url="/static/Visualization/Timeline.html?Group=gGarageDetectors&serviceId=jdbc&Hours=24" height=4
+    }
+
     Frame label="Brightness (daily)" icon="firstfloor" {
         Chart item=GA_Garage_Analog_Sensor period=D label="Brightness"
     }

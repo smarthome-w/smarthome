@@ -13,7 +13,7 @@ then
       FF_Bathroom_Occupation_Minutes.postUpdate(occupation_duration)
       FF_Bathroom_Entry_Confirmation.postUpdate(OFF)
       GH_BathroomInfo.postUpdate(ON)
-      logError("Chromecast", "FF_Bathroom_Occupation_Minutes - {}", FF_Bathroom_Occupation_Minutes)
+      logInfo("Chromecast", "FF_Bathroom_Occupation_Minutes - {}", FF_Bathroom_Occupation_Minutes)
 
     }
     FF_Bathroom_Entry_Time.postUpdate(new DateTimeType())

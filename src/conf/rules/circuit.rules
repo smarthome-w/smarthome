@@ -11,20 +11,20 @@ then
     }
     ddd += "b"
     if (logLevel >= 6) {
-        logError("cir", "CIR change detected {} {}", triggeringItem.name, triggeringItem.state)
+        logInfo("cir", "CIR change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
     ddd += "c"
     var lastupdate_item = gLastUpdateCIR.members.findFirst[name.equals(triggeringItem.name + "_LastUpdate")]
     ddd += "d"
 
     if (logLevel >= 6) {
-        logError("cir", "lastupdate_item {}", lastupdate_item)
+        logInfo("cir", "lastupdate_item {}", lastupdate_item)
     }
     ddd += "e"
     if (lastupdate_item !== null) {
         lastupdate_item.postUpdate(new DateTimeType())
         if (logLevel >= 6) {
-          logError("cir", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
+          logInfo("cir", "Last update item {} {}", lastupdate_item.name, lastupdate_item.state)
         }
     }
     ddd += "f"
