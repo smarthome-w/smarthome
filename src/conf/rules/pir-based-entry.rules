@@ -1,49 +1,29 @@
-rule "end_entrywatch_rule"
+rule "entrywatch_rule1"
 when
-  Item PIR_Corridor_Storage changed to OPEN
+  Item PIR_Corridor_Storage changed to ON
 then
-  logInfo("entrywatch_rule {}", "Rule 2", triggeringItem)
-  if (triggeringItem !== NULL) {
-    try {
-      PIR_Corridor_Storage.sendCommand(ON)
-    } catch (Throwable t) {
-      logError("Error", "Error in entrywatch_rule_1 {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
-    } finally {
-    }
+  try {
+//    PIR_Corridor_Storage_State.sendCommand(ON)
+    Thread::sleep(2000)
+    PIR_Corridor_Storage.sendCommand(OFF)
+  } catch (Throwable t) {
+    logError("Error", "Error in entrywatch_rule_1 {}", t.toString())
+  } finally {
   }
 end
 
-rule "entrywatch_rule"
+rule "entrywatch_rule2"
 when
-  Item PIR_GF_EntryWatch_State received update or
-  Item PIR_Corridor_Storage_State received update
+  Item PIR_GF_EntryWatch_State changed to OFF or
+  Item PIR_Corridor_Storage_State changed to OFF
 then
-  logInfo("Rule 1","entrywatch_rule {}",  triggeringItem)
-  if (triggeringItem !== NULL) {
-    try {
-      var int logLevel = 1
-    logInfo("Rule 1","a entrywatch_rule {}",  triggeringItem)
-      if (HH_DebugLevel_PIRCIR.state !== NULL) {
-          logLevel = (HH_DebugLevel_PIRCIR.state as Number).intValue
-      }
-      // logLevel = 6
-    logInfo("Rule 1","b entrywatch_rule {}",  triggeringItem)
-      if (logLevel >= 6) {
-        logInfo("entrywatch_rule", "Entrywatch change detected {} {}", triggeringItem.name, triggeringItem.state)
-      }
-    logInfo("Rule 1","c entrywatch_rule {}",  triggeringItem)
-      if (triggeringItem.state !== NULL){
-    logInfo("Rule 1","d entrywatch_rule {}",  triggeringItem)
-        if (triggeringItem.state == ON) {
-          sendCommand(GF_Corridor_Storage, ON)
-        } else {
-          sendCommand(GF_Corridor_Storage, OFF)
-        }
-      }
-    } catch (Throwable t) {
-      logError("Error", "Error in entrywatch_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
-    } finally {
-    }
-  }
+  sendCommand(GF_Corridor_Storage, OFF)
 end
 
+rule "entrywatch_rule2"
+when
+  Item PIR_GF_EntryWatch_State changed to ON or
+  Item PIR_Corridor_Storage_State changed to ON
+then
+  sendCommand(GF_Corridor_Storage, ON)
+end

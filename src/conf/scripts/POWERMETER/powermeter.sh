@@ -141,6 +141,7 @@ if [[ $1 == "parse" ]]; then
     fi
   done
 else
+  #hcitool lescan --duplicates 1>/dev/null &
   hciconfig hci0 down && hciconfig hci0 up && hcitool lescan --duplicates 1>/dev/null &
   if [ "$(pidof hcitool)" ]; then
     hcidump --raw | $0 parse $1

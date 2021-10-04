@@ -3,11 +3,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 Group       gFrontDoor                              "Front door"                                                        (gCorridor)                                                                     ["FrontDoor"]
-Contact     CIR_GF_MainDoor                         "CIR Entry []"                                      <frontdoor>     (gFrontDoor, gCIR, gSlack, gPersistenceSwitch)                                  ["OpenState", "Opening"]    {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirMainDoor"}
+Contact     CIR_GF_MainDoor                         "CIR Entry []"                                      <frontdoor>     (gFrontDoor, gCIR, gNotification, gPersistenceSwitch)                           ["OpenState", "Opening"]    {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:CirMainDoor"}
 DateTime    CIR_GF_MainDoor_LastUpdate              "CIR Entry [%1$td.%1$tm %1$tH:%1$tM]"               <time>          (gLastUpdateCIR, gPersistenceSwitch)
 
 Group       gMainLock                               "Main lock"                                                         (gCorridor)                                                                     ["Lock"]
-Contact     CIR_GF_MainLock                         "Main lock []"                                      <lock>          (gMainLock, gCIR, gSlack, gPersistenceSwitch)                                   ["OpenState", "Opening"]    {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:MainLock"}
+Contact     CIR_GF_MainLock                         "Main lock []"                                      <lock>          (gMainLock, gCIR, gNotification, gPersistenceSwitch)                            ["OpenState", "Opening"]    {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:MainLock"}
 Switch      HH_FrontDoorSwitch                      "Front door []"                                     <lock>          (gCorridor, gPersistenceSwitch)                                                                             {ga="Lock"}
 DateTime    CIR_GF_MainLock_LastUpdate              "CIR Main lock [%1$td.%1$tm %1$tH:%1$tM]"           <time>          (gLastUpdateCIR, gPersistenceSwitch)
 
@@ -85,12 +85,12 @@ Switch      PIR_FF_BedroomWardobe_State             "PIR Bedroom wardrobe []"   
 DateTime    PIR_FF_BedroomWardobe_LastUpdate        "PIR Bedroom wardrobe [%1$td.%1$tm %1$tH:%1$tM]"    <time>          (gLastUpdatePIR, gPersistenceSwitch)
 
 Group       gEntryPirSensor                         "Entry movement sensor"                                             (gCorridor)                                                                     ["Sensor"]
-Contact     PIR_GF_EntryWatch                       "PIR Entry Watch (virt) []"                         <light>         (gEntryPirSensor, gPIR, gSlack, gEntryWatch, gPersistenceSwitch)                ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirEntryWatch"}
+Contact     PIR_GF_EntryWatch                       "PIR Entry Watch (virt) []"                         <light>         (gEntryPirSensor, gPIR, gNotification, gEntryWatch, gPersistenceSwitch)         ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirEntryWatch"}
 Switch      PIR_GF_EntryWatch_State                 "PIR Entry Watch []"                                <rgb>           (gEntryPirSensor, gPIRState, gPersistenceSwitch)                                ["Tilt", "Presence"]
 DateTime    PIR_GF_EntryWatch_LastUpdate            "PIR Entry Watch [%1$td.%1$tm %1$tH:%1$tM]"         <time>          (gLastUpdatePIR, gPersistenceSwitch)
 
 Group       gCorridorStoragePirSensor               "Corridor storage movement sensor"                                  (gCorridor)                                                                     ["Sensor"]
-Contact     PIR_Corridor_Storage                    "PIR Corridor Storage (virt) []"                    <light>         (gCorridorStoragePirSensor, gPIR, gPersistenceSwitch)                           ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirCorridorStorage"}
+Switch      PIR_Corridor_Storage                    "PIR Corridor Storage (virt) []"                    <light>         (gCorridorStoragePirSensor, gPIR, gPersistenceSwitch)                           ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirCorridorStorage"}
 Switch      PIR_Corridor_Storage_State              "PIR Corridor Storage []"                           <rgb>           (gCorridorStoragePirSensor, gPIRState, gPersistenceSwitch)                      ["Tilt", "Presence"]
 DateTime    PIR_Corridor_Storage_LastUpdate         "PIR Corridor Storage [%1$td.%1$tm %1$tH:%1$tM]"    <time>          (gLastUpdatePIR)
 

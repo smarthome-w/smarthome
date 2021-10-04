@@ -137,7 +137,7 @@ then
     var result = executeCommandLine (Duration.ofSeconds(100), command)
     if (result == "") {
     }
-    logInfo("slack", "command: {} with result:\n>>\n{}\n<<\n", command, result)
+    logInfo("eq3", "command: {} with result:\n>>\n{}\n<<\n", command, result)
     logInfo("eq3", "debug eq3 end")
 end
 // MET-1METDST

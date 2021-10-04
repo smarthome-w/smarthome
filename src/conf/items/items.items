@@ -244,7 +244,7 @@ Switch      FF_AliceRoom_Heartbeat_LastUpdate_Error                  "8266 Alice
 ////////////////////////////////////////////////////////////////////////////////
 //                       Slack
 ////////////////////////////////////////////////////////////////////////////////
-Switch      vSlack_Send                                              "Send slack"                                                             (gSlack)
+Switch      vSlack_Send                                              "Send slack"                                                             (gNotification)
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Heartbeats
@@ -297,7 +297,7 @@ Switch      GF_FamilyRoom_LightsLamp_Heartbeat_LastUpdate_Error      "Sonoff Fam
 Number      GA_Garage_Cross_RSSI                                     "Shelly Garage cross RSSI [%.0f]"                       <heating>        (gRSSI)                                                                                                                                   {channel="mqtt:topic:MyMQTTBroker:GarageCross:RSSI"}
 String      GA_Garage_Cross_Heartbeat                                "Shelly Garage cross [%s]"                                               (gGarage, gHeartbeat)                                                                                                                     {channel="mqtt:topic:MyMQTTBroker:GarageCross:Heartbeat"}
 DateTime    GA_Garage_Cross_Heartbeat_LastUpdate                     "Shelly Garage cross [%1$td.%1$tm %1$tH:%1$tM]"         <time>           (gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch      GA_Garage_Cross_Heartbeat_LastUpdate_Error               "Shelly Garage cross []"                             <time>           (gErrors, gPersistenceSwitch)
+Switch      GA_Garage_Cross_Heartbeat_LastUpdate_Error               "Shelly Garage cross []"                                <time>           (gErrors, gPersistenceSwitch)
 Number      GF_Corridor_Light_LED_RSSI                               "Sonoff Corridor led RSSI [%.0f]"                       <heating>        (gRSSI)                                                                                                                                   {channel="mqtt:topic:MyMQTTBroker:Switch05:RSSI"}
 String      GF_Corridor_Light_LED_Heartbeat                          "Sonoff Corridor led [%s]"                                               (gCorridor, gHeartbeat)                                                                                                                   {channel="mqtt:topic:MyMQTTBroker:Switch05:Heartbeat"}
 String      GF_Kitchen_LED_Heartbeat                                 "Sonoff Kitchen led [%s]"                                                (gCorridor, gHeartbeat)                                                                                                                   {channel="mqtt:topic:MyMQTTBroker:Switch07:Heartbeat"}

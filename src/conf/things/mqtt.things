@@ -422,6 +422,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type dimmer   : Dimmer_ [stateTopic="tele/wifiled02/STATE", commandTopic="cmnd/wifiled02/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
       Type string   : Mode [stateTopic="tele/wifiled02/STATE", commandTopic="cmnd/wifiled02/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
       Type colorHSB : Color_ [stateTopic="tele/wifiled02/STATE", commandTopic="cmnd/wifiled02/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+      Type string   : Heartbeat [stateTopic="tele/wallswitch02/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number   : RSSI  [stateTopic="tele/wifiled02/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
@@ -433,6 +434,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type dimmer   : Dimmer_ [stateTopic="tele/wifiled03/STATE", commandTopic="cmnd/wifiled03/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
       Type string   : Mode [stateTopic="tele/wifiled03/STATE", commandTopic="cmnd/wifiled03/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
       Type colorHSB : Color_ [stateTopic="tele/wifiled03/STATE", commandTopic="cmnd/wifiled03/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+      Type string   : Heartbeat [stateTopic="tele/wallswitch02/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number   : RSSI  [stateTopic="tele/wifiled03/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
@@ -500,6 +502,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type string : LastSeen [stateTopic="location/Waldek", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
       Type contact : AtHome [stateTopic="location/Waldek", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
       Type contact : AtDistrict [stateTopic="location/Waldek", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
+      Type string : Heartbeat [stateTopic="location/heartbeat", transformationPattern="REGEX:(.*time.*)∩JSONPATH:$.time"]
   }
 
   Thing topic GoogleTrackerAldona "GoogleTrackerAldona" {

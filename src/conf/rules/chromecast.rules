@@ -55,7 +55,7 @@ end
 
 rule "daily_info"
 when
-  Item calendar_DailyInfo changed to ON or Item GH_DailyInfo received update or Item DebugButton received update
+  Item calendar_DailyInfo changed to ON or Item GH_DailyInfo received update
 then
   var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
 //  var pressure = (GF_FamilyRoom_Pressure_Sensor.state as Number).floatValue

@@ -1,0 +1,97 @@
+rule "notification_rule"
+when
+    Member of gNotification changed
+then
+  try {
+    val String type = "information"
+    val String itemName = triggeringItem.name
+    val itemValue = String.valueOf(triggeringItem.state)
+    val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
+    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime)
+  } catch (Throwable t) {
+    logError("Error", "Error in notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
+  } finally {
+  }
+end
+
+rule "alarm_notification_rule"
+when
+    Member of gPIR changed or Member of gCircuit changed
+then
+  try {
+    if (GF_Motion_Mode.state.toString() == "ALM" && triggeringItem.state == OPEN) {
+      val String type = "alarm"
+      val String itemName = triggeringItem.name
+      val itemValue = String.valueOf(triggeringItem.state)
+      val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
+      executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime)
+    }
+  } catch (Throwable t) {
+    logError("Error", "Error in alarm_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
+  } finally {
+  }
+end
+
+rule "error_notification_rule"
+when
+    Member of gErrors changed or Member of gAlert changed
+then
+  try {
+    val String type = "error"
+    val String itemName = triggeringItem.name
+    val itemValue = String.valueOf(triggeringItem.state)
+    val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
+    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime)
+  } catch (Throwable t) {
+    logError("Error", "Error in error_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
+  } finally {
+  }
+end
+
+rule "garage_notification_rule"
+when
+//    Member of gGarageState changed or Member of gGarageWindow changed
+  Member of gGarageWindow changed
+then
+  try {
+    val String type = "garage"
+    val String itemName = triggeringItem.name
+    val itemValue = String.valueOf(triggeringItem.state)
+    val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
+    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime)
+  } catch (Throwable t) {
+    logError("Error", "Error in garage_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
+  } finally {
+  }
+end
+
+rule "presence_notification_rule"
+when
+    Member of gTrackerPresence changed
+then
+  try {
+    val String type = "presence"
+    val String itemName = triggeringItem.name
+    val itemValue = String.valueOf(triggeringItem.state)
+    val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
+    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime)
+  } catch (Throwable t) {
+    logError("Error", "Error in presence_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
+  } finally {
+  }
+end
+
+rule "notification debug"
+when
+    Item DebugButton received update
+then
+  try {
+    val String type = "debug"
+    val String itemName = "DebugButton"
+    val itemValue = String.valueOf(DebugButton.state)
+    val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
+    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime)
+  } catch (Throwable t) {
+    logError("Error", "Error in error_notification_rule {} {} {}", DebugButton.name, DebugButton.state, t.toString())
+  }
+end

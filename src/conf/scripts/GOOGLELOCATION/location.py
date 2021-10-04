@@ -115,6 +115,15 @@ def send_person_zones(client, person):
     MQTT_CLIENT.publish(prefix, payload)
 
 
+def send_heartbeat(client):
+    now = datetime.now()
+    time = now.strftime(ZULU_DATE_FORMAT_STRING)
+    prefix = "{}/{}".format(MESSAGE_PREFIX, "heartbeat")
+    payload = "{time:" + str(time) + "}"
+    logger.info("Heartbeat {}: {}".format(prefix, payload))
+    MQTT_CLIENT.publish(prefix, payload)
+
+
 setup()
 service = Service(cookies_file=COOKIES_FILE,
                   authenticating_account=GOOGLE_EMAIL)
@@ -123,5 +132,6 @@ for person in service.get_all_people():
     send_person_location(MQTT_CLIENT, person)
     send_person_zones(MQTT_CLIENT, person)
 
+send_heartbeat(MQTT_CLIENT)
 
 # /usr/bin/python3 /opt/openhab/conf/scripts/GOOGLELOCATION/location.py

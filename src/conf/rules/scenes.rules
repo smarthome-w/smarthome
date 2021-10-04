@@ -10,10 +10,10 @@ then
           logLevel = (HH_DebugLevel_Scene.state as Number).intValue
         }
 
-        var int bedroomBlindLevel = 0
-        if (HH_Night_Bedroom_Blind_Level.state !== NULL) {
-            bedroomBlindLevel = (HH_Night_Bedroom_Blind_Level.state as Number).intValue
-        }
+        // var int bedroomBlindLevel = 0
+        // if (HH_Night_Bedroom_Blind_Level.state !== NULL) {
+        //     bedroomBlindLevel = (HH_Night_Bedroom_Blind_Level.state as Number).intValue
+        // }
 
         if (triggeringItem.name == "GH_Day_Scene"){
             if (logLevel >= 6) {
