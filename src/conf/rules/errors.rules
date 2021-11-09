@@ -36,7 +36,6 @@ then
   }
 end
 
-
 rule "error_flag_rule"
 when
     Member of gErrors changed or

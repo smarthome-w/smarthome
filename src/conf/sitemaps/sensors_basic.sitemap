@@ -57,6 +57,7 @@ sitemap sensors_basic label="Status" {
       Switch item=HH_PowermeterPlug01
       Switch item=HH_PowermeterPlug02
       Switch item=GH_BathroomInfo mappings=[ON="Set"]
+      Switch item=calendar_Notification
     }
 	Frame label="" {
 		Switch       item=WiFiLED4_power

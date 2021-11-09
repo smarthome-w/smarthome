@@ -159,7 +159,6 @@ then
       ttsMessage = "Ktoś siedzi w łazience."
     } else {
       ttsMessage = String.format("Ktoś siedzi w łazience od %d minut.", occupation_duration)
-      ttsMessage = String.format("Tekst")
     }
     FF_Bathroom_Entry_Confirmation.postUpdate(ON)
   } else {

@@ -9,6 +9,7 @@ TYPE=$1
 ITEM_NAME=$2
 ITEM_VALUE=$3
 CURRENT_TIME=$4
+ENABLE_NOTIFICATIONS=$5
 
 #OPEN jest
 #Aldona_AtHome
@@ -23,7 +24,9 @@ if [[ "$TYPE" == "presence" ]]; then
     IFS='_' tokens=($ITEM_NAME)
     PERSON_NAME=$tokens
     MSG=$CURRENT_TIME
-    PRIORITY=1
+    if [[ "$ENABLE_NOTIFICATIONS" == "ON" ]]; then
+        PRIORITY=1
+    fi
 
     if [[ "$@" == *"Ann"* ]]; then
         PERSON_NAME="Ania"
@@ -77,7 +80,9 @@ fi
 
 if [[ "$TYPE" == "alarm" ]]; then
     MSG="$ITEM_NAME $CURRENT_TIME"
-    PRIORITY=1
+    if [[ "$ENABLE_NOTIFICATIONS" == "ON" ]]; then
+        PRIORITY=1
+    fi
     if [[ "$ITEM_VALUE" == "OPEN" ]]; then
         TITLE="Otwarte"
     else
@@ -90,7 +95,9 @@ if [[ "$TYPE" == "information" ]]; then
     TITLE="$ITEM_VALUE"
 
     if [[ "$@" == *"MainLock"* ]]; then
-        PRIORITY=1
+        if [[ "$ENABLE_NOTIFICATIONS" == "ON" ]]; then
+            PRIORITY=1
+        fi
         if [[ "$ITEM_VALUE" == "OPEN" ]]; then
             TITLE="Zamek otwarty"
         else
@@ -100,7 +107,9 @@ if [[ "$TYPE" == "information" ]]; then
     fi
 
     if [[ "$@" == *"MainDoor"* ]]; then
-        PRIORITY=1
+        if [[ "$ENABLE_NOTIFICATIONS" == "ON" ]]; then
+            PRIORITY=1
+        fi
         if [[ "$ITEM_VALUE" == "OPEN" ]]; then
             TITLE="Drzwi otwarte"
         else

@@ -43,7 +43,7 @@ if [[ $1 == "parse" ]]; then
             if [[ "$bl" -eq "0" ]]; then
               if [[ "$DTYPE" -eq "130" ]]; then # iNode Energy Meter
                 #echo DTYPE
-
+                #echo $packet
                 MAC=$(echo $packet | awk '{print $13$12$11$10$9$8}')
                 #echo $mp
 
@@ -141,9 +141,14 @@ if [[ $1 == "parse" ]]; then
     fi
   done
 else
-  #hcitool lescan --duplicates 1>/dev/null &
-  hciconfig hci0 down && hciconfig hci0 up && hcitool lescan --duplicates 1>/dev/null &
+  echo "Run..."
+  hcitool lescan --duplicates 1>/dev/null &
+  DEVICE_NAME=$(rfkill list -o DEVICE -n | grep hci)
+  #hciconfig hci0 down && hciconfig hci0 up && hcitool lescan --duplicates 1>/dev/null &
+  echo "Run 1..."
+
   if [ "$(pidof hcitool)" ]; then
-    hcidump --raw | $0 parse $1
+    hcidump --raw -i $DEVICE_NAME | $0 parse $1
+    #hcidump --raw | $0 parse $1
   fi
 fi

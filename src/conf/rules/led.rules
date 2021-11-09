@@ -112,3 +112,19 @@ when
 then
     GH_Bedroom_Night_Scene.sendCommand(OFF)
 end
+
+rule "debug_desk"
+when
+    Item WiFiLED4_power received update
+then
+    if (WiFiLED4_power.state.toString() == "OFF") {
+        val hsb = new HSBType("107, 100, 0")
+        sendCommand(WiFiLED4_color, hsb)
+//        WiFiLED4_dimmer.sendCommand(0)
+//        logInfo ("debug desk", "debug desk: {}", hsb)
+    } else {
+        val hsb = new HSBType("107, 100, 50")
+        sendCommand(WiFiLED4_color, hsb)
+//        logInfo ("debug desk", "debug desk: {}", hsb)
+    }
+end

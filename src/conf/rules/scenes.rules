@@ -25,6 +25,14 @@ then
             }
         }
 
+        if (triggeringItem.name == "GH_Reset_Scene"){
+            if (logLevel >= 6) {
+              logInfo("scene_rule", "reset")
+            }
+            FF_Bedroom_Rollershutter_PrgDown.sendCommand(ON)
+            GF_FamilyRoom_Rollershutter_PrgDown.sendCommand(ON)
+        }
+
         if (triggeringItem.name == "GH_TVShow_Scene"){
             if (logLevel >= 6) {
               logInfo("scene_rule", "scene: tvshow {}", triggeringItem.state)

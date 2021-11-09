@@ -7,7 +7,8 @@ then
     val String itemName = triggeringItem.name
     val itemValue = String.valueOf(triggeringItem.state)
     val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
-    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime)
+    val String enableNotifications = String.valueOf(calendar_Notification.state)
+    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
   } catch (Throwable t) {
     logError("Error", "Error in notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
@@ -24,7 +25,8 @@ then
       val String itemName = triggeringItem.name
       val itemValue = String.valueOf(triggeringItem.state)
       val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
-      executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime)
+      val String enableNotifications = String.valueOf(calendar_Notification.state)
+      executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
     }
   } catch (Throwable t) {
     logError("Error", "Error in alarm_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
@@ -41,7 +43,8 @@ then
     val String itemName = triggeringItem.name
     val itemValue = String.valueOf(triggeringItem.state)
     val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
-    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime)
+    val String enableNotifications = String.valueOf(calendar_Notification.state)
+    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
   } catch (Throwable t) {
     logError("Error", "Error in error_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
@@ -58,7 +61,8 @@ then
     val String itemName = triggeringItem.name
     val itemValue = String.valueOf(triggeringItem.state)
     val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
-    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime)
+    val String enableNotifications = String.valueOf(calendar_Notification.state)
+    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
   } catch (Throwable t) {
     logError("Error", "Error in garage_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
@@ -74,7 +78,8 @@ then
     val String itemName = triggeringItem.name
     val itemValue = String.valueOf(triggeringItem.state)
     val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
-    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime)
+    val String enableNotifications = String.valueOf(calendar_Notification.state)
+    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
   } catch (Throwable t) {
     logError("Error", "Error in presence_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
@@ -90,7 +95,8 @@ then
     val String itemName = "DebugButton"
     val itemValue = String.valueOf(DebugButton.state)
     val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
-    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime)
+    val String enableNotifications = String.valueOf(calendar_Notification.state)
+    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
   } catch (Throwable t) {
     logError("Error", "Error in error_notification_rule {} {} {}", DebugButton.name, DebugButton.state, t.toString())
   }

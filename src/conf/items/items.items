@@ -179,6 +179,7 @@ Switch      GH_Netflix_Command                                       "Netflix[]"
 Switch      GH_YouTube_Command                                       "Youtube[]"                                                              (gSystem)                                                                                                                                 {channel="mqtt:topic:MyMQTTBroker:Sony:Command_Youtube", ga="Switch"}
 Switch      GH_TV_Command                                            "TV[]"                                                                   (gSystem)                                                                                                                                 {channel="mqtt:topic:MyMQTTBroker:Sony:Command_TV", ga="Switch"}
 Switch      GH_Confirm_Command                                       "Enter[]"                                                                (gSystem)
+Switch      GH_Reset_Scene                                           "Reset[]"                                                                (gScenes)                                                                                                                                 {ga="Switch"}
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Sensors
@@ -339,7 +340,7 @@ Number      HH_PowermeterPlug01_Factor                               "Powermeter
 Number      HH_PowermeterPlug01_RSSI                                 "Powermeter01 plug RSSI [%.0f]"                         <heating>        (gRSSI)                                                                                                                                   {channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:RSSI"}
 String      HH_PowermeterPlug01_Heartbeat                            "Powermeter01 plug [%s]"                                                 (gHeartbeat)                                                                                                                              {channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Heartbeat"}
 DateTime    HH_PowermeterPlug01_Heartbeat_LastUpdate                 "Powermeter01 plug [%1$td.%1$tm %1$tH:%1$tM]"           <time>           (gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch      HH_PowermeterPlug01_Heartbeat_LastUpdate_Error           "Powermeter01 plug"                                     <time>           (gErrors, gPersistenceSwitch)
+Switch      HH_PowermeterPlug01_Heartbeat_LastUpdate_Error           "Powermeter01 plug"                                     <time>           (gPersistenceSwitch)
 
 Group       gPowermeterPlug02                                        "Office power plug"                                                      (gOffice)                                                                                               ["PowerOutlet"]
 Switch      HH_PowermeterPlug02                                      "PC[]"                                                  <light>          (gPowermeterPlug02, gTasmota, gPersistenceSwitch)                                                       ["Switch"]                        {channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:PowerSwitch", ga="Switch"}

@@ -12,8 +12,6 @@ String      WiFiLED2_Heartbeat                     "LED Alice [%s]"             
 DateTime    WiFiLED2_Heartbeat_LastUpdate          "LED Alice [%1$td.%1$tm %1$tH:%1$tM]"    <time>       (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch      WiFiLED2_Heartbeat_LastUpdate_Error    "LED Alice"                              <time>       (gErrors, gPersistenceSwitch)
 
-
-
 Group       gWiFILED3                              "Ann led"                                             (gAnnRoom)                                    ["LightStripe"]
 Switch      WiFiLED3_power                         "Ann led power"                                       (gWiFILED3, gPersistenceSwitch)               ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED3:PowerSwitch"}
 Color       WiFiLED3_color                         "Ann led color"                                       (gWiFILED3, gPersistenceSwitch)               ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED3:Color_"}
@@ -24,8 +22,8 @@ DateTime    WiFiLED3_Heartbeat_LastUpdate          "LED Ann [%1$td.%1$tm %1$tH:%
 Switch      WiFiLED3_Heartbeat_LastUpdate_Error    "LED Ann"                                <time>       (gErrors, gPersistenceSwitch)
 
 Group       gWiFILED4                              "Desk led"                                            (gOffice)                                     ["LightStripe"]
-Switch      WiFiLED4_power                         "Desk led power"                                      (gWiFILED4, gPersistenceSwitch)               ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED4:PowerSwitch"}
-Color       WiFiLED4_color                         "Desk led color"                                      (gWiFILED4, gPersistenceSwitch)               ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED4:Color_"}
+Switch      WiFiLED4_power                         "Desk led"                                            (gWiFILED4, gPersistenceSwitch)               ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED4:PowerSwitch"}
+Color       WiFiLED4_color                         "Desk led color"                                      (gWiFILED4, gPersistenceSwitch)               ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED4:Color_", ga="Light"}
 Dimmer      WiFiLED4_dimmer                        "Desk led dimmer"                                     (gWiFILED4, gPersistenceSwitch)               ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED4:Dimmer_"}
 
 Group       gWiFILED5                              "Family room sofa led"                                (gFamilyRoom)                                 ["LightStripe"]

@@ -7,6 +7,11 @@ ADD COLUMN `lastupdate` DATE DEFAULT NULL;
 ALTER TABLE `OpenHAB`.`items`
 ADD COLUMN `deletedouble` INT NOT NULL DEFAULT 0;
 
+ALTER TABLE `OpenHAB`.`items`
+ADD COLUMN `onevalue` INT NOT NULL DEFAULT 0;
+
+update items set onevalue = 1 where itemname like '%LastUpdate';
+
 DELIMITER $$
 CREATE OR REPLACE PROCEDURE `OpenHAB`.`DeleteDoubleValues`()
 BEGIN

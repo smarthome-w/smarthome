@@ -22,6 +22,8 @@ sitemap garage label="Garage" {
     Frame label="Health" icon="groundfloor" {
         Text item=GA_Garage_Heartbeat_LastUpdate
         Switch item=GA_Garage_Heartbeat_LastUpdate_Error
+        Text item=GA_Garage_Cross_Heartbeat_LastUpdate
+        Switch item=GA_Garage_Cross_Heartbeat_LastUpdate_Error
     }
 
     Frame label="Detectors" icon="firstfloor" {

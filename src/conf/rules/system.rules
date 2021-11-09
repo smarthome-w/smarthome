@@ -105,6 +105,14 @@ then
   if (GF_Motion_Mode.state === NULL) {
     GF_Motion_Mode.sendCommand("STD")
   }
+
+  if (HH_Humidity_Min.state === NULL) {
+    HH_Humidity_Min.sendCommand(30.0)
+  }
+
+  if (HH_Humidity_Max.state === NULL) {
+    HH_Humidity_Max.sendCommand(70.0)
+  }
 end
 
 

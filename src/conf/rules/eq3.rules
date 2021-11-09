@@ -100,7 +100,8 @@ then
                 temperatureItem.postUpdate(temp)
                 lastUpdateItem.postUpdate(new DateTimeType())
                 //var String nowStr = now.toString("HH:mm")
-                val nowStr = now.toLocalDateTime().toString()
+                //val nowStr = now.toLocalDateTime().toString()
+                val nowStr = now.toLocalDateTime().getHour() + ":" + now.toLocalDateTime().getMinute()
                 statusItem.postUpdate(nowStr + " - " + temp.toString() + " C - " + thermometerItem.state.toString() + " C - " + valve.toString() + "%")
             }
             if (valveItem !== NULL) {
