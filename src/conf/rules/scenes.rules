@@ -16,13 +16,13 @@ then
         // }
 
         if (triggeringItem.name == "GH_Day_Scene"){
-            if (logLevel >= 6) {
-              logInfo("scene_rule", "day")
-            }
-            if (calendar_Vacation.state.toString() == "OFF") {
+//            if (logLevel >= 6) {
+              logInfo("scene_rule", "day: {}", calendar_Vacation.state)
+//            }
+//            if (calendar_Vacation.state.toString() == "OFF") {
               GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
               FF_Bedroom_Rollershutter_AutoUp.sendCommand(ON)
-            }
+//            }
         }
 
         if (triggeringItem.name == "GH_Reset_Scene"){

@@ -70,6 +70,13 @@ pihole-service-install:
 	@sudo systemctl daemon-reload
 	@sudo systemctl enable pihole
 
+homeassistant-service-install:
+	@sudo cp $(RESOURCES)/service/homeassistant.service /etc/systemd/system/homeassistant.service
+	@sed -i "s/DOCKER_TAG/$(DOCKER_TAG)/g" /etc/systemd/system/homeassistant.service
+	@sed -i "s/HOST_IP/$(HOST_IP)/g" /etc/systemd/system/homeassistant.service
+	@sudo systemctl daemon-reload
+	@sudo systemctl enable homeassistant
+
 openhab-service-install:
 	@sudo cp $(RESOURCES)/service/openhab.service /etc/systemd/system/openhab.service
 	@sed -i "s/DOCKER_TAG/$(DOCKER_TAG)/g" /etc/systemd/system/openhab.service

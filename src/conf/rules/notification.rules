@@ -86,6 +86,7 @@ then
   }
 end
 
+/*
 rule "notification debug"
 when
     Item DebugButton received update
@@ -101,3 +102,4 @@ then
     logError("Error", "Error in error_notification_rule {} {} {}", DebugButton.name, DebugButton.state, t.toString())
   }
 end
+*/

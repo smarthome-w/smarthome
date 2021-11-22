@@ -38,8 +38,8 @@
 
 //#define TechnicalRoom1
 //#define TechnicalRoom2
-//#define FamilyRoomRollershutter
-#define BedroomRollershutter
+#define FamilyRoomRollershutter
+//#define BedroomRollershutter
 //#define KitchenLED
 
 //#define Kitchen // migrated to tasmota

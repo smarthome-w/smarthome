@@ -1,9 +1,6 @@
 sitemap garage label="Garage" {
-    Frame label="Doors" icon="groundfloor" {
+    Frame label="Doors and lights" icon="groundfloor" {
         Switch item=CIR_GA_Garage mappings=[CLOSED="Closed", OPEN="Open"]
-    }
-
-    Frame label="Lights" icon="groundfloor" {
         Switch item=GA_Garage_Cross
     }
 
@@ -26,8 +23,8 @@ sitemap garage label="Garage" {
         Switch item=GA_Garage_Cross_Heartbeat_LastUpdate_Error
     }
 
-    Frame label="Detectors" icon="firstfloor" {
-        Webview url="/static/Visualization/Timeline.html?Group=gGarageDetectors&serviceId=jdbc&Hours=24" height=4
+    Frame label="Timeline" icon="firstfloor" {
+        Webview url="/static/Visualization/Timeline.html?Group=gGarageDetectors&serviceId=jdbc&Hours=24" height=5
     }
 
     Frame label="Brightness (daily)" icon="firstfloor" {

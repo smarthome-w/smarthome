@@ -98,7 +98,7 @@ Switch      GF_Corridor_Cross                                        "Corridor c
 DateTime    GF_Corridor_Cross_LastUpdate                             "Corridor cross [%1$td.%1$tm %1$tH:%1$tM]"              <time>           (gLastUpdateShelly, gPersistenceSwitch)
 
 Group       gGarageLightCross                                        "Garage cross"                                                           (gGarage)                                                                                               ["Lightbulb"]
-Switch      GA_Garage_Cross                                          "Garage cross[]"                                        <light>          (gGarageLightCross, gSonoff, gPersistenceSwitch)                                                        ["Switch", "Opening"]             {channel="mqtt:topic:MyMQTTBroker:GarageCross:PowerSwitch"}
+Switch      GA_Garage_Cross                                          "Garage cross[]"                                        <light>          (gGarageLightCross, gSonoff, gGarageDetectors, gPersistenceSwitch)                                      ["Switch", "Opening"]             {channel="mqtt:topic:MyMQTTBroker:GarageCross:PowerSwitch"}
 DateTime    GA_Garage_Cross_LastUpdate                               "Garage cross [%1$td.%1$tm %1$tH:%1$tM]"                <time>           (gLastUpdateSonoff, gPersistenceSwitch)
 
 Group       gCorridorStorage                                         "Corridor storage"                                                       (gCorridor)                                                                                             ["LightStripe"]
