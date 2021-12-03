@@ -1,4 +1,4 @@
-select TABLE_NAME, TABLE_ROWS, CREATE_TIME, UPDATE_TIME, items.itemname 
+select TABLE_NAME, TABLE_ROWS, CREATE_TIME, UPDATE_TIME, items.itemname
 from information_schema.tables, items
 where TABLE_NAME = concat('Item', items.itemid) and TABLE_SCHEMA = 'OpenHAB' and TABLE_ROWS = 0;
 
@@ -26,10 +26,9 @@ wholeblock:BEGIN
 END//
 
 
-
 CREATE OR REPLACE PROCEDURE clear_tables()
 BEGIN
-    DECLARE cursor_List CURSOR FOR 
+    DECLARE cursor_List CURSOR FOR
       SELECT ItemId, itemname FROM items
     ;
 END

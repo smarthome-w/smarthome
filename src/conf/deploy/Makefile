@@ -143,14 +143,10 @@ openhab-info:
 
 openhab-develop: openhab-info openhab-docker-stop openhab-docker-build
 
-openhab-code:
-	@ln -sf /home/openhab/smarthome/src/conf /opt/openhab/conf
-
-
 openhab-basic: openhab-info openhab-docker-stop openhab-docker-build \
 	openhab-service-install openhab-service-restart
 
-openhab-all: openhab-info openhab-docker-stop openhab-code openhab-docker-build \
+openhab-all: openhab-info openhab-docker-stop openhab-docker-build \
 	openhab-service-install openhab-broadlink-mqtt-service-install \
 	openhab-sony-mqtt-service-install openhab-powermeter-service-install \
 	openhab-server-service-install openhab-service-restart

@@ -122,15 +122,14 @@ when
 then
   OpenHAB_Restart.postUpdate(new DateTimeType())
 
-  val String type = "information"
-  val String itemName = "_"
-  val itemValue = "Restart OpenHAB"
-  val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
+  var String type = "information"
+  var String itemName = "_"
+  var itemValue = "Restart OpenHAB"
+  var String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
   executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime)
 
 
-  var type = ":information_source:"
-  val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
-  var result = executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, "`" + currentTime + "`", "OpenHAB restarted")
-  if (result == "") {}
+  type = ":information_source:"
+  String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
+  executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, "`" + currentTime + "`", "OpenHAB restarted")
 end

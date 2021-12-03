@@ -3,9 +3,18 @@ when
   Item DebugButton received update
 then
   logInfo("maintenace_rule", "say hello start")
-  say ("See you later aligator", "voicerss:enUS", "chromecast:chromecast:familyroom")
+//  say ("See you later aligator", "voicerss:enUS", "chromecast:chromecast:familyroom")
 //  say ("Hello world", "googletts:enUSStandardA", "chromecast:chromecast:familyroom")
 //  playStream ("chromecast:chromecast:familyroom", "http://192.168.0.4/static/sounds/main_lock_is_unlocked.mp3")
+
+  var textToSpeech = "Dzień dobry"
+  var language = "pl-pl"
+  var key = "66d531cf46544319bd7cbca26d80aa76"
+
+  logInfo("Chromecast", "Text: {}", textToSpeech)
+  var textURI = "https://api.voicerss.org/?key=" + key + "&f=44khz_16bit_mono&c=MP3&hl=" + language + "&src=" + textToSpeech
+
+  playStream ("chromecast:chromecast:familyroom", textURI)
 
 // playStream ("chromecast:chromecast:familyroom", "http://192.168.0.4/static/sounds/abc.wav")
 
