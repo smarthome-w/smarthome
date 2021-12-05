@@ -63,15 +63,15 @@ def send_broadlink_code(code, retry_num=1):
     if (code != ""):
         try:
             # settings
-            device = broadlink.rm(
-                host=(RMPRO_IP, 80), mac=bytearray.fromhex(RMPRO_MAC), devtype="rm")
+            device = broadlink.rmpro(
+                host=(RMPRO_IP, 80), mac=RMPRO_MAC, devtype=0x2787)
             device.auth()
             for i in range(retry_num):
                 decode_hex = codecs.getdecoder("hex_codec")
                 device.send_data(decode_hex(code)[0])
             return True
         except Exception as e:
-            logger.error(e)
+            logger.error("send_broadlink_code: {}".format(e))
             return False
     else:
         logger.error("Empty code value")
@@ -104,7 +104,8 @@ def on_message(client, userdata, msg):
     try:
         code = mappings[type]["mapping_dictionary"][element][command]
         setup_network()
-        if (not send_broadlink_code(code, ret_num)):
+        code1 = code.encode('utf-8')
+        if (not send_broadlink_code(code1, ret_num)):
             logger.error("Message type:{} element:{} command:{} status: NOT SENT".format(
                 type, element, command))
         else:

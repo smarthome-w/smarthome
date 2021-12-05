@@ -32,3 +32,5 @@ Number    HH_DebugLevel_General            "General debug level [%.0f]"         
 Switch    HH_AliceAtSchool                 "Alice at school []"                       <time>        (gParameters, gPersistenceSwitch)
 Switch    HH_AnnAtSchool                   "Ann at school []"                         <time>        (gParameters, gPersistenceSwitch)
 Switch    HH_WaldekAtWork                  "Waldek at work []"                        <time>        (gParameters, gPersistenceSwitch)
+
+Switch    HH_SystemStarted                 "System fully started []"                  <time>

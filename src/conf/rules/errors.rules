@@ -1,12 +1,12 @@
 var errOverallError = false
-var int errLogLevel = 6
+var int errLogLevel = 1
 
 rule "err_rule"
 when
   Time cron "0 */5 * ? * MON-SUN"
 then
   try {
-    errLogLevel = 6
+    //errLogLevel = 6
     if (HH_DebugLevel_General.state !== NULL) {
       errLogLevel = (HH_DebugLevel_General.state as Number).intValue
     }
@@ -14,10 +14,11 @@ then
       var Number diff = 20
       if (E.state !== NULL) {
         var DateTimeType previous = E.state as DateTimeType
-        diff = Minutes::minutesBetween(new DateTime(previous.zonedDateTime.toInstant.toEpochMilli), now).getMinutes()
+        diff = (now.toInstant.toEpochMilli - previous.zonedDateTime.toInstant.toEpochMilli) / 1000 / 60
+        // diff = Minutes::minutesBetween(new DateTime(previous.zonedDateTime.toInstant.toEpochMilli), now).getMinutes()
       }
       if (errLogLevel >= 6) {
-        logError("Errors detection", "item: {}, diff: {}", E.name, diff)
+        logInfo("Errors detection", "item: {}, diff: {}", E.name, diff)
       }
       val SwitchItem errorIndicator = (gErrors.members.findFirst[name.equals(E.name + "_Error")] as SwitchItem)
 
@@ -34,7 +35,6 @@ then
   } finally {
   }
 end
-
 
 rule "error_flag_rule"
 when

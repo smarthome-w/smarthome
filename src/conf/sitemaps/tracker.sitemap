@@ -1,35 +1,45 @@
 sitemap tracker label="Tracker" {
-    Text item=Tracker_Waldek_AtHome
+  Webview url="/static/Visualization/Timeline.html?Group=gTrackerPresence&serviceId=jdbc&Hours=24" height=13
+
+  Frame label="Tracking data" {
+    Switch item=Waldek_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
+    Switch item=Waldek_AtDistrict mappings=[CLOSED="Absent", OPEN="Present"]
     Text item=Tracker_Waldek_LastSeen
+    Text item=Tracker_Waldek_Address
     Text item=Tracker_Waldek_BatteryLevel
     Text item=Tracker_Waldek_Accuracy
     Text item=Tracker_Waldek_Location
-    Text item=Tracker_Waldek_HomeDistance
-    Mapview item=Tracker_Waldek_Location height=4
+    Mapview item=Tracker_Waldek_Location_Map height=4
 
-    Text item=Tracker_Aldona_AtHome
+    Switch item=Aldona_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
+    Switch item=Aldona_AtDistrict mappings=[CLOSED="Absent", OPEN="Present"]
     Text item=Tracker_Aldona_LastSeen
+    Text item=Tracker_Aldona_Address
     Text item=Tracker_Aldona_BatteryLevel
     Text item=Tracker_Aldona_Accuracy
     Text item=Tracker_Aldona_Location
-    Text item=Tracker_Aldona_HomeDistance
-    Mapview item=Tracker_Aldona_Location height=4
+    Mapview item=Tracker_Aldona_Location_Map height=4
 
-    Text item=Tracker_Ann_AtHome
+    Switch item=Ann_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
+    Switch item=Ann_AtSchool mappings=[CLOSED="Absent", OPEN="Present"]
+    Switch item=Ann_AtDistrict mappings=[CLOSED="Absent", OPEN="Present"]
     Text item=Tracker_Ann_LastSeen
+    Text item=Tracker_Ann_Address
     Text item=Tracker_Ann_BatteryLevel
     Text item=Tracker_Ann_Accuracy
     Text item=Tracker_Ann_Location
-    Text item=Tracker_Ann_HomeDistance
-    Mapview item=Tracker_Ann_Location height=4
+    Mapview item=Tracker_Ann_Location_Map height=4
 
-    Text item=Tracker_Alice_AtHome
+    Switch item=Alice_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
+    Switch item=Alice_AtSchool mappings=[CLOSED="Absent", OPEN="Present"]
+    Switch item=Alice_AtDistrict mappings=[CLOSED="Absent", OPEN="Present"]
     Text item=Tracker_Alice_LastSeen
+    Text item=Tracker_Alice_Address
     Text item=Tracker_Alice_BatteryLevel
     Text item=Tracker_Alice_Accuracy
     Text item=Tracker_Alice_Location
-    Text item=Tracker_Alice_HomeDistance
-    Mapview item=Tracker_Alice_Location height=4
+    Mapview item=Tracker_Alice_Location_Map height=4
 
     Chart item=gTrackerBattery period=3D label="Batteries"
+  }
 }

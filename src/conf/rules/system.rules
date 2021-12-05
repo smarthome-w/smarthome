@@ -1,12 +1,135 @@
+rule "Default values"
+when
+  Item HH_SystemStarted changed to ON
+then
+  logInfo("Info", "Default values")
+  HH_SystemStarted.postUpdate(OFF)
+
+  if (GF_Presence_Mode.state === NULL) {
+    GF_Presence_Mode.sendCommand("PRESENT")
+  }
+
+  if (calendar_Vacation.state === NULL) {
+    calendar_Vacation.sendCommand(OFF)
+  }
+
+  if (DemoMode.state === NULL) {
+    DemoMode.sendCommand(OFF)
+  }
+
+  if (HH_Light_Dusk_Level.state === NULL) {
+    HH_Light_Dusk_Level.sendCommand(500)
+  }
+
+  if (HH_Light_Dawn_Level.state === NULL) {
+    HH_Light_Dawn_Level.sendCommand(500)
+  }
+
+  if (HH_PIR_State_Timeout.state === NULL) {
+    HH_PIR_State_Timeout.sendCommand(2)
+  }
+
+  if (HH_PIR_Wardobe_State_Timeout.state === NULL) {
+    HH_PIR_Wardobe_State_Timeout.sendCommand(30)
+  }
+
+  if (HH_Time_Day.state === NULL) {
+    HH_Time_Day.sendCommand(6)
+  }
+
+  if (HH_Time_Evening.state === NULL) {
+    HH_Time_Evening.sendCommand(17)
+  }
+
+  if (HH_Time_Night.state === NULL) {
+    HH_Time_Night.sendCommand(22)
+  }
+
+  if (HH_Elevation_Dusk.state === NULL) {
+    HH_Elevation_Dusk.sendCommand(3)
+  }
+
+  if (HH_Elevation_Dawn.state === NULL) {
+    HH_Elevation_Dawn.sendCommand(2)
+  }
+
+  if (HH_LockWarningHour.state === NULL) {
+    HH_LockWarningHour.sendCommand(21)
+  }
+
+  if (HH_BlindsNotBefore.state === NULL) {
+    HH_BlindsNotBefore.sendCommand(8)
+  }
+
+  if (HH_Night_Bedroom_Blind_Level.state === NULL) {
+    HH_Night_Bedroom_Blind_Level.sendCommand(200)
+  }
+
+  if (HH_DailyInfoHour.state === NULL) {
+    HH_DailyInfoHour.sendCommand(8)
+  }
+
+  if (HH_DailyInfoMinute.state === NULL) {
+    HH_DailyInfoMinute.sendCommand(1)
+  }
+
+  if (HH_OpenWindowTemperatureAlert.state === NULL) {
+    HH_OpenWindowTemperatureAlert.sendCommand(10)
+  }
+
+  if (HH_DebugLevel_PIRCIR.state === NULL) {
+    HH_DebugLevel_PIRCIR.sendCommand(1.0)
+  }
+  if (HH_DebugLevel_Broadlink.state === NULL) {
+    HH_DebugLevel_Broadlink.sendCommand(1.0)
+  }
+  if (HH_DebugLevel_Heartbeat.state === NULL) {
+    HH_DebugLevel_Heartbeat.sendCommand(1.0)
+  }
+  if (HH_DebugLevel_Scene.state === NULL) {
+    HH_DebugLevel_Scene.sendCommand(1.0)
+  }
+  if (HH_DebugLevel_Nightwatch.state === NULL) {
+    HH_DebugLevel_Nightwatch.sendCommand(1.0)
+  }
+  if (HH_DebugLevel_Movewatch.state === NULL) {
+    HH_DebugLevel_Movewatch.sendCommand(1.0)
+  }
+  if (HH_DebugLevel_Rollershutter.state === NULL) {
+    HH_DebugLevel_Rollershutter.sendCommand(1.0)
+  }
+  if (HH_DebugLevel_General.state === NULL) {
+    HH_DebugLevel_General.sendCommand(1.0)
+  }
+
+  if (GF_Motion_Mode.state === NULL) {
+    GF_Motion_Mode.sendCommand("STD")
+  }
+
+  if (HH_Humidity_Min.state === NULL) {
+    HH_Humidity_Min.sendCommand(30.0)
+  }
+
+  if (HH_Humidity_Max.state === NULL) {
+    HH_Humidity_Max.sendCommand(70.0)
+  }
+end
+
+
 rule "System started"
 when
     System started
 then
   OpenHAB_Restart.postUpdate(new DateTimeType())
 
-  val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
-  var command = "/openhab/conf/scripts/SLACK/slack.sh ':information_source:' `" + currentTime + "` OpenHAB restarted"
-  var result = executeCommandLine (command, 10000)
-  if (result == "") {
-  }
+  var String type = "information"
+  var String itemName = "_"
+  var itemValue = "Restart OpenHAB"
+  var String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
+  executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime)
+
+
+  type = ":information_source:"
+  String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
+  executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, "`" + currentTime + "`", "OpenHAB restarted")
 end

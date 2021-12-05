@@ -1,0 +1,22 @@
+[Unit]
+Description=Home Assistant
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=180
+User=root
+Group=root
+ExecStartPre=-/usr/bin/docker rm -f %n
+ExecStart=/usr/bin/docker run --name=%n --tty \
+  --privileged \
+  --restart=unless-stopped \
+  -v /opt/homeassistant/config:/config \
+  --network=host \
+  ghcr.io/home-assistant/raspberrypi3-homeassistant:stable
+
+ExecStop=/usr/bin/docker stop -t 2 %n ; /usr/bin/docker rm -f %n
+
+[Install]
+WantedBy=multi-user.target

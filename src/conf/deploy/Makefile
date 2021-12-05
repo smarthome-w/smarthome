@@ -4,7 +4,7 @@ DOCKER_TAG=smarthomew-openhab
 
 MACHINE=$(shell uname -m)
 
-VERSION=2.5.0
+VERSION=3.1.0
 OS_PLATFORM=amd64
 
 HOST_IP=`hostname -I | awk '{print $$1}'`
@@ -19,12 +19,12 @@ ifeq ($(OS_PLATFORM),)
 endif
 
 openhab-init:
-	@sudo useradd openhab
+#	@sudo useradd openhab
 	@sudo usermod -u 9001 openhab
 	@sudo groupmod -g 9001 openhab
 
 openhab-core:
-	@sudo apt-get install mariadb-client mariadb-server mosquitto mosquitto-clients moreutils nmap -y
+	@sudo apt-get install mariadb-client mariadb-server mosquitto mosquitto-clients moreutils nmap bluez bluez-hcidump bc telnet -y
 ifeq ($(OS_PLATFORM),armhf)
 	@sudo apt install docker.io docker-compose -y
 endif
@@ -34,7 +34,7 @@ endif
 
 	@sudo pip3 install setuptools
 	@sudo pip3 install wheel
-	@sudo pip3 install paho-mqtt ruamel.yaml xmltodict
+	@sudo pip3 install paho-mqtt ruamel.yaml xmltodict locationsharinglib
 ifeq ($(OS_PLATFORM),armhf)
 	@sudo pip3 install py-sony-bravia-remote git+https://github.com/mjg59/python-broadlink.git
 	@sudo pip3 install git+https://github.com/aparraga/braviarc.git
@@ -53,8 +53,8 @@ openhab-db:
 #  /etc/default/motion start_motion_daemon=yes
 
 openhab-docker-build: openhab-docker-clean
-	docker pull openhab/openhab:$(VERSION)-$(OS_PLATFORM)-debian
-	docker tag openhab/openhab:$(VERSION)-$(OS_PLATFORM)-debian $(DOCKER_TAG)	
+	docker pull openhab/openhab:$(VERSION)-debian
+	docker tag openhab/openhab:$(VERSION)-debian $(DOCKER_TAG)
 
 openhab-resources-workspace:
 	@mkdir -p $(RESOURCES)
@@ -69,6 +69,13 @@ pihole-service-install:
 	@sudo cp $(RESOURCES)/service/pihole.service /etc/systemd/system/pihole.service
 	@sudo systemctl daemon-reload
 	@sudo systemctl enable pihole
+
+homeassistant-service-install:
+	@sudo cp $(RESOURCES)/service/homeassistant.service /etc/systemd/system/homeassistant.service
+	@sed -i "s/DOCKER_TAG/$(DOCKER_TAG)/g" /etc/systemd/system/homeassistant.service
+	@sed -i "s/HOST_IP/$(HOST_IP)/g" /etc/systemd/system/homeassistant.service
+	@sudo systemctl daemon-reload
+	@sudo systemctl enable homeassistant
 
 openhab-service-install:
 	@sudo cp $(RESOURCES)/service/openhab.service /etc/systemd/system/openhab.service
@@ -113,11 +120,11 @@ openhab-powermeter-service-install:
 	@sudo systemctl enable openhab-powermeter
 	@sudo systemctl restart openhab-powermeter
 
-openhab-camera-service-install:
-	@sudo cp $(RESOURCES)/service/openhab-camera.service /etc/systemd/system/openhab-camera.service
-	@sudo systemctl daemon-reload
-	@sudo systemctl enable openhab-camera
-	@sudo systemctl restart openhab-camera
+#openhab-camera-service-install:
+#	@sudo cp $(RESOURCES)/service/openhab-camera.service /etc/systemd/system/openhab-camera.service
+#	@sudo systemctl daemon-reload
+#	@sudo systemctl enable openhab-camera
+#	@sudo systemctl restart openhab-camera
 
 openhab-service-restart:
 	@sudo systemctl restart openhab

@@ -99,7 +99,9 @@ then
             if (temperatureItem !== NULL) {
                 temperatureItem.postUpdate(temp)
                 lastUpdateItem.postUpdate(new DateTimeType())
-                var String nowStr = now.toString("HH:mm")
+                //var String nowStr = now.toString("HH:mm")
+                //val nowStr = now.toLocalDateTime().toString()
+                val nowStr = now.toLocalDateTime().getHour() + ":" + now.toLocalDateTime().getMinute()
                 statusItem.postUpdate(nowStr + " - " + temp.toString() + " C - " + thermometerItem.state.toString() + " C - " + valve.toString() + "%")
             }
             if (valveItem !== NULL) {
@@ -133,10 +135,10 @@ then
 //    publish("broker", "product/device", "panic")
 
     var command = "/openhab/conf/scripts/EQ3/eq3.sh"
-    var result = executeCommandLine (command, 100000)
+    var result = executeCommandLine (Duration.ofSeconds(100), command)
     if (result == "") {
     }
-    logInfo("slack", "command: {} with result:\n>>\n{}\n<<\n", command, result)
+    logInfo("eq3", "command: {} with result:\n>>\n{}\n<<\n", command, result)
     logInfo("eq3", "debug eq3 end")
 end
 // MET-1METDST

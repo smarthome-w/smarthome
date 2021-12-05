@@ -1,0 +1,29 @@
+rule "entrywatch_rule1"
+when
+  Item PIR_Corridor_Storage changed to ON
+then
+  try {
+//    PIR_Corridor_Storage_State.sendCommand(ON)
+    Thread::sleep(2000)
+    PIR_Corridor_Storage.sendCommand(OFF)
+  } catch (Throwable t) {
+    logError("Error", "Error in entrywatch_rule_1 {}", t.toString())
+  } finally {
+  }
+end
+
+rule "entrywatch_rule2"
+when
+  Item PIR_GF_EntryWatch_State changed to OFF or
+  Item PIR_Corridor_Storage_State changed to OFF
+then
+  sendCommand(GF_Corridor_Storage, OFF)
+end
+
+rule "entrywatch_rule2"
+when
+  Item PIR_GF_EntryWatch_State changed to ON or
+  Item PIR_Corridor_Storage_State changed to ON
+then
+  sendCommand(GF_Corridor_Storage, ON)
+end

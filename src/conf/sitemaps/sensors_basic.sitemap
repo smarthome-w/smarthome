@@ -33,14 +33,10 @@ sitemap sensors_basic label="Status" {
     }
 
     Frame label="Tracker" icon="groundfloor" {
-        Switch item=Tracker_Waldek_AtHome mappings=[ON="Present", OFF="Absent"]
-        Switch item=Tracker_Aldona_AtHome mappings=[ON="Present", OFF="Absent"]
-        Switch item=Tracker_Ann_AtHome mappings=[ON="Present", OFF="Absent"]
-        Switch item=Tracker_Alice_AtHome mappings=[ON="Present", OFF="Absent"]
-        Text item=Tracker_Waldek_HomeDistance
-        Text item=Tracker_Aldona_HomeDistance
-        Text item=Tracker_Ann_HomeDistance
-        Text item=Tracker_Alice_HomeDistance
+        Switch item=Waldek_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
+        Switch item=Aldona_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
+        Switch item=Ann_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
+        Switch item=Alice_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
     }
 
     Frame label="Heaters" icon="firstfloor" {
@@ -62,6 +58,10 @@ sitemap sensors_basic label="Status" {
       Switch item=HH_PowermeterPlug02
       Switch item=GH_BathroomInfo mappings=[ON="Set"]
     }
+	Frame label="" {
+      Switch item=calendar_Notification
+    }
+
 	Frame label="" {
 		Switch       item=WiFiLED4_power
 		Colorpicker  item=WiFiLED4_color

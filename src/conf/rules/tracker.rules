@@ -1,0 +1,23 @@
+rule "presence_map_rule"
+when
+    Member of gTrackerRawLocation changed
+then
+  try {
+      var lastupdate_item = gTrackerLocation.members.findFirst[name.equals(triggeringItem.name + "_Map")]
+
+      var itemValue = triggeringItem.state.toString()
+      var latitude = itemValue.split(',').get(0)
+      var longitude = itemValue.split(',').get(1)
+      val PointType home = new PointType(DecimalType.valueOf(latitude), DecimalType.valueOf(longitude))
+      //logInfo("Info", "Raw location of {} equals: {}", triggeringItem.name, home)
+
+      if (lastupdate_item !== null) {
+        lastupdate_item.postUpdate(home)
+        //logInfo("Info", "{} set to: {}", lastupdate_item.name, home)
+      }
+  } catch (Throwable t) {
+    logError("Error", "Error in presence_map_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
+  } finally {
+  }
+end
+

@@ -290,6 +290,14 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : RSSI [stateTopic="tele/switch07/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
+// GA_Garage_Cross
+  Thing topic GarageCross "GarageCross" {
+    Channels:
+      Type switch : PowerSwitch [stateTopic="stat/garagecross/POWER", commandTopic="cmnd/garagecross/POWER", on="ON", off="OFF" ]
+      Type string : Heartbeat [stateTopic="tele/garagecross/STATE", transformationPattern="JSONPATH:$.Time"]
+      Type number : RSSI [stateTopic="tele/garagecross/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+  }
+
 // Bedroom
   Thing topic Multisensor01 "Multisensor01" {
     Channels:
@@ -414,6 +422,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type dimmer   : Dimmer_ [stateTopic="tele/wifiled02/STATE", commandTopic="cmnd/wifiled02/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
       Type string   : Mode [stateTopic="tele/wifiled02/STATE", commandTopic="cmnd/wifiled02/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
       Type colorHSB : Color_ [stateTopic="tele/wifiled02/STATE", commandTopic="cmnd/wifiled02/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+      Type string   : Heartbeat [stateTopic="tele/wifiled02/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number   : RSSI  [stateTopic="tele/wifiled02/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
@@ -425,6 +434,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type dimmer   : Dimmer_ [stateTopic="tele/wifiled03/STATE", commandTopic="cmnd/wifiled03/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
       Type string   : Mode [stateTopic="tele/wifiled03/STATE", commandTopic="cmnd/wifiled03/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
       Type colorHSB : Color_ [stateTopic="tele/wifiled03/STATE", commandTopic="cmnd/wifiled03/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+      Type string   : Heartbeat [stateTopic="tele/wifiled03/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number   : RSSI  [stateTopic="tele/wifiled03/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
@@ -481,5 +491,52 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type string   : Mode [stateTopic="tele/wifiled08/STATE", commandTopic="cmnd/wifiled08/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
       Type colorHSB : Color_ [stateTopic="tele/wifiled08/STATE", commandTopic="cmnd/wifiled08/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
       Type number   : RSSI  [stateTopic="tele/wifiled08/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+  }
+
+  Thing topic GoogleTrackerWaldek "GoogleTrackerWaldek" {
+    Channels:
+      Type string : LastLocation [stateTopic="location/Waldek", transformationPattern="REGEX:(.*location.*)∩JSONPATH:$.location"]
+      Type string : Address [stateTopic="location/Waldek", transformationPattern="REGEX:(.*address.*)∩JSONPATH:$.address"]
+      Type number : BatteryLevel [stateTopic="location/Waldek", transformationPattern="REGEX:(.*battery_level.*)∩JSONPATH:$.battery_level"]
+      Type number : Accuracy [stateTopic="location/Waldek", transformationPattern="REGEX:(.*accuracy.*)∩JSONPATH:$.accuracy"]
+      Type string : LastSeen [stateTopic="location/Waldek", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
+      Type contact : AtHome [stateTopic="location/Waldek", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
+      Type contact : AtDistrict [stateTopic="location/Waldek", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
+      Type string : Heartbeat [stateTopic="location/heartbeat", transformationPattern="REGEX:(.*time.*)∩JSONPATH:$.time"]
+  }
+
+  Thing topic GoogleTrackerAldona "GoogleTrackerAldona" {
+    Channels:
+      Type string : LastLocation [stateTopic="location/Aldona", transformationPattern="REGEX:(.*location.*)∩JSONPATH:$.location"]
+      Type string : Address [stateTopic="location/Aldona", transformationPattern="REGEX:(.*address.*)∩JSONPATH:$.address"]
+      Type number : BatteryLevel [stateTopic="location/Aldona", transformationPattern="REGEX:(.*battery_level.*)∩JSONPATH:$.battery_level"]
+      Type number : Accuracy [stateTopic="location/Aldona", transformationPattern="REGEX:(.*accuracy.*)∩JSONPATH:$.accuracy"]
+      Type string : LastSeen [stateTopic="location/Aldona", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
+      Type contact : AtHome [stateTopic="location/Aldona", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
+      Type contact : AtDistrict [stateTopic="location/Aldona", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
+  }
+
+  Thing topic GoogleTrackerAnn "GoogleTrackerAnn" {
+    Channels:
+      Type string : LastLocation [stateTopic="location/Anna", transformationPattern="REGEX:(.*location.*)∩JSONPATH:$.location"]
+      Type string : Address [stateTopic="location/Anna", transformationPattern="REGEX:(.*address.*)∩JSONPATH:$.address"]
+      Type number : BatteryLevel [stateTopic="location/Anna", transformationPattern="REGEX:(.*battery_level.*)∩JSONPATH:$.battery_level"]
+      Type number : Accuracy [stateTopic="location/Anna", transformationPattern="REGEX:(.*accuracy.*)∩JSONPATH:$.accuracy"]
+      Type string : LastSeen [stateTopic="location/Anna", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
+      Type contact : AtHome [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
+      Type contact : AtDistrict [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
+      Type contact : AtSchool [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.school"]
+  }
+
+  Thing topic GoogleTrackerAlice "GoogleTrackerAlice" {
+    Channels:
+      Type string : LastLocation [stateTopic="location/Alicja", transformationPattern="REGEX:(.*location.*)∩JSONPATH:$.location"]
+      Type string : Address [stateTopic="location/Alicja", transformationPattern="REGEX:(.*address.*)∩JSONPATH:$.address"]
+      Type number : BatteryLevel [stateTopic="location/Alicja", transformationPattern="REGEX:(.*battery_level.*)∩JSONPATH:$.battery_level"]
+      Type number : Accuracy [stateTopic="location/Alicja", transformationPattern="REGEX:(.*accuracy.*)∩JSONPATH:$.accuracy"]
+      Type string : LastSeen [stateTopic="location/Alicja", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
+      Type contact : AtHome [stateTopic="location/Alicja", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
+      Type contact : AtDistrict [stateTopic="location/Alicja", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
+      Type contact : AtSchool [stateTopic="location/Alicja", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.school"]
   }
 }

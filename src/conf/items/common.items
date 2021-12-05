@@ -41,3 +41,4 @@ Switch      calendar_Dusk                      "Dusk"                           
 Switch      calendar_Vacation                  "Vacation"                                          <time>           (gCalendar, gPersistenceSwitch)                               ["Control"]
 Switch      calendar_WakeUp                    "Wake up"                                           <time>           (gCalendar, gPersistenceSwitch)                               ["Control"]
 Switch      calendar_DailyInfo                 "DailyInfo"                                         <time>           (gCalendar, gPersistenceSwitch)                               ["Control"]
+Switch      calendar_Notification              "Notifications"                                     <time>           (gCalendar, gPersistenceSwitch)                               ["Control"]

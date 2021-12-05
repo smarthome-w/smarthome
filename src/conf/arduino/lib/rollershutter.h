@@ -8,14 +8,19 @@
 
 #define PERCENTAGE_DELTA 0.5
 
-int SERVO_MAX = -1;
-int SERVO_MIN = -1;
-float SERVO_CURR_POS = 0.0;
+// int SERVO_MAX = -1;
+// int SERVO_MIN = -1;
+// float SERVO_CURR_POS = 0.0;
+
 boolean prevMoveInProgress = false;
 int PWM_CURR_POS = 0;
 
 int SERVO_MAXIMUM_RANGE = SERVO_MAXIMUM_RANGE_VALUE;
 int SERVO_UP_MARIGIN = SERVO_UP_MARIGIN_VALUE;
+
+int SERVO_MAX = SERVO_MAXIMUM_RANGE;
+int SERVO_MIN = 0;
+float SERVO_CURR_POS = SERVO_MAX;
 
 #define SERVO_READ_INTERVAL_MILLIS 300000
 int ServoLastReadInMillis = 0;

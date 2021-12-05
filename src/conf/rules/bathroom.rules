@@ -7,14 +7,13 @@ then
   } else {
 //    FF_Bathroom_Entry_Time.postUpdate(NULL)
     if (FF_Bathroom_Entry_Confirmation.state.toString() == "ON") {
-      var occupied = new DateTime((FF_Bathroom_Entry_Time.state as DateTimeType).zonedDateTime.toInstant.toEpochMilli)
-      var occupied_millis = (occupied.toDate().getTime())
-      var now_millis = now.millis
+      var occupied_millis = (FF_Bathroom_Entry_Time.state as DateTimeType).zonedDateTime.toInstant.toEpochMilli
+      var now_millis = now.toInstant.toEpochMilli
       var occupation_duration = (now_millis - occupied_millis)/1000/60
       FF_Bathroom_Occupation_Minutes.postUpdate(occupation_duration)
       FF_Bathroom_Entry_Confirmation.postUpdate(OFF)
       GH_BathroomInfo.postUpdate(ON)
-      logError("Chromecast", "FF_Bathroom_Occupation_Minutes - {}", FF_Bathroom_Occupation_Minutes)
+      logInfo("Chromecast", "FF_Bathroom_Occupation_Minutes - {}", FF_Bathroom_Occupation_Minutes)
 
     }
     FF_Bathroom_Entry_Time.postUpdate(new DateTimeType())

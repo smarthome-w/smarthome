@@ -57,12 +57,12 @@ then
       brightness = (GF_FamilyRoom_Analog_Sensor.state as Number).intValue
     }
 
-    val hourOfDay = now.getHourOfDay as Number
-    val minuteOfHour = now.getMinuteOfHour as Number
-    val dayOfWeek = now.getDayOfWeek as Number
+    val hourOfDay = now.getHour as Number
+    val minuteOfHour = now.getMinute as Number
+    val dayOfWeek = now.getDayOfWeek().getValue() as Number
 
     if (logLevel >= 6) {
-      logError ("crontab", "duskLevel:{}, dawnLevel:{}, dayAt:{}, eveningAt:{}, nightAt:{}, elevation: {}, brightness: {}, hourOfDay: {}, dayOfWeek:{}",
+      logInfo ("crontab", "duskLevel:{}, dawnLevel:{}, dayAt:{}, eveningAt:{}, nightAt:{}, elevation: {}, brightness: {}, hourOfDay: {}, dayOfWeek:{}",
           duskLevel, dawnLevel, dayAt, eveningAt, nightAt, elevation, brightness, hourOfDay, dayOfWeek)
     }
 
@@ -137,6 +137,30 @@ then
     } else {
         calendar_DailyInfo.sendCommand(OFF)
     }
+
+    if (hourOfDay < 12) {
+      if (calendar_Workday.state.toString() == "ON") {
+        if (hourOfDay >= blindsNotBefore) {
+          calendar_Notification.sendCommand(ON)
+        } else {
+          calendar_Notification.sendCommand(OFF)
+        }
+      } else {
+        if (hourOfDay >= 10) {
+          calendar_Notification.sendCommand(ON)
+        } else {
+          calendar_Notification.sendCommand(OFF)
+        }
+      }
+    } else {
+      if (calendar_Night.state.toString() == "ON") {
+        calendar_Notification.sendCommand(OFF)
+      } else {
+        calendar_Notification.sendCommand(ON)
+      }
+    }
+
+
   } catch (Throwable t) {
     logError("Error", "Error in calendar_rule {}", t.toString())
   } finally {

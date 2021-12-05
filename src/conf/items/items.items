@@ -53,7 +53,7 @@ Switch      GF_Cinema_Scenario                                       "Cinema"   
 Group       gGF_Cinema_Scenario                                      "GF_Cinema_Scenario"                                    <heating>        (gScenarios)
 String      GF_Motion_Mode                                           "Motion"                                                <rgb>            (gPersistenceSwitch)
 String      GF_Presence_Mode                                         "Presence"                                              <rgb>            (gPersistenceSwitch)
-
+Switch      GF_Winter_Mode                                           "Winter"                                                <rgb>            (gPersistenceSwitch)
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Switches
@@ -96,6 +96,10 @@ DateTime    GF_Corridor_Light_LED_LastUpdate                         "Corridor l
 Group       gCorridorLightCross                                      "Corridor cross"                                                         (gCorridor)                                                                                             ["Lightbulb"]
 Switch      GF_Corridor_Cross                                        "Corridor cross[]"                                      <light>          (gCorridorLightCross, gShelly, gPersistenceSwitch, gGF_Corridor_Scenario)                               ["Switch", "Opening"]             {channel="mqtt:topic:MyMQTTBroker:Shelly:GF_Corridor_Cross", ga="Light"}
 DateTime    GF_Corridor_Cross_LastUpdate                             "Corridor cross [%1$td.%1$tm %1$tH:%1$tM]"              <time>           (gLastUpdateShelly, gPersistenceSwitch)
+
+Group       gGarageLightCross                                        "Garage cross"                                                           (gGarage)                                                                                               ["Lightbulb"]
+Switch      GA_Garage_Cross                                          "Garage cross[]"                                        <light>          (gGarageLightCross, gSonoff, gGarageDetectors, gPersistenceSwitch)                                      ["Switch", "Opening"]             {channel="mqtt:topic:MyMQTTBroker:GarageCross:PowerSwitch"}
+DateTime    GA_Garage_Cross_LastUpdate                               "Garage cross [%1$td.%1$tm %1$tH:%1$tM]"                <time>           (gLastUpdateSonoff, gPersistenceSwitch)
 
 Group       gCorridorStorage                                         "Corridor storage"                                                       (gCorridor)                                                                                             ["LightStripe"]
 Switch      GF_Corridor_Storage                                      "Corridor storage[]"                                    <light>          (gCorridorStorage, gSonoff, gPersistenceSwitch)                                                         ["Switch", "Opening"]             {channel="mqtt:topic:MyMQTTBroker:Switch04:PowerSwitch", ga="Light"}
@@ -175,6 +179,7 @@ Switch      GH_Netflix_Command                                       "Netflix[]"
 Switch      GH_YouTube_Command                                       "Youtube[]"                                                              (gSystem)                                                                                                                                 {channel="mqtt:topic:MyMQTTBroker:Sony:Command_Youtube", ga="Switch"}
 Switch      GH_TV_Command                                            "TV[]"                                                                   (gSystem)                                                                                                                                 {channel="mqtt:topic:MyMQTTBroker:Sony:Command_TV", ga="Switch"}
 Switch      GH_Confirm_Command                                       "Enter[]"                                                                (gSystem)
+Switch      GH_Reset_Scene                                           "Reset[]"                                                                (gScenes)                                                                                                                                 {ga="Switch"}
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Sensors
@@ -240,7 +245,7 @@ Switch      FF_AliceRoom_Heartbeat_LastUpdate_Error                  "8266 Alice
 ////////////////////////////////////////////////////////////////////////////////
 //                       Slack
 ////////////////////////////////////////////////////////////////////////////////
-Switch      vSlack_Send                                              "Send slack"                                                             (gSlack)
+Switch      vSlack_Send                                              "Send slack"                                                             (gNotification)
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Heartbeats
@@ -290,6 +295,10 @@ Number      GF_FamilyRoom_LightsLamp_RSSI                            "Sonoff Fam
 String      GF_FamilyRoom_LightsLamp_Heartbeat                       "Sonoff Family room lamps [%s]"                                          (gFamilyRoom, gHeartbeat)                                                                                                                 {channel="mqtt:topic:MyMQTTBroker:Switch02:Heartbeat"}
 DateTime    GF_FamilyRoom_LightsLamp_Heartbeat_LastUpdate            "Sonoff Family room lamps [%1$td.%1$tm %1$tH:%1$tM]"    <time>           (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch      GF_FamilyRoom_LightsLamp_Heartbeat_LastUpdate_Error      "Sonoff Family room lamps"                              <time>           (gErrors, gPersistenceSwitch)
+Number      GA_Garage_Cross_RSSI                                     "Shelly Garage cross RSSI [%.0f]"                       <heating>        (gRSSI)                                                                                                                                   {channel="mqtt:topic:MyMQTTBroker:GarageCross:RSSI"}
+String      GA_Garage_Cross_Heartbeat                                "Shelly Garage cross [%s]"                                               (gGarage, gHeartbeat)                                                                                                                     {channel="mqtt:topic:MyMQTTBroker:GarageCross:Heartbeat"}
+DateTime    GA_Garage_Cross_Heartbeat_LastUpdate                     "Shelly Garage cross [%1$td.%1$tm %1$tH:%1$tM]"         <time>           (gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch      GA_Garage_Cross_Heartbeat_LastUpdate_Error               "Shelly Garage cross []"                                <time>           (gErrors, gPersistenceSwitch)
 Number      GF_Corridor_Light_LED_RSSI                               "Sonoff Corridor led RSSI [%.0f]"                       <heating>        (gRSSI)                                                                                                                                   {channel="mqtt:topic:MyMQTTBroker:Switch05:RSSI"}
 String      GF_Corridor_Light_LED_Heartbeat                          "Sonoff Corridor led [%s]"                                               (gCorridor, gHeartbeat)                                                                                                                   {channel="mqtt:topic:MyMQTTBroker:Switch05:Heartbeat"}
 String      GF_Kitchen_LED_Heartbeat                                 "Sonoff Kitchen led [%s]"                                                (gCorridor, gHeartbeat)                                                                                                                   {channel="mqtt:topic:MyMQTTBroker:Switch07:Heartbeat"}
@@ -331,7 +340,7 @@ Number      HH_PowermeterPlug01_Factor                               "Powermeter
 Number      HH_PowermeterPlug01_RSSI                                 "Powermeter01 plug RSSI [%.0f]"                         <heating>        (gRSSI)                                                                                                                                   {channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:RSSI"}
 String      HH_PowermeterPlug01_Heartbeat                            "Powermeter01 plug [%s]"                                                 (gHeartbeat)                                                                                                                              {channel="mqtt:topic:MyMQTTBroker:PowermeterPlug01:Heartbeat"}
 DateTime    HH_PowermeterPlug01_Heartbeat_LastUpdate                 "Powermeter01 plug [%1$td.%1$tm %1$tH:%1$tM]"           <time>           (gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch      HH_PowermeterPlug01_Heartbeat_LastUpdate_Error           "Powermeter01 plug"                                     <time>           (gErrors, gPersistenceSwitch)
+Switch      HH_PowermeterPlug01_Heartbeat_LastUpdate_Error           "Powermeter01 plug"                                     <time>           (gPersistenceSwitch)
 
 Group       gPowermeterPlug02                                        "Office power plug"                                                      (gOffice)                                                                                               ["PowerOutlet"]
 Switch      HH_PowermeterPlug02                                      "PC[]"                                                  <light>          (gPowermeterPlug02, gTasmota, gPersistenceSwitch)                                                       ["Switch"]                        {channel="mqtt:topic:MyMQTTBroker:PowermeterPlug02:PowerSwitch", ga="Switch"}

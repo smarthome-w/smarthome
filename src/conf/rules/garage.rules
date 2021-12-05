@@ -1,0 +1,25 @@
+rule "garage_entry_light"
+when
+  Item CIR_GA_Garage changed to OPEN
+then
+  try {
+    if (calendar_SupportingLight.state.toString() == "ON") {
+        GA_Garage_Cross.sendCommand(ON)
+    }
+  } catch (Throwable t) {
+    logError("Error", "Error in garage_entry_light {}", t.toString())
+  } finally {
+  }
+end
+
+rule "garage_exit_light"
+when
+  Item CIR_GA_Garage changed to CLOSED
+then
+  try {
+    GA_Garage_Cross.sendCommand(OFF)
+  } catch (Throwable t) {
+    logError("Error", "Error in garage_exit_light {}", t.toString())
+  } finally {
+  }
+end

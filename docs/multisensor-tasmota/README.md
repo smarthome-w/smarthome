@@ -149,3 +149,11 @@ Standard Sonoff 2 buttons
 ```
 backlog Timezone 99; TimeDST 0,4,3,1,3,120; TimeSTD 0,4,10,1,3,60
 ```
+
+```
+Backlog IPAddress4 192.168.0.1; restart 1
+```
+
+```
+Backlog IPAddress1 192.168.0.21; IPAddress2 192.168.0.1; IPAddress3 255.255.255.0; IPAddress4 192.168.0.1; restart 1
+```

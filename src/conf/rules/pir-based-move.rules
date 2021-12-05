@@ -1,24 +1,23 @@
 import java.util.Map
 
 val Map<String, Timer> movewatchTimers = newHashMap
+var int logLevel = 1
+var movewatchTimerName = "wardobeMovewatchTimer"
 
 rule "movewatch_rule"
 when
     Member of gMoveWatch received update
 then
   try {
-    var int logLevel = 1
     if (HH_DebugLevel_Movewatch.state !== NULL) {
         logLevel = (HH_DebugLevel_Movewatch.state as Number).intValue
     }
     if (logLevel >= 6) {
-      logError("movewatch_rule", "Nightwatch change detected {} {}", triggeringItem.name, triggeringItem.state)
+      logInfo("movewatch_rule", "Nightwatch change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
 
-    var movewatchTimerName = "wardobeMovewatchTimer"
-
     if (logLevel >= 6) {
-      logError("movewatch_rule", "movewatchTimerName: {}", movewatchTimerName)
+      logInfo("movewatch_rule", "movewatchTimerName: {}", movewatchTimerName)
     }
 
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
@@ -32,13 +31,13 @@ then
                 movewatchTimers.put(movewatchTimerName, createTimer(now.plusSeconds(timeOutSeconds), [|
                     movewatchTimers.put(movewatchTimerName, null)
                     if (logLevel >= 6) {
-                      logError("movewatch_rule", "Timer expired {}", movewatchTimerName)
+                      logInfo("movewatch_rule", "Timer expired {}", movewatchTimerName)
                     }
                     // off
                     FF_Bedroom_Wardobe.sendCommand(OFF);
                 ]))
                 if (logLevel >= 6) {
-                  logError("movewatch_rule", "Timer created {}", movewatchTimerName)
+                  logInfo("movewatch_rule", "Timer created {}", movewatchTimerName)
                 }
                 //on
                 FF_Bedroom_Wardobe.sendCommand(ON);
@@ -46,7 +45,7 @@ then
             else {
                 movewatchTimers.get(movewatchTimerName).reschedule(now.plusSeconds(timeOutSeconds))
                 if (logLevel >= 6) {
-                  logError("movewatch_rule", "Timer rescheduled {}", movewatchTimerName)
+                  logInfo("movewatch_rule", "Timer rescheduled {}", movewatchTimerName)
                 }
                 FF_Bedroom_Wardobe.sendCommand(ON);
             }

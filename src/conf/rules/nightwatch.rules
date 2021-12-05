@@ -1,6 +1,8 @@
 import java.util.Map
 
 var Map<String, Timer> nightwatchTimers = newHashMap
+var int logLevel = 1
+var int winterLight = 0
 
 rule "nightwatch_rule"
 when
@@ -10,25 +12,29 @@ then
     nightwatchTimers = newHashMap
   }
   try {
-    var int logLevel = 1
     if (HH_DebugLevel_Nightwatch.state !== NULL) {
         logLevel = (HH_DebugLevel_Nightwatch.state as Number).intValue
     }
     if (logLevel >= 6) {
-      logError("nightwatch_rule", "Nightwatch change detected {} {}", triggeringItem.name, triggeringItem.state)
+      logInfo("nightwatch_rule", "Nightwatch change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
 
     var nightwatchTimerName = "corridorNightwatchTimer"
+    if (GF_Winter_Mode.state.toString() == "ON") {
+      winterLight = 1
+    }
+
     if (triggeringItem.name == "PIR_GF_Kitchen") {
+      winterLight = 0
       nightwatchTimerName = "kitchenNightwatchTimer"
     }
 
     if (logLevel >= 6) {
-      logError("nightwatch_rule", "nightwatchTimerName: {}", nightwatchTimerName)
+      logInfo("nightwatch_rule", "nightwatchTimerName: {}", nightwatchTimerName)
     }
 
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
-        if (calendar_SupportingLight.state.toString() == "ON" || DemoMode.state.toString() == "ON") {
+        if (calendar_SupportingLight.state.toString() == "ON" || DemoMode.state.toString() == "ON" || winterLight == 1) {
           if (triggeringItem.state == OPEN) {
             var int timeOutMinutes = 2
             if (HH_PIR_State_Timeout.state !== NULL) {
@@ -38,7 +44,7 @@ then
                 nightwatchTimers.put(nightwatchTimerName, createTimer(now.plusMinutes(timeOutMinutes), [|
                     nightwatchTimers.put(nightwatchTimerName, null)
                     if (logLevel >= 6) {
-                      logError("nightwatch_rule", "Timer expired {}", nightwatchTimerName)
+                      logInfo("nightwatch_rule", "Timer expired {}", nightwatchTimerName)
                     }
                     // off
                     if (nightwatchTimerName == "corridorNightwatchTimer") {
@@ -48,7 +54,7 @@ then
                     }
                 ]))
                 if (logLevel >= 6) {
-                  logError("nightwatch_rule", "Timer created {}", nightwatchTimerName)
+                  logInfo("nightwatch_rule", "Timer created {}", nightwatchTimerName)
                 }
                 //on
                 if (nightwatchTimerName == "corridorNightwatchTimer") {
@@ -60,7 +66,7 @@ then
             else {
                 nightwatchTimers.get(nightwatchTimerName).reschedule(now.plusMinutes(timeOutMinutes))
                 if (logLevel >= 6) {
-                  logError("nightwatch_rule", "Timer rescheduled {}", nightwatchTimerName)
+                  logInfo("nightwatch_rule", "Timer rescheduled {}", nightwatchTimerName)
                 }
                 if (nightwatchTimerName == "corridorNightwatchTimer") {
                   GF_Corridor_Light_LED.sendCommand(ON)
