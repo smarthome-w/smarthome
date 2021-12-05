@@ -53,7 +53,7 @@ Switch      GF_Cinema_Scenario                                       "Cinema"   
 Group       gGF_Cinema_Scenario                                      "GF_Cinema_Scenario"                                    <heating>        (gScenarios)
 String      GF_Motion_Mode                                           "Motion"                                                <rgb>            (gPersistenceSwitch)
 String      GF_Presence_Mode                                         "Presence"                                              <rgb>            (gPersistenceSwitch)
-
+Switch      GF_Winter_Mode                                           "Winter"                                                <rgb>            (gPersistenceSwitch)
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Switches

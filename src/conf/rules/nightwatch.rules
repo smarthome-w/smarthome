@@ -2,6 +2,7 @@ import java.util.Map
 
 var Map<String, Timer> nightwatchTimers = newHashMap
 var int logLevel = 1
+var int winterLight = 0
 
 rule "nightwatch_rule"
 when
@@ -19,17 +20,21 @@ then
     }
 
     var nightwatchTimerName = "corridorNightwatchTimer"
+    if (GF_Winter_Mode.state.toString() == "ON") {
+      winterLight = 1
+    }
+
     if (triggeringItem.name == "PIR_GF_Kitchen") {
+      winterLight = 0
       nightwatchTimerName = "kitchenNightwatchTimer"
     }
 
-//    logInfo("nightwatch_rule", "triggeringItem: {}, {}", triggeringItem, nightwatchTimerName)
     if (logLevel >= 6) {
       logInfo("nightwatch_rule", "nightwatchTimerName: {}", nightwatchTimerName)
     }
 
     if (GF_Presence_Mode.state.toString() == "PRESENT") {
-        if (calendar_SupportingLight.state.toString() == "ON" || DemoMode.state.toString() == "ON") {
+        if (calendar_SupportingLight.state.toString() == "ON" || DemoMode.state.toString() == "ON" || winterLight == 1) {
           if (triggeringItem.state == OPEN) {
             var int timeOutMinutes = 2
             if (HH_PIR_State_Timeout.state !== NULL) {
