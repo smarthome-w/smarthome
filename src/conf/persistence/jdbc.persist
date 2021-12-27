@@ -4,27 +4,26 @@ Strategies {
     everyHour   : "0 0 * * * ?"
     everyDay    : "0 0 0 * * ?"
 	everyMonth   : "0 0 0 * * ?"
-	veryRare   : "59 59 23 31 12 ? 2099"
-	default = everyMonth
+	veryRare   : "59 59 23 31 12 ? 2019"
 }
 
 Items {
-    gPersistenceSettings : strategy = everyChange, restoreOnStartup
-    gPersistenceScenario : strategy = everyChange, restoreOnStartup
-    gPersistenceSwitch : strategy = everyChange, everyHour, restoreOnStartup
-    gPersistenceCalendar : strategy = everyChange, everyHour, restoreOnStartup
-    gPersistenceTracker : strategy = everyChange, everyHour, restoreOnStartup
-    gPersistenceAstro : strategy = everyChange, everyHour, restoreOnStartup
-    gPersistenceEQ3 : strategy = everyChange, everyHour, restoreOnStartup
-    gPersistenceLED : strategy = everyChange, everyHour, restoreOnStartup
-    gPersistenceBlinds : strategy = everyChange, everyHour, restoreOnStartup
-    gPersistenceStatusUpdate : strategy = everyChange, everyHour, restoreOnStartup
-    gPersistenceSensorMotion : strategy = everyChange
-	gPersistenceSensorContact : strategy = every5Minutes, restoreOnStartup
-	gPersistenceSensorPressure : strategy = every5Minutes
-	gPersistenceSensorHumidity : strategy = every5Minutes
-	gPersistenceSensorTemperature : strategy = every5Minutes
-	gPersistenceSensorBrightness : strategy = every5Minutes
-	gPersistenceSensorPower : strategy = every5Minutes
+    gPersistenceSettings* : strategy = everyChange, restoreOnStartup
+    gPersistenceScenario* : strategy = everyChange, restoreOnStartup
+    gPersistenceSwitch* : strategy = everyChange, everyHour, restoreOnStartup
+    gPersistenceCalendar* : strategy = everyChange, everyHour, restoreOnStartup
+    gPersistenceTracker* : strategy = everyChange, everyHour, restoreOnStartup
+    gPersistenceAstro* : strategy = everyChange, everyHour, restoreOnStartup
+    gPersistenceEQ3* : strategy = everyChange, everyHour, restoreOnStartup
+    gPersistenceLED* : strategy = everyChange, everyHour, restoreOnStartup
+    gPersistenceBlinds* : strategy = everyChange, everyHour, restoreOnStartup
+    gPersistenceStatusUpdate* : strategy = everyChange, everyHour, restoreOnStartup
+    gPersistenceSensorMotion* : strategy = everyChange
+	gPersistenceSensorContact* : strategy = everyChange, everyMinute, restoreOnStartup
+	gPersistenceSensorPressure* : strategy = everyMinute
+	gPersistenceSensorHumidity* : strategy = everyMinute
+	gPersistenceSensorTemperature* : strategy = everyMinute
+	gPersistenceSensorBrightness* : strategy = everyMinute
+	gPersistenceSensorPower* : strategy = everyMinute
 	gPersistenceDummy : strategy = veryRare
 }
