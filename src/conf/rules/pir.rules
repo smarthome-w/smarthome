@@ -16,7 +16,7 @@ then
     if (logLevel >= 6) {
       logInfo("pir", "PIR change detected {} {}", triggeringItem.name, triggeringItem.state)
     }
-    if (triggeringItem.state == OPEN || triggeringItem.state == ON) {
+    if (triggeringItem.state.toString() == "OPEN" || triggeringItem.state.toString() == "ON") {
       var int timeOutMinutes = 2
       if (HH_PIR_State_Timeout.state !== NULL) {
         timeOutMinutes = (HH_PIR_State_Timeout.state as Number).intValue

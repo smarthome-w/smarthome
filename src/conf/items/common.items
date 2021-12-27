@@ -5,7 +5,7 @@ Group       gAstroSensor                       "Astro sensor"                   
 
 DateTime    Astro_Sunrise_Time                 "Sunrise [%1$tH:%1$tM]"                             <sunrise>        (gAstroSensor)                                                ["Measurement", "Timestamp"]      {channel="astro:sun:home:rise#start"}
 DateTime    Astro_Sunset_Time                  "Sunset [%1$tH:%1$tM]"                              <sunset>         (gAstroSensor)                                                ["Measurement", "Timestamp"]      {channel="astro:sun:home:set#start"}
-Number      Astro_SunElevation                 "Sun elevation [%.0f °]"                                             (gAstroSensor, gAstroBrightness, gPersistenceSensor)          ["Measurement"]                   {channel="astro:sun:home:position#elevation"}
+Number      Astro_SunElevation                 "Sun elevation [%.0f °]"                                             (gAstroSensor, gAstroBrightness, gPersistenceAstro)           ["Measurement"]                   {channel="astro:sun:home:position#elevation"}
 Number      Astro_Azimuth                      "Sun Azimuth [%.2f]"                                                 (gAstroSensor)                                                ["Measurement", "Level"]          {channel="astro:sun:home:position#azimuth"}
 Number      Astro_Elevation                    "Sun Elevation [%.2f]"                                               (gAstroSensor)                                                ["Measurement", "Level"]          {channel="astro:sun:home:position#elevation"}
 String      Astro_MoonPhase                    "Moon phase [MAP(moon_pl.map):%s]"                  <moon>           (gAstroSensor)                                                ["Measurement"]                   {channel="astro:moon:home:phase#name"}
@@ -22,23 +22,27 @@ Number      Server_Temperature                 "Server temperature [%.0f \u00b0C
 String      Server_CPUIdle                     "Server idle [%s %%]"                                                (gOpenHABServer)                                              ["Measurement"]                   {channel="mqtt:topic:MyMQTTBroker:Server:Idle"}
 String      Server_Uptime                      "Server uptime [%s]"                                <time>           (gOpenHABServer, gUptime)                                     ["Measurement"]                   {channel="mqtt:topic:MyMQTTBroker:Server:Uptime"}
 String      Server_LastRead                    "Server last read [%s]"                             <time>           (gOpenHABServer)                                              ["Measurement"]                   {channel="mqtt:topic:MyMQTTBroker:Server:LastRead"}
-DateTime    OpenHAB_Restart                    "Last OpenHAB restart [%1$td.%1$tm %1$tH:%1$tM]"    <time>           (gOpenHABServer,gLastUpdate, gPersistenceSwitch)              ["Measurement"]
+DateTime    OpenHAB_Restart                    "Last OpenHAB restart [%1$td.%1$tm %1$tH:%1$tM]"    <time>           (gOpenHABServer,gLastUpdate, gPersistenceCalendar)            ["Measurement"]
 
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Calendar status
 ////////////////////////////////////////////////////////////////////////////////
 Group       gCalendar                          "Calendar"                                          <time>           (gCore)                                                       ["NetworkAppliance"]
-Switch      calendar_Day                       "Day"                                               <time>           (gCalendar)                                                   ["Control"]
-Switch      calendar_Evening                   "Evening"                                           <time>           (gCalendar)                                                   ["Control"]
-Switch      calendar_Night                     "Night"                                             <time>           (gCalendar)                                                   ["Control"]
-Switch      calendar_SupportingLight           "Supporting lights"                                 <time>           (gCalendar, gPersistenceSwitch)                               ["Control"]
-Switch      calendar_SupportingBedroomLight    "Supporting bedroom lights"                         <time>           (gCalendar, gPersistenceSwitch)                               ["Control"]
-Switch      calendar_Workday                   "Workday"                                           <time>           (gCalendar)                                                   ["Control"]
-Switch      calendar_Weekend                   "Weekend"                                           <time>           (gCalendar)                                                   ["Control"]
-Switch      calendar_Dawn                      "Dawn"                                              <time>           (gCalendar, gPersistenceSwitch)                               ["Control"]
-Switch      calendar_Dusk                      "Dusk"                                              <time>           (gCalendar, gPersistenceSwitch)                               ["Control"]
-Switch      calendar_Vacation                  "Vacation"                                          <time>           (gCalendar, gPersistenceSwitch)                               ["Control"]
-Switch      calendar_WakeUp                    "Wake up"                                           <time>           (gCalendar, gPersistenceSwitch)                               ["Control"]
-Switch      calendar_DailyInfo                 "DailyInfo"                                         <time>           (gCalendar, gPersistenceSwitch)                               ["Control"]
-Switch      calendar_Notification              "Notifications"                                     <time>           (gCalendar, gPersistenceSwitch)                               ["Control"]
+Switch      calendar_Day                       "Day"                                               <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
+Switch      calendar_Evening                   "Evening"                                           <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
+Switch      calendar_Night                     "Night"                                             <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
+Switch      calendar_SupportingLight           "Supporting lights"                                 <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
+Switch      calendar_SupportingBedroomLight    "Supporting bedroom lights"                         <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
+Switch      calendar_Workday                   "Workday"                                           <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
+Switch      calendar_Weekend                   "Weekend"                                           <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
+Switch      calendar_Dawn                      "Dawn"                                              <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
+Switch      calendar_Dusk                      "Dusk"                                              <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
+Switch      calendar_Vacation                  "Vacation"                                          <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
+Switch      calendar_WakeUp                    "Wake up"                                           <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
+Switch      calendar_DailyInfo                 "DailyInfo"                                         <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
+Switch      calendar_Notification              "Notifications"                                     <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
+
+
+String      DawnInfo                           "Dawn info [%s]"                                    <time>
+String      DuskInfo                           "Dusk info [%s]"                                    <time>
