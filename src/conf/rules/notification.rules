@@ -20,7 +20,7 @@ when
     Member of gPIR changed or Member of gCircuit changed
 then
   try {
-    if (GF_Motion_Mode.state.toString() == "ALM" && triggeringItem.state == OPEN) {
+    if (GF_Motion_Mode.state.toString() == "ON" && triggeringItem.state == OPEN) {
       val String type = "alarm"
       val String itemName = triggeringItem.name
       val itemValue = String.valueOf(triggeringItem.state)

@@ -20,7 +20,7 @@ then
       logInfo("bedroomwatch_rule", "bedroomwatchTimerName: {}", bedroomwatchTimerName)
     }
 
-    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (GF_Presence_Mode.state.toString() == "ON") {
         if (calendar_SupportingBedroomLight.state.toString() == "ON" || DemoMode.state.toString() == "ON") {
           if (triggeringItem.state == OPEN) {
             var int timeOutMinutes = 2

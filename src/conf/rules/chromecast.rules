@@ -63,7 +63,7 @@ then
   var ttsMessage = String.format("There is %.1f Celsius outside.", externalTemp)
   var lang = "en-gb"
 
-  if (GF_Presence_Mode.state.toString() == "PRESENT") {
+  if (GF_Presence_Mode.state.toString() == "ON") {
     if (calendar_Vacation.state.toString() == "OFF") {
       ttsLanguage.sendCommand(lang)
       ttsText.sendCommand(ttsMessage)
@@ -81,7 +81,7 @@ then
   var ttsMessage = String.format("Current power usage is %.0f watts.", power)
   var lang = "en-gb"
 
-  if (GF_Presence_Mode.state.toString() == "PRESENT") {
+  if (GF_Presence_Mode.state.toString() == "ON") {
     if (calendar_Vacation.state.toString() == "OFF") {
       ttsLanguage.sendCommand(lang)
       ttsText.sendCommand(ttsMessage)
@@ -176,7 +176,7 @@ then
   //var lang = "en-gb"
   var lang = "pl-pl"
 
-  if (GF_Presence_Mode.state.toString() == "PRESENT") {
+  if (GF_Presence_Mode.state.toString() == "ON") {
 //    if (calendar_Vacation.state.toString() == "OFF") {
       ttsLanguage.sendCommand(lang)
       ttsText.sendCommand(ttsMessage)

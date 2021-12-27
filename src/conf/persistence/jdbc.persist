@@ -20,7 +20,7 @@ Items {
     gPersistenceBlinds : strategy = everyChange, everyHour, restoreOnStartup
     gPersistenceStatusUpdate : strategy = everyChange, everyHour, restoreOnStartup
     gPersistenceSensorMotion : strategy = everyChange
-	gPersistenceSensorContact : strategy = every5Minutes
+	gPersistenceSensorContact : strategy = every5Minutes, restoreOnStartup
 	gPersistenceSensorPressure : strategy = every5Minutes
 	gPersistenceSensorHumidity : strategy = every5Minutes
 	gPersistenceSensorTemperature : strategy = every5Minutes

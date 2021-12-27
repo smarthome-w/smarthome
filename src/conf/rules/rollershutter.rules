@@ -32,7 +32,7 @@ then
     if (HH_DebugLevel_Rollershutter.state !== NULL) {
       logLevel = (HH_DebugLevel_Scene.state as Number).intValue
     }
-    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (GF_Presence_Mode.state.toString() == "ON") {
         if (calendar_Dusk.state.toString() == "ON") {
           GH_Evening_Scene.sendCommand(ON)
           logInfo("dailytrigger", "rollershutter_down_rule: Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)
@@ -55,7 +55,7 @@ then
       logLevel = (HH_DebugLevel_Scene.state as Number).intValue
     }
     logInfo("Error", "calendar_WakeUp: {}", calendar_WakeUp)
-    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (GF_Presence_Mode.state.toString() == "ON") {
         if (calendar_WakeUp.state.toString() == "ON") {
           GH_Day_Scene.sendCommand(ON)
           logInfo("dailytrigger", "rollershutter_up_rule: Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)
@@ -78,7 +78,7 @@ then
       logLevel = (HH_DebugLevel_Scene.state as Number).intValue
     }
     logInfo("Error", "rollershutter_daily_info: {}", calendar_WakeUp)
-    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (GF_Presence_Mode.state.toString() == "ON") {
       if (calendar_Vacation.state.toString() == "OFF") {
         GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
         logInfo("dailytrigger", "rollershutter_daily_info: Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)

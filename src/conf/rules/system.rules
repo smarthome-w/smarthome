@@ -6,7 +6,7 @@ then
   HH_SystemStarted.postUpdate(OFF)
 
   if (GF_Presence_Mode.state === NULL) {
-    GF_Presence_Mode.sendCommand("PRESENT")
+    GF_Presence_Mode.sendCommand(ON)
   }
 
   if (calendar_Vacation.state === NULL) {
@@ -103,7 +103,7 @@ then
   }
 
   if (GF_Motion_Mode.state === NULL) {
-    GF_Motion_Mode.sendCommand("STD")
+    GF_Motion_Mode.sendCommand("OFF")
   }
 
   if (HH_Humidity_Min.state === NULL) {

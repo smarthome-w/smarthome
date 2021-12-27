@@ -32,7 +32,7 @@ when
 //    Time cron "0 40 7 ? * MON,TUE,WED,THU,FRI"
     Time cron "0 40 5 ? * MON,TUE,WED,THU,FRI"
 then
-    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (GF_Presence_Mode.state.toString() == "ON") {
         if (HH_AliceAtSchool.state.toString() == "ON") {
             WiFiLED2_power.sendCommand(ON)
         }
@@ -46,7 +46,7 @@ when
     Time cron "0 20 6 ? * MON,TUE,WED,THU,FRI" or
     Time cron "59 59 23 ? * *"
 then
-    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (GF_Presence_Mode.state.toString() == "ON") {
         WiFiLED2_power.sendCommand(OFF)
     }
 end
@@ -60,7 +60,7 @@ when
 then
     logInfo ("lock", "Ann led: before on")
 
-    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (GF_Presence_Mode.state.toString() == "ON") {
         if (HH_AnnAtSchool.state.toString() == "ON") {
             WiFiLED3_power.sendCommand(ON)
         }
@@ -76,7 +76,7 @@ when
     Time cron "59 59 23 ? * *"
 then
     logInfo ("lock", "Ann led: before off")
-    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (GF_Presence_Mode.state.toString() == "ON") {
         WiFiLED3_power.sendCommand(OFF)
     }
 end
@@ -86,7 +86,7 @@ when
     Time cron "0 0 8 ? * MON,TUE,WED,THU,FRI"
 then
     logInfo ("waldek_led_on", "waldek_led_on: {}", HH_WaldekAtWork.state.toString())
-    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (GF_Presence_Mode.state.toString() == "ON") {
         if (calendar_Vacation.state.toString() == "OFF") {
             if (HH_WaldekAtWork.state.toString() == "ON") {
                 logInfo ("waldek_led_on", "try: waldek_led_on: {}", HH_WaldekAtWork.state.toString())
@@ -101,7 +101,7 @@ rule "waldek_led_off"
 when
     Time cron "0 55 14 ? * MON,TUE,WED,THU,FRI"
 then
-    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (GF_Presence_Mode.state.toString() == "ON") {
         WiFiLED4_power.sendCommand(OFF)
     }
 end

@@ -3,7 +3,7 @@ when
     Member of gScenes received update
 then
   try {
-    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (GF_Presence_Mode.state.toString() == "ON") {
         logInfo("scene", "scene: {}", triggeringItem.name)
         var int logLevel = 1
         if (HH_DebugLevel_Scene.state !== NULL) {
@@ -130,10 +130,10 @@ then
     }
     if (triggeringItem.name == "GH_Holiday"){
         logInfo("scene", "welcome back")
-        GF_Presence_Mode.sendCommand("ABSENT")
+        GF_Presence_Mode.sendCommand(OFF)
     }
     if (triggeringItem.name == "GH_WelcomeBack"){
-        GF_Presence_Mode.sendCommand("PRESENT")
+        GF_Presence_Mode.sendCommand(ON)
         logInfo("scene", "welcome back")
     }
   } catch (Throwable t) {

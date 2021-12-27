@@ -1,7 +1,7 @@
 sitemap system label="System" {
     Frame label="Modes" icon="groundfloor" {
-        Switch item=calendar_Vacation mappings=[ON="On", OFF="Off"]
-        Switch item=GF_Presence_Mode mappings=[ABSENT="Absent", PRESENT="Present"]
+        Switch item=calendar_Vacation
+        Switch item=GF_Presence_Mode
         Switch item=GF_Winter_Mode
         Switch item=DebugButton mappings=[ON="Debug"]
     }
