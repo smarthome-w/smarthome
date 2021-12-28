@@ -161,8 +161,8 @@ then
       }
     }
 
-    DawnInfo.postUpdate(elevationInt + "/" + elevationDawn + ", " + brightness + "/" + dawnLevel)
-    DuskInfo.postUpdate(elevationInt + "/" + elevationDusk + ", " + brightness + "/" + duskLevel)
+    DawnInfo.postUpdate(elevationInt + "/" + elevationDawn + "  -  " + brightness + "/" + dawnLevel)
+    DuskInfo.postUpdate(elevationInt + "/" + elevationDusk + "  -  " + brightness + "/" + duskLevel)
 
   } catch (Throwable t) {
     logError("Error", "Error in calendar_rule {}", t.toString())

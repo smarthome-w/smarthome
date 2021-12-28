@@ -2,27 +2,33 @@ rule "family_room_led_power"
 when
     Item WiFiLEDFamilyRoom_power received update
 then
-    WiFiLED5_power.sendCommand(triggeringItem.state.toString())
-    WiFiLED6_power.sendCommand(triggeringItem.state.toString())
-    WiFiLED7_power.sendCommand(triggeringItem.state.toString())
+    if (WiFiLEDFamilyRoom_power.state !== NULL) {
+        WiFiLED5_power.sendCommand(WiFiLEDFamilyRoom_power.state.toString())
+        WiFiLED6_power.sendCommand(WiFiLEDFamilyRoom_power.state.toString())
+        WiFiLED7_power.sendCommand(WiFiLEDFamilyRoom_power.state.toString())
+    }
 end
 
 rule "family_room_led_color"
 when
     Item WiFiLEDFamilyRoom_color received update
 then
-    WiFiLED5_color.sendCommand(triggeringItem.state.toString())
-    WiFiLED6_color.sendCommand(triggeringItem.state.toString())
-    WiFiLED7_color.sendCommand(triggeringItem.state.toString())
+    if (WiFiLEDFamilyRoom_color.state !== NULL) {
+        WiFiLED5_color.sendCommand(WiFiLEDFamilyRoom_color.state.toString())
+        WiFiLED6_color.sendCommand(WiFiLEDFamilyRoom_color.state.toString())
+        WiFiLED7_color.sendCommand(WiFiLEDFamilyRoom_color.state.toString())
+    }
 end
 
 rule "family_room_led_dimmer"
 when
     Item WiFiLEDFamilyRoom_dimmer received update
 then
-    WiFiLED5_dimmer.sendCommand(triggeringItem.state.toString())
-    WiFiLED6_dimmer.sendCommand(triggeringItem.state.toString())
-    WiFiLED7_dimmer.sendCommand(triggeringItem.state.toString())
+    if (WiFiLEDFamilyRoom_color.dimmer !== NULL) {
+        WiFiLED5_dimmer.sendCommand(WiFiLEDFamilyRoom_dimmer.state.toString())
+        WiFiLED6_dimmer.sendCommand(WiFiLEDFamilyRoom_dimmer.state.toString())
+        WiFiLED7_dimmer.sendCommand(WiFiLEDFamilyRoom_dimmer.state.toString())
+    }
 end
 
 rule "alice_led_on"

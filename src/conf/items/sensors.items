@@ -34,7 +34,7 @@ Contact     CIR_FF_AnnRoom                          "CIR Ann []"                
 DateTime    CIR_FF_AnnRoom_LastUpdate               "CIR Ann [%1$td.%1$tm %1$tH:%1$tM]"                 <time>          (gLastUpdateCIR, gPersistenceStatusUpdate)
 
 Group       gGarageDoor                             "Garage door"                                                       (gGarage)                                                                             ["Window"]
-Contact     CIR_GA_Garage                           "CIR Garage []"                                     <window>        (gGarageWindow, gCIR, gGarageDetectors, gPersistenceSensorContact)                    ["OpenState", "Opening"]    {channel="mqtt:topic:MyMQTTBroker:GarageMultisensor:Cir"}
+Contact     CIR_GA_Garage                           "CIR Garage []"                                     <garagedoor>    (gGarageWindow, gCIR, gGarageDetectors, gPersistenceSensorContact)                    ["OpenState", "Opening"]    {channel="mqtt:topic:MyMQTTBroker:GarageMultisensor:Cir"}
 DateTime    CIR_GA_Garage_LastUpdate                "CIR Garage [%1$td.%1$tm %1$tH:%1$tM]"              <time>          (gLastUpdateCIR, gPersistenceStatusUpdate)
 
 
@@ -42,60 +42,60 @@ DateTime    CIR_GA_Garage_LastUpdate                "CIR Garage [%1$td.%1$tm %1$
 //                       PIR sensors
 ////////////////////////////////////////////////////////////////////////////////
 Group       gCorridorPirSensor                      "Corridor movement sensor"                                          (gCorridor)                                                                           ["Sensor"]
-Contact     PIR_GF_Corridor                         "PIR Corridor []"                                   <light>         (gCorridorPirSensor, gPIR, gNightWatch, gPersistenceSensorMotion)                     ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirGfCorridor"}
+Contact     PIR_GF_Corridor                         "PIR Corridor []"                                   <motion>        (gCorridorPirSensor, gPIR, gNightWatch, gPersistenceSensorMotion)                     ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirGfCorridor"}
 Switch      PIR_GF_Corridor_State                   "PIR Corridor []"                                   <rgb>           (gCorridorPirSensor, gPIRState, gPersistenceSensorMotion)                             ["Tilt", "Presence"]
 DateTime    PIR_GF_Corridor_LastUpdate              "PIR Corridor [%1$td.%1$tm %1$tH:%1$tM]"            <time>          (gLastUpdatePIR, gPersistenceStatusUpdate)
 
 
 Group       gCorridorUpPirSensor                    "Corridor up movement sensor"                                       (gCorridor)                                                                           ["Sensor"]
-Contact     PIR_FF_Corridor                         "PIR Corridor up []"                                <light>         (gCorridorUpPirSensor, gNightWatch, gPIR, gPersistenceSensorMotion)                   ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirFfCorridor"}
+Contact     PIR_FF_Corridor                         "PIR Corridor up []"                                <motion>        (gCorridorUpPirSensor, gNightWatch, gPIR, gPersistenceSensorMotion)                   ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirFfCorridor"}
 Switch      PIR_FF_Corridor_State                   "PIR Corridor up []"                                <rgb>           (gCorridorUpPirSensor, gPIRState, gPersistenceSensorMotion)                           ["Tilt", "Presence"]
 DateTime    PIR_FF_Corridor_LastUpdate              "PIR Corridor up [%1$td.%1$tm %1$tH:%1$tM]"         <time>          (gLastUpdatePIR, gPersistenceStatusUpdate)
 
 
 Group       gFamilyRoomPirSensor                    "Family room movement sensor"                                       (gFamilyRoom)                                                                         ["Sensor"]
-Contact     PIR_GF_FamilyRoom                       "PIR Family room []"                                <light>         (gFamilyRoomPirSensor, gPIR, gPersistenceSensorMotion)                                ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirFamilyRoom"}
+Contact     PIR_GF_FamilyRoom                       "PIR Family room []"                                <motion>        (gFamilyRoomPirSensor, gPIR, gPersistenceSensorMotion)                                ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirFamilyRoom"}
 Switch      PIR_GF_FamilyRoom_State                 "PIR Family room []"                                <rgb>           (gFamilyRoomPirSensor, gPIRState, gPersistenceSensorMotion)                           ["Tilt", "Presence"]
 DateTime    PIR_GF_FamilyRoom_LastUpdate            "PIR Family room [%1$td.%1$tm %1$tH:%1$tM]"         <time>          (gLastUpdatePIR, gPersistenceStatusUpdate)
 
 
 Group       gKitchenPirSensor                       "Kitchen movement sensor"                                           (gKitchen)                                                                            ["Sensor"]
-Contact     PIR_GF_Kitchen                          "PIR Kitchen []"                                    <light>         (gKitchenPirSensor, gPIR, gNightWatch, gPersistenceSensorMotion)                      ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirKitchen"}
+Contact     PIR_GF_Kitchen                          "PIR Kitchen []"                                    <motion>        (gKitchenPirSensor, gPIR, gNightWatch, gPersistenceSensorMotion)                      ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirKitchen"}
 Switch      PIR_GF_Kitchen_State                    "PIR Kitchen []"                                    <rgb>           (gKitchenPirSensor, gPIRState, gPersistenceSensorMotion)                              ["Tilt", "Presence"]
 DateTime    PIR_GF_Kitchen_LastUpdate               "PIR Kitchen [%1$td.%1$tm %1$tH:%1$tM]"             <time>          (gLastUpdatePIR, gPersistenceStatusUpdate)
 
 Group       gAnnRoomPirSensor                       "Ann room movement sensor"                                          (gAnnRoom)                                                                            ["Sensor"]
-Contact     PIR_FF_AnnRoom                          "PIR Ann []"                                        <light>         (gAnnRoomPirSensor, gPIR, gPersistenceSensorMotion)                                   ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Multisensor05:Move"}
+Contact     PIR_FF_AnnRoom                          "PIR Ann []"                                        <motion>        (gAnnRoomPirSensor, gPIR, gPersistenceSensorMotion)                                   ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Multisensor05:Move"}
 Switch      PIR_FF_AnnRoom_State                    "PIR Ann []"                                        <rgb>           (gAnnRoomPirSensor, gPIRState, gPersistenceSensorMotion)                              ["Tilt", "Presence"]
 DateTime    PIR_FF_AnnRoom_LastUpdate               "PIR Ann [%1$td.%1$tm %1$tH:%1$tM]"                 <time>          (gLastUpdatePIR, gPersistenceStatusUpdate)
 
 Group       gAliceRoomPirSensor                     "Alice room movement sensor"                                        (gAliceRoom)                                                                          ["Sensor"]
-Contact     PIR_FF_AliceRoom                        "PIR Alice []"                                      <light>         (gAliceRoomPirSensor, gPIR, gPersistenceSensorMotion)                                 ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Multisensor04:Move"}
+Contact     PIR_FF_AliceRoom                        "PIR Alice []"                                      <motion>        (gAliceRoomPirSensor, gPIR, gPersistenceSensorMotion)                                 ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Multisensor04:Move"}
 Switch      PIR_FF_AliceRoom_State                  "PIR Alice []"                                      <rgb>           (gAliceRoomPirSensor, gPIRState, gPersistenceSensorMotion)                            ["Tilt", "Presence"]
 DateTime    PIR_FF_AliceRoom_LastUpdate             "PIR Alice [%1$td.%1$tm %1$tH:%1$tM]"               <time>          (gLastUpdatePIR, gPersistenceStatusUpdate)
 
 Group       gBedroomPirSensor                       "Bedroom movement sensor"                                           (gBedroom)                                                                            ["Sensor"]
-Contact     PIR_FF_Bedroom                          "PIR Bedroom []"                                    <light>         (gBedroomPirSensor, gBedroomWatch, gPIR, gPersistenceSensorMotion)                    ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirBedroom"}
+Contact     PIR_FF_Bedroom                          "PIR Bedroom []"                                    <motion>        (gBedroomPirSensor, gBedroomWatch, gPIR, gPersistenceSensorMotion)                    ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirBedroom"}
 Switch      PIR_FF_Bedroom_State                    "PIR Bedroom []"                                    <rgb>           (gBedroomPirSensor, gPIRState, gPersistenceSensorMotion)                              ["Tilt", "Presence"]
 DateTime    PIR_FF_Bedroom_LastUpdate               "PIR Bedroom [%1$td.%1$tm %1$tH:%1$tM]"             <time>          (gLastUpdatePIR, gPersistenceStatusUpdate)
 
 Group       gBedroomWardrobePirSensor               "Bedroom wardrobe movement sensor"                                  (gBedroom)                                                                            ["Sensor"]
-Contact     PIR_FF_BedroomWardobe                   "PIR Bedroom wardrobe []"                           <light>         (gBedroomWardrobePirSensor, gMoveWatch, gPIR, gPersistenceSensorMotion)               ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirBedroomWardobe"}
+Contact     PIR_FF_BedroomWardobe                   "PIR Bedroom wardrobe []"                           <motion>        (gBedroomWardrobePirSensor, gMoveWatch, gPIR, gPersistenceSensorMotion)               ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirBedroomWardobe"}
 Switch      PIR_FF_BedroomWardobe_State             "PIR Bedroom wardrobe []"                           <rgb>           (gBedroomWardrobePirSensor, gPIRState, gPersistenceSensorMotion)                      ["Tilt", "Presence"]
 DateTime    PIR_FF_BedroomWardobe_LastUpdate        "PIR Bedroom wardrobe [%1$td.%1$tm %1$tH:%1$tM]"    <time>          (gLastUpdatePIR, gPersistenceStatusUpdate)
 
 Group       gEntryPirSensor                         "Entry movement sensor"                                             (gCorridor)                                                                           ["Sensor"]
-Contact     PIR_GF_EntryWatch                       "PIR Entry Watch (virt) []"                         <light>         (gEntryPirSensor, gPIR, gNotification, gEntryWatch, gPersistenceSensorMotion)         ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirEntryWatch"}
+Contact     PIR_GF_EntryWatch                       "PIR Entry Watch (virt) []"                         <motion>        (gEntryPirSensor, gPIR, gNotification, gEntryWatch, gPersistenceSensorMotion)         ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirEntryWatch"}
 Switch      PIR_GF_EntryWatch_State                 "PIR Entry Watch []"                                <rgb>           (gEntryPirSensor, gPIRState, gPersistenceSensorMotion)                                ["Tilt", "Presence"]
 DateTime    PIR_GF_EntryWatch_LastUpdate            "PIR Entry Watch [%1$td.%1$tm %1$tH:%1$tM]"         <time>          (gLastUpdatePIR, gPersistenceStatusUpdate)
 
 Group       gCorridorStoragePirSensor               "Corridor storage movement sensor"                                  (gCorridor)                                                                           ["Sensor"]
-Switch      PIR_Corridor_Storage                    "PIR Corridor Storage (virt) []"                    <light>         (gCorridorStoragePirSensor, gPIR, gPersistenceSensorMotion)                           ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirCorridorStorage"}
+Switch      PIR_Corridor_Storage                    "PIR Corridor Storage (virt) []"                    <motion>        (gCorridorStoragePirSensor, gPIR, gPersistenceSensorMotion)                           ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:Indoor_Sensor:PirCorridorStorage"}
 Switch      PIR_Corridor_Storage_State              "PIR Corridor Storage []"                           <rgb>           (gCorridorStoragePirSensor, gPIRState, gPersistenceSensorMotion)                      ["Tilt", "Presence"]
 DateTime    PIR_Corridor_Storage_LastUpdate         "PIR Corridor Storage [%1$td.%1$tm %1$tH:%1$tM]"    <time>          (gLastUpdatePIR, gPersistenceStatusUpdate)
 
 Group       gGaragePirSensor                        "Garage movement sensor"                                            (gGarage)                                                                             ["Sensor"]
-Contact     PIR_GA_Garage                           "PIR Garage []"                                     <light>         (gGaragePirSensor, gGarageDetectors, gGarageWatch, gPIR, gPersistenceSensorMotion)    ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:GarageMultisensor:Move"}
+Contact     PIR_GA_Garage                           "PIR Garage []"                                     <motion>        (gGaragePirSensor, gGarageDetectors, gGarageWatch, gPIR, gPersistenceSensorMotion)    ["Tilt", "Vibration"]       {channel="mqtt:topic:MyMQTTBroker:GarageMultisensor:Move"}
 Switch      PIR_GA_Garage_State                     "PIR Garage []"                                     <rgb>           (gGaragePirSensor, gGarageState, gPIRState, gPersistenceSensorMotion)                 ["Tilt", "Presence"]
 DateTime    PIR_GA_Garage_LastUpdate                "PIR Garage [%1$td.%1$tm %1$tH:%1$tM]"              <time>          (gLastUpdatePIR, gPersistenceStatusUpdate)
 

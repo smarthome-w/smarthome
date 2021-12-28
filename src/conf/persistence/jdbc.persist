@@ -19,11 +19,11 @@ Items {
     gPersistenceBlinds* : strategy = everyChange, everyHour, restoreOnStartup
     gPersistenceStatusUpdate* : strategy = everyChange, everyHour, restoreOnStartup
     gPersistenceSensorMotion* : strategy = everyChange
-	gPersistenceSensorContact* : strategy = everyChange, everyMinute, restoreOnStartup
-	gPersistenceSensorPressure* : strategy = everyMinute
-	gPersistenceSensorHumidity* : strategy = everyMinute
-	gPersistenceSensorTemperature* : strategy = everyMinute
-	gPersistenceSensorBrightness* : strategy = everyMinute
+	gPersistenceSensorContact* : strategy = everyChange, every5Minutes, restoreOnStartup
+	gPersistenceSensorPressure* : strategy = every5Minutes
+	gPersistenceSensorHumidity* : strategy = every5Minutes
+	gPersistenceSensorTemperature* : strategy = every5Minutes
+	gPersistenceSensorBrightness* : strategy = every5Minutes
 	gPersistenceSensorPower* : strategy = everyMinute
 	gPersistenceDummy : strategy = veryRare
 }

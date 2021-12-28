@@ -8,6 +8,6 @@ Number    WeatherTodayMinTemp                "Today Min Temp [%.1f \u00b0C]"    
 Number    WeatherTodayMaxTemp                "Today Max Temp [%.1f \u00b0C]"       <temperature>    (gWeather)      ["Measurement", "Temperature"]    {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:TodayMaxTemp"}
 
 String    WeatherNextPossiblePrecipDate      "Next possible precip [%s]"           <humidity>       (gWeather)      ["Measurement", "Rain"]           {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:NextPossiblePrecipDate"}
-String    WeatherNextPossiblePrecipVolume    "Next possible precip vol [%s]"       <humidity>       (gWeather)      ["Measurement", "Rain"]           {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:NextPossiblePrecipVolume"}
+String    WeatherNextPossiblePrecipVolume    "Next possible precip vol [%s]"       <rain>           (gWeather)      ["Measurement", "Rain"]           {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:NextPossiblePrecipVolume"}
 String    WeatherNextPrecipDate              "Next precip [%s]"                    <humidity>       (gWeather)      ["Measurement", "Rain"]           {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:NextPrecipDate"}
-String    WeatherNextPrecipVolume            "Next precip vol [%s]"                <humidity>       (gWeather)      ["Measurement", "Rain"]           {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:NextPrecipVolume"}
+String    WeatherNextPrecipVolume            "Next precip vol [%s]"                <rain>           (gWeather)      ["Measurement", "Rain"]           {channel="mqtt:topic:MyMQTTBroker:WeatherForecast:NextPrecipVolume"}

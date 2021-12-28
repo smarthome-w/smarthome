@@ -38,7 +38,7 @@ Switch      calendar_Workday                   "Workday"                        
 Switch      calendar_Weekend                   "Weekend"                                           <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
 Switch      calendar_Dawn                      "Dawn"                                              <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
 Switch      calendar_Dusk                      "Dusk"                                              <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
-Switch      calendar_Vacation                  "Vacation"                                          <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
+Switch      calendar_Vacation                  "Vacation"                                          <vacation>       (gCalendar, gPersistenceCalendar)                             ["Control"]
 Switch      calendar_WakeUp                    "Wake up"                                           <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
 Switch      calendar_DailyInfo                 "DailyInfo"                                         <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]
 Switch      calendar_Notification              "Notifications"                                     <time>           (gCalendar, gPersistenceCalendar)                             ["Control"]

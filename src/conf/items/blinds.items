@@ -4,7 +4,7 @@
 Group     gFamilyRoomBlinds                                 "Family room blinds"             <time>       (gFamilyRoom)                                 ["Blinds"]
 
 Switch    GF_FamilyRoom_Rollershutter_Expert_Mode           "Expert mode[]"                               (gFamilyRoomBlinds)                           ["Switch"]
-Dimmer    GF_FamilyRoom_Rollershutter_Dimmer                "Window  [%.1f %%]"              <heating>    (gFamilyRoomBlinds, gRollershutter_Dimmer)    ["Measurement", "Level"]    {channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:Dimmer_", ga="Light"}
+Dimmer    GF_FamilyRoom_Rollershutter_Dimmer                "Window  [%.1f %%]"              <blinds>     (gFamilyRoomBlinds, gRollershutter_Dimmer)    ["Measurement", "Level"]    {channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:Dimmer_", ga="Light"}
 Switch    GF_FamilyRoom_Rollershutter_PrgUp                 "Family room - prg up[]"                      (gFamilyRoomBlinds, gRollershutter)           ["Switch"]                  {channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:PrgUp"}
 Switch    GF_FamilyRoom_Rollershutter_PrgDown               "Family room - prg down[]"                    (gFamilyRoomBlinds, gRollershutter)           ["Switch"]                  {channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:PrgDown"}
 Switch    GF_FamilyRoom_Rollershutter_AutoUp                "Family room blinds up[]"                     (gFamilyRoomBlinds, gRollershutter)           ["Switch"]                  {channel="mqtt:topic:MyMQTTBroker:GF_FamilyRoom_Rollershutter:AutoUp"}
@@ -25,7 +25,7 @@ Number    GF_FamilyRoom_Rollershutter_RSSI                  "Family blind RSSI [
 
 Group     gBedroomBlinds                                    "Bedroom blinds"                 <time>       (gBedroom)                                    ["Blinds"]
 Switch    FF_Bedroom_Rollershutter_Expert_Mode              "Expert mode"                                 (gBedroomBlinds)                              ["Switch"]
-Dimmer    FF_Bedroom_Rollershutter_Dimmer                   "Bedroom window  [%.1f %%]"      <heating>    (gBedroomBlinds, gRollershutter_Dimmer)       ["Measurement", "Level"]    {channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Dimmer_", ga="Light"}
+Dimmer    FF_Bedroom_Rollershutter_Dimmer                   "Bedroom window  [%.1f %%]"      <blinds>     (gBedroomBlinds, gRollershutter_Dimmer)       ["Measurement", "Level"]    {channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Dimmer_", ga="Light"}
 Switch    FF_Bedroom_Rollershutter_PrgUp                    "Bedroom - prg up[]"                          (gBedroomBlinds, gRollershutter)              ["Switch"]                  {channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:PrgUp"}
 Switch    FF_Bedroom_Rollershutter_PrgDown                  "Bedroom - prg down[]"                        (gBedroomBlinds, gRollershutter)              ["Switch"]                  {channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:PrgDown"}
 Switch    FF_Bedroom_Rollershutter_AutoUp                   "Bedroom blinds up[]"                         (gBedroomBlinds, gRollershutter)              ["Switch"]                  {channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:AutoUp"}
