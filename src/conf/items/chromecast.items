@@ -3,6 +3,3 @@ String    FamilyRoomChromecastMediaURI    "Family room media uri"               
 
 Group     gBedroomVoiceAssistant          "Bedroom voice assistant"        <heating>    (gBedroom)                     ["VoiceAssistant"]
 String    BedroomChromecastMediaURI       "Bedroom media uri"                           (gBedroomVoiceAssistant)                             {channel="chromecast:chromecast:bedroom:playuri"}
-
-String    ttsText                         "TTS Text"
-String    ttsLanguage                     "TTS Language"

@@ -2,37 +2,5 @@ rule "maintenace_rule"
 when
   Item DebugButton received update
 then
-  logInfo("maintenace_rule", "say hello start")
-//  say ("See you later aligator", "voicerss:enUS", "chromecast:chromecast:familyroom")
-  say ("Hello Alice", "googletts:enUSStandardA", "chromecast:chromecast:familyroom")
- // playStream ("chromecast:chromecast:familyroom", "http://192.168.0.4/static/sounds/main_lock_is_unlocked.mp3")
-
-//  var textToSpeech = "Dzień dobry"
-//  var language = "pl-pl"
-//  var key = "66d531cf46544319bd7cbca26d80aa76"
-
-//  logInfo("Chromecast", "Text: {}", textToSpeech)
-//  var textURI = "https://api.voicerss.org/?key=" + key + "&f=44khz_16bit_mono&c=MP3&hl=" + language + "&src=" + textToSpeech
-
-//  playStream ("chromecast:chromecast:familyroom", textURI)
-
-// playStream ("chromecast:chromecast:familyroom", "http://192.168.0.4/static/sounds/abc.wav")
-
-//  playSound ("chromecast:chromecast:familyroom", "abc.wav")
-
-//  playStream ("chromecast:chromecast:familyroom", "http://192.168.0.4/static/sounds/abc.wav")
-
-//  playSound ("chromecast:chromecast:familyroom", "main_lock_is_unlocked.mp3")
-
-
-  logInfo("maintenace_rule", "say hello end")
-
-// http://192.168.0.4/static/sounds/main_lock_is_unlocked.mp3
-end
-
-rule "hardreset_rule"
-when
-  Item HardResetButton received update
-then
-  logError("hardreset_rule", "HardReset detected")
+  say ("Dzień dobry.", "googletts:plPLWavenetA", "chromecast:chromecast:familyroom")
 end
