@@ -1,3 +1,26 @@
+val saySomething = [ String ttsMessage |
+    logInfo("lambda", ttsMessage)
+    var boolean googleSuccess = false
+
+    var i = 0
+    while((i=i+1) <= 3 && !googleSuccess) {
+      logInfo("Say info", "{} - bedroom - attempt {}", ttsMessage, i)
+      try {
+        say (ttsMessage, "googletts:plPLStandardA", "chromecast:chromecast:bedroom")
+        logInfo("Say error", "{} - bedroom - attempt {} - after say", ttsMessage, i)
+        googleSuccess = true
+      } catch (Throwable e) {
+        logError("Say error", "{} - bedroom - attempt {}", ttsMessage, i)
+      }
+    }
+
+    if (googleSuccess) {
+      logInfo("Say info", "{} - familyroom - attempt {}", ttsMessage, 1)
+      say (ttsMessage, "googletts:plPLStandardA", "chromecast:chromecast:familyroom")
+    }
+    "executed"
+]
+
 rule "say_main_lock_unlocked_rule"
 when
   Time cron "0 */5 20-23 ? * *"
@@ -8,9 +31,10 @@ then
   }
   val hourOfDay = now.getHour as Number
 
+  var ttsMessage = "Zamek jest otwarty."
+
   if (CIR_GF_MainLock.state.toString() == "OPEN" && hourOfDay >= warningHour) {
-     say ("Zamek jest otwarty.", "googletts:plPLWavenetA", "chromecast:chromecast:familyroom")
-     say ("Zamek jest otwarty.", "googletts:plPLWavenetA", "chromecast:chromecast:bedroom")
+    saySomething.apply(ttsMessage)
   }
 end
 
@@ -18,13 +42,13 @@ rule "daily_info"
 when
   Item calendar_DailyInfo changed to ON or Item GH_DailyInfo received update
 then
+  logInfo("Daily info", "Info")
   var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
-  var ttsMessage = String.format("Na zewnątrz jest %.1f.", externalTemp)
+  var ttsMessage = String.format("Na zewnątrz jest %.0f.", externalTemp)
 
   if (GF_Presence_Mode.state.toString() == "ON") {
     if (calendar_Vacation.state.toString() == "OFF") {
-       say (ttsMessage, "googletts:plPLWavenetA", "chromecast:chromecast:familyroom")
-       say (ttsMessage, "googletts:plPLWavenetA", "chromecast:chromecast:bedroom")
+      saySomething.apply(ttsMessage)
     }
   }
   calendar_DailyInfo.postUpdate(OFF)
@@ -40,8 +64,7 @@ then
 
   if (GF_Presence_Mode.state.toString() == "ON") {
     if (calendar_Vacation.state.toString() == "OFF") {
-       say (ttsMessage, "googletts:plPLWavenetA", "chromecast:chromecast:familyroom")
-       say (ttsMessage, "googletts:plPLWavenetA", "chromecast:chromecast:bedroom")
+      saySomething.apply(ttsMessage)
     }
   }
 //  calendar_DailyInfo.postUpdate(OFF)
@@ -57,9 +80,9 @@ then
   }
   var externalTemperature = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
   if (externalTemperature < warningTemperature) {
-    var ttsMessage = String.format("Na zewnątrz jest %.1f. Poziom ostrzewagwczy to %d stopni.", externalTemperature, warningTemperature)
+    var ttsMessage = String.format("Na zewnątrz jest %.0f. Poziom ostrzewagwczy to %d stopni.", externalTemperature, warningTemperature)
 
-    var String openedWindows = ""
+    var String openedWindows = "Otwarte: "
     var Boolean opened = false
 
     if (CIR_GF_FamilyBalcony.state.toString() == "OPEN") {
@@ -88,8 +111,8 @@ then
     }
 
     if (opened) {
-       say (ttsMessage, "googletts:plPLWavenetA", "chromecast:chromecast:familyroom")
-       say (ttsMessage, "googletts:plPLWavenetA", "chromecast:chromecast:bedroom")
+      ttsMessage = ttsMessage + " " + openedWindows
+      saySomething.apply(ttsMessage)
     }
   }
 end
@@ -128,11 +151,15 @@ then
     }
   }
   if (GF_Presence_Mode.state.toString() == "ON") {
-//    if (calendar_Vacation.state.toString() == "OFF") {
-       say (ttsMessage, "googletts:plPLWavenetA", "chromecast:chromecast:familyroom")
-       say (ttsMessage, "googletts:plPLWavenetA", "chromecast:chromecast:bedroom")
-//    }
+    saySomething.apply(ttsMessage)
   }
+end
+
+rule "maintenace_rule"
+when
+  Item DebugButton received update
+then
+  saySomething.apply("Dzień dobry.")
 end
 
 

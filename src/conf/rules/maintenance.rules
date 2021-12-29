@@ -1,6 +1,5 @@
-rule "maintenace_rule"
+rule "dummy1_rule"
 when
-  Item DebugButton received update
+  Item GF_Kitchen_LED_RSSI received update
 then
-  say ("Dzień dobry.", "googletts:plPLWavenetA", "chromecast:chromecast:familyroom")
 end
