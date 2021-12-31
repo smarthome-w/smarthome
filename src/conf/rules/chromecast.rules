@@ -1,4 +1,4 @@
-val saySomething = [ String ttsMessage |
+  val saySomething = [ String ttsMessage |
     logInfo("lambda", ttsMessage)
     var boolean googleSuccess = false
 
@@ -40,11 +40,20 @@ end
 
 rule "daily_info"
 when
-  Item calendar_DailyInfo changed to ON or Item GH_DailyInfo received update
+  Item GH_DailyInfo received update
 then
-  logInfo("Daily info", "Info")
   var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
-  var ttsMessage = String.format("Na zewnątrz jest %.0f.", externalTemp)
+  var ttsMessage = String.format("Na zewnątrz jest %.0f\u00b0.", externalTemp)
+  saySomething.apply(ttsMessage)
+  calendar_DailyInfo.postUpdate(OFF)
+end
+
+rule "calendar_info"
+when
+  Item calendar_DailyInfo changed to ON
+then
+  var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
+  var ttsMessage = String.format("Na zewnątrz jest %.0f\u00b0.", externalTemp)
 
   if (GF_Presence_Mode.state.toString() == "ON") {
     if (calendar_Vacation.state.toString() == "OFF") {
@@ -63,9 +72,9 @@ then
   var ttsMessage = String.format("Bieżące zużycie energii to %.0f wat.", power)
 
   if (GF_Presence_Mode.state.toString() == "ON") {
-    if (calendar_Vacation.state.toString() == "OFF") {
+//    if (calendar_Vacation.state.toString() == "OFF") {
       saySomething.apply(ttsMessage)
-    }
+//    }
   }
 //  calendar_DailyInfo.postUpdate(OFF)
 end
@@ -80,7 +89,7 @@ then
   }
   var externalTemperature = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
   if (externalTemperature < warningTemperature) {
-    var ttsMessage = String.format("Na zewnątrz jest %.0f. Poziom ostrzewagwczy to %d stopni.", externalTemperature, warningTemperature)
+    var ttsMessage = String.format("Na zewnątrz jest %.0f\u00b0. Poziom ostrzewagwczy to %d\u00b0.", externalTemperature, warningTemperature)
 
     var String openedWindows = "Otwarte: "
     var Boolean opened = false

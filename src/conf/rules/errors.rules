@@ -6,7 +6,7 @@ when
   Time cron "0 */5 * ? * MON-SUN"
 then
   try {
-    //errLogLevel = 6
+    // errLogLevel = 6
     if (HH_DebugLevel_General.state !== NULL) {
       errLogLevel = (HH_DebugLevel_General.state as Number).intValue
     }

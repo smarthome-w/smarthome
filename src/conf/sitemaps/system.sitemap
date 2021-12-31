@@ -5,6 +5,7 @@ sitemap system label="System" {
         Switch item=GF_Winter_Mode
         Switch item=DebugButton mappings=[ON="Debug"]
         Switch item=GH_DailyInfo mappings=[ON="Daily info"]
+        Switch item=GH_SensorsInfo mappings=[ON="Sensors info"]
     }
 
 	Frame label="" {
