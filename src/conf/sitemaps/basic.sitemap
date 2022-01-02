@@ -1,7 +1,8 @@
-sitemap sensors_basic label="Status" {
+sitemap basic label="Basic" {
     Frame label="Weather" icon="firstfloor" {
         Text item=GF_FamilyRoom_Outdoor_Temperature_Sensor
         Text item=FF_AnnRoom_Outdoor_Temperature_Sensor
+/*
         Text item=WeatherTodayMinTemp
         Text item=WeatherTodayMaxTemp
         Text item=WeatherNextPrecipDate
@@ -11,18 +12,19 @@ sitemap sensors_basic label="Status" {
         Text item=GF_FamilyRoom_Analog_Sensor
         Text item=FF_Bedroom_Analog_Sensor
         Text item=FF_AliceRoom_Analog_Sensor
+*/
     }
 
     Frame label="Sensors (daily)" icon="firstfloor" {
         Chart item=gSensorExternalTemperature period=D label="Temperature"
     }
-
     Frame label="Astro" icon="firstfloor" {
-        Text item=Astro_Sunrise_Time
-        Text item=Astro_Sunset_Time
-        Text item=Astro_SunElevation
+        Text item=DawnInfo
+        Text item=DuskInfo
+//        Text item=Astro_Sunrise_Time
+//        Text item=Astro_Sunset_Time
+//        Text item=Astro_SunElevation
     }
-
     Frame label="Other" icon="firstfloor" {
 //        Text item=GF_PowerMeter_Current
         Text item=GF_PowerMeter_Current_In_Watts
@@ -56,7 +58,8 @@ sitemap sensors_basic label="Status" {
       Switch item=FF_Bedroom_Rollershutter_AutoDown mappings=[ON="Down"]
       Switch item=HH_PowermeterPlug01
       Switch item=HH_PowermeterPlug02
-      Switch item=GH_BathroomInfo mappings=[ON="Set"]
+      Switch item=GH_BathroomInfo mappings=[ON="Bathroom info"]
+      Switch item=GH_DailyInfo mappings=[ON="Daily info"]
     }
 	Frame label="" {
       Switch item=calendar_Notification
@@ -66,5 +69,11 @@ sitemap sensors_basic label="Status" {
 		Switch       item=WiFiLED4_power
 		Colorpicker  item=WiFiLED4_color
 		Slider       item=WiFiLED4_dimmer
+    }
+
+	Frame label="" {
+		Switch       item=WiFiLEDFamilyRoom_power
+		Colorpicker  item=WiFiLEDFamilyRoom_color
+		Slider       item=WiFiLEDFamilyRoom_dimmer
     }
 }

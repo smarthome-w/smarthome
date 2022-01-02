@@ -3,7 +3,7 @@ when
   Item CIR_GA_Garage changed to OPEN
 then
   try {
-    if (calendar_SupportingLight.state.toString() == "ON") {
+    if (calendar_SupportingLight.state.toString() == "ON" || GF_Winter_Mode.state.toString() == "ON") {
         GA_Garage_Cross.sendCommand(ON)
     }
   } catch (Throwable t) {

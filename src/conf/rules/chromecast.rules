@@ -7,8 +7,11 @@
       logInfo("Say info", "{} - bedroom - attempt {}", ttsMessage, i)
       try {
         say (ttsMessage, "googletts:plPLStandardA", "chromecast:chromecast:bedroom")
-        logInfo("Say error", "{} - bedroom - attempt {} - after say", ttsMessage, i)
-        googleSuccess = true
+        logInfo("Say status", "{} - bedroom - attempt {} - after say", ttsMessage, i)
+        var String result = executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/GOOGLETTS/detect_error.sh", ttsMessage)
+        if (result.contains("GoogleOK")) {
+          googleSuccess = true
+        }
       } catch (Throwable e) {
         logError("Say error", "{} - bedroom - attempt {}", ttsMessage, i)
       }
@@ -43,7 +46,12 @@ when
   Item GH_DailyInfo received update
 then
   var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
-  var ttsMessage = String.format("Na zewnątrz jest %.0f\u00b0.", externalTemp)
+  var ttsMessage = String.format("Temperatura na zewnątrz to %.0f\u00b0.", externalTemp)
+  if (CIR_GF_MainLock.state.toString() == "OPEN") {
+    ttsMessage += " Zamek jest otwarty."
+  } else {
+    ttsMessage += " Zamek jest zamknięty."
+  }
   saySomething.apply(ttsMessage)
   calendar_DailyInfo.postUpdate(OFF)
 end
@@ -53,7 +61,12 @@ when
   Item calendar_DailyInfo changed to ON
 then
   var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
-  var ttsMessage = String.format("Na zewnątrz jest %.0f\u00b0.", externalTemp)
+  var ttsMessage = String.format("Temperatura na zewnątrz to %.0f\u00b0.", externalTemp)
+  if (CIR_GF_MainLock.state.toString() == "OPEN") {
+    ttsMessage += " Zamek jest otwarty."
+  } else {
+    ttsMessage += " Zamek jest zamknięty."
+  }
 
   if (GF_Presence_Mode.state.toString() == "ON") {
     if (calendar_Vacation.state.toString() == "OFF") {
@@ -89,7 +102,7 @@ then
   }
   var externalTemperature = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
   if (externalTemperature < warningTemperature) {
-    var ttsMessage = String.format("Na zewnątrz jest %.0f\u00b0. Poziom ostrzewagwczy to %d\u00b0.", externalTemperature, warningTemperature)
+    var ttsMessage = String.format("Temperatura na zewnątrz to %.0f\u00b0. Poziom ostrzewagwczy to %d\u00b0.", externalTemperature, warningTemperature)
 
     var String openedWindows = "Otwarte: "
     var Boolean opened = false
