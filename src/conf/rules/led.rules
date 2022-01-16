@@ -98,6 +98,22 @@ then
                 logInfo ("waldek_led_on", "try: waldek_led_on: {}", HH_WaldekAtWork.state.toString())
                 WiFiLED4_power.sendCommand(ON)
                 HH_PowermeterPlug02.sendCommand(ON)
+                GH_DailyInfo.sendCommand(ON)
+            }
+        }
+    }
+end
+
+rule "waldek_window_on"
+when
+    Time cron "0 1 8 ? * MON,TUE,WED,THU,FRI"
+then
+    logInfo ("waldek_window_on", "waldek_led_on: {}", HH_WaldekAtWork.state.toString())
+    if (GF_Presence_Mode.state.toString() == "ON") {
+        if (calendar_Vacation.state.toString() == "OFF") {
+            if (HH_WaldekAtWork.state.toString() == "ON") {
+                logInfo ("waldek_window_on", "try: waldek_led_on: {}", HH_WaldekAtWork.state.toString())
+                GH_Day_Scene.sendCommand(ON)
             }
         }
     }
@@ -133,4 +149,41 @@ then
         sendCommand(WiFiLED4_color, hsb)
 //        logInfo ("debug desk", "debug desk: {}", hsb)
     }
+end
+
+rule "lucifer"
+when
+    Item GF_Lucifer_Scene received update
+then
+    val hsb = new HSBType("10, 100, 100")
+    logInfo ("lucifer", "lucifer: {}", hsb)
+    sendCommand(WiFiLEDFamilyRoom_color, hsb)
+end
+
+rule "borg"
+when
+    Item GF_Borg_Scene received update
+then
+    val hsb = new HSBType("107, 100, 100")
+    logInfo ("borg", "borg: {}", hsb)
+    sendCommand(WiFiLEDFamilyRoom_color, hsb)
+end
+
+
+rule "evil"
+when
+    Item GF_Evil_Scene received update
+then
+    val hsb = new HSBType("10, 100, 100")
+    logInfo ("evil", "lucifer: {}", hsb)
+    sendCommand(WiFiLED4_color, hsb)
+end
+
+rule "forrest"
+when
+    Item GF_Forrest_Scene received update
+then
+    val hsb = new HSBType("107, 100, 100")
+    logInfo ("forrest", "forrest: {}", hsb)
+    sendCommand(WiFiLED4_color, hsb)
 end

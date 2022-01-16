@@ -1,23 +1,15 @@
 sitemap system label="System" {
-    Frame label="Modes" icon="groundfloor" {
-        Switch item=calendar_Vacation
-        Switch item=GF_Presence_Mode
-        Switch item=GF_Winter_Mode
-        Switch item=DebugButton mappings=[ON="Debug"]
-        Switch item=GH_DailyInfo mappings=[ON="Daily info"]
-        Switch item=GH_SensorsInfo mappings=[ON="Sensors info"]
+    Frame label="Scenes" icon="firstfloor" {
+      Switch item=GH_Night_Scene mappings=[ON="Set"]
+      Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]
+      Switch item=GH_Evening_Scene mappings=[ON="Set"]
+      Switch item=GH_Day_Scene mappings=[ON="Set"]
+      Switch item=GH_TVShow_Scene mappings=[ON="Set"]
+      Switch item=GF_Lucifer_Scene mappings=[ON="Lucifer"]
+      Switch item=GF_Borg_Scene mappings=[ON="Borg"]
+      Switch item=GF_Evil_Scene mappings=[ON="Evil"]
+      Switch item=GF_Forrest_Scene mappings=[ON="Forrest"]
     }
-
-	Frame label="" {
-        Switch item=HH_AliceAtSchool
-        Switch item=HH_AnnAtSchool
-        Switch item=HH_WaldekAtWork
-    }
-
-//    Frame label="Hard reset" icon="groundfloor" {
-//      Switch item=HardResetButton
-//    }
-
     Frame label="System groups" icon="groundfloor" {
       Group item=gCalendar
       Group item=gLastUpdate
@@ -33,9 +25,7 @@ sitemap system label="System" {
       Group item=gUptime
       Group item=gWeather
     }
-    Frame label="Lock" icon="firstfloor" {
-      Switch item=CIR_GF_MainLock mappings=[CLOSED="Closed", OPEN="Open"]
-    }
+
     Frame label="Main Lock" icon="firstfloor" {
       Webview url="/static/Visualization/Timeline.html?Group=gMainLock&serviceId=jdbc&Hours=24" height=3
     }
@@ -46,13 +36,5 @@ sitemap system label="System" {
 //      Text item=Server_CPUIdle
       Text item=Server_Uptime
 //      Text item=Server_LastRead
-    }
-
-    Frame label="Scenes" icon="firstfloor" {
-      Switch item=GH_Night_Scene mappings=[ON="Set"]
-      Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]
-      Switch item=GH_Evening_Scene mappings=[ON="Set"]
-      Switch item=GH_Day_Scene mappings=[ON="Set"]
-      Switch item=GH_TVShow_Scene mappings=[ON="Set"]
     }
 }

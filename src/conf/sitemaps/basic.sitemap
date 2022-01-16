@@ -50,8 +50,6 @@ sitemap basic label="Basic" {
     }
 
     Frame label="Scenes" icon="firstfloor" {
-      Switch item=GH_Night_Scene mappings=[ON="Set"]
-      Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]
       Switch item=GF_FamilyRoom_Rollershutter_AutoUp mappings=[ON="Up"]
       Switch item=GF_FamilyRoom_Rollershutter_AutoDown mappings=[ON="Down"]
       Switch item=FF_Bedroom_Rollershutter_AutoUp mappings=[ON="Up"]
@@ -60,9 +58,6 @@ sitemap basic label="Basic" {
       Switch item=HH_PowermeterPlug02
       Switch item=GH_BathroomInfo mappings=[ON="Bathroom info"]
       Switch item=GH_DailyInfo mappings=[ON="Daily info"]
-    }
-	Frame label="" {
-      Switch item=calendar_Notification
     }
 
 	Frame label="" {
@@ -75,5 +70,9 @@ sitemap basic label="Basic" {
 		Switch       item=WiFiLEDFamilyRoom_power
 		Colorpicker  item=WiFiLEDFamilyRoom_color
 		Slider       item=WiFiLEDFamilyRoom_dimmer
+    }
+
+	Frame label="" {
+      Switch item=calendar_Notification
     }
 }

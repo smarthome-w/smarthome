@@ -1,13 +1,11 @@
-  val saySomething = [ String ttsMessage |
-    logInfo("lambda", ttsMessage)
+  val saySomething = [ String ttsMessage, String voice |
     var boolean googleSuccess = false
 
     var i = 0
     while((i=i+1) <= 3 && !googleSuccess) {
       logInfo("Say info", "{} - bedroom - attempt {}", ttsMessage, i)
       try {
-        say (ttsMessage, "googletts:plPLStandardA", "chromecast:chromecast:bedroom")
-        logInfo("Say status", "{} - bedroom - attempt {} - after say", ttsMessage, i)
+        say (ttsMessage, voice, "chromecast:chromecast:bedroom")
         var String result = executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/GOOGLETTS/detect_error.sh", ttsMessage)
         if (result.contains("GoogleOK")) {
           googleSuccess = true
@@ -19,10 +17,12 @@
 
     if (googleSuccess) {
       logInfo("Say info", "{} - familyroom - attempt {}", ttsMessage, 1)
-      say (ttsMessage, "googletts:plPLStandardA", "chromecast:chromecast:familyroom")
+      say (ttsMessage, voice, "chromecast:chromecast:familyroom")
     }
     "executed"
 ]
+val defaultVoice = "googletts:plPLStandardA"
+val maleVoice = "googletts:plPLStandardB"
 
 rule "say_main_lock_unlocked_rule"
 when
@@ -37,7 +37,7 @@ then
   var ttsMessage = "Zamek jest otwarty."
 
   if (CIR_GF_MainLock.state.toString() == "OPEN" && hourOfDay >= warningHour) {
-    saySomething.apply(ttsMessage)
+    saySomething.apply(ttsMessage, defaultVoice)
   }
 end
 
@@ -52,7 +52,7 @@ then
   } else {
     ttsMessage += " Zamek jest zamknięty."
   }
-  saySomething.apply(ttsMessage)
+  saySomething.apply(ttsMessage, defaultVoice)
   calendar_DailyInfo.postUpdate(OFF)
 end
 
@@ -70,7 +70,7 @@ then
 
   if (GF_Presence_Mode.state.toString() == "ON") {
     if (calendar_Vacation.state.toString() == "OFF") {
-      saySomething.apply(ttsMessage)
+      saySomething.apply(ttsMessage, defaultVoice)
     }
   }
   calendar_DailyInfo.postUpdate(OFF)
@@ -86,7 +86,7 @@ then
 
   if (GF_Presence_Mode.state.toString() == "ON") {
 //    if (calendar_Vacation.state.toString() == "OFF") {
-      saySomething.apply(ttsMessage)
+      saySomething.apply(ttsMessage, defaultVoice)
 //    }
   }
 //  calendar_DailyInfo.postUpdate(OFF)
@@ -134,7 +134,7 @@ then
 
     if (opened) {
       ttsMessage = ttsMessage + " " + openedWindows
-      saySomething.apply(ttsMessage)
+      saySomething.apply(ttsMessage, defaultVoice)
     }
   }
 end
@@ -173,7 +173,7 @@ then
     }
   }
   if (GF_Presence_Mode.state.toString() == "ON") {
-    saySomething.apply(ttsMessage)
+    saySomething.apply(ttsMessage, defaultVoice)
   }
 end
 
@@ -181,7 +181,7 @@ rule "maintenace_rule"
 when
   Item DebugButton received update
 then
-  saySomething.apply("Dzień dobry.")
+  saySomething.apply("Chodź spać.", maleVoice)
 end
 
 

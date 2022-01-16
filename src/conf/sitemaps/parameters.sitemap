@@ -1,4 +1,19 @@
 sitemap parameters label="Parameters" {
+    Frame label="Modes" icon="groundfloor" {
+        Switch item=calendar_Vacation
+        Switch item=GF_Presence_Mode
+        Switch item=GF_Winter_Mode
+        Switch item=DebugButton mappings=[ON="Debug"]
+        Switch item=GH_DailyInfo mappings=[ON="Daily info"]
+        Switch item=GH_SensorsInfo mappings=[ON="Sensors info"]
+    }
+
+  	Frame label="" {
+        Switch item=HH_AnnAtSchool
+        Switch item=HH_AliceAtSchool
+        Switch item=HH_WaldekAtWork
+    }
+
     Frame label="Demo" {
         Switch item=DemoMode
         Switch item=HH_SystemStarted

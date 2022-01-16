@@ -52,8 +52,13 @@ Group       gFF_BathRoom_Scenario                                    "FF_BathRoo
 Switch      GF_Cinema_Scenario                                       "Cinema"                                                <light>          (gScenariosList, gPersistenceScenario)
 Group       gGF_Cinema_Scenario                                      "GF_Cinema_Scenario"                                    <heating>        (gScenarios)
 Switch      GF_Motion_Mode                                           "Motion"                                                <rgb>            (gPersistenceSettings)
-Switch      GF_Presence_Mode                                         "Presence"                                              <rgb>            (gPersistenceSettings)
-Switch      GF_Winter_Mode                                           "Winter"                                                <rgb>            (gPersistenceSettings)
+Switch      GF_Presence_Mode                                         "Presence"                                              <motion>         (gPersistenceSettings)
+Switch      GF_Winter_Mode                                           "Winter"                                                <snow>           (gPersistenceSettings)
+
+Switch      GF_Lucifer_Scene                                         "Lucifer"                                               <snow>           (gPersistenceSettings)                                                                                                                               {ga="Light"}
+Switch      GF_Borg_Scene                                            "Borg"                                                  <snow>           (gPersistenceSettings)                                                                                                                               {ga="Light"}
+Switch      GF_Evil_Scene                                            "Evil"                                                  <snow>           (gPersistenceSettings)                                                                                                                               {ga="Light"}
+Switch      GF_Forrest_Scene                                         "Forrest"                                               <snow>           (gPersistenceSettings)                                                                                                                               {ga="Light"}
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Switches
