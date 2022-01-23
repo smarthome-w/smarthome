@@ -105,7 +105,7 @@ then
             GF_Lights_Scenario.sendCommand(OFF)
             GF_Corridor_Scenario.sendCommand(OFF)
             GF_Restroom_Scenario.sendCommand(OFF)
-            GH_DailyInfo.sendCommand(ON)
+//            GH_DailyInfo.sendCommand(ON)
             //if (logLevel >= 6) {
             //  logError("scene_rule", "FF_Bedroom_Rollershutter_Dimmer to {}", bedroomBlindLevel)
             //}

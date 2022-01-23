@@ -5,10 +5,12 @@ sitemap system label="System" {
       Switch item=GH_Evening_Scene mappings=[ON="Set"]
       Switch item=GH_Day_Scene mappings=[ON="Set"]
       Switch item=GH_TVShow_Scene mappings=[ON="Set"]
-      Switch item=GF_Lucifer_Scene mappings=[ON="Lucifer"]
-      Switch item=GF_Borg_Scene mappings=[ON="Borg"]
-      Switch item=GF_Evil_Scene mappings=[ON="Evil"]
-      Switch item=GF_Forrest_Scene mappings=[ON="Forrest"]
+      Switch item=GH_Lucifer_Scene mappings=[ON="Lucifer"]
+      Switch item=GH_Borg_Scene mappings=[ON="Borg"]
+      Switch item=GH_Evil_Scene mappings=[ON="Evil"]
+      Switch item=GH_Forrest_Scene mappings=[ON="Forrest"]
+      Switch item=GH_StartWork_Scene  mappings=[ON="Start work"]
+      Switch item=GH_StopWork_Scene  mappings=[ON="Stop work"]
     }
     Frame label="System groups" icon="groundfloor" {
       Group item=gCalendar

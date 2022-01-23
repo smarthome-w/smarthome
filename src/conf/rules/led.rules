@@ -89,7 +89,8 @@ end
 
 rule "waldek_led_on"
 when
-    Time cron "0 0 8 ? * MON,TUE,WED,THU,FRI"
+    Time cron "0 0 8 ? * MON,TUE,WED,THU,FRI" or
+    Item GH_StartWork_Scene received update
 then
     logInfo ("waldek_led_on", "waldek_led_on: {}", HH_WaldekAtWork.state.toString())
     if (GF_Presence_Mode.state.toString() == "ON") {
@@ -102,6 +103,16 @@ then
             }
         }
     }
+end
+
+rule "waldek_job_off"
+when
+    Item GH_StopWork_Scene received update
+then
+    logInfo ("waldek_job_off", "waldek_job_off: {}", HH_WaldekAtWork.state.toString())
+    WiFiLED4_power.sendCommand(OFF)
+    HH_PowermeterPlug02.sendCommand(OFF)
+    GH_DailyInfo.sendCommand(ON)
 end
 
 rule "waldek_window_on"
@@ -153,7 +164,7 @@ end
 
 rule "lucifer"
 when
-    Item GF_Lucifer_Scene received update
+    Item GH_Lucifer_Scene received update
 then
     val hsb = new HSBType("10, 100, 100")
     logInfo ("lucifer", "lucifer: {}", hsb)
@@ -162,7 +173,7 @@ end
 
 rule "borg"
 when
-    Item GF_Borg_Scene received update
+    Item GH_Borg_Scene received update
 then
     val hsb = new HSBType("107, 100, 100")
     logInfo ("borg", "borg: {}", hsb)
@@ -172,7 +183,7 @@ end
 
 rule "evil"
 when
-    Item GF_Evil_Scene received update
+    Item GH_Evil_Scene received update
 then
     val hsb = new HSBType("10, 100, 100")
     logInfo ("evil", "lucifer: {}", hsb)
@@ -181,7 +192,7 @@ end
 
 rule "forrest"
 when
-    Item GF_Forrest_Scene received update
+    Item GH_Forrest_Scene received update
 then
     val hsb = new HSBType("107, 100, 100")
     logInfo ("forrest", "forrest: {}", hsb)

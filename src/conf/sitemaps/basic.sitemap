@@ -58,6 +58,8 @@ sitemap basic label="Basic" {
       Switch item=HH_PowermeterPlug02
       Switch item=GH_BathroomInfo mappings=[ON="Bathroom info"]
       Switch item=GH_DailyInfo mappings=[ON="Daily info"]
+      Switch item=GH_StartWork_Scene  mappings=[ON="Start work"]
+      Switch item=GH_StopWork_Scene  mappings=[ON="Stop work"]
     }
 
 	Frame label="" {
