@@ -107,4 +107,8 @@ sitemap parameters label="Parameters" {
                                           6.0="TRACE"
                                          ]
     }
+
+    Frame label="Timeline" icon="firstfloor" {
+        Webview url="/static/Visualization/Timeline.html?Group=gCalendar&serviceId=jdbc&Hours=48" height=17
+    }
 }

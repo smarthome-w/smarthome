@@ -1,7 +1,7 @@
-Group       gWiFILED1                              "Bedroom led"                                         (gBedroom)                                    ["LightStripe"]
-Switch      WiFiLED1_power                         "Bedroom led power"                                   (gWiFILED1, gPersistenceLED)                  ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED1:PowerSwitch"}
-Color       WiFiLED1_color                         "Bedroom led color"                                   (gWiFILED1, gPersistenceLED)                  ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED1:Color_"}
-Dimmer      WiFiLED1_dimmer                        "Bedroom led dimmer"                                  (gWiFILED1, gPersistenceLED)                  ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED1:Dimmer_"}
+// Group       gWiFILED1                              "Bedroom led"                                         (gBedroom)                                    ["LightStripe"]
+// Switch      WiFiLED1_power                         "Bedroom led power"                                   (gWiFILED1, gPersistenceLED)                  ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED1:PowerSwitch"}
+// Color       WiFiLED1_color                         "Bedroom led color"                                   (gWiFILED1, gPersistenceLED)                  ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED1:Color_"}
+// Dimmer      WiFiLED1_dimmer                        "Bedroom led dimmer"                                  (gWiFILED1, gPersistenceLED)                  ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED1:Dimmer_"}
 
 Group       gWiFILED2                              "Alice led"                                           (gAliceRoom)                                  ["LightStripe"]
 Switch      WiFiLED2_power                         "Alice led power"                                     (gWiFILED2, gPersistenceLED)                  ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED2:PowerSwitch"}

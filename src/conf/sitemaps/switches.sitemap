@@ -57,8 +57,8 @@ sitemap switches label="Switches" {
     }
 
 	Frame label="" {
-		Switch       item=WiFiLED1_power
-		Colorpicker  item=WiFiLED1_color
+		Switch       item=WiFiLED101_power
+		Colorpicker  item=WiFiLED101_color
     }
 
 	Frame label="" {

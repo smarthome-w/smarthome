@@ -50,8 +50,10 @@ then
     ]
     if (errOverallError == true) {
       OverallErrorIndicator.state = ON
+      OverallErrorIndicator_Virtual.state = ON
     } else {
       OverallErrorIndicator.state = OFF
+      OverallErrorIndicator_Virtual.state = OFF
     }
   } catch (Throwable t) {
     logError("Error", "Error in error_flag_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())

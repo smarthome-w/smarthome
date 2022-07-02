@@ -29,7 +29,7 @@ ifeq ($(OS_PLATFORM),armhf)
 	@sudo apt install docker.io docker-compose -y
 endif
 	@sudo apt-get install python3 python3-dev python3-pip python3-venv gcc libffi-dev -y
-	@sudo apt-get install logrotate vim motion git -y
+	@sudo apt-get install logrotate git -y
 	@sudo apt-get install usbutils -y
 
 	@sudo pip3 install setuptools

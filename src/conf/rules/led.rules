@@ -97,7 +97,7 @@ then
         if (calendar_Vacation.state.toString() == "OFF") {
             if (HH_WaldekAtWork.state.toString() == "ON") {
                 logInfo ("waldek_led_on", "try: waldek_led_on: {}", HH_WaldekAtWork.state.toString())
-                WiFiLED4_power.sendCommand(ON)
+//                WiFiLED4_power.sendCommand(ON)
                 HH_PowermeterPlug02.sendCommand(ON)
                 GH_DailyInfo.sendCommand(ON)
             }
@@ -188,6 +188,7 @@ then
     val hsb = new HSBType("10, 100, 100")
     logInfo ("evil", "lucifer: {}", hsb)
     sendCommand(WiFiLED4_color, hsb)
+    sendCommand(WiFiLED100_color, hsb)
 end
 
 rule "forrest"
@@ -197,4 +198,5 @@ then
     val hsb = new HSBType("107, 100, 100")
     logInfo ("forrest", "forrest: {}", hsb)
     sendCommand(WiFiLED4_color, hsb)
+    sendCommand(WiFiLED100_color, hsb)
 end

@@ -10,7 +10,7 @@ then
     val String enableNotifications = String.valueOf(calendar_Notification.state)
     executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
   } catch (Throwable t) {
-    logError("Error", "Error in notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
+    logError("Error", "Error in notification notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end
@@ -29,7 +29,7 @@ then
       executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
     }
   } catch (Throwable t) {
-    logError("Error", "Error in alarm_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
+    logError("Error", "Error in notification alarm_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end
@@ -46,7 +46,7 @@ then
     val String enableNotifications = String.valueOf(calendar_Notification.state)
     executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
   } catch (Throwable t) {
-    logError("Error", "Error in error_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
+    logError("Error", "Error in notification error_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end
@@ -64,7 +64,7 @@ then
     val String enableNotifications = String.valueOf(calendar_Notification.state)
     executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
   } catch (Throwable t) {
-    logError("Error", "Error in garage_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
+    logError("Error", "Error in notification garage_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end
@@ -81,7 +81,7 @@ then
     val String enableNotifications = String.valueOf(calendar_Notification.state)
     executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
   } catch (Throwable t) {
-    logError("Error", "Error in presence_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
+    logError("Error", "Error in notification presence_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end
@@ -99,7 +99,7 @@ then
     val String enableNotifications = String.valueOf(calendar_Notification.state)
     executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
   } catch (Throwable t) {
-    logError("Error", "Error in error_notification_rule {} {} {}", DebugButton.name, DebugButton.state, t.toString())
+    logError("Error", "Error in notification error_notification_rule {} {} {}", DebugButton.name, DebugButton.state, t.toString())
   }
 end
 */

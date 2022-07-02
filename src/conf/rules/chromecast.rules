@@ -46,11 +46,21 @@ when
   Item GH_DailyInfo received update
 then
   var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
+  var externalTempSouth = (FF_AnnRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
   var ttsMessage = String.format("Temperatura na zewnątrz to %.0f\u00b0.", externalTemp)
+
+//  if (Math::abs(externalTempSouth - externalTemp) >= 2) {
+    ttsMessage += String.format(" Temperatura od strony północnej to %.0f\u00b0.", externalTempSouth)
+//  }
   if (CIR_GF_MainLock.state.toString() == "OPEN") {
     ttsMessage += " Zamek jest otwarty."
   } else {
     ttsMessage += " Zamek jest zamknięty."
+  }
+  if (OverallErrorIndicator.state.toString() == "ON") {
+    ttsMessage += " Błąd czujnika."
+  } else {
+    ttsMessage += " Czujniki są sprawne."
   }
   saySomething.apply(ttsMessage, defaultVoice)
   calendar_DailyInfo.postUpdate(OFF)
@@ -61,7 +71,11 @@ when
   Item calendar_DailyInfo changed to ON
 then
   var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
+  var externalTempSouth = (FF_AnnRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
   var ttsMessage = String.format("Temperatura na zewnątrz to %.0f\u00b0.", externalTemp)
+
+  ttsMessage += String.format(" Temperatura od strony północnej to %.0f\u00b0.", externalTempSouth)
+
   if (CIR_GF_MainLock.state.toString() == "OPEN") {
     ttsMessage += " Zamek jest otwarty."
   } else {
@@ -74,6 +88,28 @@ then
     }
   }
   calendar_DailyInfo.postUpdate(OFF)
+end
+
+rule "OverallErrorIndicator_Virtual_info"
+when
+  Item OverallErrorIndicator_Virtual received update
+then
+  var ttsMessage = ""
+  logInfo("Overall error info", "OverallErrorIndicator_Virtual: {}", OverallErrorIndicator_Virtual)
+
+  if (OverallErrorIndicator_Virtual.state.toString() == "ON") {
+    ttsMessage += "Błąd czujnika."
+  } else {
+    ttsMessage += "Koniec błędu czujnika."
+  }
+
+  logInfo("Overall error info", "{}", ttsMessage)
+
+  if (GF_Presence_Mode.state.toString() == "ON") {
+    if (calendar_Vacation.state.toString() == "OFF") {
+      saySomething.apply(ttsMessage, defaultVoice)
+    }
+  }
 end
 
 rule "sensor_info"
