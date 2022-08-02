@@ -6,7 +6,7 @@ when
   Time cron "0 */5 * ? * MON-SUN"
 then
   try {
-    //errLogLevel = 6
+    // errLogLevel = 6
     if (HH_DebugLevel_General.state !== NULL) {
       errLogLevel = (HH_DebugLevel_General.state as Number).intValue
     }
@@ -50,8 +50,10 @@ then
     ]
     if (errOverallError == true) {
       OverallErrorIndicator.state = ON
+      OverallErrorIndicator_Virtual.state = ON
     } else {
       OverallErrorIndicator.state = OFF
+      OverallErrorIndicator_Virtual.state = OFF
     }
   } catch (Throwable t) {
     logError("Error", "Error in error_flag_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())

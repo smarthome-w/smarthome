@@ -33,7 +33,7 @@ then
       logInfo("nightwatch_rule", "nightwatchTimerName: {}", nightwatchTimerName)
     }
 
-    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (GF_Presence_Mode.state.toString() == "ON") {
         if (calendar_SupportingLight.state.toString() == "ON" || DemoMode.state.toString() == "ON" || winterLight == 1) {
           if (triggeringItem.state == OPEN) {
             var int timeOutMinutes = 2

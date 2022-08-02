@@ -20,7 +20,7 @@ then
       logInfo("movewatch_rule", "movewatchTimerName: {}", movewatchTimerName)
     }
 
-    if (GF_Presence_Mode.state.toString() == "PRESENT") {
+    if (GF_Presence_Mode.state.toString() == "ON") {
 //        if (calendar_SupportingLight.state.toString() == "ON" || DemoMode.state.toString() == "ON") {
           if (triggeringItem.state == OPEN) {
             var int timeOutSeconds = 30

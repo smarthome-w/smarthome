@@ -136,12 +136,12 @@ module handle_lid() {
         cube([servo_w,w2,thick_side_walls_thickness]);
     }
 }
-pin_height = 4+8+12;
+pin_height = 4+8+12+20;
 pin_copule_r = 4;
 pin_h = 9.4;
 pin_distance_ring = 6;
 pin_distance_ring_r = 11.65/2;
-groove_h = 18;
+groove_h = 18+20;
 screw_h = 8.2;
 module handle_axis() {
     difference() {
@@ -169,4 +169,4 @@ module handle_switch() {
 *handle_top();
 *handle_lid();
 *handle_axis();
-handle_switch();
+*handle_switch();

@@ -1,0 +1,21 @@
+Group     gWiFILED100         "100 led 1"            (gBedroom)       ["LightStripe"]
+Switch    WiFiLED100_power    "100 led power"        (gWiFILED100)    ["Switch"]              {channel="wifiled:wifiled:WifiLED100:power"}
+Color     WiFiLED100_color    "100 led color"        (gWiFILED100)    ["ColorTemperature"]    {channel="wifiled:wifiled:WifiLED100:color"}
+
+Group     gWiFILED101         "Bedroom led 2"        (gBedroom)       ["LightStripe"]
+Switch    WiFiLED101_power    "Bedroom led power"    (gWiFILED101)    ["Switch"]              {channel="wifiled:wifiled:WifiLED101:power"}
+Color     WiFiLED101_color    "Bedroom led color"    (gWiFILED101)    ["ColorTemperature"]    {channel="wifiled:wifiled:WifiLED101:color"}
+
+//Switch    2MyWiFiLight_power     "Power_RGBW"       (Light)    {channel="wifiled:wifiled:F0FE6B19CB2B:power"}
+//Dimmer    2MyWiFiLight_white     "White_RGBW"       (Light)    {channel="wifiled:wifiled:F0FE6B19CB2B:white"}
+//Color     2MyWiFiLight_color     "Color_RGBW"       (Light)    {channel="wifiled:wifiled:F0FE6B19CB2B:color"}
+
+//Switch    3MyWiFiLight_power     "Power_RGBWWCW"    (Light)    {channel="wifiled:wifiled:F0FE6B19CB2C:power"}
+//Dimmer    3MyWiFiLight_white     "White_RGBWWCW"    (Light)    {channel="wifiled:wifiled:F0FE6B19CB2C:white"}
+//Color     3MyWiFiLight_white2    "Color_RGBWWCW"    (Light)    {channel="wifiled:wifiled:F0FE6B19CB2C:white2"}
+//Color     3MyWiFiLight_color     "Color_RGBWWCW"    (Light)    {channel="wifiled:wifiled:F0FE6B19CB2C:color"}
+
+//				{
+//				Switch       item=MyWiFiLight_power  label="Power_RGB"
+//				Colorpicker  item=MyWiFiLight_color  label="Color_RGB"
+//				}

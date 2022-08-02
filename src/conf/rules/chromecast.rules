@@ -1,3 +1,29 @@
+  val saySomething = [ String ttsMessage, String voice |
+    var boolean googleSuccess = false
+
+    var i = 0
+    while((i=i+1) <= 3 && !googleSuccess) {
+      logInfo("Say info", "{} - bedroom - attempt {}", ttsMessage, i)
+      try {
+        say (ttsMessage, voice, "chromecast:chromecast:bedroom")
+        var String result = executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/GOOGLETTS/detect_error.sh", ttsMessage)
+        if (result.contains("GoogleOK")) {
+          googleSuccess = true
+        }
+      } catch (Throwable e) {
+        logError("Say error", "{} - bedroom - attempt {}", ttsMessage, i)
+      }
+    }
+
+    if (googleSuccess) {
+      logInfo("Say info", "{} - familyroom - attempt {}", ttsMessage, 1)
+      say (ttsMessage, voice, "chromecast:chromecast:familyroom")
+    }
+    "executed"
+]
+val defaultVoice = "googletts:plPLStandardA"
+val maleVoice = "googletts:plPLStandardB"
+
 rule "say_main_lock_unlocked_rule"
 when
   Time cron "0 */5 20-23 ? * *"
@@ -8,68 +34,82 @@ then
   }
   val hourOfDay = now.getHour as Number
 
+  var ttsMessage = "Zamek jest otwarty."
+
   if (CIR_GF_MainLock.state.toString() == "OPEN" && hourOfDay >= warningHour) {
-    // For local only http because of untrusted certificate
-    val mainLockUnlockedURI = "http://192.168.0.4/static/sounds/main_lock_is_unlocked.mp3"
-
-    logInfo("Chromecast", "Main lock unlocked - play - {}", mainLockUnlockedURI)
-    FamilyRoomChromecastMediaURI.sendCommand(mainLockUnlockedURI)
-    BedroomChromecastMediaURI.sendCommand(mainLockUnlockedURI)
-    logInfo("Chromecast", "Main lock unlocked - end - {}", mainLockUnlockedURI)
+    saySomething.apply(ttsMessage, defaultVoice)
   }
 end
-
-rule "say_text"
-when
-  Item ttsText received update
-then
-  var key = "66d531cf46544319bd7cbca26d80aa76"
-
-  if (ttsText.state !== NULL) {
-    var textToSpeech = ttsText.state.toString()
-    var language = ttsLanguage.state.toString()
-
-    logInfo("Chromecast", "Text: {}", textToSpeech)
-    var textURI = "https://api.voicerss.org/?key=" + key + "&f=44khz_16bit_mono&c=MP3&hl=" + language + "&src=" + textToSpeech
-
-    FamilyRoomChromecastMediaURI.sendCommand(textURI)
-    BedroomChromecastMediaURI.sendCommand(textURI)
-    logInfo("Chromecast", "Text play - end - {}", textToSpeech)
-  }
-end
-
-rule "trigger_text"
-when
-  Item Dummy received update
-then
-//  var ttsMessage = "Current power consumption is " + GF_PowerMeter_Current_In_Watts.state + " watts."
-//  var lang = "en-us"
-
-  var ttsMessage = "Bieżące zużycie energii to " + GF_PowerMeter_Current_In_Watts.state + " watów."
-  var lang = "pl-pl"
-
-  ttsLanguage.sendCommand(lang)
-  ttsText.sendCommand(ttsMessage)
-end
-
 
 rule "daily_info"
 when
-  Item calendar_DailyInfo changed to ON or Item GH_DailyInfo received update
+  Item GH_DailyInfo received update
 then
   var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
-//  var pressure = (GF_FamilyRoom_Pressure_Sensor.state as Number).floatValue
-//  logError("Chromecast", "number {}", externalTemp)
-  var ttsMessage = String.format("There is %.1f Celsius outside.", externalTemp)
-  var lang = "en-gb"
+  var externalTempSouth = (FF_AnnRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
+  var ttsMessage = String.format("Temperatura na zewnątrz to %.0f\u00b0.", externalTemp)
 
-  if (GF_Presence_Mode.state.toString() == "PRESENT") {
+//  if (Math::abs(externalTempSouth - externalTemp) >= 2) {
+    ttsMessage += String.format(" Temperatura od strony północnej to %.0f\u00b0.", externalTempSouth)
+//  }
+  if (CIR_GF_MainLock.state.toString() == "OPEN") {
+    ttsMessage += " Zamek jest otwarty."
+  } else {
+    ttsMessage += " Zamek jest zamknięty."
+  }
+  if (OverallErrorIndicator.state.toString() == "ON") {
+    ttsMessage += " Błąd czujnika."
+  } else {
+    ttsMessage += " Czujniki są sprawne."
+  }
+  saySomething.apply(ttsMessage, defaultVoice)
+  calendar_DailyInfo.postUpdate(OFF)
+end
+
+rule "calendar_info"
+when
+  Item calendar_DailyInfo changed to ON
+then
+  var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
+  var externalTempSouth = (FF_AnnRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
+  var ttsMessage = String.format("Temperatura na zewnątrz to %.0f\u00b0.", externalTemp)
+
+  ttsMessage += String.format(" Temperatura od strony północnej to %.0f\u00b0.", externalTempSouth)
+
+  if (CIR_GF_MainLock.state.toString() == "OPEN") {
+    ttsMessage += " Zamek jest otwarty."
+  } else {
+    ttsMessage += " Zamek jest zamknięty."
+  }
+
+  if (GF_Presence_Mode.state.toString() == "ON") {
     if (calendar_Vacation.state.toString() == "OFF") {
-      ttsLanguage.sendCommand(lang)
-      ttsText.sendCommand(ttsMessage)
+      saySomething.apply(ttsMessage, defaultVoice)
     }
   }
   calendar_DailyInfo.postUpdate(OFF)
+end
+
+rule "OverallErrorIndicator_Virtual_info"
+when
+  Item OverallErrorIndicator_Virtual received update
+then
+  var ttsMessage = ""
+  logInfo("Overall error info", "OverallErrorIndicator_Virtual: {}", OverallErrorIndicator_Virtual)
+
+  if (OverallErrorIndicator_Virtual.state.toString() == "ON") {
+    ttsMessage += "Błąd czujnika."
+  } else {
+    ttsMessage += "Koniec błędu czujnika."
+  }
+
+  logInfo("Overall error info", "{}", ttsMessage)
+
+  if (GF_Presence_Mode.state.toString() == "ON") {
+    if (calendar_Vacation.state.toString() == "OFF") {
+      saySomething.apply(ttsMessage, defaultVoice)
+    }
+  }
 end
 
 rule "sensor_info"
@@ -78,14 +118,12 @@ when
 then
   var power = (GF_PowerMeter_Current_In_Watts.state as Number).floatValue
   logInfo("Chromecast", "power {}", power)
-  var ttsMessage = String.format("Current power usage is %.0f watts.", power)
-  var lang = "en-gb"
+  var ttsMessage = String.format("Bieżące zużycie energii to %.0f wat.", power)
 
-  if (GF_Presence_Mode.state.toString() == "PRESENT") {
-    if (calendar_Vacation.state.toString() == "OFF") {
-      ttsLanguage.sendCommand(lang)
-      ttsText.sendCommand(ttsMessage)
-    }
+  if (GF_Presence_Mode.state.toString() == "ON") {
+//    if (calendar_Vacation.state.toString() == "OFF") {
+      saySomething.apply(ttsMessage, defaultVoice)
+//    }
   }
 //  calendar_DailyInfo.postUpdate(OFF)
 end
@@ -100,41 +138,39 @@ then
   }
   var externalTemperature = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
   if (externalTemperature < warningTemperature) {
-    var ttsMessage = String.format("There is %.1f Celsius outside. Warning level is set to %d Celsius.", externalTemperature, warningTemperature)
-    var lang = "en-gb"
+    var ttsMessage = String.format("Temperatura na zewnątrz to %.0f\u00b0. Poziom ostrzewagwczy to %d\u00b0.", externalTemperature, warningTemperature)
 
-    var String openedWindows = ""
+    var String openedWindows = "Otwarte: "
     var Boolean opened = false
 
     if (CIR_GF_FamilyBalcony.state.toString() == "OPEN") {
-        openedWindows += " balcony in family room,"
+        openedWindows += " balkon w salonie,"
         opened = true
     }
     if (CIR_GF_FamilyRoom.state.toString() == "OPEN") {
-        openedWindows += " family room,"
+        openedWindows += " okno w salonie,"
         opened = true
     }
     if (CIR_GF_Kitchen.state.toString() == "OPEN") {
-        openedWindows += " kitchen,"
+        openedWindows += " okno w kuchni,"
         opened = true
     }
     if (CIR_FF_Bedroom.state.toString() == "OPEN") {
-        openedWindows += " bedroom,"
+        openedWindows += " okno w sypialni,"
         opened = true
     }
     if (CIR_FF_AliceRoom.state.toString() == "OPEN") {
-        openedWindows += " Alice room,"
+        openedWindows += " okno w pokoju Alicji,"
         opened = true
     }
     if (CIR_FF_AnnRoom.state.toString() == "OPEN") {
-        openedWindows += " Ann room,"
+        openedWindows += " okno w pokoju Ani,"
         opened = true
     }
 
     if (opened) {
-      ttsMessage = ttsMessage + " Opened windows: " + openedWindows
-      ttsLanguage.sendCommand(lang)
-      ttsText.sendCommand(ttsMessage)
+      ttsMessage = ttsMessage + " " + openedWindows
+      saySomething.apply(ttsMessage, defaultVoice)
     }
   }
 end
@@ -154,7 +190,6 @@ then
   var occupation_duration = (now_millis - occupied_millis)/1000/60
 
   if (FF_BathRoom_Light_Up.state.toString() == "ON") {
-    //ttsMessage = String.format("Bathroom is occupied since %d minutes.", occupation_duration)
     if (occupation_duration < 3) {
       ttsMessage = "Ktoś siedzi w łazience."
     } else {
@@ -173,13 +208,26 @@ then
       ttsMessage = String.format("Łazienka jest wolna.")
     }
   }
-  //var lang = "en-gb"
-  var lang = "pl-pl"
-
-  if (GF_Presence_Mode.state.toString() == "PRESENT") {
-//    if (calendar_Vacation.state.toString() == "OFF") {
-      ttsLanguage.sendCommand(lang)
-      ttsText.sendCommand(ttsMessage)
-//    }
+  if (GF_Presence_Mode.state.toString() == "ON") {
+    saySomething.apply(ttsMessage, defaultVoice)
   }
 end
+
+rule "maintenace_rule"
+when
+  Item DebugButton received update
+then
+  saySomething.apply("Chodź spać.", maleVoice)
+end
+
+
+// 2021-12-28 13:26:06.739 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Standard-B
+// 2021-12-28 13:26:06.906 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Standard-E
+// 2021-12-28 13:26:07.040 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Wavenet-C
+// 2021-12-28 13:26:07.239 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Wavenet-D
+// 2021-12-28 13:26:07.577 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Standard-C
+// 2021-12-28 13:26:07.727 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Wavenet-E
+// 2021-12-28 13:26:08.001 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Standard-A
+// 2021-12-28 13:26:08.034 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Standard-D
+// 2021-12-28 13:26:08.195 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Wavenet-B
+// 2021-12-28 13:26:08.251 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Wavenet-A

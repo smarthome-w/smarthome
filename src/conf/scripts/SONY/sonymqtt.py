@@ -12,7 +12,7 @@ from braviarc.braviarc import BraviaRC
 
 MESSAGE_PREFIX = "sony"
 SONY_IP = None
-SONY_PIN = '8908'
+SONY_PIN = '1779'
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 

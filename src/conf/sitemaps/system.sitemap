@@ -1,35 +1,20 @@
 sitemap system label="System" {
-    Frame label="Modes" icon="groundfloor" {
-        Switch item=calendar_Vacation mappings=[ON="On", OFF="Off"]
-        Switch item=GF_Presence_Mode mappings=[ABSENT="Absent", PRESENT="Present"]
-        Switch item=GF_Winter_Mode
-        Switch item=DebugButton mappings=[ON="Debug"]
+    Frame label="Scenes" icon="firstfloor" {
+      Switch item=GH_Night_Scene mappings=[ON="Set"]
+      Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]
+      Switch item=GH_Evening_Scene mappings=[ON="Set"]
+      Switch item=GH_Day_Scene mappings=[ON="Set"]
+      Switch item=GH_TVShow_Scene mappings=[ON="Set"]
+      Switch item=GH_Lucifer_Scene mappings=[ON="Lucifer"]
+      Switch item=GH_Borg_Scene mappings=[ON="Borg"]
+      Switch item=GH_Evil_Scene mappings=[ON="Evil"]
+      Switch item=GH_Forrest_Scene mappings=[ON="Forrest"]
+      Switch item=GH_StartWork_Scene  mappings=[ON="Start work"]
+      Switch item=GH_StopWork_Scene  mappings=[ON="Stop work"]
     }
-
-	Frame label="" {
-        Switch item=HH_AliceAtSchool
-        Switch item=HH_AnnAtSchool
-        Switch item=HH_WaldekAtWork
-    }
-
-//    Frame label="Hard reset" icon="groundfloor" {
-//      Switch item=HardResetButton
-//    }
-
     Frame label="System groups" icon="groundfloor" {
-//      Group item=gPersistenceSensor
-//      Group item=gPersistenceSwitch
-//      Group item=gHH_Lights_Scenario
-//      Group item=gHardwareTemperature
       Group item=gCalendar
-//      Group item=gCIR
-//      Group item=gPIR
-//      Group item=gTC2
-//      Group item=gSP2
-//      Group item=gIRB
-//      Group item=gRawRTV
       Group item=gLastUpdate
-//      Group item=gHeartbeat
       Group item=gErrors
       Group item=gEQ3
       Group item=gEQ3Temp
@@ -42,31 +27,10 @@ sitemap system label="System" {
       Group item=gUptime
       Group item=gWeather
     }
-    Frame label="Lock" icon="firstfloor" {
-      Switch item=CIR_GF_MainLock mappings=[CLOSED="Closed", OPEN="Open"]
-//      Switch item=HH_FrontDoorSwitch
-      Chart item=CIR_GF_MainLock period=D label="Lock"
-      Chart item=CIR_GF_MainLock period=W label="Lock"
+
+    Frame label="Main Lock" icon="firstfloor" {
+      Webview url="/static/Visualization/Timeline.html?Group=gMainLock&serviceId=jdbc&Hours=24" height=3
     }
-
-    Frame label="Calendar" icon="firstfloor" {
-      Chart item=gCalendar period=D label="Day"
-      Chart item=gCalendar period=W label="Week"
-    }
-
-    Frame label="Errors" icon="firstfloor" {
-      Chart item=gErrors period=W label="Errors"
-      Chart item=OverallErrorIndicator period=W label="Error indicator"
-      Chart item=gErrors period=D label="Errors"
-    }
-
-
-//    Frame label="Presence" icon="firstfloor" {
-//        Chart item=Presence_Waldek period=D label="Waldek"
-//        Chart item=Presence_Aldona period=D label="Aldona"
-//        Chart item=Presence_Ann period=D label="Ann"
-//        Chart item=Presence_Alice period=D label="Alice"
-//    }
 
     Frame label="Pi" icon="firstfloor" {
       Text item=OpenHAB_Restart
@@ -74,13 +38,5 @@ sitemap system label="System" {
 //      Text item=Server_CPUIdle
       Text item=Server_Uptime
 //      Text item=Server_LastRead
-    }
-
-    Frame label="Scenes" icon="firstfloor" {
-      Switch item=GH_Night_Scene mappings=[ON="Set"]
-      Switch item=GH_Bedroom_Night_Scene mappings=[ON="Set"]
-      Switch item=GH_Evening_Scene mappings=[ON="Set"]
-      Switch item=GH_Day_Scene mappings=[ON="Set"]
-      Switch item=GH_TVShow_Scene mappings=[ON="Set"]
     }
 }

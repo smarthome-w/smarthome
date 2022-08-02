@@ -10,6 +10,7 @@ then
     var NumberItem thermometerItem
     var StringItem statusItem
     var ContactItem batteryItem
+    var NumberItem offsetTempItem
     // {"trv":"00:1A:22:10:0C:7B","temp":"6.0","offsetTemp":"0.0","valve":"0% open","mode":"manual","boost":"inactive","window":"closed","state":"unlocked","battery":"GOOD"}
     //logInfo("eq3", "item: {}, value: {}", triggeringItem.name, triggeringItem.state)
     if (triggeringItem.state !== NULL){
@@ -19,6 +20,7 @@ then
         var String deviceId = transform("JSONPATH", "$.trv", json)
         var String mode = transform("JSONPATH", "$.mode", json)
         var String battery = transform("JSONPATH", "$.battery", json)
+        var String offsetTemp = transform("JSONPATH", "$.offsetTemp", json)
 
         var isOK = true
         if (json.contains("available")) {
@@ -49,6 +51,7 @@ then
             if (deviceId == "00:1A:22:10:0C:C7") {
                 temperatureItem = EQ3_Bedroom_Temp
                 valveItem =  EQ3_Bedroom_Valve
+                offsetTempItem = EQ3_Bedroom_OffsetTemp
                 modeItem = EQ3_Bedroom_Mode
                 lastUpdateItem = EQ3_Bedroom_LastUpdate
                 statusItem = EQ3_Bedroom_Status
@@ -59,6 +62,7 @@ then
             if (deviceId == "00:1A:22:10:0C:7B") {
                 temperatureItem = EQ3_AnnRoom_Temp
                 valveItem =  EQ3_AnnRoom_Valve
+                offsetTempItem = EQ3_AnnRoom_OffsetTemp
                 modeItem = EQ3_AnnRoom_Mode
                 lastUpdateItem = EQ3_AnnRoom_LastUpdate
                 statusItem = EQ3_AnnRoom_Status
@@ -69,6 +73,7 @@ then
             if (deviceId == "00:1A:22:10:09:0C") {
                 temperatureItem = EQ3_AliceRoom_Temp
                 valveItem =  EQ3_AliceRoom_Valve
+                offsetTempItem = EQ3_AliceRoom_OffsetTemp
                 modeItem = EQ3_AliceRoom_Mode
                 lastUpdateItem = EQ3_AliceRoom_LastUpdate
                 statusItem = EQ3_AliceRoom_Status
@@ -79,6 +84,7 @@ then
             if (deviceId == "00:1A:22:0C:85:FA") {
                 temperatureItem = EQ3_FamilyRoom_Temp
                 valveItem =  EQ3_FamilyRoom_Valve
+                offsetTempItem = EQ3_FamilyRoom_OffsetTemp
                 modeItem = EQ3_FamilyRoom_Mode
                 lastUpdateItem = EQ3_FamilyRoom_LastUpdate
                 statusItem = EQ3_FamilyRoom_Status
@@ -89,6 +95,7 @@ then
             if (deviceId == "00:1A:22:0E:06:A0") {
                 temperatureItem = EQ3_Kitchen_Temp
                 valveItem =  EQ3_Kitchen_Valve
+                offsetTempItem = EQ3_Kitchen_OffsetTemp
                 modeItem = EQ3_Kitchen_Mode
                 lastUpdateItem = EQ3_Kitchen_LastUpdate
                 statusItem = EQ3_Kitchen_Status
@@ -107,6 +114,11 @@ then
             if (valveItem !== NULL) {
                 valveItem.postUpdate(valve)
             }
+
+            if (offsetTempItem !== NULL) {
+                offsetTempItem.postUpdate(offsetTemp)
+            }
+
             if (modeItem !== NULL) {
                 modeItem.postUpdate(mode)
             }

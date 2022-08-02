@@ -12,9 +12,9 @@ sitemap waldek label="Waldek" {
     }
 
 	Frame label="" {
-		Switch       item=WiFiLED1_power
-		Colorpicker  item=WiFiLED1_color
-		Slider       item=WiFiLED1_dimmer
+		Switch       item=WiFiLED101_power
+		Colorpicker  item=WiFiLED101_color
+//		Slider       item=WiFiLED101_dimmer
     }
 
 	Frame label="" {
@@ -81,5 +81,15 @@ sitemap waldek label="Waldek" {
         Text item=WeatherNextPrecipVolume
         Text item=WeatherNextPossiblePrecipDate
         Text item=WeatherNextPossiblePrecipVolume
+    }
+
+	Frame label="" {
+		Switch       item=WiFiLED100_power
+		Colorpicker  item=WiFiLED100_color
+    }
+
+	Frame label="" {
+		Switch       item=WiFiLED101_power
+		Colorpicker  item=WiFiLED101_color
     }
 }

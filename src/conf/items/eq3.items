@@ -2,44 +2,49 @@
 //                       Valves
 ////////////////////////////////////////////////////////////////////////////////
 
-Group       gEQ3FamilyRoom               "Family room heating"                      <time>           (gFamilyRoom)                                                         ["Valve"]
-Group       gEQ3Kitchen                  "Kitchen heating"                          <time>           (gKitchen)                                                            ["Valve"]
-Group       gEQ3Bedroom                  "Bedroom heating"                          <time>           (gBedroom)                                                            ["Valve"]
-Group       gEQ3AliceRoom                "Alice room heating"                       <time>           (gAliceRoom)                                                          ["Valve"]
-Group       gEQ3AnnRoom                  "Ann room heating"                         <time>           (gAnnRoom)                                                            ["Valve"]
+Group       gEQ3FamilyRoom               "Family room heating"                           <radiator>       (gFamilyRoom)                                                      ["Valve"]
+Group       gEQ3Kitchen                  "Kitchen heating"                               <radiator>       (gKitchen)                                                         ["Valve"]
+Group       gEQ3Bedroom                  "Bedroom heating"                               <radiator>       (gBedroom)                                                         ["Valve"]
+Group       gEQ3AliceRoom                "Alice room heating"                            <radiator>       (gAliceRoom)                                                       ["Valve"]
+Group       gEQ3AnnRoom                  "Ann room heating"                              <radiator>       (gAnnRoom)                                                         ["Valve"]
 
-String      EQ3_Bedroom                  "Bedroom EQ3 [Bedroom: %s]"                <settings>       (gEQ3Bedroom, gEQ3)                                                                {channel="mqtt:topic:MyMQTTBroker:EQ3:EQ3Bedroom"}
-String      EQ3_FamilyRoom               "FamilyRoom EQ3 [FamilyRoom: %s]"          <settings>       (gEQ3FamilyRoom, gEQ3)                                                             {channel="mqtt:topic:MyMQTTBroker:EQ3:EQ3FamilyRoom"}
-String      EQ3_AliceRoom                "AliceRoom EQ3 [AliceRoom: %s]"            <settings>       (gEQ3AliceRoom, gEQ3)                                                              {channel="mqtt:topic:MyMQTTBroker:EQ3:EQ3AliceRoom"}
-String      EQ3_Kitchen                  "Kitchen EQ3 [Kitchen : %s]"               <settings>       (gEQ3Kitchen, gEQ3)                                                                {channel="mqtt:topic:MyMQTTBroker:EQ3:EQ3Kitchen"}
-String      EQ3_FamilyRoom_Status        "Family Room status [%s]"                  <settings>       (gEQ3FamilyRoom)
-String      EQ3_AliceRoom_Status         "Alice Room status [%s]"                   <settings>       (gEQ3AliceRoom)
-String      EQ3_AnnRoom_Status           "Ann Room status [%s]"                     <settings>       (gEQ3AnnRoom)
-String      EQ3_Bedroom_Status           "Bedroom status [%s]"                      <settings>       (gEQ3Bedroom)
-String      EQ3_Kitchen_Status           "Kitchen status [%s]"                      <settings>       (gEQ3KitchenRoom)
-Number      EQ3_Bedroom_Temp             "EQ3 Bedroom Temp [%.0f \u00b0C]"          <temperature>    (gEQ3Bedroom, gEQ3Temp, gPersistenceSwitch, gEQ3BedroomTemp)
-Number      EQ3_Bedroom_Valve            "EQ3 Bedroom Valve [%.0f%%]"               <pump>           (gEQ3Bedroom, gEQ3Valve, gPersistenceSwitch)
-String      EQ3_Bedroom_Mode             "EQ3 Bedroom Mode [%s]"                    <settings>       (gEQ3Bedroom)
-Contact     EQ3_Bedroom_Battery          "EQ3 Bedroom Battery[]"                    <battery>        (gEQ3Bedroom, gBattery)
-DateTime    EQ3_Bedroom_LastUpdate       "Bedroom [%1$td.%1$tm %1$tH:%1$tM]"        <time>           (gEQ3Bedroom, gPersistenceSwitch)
-Number      EQ3_AnnRoom_Temp             "EQ3 Ann Room Temp [%.0f \u00b0C]"         <temperature>    (gEQ3AnnRoom, gEQ3Temp, gPersistenceSwitch, gEQ3AnnRoomTemp)
-Number      EQ3_AnnRoom_Valve            "EQ3 Ann Room Valve [%.0f%%]"              <pump>           (gEQ3AnnRoom, gEQ3Valve, gPersistenceSwitch)
-String      EQ3_AnnRoom_Mode             "EQ3 Ann Room Mode [%s]"                   <settings>       (gEQ3AnnRoom)
-Contact     EQ3_AnnRoom_Battery          "EQ3 Ann Room Battery[]"                   <battery>        (gEQ3AnnRoom, gBattery)
-DateTime    EQ3_AnnRoom_LastUpdate       "Ania [%1$td.%1$tm %1$tH:%1$tM]"           <time>           (gEQ3AnnRoom, gPersistenceSwitch)
-Number      EQ3_AliceRoom_Temp           "EQ3 Alice Room Temp [%.0f \u00b0C]"       <temperature>    (gEQ3AliceRoom, gEQ3Temp, gPersistenceSwitch, gEQ3AliceRoomTemp)
-Number      EQ3_AliceRoom_Valve          "EQ3 Alice Room Valve [%.0f%%]"            <pump>           (gEQ3AliceRoom, gEQ3Valve, gPersistenceSwitch)
-String      EQ3_AliceRoom_Mode           "EQ3 Alice Room Mode [%s]"                 <settings>       (gEQ3AliceRoom)
-Contact     EQ3_AliceRoom_Battery        "EQ3 Alice Room Battery[]"                 <battery>        (gEQ3AliceRoom, gBattery)
-DateTime    EQ3_AliceRoom_LastUpdate     "Alice Room [%1$td.%1$tm %1$tH:%1$tM]"     <time>           (gEQ3AliceRoom, gPersistenceSwitch)
-Number      EQ3_FamilyRoom_Temp          "EQ3 Family Room Temp [%.0f \u00b0C]"      <temperature>    (gEQ3FamilyRoom, gEQ3Temp, gPersistenceSwitch, gEQ3FamilyRoomTemp)
-Number      EQ3_FamilyRoom_Valve         "EQ3 Family Room Valve [%.0f%%]"           <pump>           (gEQ3FamilyRoom, gEQ3Valve, gPersistenceSwitch)
-String      EQ3_FamilyRoom_Mode          "EQ3 Family Room Mode [%s]"                <settings>       (gEQ3FamilyRoom)
-Contact     EQ3_FamilyRoom_Battery       "EQ3 Family Room Battery[]"                <battery>        (gEQ3FamilyRoomgBattery)
-DateTime    EQ3_FamilyRoom_LastUpdate    "Family Room [%1$td.%1$tm %1$tH:%1$tM]"    <time>           (gEQ3FamilyRoom, gPersistenceSwitch)
-Number      EQ3_Kitchen_Temp             "EQ3 Kitchen Temp [%.0f \u00b0C]"          <temperature>    (gEQ3Kitchen, gEQ3Temp, gPersistenceSwitch, gEQ3KitchenTemp)
-Number      EQ3_Kitchen_Valve            "EQ3 Kitchen Valve [%.0f%%]"               <pump>           (gEQ3Kitchen, gEQ3Valve, gPersistenceSwitch)
-String      EQ3_Kitchen_Mode             "EQ3 Kitchen Mode [%s]"                    <settings>       (gEQ3Kitchen)
-Contact     EQ3_Kitchen_Battery          "EQ3 Kitchen Battery[]"                    <battery>        (gEQ3Kitchen, gBattery)
-DateTime    EQ3_Kitchen_LastUpdate       "Kitchen [%1$td.%1$tm %1$tH:%1$tM]"        <time>           (gEQ3Kitchen, gPersistenceSwitch)
+String      EQ3_Bedroom                  "Bedroom EQ3 [Bedroom: %s]"                     <settings>       (gEQ3Bedroom, gEQ3)                                                             {channel="mqtt:topic:MyMQTTBroker:EQ3:EQ3Bedroom"}
+String      EQ3_FamilyRoom               "FamilyRoom EQ3 [FamilyRoom: %s]"               <settings>       (gEQ3FamilyRoom, gEQ3)                                                          {channel="mqtt:topic:MyMQTTBroker:EQ3:EQ3FamilyRoom"}
+String      EQ3_AliceRoom                "AliceRoom EQ3 [AliceRoom: %s]"                 <settings>       (gEQ3AliceRoom, gEQ3)                                                           {channel="mqtt:topic:MyMQTTBroker:EQ3:EQ3AliceRoom"}
+String      EQ3_Kitchen                  "Kitchen EQ3 [Kitchen : %s]"                    <settings>       (gEQ3Kitchen, gEQ3)                                                             {channel="mqtt:topic:MyMQTTBroker:EQ3:EQ3Kitchen"}
+String      EQ3_FamilyRoom_Status        "Family Room status [%s]"                       <settings>       (gEQ3FamilyRoom)
+String      EQ3_AliceRoom_Status         "Alice Room status [%s]"                        <settings>       (gEQ3AliceRoom)
+String      EQ3_AnnRoom_Status           "Ann Room status [%s]"                          <settings>       (gEQ3AnnRoom)
+String      EQ3_Bedroom_Status           "Bedroom status [%s]"                           <settings>       (gEQ3Bedroom)
+String      EQ3_Kitchen_Status           "Kitchen status [%s]"                           <settings>       (gEQ3KitchenRoom)
+Number      EQ3_Bedroom_Temp             "EQ3 Bedroom Temp [%.1f \u00b0C]"               <temperature>    (gEQ3Bedroom, gEQ3Temp, gPersistenceEQ3, gEQ3BedroomTemp)
+Number      EQ3_Bedroom_Valve            "EQ3 Bedroom Valve [%.0f%%]"                    <radiator>       (gEQ3Bedroom, gEQ3Valve, gPersistenceEQ3)
+Number      EQ3_Bedroom_OffsetTemp       "EQ3 Bedroom Offset Temp [%.1f \u00b0C]"        <pump>           (gEQ3Bedroom, gEQ3OffsetTemp, gPersistenceEQ3)
+String      EQ3_Bedroom_Mode             "EQ3 Bedroom Mode [%s]"                         <settings>       (gEQ3Bedroom)
+Contact     EQ3_Bedroom_Battery          "EQ3 Bedroom Battery[]"                         <battery>        (gEQ3Bedroom, gBattery)
+DateTime    EQ3_Bedroom_LastUpdate       "Bedroom [%1$td.%1$tm %1$tH:%1$tM]"             <time>           (gEQ3Bedroom, gPersistenceStatusUpdate)
+Number      EQ3_AnnRoom_Temp             "EQ3 Ann Room Temp [%.1f \u00b0C]"              <temperature>    (gEQ3AnnRoom, gEQ3Temp, gPersistenceEQ3, gEQ3AnnRoomTemp)
+Number      EQ3_AnnRoom_Valve            "EQ3 Ann Room Valve [%.0f%%]"                   <radiator>       (gEQ3AnnRoom, gEQ3Valve, gPersistenceEQ3)
+Number      EQ3_AnnRoom_OffsetTemp       "EQ3 Ann Room Offset Temp [%.1f \u00b0C]"       <pump>           (gEQ3AnnRoom, gEQ3OffsetTemp, gPersistenceEQ3)
+String      EQ3_AnnRoom_Mode             "EQ3 Ann Room Mode [%s]"                        <settings>       (gEQ3AnnRoom)
+Contact     EQ3_AnnRoom_Battery          "EQ3 Ann Room Battery[]"                        <battery>        (gEQ3AnnRoom, gBattery)
+DateTime    EQ3_AnnRoom_LastUpdate       "Ania [%1$td.%1$tm %1$tH:%1$tM]"                <time>           (gEQ3AnnRoom, gPersistenceStatusUpdate)
+Number      EQ3_AliceRoom_Temp           "EQ3 Alice Room Temp [%.1f \u00b0C]"            <temperature>    (gEQ3AliceRoom, gEQ3Temp, gPersistenceEQ3, gEQ3AliceRoomTemp)
+Number      EQ3_AliceRoom_Valve          "EQ3 Alice Room Valve [%.0f%%]"                 <radiator>       (gEQ3AliceRoom, gEQ3Valve, gPersistenceEQ3)
+Number      EQ3_AliceRoom_OffsetTemp     "EQ3 Alice Room Offset Temp [%.1f \u00b0C]"     <pump>           (gEQ3AliceRoom, gEQ3OffsetTemp, gPersistenceEQ3)
+String      EQ3_AliceRoom_Mode           "EQ3 Alice Room Mode [%s]"                      <settings>       (gEQ3AliceRoom)
+Contact     EQ3_AliceRoom_Battery        "EQ3 Alice Room Battery[]"                      <battery>        (gEQ3AliceRoom, gBattery)
+DateTime    EQ3_AliceRoom_LastUpdate     "Alice Room [%1$td.%1$tm %1$tH:%1$tM]"          <time>           (gEQ3AliceRoom, gPersistenceStatusUpdate)
+Number      EQ3_FamilyRoom_Temp          "EQ3 Family Room Temp [%.1f \u00b0C]"           <temperature>    (gEQ3FamilyRoom, gEQ3Temp, gPersistenceEQ3, gEQ3FamilyRoomTemp)
+Number      EQ3_FamilyRoom_Valve         "EQ3 Family Room Valve [%.0f%%]"                <radiator>       (gEQ3FamilyRoom, gEQ3Valve, gPersistenceEQ3)
+Number      EQ3_FamilyRoom_OffsetTemp    "EQ3 Family Room Offset Temp [%.1f \u00b0C]"    <pump>           (gEQ3FamilyRoom, gEQ3OffsetTemp, gPersistenceEQ3)
+String      EQ3_FamilyRoom_Mode          "EQ3 Family Room Mode [%s]"                     <settings>       (gEQ3FamilyRoom)
+Contact     EQ3_FamilyRoom_Battery       "EQ3 Family Room Battery[]"                     <battery>        (gEQ3FamilyRoomgBattery)
+DateTime    EQ3_FamilyRoom_LastUpdate    "Family Room [%1$td.%1$tm %1$tH:%1$tM]"         <time>           (gEQ3FamilyRoom, gPersistenceStatusUpdate)
+Number      EQ3_Kitchen_Temp             "EQ3 Kitchen Temp [%.1f \u00b0C]"               <temperature>    (gEQ3Kitchen, gEQ3Temp, gPersistenceEQ3, gEQ3KitchenTemp)
+Number      EQ3_Kitchen_Valve            "EQ3 Kitchen Valve [%.0f%%]"                    <radiator>       (gEQ3Kitchen, gEQ3Valve, gPersistenceEQ3)
+Number      EQ3_Kitchen_OffsetTemp       "EQ3 Kitchen Offset Temp [%.1f \u00b0C]"        <pump>           (gEQ3Kitchen, gEQ3OffsetTemp, gPersistenceEQ3)
+String      EQ3_Kitchen_Mode             "EQ3 Kitchen Mode [%s]"                         <settings>       (gEQ3Kitchen)
+Contact     EQ3_Kitchen_Battery          "EQ3 Kitchen Battery[]"                         <battery>        (gEQ3Kitchen, gBattery)
+DateTime    EQ3_Kitchen_LastUpdate       "Kitchen [%1$td.%1$tm %1$tH:%1$tM]"             <time>           (gEQ3Kitchen, gPersistenceStatusUpdate)
 Switch      EQ3_Debug                    "EQ3 Debug"

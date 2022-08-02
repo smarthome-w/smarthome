@@ -1,7 +1,7 @@
 #!/bin/bash
 sleep 20
-#echo Bedroom
-#/usr/bin/mosquitto_pub -h 192.168.0.4 -t '/bedroomradin/trv' -m '00:1A:22:10:0C:C7 unlock'
+echo Bedroom
+/usr/bin/mosquitto_pub -h 192.168.0.4 -t '/bedroomradin/trv' -m '00:1A:22:10:0C:C7 unlock'
 echo AliceRoom
 /usr/bin/mosquitto_pub -h 192.168.0.4 -t '/aliceroomradin/trv' -m '00:1A:22:10:09:0C unlock'
 echo FamilyRoom

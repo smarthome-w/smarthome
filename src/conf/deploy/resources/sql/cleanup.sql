@@ -10,6 +10,12 @@ ADD COLUMN `deletedouble` INT NOT NULL DEFAULT 0;
 ALTER TABLE `OpenHAB`.`items`
 ADD COLUMN `onevalue` INT NOT NULL DEFAULT 0;
 
+ALTER TABLE `OpenHAB`.`items`
+ADD COLUMN `datatype` VARCHAR(30);
+
+ALTER TABLE `OpenHAB`.`items`
+ADD COLUMN `nonnumeric` VARCHAR(30);
+
 update items set onevalue = 1 where itemname like '%LastUpdate';
 
 DELIMITER $$
@@ -65,7 +71,7 @@ read_loop: LOOP
       LEAVE read_loop;
     END IF;
     SET var_table = concat('Item', var_tableID);
-	select concat('DEBUG - ', 'Update table: ', var_table, ' - ', var_itemname) AS 'Debug:';
+	  select concat('DEBUG - ', 'Update table: ', var_table, ' - ', var_itemname) AS 'Debug:';
     SET @count_sql = concat('update items set numrows = (select count(*) from ', var_table, ') where ItemId = ', var_tableId);
     PREPARE psmt FROM @count_sql;
     EXECUTE psmt;
@@ -74,6 +80,13 @@ read_loop: LOOP
     PREPARE psmt FROM @maxdate_sql;
     EXECUTE psmt;
     DEALLOCATE PREPARE psmt;
+    SET @datatype_sql = concat('update items set datatype = (select max(data_type) from information_schema.columns isc where isc.column_name = "value" and isc.table_name = "', var_table, '") where ItemId = ', var_tableId);
+    PREPARE psmt FROM @datatype_sql;
+    EXECUTE psmt;
+    DEALLOCATE PREPARE psmt;
+    SET @nonnumeric_sql = concat('update items set nonnumeric = (select max(value) from ', var_table, ') where ItemId = ', var_tableId);
+    PREPARE psmt FROM @nonnumeric_sql;
+    EXECUTE psmt;
 END LOOP;
 
 CLOSE myCursor;
@@ -82,3 +95,10 @@ END$$
 call UpdateDBStats();
 
 select *, numrowsmax - numrows as delta from items where itemname not like '%LastUpdate' order by delta;
+
+update items its INNER JOIN information_schema.columns isc ON its.itemname = isc.table_name
+set its.datatype = isc.data_type
+where isc.table_schema = 'OpenHAB' and isc.column_name = 'value';
+
+select  * from  items its INNER JOIN information_schema.columns isc ON its.itemname = isc.table_name
+where isc.table_schema = 'OpenHAB' and isc.column_name = 'value';

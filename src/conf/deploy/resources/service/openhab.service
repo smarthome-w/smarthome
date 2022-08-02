@@ -1,5 +1,5 @@
 [Unit]
-Description=openHAB 2
+Description=openHAB 3
 Requires=docker.service
 After=docker.service
 #Requires=docker.service mariadb.service mosquitto.service
@@ -25,7 +25,7 @@ ExecStart=/usr/bin/docker run --name=%n --tty \
   DOCKER_TAG
 
 ExecStartPost=/bin/mkdir -p /opt/openhab/addons
-ExecStartPost=/bin/ln -fs /opt/openhab/conf/deploy/resources/addons/mariadb-java-client-2.2.5.jar /opt/openhab/addons/mariadb-java-client-2.2.5.jar
+ExecStartPost=/bin/ln -fs /opt/openhab/conf/deploy/resources/addons/mariadb-java-client-2.7.4.jar /opt/openhab/addons/mariadb-java-client-2.7.4.jar
 
 ExecStop=/usr/bin/docker stop -t 2 %n ; /usr/bin/docker rm -f %n
 

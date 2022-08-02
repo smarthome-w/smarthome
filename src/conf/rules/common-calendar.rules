@@ -52,6 +52,7 @@ then
     }
 
     val elevation = Astro_SunElevation.state as Number
+    val elevationInt = (Astro_SunElevation.state as Number).intValue
 
     if (GF_FamilyRoom_Analog_Sensor.state !== NULL) {
       brightness = (GF_FamilyRoom_Analog_Sensor.state as Number).intValue
@@ -160,6 +161,8 @@ then
       }
     }
 
+    DawnInfo.postUpdate(elevationInt + "/" + elevationDawn + "  -  " + brightness + "/" + dawnLevel)
+    DuskInfo.postUpdate(elevationInt + "/" + elevationDusk + "  -  " + brightness + "/" + duskLevel)
 
   } catch (Throwable t) {
     logError("Error", "Error in calendar_rule {}", t.toString())
