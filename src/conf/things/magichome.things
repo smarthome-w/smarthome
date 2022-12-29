@@ -1,4 +1,5 @@
 Thing wifiled:wifiled:WifiLED100 [ ip="192.168.0.85", port=5577, pollingPeriod=3000, protocol="LD382A", driver="CLASSIC", fadeDurationInMs=1000, fadeSteps=100 ]
 Thing wifiled:wifiled:WifiLED101 [ ip="192.168.0.86", port=5577, pollingPeriod=3000, protocol="LD382A", driver="CLASSIC", fadeDurationInMs=1000, fadeSteps=100 ]
+Thing wifiled:wifiled:WifiLED102 [ ip="192.168.0.87", port=5577, pollingPeriod=3000, protocol="LD382A", driver="CLASSIC", fadeDurationInMs=1000, fadeSteps=100 ]
 //Thing wifiled:wifiled:F0FE6B19CB2C [ ip="10.10.10.12", port=5577, pollingPeriod=3000, protocol="LD382A", driver="CLASSIC", fadeDurationInMs=1000, fadeSteps=100 ]
 //Thing wifiled:wifiled:F0FE6B19CB2A [ ip="10.10.10.10", port=5577, pollingPeriod=3000, protocol="LD686", driver="CLASSIC", fadeDurationInMs=1000, fadeSteps=100 ]

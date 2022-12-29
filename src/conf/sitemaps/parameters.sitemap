@@ -6,6 +6,7 @@ sitemap parameters label="Parameters" {
         Switch item=DebugButton mappings=[ON="Debug"]
         Switch item=GH_DailyInfo mappings=[ON="Daily info"]
         Switch item=GH_SensorsInfo mappings=[ON="Sensors info"]
+        Switch item=calendar_Notification
     }
 
   	Frame label="" {

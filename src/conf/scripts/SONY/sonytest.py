@@ -12,7 +12,7 @@ from braviarc.braviarc import BraviaRC
 
 MESSAGE_PREFIX = "sony"
 SONY_IP = None
-SONY_PIN = '1779'
+SONY_PIN = '1848'
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -47,16 +47,16 @@ braviarc = BraviaRC(SONY_IP)
 pin = SONY_PIN
 braviarc.connect(pin, 'sony', 'sonyrc')
 if (braviarc.is_connected()):
-#    volume_info = braviarc.get_volume_info()
-#    print(volume_info)
-#    print('==')
-#    print(volume_info.get('volume'))
-#    print('==')
-#    braviarc.set_volume_level(0.29)
-#    # braviarc.volume_up()
-#    print('==')
-#    system_info = braviarc.get_system_info()
-#    print(system_info)
-#    print('==')
+    #    volume_info = braviarc.get_volume_info()
+    #    print(volume_info)
+    #    print('==')
+    #    print(volume_info.get('volume'))
+    #    print('==')
+    #    braviarc.set_volume_level(0.29)
+    #    # braviarc.volume_up()
+    #    print('==')
+    #    system_info = braviarc.get_system_info()
+    #    print(system_info)
+    #    print('==')
     system_info = braviarc.load_source_list()
     print(system_info)

@@ -44,11 +44,13 @@ then
               GF_FamilyRoom_LightsRGB.sendCommand(ON)
               GF_FamilyRoom_LightsLamp.sendCommand(ON)
               GF_FamilyRoom_Light_Sofa.sendCommand(OFF)
+              WiFiLED7_power.sendCommand(ON)
             } else {
               GF_FamilyRoom_Light_Table.sendCommand(OFF)
               GF_FamilyRoom_LightsRGB.sendCommand(OFF)
               GF_FamilyRoom_LightsLamp.sendCommand(OFF)
               GF_FamilyRoom_Light_Sofa.sendCommand(OFF)
+              WiFiLED7_power.sendCommand(OFF)
             }
         }
 
@@ -61,11 +63,13 @@ then
               GF_FamilyRoom_LightsRGB.sendCommand(OFF)
               GF_FamilyRoom_LightsLamp.sendCommand(OFF)
               GF_FamilyRoom_Light_Sofa.sendCommand(ON)
+              WiFiLED7_power.sendCommand(OFF)
             } else {
               GF_FamilyRoom_Light_Table.sendCommand(OFF)
               GF_FamilyRoom_LightsRGB.sendCommand(OFF)
               GF_FamilyRoom_LightsLamp.sendCommand(OFF)
               GF_FamilyRoom_Light_Sofa.sendCommand(OFF)
+              WiFiLED7_power.sendCommand(OFF)
             }
         }
 
@@ -91,7 +95,9 @@ then
 //            GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
 //            FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
             RTV_TV_TV.sendCommand(OFF)
-            FF_Bedroom_Lights.sendCommand(ON)
+            WiFiLED7_power.sendCommand(OFF)
+//            FF_Bedroom_Lights.sendCommand(ON)
+            sendCommand(WiFiLED101_color, new HSBType(String::format("%s",transform("MAP", "led.map", "color_green_max"))))
             GF_Lights_Scenario.sendCommand(OFF)
         }
 
@@ -105,6 +111,11 @@ then
             GF_Lights_Scenario.sendCommand(OFF)
             GF_Corridor_Scenario.sendCommand(OFF)
             GF_Restroom_Scenario.sendCommand(OFF)
+            HH_PowermeterPlug01.sendCommand(OFF)
+            HH_PowermeterPlug02.sendCommand(OFF)
+            WiFiLED101_power.sendCommand(OFF)
+            WiFiLED102_power.sendCommand(OFF)
+            WiFiLED4_power.sendCommand(OFF)
 //            GH_DailyInfo.sendCommand(ON)
             //if (logLevel >= 6) {
             //  logError("scene_rule", "FF_Bedroom_Rollershutter_Dimmer to {}", bedroomBlindLevel)

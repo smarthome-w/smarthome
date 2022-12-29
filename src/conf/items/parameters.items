@@ -34,3 +34,5 @@ Switch    HH_AnnAtSchool                   "Ann at school []"                   
 Switch    HH_WaldekAtWork                  "Waldek at work []"                        <man_3>          (gParameters, gPersistenceSettings)
 
 Switch    HH_SystemStarted                 "System fully started []"                  <time>
+
+String    NotificationItem                 "Notification"                             <time>           (gParameters)                                                                     {channel="mqtt:topic:MyMQTTBroker:NotificationMsg:NotificationStr"}

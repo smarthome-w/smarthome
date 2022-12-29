@@ -142,13 +142,15 @@ if [[ $1 == "parse" ]]; then
   done
 else
   echo "Run powermeter.sh: hcitool lescan..."
-  hcitool lescan --duplicates 1>/dev/null &
-  DEVICE_NAME=$(rfkill list -o DEVICE -n | grep hci)
+  #  hcitool lescan --duplicates 1>/dev/null &
+  #  DEVICE_NAME=$(rfkill list -o DEVICE -n | grep hci)
   DEVICE_NAME="hci0"
-  #hciconfig hci0 down && hciconfig hci0 up && hcitool lescan --duplicates 1>/dev/null &
+  # hciconfig $DEVICE_NAME down && hciconfig $DEVICE_NAME up && hcitool lescan --duplicates 1>/dev/null &
+  hcitool lescan --duplicates 1>/dev/null &
   echo "Run powermeter.sh: device ${DEVICE_NAME}"
 
   if [ "$(pidof hcitool)" ]; then
+    echo "hcidump --raw -i $DEVICE_NAME | $0 parse $1"
     hcidump --raw -i $DEVICE_NAME | $0 parse $1
     #hcidump --raw | $0 parse $1
   fi

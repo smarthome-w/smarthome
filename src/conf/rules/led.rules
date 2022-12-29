@@ -1,3 +1,20 @@
+rule "turn the led off"
+when
+    Member of gLEDSimple changed to OFF or
+    Member of gLEDCalendar changed to OFF
+then
+//    logInfo ("get_color", "get_color: {}", WiFiLED102_color)
+end
+
+
+rule "get_color"
+when
+    Item WiFiLED102_color received update
+then
+//    logInfo ("get_color", "get_color: {}", WiFiLED102_color)
+end
+
+
 rule "family_room_led_power"
 when
     Item WiFiLEDFamilyRoom_power received update
@@ -36,7 +53,8 @@ when
 //    Time cron "0 55 5 ? * MON,WED" or
 //    Time cron "0 50 6 ? * TUE,THU,FRI"
 //    Time cron "0 40 7 ? * MON,TUE,WED,THU,FRI"
-    Time cron "0 40 5 ? * MON,TUE,WED,THU,FRI"
+    Time cron "0 40 6 ? * MON,TUE" or
+    Time cron "0 40 5 ? * WED,THU,FRI"
 then
     if (GF_Presence_Mode.state.toString() == "ON") {
         if (HH_AliceAtSchool.state.toString() == "ON") {
@@ -49,7 +67,8 @@ rule "alice_led_off"
 when
 //    Time cron "0 15 6 ? * MON,WED" or
 //    Time cron "0 15 7 ? * TUE,THU,FRI" or
-    Time cron "0 20 6 ? * MON,TUE,WED,THU,FRI" or
+    Time cron "0 20 7 ? * MON,TUE" or
+    Time cron "0 20 6 ? * WED,THU,FRI" or
     Time cron "59 59 23 ? * *"
 then
     if (GF_Presence_Mode.state.toString() == "ON") {
@@ -62,12 +81,13 @@ when
 //    Time cron "0 40 5 ? * MON,TUE,THU" or
 //    Time cron "0 10 6 ? * WED,FRI"
 //    Time cron "0 40 7 ? * MON,TUE,WED,THU,FRI"
-    Time cron "0 40 5 ? * MON,TUE,WED,THU,FRI"
+    Time cron "0 30 7 ? * MON,TUE" or
+    Time cron "0 0 7 ? * WED,FRI" or
+    Time cron "0 0 6 ? * THU"
 then
-    logInfo ("lock", "Ann led: before on")
-
     if (GF_Presence_Mode.state.toString() == "ON") {
         if (HH_AnnAtSchool.state.toString() == "ON") {
+            logInfo ("lock", "Ann led: before on")
             WiFiLED3_power.sendCommand(ON)
         }
     }
@@ -78,41 +98,56 @@ when
 //    Time cron "0 20 6 ? * MON,TUE,THU" or
 //    Time cron "0 50 6 ? * WED,FRI" or
 //    Time cron "0 58 7 ? * MON,TUE,WED,THU,FRI" or
-    Time cron "0 20 6 ? * MON,TUE,WED,THU,FRI" or
+    Time cron "0 0 8 ? * MON,TUE" or
+    Time cron "0 20 7 ? * WED,FRI" or
+    Time cron "0 20 6 ? * THU" or
     Time cron "59 59 23 ? * *"
 then
-    logInfo ("lock", "Ann led: before off")
     if (GF_Presence_Mode.state.toString() == "ON") {
+        logInfo ("lock", "Ann led: before off")
         WiFiLED3_power.sendCommand(OFF)
     }
 end
 
-rule "waldek_led_on"
+rule "work_rule"
 when
-    Time cron "0 0 8 ? * MON,TUE,WED,THU,FRI" or
-    Item GH_StartWork_Scene received update
+    Item GH_Work_Scene received update
 then
-    logInfo ("waldek_led_on", "waldek_led_on: {}", HH_WaldekAtWork.state.toString())
     if (GF_Presence_Mode.state.toString() == "ON") {
         if (calendar_Vacation.state.toString() == "OFF") {
             if (HH_WaldekAtWork.state.toString() == "ON") {
-                logInfo ("waldek_led_on", "try: waldek_led_on: {}", HH_WaldekAtWork.state.toString())
-//                WiFiLED4_power.sendCommand(ON)
-                HH_PowermeterPlug02.sendCommand(ON)
-                GH_DailyInfo.sendCommand(ON)
+                if (GH_Work_Scene.state.toString() == "ON") {
+                    HH_PowermeterPlug01.sendCommand(ON)
+                    HH_PowermeterPlug02.sendCommand(ON)
+                    GH_DailyInfo.sendCommand(ON)
+                    if (GF_FamilyRoom_Rollershutter_CurrPos.state > 50) {
+                        sendCommand(WiFiLED4_color, new HSBType(String::format("%s",transform("MAP", "led.map", "color_green_max"))))
+    //                    WiFiLED4_power.sendCommand(ON)
+                    }
+                } else {
+                    HH_PowermeterPlug01.sendCommand(OFF)
+                    HH_PowermeterPlug02.sendCommand(OFF)
+                    // GH_DailyInfo.sendCommand(ON)
+                    WiFiLED4_power.sendCommand(OFF)
+                }
             }
         }
     }
 end
 
-rule "waldek_job_off"
+rule "soundbar_rule"
 when
-    Item GH_StopWork_Scene received update
+    Item GH_Soundbar_Scene received update
 then
-    logInfo ("waldek_job_off", "waldek_job_off: {}", HH_WaldekAtWork.state.toString())
-    WiFiLED4_power.sendCommand(OFF)
-    HH_PowermeterPlug02.sendCommand(OFF)
-    GH_DailyInfo.sendCommand(ON)
+    if (GF_Presence_Mode.state.toString() == "ON") {
+        if (GH_Soundbar_Scene.state.toString() == "ON") {
+            HH_PowermeterPlug02.sendCommand(ON)
+            sendCommand(WiFiLED4_color, new HSBType(String::format("%s",transform("MAP", "led.map", "color_green_max"))))
+        } else {
+            HH_PowermeterPlug02.sendCommand(OFF)
+            WiFiLED4_power.sendCommand(OFF)
+        }
+    }
 end
 
 rule "waldek_window_on"
@@ -130,14 +165,14 @@ then
     }
 end
 
-rule "waldek_led_off"
-when
-    Time cron "0 55 14 ? * MON,TUE,WED,THU,FRI"
-then
-    if (GF_Presence_Mode.state.toString() == "ON") {
-        WiFiLED4_power.sendCommand(OFF)
-    }
-end
+//rule "waldek_led_off"
+//when
+//    Time cron "0 55 14 ? * MON,TUE,WED,THU,FRI"
+//then
+//    if (GF_Presence_Mode.state.toString() == "ON") {
+//        WiFiLED4_power.sendCommand(OFF)
+//    }
+//end
 
 rule "goodnight_all_off"
 when
@@ -151,14 +186,9 @@ when
     Item WiFiLED4_power received update
 then
     if (WiFiLED4_power.state.toString() == "OFF") {
-        val hsb = new HSBType("107, 100, 0")
-        sendCommand(WiFiLED4_color, hsb)
-//        WiFiLED4_dimmer.sendCommand(0)
-//        logInfo ("debug desk", "debug desk: {}", hsb)
+        sendCommand(WiFiLED4_color, new HSBType(String::format("%s",transform("MAP", "led.map", "color_off"))))
     } else {
-        val hsb = new HSBType("107, 100, 50")
-        sendCommand(WiFiLED4_color, hsb)
-//        logInfo ("debug desk", "debug desk: {}", hsb)
+        sendCommand(WiFiLED4_color, new HSBType(String::format("%s",transform("MAP", "led.map", "color_green_max"))))
     }
 end
 
@@ -166,18 +196,18 @@ rule "lucifer"
 when
     Item GH_Lucifer_Scene received update
 then
-    val hsb = new HSBType("10, 100, 100")
-    logInfo ("lucifer", "lucifer: {}", hsb)
-    sendCommand(WiFiLEDFamilyRoom_color, hsb)
+    val hsbColor = new HSBType(String::format("%s",transform("MAP", "led.map", "color_red_max")))
+    sendCommand(WiFiLED4_color, hsbColor)
+    sendCommand(WiFiLED100_color, hsbColor)
 end
 
 rule "borg"
 when
     Item GH_Borg_Scene received update
 then
-    val hsb = new HSBType("107, 100, 100")
-    logInfo ("borg", "borg: {}", hsb)
-    sendCommand(WiFiLEDFamilyRoom_color, hsb)
+    val hsbColor = new HSBType(String::format("%s",transform("MAP", "led.map", "color_green_max")))
+    sendCommand(WiFiLED4_color, hsbColor)
+    sendCommand(WiFiLED100_color, hsbColor)
 end
 
 
@@ -185,18 +215,12 @@ rule "evil"
 when
     Item GH_Evil_Scene received update
 then
-    val hsb = new HSBType("10, 100, 100")
-    logInfo ("evil", "lucifer: {}", hsb)
-    sendCommand(WiFiLED4_color, hsb)
-    sendCommand(WiFiLED100_color, hsb)
+    sendCommand(WiFiLEDFamilyRoom_color, new HSBType(String::format("%s",transform("MAP", "led.map", "color_red_max"))))
 end
 
 rule "forrest"
 when
     Item GH_Forrest_Scene received update
 then
-    val hsb = new HSBType("107, 100, 100")
-    logInfo ("forrest", "forrest: {}", hsb)
-    sendCommand(WiFiLED4_color, hsb)
-    sendCommand(WiFiLED100_color, hsb)
+    sendCommand(WiFiLEDFamilyRoom_color, hsbColor = new HSBType(String::format("%s",transform("MAP", "led.map", "color_green_max"))))
 end

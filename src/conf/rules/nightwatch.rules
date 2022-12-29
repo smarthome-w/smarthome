@@ -1,6 +1,7 @@
 import java.util.Map
 
 var Map<String, Timer> nightwatchTimers = newHashMap
+
 var int logLevel = 1
 var int winterLight = 0
 
@@ -11,6 +12,9 @@ then
   if (nightwatchTimers == NULL) {
     nightwatchTimers = newHashMap
   }
+
+  val hsbColor = new HSBType(String::format("%s",transform("MAP", "led.map", "daycolor_" + (now.getHour as Integer))))
+
   try {
     if (HH_DebugLevel_Nightwatch.state !== NULL) {
         logLevel = (HH_DebugLevel_Nightwatch.state as Number).intValue
@@ -49,6 +53,7 @@ then
                     // off
                     if (nightwatchTimerName == "corridorNightwatchTimer") {
                       GF_Corridor_Light_LED.sendCommand(OFF)
+                      WiFiLED102_power.sendCommand(OFF)
                     } else {
                       GF_Kitchen_LED.sendCommand(OFF);
                     }
@@ -59,6 +64,8 @@ then
                 //on
                 if (nightwatchTimerName == "corridorNightwatchTimer") {
                   GF_Corridor_Light_LED.sendCommand(ON)
+                  // WiFiLED102_power.sendCommand(ON)
+                  sendCommand(WiFiLED102_color, hsbColor)
                 } else {
                   GF_Kitchen_LED.sendCommand(ON);
                 }
@@ -70,6 +77,8 @@ then
                 }
                 if (nightwatchTimerName == "corridorNightwatchTimer") {
                   GF_Corridor_Light_LED.sendCommand(ON)
+//                  WiFiLED102_power.sendCommand(ON)
+                  sendCommand(WiFiLED102_color, hsbColor)
                 } else {
                   GF_Kitchen_LED.sendCommand(ON);
                 }

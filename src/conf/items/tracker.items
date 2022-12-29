@@ -28,6 +28,7 @@ Number      Tracker_Ann_Accuracy                         "Ann tracker accuracy [
 Contact     Ann_AtHome                                   "Ann home presence []"                     <girl_2>     (gTracker, gPersistenceTracker, gTrackerPresence)     {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAnn:AtHome"}
 Contact     Ann_AtDistrict                               "Ann district presence []"                 <girl_2>     (gTracker, gPersistenceTracker, gTrackerPresence)     {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAnn:AtDistrict"}
 Contact     Ann_AtSchool                                 "Ann school presence []"                   <girl_2>     (gTracker, gPersistenceTracker, gTrackerPresence)     {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAnn:AtSchool"}
+Contact     Ann_InTransit                                "Ann transit presence []"                  <girl_2>     (gTracker, gPersistenceTracker, gTrackerPresence)     {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAnn:InTransit"}
 
 Location    Tracker_Alice_Location_Map                   "Alice Map [%s]"                           <line>       (gTracker, gTrackerLocation, gPersistenceTracker)
 String      Tracker_Alice_Location                       "Alice Location [%s]"                      <line>       (gTracker, gTrackerRawLocation)                       {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAlice:LastLocation"}

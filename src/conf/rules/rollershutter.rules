@@ -36,6 +36,10 @@ then
         if (calendar_Dusk.state.toString() == "ON") {
           GH_Evening_Scene.sendCommand(ON)
           logInfo("dailytrigger", "rollershutter_down_rule: Time: {}, Elevation: {}, Light: {}", now, Astro_SunElevation.state, GF_FamilyRoom_Analog_Sensor.state)
+          logInfo("dailytrigger", "HH_PowermeterPlug01: {}", HH_PowermeterPlug01)
+          if (HH_PowermeterPlug01.state.toString() == "ON") {
+            sendCommand(WiFiLED4_color, new HSBType(String::format("%s",transform("MAP", "led.map", "color_green_max"))))
+          }
         }
     }
     if (logLevel >= 6.0) {}

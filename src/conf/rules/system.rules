@@ -126,10 +126,12 @@ then
   var String itemName = "_"
   var itemValue = "Restart OpenHAB"
   var String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
-  executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime)
+  val String notificationString1 = type + "|" + itemName + "|" + itemValue + "|" + currentTime + "|"
+  NotificationItem.sendCommand(notificationString1)
 
 
   type = ":information_source:"
   currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
-  executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, "`" + currentTime + "`", "OpenHAB restarted")
+  val String notificationString2 = type + "|" + itemName + "|" + itemValue + "|" + currentTime + "|"
+  NotificationItem.sendCommand(notificationString2)
 end

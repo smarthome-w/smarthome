@@ -62,6 +62,11 @@ sitemap switches label="Switches" {
     }
 
 	Frame label="" {
+		Switch       item=WiFiLED102_power
+		Colorpicker  item=WiFiLED102_color
+    }
+
+	Frame label="" {
 		Switch       item=WiFiLED2_power
 		Colorpicker  item=WiFiLED2_color
     }

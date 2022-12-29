@@ -8,3 +8,4 @@ things/astro.things
 *.presence
 src/conf/things/tracker.things
 network.md
+src/conf/services/googletts.cfg*

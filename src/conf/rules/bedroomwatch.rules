@@ -9,6 +9,8 @@ when
     Member of gBedroomWatch received update
 then
   try {
+    val hsbColor = new HSBType(String::format("%s",transform("MAP", "led.map", "daycolor_" + (now.getHour as Integer))))
+
     if (HH_DebugLevel_Nightwatch.state !== NULL) {
         logLevel = (HH_DebugLevel_Nightwatch.state as Number).intValue
     }
@@ -35,7 +37,8 @@ then
                     }
                     // off
                     if (bedroomwatchTimerName == "corridorBedroomwatchTimer") {
-                      FF_Bedroom_Lights.sendCommand(OFF)
+//                      FF_Bedroom_Lights.sendCommand(OFF)
+                        WiFiLED101_power.sendCommand(OFF)
                     }
                 ]))
                 if (logLevel >= 6) {
@@ -43,7 +46,8 @@ then
                 }
                 //on
                 if (bedroomwatchTimerName == "corridorBedroomwatchTimer") {
-                  FF_Bedroom_Lights.sendCommand(ON)
+//                  FF_Bedroom_Lights.sendCommand(ON)
+                  sendCommand(WiFiLED101_color, hsbColor)
                 }
             }
             else {
@@ -52,7 +56,8 @@ then
                   logInfo("bedroomwatch_rule", "Timer rescheduled {}", bedroomwatchTimerName)
                 }
                 if (bedroomwatchTimerName == "corridorBedroomwatchTimer") {
-                  FF_Bedroom_Lights.sendCommand(ON)
+//                  FF_Bedroom_Lights.sendCommand(ON)
+                  sendCommand(WiFiLED101_color, hsbColor)
                 }
             }
           }

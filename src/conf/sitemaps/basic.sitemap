@@ -32,6 +32,7 @@ sitemap basic label="Basic" {
 //        Switch item=HH_FrontDoorSwitch
         Switch item=OverallErrorIndicator
         Group item=gErrors visibility=[OverallErrorIndicator==ON]
+        Group item=gNFC
     }
 
     Frame label="Tracker" icon="groundfloor" {
@@ -58,8 +59,7 @@ sitemap basic label="Basic" {
       Switch item=HH_PowermeterPlug02
       Switch item=GH_BathroomInfo mappings=[ON="Bathroom info"]
       Switch item=GH_DailyInfo mappings=[ON="Daily info"]
-      Switch item=GH_StartWork_Scene  mappings=[ON="Start work"]
-      Switch item=GH_StopWork_Scene  mappings=[ON="Stop work"]
+      Switch item=GH_Work_Scene
     }
 
 	Frame label="" {
@@ -69,12 +69,8 @@ sitemap basic label="Basic" {
     }
 
 	Frame label="" {
-		Switch       item=WiFiLEDFamilyRoom_power
-		Colorpicker  item=WiFiLEDFamilyRoom_color
-		Slider       item=WiFiLEDFamilyRoom_dimmer
-    }
-
-	Frame label="" {
-      Switch item=calendar_Notification
+		Switch       item=WiFiLED7_power
+		Colorpicker  item=WiFiLED7_color
+		Slider       item=WiFiLED7_dimmer
     }
 }
