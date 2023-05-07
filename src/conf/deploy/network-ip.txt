@@ -1,0 +1,24 @@
+IoT:
+192.168.0.4 OpenHAB
+
+
+
+Laptops:
+
+192.168.0.101 Waldek
+192.168.0.102 Aldona
+192.168.0.103 Ania
+192.168.0.104 Alicja
+192.168.0.105 Aldona 2
+
+
+Routers:
+192.168.0.9  TPLink
+
+Mobiles:
+
+192.168.0.111 Waldek
+192.168.0.112 Aldona
+
+Wifi Laptops:
+192.168.0.122 Aldona

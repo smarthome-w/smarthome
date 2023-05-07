@@ -9,3 +9,5 @@ things/astro.things
 src/conf/things/tracker.things
 network.md
 src/conf/services/googletts.cfg*
+cookies.sqlite
+

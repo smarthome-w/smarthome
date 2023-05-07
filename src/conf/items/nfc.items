@@ -1,0 +1,7 @@
+Switch    NFC_FamilyRoom      "NFC FamilyRoom[]"            <light>    (gPersistenceSwitch, gNFC)    ["Switch", "Opening"]
+Switch    NFC_Bedroom_Work    "NFC Bedroom Work[]"          <light>    (gPersistenceSwitch, gNFC)    ["Switch", "Opening"]
+Switch    NFC_Ann_Office      "NFC Ann office[]"            <light>    (gPersistenceSwitch, gNFC)    ["Switch", "Opening"]
+Switch    NFC_Bedroom_WBed    "NFC Bedroom Aldona Bed[]"    <light>    (gPersistenceSwitch, gNFC)    ["Switch", "Opening"]
+Switch    NFC_Bedroom_ABed    "NFC Bedroom Waldek Bed[]"    <light>    (gPersistenceSwitch, gNFC)    ["Switch", "Opening"]
+Switch    NFC_AnnRoom         "NFC Ann[]"                   <light>    (gPersistenceSwitch, gNFC)    ["Switch", "Opening"]
+Switch    NFC_AliceRoom       "NFC Alice[]"                 <light>    (gPersistenceSwitch, gNFC)    ["Switch", "Opening"]

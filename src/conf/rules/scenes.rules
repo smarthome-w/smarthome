@@ -97,7 +97,7 @@ then
             RTV_TV_TV.sendCommand(OFF)
             WiFiLED7_power.sendCommand(OFF)
 //            FF_Bedroom_Lights.sendCommand(ON)
-            sendCommand(WiFiLED101_color, new HSBType(String::format("%s",transform("MAP", "led.map", "color_green_max"))))
+            //sendCommand(WiFiLED101_color, new HSBType(String::format("%s",transform("MAP", "led.map", "color_green_max"))))
             GF_Lights_Scenario.sendCommand(OFF)
         }
 

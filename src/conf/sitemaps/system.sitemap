@@ -11,6 +11,15 @@ sitemap system label="System" {
       Switch item=GH_Forrest_Scene mappings=[ON="Forrest"]
       Switch item=GH_Work_Scene
     }
+
+    Frame label="Heaters" icon="firstfloor" {
+      Text item=EQ3_Bedroom_Status
+      Text item=EQ3_FamilyRoom_Status
+      Text item=EQ3_AnnRoom_Status
+      Text item=EQ3_AliceRoom_Status
+      Text item=EQ3_Kitchen_Status
+    }
+
     Frame label="System groups" icon="groundfloor" {
       Group item=gCalendar
       Group item=gLastUpdate

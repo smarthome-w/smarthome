@@ -1,0 +1,108 @@
+import java.util.Map
+
+var Map<String, Timer> nfcTimers = newHashMap
+
+var int logLevel = 1
+
+
+rule "NFC_FamilyRoom"
+when
+    Item NFC_FamilyRoom received update
+then
+    logInfo ("NFC_FamilyRoom", "NFC_FamilyRoom: {}", NFC_FamilyRoom.state)
+    GH_Night_Scene.sendCommand(ON)
+end
+
+rule "NFC_Bedroom_Work"
+when
+    Item NFC_Bedroom_Work received update
+then
+    logInfo ("NFC_Bedroom_Work", "NFC_Bedroom_Work: {}", NFC_Bedroom_Work.state)
+end
+
+rule "NFC_Ann_Office"
+when
+    Item NFC_Ann_Office received update
+then
+    logInfo ("NFC_Ann_Office", "NFC_Ann_Office: {}", NFC_Ann_Office.state)
+end
+
+rule "NFC_Bedroom_WBed"
+when
+    Item NFC_Bedroom_WBed received update
+then
+    logInfo ("NFC_Bedroom_WBed", "NFC_Bedroom_WBed: {}", NFC_Bedroom_WBed.state)
+end
+
+rule "NFC_Bedroom_ABed"
+when
+    Item NFC_Bedroom_ABed received update
+then
+    logInfo ("NFC_Bedroom_ABed", "NFC_Bedroom_ABed: {}", NFC_Bedroom_ABed.state)
+end
+
+rule "NFC_AnnRoom"
+when
+    Item NFC_AnnRoom received update
+then
+    logInfo ("NFC_AnnRoom", "NFC_AnnRoom: {}", NFC_AnnRoom.state)
+end
+
+rule "NFC_AliceRoom"
+when
+    Item NFC_AliceRoom received update
+then
+    logInfo ("NFC_AliceRoom", "NFC_AliceRoom: {}", NFC_AliceRoom.state)
+
+    if (nfcTimers == NULL) {
+        nfcTimers = newHashMap
+    }
+
+    val hsbColor = new HSBType(String::format("%s",transform("MAP", "led.map", "daycolor_" + (now.getHour as Integer))))
+
+  try {
+    if (HH_DebugLevel_Nightwatch.state !== NULL) {
+        logLevel = (HH_DebugLevel_Nightwatch.state as Number).intValue
+    }
+    if (logLevel >= 6) {
+      logInfo("NFC_AliceRoom", "NFC_AliceRoom change detected {} {}", NFC_AliceRoom.name, NFC_AliceRoom.state)
+    }
+
+    var nfcTimerName = "nfcTimer"
+
+    if (logLevel >= 6) {
+      logInfo("NFC_AliceRoom", "nfcTimerName: {}", nfcTimerName)
+    }
+
+    if (GF_Presence_Mode.state.toString() == "ON") {
+            var int timeOutMinutes = 15
+            if(nfcTimers.get(nfcTimerName) === null){
+                nfcTimers.put(nfcTimerName, createTimer(now.plusMinutes(timeOutMinutes), [|
+                    nfcTimers.put(nfcTimerName, null)
+                    if (logLevel >= 6) {
+                      logInfo("NFC_AliceRoom", "Timer expired {}", nfcTimerName)
+                    }
+                    // off led
+                    WiFiLED2_power.sendCommand(OFF)
+                ]))
+                if (logLevel >= 6) {
+                  logInfo("NFC_AliceRoom", "Timer created {}", nfcTimerName)
+                }
+                //on led
+                sendCommand(WiFiLED2_color, hsbColor)
+            }
+            else {
+                nfcTimers.get(nfcTimerName).reschedule(now.plusMinutes(timeOutMinutes))
+                if (logLevel >= 6) {
+                  logInfo("NFC_AliceRoom", "Timer rescheduled {}", nfcTimerName)
+                }
+                // on led
+                sendCommand(WiFiLED2_color, hsbColor)
+            }
+    }
+  } catch (Throwable t) {
+    logError("Error", "Error in NFC_AliceRoom {} {} {}", NFC_AliceRoom.name, NFC_AliceRoom.state, t.toString())
+  } finally {
+  }
+
+end

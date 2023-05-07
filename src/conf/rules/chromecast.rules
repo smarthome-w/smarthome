@@ -5,6 +5,7 @@
     while((i=i+1) <= 3 && !googleSuccess) {
       logInfo("Say info", "{} - bedroom - attempt {}", ttsMessage, i)
       try {
+        logInfo("Say info", "------ SAY_START ------")
         say (ttsMessage, voice, "chromecast:chromecast:bedroom")
         var String result = executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/GOOGLETTS/detect_error.sh", ttsMessage)
         if (result.contains("GoogleOK")) {
@@ -12,6 +13,8 @@
         }
       } catch (Throwable e) {
         logError("Say error", "{} - bedroom - attempt {}", ttsMessage, i)
+      } finally {
+        logInfo("Say info", "------ SAY_STOP  ------")
       }
     }
 
@@ -21,7 +24,10 @@
     }
     "executed"
 ]
+
 val defaultVoice = "googletts:plPLStandardA"
+//val defaultVoice = "googletts:enAUWavenetD"
+
 val maleVoice = "googletts:plPLStandardB"
 
 rule "say_main_lock_unlocked_rule"

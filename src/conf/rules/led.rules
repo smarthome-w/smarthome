@@ -118,7 +118,7 @@ then
             if (HH_WaldekAtWork.state.toString() == "ON") {
                 if (GH_Work_Scene.state.toString() == "ON") {
                     HH_PowermeterPlug01.sendCommand(ON)
-                    HH_PowermeterPlug02.sendCommand(ON)
+//                    HH_PowermeterPlug02.sendCommand(ON)
                     GH_DailyInfo.sendCommand(ON)
                     if (GF_FamilyRoom_Rollershutter_CurrPos.state > 50) {
                         sendCommand(WiFiLED4_color, new HSBType(String::format("%s",transform("MAP", "led.map", "color_green_max"))))
@@ -126,7 +126,7 @@ then
                     }
                 } else {
                     HH_PowermeterPlug01.sendCommand(OFF)
-                    HH_PowermeterPlug02.sendCommand(OFF)
+//                    HH_PowermeterPlug02.sendCommand(OFF)
                     // GH_DailyInfo.sendCommand(ON)
                     WiFiLED4_power.sendCommand(OFF)
                 }
@@ -135,17 +135,15 @@ then
     }
 end
 
-rule "soundbar_rule"
+rule "ann_office_rule"
 when
-    Item GH_Soundbar_Scene received update
+    Item GH_Ann_Office received update
 then
     if (GF_Presence_Mode.state.toString() == "ON") {
-        if (GH_Soundbar_Scene.state.toString() == "ON") {
+        if (GH_Ann_Office_Scene.state.toString() == "ON") {
             HH_PowermeterPlug02.sendCommand(ON)
-            sendCommand(WiFiLED4_color, new HSBType(String::format("%s",transform("MAP", "led.map", "color_green_max"))))
         } else {
             HH_PowermeterPlug02.sendCommand(OFF)
-            WiFiLED4_power.sendCommand(OFF)
         }
     }
 end
@@ -179,6 +177,7 @@ when
     Time cron "0 0 1 ? * *"
 then
     GH_Bedroom_Night_Scene.sendCommand(OFF)
+    WiFiLED7_power.sendCommand(OFF)
 end
 
 rule "debug_desk"
