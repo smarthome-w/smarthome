@@ -36,11 +36,13 @@ sitemap basic label="Basic" {
 //        Switch item=HH_FrontDoorSwitch
         Switch item=OverallErrorIndicator
         Group item=gErrors visibility=[OverallErrorIndicator==ON]
+        Switch item=InternalSensorsErrorIndicator
     }
 
     Frame label="Scenes" icon="firstfloor" {
       Switch item=GH_BathroomInfo mappings=[ON="Bathroom info"]
       Switch item=GH_DailyInfo mappings=[ON="Daily info"]
+      Switch item=GH_LocationInfo mappings=[ON="Location info"]
     }
 
     Frame label="Sensors (daily)" icon="firstfloor" {

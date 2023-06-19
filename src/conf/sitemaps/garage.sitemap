@@ -27,6 +27,10 @@ sitemap garage label="Garage" {
         Webview url="/static/Visualization/Timeline.html?Group=gGarageDetectors&serviceId=jdbc&Hours=24" height=5
     }
 
+    Frame label="Errors" icon="firstfloor" {
+        Webview url="/static/Visualization/Timeline.html?Group=gGarageErrors&serviceId=jdbc&Hours=120" height=5
+    }
+
     Frame label="Brightness (daily)" icon="firstfloor" {
         Chart item=GA_Garage_Analog_Sensor period=D label="Brightness"
     }

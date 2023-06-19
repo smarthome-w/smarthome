@@ -53,7 +53,19 @@ when
 then
   var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
   var externalTempSouth = (FF_AnnRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
-  var ttsMessage = String.format("Temperatura na zewnątrz to %.0f\u00b0.", externalTemp)
+  var ttsMessage = ""
+
+  if (GA_Garage_Heartbeat_LastUpdate_Error.state.toString() == "ON") {
+    ttsMessage += " Błąd czujnika w garażu."
+  } else {
+    if (CIR_GA_Garage.state.toString() == "OPEN") {
+      ttsMessage += " Garaż jest otwarty."
+    } else {
+      ttsMessage += " Garaż jest zamknięty."
+    }
+  }
+
+  ttsMessage += String.format(" Temperatura na zewnątrz to %.0f\u00b0.", externalTemp)
 
 //  if (Math::abs(externalTempSouth - externalTemp) >= 2) {
     ttsMessage += String.format(" Temperatura od strony północnej to %.0f\u00b0.", externalTempSouth)
@@ -82,16 +94,6 @@ then
     ttsMessage += " Zamek jest zamknięty."
   }
 
-  if (GA_Garage_Heartbeat_LastUpdate_Error.toString() == "ON") {
-    ttsMessage += " Błąd czujnika w garażu."
-  } else {
-    if (CIR_GA_Garage.state.toString() == "OPEN") {
-      ttsMessage += " Garaż jest otwarty."
-    } else {
-      ttsMessage += " Garaż jest zamknięty."
-    }
-  }
-
   var long occupied_millis = 0
   if (FF_Bathroom_Entry_Time.state != NULL) {
     occupied_millis = (FF_Bathroom_Entry_Time.state as DateTimeType).zonedDateTime.toInstant.toEpochMilli
@@ -110,10 +112,16 @@ then
     FF_Bathroom_Entry_Confirmation.postUpdate(ON)
   }
 
-  if (OverallErrorIndicator.state.toString() == "ON") {
-    ttsMessage += " Błąd czujnika."
+//  if (OverallErrorIndicator.state.toString() == "ON") {
+//    ttsMessage += " Błąd czujnika."
+//  } else {
+//    ttsMessage += " Czujniki są sprawne."
+//  }
+
+  if (InternalSensorsErrorIndicator.state.toString() == "ON") {
+    ttsMessage += " Błąd czujnika wewnętrznego."
   } else {
-    ttsMessage += " Czujniki są sprawne."
+    ttsMessage += " Czujniki wewnętrzne są sprawne."
   }
 
   saySomething.apply(ttsMessage, defaultVoice)
@@ -273,4 +281,41 @@ when
 then
 	var colorString = String::format("%s",transform("MAP", "led.map", "daycolor_" + "17"))
   logInfo("Debug", "{}", colorString)
+end
+
+rule "location_info"
+when
+  Item GH_LocationInfo received update
+then
+  var ttsMessage = ""
+
+  if (Tracker_Waldek_Heartbeat_LastUpdate_Error.state.toString() == "ON") {
+    ttsMessage += " Błąd lokalizacji."
+  } else {
+    if (Alice_AtHome.state.toString() == "CLOSED") {
+      ttsMessage += " Alicja jest poza domem."
+      ttsMessage += " Jej bieżąca lokalizacja to "
+      ttsMessage += Tracker_Alice_Address.state.toString()
+      ttsMessage += "."
+    }
+    if (Ann_AtHome.state.toString() == "CLOSED") {
+      ttsMessage += " Ania jest poza domem."
+      ttsMessage += " Jej bieżąca lokalizacja to "
+      ttsMessage += Tracker_Ann_Address.state.toString()
+      ttsMessage += "."
+    }
+    if (Aldona_AtHome.state.toString() == "CLOSED") {
+      ttsMessage += " Aldona jest poza domem."
+      ttsMessage += " Jej bieżąca lokalizacja to "
+      ttsMessage += Tracker_Aldona_Address.state.toString()
+      ttsMessage += "."
+    }
+    if (Waldek_AtHome.state.toString() == "CLOSED") {
+      ttsMessage += " Waldek jest poza domem."
+      ttsMessage += " Jego bieżąca lokalizacja to "
+      ttsMessage += Tracker_Waldek_Address.state.toString()
+      ttsMessage += "."
+    }
+  }
+  saySomething.apply(ttsMessage, defaultVoice)
 end
