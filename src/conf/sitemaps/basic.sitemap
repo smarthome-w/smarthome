@@ -37,6 +37,9 @@ sitemap basic label="Basic" {
         Switch item=OverallErrorIndicator
         Group item=gErrors visibility=[OverallErrorIndicator==ON]
         Switch item=InternalSensorsErrorIndicator
+        Switch item=Tracker_Waldek_Heartbeat_LastUpdate_Error
+        Switch item=GA_Garage_Cross_Heartbeat_LastUpdate_Error
+        Switch item=GF_PowerMeter_Total_LastUpdate_Error
     }
 
     Frame label="Scenes" icon="firstfloor" {

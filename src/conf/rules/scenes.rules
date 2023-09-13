@@ -114,7 +114,7 @@ then
             HH_PowermeterPlug01.sendCommand(OFF)
             HH_PowermeterPlug02.sendCommand(OFF)
             WiFiLED101_power.sendCommand(OFF)
-            WiFiLED102_power.sendCommand(OFF)
+            WiFiLED5_power.sendCommand(OFF)
             WiFiLED4_power.sendCommand(OFF)
 //            GH_DailyInfo.sendCommand(ON)
             //if (logLevel >= 6) {

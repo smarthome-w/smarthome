@@ -53,7 +53,7 @@ then
                     // off
                     if (nightwatchTimerName == "corridorNightwatchTimer") {
                       GF_Corridor_Light_LED.sendCommand(OFF)
-                      WiFiLED102_power.sendCommand(OFF)
+                      WiFiLED5_power.sendCommand(OFF)
                     } else {
                       GF_Kitchen_LED.sendCommand(OFF);
                     }
@@ -64,8 +64,8 @@ then
                 //on
                 if (nightwatchTimerName == "corridorNightwatchTimer") {
                   GF_Corridor_Light_LED.sendCommand(ON)
-                  // WiFiLED102_power.sendCommand(ON)
-                  sendCommand(WiFiLED102_color, hsbColor)
+                  // WiFiLED5_power.sendCommand(ON)
+                  sendCommand(WiFiLED5_color, hsbColor)
                 } else {
                   GF_Kitchen_LED.sendCommand(ON);
                 }
@@ -77,8 +77,8 @@ then
                 }
                 if (nightwatchTimerName == "corridorNightwatchTimer") {
                   GF_Corridor_Light_LED.sendCommand(ON)
-//                  WiFiLED102_power.sendCommand(ON)
-                  sendCommand(WiFiLED102_color, hsbColor)
+//                  WiFiLED5_power.sendCommand(ON)
+                  sendCommand(WiFiLED5_color, hsbColor)
                 } else {
                   GF_Kitchen_LED.sendCommand(ON);
                 }

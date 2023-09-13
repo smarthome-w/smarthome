@@ -8,7 +8,7 @@ Contact     Waldek_AtHome                                "Waldek home presence [
 Contact     Waldek_AtDistrict                            "Waldek district presence []"              <man_3>      (gTracker, gPersistenceTracker, gTrackerPresence)     {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerWaldek:AtDistrict"}
 String      Tracker_Waldek_Heartbeat                     "Location [%s]"                                         (gTracker, gHeartbeat)                                {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerWaldek:Heartbeat"}
 DateTime    Tracker_Waldek_Heartbeat_LastUpdate          "Location [%1$td.%1$tm %1$tH:%1$tM]"       <time>       (gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch      Tracker_Waldek_Heartbeat_LastUpdate_Error    "Location"                                 <time>       (gErrors, gPersistenceStatusUpdate)
+Switch      Tracker_Waldek_Heartbeat_LastUpdate_Error    "Location error"                           <time>       (gErrors, gPersistenceStatusUpdate)
 
 Location    Tracker_Aldona_Location_Map                  "Aldona Map [%s]"                          <line>       (gTracker, gTrackerLocation, gPersistenceTracker)
 String      Tracker_Aldona_Location                      "Aldona Location [%s]"                     <line>       (gTracker, gTrackerRawLocation)                       {channel="mqtt:topic:MyMQTTBroker:GoogleTrackerAldona:LastLocation"}

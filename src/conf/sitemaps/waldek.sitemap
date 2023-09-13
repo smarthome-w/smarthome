@@ -34,12 +34,6 @@ sitemap waldek label="Waldek" {
     }
 
 	Frame label="" {
-		Switch       item=WiFiLED5_power
-		Colorpicker  item=WiFiLED5_color
-		Slider       item=WiFiLED5_dimmer
-    }
-
-	Frame label="" {
 		Switch       item=WiFiLED6_power
 		Colorpicker  item=WiFiLED6_color
 		Slider       item=WiFiLED6_dimmer

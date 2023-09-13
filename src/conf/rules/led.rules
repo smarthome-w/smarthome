@@ -1,26 +1,8 @@
-rule "turn the led off"
-when
-    Member of gLEDSimple changed to OFF or
-    Member of gLEDCalendar changed to OFF
-then
-//    logInfo ("get_color", "get_color: {}", WiFiLED102_color)
-end
-
-
-rule "get_color"
-when
-    Item WiFiLED102_color received update
-then
-//    logInfo ("get_color", "get_color: {}", WiFiLED102_color)
-end
-
-
 rule "family_room_led_power"
 when
     Item WiFiLEDFamilyRoom_power received update
 then
     if (WiFiLEDFamilyRoom_power.state !== NULL) {
-        WiFiLED5_power.sendCommand(WiFiLEDFamilyRoom_power.state.toString())
         WiFiLED6_power.sendCommand(WiFiLEDFamilyRoom_power.state.toString())
         WiFiLED7_power.sendCommand(WiFiLEDFamilyRoom_power.state.toString())
     }
@@ -31,7 +13,6 @@ when
     Item WiFiLEDFamilyRoom_color received update
 then
     if (WiFiLEDFamilyRoom_color.state !== NULL) {
-        WiFiLED5_color.sendCommand(WiFiLEDFamilyRoom_color.state.toString())
         WiFiLED6_color.sendCommand(WiFiLEDFamilyRoom_color.state.toString())
         WiFiLED7_color.sendCommand(WiFiLEDFamilyRoom_color.state.toString())
     }
@@ -42,7 +23,6 @@ when
     Item WiFiLEDFamilyRoom_dimmer received update
 then
     if (WiFiLEDFamilyRoom_color.dimmer !== NULL) {
-        WiFiLED5_dimmer.sendCommand(WiFiLEDFamilyRoom_dimmer.state.toString())
         WiFiLED6_dimmer.sendCommand(WiFiLEDFamilyRoom_dimmer.state.toString())
         WiFiLED7_dimmer.sendCommand(WiFiLEDFamilyRoom_dimmer.state.toString())
     }
@@ -137,7 +117,7 @@ end
 
 rule "ann_office_rule"
 when
-    Item GH_Ann_Office received update
+    Item GH_Ann_Office_Scene received update
 then
     if (GF_Presence_Mode.state.toString() == "ON") {
         if (GH_Ann_Office_Scene.state.toString() == "ON") {

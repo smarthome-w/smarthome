@@ -33,15 +33,15 @@ String      WiFiLED4_Heartbeat                     "LED Office [%s]"            
 DateTime    WiFiLED4_Heartbeat_LastUpdate          "LED Office [%1$td.%1$tm %1$tH:%1$tM]"                <time>       (gLastUpdateHeartbeat, gLastUpdateTimeout)
 Switch      WiFiLED4_Heartbeat_LastUpdate_Error    "LED Office"                                          <time>       (gErrors, gInternalSensorsErrors, gPersistenceStatusUpdate)
 
-Group       gWiFILED5                              "Family room sofa led"                                             (gFamilyRoom)                                                  ["LightStripe"]
-Switch      LEDFamilyRoomSofa                      "Sofa led"                                                         (gFamilyRoom, gSimpleLED, gPersistenceLED)                     ["Switch"]
-Switch      WiFiLED5_power                         "Family room sofa power"                                           (gWiFILED5, gPersistenceLED)                                   ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED5:PowerSwitch"}
-Color       WiFiLED5_color                         "Family room sofa color"                                           (gWiFILED5, gPersistenceLED)                                   ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Color_"}
-Dimmer      WiFiLED5_dimmer                        "Family room sofa dimmer"                                          (gWiFILED5, gPersistenceLED)                                   ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Dimmer_"}
-Number      WiFiLED5_RSSI                          "LED Family room sofa RSSI [%.0f]"                    <heating>    (gRSSI)                                                                                {channel="mqtt:topic:MyMQTTBroker:WifiLED5:RSSI"}
-String      WiFiLED5_Heartbeat                     "LED Family room sofa [%s]"                                        (gOffice, gHeartbeat)                                                                  {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Heartbeat"}
-DateTime    WiFiLED5_Heartbeat_LastUpdate          "LED Family room sofa [%1$td.%1$tm %1$tH:%1$tM]"      <time>       (gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch      WiFiLED5_Heartbeat_LastUpdate_Error    "LED Family room sofa"                                <time>       (gErrors, gInternalSensorsErrors, gPersistenceStatusUpdate)
+Group       gWiFILED5                              "Corridor led"                                                     (gFamilyRoom)                                                  ["LightStripe"]
+Switch      LEDFamilyRoomSofa                      "Corridor led"                                                     (gFamilyRoom, gSimpleLED, gPersistenceLED)                     ["Switch"]
+Switch      WiFiLED5_power                         "Corridor led power"                                               (gWiFILED5, gPersistenceLED)                                   ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED5:PowerSwitch"}
+Color       WiFiLED5_color                         "Corridor led color"                                               (gWiFILED5, gPersistenceLED)                                   ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Color_"}
+Dimmer      WiFiLED5_dimmer                        "Corridor led dimmer"                                              (gWiFILED5, gPersistenceLED)                                   ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Dimmer_"}
+Number      WiFiLED5_RSSI                          "Corridor led RSSI [%.0f]"                            <heating>    (gRSSI)                                                                                {channel="mqtt:topic:MyMQTTBroker:WifiLED5:RSSI"}
+String      WiFiLED5_Heartbeat                     "Corridor led [%s]"                                                (gOffice, gHeartbeat)                                                                  {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Heartbeat"}
+DateTime    WiFiLED5_Heartbeat_LastUpdate          "Corridor led [%1$td.%1$tm %1$tH:%1$tM]"              <time>       (gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch      WiFiLED5_Heartbeat_LastUpdate_Error    "Corridor led"                                        <time>       (gErrors, gInternalSensorsErrors, gPersistenceStatusUpdate)
 
 Group       gWiFILED6                              "Family room led"                                                  (gFamilyRoom)                                                  ["LightStripe"]
 Switch      LEDFamilyRoomWindow                    "Window led"                                                       (gFamilyRoom, gSimpleLED, gPersistenceLED)                     ["Switch"]
