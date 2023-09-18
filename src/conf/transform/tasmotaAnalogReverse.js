@@ -1,4 +1,4 @@
-(function(data) {
+(function (data) {
   var dataString = JSON.parse(data);
   var value = "UNDEF";
   value = dataString.ANALOG.A0;

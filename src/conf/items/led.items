@@ -35,7 +35,7 @@ Switch      WiFiLED4_Heartbeat_LastUpdate_Error    "LED Office"                 
 
 Group       gWiFILED5                              "Corridor led"                                                     (gFamilyRoom)                                                  ["LightStripe"]
 Switch      LEDFamilyRoomSofa                      "Corridor led"                                                     (gFamilyRoom, gSimpleLED, gPersistenceLED)                     ["Switch"]
-Switch      WiFiLED5_power                         "Corridor led power"                                               (gWiFILED5, gPersistenceLED)                                   ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED5:PowerSwitch"}
+Switch      WiFiLED5_power                         "Corridor led power []"                                            (gWiFILED5, gPersistenceLED)                                   ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED5:PowerSwitch"}
 Color       WiFiLED5_color                         "Corridor led color"                                               (gWiFILED5, gPersistenceLED)                                   ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Color_"}
 Dimmer      WiFiLED5_dimmer                        "Corridor led dimmer"                                              (gWiFILED5, gPersistenceLED)                                   ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Dimmer_"}
 Number      WiFiLED5_RSSI                          "Corridor led RSSI [%.0f]"                            <heating>    (gRSSI)                                                                                {channel="mqtt:topic:MyMQTTBroker:WifiLED5:RSSI"}
