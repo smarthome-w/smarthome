@@ -152,9 +152,31 @@ then
   calendar_DailyInfo.postUpdate(OFF)
 end
 
-rule "OverallErrorIndicator_Virtual_info"
+rule "OverallErrorIndicator_Virtual_info_1"
 when
-  Item OverallErrorIndicator_Virtual received update
+  Item OverallErrorIndicator_Virtual changed to ON
+then
+  var ttsMessage = ""
+  logInfo("Overall error info", "OverallErrorIndicator_Virtual: {}", OverallErrorIndicator_Virtual)
+
+  if (OverallErrorIndicator_Virtual.state.toString() == "ON") {
+    ttsMessage += "Błąd czujnika."
+  } else {
+    ttsMessage += "Koniec błędu czujnika."
+  }
+
+  logInfo("Overall error info", "{}", ttsMessage)
+
+  if (GF_Presence_Mode.state.toString() == "ON") {
+    if (calendar_Vacation.state.toString() == "OFF") {
+      saySomething.apply(ttsMessage, defaultVoice)
+    }
+  }
+end
+
+rule "OverallErrorIndicator_Virtual_info_2"
+when
+  Item OverallErrorIndicator_Virtual changed to OFF
 then
   var ttsMessage = ""
   logInfo("Overall error info", "OverallErrorIndicator_Virtual: {}", OverallErrorIndicator_Virtual)
