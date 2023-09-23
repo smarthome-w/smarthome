@@ -21,7 +21,7 @@ from moz_cookies
 where host like '%google%';
 EOF
 
-scp $SCRIPT_DIR/google-cookie-auto.txt.sensitive root@192.168.0.4:/opt/openhab/conf/scripts/GOOGLELOCATION/google-cookie.txt.sensitive
+scp $SCRIPT_DIR/google-cookie-auto.txt.sensitive root@192.168.0.4:/opt/openhab/prod/conf/scripts/GOOGLELOCATION/google-cookie.txt.sensitive
 
 rm $SCRIPT_DIR/cookies.sqlite
 rm $SCRIPT_DIR/google-cookie-auto.txt.sensitive

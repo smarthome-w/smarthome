@@ -331,7 +331,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Temperature [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*SI7021.*)∩JSONPATH:$.SI7021.Temperature"]
       Type number : Humidity [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*SI7021.*)∩JSONPATH:$.SI7021.Humidity"]
       Type number : DewPoint [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*SI7021.*)∩JSONPATH:$.SI7021.DewPoint"]
-      Type number : Pressure [stateTopic="tele/multisensor03/SENSOR", transformationPattern="JS:tasmotaBMP280Pressure.js"]
+      Type number : Pressure [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*BMP280.*)∩JSONPATH:$.BMP280.Pressure∩JS:tasmotaBMP280Pressure.js"]
       Type number : Brightness [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*A0.*)∩JS:tasmotaAnalogReverse.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor03/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number : OutdoorTemperature [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*DS18B20.*)∩JSONPATH:$.DS18B20.Temperature"]

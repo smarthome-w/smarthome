@@ -57,7 +57,7 @@ if [[ $1 == "parse" ]]; then
                 HEX=$(echo $mp | awk '{ print $6$5 }')
                 DEC=$(echo "ibase=16; $HEX" | bc)
                 #echo MINUTE POWER $DEC
-                CALC=$(echo $DEC $CONST | awk '{ kw=(($1*60.0)/$2); printf"%0.3f\n",  kw  }')
+                CALC=$(echo $DEC $CONST | awk '{ kw=(($1*60.0)/$2); printf"%1.3f\n",  kw  }')
 
                 #IMPULSY
                 HEXIM=$(echo $mp | awk '{ print $10$9$8$7 }')
@@ -68,8 +68,8 @@ if [[ $1 == "parse" ]]; then
                 #echo CALCIM $CALCIM
 
                 #set +e
-                PREVCALC=$(cat /opt/openhab/userdata/logs/CALC)
-                PREVCALCIM=$(cat /opt/openhab/userdata/logs/CALCIM)
+                PREVCALC=$(cat /opt/openhab/prod/userdata/logs/CALC)
+                PREVCALCIM=$(cat /opt/openhab/prod/userdata/logs/CALCIM)
                 #set -e
                 TODOMOTICZ=$(echo $CALCIM | sed -r 's/\.//g')
 
@@ -83,18 +83,20 @@ if [[ $1 == "parse" ]]; then
                 #logowanie do lokalnego sysloga
                 #logger POWER: $CALC W $CALCIM kWh -p local2.info
                 #print na ekranie
-                echo MAC: $MAC CONST: $CONST POWER: $CALC kW TOTAL: $CALCIM kWh | awk '{ print strftime("%Y-%m-%d %H:%M:%S"), $0; fflush(); }'
+                CALC_W=$(bc -l <<<"$CALC*1000.0")
+                echo MAC: $MAC CONST: $CONST POWER: $CALC kW, $CALC_W W TOTAL: $CALCIM kWh | awk '{ print strftime("%Y-%m-%d %H:%M:%S"), $0; fflush(); }'
                 echo mp: $mp | awk '{ print strftime("%Y-%m-%d %H:%M:%S"), $0; fflush(); }'
                 if [ "${PREVCALC}" != "${CALC}" ]; then
-                  echo "CALC:${PREVCALC}:${CALC}"
+                  echo "CALC:${PREVCALC}:${CALC}:${CALC_W}"
                   /usr/bin/mosquitto_pub -t myHome/PowerMeter_Current -m "${CALC}" -h "openhab.master"
+                  /usr/bin/mosquitto_pub -t myHome/PowerMeter_Current_Watts -m "${CALC_W}" -h "openhab.master"
                 fi
                 if [ "${PREVCALCIM}" != "${CALCIM}" ]; then
                   echo "CALCIM:${PREVCALCIM}:${CALCIM}"
                   /usr/bin/mosquitto_pub -t myHome/PowerMeter_Total -m "${CALCIM}" -h "openhab.master"
                 fi
-                echo ${CALC} >/opt/openhab/userdata/logs/CALC
-                echo ${CALCIM} >/opt/openhab/userdata/logs/CALCIM
+                echo ${CALC} >/opt/openhab/prod/userdata/logs/CALC
+                echo ${CALCIM} >/opt/openhab/prod/userdata/logs/CALCIM
                 DTYPE=0
               fi
 

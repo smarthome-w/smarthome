@@ -14,9 +14,9 @@ ExecStartPre=-/usr/bin/docker rm -f %n
 ExecStart=/usr/bin/docker run --name=%n --tty \
   -v /etc/localtime:/etc/localtime:ro \
   -v /etc/timezone:/etc/timezone:ro \
-  -v /opt/openhab/conf:/openhab/conf \
-  -v /opt/openhab/userdata:/openhab/userdata \
-  -v /opt/openhab/addons:/openhab/addons\
+  -v /opt/openhab/prod/conf:/openhab/conf \
+  -v /opt/openhab/prod/userdata:/openhab/userdata \
+  -v /opt/openhab/prod/addons:/openhab/addons\
   --add-host "openhab.master:HOST_IP" \
   -p 80:8080 \
   -p 443:8443 \
@@ -24,8 +24,8 @@ ExecStart=/usr/bin/docker run --name=%n --tty \
   --privileged \
   DOCKER_TAG
 
-ExecStartPost=/bin/mkdir -p /opt/openhab/addons
-ExecStartPost=/bin/ln -fs /opt/openhab/conf/deploy/resources/addons/mariadb-java-client-2.7.4.jar /opt/openhab/addons/mariadb-java-client-2.7.4.jar
+ExecStartPost=/bin/mkdir -p /opt/openhab/prod/addons
+ExecStartPost=/bin/ln -fs /opt/openhab/prod/conf/deploy/resources/addons/mariadb-java-client-2.7.4.jar /opt/openhab/prod/addons/mariadb-java-client-2.7.4.jar
 
 ExecStop=/usr/bin/docker stop -t 2 %n ; /usr/bin/docker rm -f %n
 

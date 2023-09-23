@@ -13,7 +13,6 @@ Number      Astro_Total_Radiation              "Sun Radiation [%.2f W/m\u00B2]" 
 Number      Astro_Diffuse_Radiation            "Sun Diffuse Radiation [%.2f W/m\u00B2]"                             (gAstroSensor)                                                ["Measurement", "Level"]          {channel="astro:sun:home:radiation#diffuse"}
 String      Astro_Zodiac_Sign                  "Zodiac [MAP(zodiac_pl.map):%s]"                    <zodiac>         (gAstroSensor)                                                ["Measurement"]                   {channel="astro:sun:home:zodiac#sign"}
 
-
 ////////////////////////////////////////////////////////////////////////////////
 //                       Server
 ////////////////////////////////////////////////////////////////////////////////

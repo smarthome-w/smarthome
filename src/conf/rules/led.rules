@@ -170,36 +170,3 @@ then
         sendCommand(WiFiLED4_color, new HSBType(String::format("%s",transform("MAP", "led.map", "color_green_max"))))
     }
 end
-
-rule "lucifer"
-when
-    Item GH_Lucifer_Scene received update
-then
-    val hsbColor = new HSBType(String::format("%s",transform("MAP", "led.map", "color_red_max")))
-    sendCommand(WiFiLED4_color, hsbColor)
-    sendCommand(WiFiLED100_color, hsbColor)
-end
-
-rule "borg"
-when
-    Item GH_Borg_Scene received update
-then
-    val hsbColor = new HSBType(String::format("%s",transform("MAP", "led.map", "color_green_max")))
-    sendCommand(WiFiLED4_color, hsbColor)
-    sendCommand(WiFiLED100_color, hsbColor)
-end
-
-
-rule "evil"
-when
-    Item GH_Evil_Scene received update
-then
-    sendCommand(WiFiLEDFamilyRoom_color, new HSBType(String::format("%s",transform("MAP", "led.map", "color_red_max"))))
-end
-
-rule "forrest"
-when
-    Item GH_Forrest_Scene received update
-then
-    sendCommand(WiFiLEDFamilyRoom_color, hsbColor = new HSBType(String::format("%s",transform("MAP", "led.map", "color_green_max"))))
-end

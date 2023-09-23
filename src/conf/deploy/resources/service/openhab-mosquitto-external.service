@@ -9,8 +9,8 @@ NotifyAccess=main
 
 # Run once before start:
 # - mkdir -p /var/lib/mosquitto-external
-# - chown mosquitto:root /var/lib/mosquitto-external 
-ExecStart=/usr/sbin/mosquitto -c /opt/openhab/conf/deploy/resources/external-mosquitto/external-mosquitto.conf
+# - chown mosquitto:root /var/lib/mosquitto-external
+ExecStart=/usr/sbin/mosquitto -c /opt/openhab/prod/conf/deploy/resources/external-mosquitto/external-mosquitto.conf
 
 Restart=on-failure
 

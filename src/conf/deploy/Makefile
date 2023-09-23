@@ -4,7 +4,7 @@ DOCKER_TAG=smarthomew-openhab
 
 MACHINE=$(shell uname -m)
 
-VERSION=3.1.0
+VERSION=3.4.5
 OS_PLATFORM=amd64
 
 HOST_IP=`hostname -I | awk '{print $$1}'`
@@ -128,7 +128,7 @@ openhab-powermeter-service-install:
 
 openhab-service-restart:
 	@sudo systemctl restart openhab
-	@tail -f /opt/openhab/userdata/logs/openhab.log
+	@tail -f /opt/openhab/prod/userdata/logs/openhab.log
 
 tasmoadmin-service-install:
 	@sudo cp $(RESOURCES)/service/tasmoadmin.service /etc/systemd/system/tasmoadmin.service

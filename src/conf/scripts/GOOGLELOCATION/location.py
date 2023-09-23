@@ -139,4 +139,4 @@ for person in service.get_all_people():
     send_person_zones(MQTT_CLIENT, person)
 
 
-# /usr/bin/python3 /opt/openhab/conf/scripts/GOOGLELOCATION/location.py
+# /usr/bin/python3 /opt/openhab/prod/conf/scripts/GOOGLELOCATION/location.py

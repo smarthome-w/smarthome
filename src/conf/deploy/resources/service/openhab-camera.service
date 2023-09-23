@@ -7,7 +7,7 @@ Group=root
 Type=simple
 Restart=always
 RestartSec=3
-ExecStart=/opt/openhab/conf/scripts/MQTT/mqtt-camera.py
+ExecStart=/opt/openhab/prod/conf/scripts/MQTT/mqtt-camera.py
 
 StandardOutput=syslog
 StandardError=syslog

@@ -7,7 +7,7 @@ Group=root
 Type=simple
 Restart=always
 RestartSec=60
-ExecStart=/opt/openhab/conf/scripts/POWERMETER/powermeter-watch.sh
+ExecStart=/opt/openhab/prod/conf/scripts/POWERMETER/powermeter-watch.sh
 
 StandardOutput=syslog
 StandardError=syslog
