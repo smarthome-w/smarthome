@@ -1,0 +1,33 @@
+rule "bedroom_support_lamp_rule_on"
+when
+    Member of gBedroomWatch received update
+then
+  try {
+    var int logLevel = 1
+    if (HH_DebugLevel_Nightwatch.state !== NULL) {
+        logLevel = (HH_DebugLevel_Nightwatch.state as Number).intValue
+    }
+    if (logLevel >= 6) {
+      logInfo("bedroomwatch_rule", "Bedroomwatch change detected {} {}", triggeringItem.name, triggeringItem.state)
+    }
+
+    if (GF_Presence_Mode.state.toString() == "ON") {
+        if (calendar_SupportingBedroomLamp.state.toString() == "ON" && calendar_SupportingBedroomLampIndicator.state.toString() == "OFF") {
+          if (triggeringItem.state == OPEN) {
+            FF_Bedroom_Secondary.sendCommand(ON)
+            calendar_SupportingBedroomLampIndicator.sendCommand(ON)
+          }
+        }
+    }
+  } catch (Throwable t) {
+    logError("Error", "Error in bedroom_support_lamp_rule_on {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
+  } finally {
+  }
+end
+
+rule "bedroom_support_lamp_rule_off"
+when
+    Time cron "59 59 23 ? * *"
+then
+    FF_Bedroom_Secondary.sendCommand(OFF)
+end
