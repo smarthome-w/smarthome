@@ -121,7 +121,7 @@ then
       calendar_SupportingBedroomLight.sendCommand(OFF)
     }
 
-    if (calendar_SupportingLight.state.toString() == "ON" && hourOfDay > 22 && hourOfDay <= 23) {
+    if (calendar_SupportingLight.state.toString() == "ON" && hourOfDay >= 22 && hourOfDay <= 23) {
       calendar_SupportingBedroomLamp.sendCommand(ON)
     } else {
       calendar_SupportingBedroomLamp.sendCommand(OFF)

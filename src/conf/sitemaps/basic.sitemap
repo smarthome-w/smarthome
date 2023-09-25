@@ -11,6 +11,7 @@ sitemap basic label="Basic" {
         Switch      item=GH_TVShow_Scene
         Switch      item=GH_Night_Scene
         Switch      item=GH_Bedroom_Night_Scene
+        Switch      item=FF_Bedroom_Secondary
     }
 
     Frame label="Weather" icon="firstfloor" {
