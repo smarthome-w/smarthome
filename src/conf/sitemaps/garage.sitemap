@@ -28,7 +28,7 @@ sitemap garage label="Garage" {
     }
 
     Frame label="Errors" icon="firstfloor" {
-        Webview url="/static/Visualization/Timeline.html?Group=gGarageErrors&serviceId=jdbc&Hours=3600" height=5
+        Webview url="/static/Visualization/Timeline.html?Group=gGarageErrors&serviceId=jdbc&Hours=36" height=5
     }
 
     Frame label="Brightness (daily)" icon="firstfloor" {

@@ -37,7 +37,6 @@ then
                     }
                     // off
                     if (bedroomwatchTimerName == "corridorBedroomwatchTimer") {
-//                      FF_Bedroom_Lights.sendCommand(OFF)
                         WiFiLED101_power.sendCommand(OFF)
                     }
                 ]))
@@ -46,7 +45,6 @@ then
                 }
                 //on
                 if (bedroomwatchTimerName == "corridorBedroomwatchTimer") {
-//                  FF_Bedroom_Lights.sendCommand(ON)
                   sendCommand(WiFiLED101_color, hsbColor)
                 }
             }
@@ -56,7 +54,6 @@ then
                   logInfo("bedroomwatch_rule", "Timer rescheduled {}", bedroomwatchTimerName)
                 }
                 if (bedroomwatchTimerName == "corridorBedroomwatchTimer") {
-//                  FF_Bedroom_Lights.sendCommand(ON)
                   sendCommand(WiFiLED101_color, hsbColor)
                 }
             }

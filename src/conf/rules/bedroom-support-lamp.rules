@@ -14,7 +14,10 @@ then
     if (GF_Presence_Mode.state.toString() == "ON") {
         if (calendar_SupportingBedroomLamp.state.toString() == "ON" && calendar_SupportingBedroomLampIndicator.state.toString() == "OFF") {
           if (triggeringItem.state == OPEN) {
+            val hsbColor = new HSBType(String::format("%s",transform("MAP", "led.map", "daycolor_" + (now.getHour as Integer))))
             FF_Bedroom_Secondary.sendCommand(ON)
+            sendCommand(WiFiLED4_power, hsbColor)
+            sendCommand(WiFiLED101_color, hsbColor)
             calendar_SupportingBedroomLampIndicator.sendCommand(ON)
           }
         }
@@ -30,4 +33,6 @@ when
     Time cron "59 59 23 ? * *"
 then
     FF_Bedroom_Secondary.sendCommand(OFF)
+    WiFiLED4_power.sendCommand(OFF)
+    WiFiLED101_color.sendCommand(OFF)
 end

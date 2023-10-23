@@ -97,7 +97,8 @@ then
         if (calendar_Vacation.state.toString() == "OFF") {
             if (HH_WaldekAtWork.state.toString() == "ON") {
                 if (GH_Work_Scene.state.toString() == "ON") {
-                    HH_PowermeterPlug01.sendCommand(ON)
+                    FF_Bedroom_Office.sendCommand(ON)
+//                    HH_PowermeterPlug01.sendCommand(ON)
 //                    HH_PowermeterPlug02.sendCommand(ON)
                     GH_DailyInfo.sendCommand(ON)
                     if (GF_FamilyRoom_Rollershutter_CurrPos.state > 50) {
@@ -105,7 +106,8 @@ then
     //                    WiFiLED4_power.sendCommand(ON)
                     }
                 } else {
-                    HH_PowermeterPlug01.sendCommand(OFF)
+                    FF_Bedroom_Office.sendCommand(OFF)
+//                    HH_PowermeterPlug01.sendCommand(OFF)
 //                    HH_PowermeterPlug02.sendCommand(OFF)
                     // GH_DailyInfo.sendCommand(ON)
                     WiFiLED4_power.sendCommand(OFF)

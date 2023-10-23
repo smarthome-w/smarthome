@@ -234,7 +234,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type string : Heartbeat [stateTopic="tele/sonofftest/STATE", transformationPattern="JSONPATH:$.Time"]
     }
 
-// FF_Bedroom_Lights
+// FF_Bedroom_Office
   Thing topic Switch01 "Switch01" {
     Channels:
       Type switch : PowerSwitch [stateTopic="stat/switch01/POWER", commandTopic="cmnd/switch01/POWER", on="ON", off="OFF" ]

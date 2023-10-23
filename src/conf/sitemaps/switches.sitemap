@@ -48,13 +48,14 @@ sitemap switches label="Switches" {
         // Switch item=FF_AliceRoom_Lights
         // Switch item=FF_Bedroom_Light_1
         Switch item=FF_Bedroom_Light_2
-        // Switch item=FF_Bedroom_Lights
+        Switch item=FF_Bedroom_Office
         Switch item=FF_Bedroom_Secondary
         Switch item=FF_Bedroom_Wardobe
         Switch item=FF_AnnRoom_Light_Main
         Switch item=HH_PowermeterPlug01
         Switch item=FF_BathRoom_Light_Up
         //Switch item=FF_BathRoom_Light_Mirror
+        Switch       item=WiFiLED4_power
     }
 
 	Frame label="" {

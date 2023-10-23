@@ -14,6 +14,7 @@ PUSHOVER = None
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 def setup():
     global PUSHOVER
     data_dir = os.path.dirname(os.path.abspath(__file__))
@@ -21,6 +22,7 @@ def setup():
     yaml = YAML()
     system_dictionary = yaml.load(content)
     PUSHOVER = system_dictionary['pushover']
+
 
 def on_connect(client, userdata, flags, rc):
     logger.info("MQTT connected with result code: " + str(rc))
@@ -122,20 +124,22 @@ def on_message(client, userdata, msg):
             else:
                 msg_title = "Drzwi zamknięte"
 
-    logger.info("message: {}, msg_content: {}, msg_title: {}, msg_piority: {}".format(message, msg_content, msg_title, msg_priority))
+    logger.info("message: {}, msg_content: {}, msg_title: {}, msg_piority: {}".format(
+        message, msg_content, msg_title, msg_priority))
 
     conn = http.client.HTTPSConnection("api.pushover.net:443")
     conn.request("POST", "/1/messages.json",
-    urllib.parse.urlencode({
-        "token": PUSHOVER['pushover_application'],
-        "user": PUSHOVER['pushover_user_key'],
-        "message": msg_content,
-        "title": msg_title,
-        "priority": msg_priority
-    }), { "Content-type": "application/x-www-form-urlencoded" })
+                 urllib.parse.urlencode({
+                     "token": PUSHOVER['pushover_application'],
+                     "user": PUSHOVER['pushover_user_key'],
+                     "message": msg_content,
+                     "title": msg_title,
+                     "priority": msg_priority
+                 }), {"Content-type": "application/x-www-form-urlencoded"})
 
     response = conn.getresponse()
     logger.info("response: {}".format(response.getcode()))
+
 
 setup()
 
