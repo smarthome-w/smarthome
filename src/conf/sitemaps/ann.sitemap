@@ -36,5 +36,6 @@ sitemap ann label="Ann" {
 
 	Frame label="" {
         Switch item=HH_AnnAtSchool
+        Setpoint item=HH_AnnRoomOff minValue=1 maxValue=8 step=1
     }
 }

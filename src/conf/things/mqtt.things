@@ -266,7 +266,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : RSSI [stateTopic="tele/switch04/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
-// GF_Corridor_LED
+// FF_BedroomSecondary
   Thing topic Switch05 "Switch05" {
     Channels:
       Type switch : PowerSwitch [stateTopic="stat/switch05/POWER", commandTopic="cmnd/switch05/POWER", on="ON", off="OFF" ]

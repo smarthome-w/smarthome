@@ -26,7 +26,6 @@ sitemap switches label="Switches" {
     Frame label="Ground floor" icon="firstfloor" {
         Switch item=GF_FamilyRoom_Light_Table
         Switch item=GF_FamilyRoom_Light_Sofa
-        Switch item=HH_PowermeterPlug02
         Switch item=GF_Kitchen_Light_Main
         Switch item=GF_Kitchen_Light_LED
         Switch item=GF_Kitchen_LED
@@ -45,6 +44,7 @@ sitemap switches label="Switches" {
     Frame label="First floor" icon="firstfloor" {
         // Switch item=FF_AliceRoom_Light_1
         Switch item=FF_AliceRoom_Light_2
+        Switch item=HH_PowermeterPlug02
         // Switch item=FF_AliceRoom_Lights
         // Switch item=FF_Bedroom_Light_1
         Switch item=FF_Bedroom_Light_2

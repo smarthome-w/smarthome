@@ -34,4 +34,8 @@ sitemap garage label="Garage" {
     Frame label="Brightness (daily)" icon="firstfloor" {
         Chart item=GA_Garage_Analog_Sensor period=D label="Brightness"
     }
+
+    Frame label="Temperature" icon="firstfloor" {
+      Chart item=GA_Garage_Indoor_Temperature_Sensor period=3D label="Temperature"
+    }
 }

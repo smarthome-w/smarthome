@@ -13,9 +13,9 @@ ExecStart=/usr/bin/docker run --name=%n -d \
   --restart=always\
   -p 9999:80 \
   -v /opt/tasmoadmin:/data \
-  raymondmm/tasmoadmin
+  tasmoadmin-release
 
-#ExecStop=/usr/bin/docker stop -t 2 %n ; /usr/bin/docker rm -f %n
+ExecStop=/usr/bin/docker stop -t 2 %n ; /usr/bin/docker rm -f %n
 
 [Install]
 WantedBy=multi-user.target

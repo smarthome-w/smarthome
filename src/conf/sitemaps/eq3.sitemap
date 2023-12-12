@@ -1,12 +1,11 @@
 sitemap eq3 label="Heaters" {
-    Frame label="Status" icon="firstfloor" {
+/*    Frame label="Status" icon="firstfloor" {
       Text item=EQ3_Bedroom_Status
       Text item=EQ3_FamilyRoom_Status
       Text item=EQ3_AnnRoom_Status
       Text item=EQ3_AliceRoom_Status
       Text item=EQ3_Kitchen_Status
     }
-
     Frame label="Battery" icon="battery" {
       Switch item=EQ3_FamilyRoom_Battery mappings=[CLOSED="GOOD", OPEN="LOW"]
       Switch item=EQ3_Bedroom_Battery mappings=[CLOSED="GOOD", OPEN="LOW"]
@@ -69,7 +68,6 @@ sitemap eq3 label="Heaters" {
       Chart item=gEQ3AliceRoomTemp period=D label="Alice Room"
       Chart item=EQ3_AliceRoom_Valve period=D label="Valve"
     }
-
     Frame label="Heaters (day)" icon="firstfloor" {
       Chart item=gEQ3Temp period=D label="Temperature"
       Chart item=gEQ3Valve period=D label="Valve"
@@ -78,5 +76,22 @@ sitemap eq3 label="Heaters" {
     Frame label="Heaters (week)" icon="firstfloor" {
       Chart item=gEQ3Temp period=W label="Temperature"
       Chart item=gEQ3Valve period=W label="Valve"
+    }
+*/
+
+    Frame label="Temperatures Room" icon="firstfloor" {
+      Text item=GF_FamilyRoom_Indoor_Temperature_Sensor
+      Text item=FF_Bedroom_Indoor_Temperature_Sensor
+      Text item=FF_AnnRoom_Indoor_Temperature_Sensor
+      Text item=FF_AliceRoom_Indoor_Temperature_Sensor
+      Text item=GF_Kitchen_Indoor_Temperature_Sensor
+    }
+
+    Frame label="Family Room" icon="firstfloor" {
+      Chart item=gSensorRoomTemperature period=D label="Temperature"
+    }
+
+    Frame label="Family Room" icon="firstfloor" {
+      Chart item=gSensorRoomTemperature period=3D label="Temperature"
     }
 }
