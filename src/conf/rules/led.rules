@@ -159,7 +159,6 @@ when
     Time cron "0 0 1 ? * *"
 then
     GH_Bedroom_Night_Scene.sendCommand(OFF)
-    WiFiLED7_power.sendCommand(OFF)
 end
 
 rule "debug_desk"

@@ -507,6 +507,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type string : LastSeen [stateTopic="location/Waldek", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
       Type contact : AtHome [stateTopic="location/Waldek", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
       Type contact : AtDistrict [stateTopic="location/Waldek", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
+      Type number : DistanceHome [stateTopic="location/Waldek", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home_distance"]
       Type string : Heartbeat [stateTopic="location/heartbeat", transformationPattern="REGEX:(.*time.*)∩JSONPATH:$.time"]
   }
 
@@ -519,6 +520,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type string : LastSeen [stateTopic="location/Aldona", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
       Type contact : AtHome [stateTopic="location/Aldona", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
       Type contact : AtDistrict [stateTopic="location/Aldona", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
+      Type number : DistanceHome [stateTopic="location/Aldona", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home_distance"]
   }
 
   Thing topic GoogleTrackerAnn "GoogleTrackerAnn" {
@@ -532,6 +534,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type contact : AtDistrict [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
       Type contact : AtSchool [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.university"]
       Type contact : InTransit [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.transit"]
+      Type number : DistanceHome [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home_distance"]
   }
 
   Thing topic GoogleTrackerAlice "GoogleTrackerAlice" {
@@ -544,6 +547,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type contact : AtHome [stateTopic="location/Alicja", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
       Type contact : AtDistrict [stateTopic="location/Alicja", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
       Type contact : AtSchool [stateTopic="location/Alicja", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.school"]
+      Type number : DistanceHome [stateTopic="location/Alicja", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home_distance"]
   }
 
   Thing topic NotificationMsg "NotificationMsg" {

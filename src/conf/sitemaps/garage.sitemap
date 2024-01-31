@@ -36,6 +36,6 @@ sitemap garage label="Garage" {
     }
 
     Frame label="Temperature" icon="firstfloor" {
-      Chart item=GA_Garage_Indoor_Temperature_Sensor period=3D label="Temperature"
+      Chart item=GA_Garage_Indoor_Temperature_Sensor period=D label="Temperature"
     }
 }

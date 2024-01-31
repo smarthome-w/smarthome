@@ -46,6 +46,7 @@ sitemap basic label="Basic" {
     Frame label="Scenes" icon="firstfloor" {
       Switch item=GH_BathroomInfo mappings=[ON="Bathroom info"]
       Switch item=GH_DailyInfo mappings=[ON="Daily info"]
+      Switch item=GH_GarageInfo mappings=[ON="Garage info"]
       Switch item=GH_LocationInfo mappings=[ON="Location info"]
     }
 
@@ -58,6 +59,14 @@ sitemap basic label="Basic" {
         Switch item=Aldona_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
         Switch item=Ann_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
         Switch item=Alice_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
+        Text item=Tracker_Waldek_DistanceHome
+        Text item=Tracker_Aldona_DistanceHome
+        Text item=Tracker_Ann_DistanceHome
+        Text item=Tracker_Alice_DistanceHome
+        Text item=Tracker_Waldek_Accuracy
+        Text item=Tracker_Aldona_Accuracy
+        Text item=Tracker_Ann_Accuracy
+        Text item=Tracker_Alice_Accuracy
     }
 
     Frame label="Scenes" icon="firstfloor" {

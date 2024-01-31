@@ -1,5 +1,5 @@
 [Unit]
-Description=tasmoadmin
+Description=grafana
 Requires=docker.service
 After=docker.service
 
@@ -8,17 +8,11 @@ Restart=always
 RestartSec=180
 User=root
 Group=root
-#ExecStart=/usr/bin/docker run --name=%n -d \
-#  --restart=always\
-#  -p 9999:80 \
-#  -v /opt/tasmoadmin:/data \
-#  tasmoadmin-release
 
 ExecStart=/usr/bin/docker run --name=%n \
-  --restart=always \
-  -p 9999:80 \
-  -v /opt/tasmoadmin:/data \
-  tasmoadmin-release
+  -p 3000:3000 \
+  -v /opt/grafana:/var/lib/grafana \
+  grafana-release
 
 ExecStop=/usr/bin/docker stop -t 2 %n ; /usr/bin/docker rm -f %n
 

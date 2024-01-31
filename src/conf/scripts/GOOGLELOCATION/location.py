@@ -90,29 +90,31 @@ def send_person_location(client, person):
 
 
 def send_person_zones(client, person):
-    nickname = person.nickname
-    if nickname.startswith("walde"):
-        nickname = "Waldek"
+    if person.accuracy <= 50:
+        nickname = person.nickname
+        if nickname.startswith("walde"):
+            nickname = "Waldek"
 
-    prefix = "{}/{}".format(MESSAGE_PREFIX, nickname)
-    presence = {}
-    for zone in PRESENCE_ZONES:
-        lat1 = person.latitude
-        lon1 = person.longitude
-        lat2 = PRESENCE_ZONES[zone]["latitude"]
-        lon2 = PRESENCE_ZONES[zone]["longitude"]
-        range = PRESENCE_ZONES[zone]["range"]
-        distance = calculate_distance(lat1, lon1, lat2, lon2)
-        if (distance <= range):
-            presence[zone] = "OPEN"
-        else:
-            presence[zone] = "CLOSED"
+        prefix = "{}/{}".format(MESSAGE_PREFIX, nickname)
+        presence = {}
+        for zone in PRESENCE_ZONES:
+            lat1 = person.latitude
+            lon1 = person.longitude
+            lat2 = PRESENCE_ZONES[zone]["latitude"]
+            lon2 = PRESENCE_ZONES[zone]["longitude"]
+            range = PRESENCE_ZONES[zone]["range"]
+            distance = calculate_distance(lat1, lon1, lat2, lon2)
+            if (distance <= range):
+                presence[zone] = "OPEN"
+            else:
+                presence[zone] = "CLOSED"
+            presence[zone + "_distance"] = "{}".format(distance * 1000)
 
-    # logger.info("Nickname: {}, Zone: {}, distance: {}, presence: {}".format(
-    #    nickname, zone, distance, presence[zone]))
-#    logger.info("Presence for {}: {}".format(nickname, presence))
-    payload = "{presence:" + str(presence) + "}"
-    send_message(prefix, payload)
+        # logger.info("Nickname: {}, Zone: {}, distance: {}, presence: {}".format(
+        #    nickname, zone, distance, presence[zone]))
+    #    logger.info("Presence for {}: {}".format(nickname, presence))
+        payload = "{presence:" + str(presence) + "}"
+        send_message(prefix, payload)
 
 
 def send_heartbeat(client):

@@ -28,27 +28,27 @@ Group       gOffice                                                  "Office"   
 Switch      HH_Lights_Scenario                                       "All lights"                                            <colorwheel>     (gScenariosList, gPersistenceScenario)
 Group       gHH_Lights_Scenario                                      "Lightning"                                             <colorwheel>     (gScenarios)
 Switch      GF_Lights_Scenario                                       "Ground floor"                                          <colorwheel>     (gScenariosList, gPersistenceScenario)
-Group       gGF_Lights_Scenario                                      "GF_Lights_Scenario"                                    <heating>        (gScenarios, gHH_Lights_Scenario)
+Group       gGF_Lights_Scenario                                      "GF_Lights_Scenario"                                    <heating>        (gHH_Lights_Scenario)
 Switch      FF_Lights_Scenario                                       "First floor"                                           <colorwheel>     (gScenariosList, gPersistenceScenario)
-Group       gFF_Lights_Scenario                                      "FF_Lights_Scenario"                                    <heating>        (gScenarios, gHH_Lights_Scenario)
+Group       gFF_Lights_Scenario                                      "FF_Lights_Scenario"                                    <heating>        (gHH_Lights_Scenario)
 Switch      GF_FamilyRoom_Scenario                                   "Upper lights"                                          <colorwheel>     (gScenariosList, gPersistenceScenario)                                                                                                                                       {ga="Light"}
-Group       gGF_FamilyRoom_Scenario                                  "GF_FamilyRoom_Scenario"                                <heating>        (gScenarios, gGF_Lights_Scenario)
+Group       gGF_FamilyRoom_Scenario                                  "GF_FamilyRoom_Scenario"                                <heating>        (gGF_Lights_Scenario)
 Switch      GF_ColorLights_Scenario                                  "Secondary lights"                                      <party>          (gScenariosList, gPersistenceScenario)
-Group       gGF_ColorLights_Scenario                                 "GF_ColorLights_Scenario"                               <heating>        (gScenarios, gGF_Lights_Scenario)
+Group       gGF_ColorLights_Scenario                                 "GF_ColorLights_Scenario"                               <heating>        (gGF_Lights_Scenario)
 Switch      GF_Kitchen_Scenario                                      "Kitchen"                                               <kitchen>        (gScenariosList, gPersistenceScenario)
-Group       gGF_Kitchen_Scenario                                     "GF_Kitchen_Scenario"                                   <heating>        (gScenarios, gGF_Lights_Scenario)
+Group       gGF_Kitchen_Scenario                                     "GF_Kitchen_Scenario"                                   <heating>        (gGF_Lights_Scenario)
 Switch      GF_Corridor_Scenario                                     "Corridor"                                              <corridor>       (gScenariosList, gPersistenceScenario)
-Group       gGF_Corridor_Scenario                                    "GF_Corridor_Scenario"                                  <heating>        (gScenarios, gGF_Lights_Scenario)
+Group       gGF_Corridor_Scenario                                    "GF_Corridor_Scenario"                                  <heating>        (gGF_Lights_Scenario)
 Switch      GF_Restroom_Scenario                                     "Restroom"                                              <corridor>       (gScenariosList, gPersistenceScenario)
-Group       gGF_Restroom_Scenario                                    "GF_Restroom_Scenario"                                  <heating>        (gScenarios, gGF_Lights_Scenario)
+Group       gGF_Restroom_Scenario                                    "GF_Restroom_Scenario"                                  <heating>        (gGF_Lights_Scenario)
 Switch      FF_AnnRoom_Scenario                                      "Ann room"                                              <girl_2>         (gScenariosList, gPersistenceScenario)
-Group       gFF_AnnRoom_Scenario                                     "FF_AnnRoom_Scenario"                                   <heating>        (gScenarios, gFF_Lights_Scenario)
+Group       gFF_AnnRoom_Scenario                                     "FF_AnnRoom_Scenario"                                   <heating>        (gFF_Lights_Scenario)
 Switch      FF_Bedroom_Scenario                                      "Bedroom"                                               <bedroom>        (gScenariosList, gPersistenceScenario)
-Group       gFF_Bedroom_Scenario                                     "FF_Bedroom_Scenario"                                   <heating>        (gScenarios, gFF_Lights_Scenario)
+Group       gFF_Bedroom_Scenario                                     "FF_Bedroom_Scenario"                                   <heating>        (gFF_Lights_Scenario)
 Switch      FF_AliceRoom_Scenario                                    "Alice room"                                            <girl_3>         (gScenariosList, gPersistenceScenario)
-Group       gFF_AliceRoom_Scenario                                   "FF_AliceRoom_Scenario"                                 <heating>        (gScenarios, gFF_Lights_Scenario)
+Group       gFF_AliceRoom_Scenario                                   "FF_AliceRoom_Scenario"                                 <heating>        (gFF_Lights_Scenario)
 Switch      FF_BathRoom_Scenario                                     "Bathroom"                                              <bath>           (gScenariosList, gPersistenceScenario)
-Group       gFF_BathRoom_Scenario                                    "FF_BathRoom_Scenario"                                  <heating>        (gScenarios, gFF_Lights_Scenario)
+Group       gFF_BathRoom_Scenario                                    "FF_BathRoom_Scenario"                                  <heating>        (gFF_Lights_Scenario)
 Switch      GF_Cinema_Scenario                                       "Cinema"                                                <light>          (gScenariosList, gPersistenceScenario)
 Group       gGF_Cinema_Scenario                                      "GF_Cinema_Scenario"                                    <heating>        (gScenarios)
 Switch      GF_Motion_Mode                                           "Motion"                                                <rgb>            (gPersistenceSettings)
@@ -161,6 +161,7 @@ Switch      RTV_VOLUME_MUTE                                          "Mute[]"   
 Switch      GH_DailyInfo                                             "Daily info[]"                                                           (gVoice)                                                                                                                                                                     {ga="Switch"}
 Switch      GH_LocationInfo                                          "Location info[]"                                                        (gVoice)                                                                                                                                                                     {ga="Switch"}
 Switch      GH_BathroomInfo                                          "Bathroom info[]"                                                        (gVoice)                                                                                                                                                                     {ga="Switch"}
+Switch      GH_GarageInfo                                            "Garage info[]"                                                          (gVoice)                                                                                                                                                                     {ga="Switch"}
 Switch      GH_SensorsInfo                                           "Sensors info[]"                                                         (gVoice)                                                                                                                                                                     {ga="Switch"}
 Switch      GH_Holiday                                               "Holiday[]"                                                              (gScenes)
 Switch      GH_WelcomeBack                                           "Welcome back[]"                                                         (gScenes)
@@ -360,3 +361,7 @@ Switch      HH_PowermeterPlug02_Heartbeat_LastUpdate_Error           "Powermeter
 DateTime    FF_Bathroom_Entry_Time                                   "Bathroom entrytime [%s]"                               <time>
 Switch      FF_Bathroom_Entry_Confirmation                           "Bathroom entry confirmation [%s]"                      <time>
 Number      FF_Bathroom_Occupation_Minutes                           "Bathroom occupation [%.0f]"                            <time>
+
+DateTime    GA_Garage_Entry_Time                                     "Garage entrytime [%s]"                                 <time>
+Switch      GA_Garage_Entry_Confirmation                             "Garage entry confirmation [%s]"                        <time>
+Number      GA_Garage_Occupation_Minutes                             "Garage occupation [%.0f]"                              <time>

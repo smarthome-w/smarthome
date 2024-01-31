@@ -87,17 +87,22 @@ then
             //GF_FamilyRoom_Light_Table.sendCommand(ON)
             //GF_FamilyRoom_Light_Sofa.sendCommand(ON)
             GH_TVShow_Scene.sendCommand(ON)
+//            GH_Evening_Scene.postUpdate(OFF)
         }
         if (triggeringItem.name == "GH_Night_Scene"){
             if (logLevel >= 6) {
               logInfo("scene_rule", "night")
             }
+            if (triggeringItem.state == ON) {
 //            GF_FamilyRoom_Rollershutter_AutoDown.sendCommand(ON)
 //            FF_Bedroom_Rollershutter_AutoDown.sendCommand(ON)
-            RTV_TV_TV.sendCommand(OFF)
-            WiFiLED7_power.sendCommand(OFF)
+              RTV_TV_TV.sendCommand(OFF)
+              WiFiLED7_power.sendCommand(OFF)
             //sendCommand(WiFiLED101_color, new HSBType(String::format("%s",transform("MAP", "led.map", "color_green_max"))))
-            GF_Lights_Scenario.sendCommand(OFF)
+              GF_Lights_Scenario.sendCommand(OFF)
+              GH_TVShow_Scene.sendCommand(OFF)
+              GH_Night_Scene.postUpdate(OFF)
+            }
         }
 
         if (triggeringItem.name == "GH_Bedroom_Night_Scene"){
@@ -105,22 +110,31 @@ then
             if (logLevel >= 6) {
               logInfo("scene_rule", "Bedroom to OFF")
             }
-            FF_Bedroom_Office.sendCommand(OFF)
-            RTV_TV_TV.sendCommand(OFF)
-            GF_Lights_Scenario.sendCommand(OFF)
-            GF_Corridor_Scenario.sendCommand(OFF)
-            GF_Restroom_Scenario.sendCommand(OFF)
-//            HH_PowermeterPlug01.sendCommand(OFF)
-//            HH_PowermeterPlug02.sendCommand(OFF)
-            WiFiLED101_power.sendCommand(OFF)
-            WiFiLED5_power.sendCommand(OFF)
-            WiFiLED4_power.sendCommand(OFF)
-//            GH_DailyInfo.sendCommand(ON)
-            //if (logLevel >= 6) {
-            //  logError("scene_rule", "FF_Bedroom_Rollershutter_Dimmer to {}", bedroomBlindLevel)
-            //}
-            //FF_Bedroom_Rollershutter_Dimmer.sendCommand(bedroomBlindLevel.intValue)
-            //GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
+            if (triggeringItem.state == ON) {
+              FF_Bedroom_Office.sendCommand(OFF)
+              RTV_TV_TV.sendCommand(OFF)
+              GF_Lights_Scenario.sendCommand(OFF)
+              GF_Corridor_Scenario.sendCommand(OFF)
+              GF_Restroom_Scenario.sendCommand(OFF)
+  //            HH_PowermeterPlug01.sendCommand(OFF)
+  //            HH_PowermeterPlug02.sendCommand(OFF)
+              WiFiLED101_power.sendCommand(OFF)
+              WiFiLED5_power.sendCommand(OFF)
+              WiFiLED4_power.sendCommand(OFF)
+              WiFiLED7_power.sendCommand(OFF)
+
+
+  //            GH_TVShow_Scene.postUpdate(OFF)
+  //            GH_Bedroom_Night_Scene.postUpdate(OFF)
+
+  //            GH_DailyInfo.sendCommand(ON)
+              //if (logLevel >= 6) {
+              //  logError("scene_rule", "FF_Bedroom_Rollershutter_Dimmer to {}", bedroomBlindLevel)
+              //}
+              //FF_Bedroom_Rollershutter_Dimmer.sendCommand(bedroomBlindLevel.intValue)
+              //GF_FamilyRoom_Rollershutter_AutoUp.sendCommand(ON)
+              GH_Bedroom_Night_Scene.postUpdate(OFF)
+            }
         }
 
         if (triggeringItem.name == "GH_BrightWindow_Scene"){

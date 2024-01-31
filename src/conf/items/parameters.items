@@ -38,3 +38,5 @@ Switch    HH_WaldekAtWork                  "Waldek at work []"                  
 Switch    HH_SystemStarted                 "System fully started []"                  <time>
 
 String    NotificationItem                 "Notification"                             <time>           (gParameters)                                                                     {channel="mqtt:topic:MyMQTTBroker:NotificationMsg:NotificationStr"}
+
+Number    HH_Garage_Open_Time              "Garage open time [%.0f]"                  <niveau>         (gParameters, gPersistenceSettings)

@@ -113,6 +113,11 @@ then
   if (HH_Humidity_Max.state === NULL) {
     HH_Humidity_Max.sendCommand(70.0)
   }
+
+  if (HH_Garage_Open_Time.state === NULL) {
+    HH_Garage_Open_Time.sendCommand(70.0)
+  }
+
 end
 
 

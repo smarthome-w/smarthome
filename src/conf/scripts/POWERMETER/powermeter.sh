@@ -147,8 +147,8 @@ else
   #  hcitool lescan --duplicates 1>/dev/null &
   #  DEVICE_NAME=$(rfkill list -o DEVICE -n | grep hci)
   DEVICE_NAME="hci0"
-  # hciconfig $DEVICE_NAME down && hciconfig $DEVICE_NAME up && hcitool lescan --duplicates 1>/dev/null &
-  hcitool lescan --duplicates 1>/dev/null &
+  hciconfig $DEVICE_NAME down && hciconfig $DEVICE_NAME up && hcitool lescan --duplicates 1>/dev/null &
+  #hcitool lescan --duplicates 1>/dev/null &
   echo "Run powermeter.sh: device ${DEVICE_NAME}"
 
   if [ "$(pidof hcitool)" ]; then

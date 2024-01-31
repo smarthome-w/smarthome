@@ -4,7 +4,7 @@ DOCKER_TAG=smarthomew-openhab
 
 MACHINE=$(shell uname -m)
 
-VERSION=3.4.5
+VERSION=4.1.1
 OS_PLATFORM=amd64
 
 HOST_IP=`hostname -I | awk '{print $$1}'`
@@ -35,6 +35,7 @@ endif
 	@sudo pip3 install setuptools
 	@sudo pip3 install wheel
 	@sudo pip3 install paho-mqtt ruamel.yaml xmltodict locationsharinglib
+	@sudo pip3 install git+https://github.com/mjg59/python-broadlink.git
 ifeq ($(OS_PLATFORM),armhf)
 	@sudo pip3 install py-sony-bravia-remote git+https://github.com/mjg59/python-broadlink.git
 	@sudo pip3 install git+https://github.com/aparraga/braviarc.git
@@ -130,11 +131,23 @@ openhab-service-restart:
 	@sudo systemctl restart openhab
 	@tail -f /opt/openhab/prod/userdata/logs/openhab.log
 
+openhab-notification-service-install:
+	@sudo cp $(RESOURCES)/service/openhab-notification.service /etc/systemd/system/openhab-notification.service
+	@sudo systemctl daemon-reload
+	@sudo systemctl enable openhab-notification
+	@sudo systemctl restart openhab-notification
+
 tasmoadmin-service-install:
 	@sudo cp $(RESOURCES)/service/tasmoadmin.service /etc/systemd/system/tasmoadmin.service
 	@sudo systemctl daemon-reload
 	@sudo systemctl enable tasmoadmin
 	@sudo systemctl restart tasmoadmin
+
+grafana-service-install:
+	@sudo cp $(RESOURCES)/service/grafana.service /etc/systemd/system/grafana.service
+	@sudo systemctl daemon-reload
+	@sudo systemctl enable grafana
+	@sudo systemctl restart grafana
 
 openhab-info:
 	@echo MACHINE=$(MACHINE)
@@ -150,6 +163,10 @@ openhab-all: openhab-info openhab-docker-stop openhab-docker-build \
 	openhab-service-install openhab-broadlink-mqtt-service-install \
 	openhab-sony-mqtt-service-install openhab-powermeter-service-install \
 	openhab-server-service-install openhab-service-restart
+
+openhab-services: openhab-broadlink-mqtt-service-install \
+	openhab-powermeter-service-install \
+	openhab-notification-service-install
 
 # bmp280
 # http://faradaysclub.com/?p=1325
