@@ -3,45 +3,67 @@
 // Color       WiFiLED1_color                         "Bedroom led color"                                   (gWiFILED1, gPersistenceLED)                  ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED1:Color_"}
 // Dimmer      WiFiLED1_dimmer                        "Bedroom led dimmer"                                  (gWiFILED1, gPersistenceLED)                  ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED1:Dimmer_"}
 
-Group       gWiFILED2                              "Alice led"                                           (gAliceRoom)                                  ["LightStripe"]
-Switch      WiFiLED2_power                         "Alice led power"                                     (gWiFILED2, gPersistenceLED)                  ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED2:PowerSwitch"}
-Color       WiFiLED2_color                         "Alice led color"                                     (gWiFILED2, gPersistenceLED)                  ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED2:Color_"}
-Dimmer      WiFiLED2_dimmer                        "Alice led dimmer"                                    (gWiFILED2, gPersistenceLED)                  ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED2:Dimmer_"}
-Number      WiFiLED2_RSSI                          "LED Alice RSSI [%.0f]"                  <heating>    (gRSSI)                                                               {channel="mqtt:topic:MyMQTTBroker:WifiLED2:RSSI"}
-String      WiFiLED2_Heartbeat                     "LED Alice [%s]"                                      (gAliceRoom, gHeartbeat)                                              {channel="mqtt:topic:MyMQTTBroker:WifiLED2:Heartbeat"}
-DateTime    WiFiLED2_Heartbeat_LastUpdate          "LED Alice [%1$td.%1$tm %1$tH:%1$tM]"    <time>       (gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch      WiFiLED2_Heartbeat_LastUpdate_Error    "LED Alice"                              <time>       (gErrors, gPersistenceStatusUpdate)
+Group       gWiFILED2                              "Alice led"                                                        (gAliceRoom)                                                   ["LightStripe"]
+Switch      LEDAlice                               "Alice led"                                                        (gAliceRoom, gSimpleLED, gPersistenceLED)                      ["Switch"]
+Switch      WiFiLED2_power                         "Alice led power"                                                  (gWiFILED2, gPersistenceLED)                                   ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED2:PowerSwitch"}
+Color       WiFiLED2_color                         "Alice led color"                                                  (gWiFILED2, gPersistenceLED)                                   ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED2:Color_"}
+Dimmer      WiFiLED2_dimmer                        "Alice led dimmer"                                                 (gWiFILED2, gPersistenceLED)                                   ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED2:Dimmer_"}
+Number      WiFiLED2_RSSI                          "LED Alice RSSI [%.0f]"                               <heating>    (gRSSI)                                                                                {channel="mqtt:topic:MyMQTTBroker:WifiLED2:RSSI"}
+String      WiFiLED2_Heartbeat                     "LED Alice [%s]"                                                   (gAliceRoom, gHeartbeat)                                                               {channel="mqtt:topic:MyMQTTBroker:WifiLED2:Heartbeat"}
+DateTime    WiFiLED2_Heartbeat_LastUpdate          "LED Alice [%1$td.%1$tm %1$tH:%1$tM]"                 <time>       (gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch      WiFiLED2_Heartbeat_LastUpdate_Error    "LED Alice"                                           <time>       (gErrors, gPersistenceStatusUpdate)
 
-Group       gWiFILED3                              "Ann led"                                             (gAnnRoom)                                    ["LightStripe"]
-Switch      WiFiLED3_power                         "Ann led power"                                       (gWiFILED3, gPersistenceLED)                  ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED3:PowerSwitch"}
-Color       WiFiLED3_color                         "Ann led color"                                       (gWiFILED3, gPersistenceLED)                  ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED3:Color_"}
-Dimmer      WiFiLED3_dimmer                        "Ann led dimmer"                                      (gWiFILED3, gPersistenceLED)                  ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED3:Dimmer_"}
-Number      WiFiLED3_RSSI                          "LED Ann RSSI [%.0f]"                    <heating>    (gRSSI)                                                               {channel="mqtt:topic:MyMQTTBroker:WifiLED3:RSSI"}
-String      WiFiLED3_Heartbeat                     "LED Ann [%s]"                                        (gAnnRoom, gHeartbeat)                                                {channel="mqtt:topic:MyMQTTBroker:WifiLED3:Heartbeat"}
-DateTime    WiFiLED3_Heartbeat_LastUpdate          "LED Ann [%1$td.%1$tm %1$tH:%1$tM]"      <time>       (gLastUpdateHeartbeat, gLastUpdateTimeout)
-Switch      WiFiLED3_Heartbeat_LastUpdate_Error    "LED Ann"                                <time>       (gErrors, gPersistenceStatusUpdate)
+Group       gWiFILED3                              "Ann led"                                                          (gAnnRoom)                                                     ["LightStripe"]
+Switch      LEDAnn                                 "Ann led"                                                          (gAnnRoom, gSimpleLED, gPersistenceLED)                        ["Switch"]
+Switch      WiFiLED3_power                         "Ann led power"                                                    (gWiFILED3, gPersistenceLED)                                   ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED3:PowerSwitch"}
+Color       WiFiLED3_color                         "Ann led color"                                                    (gWiFILED3, gPersistenceLED)                                   ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED3:Color_"}
+Dimmer      WiFiLED3_dimmer                        "Ann led dimmer"                                                   (gWiFILED3, gPersistenceLED)                                   ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED3:Dimmer_"}
+Number      WiFiLED3_RSSI                          "LED Ann RSSI [%.0f]"                                 <heating>    (gRSSI)                                                                                {channel="mqtt:topic:MyMQTTBroker:WifiLED3:RSSI"}
+String      WiFiLED3_Heartbeat                     "LED Ann [%s]"                                                     (gAnnRoom, gHeartbeat)                                                                 {channel="mqtt:topic:MyMQTTBroker:WifiLED3:Heartbeat"}
+DateTime    WiFiLED3_Heartbeat_LastUpdate          "LED Ann [%1$td.%1$tm %1$tH:%1$tM]"                   <time>       (gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch      WiFiLED3_Heartbeat_LastUpdate_Error    "LED Ann"                                             <time>       (gErrors, gInternalSensorsErrors, gPersistenceStatusUpdate)
 
-Group       gWiFILED4                              "Office"                                              (gOffice)                                     ["LightStripe"]
-Switch      WiFiLED4_power                         "Office"                                              (gWiFILED4, gPersistenceLED)                  ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED4:PowerSwitch"}
-Color       WiFiLED4_color                         "Office color"                                        (gWiFILED4, gPersistenceLED)                  ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED4:Color_", ga="Light"}
-Dimmer      WiFiLED4_dimmer                        "Office dimmer"                                       (gWiFILED4, gPersistenceLED)                  ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED4:Dimmer_"}
+Group       gWiFILED4                              "Office"                                                           (gOffice)                                                      ["LightStripe"]
+Switch      LEDOffice                              "Office led"                                                       (gOffice, gSimpleLED, gPersistenceLED)                         ["Switch"]
+Switch      WiFiLED4_power                         "Office led"                                                       (gWiFILED4, gPersistenceLED)                                   ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED4:PowerSwitch"}
+Color       WiFiLED4_color                         "Office color"                                                     (gWiFILED4, gPersistenceLED)                                   ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED4:Color_", ga="Light"}
+Dimmer      WiFiLED4_dimmer                        "Office dimmer"                                                    (gWiFILED4, gPersistenceLED)                                   ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED4:Dimmer_"}
+Number      WiFiLED4_RSSI                          "LED Office RSSI [%.0f]"                              <heating>    (gRSSI)                                                                                {channel="mqtt:topic:MyMQTTBroker:WifiLED4:RSSI"}
+String      WiFiLED4_Heartbeat                     "LED Office [%s]"                                                  (gOffice, gHeartbeat)                                                                  {channel="mqtt:topic:MyMQTTBroker:WifiLED4:Heartbeat"}
+DateTime    WiFiLED4_Heartbeat_LastUpdate          "LED Office [%1$td.%1$tm %1$tH:%1$tM]"                <time>       (gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch      WiFiLED4_Heartbeat_LastUpdate_Error    "LED Office"                                          <time>       (gErrors, gInternalSensorsErrors, gPersistenceStatusUpdate)
 
-Group       gWiFILED5                              "Family room sofa led"                                (gFamilyRoom)                                 ["LightStripe"]
-Switch      WiFiLED5_power                         "Family room sofa power"                              (gWiFILED5, gPersistenceLED)                  ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED5:PowerSwitch"}
-Color       WiFiLED5_color                         "Family room sofa color"                              (gWiFILED5, gPersistenceLED)                  ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Color_"}
-Dimmer      WiFiLED5_dimmer                        "Family room sofa dimmer"                             (gWiFILED5, gPersistenceLED)                  ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Dimmer_"}
+Group       gWiFILED5                              "Corridor led"                                                     (gFamilyRoom)                                                  ["LightStripe"]
+Switch      LEDFamilyRoomSofa                      "Corridor led"                                                     (gFamilyRoom, gSimpleLED, gPersistenceLED)                     ["Switch"]
+Switch      WiFiLED5_power                         "Corridor led power []"                                            (gWiFILED5, gPersistenceLED)                                   ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED5:PowerSwitch"}
+Color       WiFiLED5_color                         "Corridor led color"                                               (gWiFILED5, gPersistenceLED)                                   ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Color_"}
+Dimmer      WiFiLED5_dimmer                        "Corridor led dimmer"                                              (gWiFILED5, gPersistenceLED)                                   ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Dimmer_"}
+Number      WiFiLED5_RSSI                          "Corridor led RSSI [%.0f]"                            <heating>    (gRSSI)                                                                                {channel="mqtt:topic:MyMQTTBroker:WifiLED5:RSSI"}
+String      WiFiLED5_Heartbeat                     "Corridor led [%s]"                                                (gOffice, gHeartbeat)                                                                  {channel="mqtt:topic:MyMQTTBroker:WifiLED5:Heartbeat"}
+DateTime    WiFiLED5_Heartbeat_LastUpdate          "Corridor led [%1$td.%1$tm %1$tH:%1$tM]"              <time>       (gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch      WiFiLED5_Heartbeat_LastUpdate_Error    "Corridor led"                                        <time>       (gErrors, gInternalSensorsErrors, gPersistenceStatusUpdate)
 
-Group       gWiFILED6                              "Family room led"                                     (gFamilyRoom)                                 ["LightStripe"]
-Switch      WiFiLED6_power                         "Family room window power"                            (gWiFILED6, gPersistenceLED)                  ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED6:PowerSwitch"}
-Color       WiFiLED6_color                         "Family room window color"                            (gWiFILED6, gPersistenceLED)                  ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED6:Color_"}
-Dimmer      WiFiLED6_dimmer                        "Family room window dimmer"                           (gWiFILED6, gPersistenceLED)                  ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED6:Dimmer_"}
+Group       gWiFILED6                              "Family room led"                                                  (gFamilyRoom)                                                  ["LightStripe"]
+Switch      LEDFamilyRoomWindow                    "Window led"                                                       (gFamilyRoom, gSimpleLED, gPersistenceLED)                     ["Switch"]
+Switch      WiFiLED6_power                         "Family room window power"                                         (gWiFILED6, gPersistenceLED)                                   ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED6:PowerSwitch"}
+Color       WiFiLED6_color                         "Family room window color"                                         (gWiFILED6, gPersistenceLED)                                   ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED6:Color_"}
+Dimmer      WiFiLED6_dimmer                        "Family room window dimmer"                                        (gWiFILED6, gPersistenceLED)                                   ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED6:Dimmer_"}
+Number      WiFiLED6_RSSI                          "LED Family room window RSSI [%.0f]"                  <heating>    (gRSSI)                                                                                {channel="mqtt:topic:MyMQTTBroker:WifiLED6:RSSI"}
+String      WiFiLED6_Heartbeat                     "LED Family room window [%s]"                                      (gOffice, gHeartbeat)                                                                  {channel="mqtt:topic:MyMQTTBroker:WifiLED6:Heartbeat"}
+DateTime    WiFiLED6_Heartbeat_LastUpdate          "LED Family room window [%1$td.%1$tm %1$tH:%1$tM]"    <time>       (gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch      WiFiLED6_Heartbeat_LastUpdate_Error    "LED Family room window"                              <time>       (gErrors, gInternalSensorsErrors, gPersistenceStatusUpdate)
 
-Group       gWiFILED7                              "Family room tv"                                      (gFamilyRoom)                                 ["LightStripe"]
-Switch      WiFiLED7_power                         "Family room tv power"                                (gWiFILED7, gPersistenceLED)                  ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED7:PowerSwitch"}
-Color       WiFiLED7_color                         "Family room tv color"                                (gWiFILED7, gPersistenceLED)                  ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED7:Color_"}
-Dimmer      WiFiLED7_dimmer                        "Family room tv dimmer"                               (gWiFILED7, gPersistenceLED)                  ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED7:Dimmer_"}
+Group       gWiFILED7                              "Family room tv"                                                   (gFamilyRoom)                                                  ["LightStripe"]
+Switch      LEDFamilyRoomTv                        "TV led"                                                           (gFamilyRoom, gSimpleLED, gPersistenceLED)                     ["Switch"]
+Switch      WiFiLED7_power                         "Family room tv power"                                             (gWiFILED7, gPersistenceLED)                                   ["Switch"]              {channel="mqtt:topic:MyMQTTBroker:WifiLED7:PowerSwitch"}
+Color       WiFiLED7_color                         "Family room tv color"                                             (gWiFILED7, gPersistenceLED)                                   ["ColorTemperature"]    {channel="mqtt:topic:MyMQTTBroker:WifiLED7:Color_"}
+Dimmer      WiFiLED7_dimmer                        "Family room tv dimmer"                                            (gWiFILED7, gPersistenceLED)                                   ["Level"]               {channel="mqtt:topic:MyMQTTBroker:WifiLED7:Dimmer_"}
+Number      WiFiLED7_RSSI                          "LED Family room tv RSSI [%.0f]"                      <heating>    (gRSSI)                                                                                {channel="mqtt:topic:MyMQTTBroker:WifiLED7:RSSI"}
+String      WiFiLED7_Heartbeat                     "LED Family room tv [%s]"                                          (gOffice, gHeartbeat)                                                                  {channel="mqtt:topic:MyMQTTBroker:WifiLED7:Heartbeat"}
+DateTime    WiFiLED7_Heartbeat_LastUpdate          "LED Family room tv [%1$td.%1$tm %1$tH:%1$tM]"        <time>       (gLastUpdateHeartbeat, gLastUpdateTimeout)
+Switch      WiFiLED7_Heartbeat_LastUpdate_Error    "LED Family room tv"                                  <time>       (gErrors, gInternalSensorsErrors, gPersistenceStatusUpdate)
 
-Group       gWiFiLEDFamilyRoom                     "Family room all led"                                 (gFamilyRoom)                                 ["LightStripe"]
-Switch      WiFiLEDFamilyRoom_power                "Color lights power"                                  (gWiFiLEDFamilyRoom, gPersistenceLED)         ["Switch"]
-Color       WiFiLEDFamilyRoom_color                "Color lights"                                        (gWiFiLEDFamilyRoom, gPersistenceLED)         ["ColorTemperature"]    {ga="Light"}
-Dimmer      WiFiLEDFamilyRoom_dimmer               "Color lights dimmer"                                 (gWiFiLEDFamilyRoom, gPersistenceLED)         ["Level"]
+Group       gWiFiLEDFamilyRoom                     "Family room all led"                                              (gFamilyRoom)                                                  ["LightStripe"]
+Switch      WiFiLEDFamilyRoom_power                "Color lights power"                                               (gWiFiLEDFamilyRoom, gPersistenceLED)                          ["Switch"]
+Color       WiFiLEDFamilyRoom_color                "Color lights"                                                     (gWiFiLEDFamilyRoom, gPersistenceLED)                          ["ColorTemperature"]    {ga="Light"}
+Dimmer      WiFiLEDFamilyRoom_dimmer               "Color lights dimmer"                                              (gWiFiLEDFamilyRoom, gPersistenceLED)                          ["Level"]

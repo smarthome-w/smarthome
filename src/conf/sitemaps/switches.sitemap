@@ -26,12 +26,11 @@ sitemap switches label="Switches" {
     Frame label="Ground floor" icon="firstfloor" {
         Switch item=GF_FamilyRoom_Light_Table
         Switch item=GF_FamilyRoom_Light_Sofa
-        Switch item=HH_PowermeterPlug02
         Switch item=GF_Kitchen_Light_Main
         Switch item=GF_Kitchen_Light_LED
         Switch item=GF_Kitchen_LED
         Switch item=GF_Corridor_Light_Main
-        Switch item=GF_Corridor_Light_LED
+        Switch item=WiFiLED5_power
         Switch item=GF_Corridor_Storage
 
         Switch item=GF_Restroom_Light_Main
@@ -45,20 +44,28 @@ sitemap switches label="Switches" {
     Frame label="First floor" icon="firstfloor" {
         // Switch item=FF_AliceRoom_Light_1
         Switch item=FF_AliceRoom_Light_2
+        Switch item=HH_PowermeterPlug02
         // Switch item=FF_AliceRoom_Lights
         // Switch item=FF_Bedroom_Light_1
         Switch item=FF_Bedroom_Light_2
-        Switch item=FF_Bedroom_Lights
+        Switch item=FF_Bedroom_Office
+        Switch item=FF_Bedroom_Secondary
         Switch item=FF_Bedroom_Wardobe
         Switch item=FF_AnnRoom_Light_Main
         Switch item=HH_PowermeterPlug01
         Switch item=FF_BathRoom_Light_Up
         //Switch item=FF_BathRoom_Light_Mirror
+        Switch       item=WiFiLED4_power
     }
 
 	Frame label="" {
 		Switch       item=WiFiLED101_power
 		Colorpicker  item=WiFiLED101_color
+    }
+
+	Frame label="" {
+		Switch       item=WiFiLED5_power
+		Colorpicker  item=WiFiLED5_color
     }
 
 	Frame label="" {

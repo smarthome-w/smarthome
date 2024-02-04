@@ -1,4 +1,19 @@
 sitemap basic label="Basic" {
+
+	Frame label="Scenarios" {
+	    Switch       item=WiFiLED7_power
+//		Colorpicker  item=WiFiLED7_color
+//		Slider       item=WiFiLED7_dimmer
+        Switch       item=WiFiLED4_power
+//		Colorpicker  item=WiFiLED4_color
+//		Slider       item=WiFiLED4_dimmer
+        Switch      item=GH_Work_Scene
+        Switch      item=GH_TVShow_Scene
+        Switch      item=GH_Night_Scene
+        Switch      item=GH_Bedroom_Night_Scene
+        Switch      item=FF_Bedroom_Secondary
+    }
+
     Frame label="Weather" icon="firstfloor" {
         Text item=GF_FamilyRoom_Outdoor_Temperature_Sensor
         Text item=FF_AnnRoom_Outdoor_Temperature_Sensor
@@ -15,16 +30,6 @@ sitemap basic label="Basic" {
 */
     }
 
-    Frame label="Sensors (daily)" icon="firstfloor" {
-        Chart item=gSensorExternalTemperature period=D label="Temperature"
-    }
-    Frame label="Astro" icon="firstfloor" {
-        Text item=DawnInfo
-        Text item=DuskInfo
-//        Text item=Astro_Sunrise_Time
-//        Text item=Astro_Sunset_Time
-//        Text item=Astro_SunElevation
-    }
     Frame label="Other" icon="firstfloor" {
 //        Text item=GF_PowerMeter_Current
         Text item=GF_PowerMeter_Current_In_Watts
@@ -32,6 +37,21 @@ sitemap basic label="Basic" {
 //        Switch item=HH_FrontDoorSwitch
         Switch item=OverallErrorIndicator
         Group item=gErrors visibility=[OverallErrorIndicator==ON]
+        Switch item=InternalSensorsErrorIndicator
+        Switch item=Tracker_Waldek_Heartbeat_LastUpdate_Error
+        Switch item=GA_Garage_Cross_Heartbeat_LastUpdate_Error
+        Switch item=GF_PowerMeter_Total_LastUpdate_Error
+    }
+
+    Frame label="Scenes" icon="firstfloor" {
+      Switch item=GH_BathroomInfo mappings=[ON="Bathroom info"]
+      Switch item=GH_DailyInfo mappings=[ON="Daily info"]
+      Switch item=GH_GarageInfo mappings=[ON="Garage info"]
+      Switch item=GH_LocationInfo mappings=[ON="Location info"]
+    }
+
+    Frame label="Sensors (daily)" icon="firstfloor" {
+        Chart item=gSensorExternalTemperature period=D label="Temperature"
     }
 
     Frame label="Tracker" icon="groundfloor" {
@@ -39,14 +59,14 @@ sitemap basic label="Basic" {
         Switch item=Aldona_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
         Switch item=Ann_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
         Switch item=Alice_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
-    }
-
-    Frame label="Heaters" icon="firstfloor" {
-      Text item=EQ3_Bedroom_Status
-      Text item=EQ3_FamilyRoom_Status
-      Text item=EQ3_AnnRoom_Status
-      Text item=EQ3_AliceRoom_Status
-      Text item=EQ3_Kitchen_Status
+        Text item=Tracker_Waldek_DistanceHome
+        Text item=Tracker_Aldona_DistanceHome
+        Text item=Tracker_Ann_DistanceHome
+        Text item=Tracker_Alice_DistanceHome
+        Text item=Tracker_Waldek_Accuracy
+        Text item=Tracker_Aldona_Accuracy
+        Text item=Tracker_Ann_Accuracy
+        Text item=Tracker_Alice_Accuracy
     }
 
     Frame label="Scenes" icon="firstfloor" {
@@ -55,26 +75,19 @@ sitemap basic label="Basic" {
       Switch item=FF_Bedroom_Rollershutter_AutoUp mappings=[ON="Up"]
       Switch item=FF_Bedroom_Rollershutter_AutoDown mappings=[ON="Down"]
       Switch item=HH_PowermeterPlug01
-      Switch item=HH_PowermeterPlug02
-      Switch item=GH_BathroomInfo mappings=[ON="Bathroom info"]
-      Switch item=GH_DailyInfo mappings=[ON="Daily info"]
-      Switch item=GH_StartWork_Scene  mappings=[ON="Start work"]
-      Switch item=GH_StopWork_Scene  mappings=[ON="Stop work"]
+//      Switch item=GH_BathroomInfo mappings=[ON="Bathroom info"]
+//      Switch item=GH_DailyInfo mappings=[ON="Daily info"]
     }
 
-	Frame label="" {
-		Switch       item=WiFiLED4_power
-		Colorpicker  item=WiFiLED4_color
-		Slider       item=WiFiLED4_dimmer
+	Frame label="NFC" {
+        Group item=gNFC
     }
 
-	Frame label="" {
-		Switch       item=WiFiLEDFamilyRoom_power
-		Colorpicker  item=WiFiLEDFamilyRoom_color
-		Slider       item=WiFiLEDFamilyRoom_dimmer
-    }
-
-	Frame label="" {
-      Switch item=calendar_Notification
+    Frame label="Astro" icon="firstfloor" {
+        Text item=DawnInfo
+        Text item=DuskInfo
+//        Text item=Astro_Sunrise_Time
+//        Text item=Astro_Sunset_Time
+//        Text item=Astro_SunElevation
     }
 }

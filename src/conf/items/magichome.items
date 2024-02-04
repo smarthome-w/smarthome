@@ -1,10 +1,16 @@
-Group     gWiFILED100         "100 led 1"            (gBedroom)       ["LightStripe"]
-Switch    WiFiLED100_power    "100 led power"        (gWiFILED100)    ["Switch"]              {channel="wifiled:wifiled:WifiLED100:power"}
-Color     WiFiLED100_color    "100 led color"        (gWiFILED100)    ["ColorTemperature"]    {channel="wifiled:wifiled:WifiLED100:color"}
+Group     gWiFILED100         "100 led 1"               (gBedroom)       ["LightStripe"]
+Switch    WiFiLED100_power    "100 led power"           (gWiFILED100)    ["Switch"]              {channel="wifiled:wifiled:WifiLED100:power"}
+Color     WiFiLED100_color    "100 led color"           (gWiFILED100)    ["ColorTemperature"]    {channel="wifiled:wifiled:WifiLED100:color"}
 
-Group     gWiFILED101         "Bedroom led 2"        (gBedroom)       ["LightStripe"]
-Switch    WiFiLED101_power    "Bedroom led power"    (gWiFILED101)    ["Switch"]              {channel="wifiled:wifiled:WifiLED101:power"}
-Color     WiFiLED101_color    "Bedroom led color"    (gWiFILED101)    ["ColorTemperature"]    {channel="wifiled:wifiled:WifiLED101:color"}
+Group     gWiFILED101         "Bedroom window led"      (gBedroom)       ["LightStripe"]
+//Switch    LEDBedroomWindow    "Bedroom window led1"     (gBedroom, gCalendarLED, gPersistenceLED)    ["Switch"]
+Switch    WiFiLED101_power    "Bedroom window led"      (gWiFILED101)    ["Switch"]              {channel="wifiled:wifiled:WifiLED101:power", ga="Switch"}
+Color     WiFiLED101_color    "Bedroom window color"    (gWiFILED101)    ["ColorTemperature"]    {channel="wifiled:wifiled:WifiLED101:color"}
+
+//Group     gWiFILED102         "Corridor led"          (gCorridor)                                   ["LightStripe"]
+//Switch    LEDCorridor         "Corridor led"          (gCorridor, gCalendarLED, gPersistenceLED)    ["Switch"]
+//Switch    WiFiLED102_power    "Corridor led power"    (gWiFILED102)                                 ["Switch"]              {channel="wifiled:wifiled:WifiLED102:power"}
+//Color     WiFiLED102_color    "Corridor led color"    (gWiFILED102)                                 ["ColorTemperature"]    {channel="wifiled:wifiled:WifiLED102:color"}
 
 //Switch    2MyWiFiLight_power     "Power_RGBW"       (Light)    {channel="wifiled:wifiled:F0FE6B19CB2B:power"}
 //Dimmer    2MyWiFiLight_white     "White_RGBW"       (Light)    {channel="wifiled:wifiled:F0FE6B19CB2B:white"}

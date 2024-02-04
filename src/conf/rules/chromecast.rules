@@ -5,6 +5,7 @@
     while((i=i+1) <= 3 && !googleSuccess) {
       logInfo("Say info", "{} - bedroom - attempt {}", ttsMessage, i)
       try {
+        logInfo("Say info", "------ SAY_START ------")
         say (ttsMessage, voice, "chromecast:chromecast:bedroom")
         var String result = executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/GOOGLETTS/detect_error.sh", ttsMessage)
         if (result.contains("GoogleOK")) {
@@ -12,6 +13,8 @@
         }
       } catch (Throwable e) {
         logError("Say error", "{} - bedroom - attempt {}", ttsMessage, i)
+      } finally {
+        logInfo("Say info", "------ SAY_STOP  ------")
       }
     }
 
@@ -21,7 +24,10 @@
     }
     "executed"
 ]
+
 val defaultVoice = "googletts:plPLStandardA"
+//val defaultVoice = "googletts:enAUWavenetD"
+
 val maleVoice = "googletts:plPLStandardB"
 
 rule "say_main_lock_unlocked_rule"
@@ -47,21 +53,77 @@ when
 then
   var externalTemp = (GF_FamilyRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
   var externalTempSouth = (FF_AnnRoom_Outdoor_Temperature_Sensor.state as Number).floatValue
-  var ttsMessage = String.format("Temperatura na zewnątrz to %.0f\u00b0.", externalTemp)
+  var ttsMessage = ""
+
+  if (GA_Garage_Heartbeat_LastUpdate_Error.state.toString() == "ON") {
+    ttsMessage += " Błąd czujnika w garażu."
+  } else {
+    if (CIR_GA_Garage.state.toString() == "OPEN") {
+      ttsMessage += " Garaż jest otwarty."
+    } else {
+      ttsMessage += " Garaż jest zamknięty."
+    }
+  }
+
+  ttsMessage += String.format(" Temperatura na zewnątrz to %.0f\u00b0.", externalTemp)
 
 //  if (Math::abs(externalTempSouth - externalTemp) >= 2) {
     ttsMessage += String.format(" Temperatura od strony północnej to %.0f\u00b0.", externalTempSouth)
 //  }
+
+  if (Tracker_Waldek_Heartbeat_LastUpdate_Error.state.toString() == "ON") {
+    ttsMessage += " Błąd lokalizacji."
+  } else {
+    if (Alice_AtHome.state.toString() == "CLOSED") {
+      ttsMessage += " Alicja jest poza domem."
+    }
+    if (Ann_AtHome.state.toString() == "CLOSED") {
+      ttsMessage += " Ania jest poza domem."
+    }
+    if (Aldona_AtHome.state.toString() == "CLOSED") {
+      ttsMessage += " Aldona jest poza domem."
+    }
+    if (Waldek_AtHome.state.toString() == "CLOSED") {
+      ttsMessage += " Waldek jest poza domem."
+    }
+  }
+
   if (CIR_GF_MainLock.state.toString() == "OPEN") {
     ttsMessage += " Zamek jest otwarty."
   } else {
     ttsMessage += " Zamek jest zamknięty."
   }
-  if (OverallErrorIndicator.state.toString() == "ON") {
-    ttsMessage += " Błąd czujnika."
+
+  var long occupied_millis = 0
+  if (FF_Bathroom_Entry_Time.state != NULL) {
+    occupied_millis = (FF_Bathroom_Entry_Time.state as DateTimeType).zonedDateTime.toInstant.toEpochMilli
   } else {
-    ttsMessage += " Czujniki są sprawne."
+    occupied_millis = now.toInstant.toEpochMilli
   }
+  var now_millis = now.toInstant.toEpochMilli
+  var occupation_duration = (now_millis - occupied_millis)/1000/60
+
+  if (FF_BathRoom_Light_Up.state.toString() == "ON") {
+    if (occupation_duration < 3) {
+      ttsMessage += " Ktoś siedzi w łazience."
+    } else {
+      ttsMessage += String.format(" Ktoś siedzi w łazience od %d minut.", occupation_duration)
+    }
+    FF_Bathroom_Entry_Confirmation.postUpdate(ON)
+  }
+
+//  if (OverallErrorIndicator.state.toString() == "ON") {
+//    ttsMessage += " Błąd czujnika."
+//  } else {
+//    ttsMessage += " Czujniki są sprawne."
+//  }
+
+  if (InternalSensorsErrorIndicator.state.toString() == "ON") {
+    ttsMessage += " Błąd czujnika wewnętrznego."
+  } else {
+    ttsMessage += " Czujniki wewnętrzne są sprawne."
+  }
+
   saySomething.apply(ttsMessage, defaultVoice)
   calendar_DailyInfo.postUpdate(OFF)
 end
@@ -90,20 +152,65 @@ then
   calendar_DailyInfo.postUpdate(OFF)
 end
 
-rule "OverallErrorIndicator_Virtual_info"
+rule "OverallErrorIndicator_Virtual_info_1"
 when
-  Item OverallErrorIndicator_Virtual received update
+  Item OverallErrorIndicator_Virtual changed to ON
 then
   var ttsMessage = ""
   logInfo("Overall error info", "OverallErrorIndicator_Virtual: {}", OverallErrorIndicator_Virtual)
 
   if (OverallErrorIndicator_Virtual.state.toString() == "ON") {
-    ttsMessage += "Błąd czujnika."
+//    ttsMessage += "Błąd czujnika."
   } else {
-    ttsMessage += "Koniec błędu czujnika."
+//    ttsMessage += "Koniec błędu czujnika."
   }
 
   logInfo("Overall error info", "{}", ttsMessage)
+
+  if (GF_Presence_Mode.state.toString() == "ON") {
+    if (calendar_Vacation.state.toString() == "OFF") {
+      saySomething.apply(ttsMessage, defaultVoice)
+    }
+  }
+end
+
+
+rule "OverallErrorIndicator_Virtual_info_2"
+when
+  Item OverallErrorIndicator_Virtual changed to OFF
+then
+  var ttsMessage = ""
+  logInfo("Overall error info", "OverallErrorIndicator_Virtual: {}", OverallErrorIndicator_Virtual)
+
+  if (OverallErrorIndicator_Virtual.state.toString() == "ON") {
+//    ttsMessage += "Błąd czujnika."
+  } else {
+//    ttsMessage += "Koniec błędu czujnika."
+  }
+
+  logInfo("Overall error info", "{}", ttsMessage)
+
+  if (GF_Presence_Mode.state.toString() == "ON") {
+    if (calendar_Vacation.state.toString() == "OFF") {
+      saySomething.apply(ttsMessage, defaultVoice)
+    }
+  }
+end
+
+rule "CIR_GA_Garage_1"
+when
+  Item CIR_GA_Garage changed
+then
+  var ttsMessage = ""
+  logInfo("CIR_GA_Garage", "CIR_GA_Garage: {}", CIR_GA_Garage)
+
+  if (CIR_GA_Garage.state.toString() == "OPEN") {
+    ttsMessage += "Garaż się otwiera."
+  } else {
+    ttsMessage += "Garaż się zamknął."
+  }
+
+  logInfo("CIR_GA_Garage info", "{}", ttsMessage)
 
   if (GF_Presence_Mode.state.toString() == "ON") {
     if (calendar_Vacation.state.toString() == "OFF") {
@@ -213,21 +320,86 @@ then
   }
 end
 
+rule "Garage_info"
+when
+  Item GH_GarageInfo received update
+then
+  var ttsMessage = ""
+  var long occupied_millis = 0
+  if (GA_Garage_Entry_Time.state != NULL) {
+    occupied_millis = (GA_Garage_Entry_Time.state as DateTimeType).zonedDateTime.toInstant.toEpochMilli
+  } else {
+    occupied_millis = now.toInstant.toEpochMilli
+  }
+  var now_millis = now.toInstant.toEpochMilli
+  var occupation_duration = (now_millis - occupied_millis)/1000/60
+  var occupation_duration_seconds = ((now_millis - occupied_millis)/1000 - occupation_duration*1000*60)
+
+  if (CIR_GA_Garage.state.toString() == "OPEN") {
+    if (occupation_duration < 3) {
+      ttsMessage = "Garaż jest otwarty."
+    } else {
+      ttsMessage = String.format("Garaż jest otwarty od %d minut i $d sekund.", occupation_duration, occupation_duration_seconds)
+    }
+    GA_Garage_Entry_Confirmation.postUpdate(ON)
+  } else {
+    var int occupation_minutes = 0
+    if (GA_Garage_Occupation_Minutes.state !== NULL) {
+      occupation_minutes = Integer.parseInt(GA_Garage_Occupation_Minutes.state.toString())
+    }
+    GA_Garage_Occupation_Minutes.postUpdate(0)
+    if (occupation_minutes > 0) {
+      ttsMessage = String.format("Garaż jest już zamknięty. Czas %d minut %d sekund", occupation_duration, occupation_duration_seconds)
+    } else {
+      ttsMessage = String.format("Garaż jest zamknięty.")
+    }
+  }
+  if (GF_Presence_Mode.state.toString() == "ON") {
+    saySomething.apply(ttsMessage, defaultVoice)
+  }
+end
+
 rule "maintenace_rule"
 when
   Item DebugButton received update
 then
-  saySomething.apply("Chodź spać.", maleVoice)
+	var colorString = String::format("%s",transform("MAP", "led.map", "daycolor_" + "17"))
+  logInfo("Debug", "{}", colorString)
 end
 
+rule "location_info"
+when
+  Item GH_LocationInfo received update
+then
+  var ttsMessage = ""
 
-// 2021-12-28 13:26:06.739 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Standard-B
-// 2021-12-28 13:26:06.906 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Standard-E
-// 2021-12-28 13:26:07.040 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Wavenet-C
-// 2021-12-28 13:26:07.239 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Wavenet-D
-// 2021-12-28 13:26:07.577 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Standard-C
-// 2021-12-28 13:26:07.727 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Wavenet-E
-// 2021-12-28 13:26:08.001 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Standard-A
-// 2021-12-28 13:26:08.034 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Standard-D
-// 2021-12-28 13:26:08.195 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Wavenet-B
-// 2021-12-28 13:26:08.251 [TRACE] [.googletts.internal.GoogleTTSService] - Google Cloud TTS voice: pl-PL-Wavenet-A
+  if (Tracker_Waldek_Heartbeat_LastUpdate_Error.state.toString() == "ON") {
+    ttsMessage += " Błąd lokalizacji."
+  } else {
+    if (Alice_AtHome.state.toString() == "CLOSED") {
+      ttsMessage += " Alicja jest poza domem."
+      ttsMessage += " Jej bieżąca lokalizacja to "
+      ttsMessage += Tracker_Alice_Address.state.toString()
+      ttsMessage += "."
+    }
+    if (Ann_AtHome.state.toString() == "CLOSED") {
+      ttsMessage += " Ania jest poza domem."
+      ttsMessage += " Jej bieżąca lokalizacja to "
+      ttsMessage += Tracker_Ann_Address.state.toString()
+      ttsMessage += "."
+    }
+    if (Aldona_AtHome.state.toString() == "CLOSED") {
+      ttsMessage += " Aldona jest poza domem."
+      ttsMessage += " Jej bieżąca lokalizacja to "
+      ttsMessage += Tracker_Aldona_Address.state.toString()
+      ttsMessage += "."
+    }
+    if (Waldek_AtHome.state.toString() == "CLOSED") {
+      ttsMessage += " Waldek jest poza domem."
+      ttsMessage += " Jego bieżąca lokalizacja to "
+      ttsMessage += Tracker_Waldek_Address.state.toString()
+      ttsMessage += "."
+    }
+  }
+  saySomething.apply(ttsMessage, defaultVoice)
+end

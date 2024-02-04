@@ -24,7 +24,7 @@ export SMART_HOME=<repo_dir>
 
 ```bash
   sudo mkdir -p /opt/openhab
-  sudo ln -s ${SMART_HOME}/src/conf /opt/openhab/conf
+  sudo ln -s ${SMART_HOME}/src/conf /opt/openhab/prod/conf
   sudo chown -R openhab:openhab /opt/openhab
 ```
 
@@ -58,7 +58,7 @@ cd $SMART_HOME/src/conf/deploy && sudo make openhab-core
 cd $SMART_HOME/src/conf/deploy && sudo make openhab-db
 ```
 
-_Disclaimer_ Please change password present in file `$SMART_HOME/src/conf/deploy/resources/sql/database.sql`. Password has to be the same as in `/opt/openhab/services/jdbc.cfg` file.
+_Disclaimer_ Please change password present in file `$SMART_HOME/src/conf/deploy/resources/sql/database.sql`. Password has to be the same as in `/opt/openhab/prod/services/jdbc.cfg` file.
 
 ## OpenHAB install and run
 
@@ -133,5 +133,5 @@ apt-get install bluez-hcidump bc
 crontab:
 
 ```bash
-0/10 * * * /opt/openhab/conf/scripts/EQ3/eq3.sh
+0/10 * * * /opt/openhab/prod/conf/scripts/EQ3/eq3.sh
 ```

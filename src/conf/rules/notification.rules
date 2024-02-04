@@ -2,53 +2,41 @@ rule "notification_rule"
 when
     Member of gNotification changed
 then
-  try {
     val String type = "information"
     val String itemName = triggeringItem.name
     val itemValue = String.valueOf(triggeringItem.state)
     val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
     val String enableNotifications = String.valueOf(calendar_Notification.state)
-    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
-  } catch (Throwable t) {
-    logError("Error", "Error in notification notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
-  } finally {
-  }
+    val String notificationString = type + "|" + itemName + "|" + itemValue + "|" + currentTime + "|" + enableNotifications
+    NotificationItem.sendCommand(notificationString)
 end
 
 rule "alarm_notification_rule"
 when
     Member of gPIR changed or Member of gCircuit changed
 then
-  try {
     if (GF_Motion_Mode.state.toString() == "ON" && triggeringItem.state == OPEN) {
       val String type = "alarm"
       val String itemName = triggeringItem.name
       val itemValue = String.valueOf(triggeringItem.state)
       val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
       val String enableNotifications = String.valueOf(calendar_Notification.state)
-      executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
+      val String notificationString = type + "|" + itemName + "|" + itemValue + "|" + currentTime + "|" + enableNotifications
+      NotificationItem.sendCommand(notificationString)
     }
-  } catch (Throwable t) {
-    logError("Error", "Error in notification alarm_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
-  } finally {
-  }
 end
 
 rule "error_notification_rule"
 when
     Member of gErrors changed or Member of gAlert changed
 then
-  try {
     val String type = "error"
     val String itemName = triggeringItem.name
     val itemValue = String.valueOf(triggeringItem.state)
     val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
     val String enableNotifications = String.valueOf(calendar_Notification.state)
-    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
-  } catch (Throwable t) {
-    logError("Error", "Error in notification error_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
-  } finally {
-  }
+    val String notificationString = type + "|" + itemName + "|" + itemValue + "|" + currentTime + "|" + enableNotifications
+    NotificationItem.sendCommand(notificationString)
 end
 
 rule "garage_notification_rule"
@@ -56,34 +44,26 @@ when
 //    Member of gGarageState changed or Member of gGarageWindow changed
   Member of gGarageWindow changed
 then
-  try {
     val String type = "garage"
     val String itemName = triggeringItem.name
     val itemValue = String.valueOf(triggeringItem.state)
     val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
     val String enableNotifications = String.valueOf(calendar_Notification.state)
-    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
-  } catch (Throwable t) {
-    logError("Error", "Error in notification garage_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
-  } finally {
-  }
+    val String notificationString = type + "|" + itemName + "|" + itemValue + "|" + currentTime + "|" + enableNotifications
+    NotificationItem.sendCommand(notificationString)
 end
 
 rule "presence_notification_rule"
 when
     Member of gTrackerPresence changed
 then
-  try {
     val String type = "presence"
     val String itemName = triggeringItem.name
     val itemValue = String.valueOf(triggeringItem.state)
     val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
     val String enableNotifications = String.valueOf(calendar_Notification.state)
-    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
-  } catch (Throwable t) {
-    logError("Error", "Error in notification presence_notification_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
-  } finally {
-  }
+    val String notificationString = type + "|" + itemName + "|" + itemValue + "|" + currentTime + "|" + enableNotifications
+    NotificationItem.sendCommand(notificationString)
 end
 
 /*
@@ -91,15 +71,12 @@ rule "notification debug"
 when
     Item DebugButton received update
 then
-  try {
     val String type = "debug"
     val String itemName = "DebugButton"
     val itemValue = String.valueOf(DebugButton.state)
     val String currentTime = String::format( "%1$tY-%1$tm-%1$td %1$tk:%1$tM:%1$tS", new java.util.Date )
     val String enableNotifications = String.valueOf(calendar_Notification.state)
-    executeCommandLine (Duration.ofSeconds(10), "/openhab/conf/scripts/NOTIFICATION/notification.sh", type, itemName, itemValue, currentTime, enableNotifications)
-  } catch (Throwable t) {
-    logError("Error", "Error in notification error_notification_rule {} {} {}", DebugButton.name, DebugButton.state, t.toString())
-  }
+    val String notificationString = type + "|" + itemName + "|" + itemValue + "|" + currentTime + "|" + enableNotifications
+    NotificationItem.sendCommand(notificationString)
 end
 */

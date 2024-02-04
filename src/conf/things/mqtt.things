@@ -15,7 +15,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
     Channels:
       Type number : Total [stateTopic="myHome/PowerMeter_Total"]
       Type number : Current [stateTopic="myHome/PowerMeter_Current"]
-      Type number : CurrentInWatts [stateTopic="myHome/PowerMeter_Current", transformationPattern="JS:kilowatttowatts.js"]
+      Type number : CurrentInWatts [stateTopic="myHome/PowerMeter_Current_Watts"]
   }
 
   Thing topic Indoor_Sensor "Indoor_Sensor" {
@@ -234,7 +234,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type string : Heartbeat [stateTopic="tele/sonofftest/STATE", transformationPattern="JSONPATH:$.Time"]
     }
 
-// FF_Bedroom_Lights
+// FF_Bedroom_Office
   Thing topic Switch01 "Switch01" {
     Channels:
       Type switch : PowerSwitch [stateTopic="stat/switch01/POWER", commandTopic="cmnd/switch01/POWER", on="ON", off="OFF" ]
@@ -266,7 +266,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : RSSI [stateTopic="tele/switch04/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
-// GF_Corridor_LED
+// FF_BedroomSecondary
   Thing topic Switch05 "Switch05" {
     Channels:
       Type switch : PowerSwitch [stateTopic="stat/switch05/POWER", commandTopic="cmnd/switch05/POWER", on="ON", off="OFF" ]
@@ -304,8 +304,8 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Temperature [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Temperature"]
       Type number : Humidity [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Humidity"]
       Type number : DewPoint [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.DewPoint"]
-      Type number : Pressure [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JS:tasmotaBME280Pressure.js"]
-      Type number : Brightness [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*A0.*)∩JS:tasmotaAnalogReverse.js"]
+      Type number : Pressure [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Pressure∩JS:pressure.js"]
+      Type number : Brightness [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*A0.*)∩JSONPATH:$.ANALOG.A0∩JS:brightness.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor01/STATE", transformationPattern="JSONPATH:$.Time"]
 
       Type contact : Cir [stateTopic="tele/multisensor01/SENSOR", transformationPattern="REGEX:(.*Switch1.*)∩JSONPATH:$.Switch1", on="ON", off="OFF"]
@@ -319,7 +319,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Temperature [stateTopic="tele/multisensor02/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Temperature"]
       Type number : Humidity [stateTopic="tele/multisensor02/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Humidity"]
       Type number : DewPoint [stateTopic="tele/multisensor02/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.DewPoint"]
-      Type number : Pressure [stateTopic="tele/multisensor02/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JS:tasmotaBME280Pressure.js"]
+      Type number : Pressure [stateTopic="tele/multisensor02/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Pressure∩JS:pressure.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor02/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number : RSSI [stateTopic="tele/multisensor02/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
@@ -331,8 +331,8 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Temperature [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*SI7021.*)∩JSONPATH:$.SI7021.Temperature"]
       Type number : Humidity [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*SI7021.*)∩JSONPATH:$.SI7021.Humidity"]
       Type number : DewPoint [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*SI7021.*)∩JSONPATH:$.SI7021.DewPoint"]
-      Type number : Pressure [stateTopic="tele/multisensor03/SENSOR", transformationPattern="JS:tasmotaBMP280Pressure.js"]
-      Type number : Brightness [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*A0.*)∩JS:tasmotaAnalogReverse.js"]
+      Type number : Pressure [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*BMP280.*)∩JSONPATH:$.BMP280.Pressure∩JS:pressure.js" ]
+      Type number : Brightness [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*A0.*)∩JSONPATH:$.ANALOG.A0∩JS:brightness.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor03/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number : OutdoorTemperature [stateTopic="tele/multisensor03/SENSOR", transformationPattern="REGEX:(.*DS18B20.*)∩JSONPATH:$.DS18B20.Temperature"]
       Type number : RSSI [stateTopic="tele/multisensor03/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
@@ -345,8 +345,8 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Temperature [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Temperature"]
       Type number : Humidity [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Humidity"]
       Type number : DewPoint [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.DewPoint"]
-      Type number : Pressure [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JS:tasmotaBME280Pressure.js"]
-      Type number : Brightness [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*A0.*)∩JS:tasmotaAnalogReverse.js"]
+      Type number : Pressure [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Pressure∩JS:pressure.js"]
+      Type number : Brightness [stateTopic="tele/multisensor04/SENSOR", transformationPattern="REGEX:(.*A0.*)∩JSONPATH:$.ANALOG.A0∩JS:brightness.js"]
       Type string : Heartbeat [stateTopic="tele/multisensor04/STATE", transformationPattern="JSONPATH:$.Time"]
 
 //      Type contact : Cir [stateTopic="stat/multisensor04/CIR", on="ON", off="OFF"]
@@ -377,8 +377,8 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type number : Temperature [stateTopic="tele/garagemultisensor/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Temperature"]
       Type number : Humidity [stateTopic="tele/garagemultisensor/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Humidity"]
       Type number : DewPoint [stateTopic="tele/garagemultisensor/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.DewPoint"]
-      Type number : Pressure [stateTopic="tele/garagemultisensor/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JS:tasmotaBME280Pressure.js"]
-      Type number : Brightness [stateTopic="tele/garagemultisensor/SENSOR", transformationPattern="REGEX:(.*A0.*)∩JS:tasmotaAnalogReverse.js"]
+      Type number : Pressure [stateTopic="tele/garagemultisensor/SENSOR", transformationPattern="REGEX:(.*BME280.*)∩JSONPATH:$.BME280.Pressure∩JS:pressure.js"]
+      Type number : Brightness [stateTopic="tele/garagemultisensor/SENSOR", transformationPattern="REGEX:(.*A0.*)∩JSONPATH:$.ANALOG.A0∩JS:brightness.js"]
       Type string : Heartbeat [stateTopic="tele/garagemultisensor/STATE", transformationPattern="JSONPATH:$.Time"]
 
       Type contact : Cir [stateTopic="tele/garagemultisensor/SENSOR", transformationPattern="REGEX:(.*Switch1.*)∩JSONPATH:$.Switch1", on="ON", off="OFF"]
@@ -446,6 +446,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type dimmer   : Dimmer_ [stateTopic="tele/wifiled04/STATE", commandTopic="cmnd/wifiled04/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
       Type string   : Mode [stateTopic="tele/wifiled04/STATE", commandTopic="cmnd/wifiled04/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
       Type colorHSB : Color_ [stateTopic="tele/wifiled04/STATE", commandTopic="cmnd/wifiled04/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+      Type string   : Heartbeat [stateTopic="tele/wifiled04/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number   : RSSI  [stateTopic="tele/wifiled04/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
@@ -457,6 +458,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type dimmer   : Dimmer_ [stateTopic="tele/wifiled05/STATE", commandTopic="cmnd/wifiled05/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
       Type string   : Mode [stateTopic="tele/wifiled05/STATE", commandTopic="cmnd/wifiled05/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
       Type colorHSB : Color_ [stateTopic="tele/wifiled05/STATE", commandTopic="cmnd/wifiled05/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+      Type string   : Heartbeat [stateTopic="tele/wifiled05/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number   : RSSI  [stateTopic="tele/wifiled05/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
@@ -468,6 +470,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type dimmer   : Dimmer_ [stateTopic="tele/wifiled06/STATE", commandTopic="cmnd/wifiled06/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
       Type string   : Mode [stateTopic="tele/wifiled06/STATE", commandTopic="cmnd/wifiled06/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
       Type colorHSB : Color_ [stateTopic="tele/wifiled06/STATE", commandTopic="cmnd/wifiled06/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+      Type string   : Heartbeat [stateTopic="tele/wifiled06/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number   : RSSI  [stateTopic="tele/wifiled06/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
@@ -479,6 +482,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type dimmer   : Dimmer_ [stateTopic="tele/wifiled07/STATE", commandTopic="cmnd/wifiled07/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
       Type string   : Mode [stateTopic="tele/wifiled07/STATE", commandTopic="cmnd/wifiled07/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
       Type colorHSB : Color_ [stateTopic="tele/wifiled07/STATE", commandTopic="cmnd/wifiled07/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+      Type string   : Heartbeat [stateTopic="tele/wifiled07/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number   : RSSI  [stateTopic="tele/wifiled07/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
@@ -490,6 +494,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type dimmer   : Dimmer_ [stateTopic="tele/wifiled08/STATE", commandTopic="cmnd/wifiled08/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
       Type string   : Mode [stateTopic="tele/wifiled08/STATE", commandTopic="cmnd/wifiled08/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
       Type colorHSB : Color_ [stateTopic="tele/wifiled08/STATE", commandTopic="cmnd/wifiled08/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+      Type string   : Heartbeat [stateTopic="tele/wifiled08/STATE", transformationPattern="JSONPATH:$.Time"]
       Type number   : RSSI  [stateTopic="tele/wifiled08/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
   }
 
@@ -502,6 +507,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type string : LastSeen [stateTopic="location/Waldek", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
       Type contact : AtHome [stateTopic="location/Waldek", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
       Type contact : AtDistrict [stateTopic="location/Waldek", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
+      Type number : DistanceHome [stateTopic="location/Waldek", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home_distance"]
       Type string : Heartbeat [stateTopic="location/heartbeat", transformationPattern="REGEX:(.*time.*)∩JSONPATH:$.time"]
   }
 
@@ -514,6 +520,7 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type string : LastSeen [stateTopic="location/Aldona", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
       Type contact : AtHome [stateTopic="location/Aldona", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
       Type contact : AtDistrict [stateTopic="location/Aldona", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
+      Type number : DistanceHome [stateTopic="location/Aldona", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home_distance"]
   }
 
   Thing topic GoogleTrackerAnn "GoogleTrackerAnn" {
@@ -525,7 +532,9 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type string : LastSeen [stateTopic="location/Anna", transformationPattern="REGEX:(.*datetime.*)∩JSONPATH:$.datetime"]
       Type contact : AtHome [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
       Type contact : AtDistrict [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
-      Type contact : AtSchool [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.school"]
+      Type contact : AtSchool [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.university"]
+      Type contact : InTransit [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.transit"]
+      Type number : DistanceHome [stateTopic="location/Anna", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home_distance"]
   }
 
   Thing topic GoogleTrackerAlice "GoogleTrackerAlice" {
@@ -538,5 +547,11 @@ Bridge mqtt:broker:MyMQTTBroker [host="192.168.0.4", port="1883", clientID="open
       Type contact : AtHome [stateTopic="location/Alicja", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home"]
       Type contact : AtDistrict [stateTopic="location/Alicja", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.district"]
       Type contact : AtSchool [stateTopic="location/Alicja", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.school"]
+      Type number : DistanceHome [stateTopic="location/Alicja", transformationPattern="REGEX:(.*home.*)∩JSONPATH:$.presence.home_distance"]
+  }
+
+  Thing topic NotificationMsg "NotificationMsg" {
+    Channels:
+      Type string : NotificationStr  [commandTopic="notification/string"]
   }
 }

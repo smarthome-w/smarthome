@@ -1,6 +1,8 @@
 var errOverallError = false
 var int errLogLevel = 1
 
+var errInternalError = false
+
 rule "err_rule"
 when
   Time cron "0 */5 * ? * MON-SUN"
@@ -57,6 +59,32 @@ then
     }
   } catch (Throwable t) {
     logError("Error", "Error in error_flag_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
+  } finally {
+  }
+end
+
+rule "internal_error_flag_rule"
+when
+    Member of gInternalSensorsErrors changed or
+    Time cron "0 */5 * ? * MON-SUN"
+then
+  try {
+    errInternalError = false
+    gInternalSensorsErrors.members.forEach [E |
+      if (E.state == NULL || E.state == ON) {
+        errInternalError = true
+        logError("Error", "Error in internal_error_flag_rule {} {} {}", E.name, E.state, E.toString())
+      }
+    ]
+    if (errInternalError == true) {
+      InternalSensorsErrorIndicator.state = ON
+      InternalSensorsErrorIndicator_Virtual.state = ON
+    } else {
+      InternalSensorsErrorIndicator.state = OFF
+      InternalSensorsErrorIndicator_Virtual.state = OFF
+    }
+  } catch (Throwable t) {
+    logError("Error", "Error in internal_error_flag_rule {} {} {}", triggeringItem.name, triggeringItem.state, t.toString())
   } finally {
   }
 end

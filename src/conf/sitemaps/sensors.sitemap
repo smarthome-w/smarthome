@@ -1,6 +1,6 @@
 sitemap sensors label="Sensors" {
     Frame label="Power meter" icon="firstfloor" {
-        Text item=GF_PowerMeter_Total
+//        Text item=GF_PowerMeter_Total
 //        Text item=GF_PowerMeter_Current
         Text item=GF_PowerMeter_Current_In_Watts
 //        Text item=GF_PowerMeter_DailyConsumption

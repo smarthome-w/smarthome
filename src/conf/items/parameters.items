@@ -29,8 +29,14 @@ Number    HH_DebugLevel_Movewatch          "Movewatch debug level [%.0f]"       
 Number    HH_DebugLevel_Rollershutter      "Rollershutter debug level [%.0f]"         <shield>         (gParameters, gPersistenceSettings)
 Number    HH_DebugLevel_General            "General debug level [%.0f]"               <shield>         (gParameters, gPersistenceSettings)
 
+Number    HH_AnnRoomOff                    "Ann room off [%.0f]"                      <shield>         (gParameters, gPersistenceSettings)
+
 Switch    HH_AliceAtSchool                 "Alice at school []"                       <girl_3>         (gParameters, gPersistenceSettings)
 Switch    HH_AnnAtSchool                   "Ann at school []"                         <girl_2>         (gParameters, gPersistenceSettings)
 Switch    HH_WaldekAtWork                  "Waldek at work []"                        <man_3>          (gParameters, gPersistenceSettings)
 
 Switch    HH_SystemStarted                 "System fully started []"                  <time>
+
+String    NotificationItem                 "Notification"                             <time>           (gParameters)                                                                     {channel="mqtt:topic:MyMQTTBroker:NotificationMsg:NotificationStr"}
+
+Number    HH_Garage_Open_Time              "Garage open time [%.0f]"                  <niveau>         (gParameters, gPersistenceSettings)

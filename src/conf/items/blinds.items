@@ -25,7 +25,7 @@ Number    GF_FamilyRoom_Rollershutter_RSSI                  "Family blind RSSI [
 
 Group     gBedroomBlinds                                    "Bedroom blinds"                 <time>       (gBedroom)                                    ["Blinds"]
 Switch    FF_Bedroom_Rollershutter_Expert_Mode              "Expert mode"                                 (gBedroomBlinds)                              ["Switch"]
-Dimmer    FF_Bedroom_Rollershutter_Dimmer                   "Bedroom window  [%.1f %%]"      <blinds>     (gBedroomBlinds, gRollershutter_Dimmer)       ["Measurement", "Level"]    {channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Dimmer_", ga="Light"}
+Dimmer    FF_Bedroom_Rollershutter_Dimmer                   "ABC window  [%.1f %%]"          <blinds>     (gBedroomBlinds, gRollershutter_Dimmer)       ["Measurement", "Level"]    {channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:Dimmer_", ga="Light"}
 Switch    FF_Bedroom_Rollershutter_PrgUp                    "Bedroom - prg up[]"                          (gBedroomBlinds, gRollershutter)              ["Switch"]                  {channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:PrgUp"}
 Switch    FF_Bedroom_Rollershutter_PrgDown                  "Bedroom - prg down[]"                        (gBedroomBlinds, gRollershutter)              ["Switch"]                  {channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:PrgDown"}
 Switch    FF_Bedroom_Rollershutter_AutoUp                   "Bedroom blinds up[]"                         (gBedroomBlinds, gRollershutter)              ["Switch"]                  {channel="mqtt:topic:MyMQTTBroker:FF_Bedroom_Rollershutter:AutoUp"}

@@ -5,7 +5,9 @@ sitemap parameters label="Parameters" {
         Switch item=GF_Winter_Mode
         Switch item=DebugButton mappings=[ON="Debug"]
         Switch item=GH_DailyInfo mappings=[ON="Daily info"]
+        Switch item=GH_LocationInfo mappings=[ON="Location info"]
         Switch item=GH_SensorsInfo mappings=[ON="Sensors info"]
+        Switch item=calendar_Notification
     }
 
   	Frame label="" {
@@ -39,6 +41,10 @@ sitemap parameters label="Parameters" {
       Setpoint item=HH_DailyInfoMinute minValue=0 maxValue=59 step=5
 
       Setpoint item=HH_OpenWindowTemperatureAlert minValue=6 maxValue=20 step=1
+
+      Setpoint item=HH_AnnRoomOff minValue=1 maxValue=8 step=1
+
+      Setpoint item=HH_Garage_Open_Time minValue=3 maxValue=8 step=1
     }
 
     Frame label="Logging" icon="firstfloor" {

@@ -1,4 +1,8 @@
 sitemap ann label="Ann" {
+    Frame label="Scenes" icon="firstfloor" {
+      Switch item=HH_PowermeterPlug02
+    }
+
 	Frame label="" {
 		Switch       item=WiFiLED3_power
 		Colorpicker  item=WiFiLED3_color
@@ -32,5 +36,6 @@ sitemap ann label="Ann" {
 
 	Frame label="" {
         Switch item=HH_AnnAtSchool
+        Setpoint item=HH_AnnRoomOff minValue=1 maxValue=8 step=1
     }
 }

@@ -1,6 +1,7 @@
 sitemap tracker label="Tracker" {
-  Webview url="/static/Visualization/Timeline.html?Group=gTrackerPresence&serviceId=jdbc&Hours=24" height=13
-
+  Frame label="Presence" {
+    Webview url="/static/Visualization/Timeline.html?Group=gTrackerPresence&serviceId=jdbc&Hours=24" height=13
+  }
   Frame label="Tracking data" {
     Switch item=Waldek_AtHome mappings=[CLOSED="Absent", OPEN="Present"]
     Switch item=Waldek_AtDistrict mappings=[CLOSED="Absent", OPEN="Present"]

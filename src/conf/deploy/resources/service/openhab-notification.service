@@ -1,0 +1,17 @@
+[Unit]
+Description=openhab-notifications
+
+[Service]
+User=root
+Group=root
+Type=simple
+Restart=always
+RestartSec=3
+ExecStart=/opt/openhab/prod/conf/scripts/NOTIFICATION/notification.py
+
+#StandardOutput=syslog
+#StandardError=syslog
+SyslogIdentifier=openhab-notifications
+
+[Install]
+WantedBy=multi-user.target

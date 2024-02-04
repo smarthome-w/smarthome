@@ -5,13 +5,17 @@ sitemap system label="System" {
       Switch item=GH_Evening_Scene mappings=[ON="Set"]
       Switch item=GH_Day_Scene mappings=[ON="Set"]
       Switch item=GH_TVShow_Scene mappings=[ON="Set"]
-      Switch item=GH_Lucifer_Scene mappings=[ON="Lucifer"]
-      Switch item=GH_Borg_Scene mappings=[ON="Borg"]
-      Switch item=GH_Evil_Scene mappings=[ON="Evil"]
-      Switch item=GH_Forrest_Scene mappings=[ON="Forrest"]
-      Switch item=GH_StartWork_Scene  mappings=[ON="Start work"]
-      Switch item=GH_StopWork_Scene  mappings=[ON="Stop work"]
+      Switch item=GH_Work_Scene
     }
+
+    Frame label="Heaters" icon="firstfloor" {
+      Text item=EQ3_Bedroom_Status
+      Text item=EQ3_FamilyRoom_Status
+      Text item=EQ3_AnnRoom_Status
+      Text item=EQ3_AliceRoom_Status
+      Text item=EQ3_Kitchen_Status
+    }
+
     Frame label="System groups" icon="groundfloor" {
       Group item=gCalendar
       Group item=gLastUpdate

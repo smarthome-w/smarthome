@@ -7,7 +7,7 @@ Group=root
 Type=simple
 Restart=always
 RestartSec=3
-ExecStart=/opt/openhab/conf/scripts/SONY/sonymqtt.py
+ExecStart=/opt/openhab/prod/conf/scripts/SONY/sonymqtt.py
 
 StandardOutput=syslog
 StandardError=syslog
